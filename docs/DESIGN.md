@@ -69,9 +69,9 @@ Use React with individually imported visx modules for scales, shapes and axes, p
 
 | Choice | Decision | Evidence / tradeoff |
 | --- | --- | --- |
-| React | Select | Required implementation foundation in the workflow plan; current visx 4 compatibility is explicitly React 18 or 19. Use React 19 only if the implementation step confirms all pinned peer ranges. |
-| `@visx/scale`, `@visx/shape`, `@visx/axis`, `@visx/responsive` | Select, exact pin to be set in foundation implementation | Official npm pages show 4.0.0 and MIT for inspected modules; official visx repository says v4 supports React 18/19 and that modules can be selected individually. Avoid the all-in-one `@visx/visx` bundle. |
-| `motion` (`motion/react`) | Select, exact pin to be set in foundation implementation | Official npm lookup showed 13.4.1, MIT and a publish 14 hours before lookup; official Motion React docs support declarative animation. Recheck version and peer/build compatibility at install time. |
+| React | Select, pinned 19.3.0 | The locked build and strict typecheck confirm React 19 works with the selected visx and Motion packages. |
+| `@visx/scale`, `@visx/shape`, `@visx/axis`, `@visx/responsive` | Select, pinned 4.0.0 | Official visx sources identify v4 support for React 18/19 and MIT licensing. The implementation imports only the required modules rather than the all-in-one `@visx/visx` package. |
+| `motion` (`motion/react`) | Select, pinned 13.4.6 | The 30 September 2026 research snapshot found 13.4.1; the locked project uses 13.4.6, and the current production build and reduced-motion browser check pass with that pin. |
 | ECharts | Reject for analytical charts | Existing preview dependency was not declared in package.json; the requested SVG composition needs per-mark semantics, stable IDs and custom direct labels. A high-level chart skin makes that bespoke accessible composition less direct. |
 | Recharts | Reject | Convenient React charts, but less suitable for the required bespoke SVG layers and deliberate per-observation semantics; introduces another opinionated chart abstraction without reducing the work of accessible custom marks. |
 | D3-only imperative rendering | Reject | D3 remains useful for calculations, but imperative ownership of SVG nodes conflicts with React state, stable model selection and declarative Motion transitions. visx already combines D3 calculations with React components. |
@@ -79,13 +79,13 @@ Use React with individually imported visx modules for scales, shapes and axes, p
 
 ### Release, licence and bundle-size evidence
 
-Research snapshot date: 30 September 2026. Official visx GitHub repository reports v4 as current stable, requires React 18 or 19, and describes the package as MIT licensed. Official npm pages report `@visx/scale`, `@visx/shape` and `@visx/responsive` version 4.0.0 with MIT licences. The Motion package page reports `motion` 13.4.1 and MIT. These are lookup-time facts and must be rechecked before lockfile creation.
+Research snapshot date: 30 September 2026. Official visx GitHub repository reports v4 as current stable, requires React 18 or 19, and describes the package as MIT licensed. The lockfile pins `@visx/scale`, `@visx/shape`, `@visx/axis` and `@visx/responsive` at 4.0.0, `motion` at 13.4.6, and React at 19.3.0. Strict typecheck, clean production build and reduced-motion browser checks run against these exact pins.
 
-Bundle size is not claimed as known: npm package pages do not establish the shipped compressed bundle for this product, and selected visx imports, tree shaking and Motion features affect the result. Foundation implementation must report clean production build output and run a bundle analyzer or equivalent on the actual bundle. Keep a review target of no more than 180 kB gzip for initial JS; if exceeded, document actual route-level breakdown and split deferred catalogue/method interactions. This is a budget, not a measured result.
+The production initial-JavaScript budget is no more than 180 KiB gzip. `npm run test:frontier` measures the JavaScript files referenced by the built HTML's initial script and module-preload tags. The captured production build on 30 September 2026 measured 130,744 bytes (127.68 KiB) with Node's `gzipSync`; Vite/Rolldown reports 131.92 kB for the 433.76 kB initial entry. The chart experience is a deferred chunk (74.48 kB in Vite's gzip report), and catalogue/source details are loaded from digest-bound public JSON rather than embedded in initial JavaScript. Both measurements are below the initial-entry budget; the test enforces its limit on every run.
 
 ## Focused blueprint regression contract
 
-The accompanying `scripts/verify-design.mjs` checks that the blueprint preserves the hero contract and specifies all six analytical views, design tokens, breakpoints, custom SVG accessibility, reduced motion, rejected alternatives, release/licence evidence, and the unresolved bundle measurement. The workflow’s authoritative check remains `node scripts/verify-workflow.mjs design`; later rendered, keyboard, responsive and reduced-motion acceptance belongs to the visual acceptance stage and cannot be proved by this text check.
+The accompanying `scripts/verify-design.mjs` checks that the blueprint preserves the hero contract and specifies all six analytical views, design tokens, breakpoints, custom SVG accessibility, reduced motion, rejected alternatives, release/licence evidence and the measured bundle budget. Rendered chapter screenshots and browser interaction evidence are produced by `npm run test:frontier`; this text check does not replace those rendered checks.
 
 ## Research links
 

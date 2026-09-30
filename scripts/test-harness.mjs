@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
-import { access, constants, mkdir, mkdtemp, open, readdir, rm } from 'node:fs/promises';
-import { homedir } from 'node:os';
+import { access, constants, mkdtemp, open, readdir, rm } from 'node:fs/promises';
+import { homedir, tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { chromium } from 'playwright-core';
 import { createSiteServer } from './serve.mjs';
@@ -18,7 +18,7 @@ async function browserExecutable() {
   throw new Error('No cached Playwright Chromium found. Set CHROMIUM_PATH to an installed browser executable.');
 }
 
-export async function withBuiltBrowser(run, { reducedMotion = 'reduce' } = {}) {
+export async function withBuiltBrowser(run, { reducedMotion = 'reduce', hasTouch = false } = {}) {
   const server = createSiteServer(new URL('../dist/', import.meta.url).pathname);
   await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
   let browser;
@@ -27,22 +27,33 @@ export async function withBuiltBrowser(run, { reducedMotion = 'reduce' } = {}) {
   try {
     const env = { ...process.env };
     if (process.platform === 'linux') {
-      const artifacts = new URL('../test-artifacts/', import.meta.url).pathname;
-      await mkdir(artifacts, { recursive: true });
-      runtimeDirectory = await mkdtemp(join(artifacts, 'browser-'));
+      runtimeDirectory = await mkdtemp(join(tmpdir(), 'axionbench-browser-'));
       runtimeHandle = await open(runtimeDirectory, 'r');
-      // Keep all writes in the permitted candidate directory. A live directory
-      // descriptor gives Chromium a short socket pathname despite long worktrees.
+      // Use the execution environment's permitted temporary area, outside source
+      // evidence. A live descriptor keeps Chromium socket paths short even when
+      // the sandbox supplies a long session TMPDIR. Reports and screenshots use
+      // the ignored test-results runtime directory.
       const shortPath = `/proc/${process.pid}/fd/${runtimeHandle.fd}`;
       Object.assign(env, { TMPDIR: shortPath, TMP: shortPath, TEMP: shortPath });
     }
     browser = await chromium.launch({ executablePath: await browserExecutable(), args: ['--no-sandbox'], env });
-    const page = await browser.newPage({ viewport: { width: 1440, height: 1000 }, reducedMotion });
-    await run({ page, origin: `http://127.0.0.1:${server.address().port}`, assert });
+    const pageOptions = { viewport: { width: 1440, height: 1000 }, reducedMotion, hasTouch };
+    const page = await browser.newPage(pageOptions);
+    const newPage = () => browser.newPage(pageOptions);
+    await run({ page, newPage, origin: `http://127.0.0.1:${server.address().port}`, assert });
   } finally {
-    await browser?.close();
-    await runtimeHandle?.close();
-    if (runtimeDirectory) await rm(runtimeDirectory, { recursive: true, force: true });
-    await new Promise(resolve => server.close(resolve));
+    try {
+      await browser?.close();
+    } finally {
+      try {
+        await runtimeHandle?.close();
+      } finally {
+        try {
+          if (runtimeDirectory) await rm(runtimeDirectory, { recursive: true, force: true });
+        } finally {
+          await new Promise(resolve => server.close(resolve));
+        }
+      }
+    }
   }
 }

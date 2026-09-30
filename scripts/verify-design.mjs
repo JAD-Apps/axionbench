@@ -9,10 +9,11 @@ const requirements = [
   ['visx modules', '@visx/scale'], ['Motion', 'Motion for React'], ['responsive mobile', 'Mobile gutters'],
   ['keyboard operation', 'keyboard focus'], ['accessible table', 'accessible table'],
   ['reduced motion', 'prefers-reduced-motion'], ['rejected alternatives', 'Recharts'],
-  ['licensing', 'MIT'], ['bundle measurement honesty', 'Bundle size is not claimed as known'],
+  ['licensing', 'MIT'], ['initial bundle target', '180 KiB gzip'], ['measured bundle procedure', 'npm run test:frontier'],
+  ['measured bundle result', '130,744 bytes (127.68 KiB)'],
   ['reference access honesty', 'detail inaccessible in research viewer'],
 ];
 for (const [label, needle] of requirements) assert.ok(design.includes(needle), `Blueprint is missing ${label}`);
 assert.match(design, /360, 768, 1280 and 1440/);
 assert.match(design, /250–500 ms/);
-console.log(`Design blueprint contract passed (${requirements.length} focused assertions). Rendered acceptance remains outstanding.`);
+console.log(`Design blueprint contract passed (${requirements.length} focused assertions), including the measured initial-JavaScript budget.`);

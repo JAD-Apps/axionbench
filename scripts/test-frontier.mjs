@@ -1,0 +1,271 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { gzipSync } from 'node:zlib';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { spawnSync } from 'node:child_process';
+import { withBuiltBrowser } from './test-harness.mjs';
+
+const root = new URL('../', import.meta.url);
+const read = (path, encoding) => readFile(new URL(path, root), encoding);
+const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const parse = async (path) => JSON.parse(await read(path, 'utf8'));
+const build = spawnSync('npm', ['run', 'build'], { cwd: new URL('..', import.meta.url).pathname, stdio: 'inherit' });
+if (build.error) throw build.error;
+assert.equal(build.status, 0, 'production build succeeds before browser checks');
+await import('./test-browser-runtime.mjs');
+await mkdir(new URL('../test-results/', import.meta.url), { recursive: true });
+
+const [ingestionBytes, data, manifest, detailBytes, details, html] = await Promise.all([
+  read('data/ingestion.json'), parse('public/data.json'), parse('public/data-manifest.json'),
+  read('public/data-details.json'), parse('public/data-details.json'), read('dist/index.html', 'utf8'),
+]);
+assert.equal(data.schemaVersion, 'axionbench-public-v1');
+assert.equal(manifest.sourceDigest, sha256(ingestionBytes), 'manifest binds the exact captured ingestion bytes');
+assert.equal(data.sourceDigest, manifest.sourceDigest, 'public projection binds to the same ingestion digest');
+assert.equal(manifest.projection.bytes, Buffer.byteLength(JSON.stringify(data)), 'projection byte count matches its manifest');
+assert.equal(manifest.projection.sha256, sha256(Buffer.from(JSON.stringify(data))), 'projection digest matches its manifest');
+assert.equal(manifest.details.bytes, detailBytes.length, 'deferred source detail byte count matches its manifest');
+assert.equal(manifest.details.sha256, sha256(detailBytes), 'deferred source detail digest matches its manifest');
+assert.equal(details.sourceDigest, manifest.sourceDigest, 'deferred source detail shares the captured ingestion digest');
+assert.equal(data.models.length, manifest.counts.models);
+assert.equal(data.observations.length, manifest.counts.observations);
+assert.equal(data.suites.length, manifest.counts.suites);
+assert(data.models.length >= 30 && data.observations.length >= 15, 'release uses the broad admitted source capture');
+assert(data.suites.length >= 30 && data.domains.length >= 11, 'registry coverage is retained');
+assert(data.models.some((model) => /meta/i.test(model.lab)), 'Meta identities remain in the complete catalogue');
+assert.equal(data.sourceLimitations.identityConfirmedModels, 9, 'the captured exact-release watchlist has nine entries');
+assert.equal(data.sourceLimitations.verifiedBenchmarkObservations, 0, 'no unverified source claim is promoted to a verified result');
+assert.equal(data.sourceLimitations.apiPricesPublished, false, 'source-restricted endpoint rates are withheld');
+assert.equal(data.sourceLimitations.apiPriceRowsObserved, 1328, 'the withheld-rate count comes from the captured ingestion');
+assert.equal(Object.hasOwn(data, 'pricing'), false, 'the public projection contains no endpoint price catalogue');
+assert.equal(JSON.stringify(data).includes('/data/source-snapshots/'), false, 'local source snapshot paths are not published');
+assert(data.observations.every((row) => row.resultUrl?.startsWith('https://') && row.sourceIds.length > 0),
+  'each captured observation keeps an HTTPS original result and source identifiers');
+assert(details.sources.length > 0, 'deferred source detail preserves inspectable source records');
+
+const initialPaths = [];
+for (const match of html.matchAll(/<script\b[^>]*\bsrc="([^"]+\.js)"/g)) initialPaths.push(match[1]);
+for (const match of html.matchAll(/<link\b[^>]*\brel="modulepreload"[^>]*\bhref="([^"]+\.js)"/g)) initialPaths.push(match[1]);
+assert(initialPaths.length > 0, 'production HTML identifies its initial JavaScript');
+const initialFiles = await Promise.all([...new Set(initialPaths)].map((path) => read('dist' + path, undefined)));
+const initialGzipBytes = initialFiles.reduce((sum, bytes) => sum + gzipSync(bytes).length, 0);
+const initialKiB = Number((initialGzipBytes / 1024).toFixed(2));
+assert(initialGzipBytes <= 180 * 1024, 'actual initial JavaScript gzip is below the 180 KiB budget; measured ' + initialGzipBytes + ' bytes');
+const entryJs = (await Promise.all(initialPaths.map((path) => read('dist' + path, 'utf8')))).join('\n');
+assert.equal(entryJs.includes('"models":['), false, 'the full catalogue is fetched as public data, not embedded in the entry bundle');
+assert.equal(initialPaths.some((path) => path.includes('observatory-experience')), false,
+  'the chart experience is not preloaded with the initial entry');
+const initialAssetNames = new Set(initialPaths.map((path) => path.split('/').at(-1)));
+const deferredJs = (await readdir(new URL('../dist/assets/', import.meta.url)))
+  .filter((path) => path.endsWith('.js') && !initialAssetNames.has(path));
+assert(deferredJs.some((path) => path.includes('observatory-experience')), 'the chart experience is split from the initial entry');
+
+const report = {
+  sourceDigest: manifest.sourceDigest,
+  counts: manifest.counts,
+  withheldPriceRows: data.sourceLimitations.apiPriceRowsObserved,
+  initialJavaScriptGzipBytes: initialGzipBytes,
+  initialJavaScriptGzipKiB: initialKiB,
+  initialAssets: [...new Set(initialPaths)],
+  deferredExperienceChunks: deferredJs.filter((path) => path.includes('observatory-experience')),
+  renderedEvidence: [],
+  browserChecks: [],
+  viewportWidths: [360, 390, 768, 1280, 1440],
+};
+
+await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
+  const errors = [];
+  const failures = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+  page.on('response', (response) => { if (response.status() >= 400) failures.push(response.status() + ' ' + response.url()); });
+  check.equal(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches), true,
+    'browser exercises the rendered experience under reduced motion');
+
+  let releaseManifest;
+  let markManifestRequested;
+  const manifestGate = new Promise((resolve) => { releaseManifest = resolve; });
+  const manifestRequested = new Promise((resolve) => { markManifestRequested = resolve; });
+  await page.route('**/data-manifest.json', async (route) => {
+    markManifestRequested();
+    await manifestGate;
+    await route.continue();
+  });
+  const navigation = page.goto(origin, { waitUntil: 'domcontentloaded' });
+  await manifestRequested;
+  await navigation;
+  check.equal(await page.locator('#hero-title').innerText(), 'See the signal.\nKeep the source.', 'preserved hero renders before data is released');
+  check.equal(await page.locator('#intelligence-surface').count(), 1, 'preserved animated contour canvas is present during load');
+  check.equal(await page.getByTestId('frontier-stage').count(), 0, 'frontier waits accessibly while manifest is pending');
+  check.equal(await page.getByRole('status').filter({ hasText: 'Validating the public evidence digest' }).count(), 1,
+    'deferred data view exposes a useful loading status');
+  releaseManifest();
+  await page.getByTestId('frontier-stage').waitFor();
+  await page.getByTestId('view-table').waitFor();
+  check.match(await page.locator('.topbar .edition').innerText(), /PUBLIC EVIDENCE/);
+  check.equal(await page.locator('.frontier-proof strong').first().innerText(), '09', 'default cohort is nine exact release matches');
+  check.equal(await page.locator('.frontier-proof strong').nth(1).innerText(), '00', 'verification count is not inferred');
+  check.equal(await page.locator('.plot-empty').count(), 1, 'missing flagship results have no plotted score marks');
+  await page.getByTestId('view-table').click();
+  check.equal(await page.locator('[data-testid="result-table"] tbody tr').count(), 9, 'exact table mirrors all default flagship entries');
+  check.equal(await page.locator('[data-testid="result-table"] .missing-value').count(), 9, 'all nine genuine missing result states remain visible');
+  check.equal(await page.locator('[data-testid="result-table"] a[href^="https://"]').count(), 9,
+    'each identity match links to its captured original release source');
+  check.equal(await page.locator('a.export[href="/data.json"]').count(), 1, 'complete compact catalogue export is available');
+  for (const id of ['frontier', 'paired', 'open-weights', 'models', 'methods']) {
+    check.equal(await page.locator('#' + id + ' h2').count(), 1, 'distinct page chapter is rendered: ' + id);
+  }
+  check.match(await page.locator('#paired').innerText(), /headquarters are not represented/i, 'unmatched geography remains unavailable');
+  check.equal(await page.locator('#models .directory-count strong').innerText(), '508', 'directory starts from the entire admitted model set');
+  await page.screenshot({ path: new URL('../test-results/frontier-desktop.png', import.meta.url).pathname, fullPage: true, animations: 'disabled' });
+  for (const [id, name] of [['frontier', 'frontier'], ['paired', 'paired'], ['open-weights', 'size-ruler'], ['models', 'directory'], ['methods', 'methods']]) {
+    await page.evaluate((target) => document.getElementById(target)?.scrollIntoView({ block: 'start', behavior: 'instant' }), id);
+    await page.waitForTimeout(60);
+    const path = 'test-results/frontier-section-' + name + '.png';
+    await page.screenshot({ path: new URL('../' + path, import.meta.url).pathname, animations: 'disabled' });
+    report.renderedEvidence.push(path);
+  }
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await page.getByLabel('Search models, labs or source ID').fill('Meta:');
+  check(await page.locator('#models tbody tr').count() > 0, 'directory search reaches supported Meta identities');
+  check.match(await page.locator('#models tbody').innerText(), /Meta/i);
+  await page.getByRole('button', { name: '10–35B' }).click();
+  check.equal(await page.getByRole('button', { name: '10–35B' }).getAttribute('aria-pressed'), 'true', 'parameter ruler selection is operable');
+  check.match(await page.locator('.task-cost-note').innerText(), /1,328 API price rows[\s\S]*withheld/i,
+    'cost chapter reports real source restrictions without exposing rates');
+  check.equal(await page.getByTestId('view-cost').isDisabled(), true, 'unsupported task-cost view is not selectable');
+  check.equal(await page.locator('[data-chart-kind="scatter"]').count(), 0, 'no scatter/Pareto marks are fabricated');
+  await page.getByTestId('view-ranking').click();
+  await page.getByTestId('cohort-filter').selectOption('reported');
+  await page.getByTestId('suite-filter').selectOption('hle-original');
+  const hleRows = data.observations.filter((row) => row.suiteId === 'hle-original');
+  check.equal(await page.locator('.ranking-row').count(), hleRows.length, 'ranking draws actual rows from the selected broad-data suite');
+  check.equal(hleRows.length, 8, 'test suite has eight captured rows in this source snapshot');
+  check.equal(await page.locator('.ranking-row[aria-label$="unverified"]').count(), hleRows.length,
+    'all displayed score claims retain unverified source labels');
+  check.equal(await page.locator('.ranking-figure svg .bar-value').count(), hleRows.length,
+    'each reported mark retains its exact source value label');
+  const firstMark = page.locator('.ranking-row').first();
+  await firstMark.focus();
+  await page.keyboard.press('Enter');
+  check.equal(await firstMark.getAttribute('aria-pressed'), 'true', 'keyboard selection reaches an actual chart mark');
+  await page.waitForFunction(() => new URL(location.href).searchParams.has('selected'));
+  const selectedUrl = new URL(page.url());
+  check.equal(selectedUrl.searchParams.get('selected'), await firstMark.getAttribute('data-observation-id'), 'keyboard selection is shareable');
+  const firstReducedWidth = await firstMark.locator('rect').getAttribute('width');
+  await page.waitForTimeout(100);
+  check.equal(await firstMark.locator('rect').getAttribute('width'), firstReducedWidth,
+    'reduced-motion preference keeps the mark stable after rendering');
+  const secondMark = page.locator('.ranking-row').nth(1);
+  await secondMark.tap();
+  check.equal(await secondMark.getAttribute('aria-pressed'), 'true', 'touch selection reaches another actual chart mark');
+  check.equal(await firstMark.getAttribute('aria-pressed'), 'false', 'selection state stays exclusive');
+
+  await page.getByTestId('view-table').click();
+  check.equal(await page.locator('[data-testid="result-table"] tbody tr').count(), hleRows.length,
+    'exact accessible table has the same rows as the ranking view');
+  check.equal(await page.getByText('Unverified claim', { exact: false }).count(), hleRows.length,
+    'table marks each raw source claim as unverified');
+  const visibleResultHrefs = await page.locator('[data-testid="result-table"] a[href^="https://"]').evaluateAll((nodes) => nodes.map((node) => node.href));
+  for (const row of hleRows) check(visibleResultHrefs.includes(row.resultUrl), 'table links directly to captured result ' + row.id);
+  check.equal(await page.locator('.source-disclosure').count(), hleRows.length, 'each result can disclose source detail');
+  const detailsResponse = page.waitForResponse((response) => new URL(response.url()).pathname === '/data-details.json');
+  await page.locator('.source-disclosure summary').first().click();
+  const detailResponse = await detailsResponse;
+  check.equal(detailResponse.status(), 200, 'expanding source detail fetches its deferred data');
+  await page.locator('.source-record').first().waitFor();
+  check.match(await page.locator('.source-record').first().innerText(), /Reuse status:[\s\S]*Snapshot SHA-256:/,
+    'deferred evidence detail presents recorded rights and integrity hash');
+  const link = page.getByRole('link', { name: 'Original result ↗' }).first();
+  const expectedLink = await link.getAttribute('href');
+  // Keep the regression local while letting the real new-tab navigation retain
+  // its original source URL; the inert body is not asserted as source evidence.
+  await page.context().route(/^https:\/\//, (route) => route.fulfill({
+    status: 200, contentType: 'text/html', body: '<title>External navigation intercepted by browser test</title>',
+  }));
+  const popupPromise = page.waitForEvent('popup');
+  await link.click();
+  const popup = await popupPromise;
+  await popup.waitForLoadState('domcontentloaded');
+  check.equal(popup.url(), expectedLink, 'activating a result source opens its exact original URL');
+  await popup.close();
+
+  await page.getByTestId('view-ranking').click();
+  await page.getByTestId('domain-filter').selectOption('coding');
+  const firstCodingSuite = data.suites.find((suite) => suite.domain === 'coding' && suite.observationCount > 0);
+  check.equal(await page.getByTestId('suite-filter').inputValue(), firstCodingSuite.id, 'domain filter chooses an observed suite in the selected domain');
+  await page.getByTestId('suite-filter').selectOption('swebench-pro');
+  const codingRows = data.observations.filter((row) => row.suiteId === 'swebench-pro');
+  const codingLabs = [...new Set(codingRows.map((row) => data.models.find((model) => model.id === row.modelId).labId))];
+  const emptyLab = [...new Set(data.models.map((model) => model.labId))]
+    .find((id) => !codingRows.some((row) => data.models.find((model) => model.id === row.modelId).labId === id));
+  check.ok(emptyLab, 'captured catalogue contains a real lab with no row in the selected coding panel');
+  await page.getByTestId('lab-filter').selectOption(emptyLab);
+  check.equal(await page.locator('.ranking-row').count(), 0, 'empty cohort filters produce no chart marks');
+  check.match(await page.locator('.plot-empty').innerText(), /No captured source claim matches this selected suite/i,
+    'empty reported-result state explains the active filters');
+  await page.getByTestId('view-table').click();
+  check.match(await page.locator('[data-testid="result-table"] tbody').innerText(), /No captured result matches these filters/i,
+    'empty result table explains that no rows match');
+  await page.getByTestId('view-ranking').click();
+  const chosenLab = codingLabs[0];
+  await page.getByTestId('lab-filter').selectOption(chosenLab);
+  const expectedLabRows = codingRows.filter((row) => data.models.find((model) => model.id === row.modelId).labId === chosenLab);
+  check.equal(await page.locator('.ranking-row').count(), expectedLabRows.length, 'lab filter recomputes the selected benchmark cohort');
+  check.equal(new URL(page.url()).searchParams.get('cohort'), 'reported', 'cohort is retained in the URL');
+  check.equal(new URL(page.url()).searchParams.get('domain'), 'coding', 'domain is retained in the URL');
+  check.equal(new URL(page.url()).searchParams.get('suite'), 'swebench-pro', 'suite is retained in the URL');
+  check.equal(new URL(page.url()).searchParams.get('lab'), chosenLab, 'lab is retained in the URL');
+  check.equal(new URL(page.url()).searchParams.get('view'), 'ranking', 'view is retained in the URL');
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.getByTestId('frontier-stage').waitFor();
+  check.equal(await page.getByTestId('cohort-filter').inputValue(), 'reported', 'reload restores shared cohort state');
+  check.equal(await page.getByTestId('domain-filter').inputValue(), 'coding', 'reload restores shared domain state');
+  check.equal(await page.getByTestId('suite-filter').inputValue(), 'swebench-pro', 'reload restores shared suite state');
+  check.equal(await page.getByTestId('lab-filter').inputValue(), chosenLab, 'reload restores shared lab state');
+  check.equal(await page.getByTestId('view-ranking').getAttribute('aria-pressed'), 'true', 'reload restores a supported view');
+
+  await page.goto(origin + '/?view=cost', { waitUntil: 'networkidle' });
+  await page.getByTestId('frontier-stage').waitFor();
+  check.equal(await page.getByTestId('view-ranking').getAttribute('aria-pressed'), 'true', 'unsupported URL view falls back to supported ranking');
+  check.equal(await page.getByTestId('view-cost').isDisabled(), true, 'unsupported cost remains disabled after navigation');
+  check.equal(await page.locator('[data-chart-kind="scatter"]').count(), 0, 'unsupported query cannot render invented values');
+
+  const failurePage = await newPage();
+  await failurePage.route('**/data-manifest.json', (route) => route.fulfill({ status: 503, contentType: 'text/plain', body: 'Snapshot unavailable in regression fixture.' }));
+  await failurePage.goto(origin, { waitUntil: 'networkidle' });
+  check.match(await failurePage.getByRole('alert').innerText(), /Evidence snapshot unavailable[\s\S]*HTTP 503[\s\S]*contour field remain available/i,
+    'manifest failure exposes a useful accessible message while preserving the hero');
+  check.equal(await failurePage.locator('#hero-title').count(), 1, 'hero remains available on data failure');
+  check.equal(await failurePage.getByTestId('frontier-stage').count(), 0, 'failed data is not represented as an empty leaderboard');
+  await failurePage.close();
+
+  for (const width of report.viewportWidths) {
+    await page.setViewportSize({ width, height: 900 });
+    const bounds = await page.evaluate(() => ({ viewport: innerWidth, page: document.documentElement.scrollWidth }));
+    check(bounds.page <= bounds.viewport, 'page has no horizontal overflow at ' + width + 'px: ' + JSON.stringify(bounds));
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByTestId('view-table').click();
+  await page.evaluate(() => document.getElementById('frontier')?.scrollIntoView({ block: 'start', behavior: 'instant' }));
+  const mobileTableBounds = await page.evaluate(() => ({ viewport: innerWidth, page: document.documentElement.scrollWidth }));
+  check(mobileTableBounds.page <= mobileTableBounds.viewport, 'mobile exact-table view fits the page shell: ' + JSON.stringify(mobileTableBounds));
+  await page.screenshot({ path: new URL('../test-results/frontier-mobile-viewport.png', import.meta.url).pathname, animations: 'disabled' });
+  await page.screenshot({ path: new URL('../test-results/frontier-mobile.png', import.meta.url).pathname, fullPage: true, animations: 'disabled' });
+  report.renderedEvidence.push('test-results/frontier-desktop.png', 'test-results/frontier-mobile-viewport.png', 'test-results/frontier-mobile.png');
+  check.deepEqual(failures, [], 'all same-origin app and data requests succeed: ' + failures.join(', '));
+  check.deepEqual(errors, [], 'browser has no uncaught errors or console errors');
+  report.browserChecks = [
+    'hero during blocked manifest load', 'default 9-model / 8-lab identity watchlist', 'missing and unverified states',
+    'five chapters and complete directory export', 'Meta directory search and parameter band', 'unavailable restricted-price view',
+    'real suite/domain/lab filters', 'ranking/table parity', 'keyboard and touch selection', 'reduced-motion stability',
+    'deferred permission/source hash detail', 'activated original result URL', 'persistent URL cohort/view state',
+    'unsupported view rejection', 'horizontal bounds at 360/390/768/1280/1440 px',
+    'accessible data failure with preserved hero',
+  ];
+}, { reducedMotion: 'reduce', hasTouch: true });
+
+await mkdir(new URL('../test-results/', import.meta.url), { recursive: true });
+await writeFile(new URL('../test-results/frontier-evidence.json', import.meta.url), JSON.stringify(report, null, 2) + '\n');
+console.log('Frontier browser checks passed. Initial JavaScript gzip: ' + initialGzipBytes + ' bytes (' + initialKiB
+  + ' KiB / 180 KiB). Source digest: ' + manifest.sourceDigest + '.');

@@ -1,6 +1,7 @@
 node_modules/
 dist/
 test-artifacts/
+test-results/
 demo/raw/
 .DS_Store
 demo/

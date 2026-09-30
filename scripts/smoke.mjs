@@ -6,7 +6,7 @@ import { homedir } from 'node:os';
 import { createSiteServer } from './serve.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const out = join(root, 'test-artifacts');
+const out = join(root, 'test-results');
 await mkdir(out, { recursive: true });
 const data = JSON.parse(await readFile(join(root, 'data.json'), 'utf8'));
 assert.equal(data.models.length, 12);

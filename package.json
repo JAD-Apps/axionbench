@@ -8,9 +8,13 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
+    "prebuild": "node scripts/build-observatory-data.mjs",
+    "test:frontier": "node scripts/test-frontier.mjs",
+    "verify": "npm run verify:foundation && npm run test:frontier",
     "preview": "vite preview --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "clean:build": "vite build --emptyOutDir",
+    "preclean:build": "node scripts/build-observatory-data.mjs",
     "test:unit": "vitest run",
     "test:registry": "node scripts/test-registry.mjs",
     "data:ingest": "node scripts/ingest-data.mjs",
