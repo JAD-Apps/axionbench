@@ -26,6 +26,7 @@
     "verify:design": "node scripts/verify-design.mjs",
     "test:authority": "node scripts/test-authority.mjs",
     "test:head-to-head": "node scripts/test-head-to-head.mjs",
+    "test:open-weights": "node scripts/test-open-weights.mjs",
     "data:authority": "node scripts/authority/refresh.mjs"
   },
   "devDependencies": {

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { assertAuthorityFloor, composeAuthority, readInputs } from './authority/compose.mjs';
+import { deriveOpenWeights } from './open-weights/derive.mjs';
 
 const readJson = async (path) => JSON.parse(await readFile(new URL('../' + path, import.meta.url), 'utf8'));
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -188,6 +189,8 @@ const projection = {
     identityConfirmedModels: models.filter((row) => row.identityVerified).length,
   },
   authority,
+  // Open-weight explorer facts, re-derived from SHA-256-checked repository snapshots.
+  openWeights: await deriveOpenWeights(input),
 };
 
 const sources = input.sources
@@ -238,6 +241,7 @@ const manifest = {
     authorityObservations: authority.observations.length,
     authorityAdmittedObservations: authority.observations.filter((row) => row.admitted).length,
     authorityModels: authority.models.length,
+    openWeightRows: projection.openWeights.rows.length,
     authorityFloorSuites: authority.floor.suites.length,
     authorityFloorDomains: authority.floor.domains.length,
   },

@@ -470,3 +470,58 @@ footer a{color:var(--signal);font:11px "DM Sans",sans-serif;letter-spacing:norma
  .h2h,.h2h-figure,.dumbbell-list{min-width:0;max-width:100%}
  .h2h-evidence dl>div{grid-template-columns:1fr}
 }
+
+/* Open-weight explorer (step 9): band tabs, small multiples, filters, paginated table. */
+.ow{min-width:0}
+.band-tabs button small{margin-left:4px;color:#7b8479;font-size:9px}
+.band-tabs button[aria-pressed=true] small{color:inherit;opacity:.75}
+.ow-multiples{margin-top:26px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 26px}
+.ow-panel{margin:0;min-width:0;padding-top:12px;border-top:1px solid #bfc4bb}
+.ow-panel.active{border-top:2px solid var(--cobalt)}
+.ow-panel figcaption{margin-bottom:6px;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.ow-panel figcaption strong{font:600 20px var(--display)}
+.ow-panel figcaption span{color:#6c756b;font:9px var(--mono)}
+.ow-panel ul{margin:0;padding:0;list-style:none}
+.ow-panel li{padding:4px 0;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:10px;align-items:center;border-bottom:1px solid #e3e6df}
+.ow-name{min-width:0;display:grid}
+.ow-name strong{overflow:hidden;font-size:11px;font-weight:500;text-overflow:ellipsis;white-space:nowrap}
+.ow-name small{color:#6f786e;font-size:9px}
+.ow-ruler{display:block;overflow:visible}
+.ow-band-shade{fill:#e6ebdb}
+.ow-tick{stroke:#cfd4ca;stroke-width:1}
+.ow-link{stroke:var(--cobalt);stroke-width:1.5;opacity:.55}
+.ow-total{fill:var(--graphite)}
+.ow-activated{fill:var(--paper);stroke:var(--cobalt);stroke-width:2}
+.ow-undisclosed,.ow-empty{color:#6c756b;font:9px var(--mono)}
+.ow-legend{grid-column:1/-1;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;color:#5d665d;font:9px var(--mono)}
+.ow-key{width:10px;height:10px;display:inline-block;border-radius:50%}
+.ow-key.total{background:var(--graphite)}
+.ow-key.activated{background:var(--paper);border:2px solid var(--cobalt)}
+.ow-controls{margin-top:30px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 14px}
+.ow-controls .search{grid-column:1/-1}
+.ow-controls label:not(.search){min-width:0;display:grid;gap:6px;color:#636c63;font:9px var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.ow-controls select{min-width:0;min-height:42px;padding:9px 11px;border:1px solid #c5cbc1;border-radius:0;background:#fafaf7;color:var(--ink);font:12px "DM Sans",sans-serif;text-transform:none;letter-spacing:normal}
+.ow-cost{margin:22px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:14px 0;border-block:1px solid #d4d8d0}
+.ow-cost strong{font:9px var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.ow-cost p{margin:5px 0 0;color:#525b52;font-size:12px}
+.ow-count{margin:18px 0 10px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.ow-count strong{font:600 28px var(--display)}
+.ow-count span{color:#50584f;font-size:12px}
+.ow-count .export{margin-left:auto;min-height:42px;padding:0 12px;border:1px solid var(--cobalt);background:transparent;cursor:pointer}
+.ow table{width:100%;border-collapse:collapse;font-size:12px}
+.ow th,.ow td{padding:10px 12px;border-bottom:1px solid #e0e3dc;text-align:left;vertical-align:top}
+.ow thead th{color:#636c63;font:9px var(--mono);text-transform:uppercase}
+.ow tbody th small,.ow td small{display:block;margin-top:3px;color:#6f786e;font-size:10px}
+.ow tbody th a{display:block;margin-top:3px;color:var(--cobalt);font-size:9px;overflow-wrap:anywhere}
+.ow-evidence summary{color:var(--cobalt);cursor:pointer}
+.ow-evidence dl{width:min(460px,70vw);margin:8px 0 0;display:grid;gap:7px}
+.ow-evidence dt{color:#636c63;font:9px var(--mono);text-transform:uppercase}
+.ow-evidence dd{margin:2px 0 0;display:grid;gap:2px;overflow-wrap:anywhere}
+.ow-evidence a{color:var(--cobalt)}
+.ow-evidence q{display:block;color:#3e463f;font-style:italic}
+@media(max-width:700px){
+ .ow-multiples{grid-template-columns:1fr}
+ .ow-controls{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ow-cost{grid-template-columns:1fr}
+ .ow-count .export{margin-left:0}
+}

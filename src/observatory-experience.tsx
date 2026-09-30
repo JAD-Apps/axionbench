@@ -6,6 +6,8 @@ import { useEffect, useMemo, useState } from 'react';
 import type { AuthorityBlock } from './authority/logic';
 import AuthorityRanking from './authority-ranking';
 import HeadToHead from './head-to-head';
+import OpenWeights from './open-weights';
+import type { OpenWeightsBlock } from './open-weights/logic';
 
 type Model = {
   id: string; name: string; labId: string; lab: string; catalogId: string | null; revision: string | null;
@@ -43,6 +45,7 @@ type Dataset = {
   sourceLimitations: { apiPricesPublished: false; apiPriceRowsObserved: number; apiPriceExclusion: string;
     verifiedBenchmarkObservations: number; identityConfirmedModels: number };
   authority: AuthorityBlock;
+  openWeights: OpenWeightsBlock;
 };
 type Manifest = {
   schemaVersion: string; sourceDigest: string; retrievedAt: string;
@@ -62,14 +65,6 @@ type SourceDetails = {
 type Props = { onDatasetStatus: (status: string) => void };
 type Ranked = { observation: Observation; model: Model };
 
-const parameterBands = [
-  { id: 'under-10', label: '<10B', low: 0, high: 10e9 },
-  { id: '10-35', label: '10–35B', low: 10e9, high: 35e9 },
-  { id: '35-100', label: '35–100B', low: 35e9, high: 100e9 },
-  { id: '100-300', label: '100–300B', low: 100e9, high: 300e9 },
-  { id: '300-plus', label: '300B+', low: 300e9, high: Number.POSITIVE_INFINITY },
-  { id: 'undisclosed', label: 'Undisclosed', low: null, high: null },
-] as const;
 const defaultSuite = 'gpqa-diamond';
 const supportedViews = ['ranking', 'table'] as const;
 type View = (typeof supportedViews)[number];
@@ -297,7 +292,6 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
   const [selected, setSelected] = useState('');
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(0);
-  const [band, setBand] = useState('undisclosed');
   const [sourceDetailsPromise, setSourceDetailsPromise] = useState<Promise<SourceDetails> | null>(null);
 
   useEffect(() => {
@@ -317,7 +311,8 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
           || projection.observations.length !== nextManifest.counts.observations
           || projection.suites.length !== nextManifest.counts.suites
           || projection.authority?.observations.length !== nextManifest.counts.authorityObservations
-          || projection.authority?.models.length !== nextManifest.counts.authorityModels) {
+          || projection.authority?.models.length !== nextManifest.counts.authorityModels
+          || projection.openWeights?.rows.length !== nextManifest.counts.openWeightRows) {
           throw new Error('The public evidence counts do not match their manifest.');
         }
         if (active) {
@@ -395,12 +390,6 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
       || model.lab.toLocaleLowerCase().includes(normalized)
       || model.id.toLocaleLowerCase().includes(normalized));
   }, [dataset, query]);
-  const openWeights = useMemo(() => (dataset?.models ?? []).filter((model) =>
-    model.weightsAvailability === 'public repository; weights not downloaded'), [dataset]);
-  const bandConfig = parameterBands.find((row) => row.id === band) ?? parameterBands[5];
-  const bandModels = openWeights.filter((model) => bandConfig.low === null
-    ? model.parameters === null
-    : model.parameters !== null && model.parameters >= bandConfig.low && model.parameters < bandConfig.high!);
   const coverageByDomain = (dataset?.domains ?? []).map((domainName) => ({
     domain: domainName,
     suites: dataset?.suites.filter((suite) => suite.domain === domainName) ?? [],
@@ -576,30 +565,11 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         <div className="open-heading">
           <p className="eyebrow">A size ruler, not a leaderboard</p>
           <h2 id="open-title">Find the model<br/><i>at the scale you need.</i></h2>
-          <p>Groups use the captured total parameter count. Activated MoE parameters remain a separate measurement. Repository visibility is not an open-source licence determination.</p>
-          <p className="open-count"><strong>{openWeights.length.toLocaleString()}</strong> entries with a public repository reference in this snapshot</p>
+          <p>Groups use the captured total parameter count. Activated MoE parameters are a separate, card-stated measurement and never set the group. Public weights, an open-source licence, a quantized checkpoint and a hosted price are four different facts.</p>
+          <p className="open-count"><strong>{dataset.openWeights.rows.length.toLocaleString()}</strong> entries with a model repository reference in this snapshot</p>
         </div>
         <div className="ruler-stage">
-          <div className="ruler-axis" aria-hidden="true"><span>SMALLER</span><span>TOTAL PARAMETERS</span><span>LARGER</span></div>
-          <div className="band-tabs" role="group" aria-label="Total parameter group">
-            {parameterBands.map((item) => <button type="button" key={item.id} aria-pressed={band === item.id}
-              onClick={() => setBand(item.id)}>{item.label}</button>)}
-          </div>
-          <div className="band-summary"><strong>{bandConfig.label}</strong>
-            <span>{bandModels.length.toLocaleString()} public repository references</span>
-            <small>Parameter disclosure is source-specific; size does not imply a measured score.</small>
-          </div>
-          <ul className="weight-list">
-            {bandModels.slice(0, 12).map((model) => <li key={model.id}>
-              <span className="weight-lab">{model.lab}</span>
-              <strong>{model.name}</strong>
-              <span className="weight-facts">Total {formatParameters(model.parameters)}
-                <i aria-hidden="true"> · </i>Activated {formatParameters(model.activatedParameters)}</span>
-              {model.parameterEvidenceId && <span className="weight-source">Parameter source ID: {model.parameterEvidenceId}</span>}
-              {model.originalSourceUrl && <a href={model.originalSourceUrl} target="_blank" rel="noreferrer">Model source ↗</a>}
-            </li>)}
-          </ul>
-          {bandModels.length > 12 && <p className="ruler-limit">Showing 12 of {bandModels.length.toLocaleString()} entries. All entries remain searchable in the complete directory and export.</p>}
+          <OpenWeights block={dataset.openWeights} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>
         </div>
       </div>
     </section>
