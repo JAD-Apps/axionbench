@@ -191,6 +191,8 @@ const projection = {
   authority,
   // Open-weight explorer facts, re-derived from SHA-256-checked repository snapshots.
   openWeights: await deriveOpenWeights(input),
+  // Checked-in scoring definition, published verbatim so the methodology page cannot drift from it.
+  scoring: await readJson('data/scoring.json'),
 };
 
 const sources = input.sources

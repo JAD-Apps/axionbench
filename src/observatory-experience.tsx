@@ -5,6 +5,8 @@ import { motion, useReducedMotion } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
 import type { AuthorityBlock } from './authority/logic';
 import AuthorityRanking from './authority-ranking';
+import { BenchmarkLibrary, Catalogue, Methodology } from './catalogue';
+import type { CatalogueInput } from './catalogue/logic';
 import HeadToHead from './head-to-head';
 import OpenWeights from './open-weights';
 import type { OpenWeightsBlock } from './open-weights/logic';
@@ -46,6 +48,7 @@ type Dataset = {
     verifiedBenchmarkObservations: number; identityConfirmedModels: number };
   authority: AuthorityBlock;
   openWeights: OpenWeightsBlock;
+  scoring: CatalogueInput['scoring'];
 };
 type Manifest = {
   schemaVersion: string; sourceDigest: string; retrievedAt: string;
@@ -81,11 +84,6 @@ async function verifiedJson<T>(url: string, expectedBytes: number, expectedHash:
   const hash = hex(await crypto.subtle.digest('SHA-256', bytes));
   if (hash !== expectedHash) throw new Error('The public evidence digest does not match its manifest.');
   return JSON.parse(new TextDecoder().decode(bytes)) as T;
-}
-
-function formatParameters(value: number | null) {
-  if (value === null) return 'Undisclosed';
-  return (value / 1e9).toLocaleString(undefined, { maximumFractionDigits: 2 }) + 'B';
 }
 
 function SourceDetails({ ids, dataset, loadDetails }: {
@@ -290,8 +288,6 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
   const [labId, setLabId] = useState('all');
   const [view, setView] = useState<View>('ranking');
   const [selected, setSelected] = useState('');
-  const [query, setQuery] = useState('');
-  const [page, setPage] = useState(0);
   const [sourceDetailsPromise, setSourceDetailsPromise] = useState<Promise<SourceDetails> | null>(null);
 
   useEffect(() => {
@@ -383,19 +379,6 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
   });
   const matrixModels = cohort === 'flagships' ? visibleWatchlist
     : [...new Map(activeRows.map((row) => [row.model.id, row.model])).values()];
-  const catalogue = useMemo(() => {
-    const normalized = query.trim().toLocaleLowerCase();
-    return (dataset?.models ?? []).filter((model) => !normalized
-      || model.name.toLocaleLowerCase().includes(normalized)
-      || model.lab.toLocaleLowerCase().includes(normalized)
-      || model.id.toLocaleLowerCase().includes(normalized));
-  }, [dataset, query]);
-  const coverageByDomain = (dataset?.domains ?? []).map((domainName) => ({
-    domain: domainName,
-    suites: dataset?.suites.filter((suite) => suite.domain === domainName) ?? [],
-    count: dataset?.observations.filter((row) =>
-      dataset.suites.find((suite) => suite.id === row.suiteId)?.domain === domainName).length ?? 0,
-  }));
   const allLabs = [...new Map((dataset?.models ?? []).map((model) => [model.labId, { id: model.labId, name: model.lab }])).values()]
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -575,47 +558,16 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
     </section>
 
     <section className="directory chapter" id="models" aria-labelledby="directory-title">
-      <div className="chapter-index"><span>04 / THE DIRECTORY</span><span>SUPPORTED SOURCE CATALOGUE · UNSCORED INCLUDED</span></div>
+      <div className="chapter-index"><span>04 / THE CATALOGUE</span><span>ALL SOURCE MODELS · UNSCORED INCLUDED</span></div>
       <div className="directory-head">
         <div><p className="eyebrow">Browse the wider field</p><h2 id="directory-title">A field of models.<br/><i>Evidence attached.</i></h2></div>
         <div className="directory-tools">
-          <label className="search">Search models, labs or source ID
-            <input aria-label="Search models, labs or source ID" value={query} onChange={(event) => {
-              setQuery(event.target.value); setPage(0);
-            }} placeholder="Try a model or lab name"/>
-          </label>
+          <p className="methods-lead">Search, filter and sort every permitted source model. Filters live in the address bar, and the exports match the rows you see.</p>
           <a className="export" href="/data.json" download="axionbench-public-data.json">Download complete public data ↗</a>
         </div>
       </div>
       <div className="directory-results">
-        <div className="directory-count"><strong>{catalogue.length.toLocaleString()}</strong><span>of {dataset.models.length.toLocaleString()} catalogued model identities</span>
-          <span>{dataset.observations.length.toLocaleString()} observations · {dataset.suites.length} registered suites · {dataset.domains.length} domains</span></div>
-        <div className="table-scroll directory-table" tabIndex={0} aria-label="Scrollable model directory">
-          <table>
-            <caption>Complete compact model projection; use the download for every model and observation row</caption>
-            <thead><tr><th scope="col">Model identity</th><th scope="col">Lab</th><th scope="col">Release date</th><th scope="col">Total parameters</th><th scope="col">Activated</th><th scope="col">Weight state</th><th scope="col">Evidence coverage</th><th scope="col">Source</th></tr></thead>
-            <tbody>{catalogue.slice(page * 50, (page + 1) * 50).map((model) => {
-              const observationCount = dataset.observations.filter((row) => row.modelId === model.id).length;
-              return <tr key={model.id}>
-                <th scope="row">{model.name}<small className="mono-label">{model.id}</small></th>
-                <td>{model.lab}</td><td>{model.releaseDate ?? 'Unknown'}<small>{model.releaseDate ? 'Source date' : model.releaseDateStatus}</small></td>
-                <td>{formatParameters(model.parameters)}{model.parameterEvidenceId && <small>{model.parameterEvidenceId}</small>}</td>
-                <td>{formatParameters(model.activatedParameters)}</td>
-                <td>{model.weightsAvailability}</td>
-                <td>{observationCount ? observationCount + ' reported result' + (observationCount === 1 ? '' : 's') : 'No captured result'}
-                  {model.identityVerified && <small>Official release identity matched</small>}</td>
-                <td>{model.originalSourceUrl ? <a href={model.originalSourceUrl} target="_blank" rel="noreferrer">Original source ↗</a> : 'Unknown'}
-                  <small>{model.identitySourceId ?? 'No identity source ID'}</small></td>
-              </tr>;
-            })}</tbody>
-          </table>
-        </div>
-        <div className="pagination">
-          <button type="button" aria-label="Previous model results page" disabled={page === 0} onClick={() => setPage((value) => Math.max(0, value - 1))}>← Previous</button>
-          <span>Page {page + 1} of {Math.max(1, Math.ceil(catalogue.length / 50))}</span>
-          <button type="button" aria-label="Next model results page" disabled={(page + 1) * 50 >= catalogue.length}
-            onClick={() => setPage((value) => value + 1)}>Next →</button>
-        </div>
+        <Catalogue input={dataset as unknown as CatalogueInput} manifest={manifest}/>
       </div>
     </section>
 
@@ -631,23 +583,8 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         <article><span>03</span><div><h3>Panels keep their meaning</h3><p>Results are shown only within the selected registered suite and metric. No per-model missingness renormalization, universal score or confidence interval is claimed.</p></div></article>
         <article><span>04</span><div><h3>Source rights affect the view</h3><p>The {sourceLimits.apiPriceRowsObserved.toLocaleString()} captured endpoint price rows are excluded from publication because their source terms do not permit reuse in this build.</p></div></article>
       </div>
-      <div className="coverage-ledger">
-        <div className="coverage-head"><div><p className="eyebrow">Coverage ledger</p><h3>Where the snapshot has a record</h3></div>
-          <span>RAW OBSERVATIONS / NOT DOMAIN SCORES</span></div>
-        <div className="coverage-grid">
-          {coverageByDomain.map((row, index) => <article key={row.domain}>
-            <span className="coverage-number">{String(index + 1).padStart(2, '0')}</span>
-            <strong>{row.domain}</strong>
-            <p>{row.suites.length} registered suites <i>·</i> {row.count} captured observations</p>
-            <details><summary>Suites and direct references</summary>
-              <ul>{row.suites.map((suite) => <li key={suite.id}>
-                {suite.url ? <a href={suite.url} target="_blank" rel="noreferrer">{suite.name} ↗</a> : suite.name}
-                <span>{suite.version ?? 'Version unknown'} · {suite.observationCount} rows</span>
-              </li>)}</ul>
-            </details>
-          </article>)}
-        </div>
-      </div>
+      <BenchmarkLibrary input={dataset as unknown as CatalogueInput}/>
+      <Methodology input={dataset as unknown as CatalogueInput} manifest={manifest}/>
       <div className="integrity-panel">
         <div><p className="eyebrow">Data integrity</p><h3>Bound to one captured input.</h3></div>
         <dl><div><dt>Source ingestion SHA-256</dt><dd className="mono-label">{dataset.sourceDigest}</dd></div>

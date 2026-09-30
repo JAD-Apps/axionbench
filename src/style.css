@@ -525,3 +525,50 @@ footer a{color:var(--signal);font:11px "DM Sans",sans-serif;letter-spacing:norma
  .ow-cost{grid-template-columns:1fr}
  .ow-count .export{margin-left:0}
 }
+
+/* Catalogue, benchmark library, model detail and methodology (step 10) */
+.cat-controls{margin-bottom:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 14px;align-items:end}
+.cat-controls .search{grid-column:1/-1}
+.cat-controls label:not(.search),.library-filter{min-width:0;display:grid;gap:6px;color:#636c63;font:9px var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.cat-controls select,.library-filter select{min-width:0;min-height:42px;padding:9px 11px;border:1px solid #c5cbc1;border-radius:0;background:#fafaf7;color:var(--ink);font:12px "DM Sans",sans-serif;text-transform:none;letter-spacing:normal}
+.cat-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px}
+.cat-actions button,.model-detail header button{min-height:40px;padding:0 16px;border:1px solid #aeb5aa;border-radius:0;background:#f9faf6;color:var(--ink);font:11px var(--mono);cursor:pointer}
+.cat-actions button:hover,.cat-actions button:focus-visible{border-color:var(--cobalt);color:var(--cobalt)}
+.cat-open{padding:0;border:0;background:none;color:var(--cobalt);font:600 14px var(--display);text-align:left;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.cat-empty{margin:16px 0;color:#586158;font-size:13px}
+.model-detail{margin-top:34px;padding:24px 0 6px;border-top:2px solid var(--cobalt);scroll-margin-top:84px}
+.model-detail.empty p{margin:0;color:#6a736a;font-size:12px}
+.model-detail header{margin-bottom:18px;display:flex;justify-content:space-between;align-items:start;gap:18px}
+.model-detail h3{margin:4px 0 6px;font:600 clamp(26px,3.4vw,42px) var(--display);letter-spacing:-.04em}
+.detail-facts{margin:0 0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0}
+.detail-facts>div{padding:12px 14px 12px 0;border-top:1px solid #c6ccc2}
+.detail-facts dt{color:#6a736a;font:9px var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.detail-facts dd{margin:5px 0 0;font-size:13px;overflow-wrap:anywhere}
+.detail-facts small,.model-detail td small,.model-detail th small{display:block;margin-top:3px;color:#6a736a;font-size:10px;line-height:1.45}
+.model-detail table{min-width:760px}
+.benchmark-mention{color:var(--cobalt);text-decoration:underline;text-underline-offset:3px}
+.library{max-width:1440px;margin:0 auto 96px;padding-top:25px;border-top:1px solid #aeb4aa}
+.library-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px;border-top:1px solid #cbd0c8}
+.library-list>li{padding:15px 0;display:grid;gap:6px;border-bottom:1px solid #cbd0c8;scroll-margin-top:84px;min-width:0}
+.library-list>li:target{background:#e3ead3;box-shadow:-12px 0 0 #e3ead3,12px 0 0 #e3ead3}
+.library-list li>div{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 14px}
+.library-list li>div a,.library-list li>div strong{font:600 17px var(--display)}
+.library-list small{color:#667067;font:10px var(--mono)}
+.library-list p{margin:0;color:#59625a;font-size:12px;line-height:1.55}
+.library-list details{font-size:12px}
+.library-list details ul{margin:8px 0 0;padding-left:18px}
+.library-list details li{display:list-item;padding:2px 0;border:0;min-width:0}
+.library-page{justify-self:start;color:#59625a;font-size:11px}
+.method-detail{max-width:1440px;margin:0 auto 72px;padding-top:25px;border-top:1px solid #aeb4aa}
+.method-detail .coverage-head>span{font:9px var(--mono);max-width:320px}
+.method-columns{margin-bottom:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+.method-columns h4{margin:0 0 12px;font:600 18px var(--display)}
+.method-columns p,.method-columns li{color:#4f584f;font-size:13px;line-height:1.65;overflow-wrap:anywhere}
+.method-columns ul{padding-left:18px}
+.method-columns .weights{padding:0;list-style:none;border-top:1px solid #c0c6bc}
+.weights li{padding:5px 0;display:flex;justify-content:space-between;border-bottom:1px solid #d4d9d0;font:11px var(--mono)}
+.method-columns table{min-width:420px}
+@media (max-width:1100px){.cat-controls{grid-template-columns:repeat(3,minmax(0,1fr))}.library-list{grid-template-columns:1fr}}
+@media (max-width:640px){.cat-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.model-detail header{flex-direction:column}}
+.method-columns details{margin-bottom:12px;font-size:12px}
+.method-columns summary{cursor:pointer;color:var(--cobalt)}

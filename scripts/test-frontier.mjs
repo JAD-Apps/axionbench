@@ -120,7 +120,8 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.equal(await page.getByTestId('h2h').count(), 1, 'paired chapter mounts the matched US–China comparison');
   check.match(await page.getByTestId('h2h-region-definition').innerText(), /never inferred from model language/i, 'region definition is labelled');
   check.equal(await page.getByTestId('authority-rows').locator('li').count(), 10, 'frontier leads with a populated 10-model authority ranking');
-  check.equal(await page.locator('#models .directory-count strong').innerText(), '508', 'directory starts from the entire admitted model set');
+  check.equal(await page.locator('#models .directory-count strong').innerText(), (data.models.length + data.authority.models.length).toLocaleString(),
+    'catalogue starts from every provider-catalogue and original-source model');
   await page.screenshot({ path: new URL('../test-results/frontier-desktop.png', import.meta.url).pathname, fullPage: true, animations: 'disabled' });
   for (const [id, name] of [['frontier', 'frontier'], ['paired', 'paired'], ['open-weights', 'size-ruler'], ['models', 'directory'], ['methods', 'methods']]) {
     await page.evaluate((target) => document.getElementById(target)?.scrollIntoView({ block: 'start', behavior: 'instant' }), id);
