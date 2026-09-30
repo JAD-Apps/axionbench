@@ -1,0 +1,75 @@
+{
+  "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "sha": "dba1be0a40aa45a94ad051997016db3960a90277",
+  "lastModified": "2026-09-10T08:18:10.000Z",
+  "createdAt": "2026-09-10T02:17:58.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "image-text-to-text",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "deepseek_v41",
+    "text-generation",
+    "image-text-to-text",
+    "license:mit",
+    "eval-results",
+    "endpoints_compatible",
+    "8-bit",
+    "fp8",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "mit",
+    "library_name": "transformers",
+    "pipeline_tag": "image-text-to-text"
+  },
+  "config": {
+    "architectures": [
+      "DeepseekV41ForCausalLM"
+    ],
+    "model_type": "deepseek_v41",
+    "quantization_config": {
+      "quant_method": "fp8"
+    },
+    "tokenizer_config": {
+      "bos_token": {
+        "__type": "AddedToken",
+        "content": "<｜begin▁of▁sentence｜>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "eos_token": {
+        "__type": "AddedToken",
+        "content": "<｜end▁of▁sentence｜>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "pad_token": {
+        "__type": "AddedToken",
+        "content": "<｜end▁of▁sentence｜>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "unk_token": null
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "BF16": 1976441856,
+      "F32": 42307282,
+      "F8_E4M3": 204015223296,
+      "I8": 557171343360
+    },
+    "total": 763205315794
+  },
+  "usedStorage": 510311613821,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

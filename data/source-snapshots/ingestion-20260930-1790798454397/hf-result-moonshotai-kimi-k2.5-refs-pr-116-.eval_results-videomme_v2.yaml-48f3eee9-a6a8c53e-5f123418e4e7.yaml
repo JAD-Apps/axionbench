@@ -1,0 +1,19 @@
+- dataset:
+    id: MME-Benchmarks/Video-MME-v2
+    task_id: video-mme-v2
+  value: 61.1
+  source:
+    url: https://video-mme-v2.netlify.app/#leaderboard
+    name: VideoMMEv2 leaderboard
+    user: nielsr
+  notes: "512 frames"
+
+- dataset:
+    id: MME-Benchmarks/Video-MME-v2
+    task_id: video-mme-v2
+  value: 54.4
+  source:
+    url: https://video-mme-v2.netlify.app/#leaderboard
+    name: VideoMMEv2 leaderboard
+    user: nielsr
+  notes: "64 frames"

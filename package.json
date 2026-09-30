@@ -1,14 +1,41 @@
 {
-  "name": "jad-metabench",
+  "name": "axionbench",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "packageManager": "npm@11.19.0",
-  "description": "A standalone, static model capability and task cost explorer.",
+  "description": "An evidence-led observatory for comparing AI systems.",
   "scripts": {
-    "dev": "node scripts/serve.mjs",
-    "build": "node scripts/build.mjs",
-    "test": "node scripts/smoke.mjs"
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "clean:build": "vite build --emptyOutDir",
+    "test:unit": "vitest run",
+    "test:registry": "node scripts/test-registry.mjs",
+    "data:ingest": "node scripts/ingest-data.mjs",
+    "data:validate": "node scripts/data-validate.mjs",
+    "test:data": "node scripts/test-data.mjs",
+    "test:chart-smoke": "node scripts/chart-smoke.mjs",
+    "verify:foundation": "node scripts/verify-foundation.mjs",
+    "verify:design": "node scripts/verify-design.mjs"
   },
-  "devDependencies": { "playwright-core": "1.62.1" }
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "playwright-core": "1.62.1",
+    "typescript": "5.9.3",
+    "vite": "8.3.1",
+    "vitest": "5.0.3"
+  },
+  "dependencies": {
+    "@visx/axis": "4.0.0",
+    "@visx/responsive": "4.0.0",
+    "@visx/scale": "4.0.0",
+    "@visx/shape": "4.0.0",
+    "motion": "13.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
 }

@@ -1,0 +1,15 @@
+{
+  "id": "allenai/OlmoEarth-v1-Nano",
+  "sha": "529248a4dc3c54014c56b7504641cec98de31d1c",
+  "lastModified": "2026-08-25T20:09:52.000Z",
+  "createdAt": "2025-10-23T17:47:30.000Z",
+  "private": false,
+  "gated": false,
+  "tags": [
+    "region:us"
+  ],
+  "cardData": {},
+  "config": {},
+  "usedStorage": 14322955,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

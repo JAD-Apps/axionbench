@@ -1,0 +1,22 @@
+name: MMMU-Pro
+description: >
+  MMMU-Pro is an enhanced multimodal benchmark designed to assess advanced AI
+  models' ability to understand and reason over visual and textual information
+  across multiple disciplines. It builds on MMMU with harder settings, including
+  10-option multiple-choice questions and a vision-only setting where the
+  question and context are embedded in images.
+
+evaluation_framework: mmmu
+
+tasks:
+  - id: mmmu_pro_vision
+    config: vision
+    split: test
+
+  - id: mmmu_pro_standard_4_options
+    config: standard (4 options)
+    split: test
+
+  - id: mmmu_pro_standard_10_options
+    config: standard (10 options)
+    split: test

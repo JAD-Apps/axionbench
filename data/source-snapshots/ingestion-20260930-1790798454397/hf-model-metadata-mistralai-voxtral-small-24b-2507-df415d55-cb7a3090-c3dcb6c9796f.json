@@ -1,0 +1,68 @@
+{
+  "id": "mistralai/Voxtral-Small-24B-2507",
+  "sha": "da5b42409f279fdd92febee0511a6c32828569c1",
+  "lastModified": "2025-12-20T23:34:49.000Z",
+  "createdAt": "2025-07-01T14:11:59.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "audio-text-to-text",
+  "library_name": "vllm",
+  "tags": [
+    "vllm",
+    "safetensors",
+    "voxtral",
+    "audio-text-to-text",
+    "en",
+    "fr",
+    "de",
+    "es",
+    "it",
+    "pt",
+    "nl",
+    "hi",
+    "arxiv:2507.13264",
+    "base_model:mistralai/Mistral-Small-24B-Base-2501",
+    "base_model:finetune:mistralai/Mistral-Small-24B-Base-2501",
+    "license:apache-2.0",
+    "eval-results",
+    "region:us"
+  ],
+  "cardData": {
+    "library_name": "vllm",
+    "language": [
+      "en",
+      "fr",
+      "de",
+      "es",
+      "it",
+      "pt",
+      "nl",
+      "hi"
+    ],
+    "license": "apache-2.0",
+    "inference": false,
+    "base_model": [
+      "mistralai/Mistral-Small-24B-Base-2501"
+    ],
+    "extra_gated_description": "If you want to learn more about how we process your personal data, please read our <a href=\"https://mistral.ai/terms/\">Privacy Policy</a>.",
+    "tags": [
+      "vllm"
+    ],
+    "pipeline_tag": "audio-text-to-text"
+  },
+  "config": {
+    "architectures": [
+      "VoxtralForConditionalGeneration"
+    ],
+    "model_type": "voxtral"
+  },
+  "safetensors": {
+    "parameters": {
+      "F32": 1920000,
+      "BF16": 24259880960
+    },
+    "total": 24261800960
+  },
+  "usedStorage": 97062318022,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

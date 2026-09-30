@@ -1,0 +1,7 @@
+- dataset:
+    id: benchflow/skillsbench
+    task_id: skillsbench_v1_1
+  value: 62.9
+  source:
+    url: https://huggingface.co/tencent/Hy4-preview
+    name: Model Card

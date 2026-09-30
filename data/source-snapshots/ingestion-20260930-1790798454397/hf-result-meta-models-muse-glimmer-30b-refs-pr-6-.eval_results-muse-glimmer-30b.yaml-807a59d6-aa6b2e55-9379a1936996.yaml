@@ -1,0 +1,80 @@
+- dataset:
+    id: Idavidrein/gpqa
+    task_id: diamond
+  value: 83.5
+  date: "2026-08-10"
+  source:
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    name: "Muse Glimmer-30B model card"
+
+- dataset:
+    id: MMMU/MMMU_Pro
+    task_id: mmmu_pro_standard_10_options
+  value: 74
+  date: "2026-08-10"
+  source:
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    name: "Muse Glimmer-30B model card"
+
+- dataset:
+    id: MathArena/aime_2026
+    task_id: MathArena/aime_2026
+  value: 94.7
+  date: "2026-08-10"
+  source:
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    name: "Muse Glimmer-30B model card"
+
+- dataset:
+    id: SWE-bench/SWE-bench_Verified
+    task_id: swe_bench_%_resolved
+  value: 76.0
+  date: "2026-08-10"
+  source:
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    name: "Muse Glimmer-30B model card"
+
+- dataset:
+    id: ScaleAI/SWE-bench_Pro
+    task_id: SWE_Bench_Pro
+  value: 51.2
+  date: "2026-08-10"
+  source:
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    name: "Muse Glimmer-30B model card"
+
+- dataset:
+    id: cais/hle
+    task_id: hle
+  value: 22.0
+  date: "2026-08-10"
+  source:
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    name: "Muse Glimmer-30B model card"
+
+- dataset:
+    id: benchflow/skillsbench
+    task_id: skillsbench_v1_1
+  value: 44.3
+  date: "2026-08-10"
+  source:
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    name: "Muse Glimmer-30B model card"
+
+- dataset:
+    id: internlm/WildClawBench
+    task_id: overall
+  value: 47.6
+  date: "2026-08-10"
+  source:
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    name: "Muse Glimmer-30B model card"
+
+- dataset:
+    id: likaixin/ScreenSpot-Pro
+    task_id: overall
+  value: 75.4
+  date: "2026-08-10"
+  source:
+    url: https://huggingface.co/meta-models/Muse-Glimmer-30B
+    name: "Muse Glimmer-30B model card"

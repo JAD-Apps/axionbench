@@ -1,0 +1,84 @@
+{
+  "id": "moonshotai/Kimi-K2.7-Code",
+  "sha": "74797c9c62378b951a1f6fcf5c4631024e9b8bef",
+  "lastModified": "2026-06-15T07:49:29.000Z",
+  "createdAt": "2026-06-11T07:51:47.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "image-text-to-text",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "kimi_k25",
+    "feature-extraction",
+    "compressed-tensors",
+    "image-text-to-text",
+    "conversational",
+    "custom_code",
+    "license:other",
+    "eval-results",
+    "region:us"
+  ],
+  "cardData": {
+    "tags": [
+      "compressed-tensors"
+    ],
+    "license": "other",
+    "license_name": "modified-mit",
+    "library_name": "transformers",
+    "pipeline_tag": "image-text-to-text"
+  },
+  "config": {
+    "architectures": [
+      "KimiK25ForConditionalGeneration"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_kimi_k25.KimiK25Config",
+      "AutoModel": "modeling_kimi_k25.KimiK25ForConditionalGeneration",
+      "AutoModelForCausalLM": "modeling_kimi_k25.KimiK25ForConditionalGeneration"
+    },
+    "model_type": "kimi_k25",
+    "text_config": {
+      "quantization_config": {
+        "config_groups": {
+          "group_0": {
+            "targets": [
+              "Linear"
+            ],
+            "weights": {
+              "num_bits": 4
+            }
+          }
+        },
+        "format": "pack-quantized",
+        "ignore": [
+          "re:.*self_attn.*",
+          "re:.*shared_experts.*",
+          "re:.*mlp\\.(gate|up|gate_up|down)_proj.*",
+          "re:.*lm_head.*",
+          "re:.*vision_tower.*",
+          "re:.*mm_projector.*"
+        ],
+        "quant_method": "compressed-tensors"
+      }
+    },
+    "tokenizer_config": {
+      "bos_token": "[BOS]",
+      "eos_token": "[EOS]",
+      "pad_token": "[PAD]",
+      "unk_token": "[UNK]"
+    },
+    "chat_template_jinja": "{%- macro render_content(msg) -%}\n    {%- set c = msg.get('content') -%}\n    {%- if c is string -%}\n      {{ c }}\n    {%- elif c is not none -%}\n      {% for content in c -%}\n        {% if content['type'] == 'image' or content['type'] == 'image_url' -%}\n          <|media_begin|>image<|media_content|><|media_pad|><|media_end|>\n        {% elif content['type'] == 'video' or content['type']== 'video_url'-%}\n          <|kimi_k25_video_placeholder|>\n        {% else -%}\n          {{ content['text'] }}\n        {%- endif -%}\n      {%- endfor -%}\n    {%- endif -%}\n{%- endmacro -%}\n{% macro set_roles(message) -%}\n  {%- set role_name =  message.get('name') or  message['role'] -%}\n  {%- if message['role'] == 'user' -%}\n    <|im_user|>{{role_name}}<|im_middle|>\n  {%- elif message['role'] == 'assistant' -%}\n    <|im_assistant|>{{role_name}}<|im_middle|>\n  {%- else -%}\n    <|im_system|>{{role_name}}<|im_middle|>\n  {%- endif -%}\n{%- endmacro -%}\n{%- macro render_toolcalls(message) -%}\n  <|tool_calls_section_begin|>\n  {%- for tool_call in message['tool_calls'] -%}\n    {%- set formatted_id = tool_call['id'] -%}\n    <|tool_call_begin|>{{ formatted_id }}<|tool_call_argument_begin|>{% if tool_call['function']['arguments'] is string %}{{ tool_call['function']['arguments'] }}{% else %}{{ tool_call['function']['arguments'] | tojson }}{% endif %}<|tool_call_end|>\n  {%- endfor -%}\n  <|tool_calls_section_end|>\n{%- endmacro -%}\n{%- if tools -%}\n  {%- if tools_ts_str -%}\n    <|im_system|>tool_declare<|im_middle|>{{ tools_ts_str }}<|im_end|>\n  {%- else -%}\n    <|im_system|>tool_declare<|im_middle|>{{ tools | tojson(separators=(',', ':')) }}<|im_end|>\n  {%- endif -%}\n{%- endif -%}\n{%- for message in messages -%}\n  {{set_roles(message)}}\n  {%- if message['role'] == 'assistant' -%}\n    {%- set rc = message.get('reasoning', message.get('reasoning_content', '')) -%}\n    <think>{{rc}}</think>{{render_content(message)}}\n    {%- if message.get('tool_calls') -%}\n      {{render_toolcalls(message)}}\n    {%- endif -%}\n  {%- elif message['role'] == 'tool' -%}\n    {%- set tool_call_id = message.tool_call_id -%}\n    ## Return of {{ tool_call_id }}\n{{render_content(message)}}\n  {%- elif message['content'] is not none -%}\n    {{render_content(message)}}\n  {%- endif -%}\n  <|im_end|>\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n  <|im_assistant|>assistant<|im_middle|><think>\n{%- endif -%}\n"
+  },
+  "safetensors": {
+    "parameters": {
+      "BF16": 12193329648,
+      "F32": 23040,
+      "I32": 1014686023680
+    },
+    "total": 1026879376368
+  },
+  "usedStorage": 595204651032,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

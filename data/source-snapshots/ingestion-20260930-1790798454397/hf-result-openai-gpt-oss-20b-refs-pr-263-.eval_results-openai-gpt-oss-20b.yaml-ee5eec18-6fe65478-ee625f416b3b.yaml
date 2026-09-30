@@ -1,0 +1,12 @@
+# IFStruct v1.0 evaluation result for openai/gpt-oss-20b
+# Source blog: https://www.liquid.ai/blog/ifstruct-v1.0
+# Benchmark dataset (with eval.yaml): https://huggingface.co/datasets/LiquidAI/ifstruct-v1.0
+# GitHub: https://github.com/Liquid4All/ifstruct
+- dataset:
+    id: LiquidAI/ifstruct-v1.0
+    task_id: ifstruct_v1
+  value: 91.95
+  date: "2026-06-30"
+  source:
+    url: https://www.liquid.ai/blog/ifstruct-v1.0
+    name: "Liquid AI — IFStruct v1.0 blog (gpt-oss-20b)"

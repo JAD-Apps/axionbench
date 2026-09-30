@@ -1,0 +1,9 @@
+- dataset:
+    id: TIGER-Lab/MMLU-Pro
+    task_id: mmlu_pro
+  value: 88.12
+  date: '2026-09-28'
+  source:
+    url: https://huggingface.co/FINAL-Bench/Darwin-180B-RSI
+    name: Model Card
+  notes: "MMLU-Pro test, all 12,032 items; single sample (temperature=1.0, top_p=0.95, top_k=20); thinking budget 131,072 tokens; bf16"

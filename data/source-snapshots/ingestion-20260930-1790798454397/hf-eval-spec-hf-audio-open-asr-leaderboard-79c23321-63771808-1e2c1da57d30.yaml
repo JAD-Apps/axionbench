@@ -1,0 +1,75 @@
+name: "Open ASR Leaderboard"
+description: >
+  The Open ASR Leaderboard evaluates models on a diverse set of publicly available ASR benchmarks hosted on the Hugging Face Hub. These datasets cover a wide range of domains, languages, and recording conditions to provide a fair and comprehensive comparison across models.
+evaluation_framework: open-asr-leaderboard
+tasks:
+  # Mean/Aggregate tasks
+  - id: mean_wer
+    config: default
+    split: test
+    lower_is_better: true
+
+  # Performance metric
+  - id: rtfx
+    config: default
+    split: test
+
+  # LibriSpeech tasks - Clean subset
+  - id: librispeech_clean_wer
+    config: librispeech
+    split: test.clean
+    lower_is_better: true
+
+  # LibriSpeech tasks - Other subset
+  - id: librispeech_other_wer
+    config: librispeech
+    split: test.other
+    lower_is_better: true
+
+  # Common Voice tasks
+  - id: common_voice_wer
+    config: common_voice
+    split: test
+    lower_is_better: true
+
+  # VoxPopuli tasks
+  - id: voxpopuli_wer
+    config: voxpopuli
+    split: test
+    lower_is_better: true
+
+  # TED-LIUM tasks
+  - id: tedlium_wer
+    config: tedlium
+    split: test
+    lower_is_better: true
+
+  # GigaSpeech tasks
+  - id: gigaspeech_wer
+    config: gigaspeech
+    split: test
+    lower_is_better: true
+
+  # SPGISpeech tasks
+  - id: spgispeech_wer
+    config: spgispeech
+    split: test
+    lower_is_better: true
+
+  # Earnings-22 tasks
+  - id: earnings22_wer
+    config: earnings22
+    split: test
+    lower_is_better: true
+
+  # AMI tasks
+  - id: ami_wer
+    config: ami
+    split: test
+    lower_is_better: true
+
+  # VoxPopuli-Cleaned-AA tasks
+  - id: voxpopuli_cleaned_aa_wer
+    config: voxpopuli_cleaned_aa
+    split: test
+    lower_is_better: true

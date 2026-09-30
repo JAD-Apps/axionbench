@@ -1,0 +1,67 @@
+{
+  "id": "Undi95/ReMM-SLERP-L2-13B",
+  "sha": "9cf491450795628e28b8fd73f411977f7908c623",
+  "lastModified": "2026-01-12T10:00:55.000Z",
+  "createdAt": "2023-09-04T17:37:26.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "pytorch",
+    "llama",
+    "text-generation",
+    "base_model:NousResearch/Nous-Hermes-Llama2-13b",
+    "base_model:finetune:NousResearch/Nous-Hermes-Llama2-13b",
+    "license:cc-by-nc-4.0",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "cc-by-nc-4.0",
+    "base_model": [
+      "TheBloke/Llama-2-13B-fp16",
+      "jondurbin/airoboros-l2-13b-2.1",
+      "NousResearch/Nous-Hermes-Llama2-13b",
+      "Undi95/ReML-L2-13B"
+    ]
+  },
+  "config": {
+    "architectures": [
+      "LlamaForCausalLM"
+    ],
+    "model_type": "llama",
+    "tokenizer_config": {
+      "bos_token": {
+        "__type": "AddedToken",
+        "content": "<s>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "eos_token": {
+        "__type": "AddedToken",
+        "content": "</s>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "pad_token": null,
+      "unk_token": {
+        "__type": "AddedToken",
+        "content": "<unk>",
+        "lstrip": false,
+        "normalized": true,
+        "rstrip": false,
+        "single_word": false
+      },
+      "use_default_system_prompt": true
+    }
+  },
+  "usedStorage": 104127582083,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

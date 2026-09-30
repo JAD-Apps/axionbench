@@ -1,0 +1,70 @@
+{
+  "id": "baidu/ERNIE-4.5-VL-424B-A47B-PT",
+  "sha": "a3d5a8439d67c9a69003a1f7aac0961c6f1bc20d",
+  "lastModified": "2026-01-16T07:11:20.000Z",
+  "createdAt": "2025-06-28T05:49:55.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "image-text-to-text",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "ernie4_5_moe_vl",
+    "image-text-to-text",
+    "ERNIE4.5",
+    "conversational",
+    "custom_code",
+    "en",
+    "zh",
+    "license:apache-2.0",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "apache-2.0",
+    "language": [
+      "en",
+      "zh"
+    ],
+    "pipeline_tag": "image-text-to-text",
+    "tags": [
+      "ERNIE4.5"
+    ],
+    "library_name": "transformers"
+  },
+  "config": {
+    "architectures": [
+      "Ernie4_5_VLMoeForConditionalGeneration"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_ernie4_5_vl.Ernie4_5_VLMoEConfig",
+      "AutoModel": "modeling_ernie4_5_vl.Ernie4_5_VLMoeForConditionalGeneration",
+      "AutoModelForCausalLM": "modeling_ernie4_5_vl.Ernie4_5_VLMoeForConditionalGeneration"
+    },
+    "model_type": "ernie4_5_moe_vl",
+    "processor_config": {
+      "chat_template": "\n{%- set image_count = namespace(value=0) -%}\n{%- set video_count = namespace(value=0) -%}\n{{- '<|begin_of_sentence|>' }}\n{%- for message in messages -%}\n    {%- if message.role in ['system', 'user'] -%}\n        {%- if message.role == 'user' -%}\n            {{- 'User: ' -}}\n        {%- endif -%}\n        {%- if message.content is string -%}\n            {{- message.content -}}\n        {%- else -%}\n            {%- for content_item in message.content -%}\n                {%- if content_item.type == 'text' -%}\n                    {{- content_item.text -}}\n                {%- elif content_item.type in ['image_url', 'image'] -%}\n                    {%- set image_count.value = image_count.value + 1 -%}\n                    Picture {{ image_count.value }}:<|IMAGE_START|><|image@placeholder|><|IMAGE_END|>\n                {%- elif content_item.type in ['video_url', 'video'] -%}\n                    {%- set video_count.value = video_count.value + 1 -%}\n                    Video {{ video_count.value }}:<|VIDEO_START|><|video@placeholder|><|VIDEO_END|>\n                {%- endif -%}\n            {%- endfor -%}\n        {%- endif -%}\n        {%- if message.role == 'system' -%}\n            {{- '\n' -}}\n        {%- endif -%}\n    {%- elif message.role == 'assistant' -%}\n        {%- macro extract_text_content(content_field) -%}\n            {%- if content_field is string -%}\n                {{- content_field -}}\n            {%- elif content_field is iterable and content_field is not string -%}\n                {%- set ns = namespace(text_parts=[]) -%}\n                {%- set text_parts = [] -%}\n                {%- for item in content_field -%}\n                    {%- if item.type == 'text' -%}\n                        {%- set ns.text_parts = ns.text_parts + [item.text] -%}\n                    {%- endif -%}\n                {%- endfor -%}\n                {{- ns.text_parts | join('') -}}\n            {%- else -%}\n                {{- '' -}}\n            {%- endif -%}\n        {%- endmacro -%}\n        {%- set reasoning_content = extract_text_content(message.reasoning_content) -%}\n        {%- set content = extract_text_content(message.content) -%}\n        {%- if '</think>' in content %}\n            {%- set reasoning_content = content.split('</think>')[0].rstrip('\n').split('<think>')[-1].lstrip('\n') %}\n            {%- set content = content.split('</think>')[-1].lstrip('\n') %}\n        {%- endif %}\n        {%- if reasoning_content %}\n            {{- '\n' + 'Assistant: ' + '<think>\n' + reasoning_content.strip('\n') + '\n</think>\n\n' + content.lstrip('\n') }}\n        {%- else %}\n            {{- '\n' + 'Assistant: ' + content }}\n        {%- endif %}\n        {{- '<|end_of_sentence|>' }}\n    {%- endif -%}\n{%- endfor -%}\n{%- if add_generation_prompt is not defined or add_generation_prompt is true %}\n    {{- '\nAssistant: ' -}}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\n\n</think>\n\n' }}\n    {%- endif %}\n    {%- if enable_thinking is not defined or enable_thinking is true %}\n        {{- '<think>' }}\n    {%- endif %}\n{%- endif %}\n"
+    },
+    "tokenizer_config": {
+      "bos_token": "<s>",
+      "eos_token": "</s>",
+      "pad_token": "<unk>",
+      "unk_token": "<unk>",
+      "cls_token": "<|begin_of_sentence|>",
+      "sep_token": "<|end_of_sentence|>",
+      "mask_token": "<mask:1>",
+      "chat_template": "\n{%- set image_count = namespace(value=0) -%}\n{%- set video_count = namespace(value=0) -%}\n{{- '<|begin_of_sentence|>' }}\n{%- for message in messages -%}\n    {%- if message.role in ['system', 'user'] -%}\n        {%- if message.role == 'user' -%}\n            {{- 'User: ' -}}\n        {%- endif -%}\n        {%- if message.content is string -%}\n            {{- message.content -}}\n        {%- else -%}\n            {%- for content_item in message.content -%}\n                {%- if content_item.type == 'text' -%}\n                    {{- content_item.text -}}\n                {%- elif content_item.type in ['image_url', 'image'] -%}\n                    {%- set image_count.value = image_count.value + 1 -%}\n                    Picture {{ image_count.value }}:<|IMAGE_START|><|image@placeholder|><|IMAGE_END|>\n                {%- elif content_item.type in ['video_url', 'video'] -%}\n                    {%- set video_count.value = video_count.value + 1 -%}\n                    Video {{ video_count.value }}:<|VIDEO_START|><|video@placeholder|><|VIDEO_END|>\n                {%- endif -%}\n            {%- endfor -%}\n        {%- endif -%}\n        {%- if message.role == 'system' -%}\n            {{- '\n' -}}\n        {%- endif -%}\n    {%- elif message.role == 'assistant' -%}\n        {%- macro extract_text_content(content_field) -%}\n            {%- if content_field is string -%}\n                {{- content_field -}}\n            {%- elif content_field is iterable and content_field is not string -%}\n                {%- set ns = namespace(text_parts=[]) -%}\n                {%- set text_parts = [] -%}\n                {%- for item in content_field -%}\n                    {%- if item.type == 'text' -%}\n                        {%- set ns.text_parts = ns.text_parts + [item.text] -%}\n                    {%- endif -%}\n                {%- endfor -%}\n                {{- ns.text_parts | join('') -}}\n            {%- else -%}\n                {{- '' -}}\n            {%- endif -%}\n        {%- endmacro -%}\n        {%- set reasoning_content = extract_text_content(message.reasoning_content) -%}\n        {%- set content = extract_text_content(message.content) -%}\n        {%- if '</think>' in content %}\n            {%- set reasoning_content = content.split('</think>')[0].rstrip('\n').split('<think>')[-1].lstrip('\n') %}\n            {%- set content = content.split('</think>')[-1].lstrip('\n') %}\n        {%- endif %}\n        {%- if reasoning_content %}\n            {{- '\n' + 'Assistant: ' + '<think>\n' + reasoning_content.strip('\n') + '\n</think>\n\n' + content.lstrip('\n') }}\n        {%- else %}\n            {{- '\n' + 'Assistant: ' + content }}\n        {%- endif %}\n        {{- '<|end_of_sentence|>' }}\n    {%- endif -%}\n{%- endfor -%}\n{%- if add_generation_prompt is not defined or add_generation_prompt is true %}\n    {{- '\nAssistant: ' -}}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\n\n</think>\n\n' }}\n    {%- endif %}\n    {%- if enable_thinking is not defined or enable_thinking is true %}\n        {{- '<think>' }}\n    {%- endif %}\n{%- endif %}\n"
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "BF16": 422842368000,
+      "F32": 53483904,
+      "F16": 630433280
+    },
+    "total": 423526285184
+  },
+  "usedStorage": 847175435432,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "crosbylegal/gpt-5.6-sol",
+  "sha": "150c7ffea0887ae5e79136689e086a74265702ee",
+  "lastModified": "2026-08-20T04:51:06.000Z",
+  "createdAt": "2026-08-20T04:51:06.000Z",
+  "private": false,
+  "gated": false,
+  "tags": [
+    "eval-results",
+    "region:us"
+  ],
+  "config": {},
+  "usedStorage": 0,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

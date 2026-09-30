@@ -1,0 +1,74 @@
+{
+  "id": "mistralai/Mistral-Small-24B-Instruct-2501",
+  "sha": "9527884be6e5616bdd54de542f9ae13384489724",
+  "lastModified": "2025-07-28T17:26:22.000Z",
+  "createdAt": "2025-01-28T13:30:13.000Z",
+  "private": false,
+  "gated": false,
+  "library_name": "vllm",
+  "tags": [
+    "vllm",
+    "safetensors",
+    "mistral",
+    "en",
+    "fr",
+    "de",
+    "es",
+    "it",
+    "pt",
+    "zh",
+    "ja",
+    "ru",
+    "ko",
+    "base_model:mistralai/Mistral-Small-24B-Base-2501",
+    "base_model:finetune:mistralai/Mistral-Small-24B-Base-2501",
+    "license:apache-2.0",
+    "eval-results",
+    "region:us"
+  ],
+  "cardData": {
+    "library_name": "vllm",
+    "language": [
+      "en",
+      "fr",
+      "de",
+      "es",
+      "it",
+      "pt",
+      "zh",
+      "ja",
+      "ru",
+      "ko"
+    ],
+    "license": "apache-2.0",
+    "inference": false,
+    "base_model": [
+      "mistralai/Mistral-Small-24B-Base-2501"
+    ],
+    "extra_gated_description": "If you want to learn more about how we process your personal data, please read our <a href=\"https://mistral.ai/terms/\">Privacy Policy</a>.",
+    "tags": [
+      "vllm"
+    ]
+  },
+  "config": {
+    "architectures": [
+      "MistralForCausalLM"
+    ],
+    "model_type": "mistral",
+    "tokenizer_config": {
+      "bos_token": "<s>",
+      "chat_template": "{%- set today = strftime_now(\"%Y-%m-%d\") %}\n{%- set default_system_message = \"You are Mistral Small 3, a Large Language Model (LLM) created by Mistral AI, a French startup headquartered in Paris.\\nYour knowledge base was last updated on 2023-10-01. The current date is \" + today + \".\\n\\nWhen you're not sure about some information, you say that you don't have the information and don't make up anything.\\nIf the user's question is not clear, ambiguous, or does not provide enough context for you to accurately answer the question, you do not try to answer it right away and you rather ask the user to clarify their request (e.g. \\\"What are some good restaurants around me?\\\" => \\\"Where are you?\\\" or \\\"When is the next flight to Tokyo\\\" => \\\"Where do you travel from?\\\")\" %}\n\n{{- bos_token }}\n\n{%- if messages[0]['role'] == 'system' %}\n    {%- set system_message = messages[0]['content'] %}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set system_message = default_system_message %}\n    {%- set loop_messages = messages %}\n{%- endif %}\n{{- '[SYSTEM_PROMPT]' + system_message + '[/SYSTEM_PROMPT]' }}\n\n{%- for message in loop_messages %}\n    {%- if message['role'] == 'user' %}\n        {{- '[INST]' + message['content'] + '[/INST]' }}\n    {%- elif message['role'] == 'system' %}\n        {{- '[SYSTEM_PROMPT]' + message['content'] + '[/SYSTEM_PROMPT]' }}\n    {%- elif message['role'] == 'assistant' %}\n        {{- message['content'] + eos_token }}\n    {%- else %}\n        {{- raise_exception('Only user, system and assistant roles are supported!') }}\n    {%- endif %}\n{%- endfor %}",
+      "eos_token": "</s>",
+      "unk_token": "<unk>",
+      "use_default_system_prompt": false
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "BF16": 23572403200
+    },
+    "total": 23572403200
+  },
+  "usedStorage": 94321574156,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

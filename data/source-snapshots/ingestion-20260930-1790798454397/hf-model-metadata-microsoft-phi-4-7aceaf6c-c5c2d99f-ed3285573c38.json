@@ -1,0 +1,82 @@
+{
+  "id": "microsoft/phi-4",
+  "sha": "2db69c1c3e91a05d2c64a3185acfbaf36f744e25",
+  "lastModified": "2026-07-14T14:22:25.000Z",
+  "createdAt": "2024-12-11T11:47:29.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "phi3",
+    "text-generation",
+    "phi",
+    "nlp",
+    "math",
+    "code",
+    "chat",
+    "conversational",
+    "en",
+    "arxiv:2412.08905",
+    "license:mit",
+    "eval-results",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "mit",
+    "license_link": "https://huggingface.co/microsoft/phi-4/resolve/main/LICENSE",
+    "language": [
+      "en"
+    ],
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "phi",
+      "nlp",
+      "math",
+      "code",
+      "chat",
+      "conversational"
+    ],
+    "inference": {
+      "parameters": {
+        "temperature": 0
+      }
+    },
+    "widget": [
+      {
+        "messages": [
+          {
+            "role": "user",
+            "content": "How should I explain the Internet?"
+          }
+        ]
+      }
+    ],
+    "library_name": "transformers"
+  },
+  "config": {
+    "architectures": [
+      "Phi3ForCausalLM"
+    ],
+    "model_type": "phi3",
+    "tokenizer_config": {
+      "bos_token": "<|endoftext|>",
+      "chat_template": "{% for message in messages %}{% if (message['role'] == 'system') %}{{'<|im_start|>system<|im_sep|>' + message['content'] + '<|im_end|>'}}{% elif (message['role'] == 'user') %}{{'<|im_start|>user<|im_sep|>' + message['content'] + '<|im_end|>'}}{% elif (message['role'] == 'assistant') %}{{'<|im_start|>assistant<|im_sep|>' + message['content'] + '<|im_end|>'}}{% endif %}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant<|im_sep|>' }}{% endif %}",
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|dummy_85|>"
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "BF16": 14659507200
+    },
+    "total": 14659507200
+  },
+  "usedStorage": 29319042992,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

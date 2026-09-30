@@ -1,0 +1,20 @@
+name: RedlineBench
+description: >
+  RedlineBench (the Crosby–micro1 Contract Redlining Benchmark) measures contract
+  negotiation as a sequence of judgment calls rather than isolated clause edits.
+  140 Harbor tasks span three grounded SaaS / professional-services MSA negotiations
+  (3 scenarios × 4 alternating turns). Each task yields a real Word .docx with native
+  tracked changes and threaded comments, graded against attorney-authored weighted
+  rubrics by a three-LLM-judge panel (majority vote per criterion). The headline score
+  (0–100) is the turn-weighted weighted pass rate: per-task rewards are averaged within
+  input groups, then the 12 (scenario × turn) cells are weighted equally so later turns
+  don't dominate. Scoring spans five dimensions: commercial-context adherence, legal
+  correctness, negotiation quality, deal-closing orientation, and counterparty-acceptance
+  prediction. Full methodology and results: https://intelligence.crosby.ai/benchmark/
+
+evaluation_framework: redline-bench
+
+tasks:
+  - id: redline_overall
+    config: tasks
+    split: test

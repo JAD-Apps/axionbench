@@ -1,0 +1,26 @@
+{
+  "id": "allenai/H_post_LQK_8kv_4k_11k_SWA",
+  "sha": "ba79972ee3756bdf5a0b6f18d9eb13a26f0489f9",
+  "lastModified": "2026-06-15T21:35:30.000Z",
+  "createdAt": "2026-04-29T13:14:26.000Z",
+  "private": false,
+  "gated": false,
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "en",
+    "license:apache-2.0",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "apache-2.0",
+    "language": [
+      "en"
+    ],
+    "library_name": "transformers"
+  },
+  "config": {},
+  "usedStorage": 547496176224,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

@@ -1,0 +1,513 @@
+{
+  "datasetId": "allenai/olmOCR-bench",
+  "retrievedAt": "2026-09-30T19:49:14.646Z",
+  "projectionOf": "https://huggingface.co/api/datasets/allenai/olmOCR-bench/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 87.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2506.03197",
+        "name": "Infinity Parser technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "infly/Infinity-Parser2-Pro",
+      "lower_is_better": false,
+      "num_parameters": 35107181936
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 85.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datalab-to/chandra-ocr-2",
+        "name": "Chandra OCR 2 Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "60f1d69e3eac4936270fbbb0",
+          "avatarUrl": "/avatars/6f512ec3b2e8d8be4a19487a5855c89e.svg",
+          "fullname": "Vikas Paruchuri",
+          "name": "vikp",
+          "type": "user",
+          "isPro": false,
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 293,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "datalab-to/chandra-ocr-2",
+      "lower_is_better": false,
+      "num_parameters": 5295564288
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 83.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2603.13032",
+        "name": "dots.mocr technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "dots-studio/dots.mocr",
+      "lower_is_better": false,
+      "num_parameters": 3039179264
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 83.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2609.03181",
+        "name": "Jina-OCR-v1 technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "63563e0c2d14fcd7d83743cf",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/603763514de52ff951d89793/wD54VbAHHyHop3uYlJKl4.png",
+          "fullname": "Jina AI",
+          "name": "jinaai",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 2138,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "jinaai/jina-ocr-v1",
+      "lower_is_better": false,
+      "num_parameters": 3372238080
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 83.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datalab-to/surya-ocr-2",
+        "name": "Surya OCR 2 Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "60f1d69e3eac4936270fbbb0",
+          "avatarUrl": "/avatars/6f512ec3b2e8d8be4a19487a5855c89e.svg",
+          "fullname": "Vikas Paruchuri",
+          "name": "vikp",
+          "type": "user",
+          "isPro": false,
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 293,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "datalab-to/surya-ocr-2",
+      "lower_is_better": false,
+      "num_parameters": 686154304
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 83.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datalab-to/surya-ocr-2",
+        "name": "Surya OCR 2 Model Card",
+        "isExternal": true,
+        "author": {
+          "_id": "60f1d69e3eac4936270fbbb0",
+          "avatarUrl": "/avatars/6f512ec3b2e8d8be4a19487a5855c89e.svg",
+          "fullname": "Vikas Paruchuri",
+          "name": "vikp",
+          "type": "user",
+          "isPro": false,
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 293,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "onnx-community/Surya-Ocr-2-Onnx",
+      "lower_is_better": false
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 83.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2601.14251",
+        "name": "LightOnOCR technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "lightonai/LightOnOCR-2-1B",
+      "notes": "H&F rewards omission, not transcription thus a model that outputs nothing scores perfectly. Excluded to keep Overall focused on real OCR quality.",
+      "lower_is_better": false,
+      "num_parameters": 1005647872
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 83.1,
+      "verified": false,
+      "source": {
+        "url": "https://github.com/allenai/olmocr/tree/main/olmocr/bench",
+        "name": "OlmOCR-Bench Github repository",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "datalab-to/chandra",
+      "pullRequest": 8,
+      "lower_is_better": false,
+      "num_parameters": 8767123696
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 82.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2506.03197",
+        "name": "Infinity Parser technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "infly/Infinity-Parser-7B",
+      "lower_is_better": false,
+      "num_parameters": 8292166656
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 80.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tiiuae/Falcon-OCR",
+        "name": "Falcon-OCR Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "tiiuae/Falcon-OCR",
+      "notes": "English-subset only",
+      "lower_is_better": false,
+      "num_parameters": 269944416
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/olm_ocr_bench.yaml",
+      "value": 79.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2603.13398",
+        "name": "Qianfan-OCR technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "baidu/Qianfan-OCR",
+      "lower_is_better": false,
+      "num_parameters": 4741408256
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 79.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2512.02498",
+        "name": "dots.ocr technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "dots-studio/dots.ocr",
+      "pullRequest": 45,
+      "lower_is_better": false,
+      "num_parameters": 3039179264
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 76.3,
+      "verified": false,
+      "source": {
+        "url": "https://x.com/staghado/status/2016161372938117205/photo/1",
+        "name": "Tweet by @staghado",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "deepseek-ai/DeepSeek-OCR-2",
+      "pullRequest": 18,
+      "lower_is_better": false,
+      "num_parameters": 3389119360
+    },
+    {
+      "rank": 14,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 76.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2601.14251",
+        "name": "LightOnOCR technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "63a042880c6d9efa305ea6cd",
+          "avatarUrl": "/avatars/9a6685e69dfcfe46661545e8aa9841fd.svg",
+          "fullname": "Baptiste Aubertin",
+          "name": "Bapt120",
+          "type": "user",
+          "isPro": false,
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 34,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "lightonai/LightOnOCR-1B-1025",
+      "notes": "Excluding Headers & Footers category",
+      "lower_is_better": false,
+      "num_parameters": 1161230336
+    },
+    {
+      "rank": 15,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 75.7,
+      "verified": false,
+      "source": {
+        "url": "https://github.com/allenai/olmocr/tree/main/olmocr/bench",
+        "name": "OlmOCR-Bench Github repository",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "deepseek-ai/DeepSeek-OCR",
+      "pullRequest": 109,
+      "lower_is_better": false,
+      "num_parameters": 3336106240
+    },
+    {
+      "rank": 16,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 75.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2509.22186",
+        "name": "MinerU2.5 technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "opendatalab/MinerU2.5-2509-1.2B",
+      "pullRequest": 11,
+      "lower_is_better": false,
+      "num_parameters": 1156026624
+    },
+    {
+      "rank": 17,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 75.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-OCR",
+        "name": "GLM-OCR API evaluation",
+        "isExternal": false,
+        "author": {
+          "_id": "62cd695e94b9dcedbf1818e5",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/62cd695e94b9dcedbf1818e5/qhKhRxdNdbKPIAUfYBvtI.png",
+          "fullname": "Said Taghadouini",
+          "name": "staghado",
+          "type": "user",
+          "isPro": false,
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 59,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-OCR",
+      "notes": "Excluding Headers & Footers category. Using ZAI API.",
+      "lower_is_better": false,
+      "num_parameters": 1325258240
+    },
+    {
+      "rank": 18,
+      "filename": ".eval_results/olmocrbench.yaml",
+      "value": 36.77414032309106,
+      "verified": false,
+      "source": {
+        "url": "https://github.com/davanstrien/ocr-bench/blob/741ebffe677054adf900789a5fcbac371e3b7c4b/experiments/kraken-olmocr-bench/RESULTS-2026-09-09.md",
+        "name": "Reproducible Kraken olmOCR-bench run",
+        "isExternal": true,
+        "author": {
+          "_id": "60107b385ac3e86b3ea4fc34",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1627505688463-60107b385ac3e86b3ea4fc34.jpeg",
+          "fullname": "Daniel van Strien",
+          "name": "davanstrien",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 994,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "small-models-for-glam/kraken-ppocrv6-medium",
+      "notes": "Kraken BLLA segmentation + PP-OCRv6 medium; full 1,403 pages at 300 DPI; raw newline-joined text; no table reconstruction, LaTeX generation or header suppression. Official scorer; pipeline test pass rate, not CER. Macro-average including automatic baseline; 95% bootstrap CI 35.9-37.7%.",
+      "lower_is_better": false
+    }
+  ]
+}

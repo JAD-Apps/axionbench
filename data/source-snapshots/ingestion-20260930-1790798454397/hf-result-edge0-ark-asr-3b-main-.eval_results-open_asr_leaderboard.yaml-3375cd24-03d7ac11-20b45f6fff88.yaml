@@ -1,0 +1,99 @@
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: mean_wer
+  value: 4.76
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: rtfx
+  value: 490.98
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: ami_wer
+  value: 8.79
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: earnings22_wer
+  value: 8.23
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: gigaspeech_wer
+  value: 6.98
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: librispeech_clean_wer
+  value: 1.03
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: librispeech_other_wer
+  value: 2.35
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: spgispeech_wer
+  value: 2.46
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: tedlium_wer
+  value: 2.79
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: voxpopuli_wer
+  value: 5.47
+  date: '2026-06-23'
+  source:
+    url: https://huggingface.co/datasets/hf-audio/open-asr-leaderboard
+    name: open-asr-leaderboard
+    user: hf-audio

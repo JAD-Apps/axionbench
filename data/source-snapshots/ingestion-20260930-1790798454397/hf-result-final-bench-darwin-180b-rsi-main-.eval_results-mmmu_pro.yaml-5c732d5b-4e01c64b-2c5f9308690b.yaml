@@ -1,0 +1,9 @@
+- dataset:
+    id: MMMU/MMMU_Pro
+    task_id: mmmu_pro_vision
+  value: 79.48
+  date: '2026-09-28'
+  source:
+    url: https://huggingface.co/FINAL-Bench/Darwin-180B-RSI
+    name: Model Card
+  notes: "MMMU-Pro vision setting, all 1,730 items; majority vote over 3 samples (temperature=1.0, top_p=0.95, top_k=20); thinking budget 131,072 tokens; bf16"

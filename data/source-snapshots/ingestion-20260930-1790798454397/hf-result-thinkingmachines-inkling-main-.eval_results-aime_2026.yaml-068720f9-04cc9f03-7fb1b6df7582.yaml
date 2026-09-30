@@ -1,0 +1,7 @@
+- dataset:
+    id: MathArena/aime_2026
+    task_id: MathArena/aime_2026
+  value: 97.1
+  source:
+    url: https://huggingface.co/thinkingmachines/Inkling
+    name: Model Card

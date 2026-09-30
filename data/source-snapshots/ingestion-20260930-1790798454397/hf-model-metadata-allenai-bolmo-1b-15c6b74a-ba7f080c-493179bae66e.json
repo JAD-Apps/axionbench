@@ -1,0 +1,58 @@
+{
+  "id": "allenai/Bolmo-1B",
+  "sha": "7a80d2e3db317282229afc34c5f24333a8ebe846",
+  "lastModified": "2026-06-17T08:14:56.000Z",
+  "createdAt": "2025-12-10T10:06:38.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "bolmo",
+    "text-generation",
+    "custom_code",
+    "en",
+    "dataset:allenai/bolmo_mix",
+    "arxiv:2512.15586",
+    "base_model:allenai/OLMo-2-0425-1B",
+    "base_model:finetune:allenai/OLMo-2-0425-1B",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "apache-2.0",
+    "base_model": "allenai/OLMo-2-0425-1B",
+    "language": [
+      "en"
+    ],
+    "library_name": "transformers",
+    "datasets": [
+      "allenai/bolmo_mix"
+    ]
+  },
+  "config": {
+    "architectures": [
+      "BolmoForCausalLM"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_bolmo.BolmoConfig",
+      "AutoModelForCausalLM": "modeling_bolmo.BolmoForCausalLM"
+    },
+    "model_type": "bolmo",
+    "tokenizer_config": {
+      "bos_token": "<bos>",
+      "eos_token": "<bos>",
+      "pad_token": "<pad>"
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "F32": 1468911776
+    },
+    "total": 1468911776
+  },
+  "usedStorage": 23525329110,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

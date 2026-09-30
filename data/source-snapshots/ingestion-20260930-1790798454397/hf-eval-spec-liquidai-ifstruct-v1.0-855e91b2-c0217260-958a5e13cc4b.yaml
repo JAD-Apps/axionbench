@@ -1,0 +1,13 @@
+name: IFStruct v1.0
+description: >
+  Structured-output compliance: whether a model emits valid JSON/YAML that
+  follows a requested schema, across the many ways real users phrase such
+  requests. Scored without constrained decoding, judging only output validity
+  and schema following, not content quality. Binary pass/fail over 2,000 frozen
+  test prompts.
+evaluation_framework: ifstruct
+
+tasks:
+  - id: ifstruct_v1
+    config: default
+    split: test

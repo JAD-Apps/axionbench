@@ -1,0 +1,54 @@
+---
+license: apache-2.0
+language:
+- en
+library_name: transformers
+pipeline_tag: text-generation
+tags:
+- dense
+- baseline
+- ablation
+- memory-matched
+datasets:
+- allenai/OLMoE-mix-0924
+---
+
+# Dense_1b_130B
+
+An active-parameter-matched dense baseline released alongside [EMO: Pretraining Mixture of Experts for Emergent Modularity](https://arxiv.org/abs/2605.06663) — referred to as **"Dense @ 8"** in Figure 1 of the paper. Not midtrained.
+
+1B parameter dense decoder-only Transformer (no MoE) pretrained from scratch on 130B tokens of the OLMoE pretraining mix. Provides an active-parameter-matched comparison point against 8-expert subsets carved out of the larger 1B/14B EMO models.
+
+## Usage
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_id = "allenai/Dense_1b_130B"
+model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
+
+inputs = tokenizer(["Language modeling is "], return_tensors="pt", return_token_type_ids=False)
+out = model.generate(**inputs, max_new_tokens=100, do_sample=True, temperature=1.0, top_p=0.7)
+print(tokenizer.batch_decode(out, skip_special_tokens=True)[0])
+```
+
+## Citation
+
+```bibtex
+@article{wang2026emo,
+  title  = {EMO: Pretraining Mixture of Experts for Emergent Modularity},
+  author = {Wang, Ryan and Bhagia, Akshita and Min, Sewon},
+  year   = {2026},
+  url    = {https://arxiv.org/abs/2605.06663}
+}
+```
+
+## License
+
+This model is licensed under Apache 2.0. It is intended for research and educational use in accordance with Ai2's [Responsible Use Guidelines](https://allenai.org/responsible-use)
+
+## Links
+
+- Paper: https://arxiv.org/abs/2605.06663
+- Code: https://github.com/allenai/EMO

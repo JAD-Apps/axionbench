@@ -1,0 +1,30 @@
+{
+  "id": "ai21labs/AI21-Jamba-Reasoning-3B-GGUF",
+  "sha": "462e08a43c3c32f6b8b85f79ff0796e484d7b65a",
+  "lastModified": "2026-02-02T11:37:51.000Z",
+  "createdAt": "2025-10-05T11:02:28.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "gguf",
+    "text-generation",
+    "arxiv:2507.02782",
+    "license:apache-2.0",
+    "endpoints_compatible",
+    "region:us",
+    "conversational"
+  ],
+  "cardData": {
+    "license": "apache-2.0",
+    "license_name": "jamba-open-model-license",
+    "license_link": "https://www.ai21.com/jamba-open-model-license/",
+    "pipeline_tag": "text-generation",
+    "library_name": "transformers"
+  },
+  "config": {},
+  "usedStorage": 25013475292,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

@@ -1,0 +1,9 @@
+- dataset:
+    id: Idavidrein/gpqa
+    task_id: diamond
+  value: 94.44
+  date: '2026-09-28'
+  source:
+    url: https://huggingface.co/FINAL-Bench/Darwin-180B-RSI
+    name: Model Card
+  notes: "GPQA Diamond, all 198 items; majority vote over up to 16 samples (temperature=1.0, top_p=0.95, top_k=20); thinking budget 131,072 tokens; bf16"

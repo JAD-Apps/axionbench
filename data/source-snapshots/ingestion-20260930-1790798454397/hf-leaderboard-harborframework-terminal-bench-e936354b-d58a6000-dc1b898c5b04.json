@@ -1,0 +1,80 @@
+{
+  "datasetId": "harborframework/terminal-bench",
+  "retrievedAt": "2026-09-30T19:49:13.922Z",
+  "projectionOf": "https://huggingface.co/api/datasets/harborframework/terminal-bench/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/MiMo-V2.6-Pro-RL.yaml",
+      "value": 34.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+        "name": "MiMo-V2.6-Pro-RL model card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.6-Pro-RL",
+      "pullRequest": 5,
+      "lower_is_better": false,
+      "num_parameters": 1024216603392
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/DeepSeek-V4.1-Flash.yaml",
+      "value": 31.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+        "name": "DeepSeek-V4.1-Flash model card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "pullRequest": 29,
+      "notes": "DeepSeek Harness, Minimal mode, 1M-token context.",
+      "lower_is_better": false,
+      "num_parameters": 763205315794
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/MiMo-V2.6-Flash-RL.yaml",
+      "value": 28.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL",
+        "name": "MiMo-V2.6-Flash-RL model card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.6-Flash-RL",
+      "pullRequest": 4,
+      "lower_is_better": false,
+      "num_parameters": 310756322688
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/MiMo-V2.5-Pro.yaml",
+      "value": 1.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/blob/main/MiMo_V2_6_technical_report.pdf",
+        "name": "MiMo-V2.6 Technical Report (Table 3, MiMo-V2.5 Pro baseline column)",
+        "isExternal": true
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.5-Pro",
+      "pullRequest": 19,
+      "lower_is_better": false,
+      "num_parameters": 1023182841600
+    }
+  ]
+}

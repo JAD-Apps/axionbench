@@ -1,0 +1,48 @@
+- dataset:
+    id: PaddlePaddle/Real5-OmniDocBench
+    task_id: overall
+  value: 92.05
+  source:
+    url: https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench
+    name: Real5-OmniDocBench Leaderboard
+    user: PaddlePaddle
+- dataset:
+    id: PaddlePaddle/Real5-OmniDocBench
+    task_id: scanning
+  value: 93.43
+  source:
+    url: https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench
+    name: Real5-OmniDocBench Leaderboard
+    user: PaddlePaddle
+- dataset:
+    id: PaddlePaddle/Real5-OmniDocBench
+    task_id: warping
+  value: 91.25
+  source:
+    url: https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench
+    name: Real5-OmniDocBench Leaderboard
+    user: PaddlePaddle
+- dataset:
+    id: PaddlePaddle/Real5-OmniDocBench
+    task_id: screen_photography
+  value: 91.76
+  source:
+    url: https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench
+    name: Real5-OmniDocBench Leaderboard
+    user: PaddlePaddle
+- dataset:
+    id: PaddlePaddle/Real5-OmniDocBench
+    task_id: illumination
+  value: 92.16
+  source:
+    url: https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench
+    name: Real5-OmniDocBench Leaderboard
+    user: PaddlePaddle
+- dataset:
+    id: PaddlePaddle/Real5-OmniDocBench
+    task_id: skew
+  value: 91.66
+  source:
+    url: https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench
+    name: Real5-OmniDocBench Leaderboard
+    user: PaddlePaddle

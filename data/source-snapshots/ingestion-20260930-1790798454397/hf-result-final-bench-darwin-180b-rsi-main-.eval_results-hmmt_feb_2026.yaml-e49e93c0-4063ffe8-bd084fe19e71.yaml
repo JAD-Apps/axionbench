@@ -1,0 +1,9 @@
+- dataset:
+    id: MathArena/hmmt_feb_2026
+    task_id: MathArena/hmmt_feb_2026
+  value: 100.0
+  date: '2026-09-28'
+  source:
+    url: https://huggingface.co/FINAL-Bench/Darwin-180B-RSI
+    name: Model Card
+  notes: "HMMT February 2026, all 33 problems; majority vote over 16 samples (maj@16) = 100.0; mean accuracy over 16 samples = 96.59; temperature=1.0, top_p=0.95, top_k=20; thinking budget 131,072 tokens; bf16"

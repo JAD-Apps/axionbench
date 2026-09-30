@@ -1,0 +1,32 @@
+{
+  "id": "TheDrummer/UnslopNemo-12B-v4.1",
+  "sha": "c20fadc8281ea8237acb8054f4a84524ca257478",
+  "lastModified": "2024-11-07T10:45:22.000Z",
+  "createdAt": "2024-10-23T14:48:15.000Z",
+  "private": false,
+  "gated": false,
+  "tags": [
+    "safetensors",
+    "mistral",
+    "region:us"
+  ],
+  "config": {
+    "architectures": [
+      "MistralForCausalLM"
+    ],
+    "model_type": "mistral",
+    "tokenizer_config": {
+      "bos_token": "<s>",
+      "eos_token": "</s>",
+      "unk_token": "<unk>"
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "BF16": 12247782400
+    },
+    "total": 12247782400
+  },
+  "usedStorage": 24512685396,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

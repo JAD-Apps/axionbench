@@ -1,0 +1,40 @@
+name: Evasion Bench
+description: >
+  EvasionBench is a benchmark dataset for detecting evasive answers in earnings
+  call Q&A sessions. The task is to classify how directly corporate management
+  addresses questions from financial analysts.
+evaluation_framework: inspect-ai
+
+tasks:
+  - id: evasion_bench
+    config: default
+    split: train
+
+    epochs: 1
+
+    shuffle_choices: true
+
+    field_spec:
+      input: question
+      target: "eva4b_label_letter"
+      choices: "choices"
+      metadata: ["answer"]
+
+    solvers:
+      - name: prompt_template
+        args:
+          template: |
+            Question: {prompt}
+
+            Answer: {answer}
+      - name: multiple_choice
+        args:
+          template: |
+            You are a financial analyst. Your task is to Detect Evasive Answers in Financial Q&A.
+            The entire content of your response should be of the following format: 'ANSWER: $LETTER' (without quotes) where LETTER is one of {letters}.
+
+            {question}
+
+            {choices}
+    scorers:
+      - name: choice
