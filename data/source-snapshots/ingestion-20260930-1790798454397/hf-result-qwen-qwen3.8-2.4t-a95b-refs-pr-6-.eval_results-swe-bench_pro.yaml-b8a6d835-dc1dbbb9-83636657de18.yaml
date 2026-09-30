@@ -1,0 +1,7 @@
+- dataset:
+    id: ScaleAI/SWE-bench_Pro
+    task_id: SWE_Bench_Pro
+  value: 67.7
+  source:
+    url: https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B
+    name: Model Card

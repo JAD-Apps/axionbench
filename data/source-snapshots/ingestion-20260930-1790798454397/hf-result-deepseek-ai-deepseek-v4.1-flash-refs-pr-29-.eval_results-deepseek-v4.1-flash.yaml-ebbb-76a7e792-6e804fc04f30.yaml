@@ -1,0 +1,67 @@
+- dataset:
+    id: Idavidrein/gpqa
+    task_id: diamond
+  value: 90.9
+  date: "2026-09-10"
+  source:
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+    name: "DeepSeek-V4.1-Flash model card"
+
+- dataset:
+    id: cais/hle
+    task_id: hle
+  value: 36.8
+  date: "2026-09-10"
+  source:
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+    name: "DeepSeek-V4.1-Flash model card"
+
+- dataset:
+    id: cais/hle
+    task_id: hle
+  value: 63.9
+  date: "2026-09-10"
+  source:
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+    name: "DeepSeek-V4.1-Flash model card"
+  notes: "With tools; harness not specified in the model card."
+
+- dataset:
+    id: harborframework/terminal-bench-2.1
+    task_id: terminalbench_2_1
+  value: 90.6
+  date: "2026-09-10"
+  source:
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+    name: "DeepSeek-V4.1-Flash model card"
+  notes: "DeepSeek Harness, Minimal mode, 1M-token context."
+
+- dataset:
+    id: harborframework/terminal-bench
+    task_id: terminalbench_3
+  value: 30.0
+  date: "2026-09-10"
+  source:
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+    name: "DeepSeek-V4.1-Flash model card"
+  notes: "DeepSeek Harness, Minimal mode, 1M-token context."
+
+- dataset:
+    id: harborframework/terminal-bench
+    task_id: terminalbench_4
+  value: 31.2
+  date: "2026-09-10"
+  source:
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+    name: "DeepSeek-V4.1-Flash model card"
+  notes: "DeepSeek Harness, Minimal mode, 1M-token context."
+
+- dataset:
+    id: datacurve/deep-swe
+    task_id: deep_swe
+  value: 74.2
+  date: "2026-09-10"
+  source:
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+    name: "DeepSeek-V4.1-Flash model card"
+  notes: "Reported as 'DeepSWE v1.1'; official mini-swe-agent harness."

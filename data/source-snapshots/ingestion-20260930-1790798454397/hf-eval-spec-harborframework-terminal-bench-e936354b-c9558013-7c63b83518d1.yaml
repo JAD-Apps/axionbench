@@ -1,0 +1,16 @@
+name: "Terminal-Bench"
+description: >
+  Terminal-Bench is a continuous benchmark for evaluating AI agents in terminal
+  environments, mirrored from https://github.com/harbor-framework/terminal-bench
+  for use with Harbor's git-repos dataset support. Each major version released
+  so far is listed below as its own task entry; pin a specific one via the
+  matching Hub tag (e.g. `v4.0.0`) — see the README for the full version table.
+evaluation_framework: harbor
+
+tasks:
+  - id: terminalbench_4
+    config: default
+    split: test
+  - id: terminalbench_3
+    config: default
+    split: test

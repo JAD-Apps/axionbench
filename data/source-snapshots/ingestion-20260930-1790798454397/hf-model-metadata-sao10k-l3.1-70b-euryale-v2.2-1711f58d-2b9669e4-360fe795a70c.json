@@ -1,0 +1,41 @@
+{
+  "id": "Sao10K/L3.1-70B-Euryale-v2.2",
+  "sha": "62b47ff8c2c24d326a7b960773b9c853400150b6",
+  "lastModified": "2024-08-25T13:34:59.000Z",
+  "createdAt": "2024-08-12T13:14:04.000Z",
+  "private": false,
+  "gated": false,
+  "tags": [
+    "pytorch",
+    "llama",
+    "en",
+    "dataset:Setiaku/Stheno-v3.4-Instruct",
+    "dataset:Setiaku/Stheno-3.4-Creative-2",
+    "license:cc-by-nc-4.0",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "cc-by-nc-4.0",
+    "datasets": [
+      "Setiaku/Stheno-v3.4-Instruct",
+      "Setiaku/Stheno-3.4-Creative-2"
+    ],
+    "language": [
+      "en"
+    ]
+  },
+  "config": {
+    "architectures": [
+      "LlamaForCausalLM"
+    ],
+    "model_type": "llama",
+    "tokenizer_config": {
+      "bos_token": "<|begin_of_text|>",
+      "chat_template": "{% if not add_generation_prompt is defined %}{% set add_generation_prompt = false %}{% endif %}{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n\n'+ message['content'] | trim + '<|eot_id|>' %}{% if loop.index0 == 0 %}{% set content = bos_token + content %}{% endif %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|start_header_id|>assistant<|end_header_id|>\n\n' }}{% endif %}",
+      "eos_token": "<|eot_id|>",
+      "pad_token": "<|end_of_text|>"
+    }
+  },
+  "usedStorage": 282215171319,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

@@ -1,0 +1,69 @@
+{
+  "id": "allenai/GraspMolmo",
+  "sha": "9aa184d698ffc41382524875f0c585e7499c62f5",
+  "lastModified": "2026-05-05T05:08:33.000Z",
+  "createdAt": "2025-06-04T00:15:46.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "robotics",
+  "tags": [
+    "safetensors",
+    "molmo",
+    "robotics",
+    "grasping",
+    "task-oriented-grasping",
+    "manipulation",
+    "custom_code",
+    "en",
+    "dataset:allenai/PRISM",
+    "arxiv:2505.13441",
+    "base_model:allenai/Molmo-7B-D-0924",
+    "base_model:finetune:allenai/Molmo-7B-D-0924",
+    "license:mit",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "mit",
+    "datasets": [
+      "allenai/PRISM"
+    ],
+    "language": [
+      "en"
+    ],
+    "base_model": [
+      "allenai/Molmo-7B-D-0924"
+    ],
+    "pipeline_tag": "robotics",
+    "tags": [
+      "robotics",
+      "grasping",
+      "task-oriented-grasping",
+      "manipulation"
+    ]
+  },
+  "config": {
+    "architectures": [
+      "MolmoForCausalLM"
+    ],
+    "auto_map": {
+      "AutoConfig": "config_molmo.MolmoConfig",
+      "AutoModelForCausalLM": "modeling_molmo.MolmoForCausalLM"
+    },
+    "model_type": "molmo",
+    "tokenizer_config": {
+      "bos_token": null,
+      "chat_template": "{% for message in messages -%}\n        {%- if (loop.index % 2 == 1 and message['role'] != 'user') or \n          (loop.index % 2 == 0 and message['role'].lower() != 'assistant') -%}\n        {{ raise_exception('Conversation roles must alternate user/assistant/user/assistant/...') }}\n        {%- endif -%}\n        {{ message['role'].capitalize() + ': ' + message['content'] }}\n        {%- if not loop.last -%}\n        {{ ' ' }}\n        {%- endif %}\n        {%- endfor -%}\n        {%- if add_generation_prompt -%}\n        {{ ' Assistant:' }}\n        {%- endif %}",
+      "eos_token": "<|endoftext|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "F32": 8021025280
+    },
+    "total": 8021025280
+  },
+  "usedStorage": 32095678592,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

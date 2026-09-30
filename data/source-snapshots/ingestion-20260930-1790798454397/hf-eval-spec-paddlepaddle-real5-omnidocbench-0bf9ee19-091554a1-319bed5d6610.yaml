@@ -1,0 +1,26 @@
+name: Real5-OmniDocBench
+description: >
+  Real5-OmniDocBench is a real-world document parsing robustness benchmark
+  covering five physical acquisition scenarios: Scanning, Warping,
+  Screen-Photography, Illumination, and Skew.
+evaluation_framework: real5-omnidocbench
+
+tasks:
+  - id: overall
+    config: default
+    split: test
+  - id: scanning
+    config: default
+    split: test
+  - id: warping
+    config: default
+    split: test
+  - id: screen_photography
+    config: default
+    split: test
+  - id: illumination
+    config: default
+    split: test
+  - id: skew
+    config: default
+    split: test

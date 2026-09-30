@@ -1,0 +1,21 @@
+{
+  "id": "allenai/ACE2-SHiELD",
+  "sha": "13978196694ef4bb20d6f9ed94a83e697adda328",
+  "lastModified": "2026-06-29T21:51:40.000Z",
+  "createdAt": "2026-06-15T18:33:54.000Z",
+  "private": false,
+  "gated": false,
+  "library_name": "fme",
+  "tags": [
+    "fme",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "apache-2.0",
+    "library_name": "fme"
+  },
+  "config": {},
+  "usedStorage": 1823643243,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

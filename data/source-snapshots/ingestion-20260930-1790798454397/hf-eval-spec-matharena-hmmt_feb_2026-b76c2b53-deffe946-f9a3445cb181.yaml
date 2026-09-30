@@ -1,0 +1,8 @@
+name: MathArena HMMT Feb 2026
+description: Problem set from the HMMT Tournament from February 2026.
+evaluation_framework: math-arena
+
+tasks:
+  - id: MathArena/hmmt_feb_2026
+    config: default
+    split: train

@@ -1,0 +1,22 @@
+{
+  "id": "allenai/OlmoEarth-v1_2-Tiny",
+  "sha": "12a9fdbfeff905d7e147e7497f9f7a95c518eefc",
+  "lastModified": "2026-07-02T11:02:58.000Z",
+  "createdAt": "2026-06-25T08:20:04.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "image-feature-extraction",
+  "tags": [
+    "image-feature-extraction",
+    "arxiv:2605.20804",
+    "license:other",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "other",
+    "pipeline_tag": "image-feature-extraction"
+  },
+  "config": {},
+  "usedStorage": 107394275,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

@@ -1,0 +1,74 @@
+- dataset:
+    id: SWE-bench/SWE-bench_Verified
+    task_id: swe_bench_%_resolved
+  value: 86.0
+  date: "2026-08-18"
+  source:
+    url: https://huggingface.co/ornith-ai/Ornith-1.5-397B
+    name: "Ornith-1.5-397B model card"
+
+- dataset:
+    id: ScaleAI/SWE-bench_Pro
+    task_id: SWE_Bench_Pro
+  value: 65.1
+  date: "2026-08-18"
+  source:
+    url: https://huggingface.co/ornith-ai/Ornith-1.5-397B
+    name: "Ornith-1.5-397B model card"
+
+- dataset:
+    id: SWE-bench/SWE-bench_Multilingual
+    task_id: swe_bench_multilingual_%_resolved
+  value: 79.6
+  date: "2026-08-18"
+  source:
+    url: https://huggingface.co/ornith-ai/Ornith-1.5-397B
+    name: "Ornith-1.5-397B model card"
+
+- dataset:
+    id: datacurve/deep-swe
+    task_id: deep_swe
+  value: 56.0
+  date: "2026-08-18"
+  source:
+    url: https://huggingface.co/ornith-ai/Ornith-1.5-397B
+    name: "Ornith-1.5-397B model card"
+
+- dataset:
+    id: cais/hle
+    task_id: hle
+  value: 44.6
+  date: "2026-08-18"
+  source:
+    url: https://huggingface.co/ornith-ai/Ornith-1.5-397B
+    name: "Ornith-1.5-397B model card"
+  notes: "No tools."
+
+- dataset:
+    id: cais/hle
+    task_id: hle
+  value: 56.1
+  date: "2026-08-18"
+  source:
+    url: https://huggingface.co/ornith-ai/Ornith-1.5-397B
+    name: "Ornith-1.5-397B model card"
+  notes: "With tools."
+
+- dataset:
+    id: Idavidrein/gpqa
+    task_id: diamond
+  value: 92.8
+  date: "2026-08-18"
+  source:
+    url: https://huggingface.co/ornith-ai/Ornith-1.5-397B
+    name: "Ornith-1.5-397B model card"
+
+- dataset:
+    id: claw-eval/Claw-Eval
+    task_id: general
+  value: 81.4
+  date: "2026-08-18"
+  source:
+    url: https://huggingface.co/ornith-ai/Ornith-1.5-397B
+    name: "Ornith-1.5-397B model card"
+  notes: "Model card reports one aggregate score without a split breakdown; mapped to the general split."

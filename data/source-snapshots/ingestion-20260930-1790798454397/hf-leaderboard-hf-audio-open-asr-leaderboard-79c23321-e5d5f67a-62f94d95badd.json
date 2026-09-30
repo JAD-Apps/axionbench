@@ -1,0 +1,1713 @@
+{
+  "datasetId": "hf-audio/open-asr-leaderboard",
+  "retrievedAt": "2026-09-30T19:49:14.360Z",
+  "projectionOf": "https://huggingface.co/api/datasets/hf-audio/open-asr-leaderboard/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 4.76,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/hf-audio/open-asr-leaderboard",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Edge0/ARK-ASR-3B",
+      "lower_is_better": true,
+      "num_parameters": 4063438848
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 4.87,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "OpenMOSS-Team/MOSS-Transcribe-preview-2B",
+      "lower_is_better": true,
+      "num_parameters": 2418833792
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 5.17,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "OpenMOSS-Team/MOSS-Transcribe-Diarize",
+      "lower_is_better": true,
+      "num_parameters": 908513280
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 5.32,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moondream/parakeet-ultra",
+        "name": "moondream",
+        "isExternal": false,
+        "author": {
+          "_id": "65b196e31dcf354c00d93f93",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/65df6605dba41b152100edf9/LEUWPRTize9N7dMShjcPC.png",
+          "fullname": "moondream",
+          "name": "moondream",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 3462,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moondream/parakeet-ultra",
+      "lower_is_better": true,
+      "num_parameters": 627270663
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 5.42,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "CohereLabs/cohere-transcribe-03-2026",
+      "lower_is_better": true,
+      "num_parameters": 2065804048
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 5.53,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Edge0/ARK-ASR-0.6B",
+      "lower_is_better": true,
+      "num_parameters": 1299463168
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 5.56,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "soundsgoodai/Zipformer-cr-ctc-transducer-XL-290M",
+      "lower_is_better": true
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 5.76,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3-ASR-1.7B",
+      "pullRequest": 20,
+      "lower_is_better": true,
+      "num_parameters": 2349217408
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 6.02,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "microsoft/Phi-4-multimodal-instruct",
+      "pullRequest": 93,
+      "lower_is_better": true,
+      "num_parameters": 5574460384
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 6.05,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/parakeet-tdt-0.6b-v2",
+      "lower_is_better": true
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 6.05,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moondream/parakeet-redux",
+        "name": "moondream",
+        "isExternal": false,
+        "author": {
+          "_id": "65b196e31dcf354c00d93f93",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/65df6605dba41b152100edf9/LEUWPRTize9N7dMShjcPC.png",
+          "fullname": "moondream",
+          "name": "moondream",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 3462,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moondream/parakeet-redux",
+      "lower_is_better": true,
+      "num_parameters": 148923399
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 6.35,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/canary-1b-flash",
+      "lower_is_better": true,
+      "num_parameters": 811049984
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 6.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "kyutai/stt-2.6b-en",
+      "pullRequest": 7,
+      "lower_is_better": true,
+      "num_parameters": 2617118720
+    },
+    {
+      "rank": 14,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 6.42,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3-ASR-0.6B",
+      "pullRequest": 11,
+      "lower_is_better": true,
+      "num_parameters": 938008576
+    },
+    {
+      "rank": 15,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 6.50375,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/canary-1b",
+      "pullRequest": 31,
+      "lower_is_better": true
+    },
+    {
+      "rank": 16,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 6.66,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshine-ai/moonshine-streaming-medium",
+      "pullRequest": 3,
+      "lower_is_better": true,
+      "num_parameters": 265898112
+    },
+    {
+      "rank": 17,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 6.71,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "soundsgoodai/Zipformer-transducer-XL-290M",
+      "lower_is_better": true
+    },
+    {
+      "rank": 18,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.015,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/parakeet-tdt-1.1b",
+      "pullRequest": 7,
+      "lower_is_better": true
+    },
+    {
+      "rank": 19,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.03,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-ASR-Nano-2512",
+      "lower_is_better": true,
+      "num_parameters": 2257843200
+    },
+    {
+      "rank": 20,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.03,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/hf-audio/open-asr-leaderboard",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Edge0/Audio8-ASR-0.1B",
+      "lower_is_better": true,
+      "num_parameters": 323990528
+    },
+    {
+      "rank": 21,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.05,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "mistralai/Voxtral-Mini-3B-2507",
+      "pullRequest": 47,
+      "lower_is_better": true,
+      "num_parameters": 4676271104
+    },
+    {
+      "rank": 22,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.12,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/canary-180m-flash",
+      "pullRequest": 10,
+      "lower_is_better": true
+    },
+    {
+      "rank": 23,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.12375,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/parakeet-rnnt-1.1b",
+      "lower_is_better": true,
+      "num_parameters": 1070518785
+    },
+    {
+      "rank": 24,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.15,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/canary-1b-v2",
+      "pullRequest": 23,
+      "lower_is_better": true,
+      "num_parameters": 978998272
+    },
+    {
+      "rank": 25,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.21,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "distil-whisper/distil-large-v3.5",
+      "lower_is_better": true,
+      "num_parameters": 756405760
+    },
+    {
+      "rank": 26,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.42,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "espnet/owsm_ctc_v4_1B",
+      "lower_is_better": true
+    },
+    {
+      "rank": 27,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.44,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openai/whisper-large-v3",
+      "pullRequest": 229,
+      "lower_is_better": true,
+      "num_parameters": 1543490560
+    },
+    {
+      "rank": 28,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.49,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/parakeet-tdt_ctc-110m",
+      "pullRequest": 5,
+      "lower_is_better": true
+    },
+    {
+      "rank": 29,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.495,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/parakeet-rnnt-0.6b",
+      "pullRequest": 3,
+      "lower_is_better": true,
+      "num_parameters": 616741377
+    },
+    {
+      "rank": 30,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.69,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/parakeet-ctc-0.6b",
+      "pullRequest": 4,
+      "lower_is_better": true,
+      "num_parameters": 608848897
+    },
+    {
+      "rank": 31,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.77,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "microsoft/VibeVoice-ASR-HF",
+      "pullRequest": 9,
+      "lower_is_better": true,
+      "num_parameters": 8330325888
+    },
+    {
+      "rank": 32,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.835,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openai/whisper-large-v2",
+      "pullRequest": 123,
+      "lower_is_better": true,
+      "num_parameters": 1543304960
+    },
+    {
+      "rank": 33,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.84,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshine-ai/moonshine-streaming-small",
+      "pullRequest": 1,
+      "lower_is_better": true,
+      "num_parameters": 140135224
+    },
+    {
+      "rank": 34,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 7.9425,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openai/whisper-large",
+      "pullRequest": 54,
+      "lower_is_better": true,
+      "num_parameters": 1543304960
+    },
+    {
+      "rank": 35,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 8.09,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openai/whisper-medium.en",
+      "pullRequest": 19,
+      "lower_is_better": true,
+      "num_parameters": 763856896
+    },
+    {
+      "rank": 36,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 8.12,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "espnet/owsm_ctc_v3.1_1B",
+      "lower_is_better": true
+    },
+    {
+      "rank": 37,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 8.31875,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/stt_en_conformer_ctc_large",
+      "pullRequest": 4,
+      "lower_is_better": true
+    },
+    {
+      "rank": 38,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 8.48,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "speechbrain/asr-conformer-loquacious",
+      "pullRequest": 1,
+      "lower_is_better": true
+    },
+    {
+      "rank": 39,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 8.59,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openai/whisper-small.en",
+      "pullRequest": 17,
+      "lower_is_better": true,
+      "num_parameters": 241734144
+    },
+    {
+      "rank": 40,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 8.965,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/stt_en_fastconformer_ctc_large",
+      "pullRequest": 4,
+      "lower_is_better": true
+    },
+    {
+      "rank": 41,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 9.0575,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/stt_en_fastconformer_transducer_large",
+      "pullRequest": 2,
+      "lower_is_better": true
+    },
+    {
+      "rank": 42,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 9.36,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/spaces/hf-audio/open_asr_leaderboard",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "abr-ai/niagara-38m-batch.en",
+      "lower_is_better": true
+    },
+    {
+      "rank": 43,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 9.99,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshine-ai/moonshine-base",
+      "pullRequest": 5,
+      "lower_is_better": true,
+      "num_parameters": 61513920
+    },
+    {
+      "rank": 44,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 10.3175,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openai/whisper-base.en",
+      "pullRequest": 18,
+      "lower_is_better": true,
+      "num_parameters": 72593408
+    },
+    {
+      "rank": 45,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 11.01,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/spaces/hf-audio/open_asr_leaderboard",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "abr-ai/niagara-19m-batch.en",
+      "lower_is_better": true
+    },
+    {
+      "rank": 46,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 11.15875,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/stt_en_conformer_ctc_small",
+      "pullRequest": 1,
+      "lower_is_better": true
+    },
+    {
+      "rank": 47,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 12,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshine-ai/moonshine-streaming-tiny",
+      "pullRequest": 1,
+      "lower_is_better": true,
+      "num_parameters": 44054720
+    },
+    {
+      "rank": 48,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 12.65,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshine-ai/moonshine-tiny",
+      "pullRequest": 7,
+      "lower_is_better": true,
+      "num_parameters": 27092736
+    },
+    {
+      "rank": 49,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 12.80625,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openai/whisper-tiny.en",
+      "pullRequest": 27,
+      "lower_is_better": true,
+      "num_parameters": 37760256
+    },
+    {
+      "rank": 50,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 14.3475,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "speechbrain/asr-wav2vec2-librispeech",
+      "pullRequest": 2,
+      "lower_is_better": true
+    },
+    {
+      "rank": 51,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 21.2725,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/wav2vec2-large-960h-lv60-self",
+      "pullRequest": 9,
+      "lower_is_better": true
+    },
+    {
+      "rank": 52,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 22.53875,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/mms-1b-all",
+      "pullRequest": 26,
+      "lower_is_better": true,
+      "num_parameters": 964845850
+    },
+    {
+      "rank": 53,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 22.5475,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/hubert-xlarge-ls960-ft",
+      "pullRequest": 2,
+      "lower_is_better": true,
+      "num_parameters": 962538400
+    },
+    {
+      "rank": 54,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 22.69375,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/hubert-large-ls960-ft",
+      "pullRequest": 5,
+      "lower_is_better": true
+    },
+    {
+      "rank": 55,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 22.93125,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/wav2vec2-large-robust-ft-libri-960h",
+      "pullRequest": 4,
+      "lower_is_better": true,
+      "num_parameters": 315471520
+    },
+    {
+      "rank": 56,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 23.21,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/data2vec-audio-large-960h",
+      "pullRequest": 3,
+      "lower_is_better": true
+    },
+    {
+      "rank": 57,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 23.28375,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/wav2vec2-conformer-rope-large-960h-ft",
+      "pullRequest": 2,
+      "lower_is_better": true,
+      "num_parameters": 593426112
+    },
+    {
+      "rank": 58,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 23.29125,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/wav2vec2-conformer-rel-pos-large-960h-ft",
+      "pullRequest": 4,
+      "lower_is_better": true
+    },
+    {
+      "rank": 59,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 26.7725,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/wav2vec2-large-960h",
+      "pullRequest": 7,
+      "lower_is_better": true
+    },
+    {
+      "rank": 60,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 28.3025,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/data2vec-audio-base-960h",
+      "pullRequest": 5,
+      "lower_is_better": true
+    },
+    {
+      "rank": 61,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 29.4025,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/wav2vec2-base-960h",
+      "pullRequest": 19,
+      "lower_is_better": true,
+      "num_parameters": 94395552
+    },
+    {
+      "rank": 62,
+      "filename": ".eval_results/open_asr_leaderboard.yaml",
+      "value": 39.79625,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/hf-audio",
+        "name": "open-asr-leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "64f09110e723fc376252fa77",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/61b85ce86eb1f2c5e6233736/pCka87yd0Yvl2JzI5h2Oq.png",
+          "fullname": "Hugging Face for Audio",
+          "name": "hf-audio",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 392,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "facebook/mms-1b-fl102",
+      "pullRequest": 6,
+      "lower_is_better": true,
+      "num_parameters": 964748494
+    }
+  ]
+}

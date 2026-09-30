@@ -1,0 +1,89 @@
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: mean_wer
+  value: 4.87
+  date: '2026-06-22'
+  source:
+    url: https://huggingface.co/hf-audio
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: rtfx
+  value: 173.26
+  date: '2026-06-22'
+  source:
+    url: https://huggingface.co/hf-audio
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: ami_wer
+  value: 8.37
+  date: '2026-06-22'
+  source:
+    url: https://huggingface.co/hf-audio
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: earnings22_wer
+  value: 7.84
+  date: '2026-06-22'
+  source:
+    url: https://huggingface.co/hf-audio
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: gigaspeech_wer
+  value: 6.78
+  date: '2026-06-22'
+  source:
+    url: https://huggingface.co/hf-audio
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: librispeech_clean_wer
+  value: 1.21
+  date: '2026-06-22'
+  source:
+    url: https://huggingface.co/hf-audio
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: librispeech_other_wer
+  value: 2.84
+  date: '2026-06-22'
+  source:
+    url: https://huggingface.co/hf-audio
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: spgispeech_wer
+  value: 1.63
+  date: '2026-06-22'
+  source:
+    url: https://huggingface.co/hf-audio
+    name: open-asr-leaderboard
+    user: hf-audio
+
+- dataset:
+    id: hf-audio/open-asr-leaderboard
+    task_id: voxpopuli_wer
+  value: 5.39
+  date: '2026-06-22'
+  source:
+    url: https://huggingface.co/hf-audio
+    name: open-asr-leaderboard
+    user: hf-audio

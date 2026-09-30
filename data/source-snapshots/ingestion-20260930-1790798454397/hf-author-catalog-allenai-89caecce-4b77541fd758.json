@@ -1,0 +1,1644 @@
+[
+  {
+    "id": "allenai/SamudrACE-E3SMv3",
+    "sha": null,
+    "lastModified": "2026-09-24T20:13:42.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "fme",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/ACE2S-SHiELD-plus",
+    "sha": null,
+    "lastModified": "2026-09-10T13:16:04.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "fme",
+      "arxiv:2606.07928",
+      "doi:10.57967/hf/10259",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1_2-Small",
+    "sha": null,
+    "lastModified": "2026-09-04T15:08:39.000Z",
+    "pipeline_tag": "image-feature-extraction",
+    "tags": [
+      "image-feature-extraction",
+      "arxiv:2605.20804",
+      "license:other",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1_2-Base",
+    "sha": null,
+    "lastModified": "2026-09-04T15:08:25.000Z",
+    "pipeline_tag": "image-feature-extraction",
+    "tags": [
+      "image-feature-extraction",
+      "arxiv:2605.20804",
+      "license:other",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/ACE2S-SHiELD-plus-supplemental-checkpoints",
+    "sha": null,
+    "lastModified": "2026-09-01T23:25:26.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "fme",
+      "arxiv:2606.07928",
+      "doi:10.57967/hf/10260",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1-Base",
+    "sha": null,
+    "lastModified": "2026-08-25T20:09:54.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1-Large",
+    "sha": null,
+    "lastModified": "2026-08-25T20:09:54.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1-Tiny",
+    "sha": null,
+    "lastModified": "2026-08-25T20:09:53.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1-Nano",
+    "sha": null,
+    "lastModified": "2026-08-25T20:09:52.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/StdMoE_1b14b_1T",
+    "sha": null,
+    "lastModified": "2026-07-09T17:44:48.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "emo",
+      "text-generation",
+      "moe",
+      "mixture-of-experts",
+      "baseline",
+      "conversational",
+      "custom_code",
+      "en",
+      "dataset:allenai/OLMoE-mix-0924",
+      "arxiv:2605.06663",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/StdMoE_1b14b_130B",
+    "sha": null,
+    "lastModified": "2026-07-09T17:44:29.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "emo",
+      "text-generation",
+      "moe",
+      "mixture-of-experts",
+      "baseline",
+      "ablation",
+      "conversational",
+      "custom_code",
+      "en",
+      "dataset:allenai/OLMoE-mix-0924",
+      "arxiv:2605.06663",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/StdMoE_1b4b_130B",
+    "sha": null,
+    "lastModified": "2026-07-09T17:44:18.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "emo",
+      "text-generation",
+      "moe",
+      "mixture-of-experts",
+      "baseline",
+      "ablation",
+      "memory-matched",
+      "conversational",
+      "custom_code",
+      "en",
+      "dataset:allenai/OLMoE-mix-0924",
+      "arxiv:2605.06663",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Emo_1b14b_130B",
+    "sha": null,
+    "lastModified": "2026-07-09T17:44:06.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "emo",
+      "text-generation",
+      "moe",
+      "mixture-of-experts",
+      "modularity",
+      "ablation",
+      "conversational",
+      "custom_code",
+      "en",
+      "dataset:allenai/OLMoE-mix-0924",
+      "arxiv:2605.06663",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Emo_1b14b_1T",
+    "sha": null,
+    "lastModified": "2026-07-09T17:43:53.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "emo",
+      "text-generation",
+      "moe",
+      "mixture-of-experts",
+      "modularity",
+      "conversational",
+      "custom_code",
+      "en",
+      "dataset:allenai/OLMoE-mix-0924",
+      "arxiv:2605.06663",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Dense_1b_130B",
+    "sha": null,
+    "lastModified": "2026-07-09T17:43:37.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo2_noqknorm_prenorm",
+      "text-generation",
+      "dense",
+      "baseline",
+      "ablation",
+      "memory-matched",
+      "conversational",
+      "custom_code",
+      "en",
+      "dataset:allenai/OLMoE-mix-0924",
+      "arxiv:2605.06663",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/StdMoE_1b14b_1T_EmoAnnealed",
+    "sha": null,
+    "lastModified": "2026-07-09T00:44:08.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "emo",
+      "text-generation",
+      "moe",
+      "mixture-of-experts",
+      "modularity",
+      "ablation",
+      "midtraining",
+      "conversational",
+      "custom_code",
+      "en",
+      "dataset:allenai/OLMoE-mix-0924",
+      "arxiv:2605.06663",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/StdMoE_1b14b_1T_Preanneal",
+    "sha": null,
+    "lastModified": "2026-07-09T00:43:56.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "emo",
+      "text-generation",
+      "moe",
+      "mixture-of-experts",
+      "baseline",
+      "pre-annealing",
+      "conversational",
+      "custom_code",
+      "en",
+      "dataset:allenai/OLMoE-mix-0924",
+      "arxiv:2605.06663",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1_2-Nano",
+    "sha": null,
+    "lastModified": "2026-07-02T18:00:34.000Z",
+    "pipeline_tag": "image-feature-extraction",
+    "tags": [
+      "image-feature-extraction",
+      "arxiv:2605.20804",
+      "license:other",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1_2-Tiny",
+    "sha": null,
+    "lastModified": "2026-07-02T11:02:58.000Z",
+    "pipeline_tag": "image-feature-extraction",
+    "tags": [
+      "image-feature-extraction",
+      "arxiv:2605.20804",
+      "license:other",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/ACE2-SHiELD",
+    "sha": null,
+    "lastModified": "2026-06-29T21:51:40.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "fme",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/SERA-32B-GA",
+    "sha": null,
+    "lastModified": "2026-06-25T21:44:18.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3",
+      "arxiv:2601.20789",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/SERA-32B",
+    "sha": null,
+    "lastModified": "2026-06-25T21:44:14.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3",
+      "arxiv:2601.20789",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/SERA-14B",
+    "sha": null,
+    "lastModified": "2026-06-25T21:44:06.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3",
+      "arxiv:2601.20789",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/BAR-2x7B-Math",
+    "sha": null,
+    "lastModified": "2026-06-25T21:43:54.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "flex_olmo",
+      "text-generation",
+      "bar",
+      "mixture-of-experts",
+      "olmo",
+      "conversational",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/BAR-2x7B-Code",
+    "sha": null,
+    "lastModified": "2026-06-25T21:43:36.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "flex_olmo",
+      "text-generation",
+      "bar",
+      "mixture-of-experts",
+      "olmo",
+      "conversational",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-32B-Think",
+    "sha": null,
+    "lastModified": "2026-06-25T21:43:26.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-Think-RL",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-32B-Think-DPO",
+      "base_model:finetune:allenai/Olmo-3-32B-Think-DPO",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-32B-Think-DPO",
+    "sha": null,
+    "lastModified": "2026-06-25T21:43:19.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "pytorch",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-Think-DPO",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-32B-Think-SFT",
+      "base_model:finetune:allenai/Olmo-3-32B-Think-SFT",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3.1-7B-RL-Zero-Math",
+    "sha": null,
+    "lastModified": "2026-06-25T21:43:12.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-RL-Zero-Math-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-1025-7B",
+      "base_model:finetune:allenai/Olmo-3-1025-7B",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3.1-7B-RL-Zero-Code",
+    "sha": null,
+    "lastModified": "2026-06-25T21:43:05.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-RL-Zero-Code-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-1025-7B",
+      "base_model:finetune:allenai/Olmo-3-1025-7B",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us",
+      "deploy:azure"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-7B-Think-DPO",
+    "sha": null,
+    "lastModified": "2026-06-25T21:42:31.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "pytorch",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-Think-DPO-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-7B-Think-SFT",
+      "base_model:finetune:allenai/Olmo-3-7B-Think-SFT",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-7B-RL-Zero-Mix",
+    "sha": null,
+    "lastModified": "2026-06-25T21:42:23.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo2-retrofit",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-RLZero-Mix-7B",
+      "base_model:allenai/Olmo-3-1025-7B",
+      "base_model:finetune:allenai/Olmo-3-1025-7B",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-7B-RL-Zero-Math",
+    "sha": null,
+    "lastModified": "2026-06-25T21:42:10.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-RLZero-Math-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-1025-7B",
+      "base_model:finetune:allenai/Olmo-3-1025-7B",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-7B-RL-Zero-IF",
+    "sha": null,
+    "lastModified": "2026-06-25T21:42:01.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-RLZero-IF-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-1025-7B",
+      "base_model:finetune:allenai/Olmo-3-1025-7B",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-7B-RL-Zero-General",
+    "sha": null,
+    "lastModified": "2026-06-25T21:41:55.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-RLZero-General-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-1025-7B",
+      "base_model:finetune:allenai/Olmo-3-1025-7B",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-7B-RL-Zero-Code",
+    "sha": null,
+    "lastModified": "2026-06-25T21:41:48.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-RLZero-Code-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-1025-7B",
+      "base_model:finetune:allenai/Olmo-3-1025-7B",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-7B-Instruct-DPO",
+    "sha": null,
+    "lastModified": "2026-06-25T21:41:43.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "pytorch",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-Think-DPO-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-7B-Instruct-SFT",
+      "base_model:finetune:allenai/Olmo-3-7B-Instruct-SFT",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-7B-Instruct",
+    "sha": null,
+    "lastModified": "2026-06-25T21:41:37.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-Instruct-RL-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-7B-Instruct-DPO",
+      "base_model:finetune:allenai/Olmo-3-7B-Instruct-DPO",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "deploy:sagemaker",
+      "deploy:azure",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-3-7B-Think",
+    "sha": null,
+    "lastModified": "2026-06-25T21:41:28.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo3",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-Think-RL-7B",
+      "arxiv:2512.13961",
+      "base_model:allenai/Olmo-3-7B-Think-DPO",
+      "base_model:finetune:allenai/Olmo-3-7B-Think-DPO",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us",
+      "deploy:azure"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1_1-Nano",
+    "sha": null,
+    "lastModified": "2026-06-24T15:13:59.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/qwen35-9b-openthoughts",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:58.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "dataset:allenai/open-instruct-openthoughts",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.5-9B",
+      "base_model:finetune:Qwen/Qwen3.5-9B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/qwen35-9b-cli-gym",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:56.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "dataset:allenai/open-instruct-cli-gym",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.5-9B",
+      "base_model:finetune:Qwen/Qwen3.5-9B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/qwen35-9b-swesmith",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:55.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "dataset:allenai/open-instruct-swe-smith",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.5-9B",
+      "base_model:finetune:Qwen/Qwen3.5-9B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/qwen35-9b-termigen",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:53.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "dataset:allenai/open-instruct-termigen",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.5-9B",
+      "base_model:finetune:Qwen/Qwen3.5-9B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/qwen35-9b-terminaltraj",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:50.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "dataset:allenai/open-instruct-terminal-traj",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.5-9B",
+      "base_model:finetune:Qwen/Qwen3.5-9B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/qwen35-9b-endless",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:49.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "dataset:allenai/open-instruct-endless-terminals",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.5-9B",
+      "base_model:finetune:Qwen/Qwen3.5-9B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/tmax-8b",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:42.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3",
+      "dataset:allenai/tmax-15k-open-instruct",
+      "arxiv:2606.23321",
+      "base_model:allenai/tmax-sft-8b",
+      "base_model:finetune:allenai/tmax-sft-8b",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/tmax-sft-8b",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:41.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3",
+      "dataset:allenai/tmax-sft",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3-8B",
+      "base_model:finetune:Qwen/Qwen3-8B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/tmax-2b",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:39.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "dataset:allenai/tmax-15k-open-instruct",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.5-2B",
+      "base_model:finetune:Qwen/Qwen3.5-2B",
+      "license:apache-2.0",
+      "eval-results",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/tmax-4b",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:37.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "dataset:allenai/tmax-15k-open-instruct",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.5-4B",
+      "base_model:finetune:Qwen/Qwen3.5-4B",
+      "license:apache-2.0",
+      "eval-results",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/tmax-27b",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:36.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "en",
+      "dataset:allenai/tmax-15k-open-instruct",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.6-27B",
+      "base_model:finetune:Qwen/Qwen3.6-27B",
+      "license:apache-2.0",
+      "eval-results",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/tmax-9b",
+    "sha": null,
+    "lastModified": "2026-06-23T03:28:34.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "qwen3_5",
+      "dataset:allenai/tmax-15k-open-instruct",
+      "arxiv:2606.23321",
+      "base_model:Qwen/Qwen3.5-9B",
+      "base_model:finetune:Qwen/Qwen3.5-9B",
+      "license:apache-2.0",
+      "eval-results",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoMotion-4B-H1-F32",
+    "sha": null,
+    "lastModified": "2026-06-18T02:47:57.000Z",
+    "pipeline_tag": "image-text-to-text",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmo2",
+      "image-text-to-text",
+      "molmo-motion",
+      "trajectory-forecasting",
+      "3d",
+      "vision-language",
+      "conversational",
+      "custom_code",
+      "arxiv:2606.18558",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoMotion-4B-H3-F30",
+    "sha": null,
+    "lastModified": "2026-06-18T02:47:29.000Z",
+    "pipeline_tag": "image-text-to-text",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmo2",
+      "image-text-to-text",
+      "molmo-motion",
+      "trajectory-forecasting",
+      "3d",
+      "vision-language",
+      "conversational",
+      "custom_code",
+      "arxiv:2606.18558",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Bolmo-7B",
+    "sha": null,
+    "lastModified": "2026-06-17T08:16:03.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "bolmo",
+      "text-generation",
+      "custom_code",
+      "en",
+      "dataset:allenai/bolmo_mix",
+      "arxiv:2512.15586",
+      "base_model:allenai/Olmo-3-1025-7B",
+      "base_model:finetune:allenai/Olmo-3-1025-7B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Bolmo-1B",
+    "sha": null,
+    "lastModified": "2026-06-17T08:14:56.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "bolmo",
+      "text-generation",
+      "custom_code",
+      "en",
+      "dataset:allenai/bolmo_mix",
+      "arxiv:2512.15586",
+      "base_model:allenai/OLMo-2-0425-1B",
+      "base_model:finetune:allenai/OLMo-2-0425-1B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/H_pre_LQK_32kv_8k_11k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:36:26.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/G_pre_8kv_8k_14k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:36:06.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/H_post_LQK_8kv_4k_11k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:35:30.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/G_post_LQK_8kv_4k_14k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:34:49.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/B_post_LQK_32kv_4k_11k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:34:13.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/K_post_HQK_8kv_12k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:33:37.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/H_post_LQK_32kv_8k_11k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:32:56.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/A_post_HQK_8kv_8k_13k_SWA_fp8",
+    "sha": null,
+    "lastModified": "2026-06-15T21:31:22.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/H_post_LQK_32kv_8k_11k_SWA_fp8",
+    "sha": null,
+    "lastModified": "2026-06-15T21:31:17.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/F_pre_8kv_8k_14k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:29:46.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/E_post_LQK_32kv_8k_11k_SWA_fp8",
+    "sha": null,
+    "lastModified": "2026-06-15T21:29:44.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/H_post_HQK_32kv_8k_11k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:28:18.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/C_post_LQK_8kv_8k_13k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:28:12.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/D_post_LQK_8kv_8k_13k_SWA_fp8",
+    "sha": null,
+    "lastModified": "2026-06-15T21:27:35.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/J_pre_16kv_8k_14k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:26:22.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/G_pre_8kv_8k_14k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:25:43.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/I_pre_32kv_8k_12k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:22:17.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/G_post_LQK_8kv_8k_14k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:22:15.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/G_pre_LQK_8kv_8k_14k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:17:17.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/H_pre_32kv_8k_11k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:17:11.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/G_pre_4kv_8k_14k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:15:41.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/G_pre_8kv_4k_14k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:14:56.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/H_post_LQK_32kv_8k_11k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:14:55.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/H_post_LQK_32kv_4k_11k",
+    "sha": null,
+    "lastModified": "2026-06-15T21:14:14.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/B_post_LQK_32kv_4k_11k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:13:30.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/D_post_LQK_8kv_8k_13k_SWA",
+    "sha": null,
+    "lastModified": "2026-06-15T21:12:53.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "transformers",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/WildDet3D",
+    "sha": null,
+    "lastModified": "2026-06-01T20:58:44.000Z",
+    "pipeline_tag": "object-detection",
+    "tags": [
+      "wilddet3d",
+      "3d-detection",
+      "monocular",
+      "open-vocabulary",
+      "3d-object-detection",
+      "object-detection",
+      "depth-estimation",
+      "computer-vision",
+      "grounding",
+      "segmentation",
+      "point-cloud",
+      "3d-bounding-box",
+      "zero-shot",
+      "promptable",
+      "pytorch",
+      "en",
+      "dataset:allenai/WildDet3D-Data",
+      "arxiv:2604.08626",
+      "license:other",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-Hybrid-Instruct-SFT-7B",
+    "sha": null,
+    "lastModified": "2026-05-28T23:29:28.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo_hybrid",
+      "text-generation",
+      "conversational",
+      "en",
+      "dataset:allenai/Dolci-Instruct-SFT-Tool-Use-SA",
+      "dataset:allenai/Dolci-Instruct-SFT",
+      "base_model:allenai/Olmo-Hybrid-7B",
+      "base_model:finetune:allenai/Olmo-Hybrid-7B",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Olmo-Hybrid-7B",
+    "sha": null,
+    "lastModified": "2026-05-26T22:25:27.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "olmo_hybrid",
+      "text-generation",
+      "en",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2-LIBERO-LeRobot",
+    "sha": null,
+    "lastModified": "2026-05-24T00:37:04.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "lerobot",
+      "safetensors",
+      "vision-language-action",
+      "imitation-learning",
+      "robotics",
+      "molmoact2",
+      "libero",
+      "en",
+      "dataset:allenai/MolmoAct2-LIBERO-Dataset",
+      "arxiv:2605.02881",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2-DROID",
+    "sha": null,
+    "lastModified": "2026-05-23T01:28:50.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmoact2",
+      "image-text-to-text",
+      "robotics",
+      "droid",
+      "custom_code",
+      "arxiv:2605.02881",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2-Pretrain",
+    "sha": null,
+    "lastModified": "2026-05-23T01:15:30.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmoact2",
+      "image-text-to-text",
+      "robotics",
+      "custom_code",
+      "arxiv:2605.02881",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2-Think",
+    "sha": null,
+    "lastModified": "2026-05-23T01:15:28.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmoact2",
+      "image-text-to-text",
+      "robotics",
+      "depth-reasoning",
+      "custom_code",
+      "arxiv:2605.02881",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2",
+    "sha": null,
+    "lastModified": "2026-05-23T01:15:26.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmoact2",
+      "image-text-to-text",
+      "robotics",
+      "custom_code",
+      "arxiv:2605.02881",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2-Think-LIBERO",
+    "sha": null,
+    "lastModified": "2026-05-23T01:15:24.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmoact2",
+      "image-text-to-text",
+      "robotics",
+      "depth-reasoning",
+      "libero",
+      "custom_code",
+      "arxiv:2605.02881",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2-LIBERO",
+    "sha": null,
+    "lastModified": "2026-05-23T01:15:22.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmoact2",
+      "image-text-to-text",
+      "robotics",
+      "libero",
+      "custom_code",
+      "arxiv:2605.02881",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2-SO100_101",
+    "sha": null,
+    "lastModified": "2026-05-23T01:15:19.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmoact2",
+      "image-text-to-text",
+      "robotics",
+      "so100",
+      "so101",
+      "custom_code",
+      "arxiv:2605.02881",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2-BimanualYAM",
+    "sha": null,
+    "lastModified": "2026-05-23T01:15:17.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmoact2",
+      "image-text-to-text",
+      "robotics",
+      "bimanual-yam",
+      "custom_code",
+      "arxiv:2605.02881",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/Molmo2-ER",
+    "sha": null,
+    "lastModified": "2026-05-21T01:13:56.000Z",
+    "pipeline_tag": "image-text-to-text",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "molmo2",
+      "image-text-to-text",
+      "multimodal",
+      "vision-language-model",
+      "embodied-reasoning",
+      "spatial-reasoning",
+      "molmo",
+      "conversational",
+      "custom_code",
+      "en",
+      "arxiv:2605.02881",
+      "base_model:allenai/Molmo2-4B",
+      "base_model:finetune:allenai/Molmo2-4B",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1_1-Tiny",
+    "sha": null,
+    "lastModified": "2026-05-15T15:58:26.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/OlmoEarth-v1_1-Base",
+    "sha": null,
+    "lastModified": "2026-05-15T15:53:18.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/EMO",
+    "sha": null,
+    "lastModified": "2026-05-08T16:10:45.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "emo",
+      "text-generation",
+      "moe",
+      "mixture-of-experts",
+      "modularity",
+      "index",
+      "conversational",
+      "custom_code",
+      "en",
+      "dataset:allenai/OLMoE-mix-0924",
+      "arxiv:2605.06663",
+      "license:other",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/MolmoAct2-FAST-Tokenizer",
+    "sha": null,
+    "lastModified": "2026-05-05T14:34:17.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "transformers",
+      "robotics",
+      "tokenizer",
+      "action-tokenizer",
+      "arxiv:2605.02881",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/GraspMolmo",
+    "sha": null,
+    "lastModified": "2026-05-05T05:08:33.000Z",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "safetensors",
+      "molmo",
+      "robotics",
+      "grasping",
+      "task-oriented-grasping",
+      "manipulation",
+      "custom_code",
+      "en",
+      "dataset:allenai/PRISM",
+      "arxiv:2505.13441",
+      "base_model:allenai/Molmo-7B-D-0924",
+      "base_model:finetune:allenai/Molmo-7B-D-0924",
+      "license:mit",
+      "region:us"
+    ]
+  },
+  {
+    "id": "allenai/intent-aware-lfqa-llama3-8b-intent-explicit",
+    "sha": null,
+    "lastModified": "2026-04-23T16:36:21.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "pytorch",
+      "llama",
+      "text-generation",
+      "conversational",
+      "en",
+      "base_model:meta-llama/Meta-Llama-3-8B-Instruct",
+      "base_model:finetune:meta-llama/Meta-Llama-3-8B-Instruct",
+      "license:odc-by",
+      "text-generation-inference",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  }
+]

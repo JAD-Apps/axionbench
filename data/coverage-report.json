@@ -1,0 +1,554 @@
+{
+  "retrievedAt": "2026-09-30T20:00:56.277Z",
+  "datasetStatus": "launch-coverage-reached-with-source-limitations",
+  "thresholds": {
+    "observedSuites": 15,
+    "observedDomains": 8,
+    "registrySuites": 30,
+    "registryDomains": 11
+  },
+  "registry": {
+    "suiteVersions": 69,
+    "benchmarkFamilies": 56,
+    "capabilityDomains": 15
+  },
+  "observations": {
+    "total": 118,
+    "observedSuiteVersions": 25,
+    "observedFamilies": 22,
+    "observedDomains": 11,
+    "byDomain": {
+      "agents": 12,
+      "audio-video": 22,
+      "coding": 17,
+      "instruction-following": 2,
+      "knowledge": 2,
+      "mathematics": 7,
+      "professional": 4,
+      "reasoning": 14,
+      "safety": 2,
+      "tool-use": 2,
+      "vision-documents": 34
+    },
+    "byUnitStatus": {
+      "inferred": 116,
+      "unknown": 2
+    },
+    "normalized": 116,
+    "unitUnavailable": 2,
+    "independentlyReplicated": 0,
+    "huggingFaceVerifiedFlag": 0
+  },
+  "suiteVersions": [
+    {
+      "suiteId": "swebench-verified",
+      "benchmarkFamilyId": "swe-bench",
+      "domain": "coding",
+      "observations": 4,
+      "distinctModels": 4,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "swebench-multilingual",
+      "benchmarkFamilyId": "swe-bench",
+      "domain": "coding",
+      "observations": 3,
+      "distinctModels": 3,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "swebench-pro",
+      "benchmarkFamilyId": "swe-bench",
+      "domain": "coding",
+      "observations": 6,
+      "distinctModels": 6,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "terminal-bench-4",
+      "benchmarkFamilyId": "terminal-bench",
+      "domain": "agents",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "gpqa-diamond",
+      "benchmarkFamilyId": "gpqa-diamond",
+      "domain": "reasoning",
+      "observations": 6,
+      "distinctModels": 6,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "hle-original",
+      "benchmarkFamilyId": "humanitys-last-exam",
+      "domain": "reasoning",
+      "observations": 8,
+      "distinctModels": 6,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "mmlu-pro",
+      "benchmarkFamilyId": "mmlu-pro",
+      "domain": "knowledge",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "mmmu-pro",
+      "benchmarkFamilyId": "mmmu",
+      "domain": "vision-documents",
+      "observations": 4,
+      "distinctModels": 4,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "gsm8k",
+      "benchmarkFamilyId": "gsm8k",
+      "domain": "mathematics",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "aime-2026",
+      "benchmarkFamilyId": "aime",
+      "domain": "mathematics",
+      "observations": 3,
+      "distinctModels": 3,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "hmmt-feb-2026",
+      "benchmarkFamilyId": "hmmt",
+      "domain": "mathematics",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "terminal-bench-2.1",
+      "benchmarkFamilyId": "terminal-bench",
+      "domain": "agents",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "deep-swe",
+      "benchmarkFamilyId": "deep-swe",
+      "domain": "coding",
+      "observations": 4,
+      "distinctModels": 4,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "toolathlon",
+      "benchmarkFamilyId": "toolathlon",
+      "domain": "tool-use",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "apex-agents",
+      "benchmarkFamilyId": "apex-agents",
+      "domain": "agents",
+      "observations": 3,
+      "distinctModels": 3,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "video-mme-v2",
+      "benchmarkFamilyId": "video-mme",
+      "domain": "audio-video",
+      "observations": 3,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "open-asr",
+      "benchmarkFamilyId": "open-asr",
+      "domain": "audio-video",
+      "observations": 19,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "skillsbench",
+      "benchmarkFamilyId": "skillsbench",
+      "domain": "agents",
+      "observations": 3,
+      "distinctModels": 3,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "evasionbench",
+      "benchmarkFamilyId": "evasionbench",
+      "domain": "safety",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "redlinebench",
+      "benchmarkFamilyId": "redlinebench",
+      "domain": "professional",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "ifstruct",
+      "benchmarkFamilyId": "ifstruct",
+      "domain": "instruction-following",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "screenspot-pro",
+      "benchmarkFamilyId": "screenspot",
+      "domain": "agents",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "olmocr-bench",
+      "benchmarkFamilyId": "olmocr-bench",
+      "domain": "vision-documents",
+      "observations": 18,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "real5-omnidocbench",
+      "benchmarkFamilyId": "omnidocbench",
+      "domain": "vision-documents",
+      "observations": 12,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    },
+    {
+      "suiteId": "lexam-hard",
+      "benchmarkFamilyId": "lexam",
+      "domain": "professional",
+      "observations": 2,
+      "distinctModels": 2,
+      "verifiedRows": 0,
+      "independentReplications": 0
+    }
+  ],
+  "benchmarkFamilies": [
+    {
+      "benchmarkFamilyId": "aime",
+      "suiteVariants": [
+        "aime-2026"
+      ],
+      "observations": 3
+    },
+    {
+      "benchmarkFamilyId": "apex-agents",
+      "suiteVariants": [
+        "apex-agents"
+      ],
+      "observations": 3
+    },
+    {
+      "benchmarkFamilyId": "deep-swe",
+      "suiteVariants": [
+        "deep-swe"
+      ],
+      "observations": 4
+    },
+    {
+      "benchmarkFamilyId": "evasionbench",
+      "suiteVariants": [
+        "evasionbench"
+      ],
+      "observations": 2
+    },
+    {
+      "benchmarkFamilyId": "gpqa-diamond",
+      "suiteVariants": [
+        "gpqa-diamond"
+      ],
+      "observations": 6
+    },
+    {
+      "benchmarkFamilyId": "gsm8k",
+      "suiteVariants": [
+        "gsm8k"
+      ],
+      "observations": 2
+    },
+    {
+      "benchmarkFamilyId": "hmmt",
+      "suiteVariants": [
+        "hmmt-feb-2026"
+      ],
+      "observations": 2
+    },
+    {
+      "benchmarkFamilyId": "humanitys-last-exam",
+      "suiteVariants": [
+        "hle-original"
+      ],
+      "observations": 8
+    },
+    {
+      "benchmarkFamilyId": "ifstruct",
+      "suiteVariants": [
+        "ifstruct"
+      ],
+      "observations": 2
+    },
+    {
+      "benchmarkFamilyId": "lexam",
+      "suiteVariants": [
+        "lexam-hard"
+      ],
+      "observations": 2
+    },
+    {
+      "benchmarkFamilyId": "mmlu-pro",
+      "suiteVariants": [
+        "mmlu-pro"
+      ],
+      "observations": 2
+    },
+    {
+      "benchmarkFamilyId": "mmmu",
+      "suiteVariants": [
+        "mmmu-pro"
+      ],
+      "observations": 4
+    },
+    {
+      "benchmarkFamilyId": "olmocr-bench",
+      "suiteVariants": [
+        "olmocr-bench"
+      ],
+      "observations": 18
+    },
+    {
+      "benchmarkFamilyId": "omnidocbench",
+      "suiteVariants": [
+        "real5-omnidocbench"
+      ],
+      "observations": 12
+    },
+    {
+      "benchmarkFamilyId": "open-asr",
+      "suiteVariants": [
+        "open-asr"
+      ],
+      "observations": 19
+    },
+    {
+      "benchmarkFamilyId": "redlinebench",
+      "suiteVariants": [
+        "redlinebench"
+      ],
+      "observations": 2
+    },
+    {
+      "benchmarkFamilyId": "screenspot",
+      "suiteVariants": [
+        "screenspot-pro"
+      ],
+      "observations": 2
+    },
+    {
+      "benchmarkFamilyId": "skillsbench",
+      "suiteVariants": [
+        "skillsbench"
+      ],
+      "observations": 3
+    },
+    {
+      "benchmarkFamilyId": "swe-bench",
+      "suiteVariants": [
+        "swebench-verified",
+        "swebench-multilingual",
+        "swebench-pro"
+      ],
+      "observations": 13
+    },
+    {
+      "benchmarkFamilyId": "terminal-bench",
+      "suiteVariants": [
+        "terminal-bench-4",
+        "terminal-bench-2.1"
+      ],
+      "observations": 4
+    },
+    {
+      "benchmarkFamilyId": "toolathlon",
+      "suiteVariants": [
+        "toolathlon"
+      ],
+      "observations": 2
+    },
+    {
+      "benchmarkFamilyId": "video-mme",
+      "suiteVariants": [
+        "video-mme-v2"
+      ],
+      "observations": 3
+    }
+  ],
+  "models": {
+    "total": 508,
+    "withObservations": 32,
+    "byLab": {
+      "ai21": 17,
+      "alibaba-qwen": 53,
+      "allenai-olmo": 100,
+      "anthropic": 15,
+      "cohere": 5,
+      "deepseek": 17,
+      "google": 28,
+      "ibm-granite": 3,
+      "meta": 13,
+      "microsoft": 2,
+      "minimax": 8,
+      "mistral": 19,
+      "moonshot-kimi": 8,
+      "nvidia": 6,
+      "openai": 65,
+      "other": 124,
+      "xai": 7,
+      "zai-glm": 18
+    },
+    "labsWithOriginalCards": {
+      "openai": true,
+      "anthropic": true,
+      "google": true,
+      "xai": true,
+      "meta": true,
+      "deepseek": true,
+      "alibaba-qwen": true,
+      "moonshot-kimi": true,
+      "zai-glm": true,
+      "minimax": true,
+      "mistral": true,
+      "cohere": true,
+      "ai21": true,
+      "nvidia": true,
+      "allenai-olmo": true,
+      "ibm-granite": true,
+      "microsoft": true
+    },
+    "primaryCardLabs": 18
+  },
+  "providerApi": {
+    "endpointConfigurations": 1327,
+    "priceRows": 1328,
+    "rowsWithAnyPrice": 1322,
+    "nullCounts": {
+      "input": 6,
+      "cachedInputRead": 305,
+      "cachedInputWrite": 1014,
+      "output": 6,
+      "reasoning": 1233
+    },
+    "sourceUnit": "USD per token; prices are OpenRouter routes, not direct origin-provider tariffs"
+  },
+  "sourceClasses": {
+    "original_benchmark_evaluation_spec": 25,
+    "original_model_card_bytes": 286,
+    "original_model_card_eval_results": 45,
+    "original_official_model_release_page": 9,
+    "public_author_model_catalogue_projection": 2,
+    "public_benchmark_source_catalogue": 1,
+    "public_leaderboard_structured_projection": 25,
+    "public_model_card_metadata": 3,
+    "public_model_card_metadata_projection": 286,
+    "public_provider_catalogue": 1,
+    "public_provider_endpoint_catalogue": 378,
+    "retrieval_audit_metadata": 1,
+    "retrieval_receipt": 1
+  },
+  "sourceConflicts": {
+    "groups": 9,
+    "observations": 55,
+    "ids": [
+      "conflict:or-deepseek-deepseek-v4.1-flash-20260910-hle-original-b2410908",
+      "conflict:hf-ornith-ai-ornith-1.5-397b-hle-original-d6090111",
+      "conflict:hf-edge0-ark-asr-3b-open-asr-1c2b806c",
+      "conflict:or-moonshotai-kimi-k2.5-0127-video-mme-v2-3f42e50e",
+      "conflict:hf-openmoss-team-moss-transcribe-preview-2b-open-asr-4ecf9652",
+      "conflict:hf-infly-infinity-parser2-pro-olmocr-bench-f6016f0f",
+      "conflict:hf-paddlepaddle-paddleocr-vl-1.6-real5-omnidocbench-f9387455",
+      "conflict:hf-datalab-to-chandra-ocr-2-olmocr-bench-8b9a42f7",
+      "conflict:hf-paddlepaddle-paddleocr-vl-1.5-real5-omnidocbench-d441c1d0"
+    ]
+  },
+  "sourceAvailability": {
+    "registryUrlReferences": 69,
+    "distinctRegistryUrls": 59,
+    "unavailableDistinctRegistryUrls": [],
+    "resultUrlRechecksFailed": [
+      {
+        "url": "https://huggingface.co/datasets/evaleval/EEE_datastore/blob/192329fb7d6b15b7b0936a1a58ae862aa7e8ba24/flat/objects/dd/c9/ddc99cec-f5d3-4cc4-9cc5-bb534377b5f6.json",
+        "status": 401,
+        "error": null
+      }
+    ],
+    "specsUnavailable": [
+      {
+        "datasetId": "cais/hle",
+        "status": 401,
+        "reason": "HTTP 401"
+      },
+      {
+        "datasetId": "Idavidrein/gpqa",
+        "status": 401,
+        "reason": "HTTP 401"
+      },
+      {
+        "datasetId": "datacurve/deep-swe",
+        "status": 401,
+        "reason": "HTTP 401"
+      },
+      {
+        "datasetId": "hkust-nlp/Toolathlon",
+        "status": 401,
+        "reason": "HTTP 401"
+      },
+      {
+        "datasetId": "mercor/apex-agents",
+        "status": 401,
+        "reason": "HTTP 401"
+      }
+    ]
+  }
+}

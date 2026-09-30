@@ -1,0 +1,11 @@
+name: SWE-Bench Pro
+description: SWE-Bench Pro V2 is a 642-task benchmark (11 repositories; Python, Go, JavaScript/TypeScript) for evaluating AI coding agents on long-horizon software engineering tasks. Each task is a real pull request with hidden fail-to-pass tests graded in a pristine container. The `hard` config is the 51-task HARD subset; `v1` is the original 731-task release.
+evaluation_framework: swe-bench-pro
+
+tasks:
+  - id: SWE_Bench_Pro
+    config: default
+    split: test
+  - id: SWE_Bench_Pro_hard
+    config: hard
+    split: test

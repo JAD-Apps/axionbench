@@ -1,0 +1,87 @@
+{
+  "id": "moonshotai/Kimi-K3",
+  "sha": "f831ab66814297da540d832a5235f8e904f29d06",
+  "lastModified": "2026-09-02T02:22:41.000Z",
+  "createdAt": "2026-06-13T06:42:57.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "image-text-to-text",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "kimi_k3",
+    "feature-extraction",
+    "compressed-tensors",
+    "conversational",
+    "image-text-to-text",
+    "custom_code",
+    "license:other",
+    "eval-results",
+    "8-bit",
+    "deploy:sagemaker",
+    "region:us"
+  ],
+  "cardData": {
+    "tags": [
+      "compressed-tensors",
+      "conversational"
+    ],
+    "license": "other",
+    "license_name": "kimi-k3",
+    "library_name": "transformers",
+    "pipeline_tag": "image-text-to-text"
+  },
+  "config": {
+    "architectures": [
+      "KimiK3ForConditionalGeneration"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_kimi_k3.KimiK3Config",
+      "AutoModel": "modeling_kimi_k3.KimiK3ForConditionalGeneration",
+      "AutoModelForCausalLM": "modeling_kimi_k3.KimiK3ForConditionalGeneration"
+    },
+    "model_type": "kimi_k3",
+    "text_config": {
+      "quantization_config": {
+        "config_groups": {
+          "group_0": {
+            "format": "mxfp4-pack-quantized",
+            "targets": [
+              "Linear"
+            ],
+            "weights": {
+              "num_bits": 4
+            }
+          }
+        },
+        "format": "mxfp4-pack-quantized",
+        "ignore": [
+          "re:.*self_attn.*",
+          "re:.*shared_experts.*",
+          "re:.*mlp\\.(gate|up|gate_up|down)_proj.*",
+          "re:.*lm_head.*",
+          "re:.*vision_tower.*",
+          "re:.*mm_projector.*"
+        ],
+        "quant_method": "compressed-tensors"
+      }
+    },
+    "tokenizer_config": {
+      "bos_token": "[BOS]",
+      "eos_token": "[EOS]",
+      "pad_token": "[PAD]",
+      "unk_token": "[UNK]"
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "F32": 11122432,
+      "BF16": 57179884544,
+      "U8": 2722740830208
+    },
+    "total": 2779931837184
+  },
+  "usedStorage": 1561018243668,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

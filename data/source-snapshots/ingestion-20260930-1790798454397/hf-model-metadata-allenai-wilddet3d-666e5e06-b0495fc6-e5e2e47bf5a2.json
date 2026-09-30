@@ -1,0 +1,66 @@
+{
+  "id": "allenai/WildDet3D",
+  "sha": "161edb26239f58d8973045517d9c8b179c515f73",
+  "lastModified": "2026-06-01T20:58:44.000Z",
+  "createdAt": "2026-04-04T01:50:53.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "object-detection",
+  "library_name": "wilddet3d",
+  "tags": [
+    "wilddet3d",
+    "3d-detection",
+    "monocular",
+    "open-vocabulary",
+    "3d-object-detection",
+    "object-detection",
+    "depth-estimation",
+    "computer-vision",
+    "grounding",
+    "segmentation",
+    "point-cloud",
+    "3d-bounding-box",
+    "zero-shot",
+    "promptable",
+    "pytorch",
+    "en",
+    "dataset:allenai/WildDet3D-Data",
+    "arxiv:2604.08626",
+    "license:other",
+    "region:us"
+  ],
+  "cardData": {
+    "library_name": "wilddet3d",
+    "license": "other",
+    "license_name": "sam-license",
+    "license_link": "https://github.com/facebookresearch/sam3/blob/main/LICENSE",
+    "pipeline_tag": "object-detection",
+    "tags": [
+      "3d-detection",
+      "monocular",
+      "open-vocabulary",
+      "3d-object-detection",
+      "object-detection",
+      "depth-estimation",
+      "computer-vision",
+      "grounding",
+      "segmentation",
+      "point-cloud",
+      "3d-bounding-box",
+      "zero-shot",
+      "promptable",
+      "pytorch"
+    ],
+    "datasets": [
+      "allenai/WildDet3D-Data"
+    ],
+    "language": [
+      "en"
+    ]
+  },
+  "config": {
+    "model_type": "wilddet3d"
+  },
+  "usedStorage": 14200086216,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

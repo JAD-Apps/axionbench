@@ -1,0 +1,270 @@
+{
+  "datasetId": "benchflow/skillsbench",
+  "retrievedAt": "2026-09-30T19:49:14.324Z",
+  "projectionOf": "https://huggingface.co/api/datasets/benchflow/skillsbench/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/skillsbench.yaml",
+      "value": 62.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy4-preview",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy4-preview",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 779960992733
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/skillsbench.yaml",
+      "value": 58.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/benchflow/skillsbench-leaderboard/raw/main/leaderboard/skillsbench/v1.1/official.json",
+        "name": "SkillsBench v1.1 official leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "69657f24ec1d157f1590a81d",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/663fe2d26304d377fc253322/L6ik2VpL5iizADEXK4W-A.png",
+          "fullname": "BenchFlow",
+          "name": "benchflow",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 21,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-5.1",
+      "pullRequest": 41,
+      "notes": "with-skills; BenchFlow harness; OpenHands agent; 87 tasks x 3 trials; full 261/261 coverage",
+      "lower_is_better": false,
+      "num_parameters": 753864139008
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/skillsbench.yaml",
+      "value": 55.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy3",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy3",
+      "pullRequest": 8,
+      "lower_is_better": false,
+      "num_parameters": 298786155776
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/skillsbench.yaml",
+      "value": 54,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/benchflow/skillsbench-leaderboard/raw/main/leaderboard/skillsbench/v1.1/official.json",
+        "name": "SkillsBench v1.1 official leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "69657f24ec1d157f1590a81d",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/663fe2d26304d377fc253322/L6ik2VpL5iizADEXK4W-A.png",
+          "fullname": "BenchFlow",
+          "name": "benchflow",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 21,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.6",
+      "pullRequest": 53,
+      "notes": "with-skills; BenchFlow harness; OpenHands agent; 87 tasks x 3 trials; full 261/261 coverage",
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/skillsbench.yaml",
+      "value": 53,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/benchflow/skillsbench-leaderboard/raw/main/leaderboard/skillsbench/v1.1/official.json",
+        "name": "SkillsBench v1.1 official leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "69657f24ec1d157f1590a81d",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/663fe2d26304d377fc253322/L6ik2VpL5iizADEXK4W-A.png",
+          "fullname": "BenchFlow",
+          "name": "benchflow",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 21,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "MiniMaxAI/MiniMax-M3",
+      "pullRequest": 21,
+      "notes": "with-skills; BenchFlow harness; OpenHands agent; 87 tasks x 3 trials; full 261/261 coverage",
+      "lower_is_better": false,
+      "num_parameters": 427040140160
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/dots3-note-prev.yaml",
+      "value": 52.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/dots-studio/dots3-note-prev",
+        "name": "dots3-note Preview model card",
+        "isExternal": false
+      },
+      "modelId": "dots-studio/dots3-note-prev",
+      "pullRequest": 5,
+      "notes": "With-skills condition (not the with/without-skills lift, which is SkillsBench's other headline metric).",
+      "lower_is_better": false,
+      "num_parameters": 288443400864
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/skillsbench.yaml",
+      "value": 50.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/benchflow/skillsbench-leaderboard/raw/main/leaderboard/skillsbench/v1.1/official.json",
+        "name": "SkillsBench v1.1 official leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "69657f24ec1d157f1590a81d",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/663fe2d26304d377fc253322/L6ik2VpL5iizADEXK4W-A.png",
+          "fullname": "BenchFlow",
+          "name": "benchflow",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 21,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Pro",
+      "pullRequest": 205,
+      "notes": "with-skills; BenchFlow harness; OpenHands agent; 87 tasks x 3 trials; full 261/261 coverage",
+      "lower_is_better": false,
+      "num_parameters": 1598839674782
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/Qwen3.6-27B.yaml",
+      "value": 48.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.6-27B",
+        "name": "Qwen3.6-27B model card — Benchmark Results (Language > Coding Agent)",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.6-27B",
+      "pullRequest": 49,
+      "notes": "SkillsBench Avg5. Evaluated via OpenCode on 78 tasks (self-contained subset, excluding API-dependent tasks); avg of 5 runs. Mapped to the Hub's benchflow/skillsbench task skillsbench_v1_1.",
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/skillsbench.yaml",
+      "value": 44.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/benchflow/skillsbench-leaderboard/raw/main/leaderboard/skillsbench/v1.1/official.json",
+        "name": "SkillsBench v1.1 official leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "69657f24ec1d157f1590a81d",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/663fe2d26304d377fc253322/L6ik2VpL5iizADEXK4W-A.png",
+          "fullname": "BenchFlow",
+          "name": "benchflow",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 21,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Flash",
+      "pullRequest": 45,
+      "notes": "with-skills; BenchFlow harness; OpenHands agent; 87 tasks x 3 trials; full 261/261 coverage",
+      "lower_is_better": false,
+      "num_parameters": 290944616402
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/Muse-Glimmer-30B.yaml",
+      "value": 44.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+        "name": "Muse Glimmer-30B model card",
+        "isExternal": false
+      },
+      "modelId": "meta-models/Muse-Glimmer-30B",
+      "pullRequest": 6,
+      "lower_is_better": false,
+      "num_parameters": 29776626688
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/skillsbench.yaml",
+      "value": 34.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/benchflow/skillsbench-leaderboard/raw/main/leaderboard/skillsbench/v1.1/official.json",
+        "name": "SkillsBench v1.1 official leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "69657f24ec1d157f1590a81d",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/663fe2d26304d377fc253322/L6ik2VpL5iizADEXK4W-A.png",
+          "fullname": "BenchFlow",
+          "name": "benchflow",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 21,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "MiniMaxAI/MiniMax-M2.7",
+      "pullRequest": 43,
+      "notes": "with-skills; BenchFlow harness; OpenHands agent; 87 tasks x 3 trials; full 261/261 coverage",
+      "lower_is_better": false,
+      "num_parameters": 228689764864
+    }
+  ]
+}

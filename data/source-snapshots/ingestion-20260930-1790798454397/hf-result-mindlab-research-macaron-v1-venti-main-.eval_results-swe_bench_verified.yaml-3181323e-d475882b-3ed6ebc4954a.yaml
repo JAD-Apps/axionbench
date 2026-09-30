@@ -1,0 +1,7 @@
+- dataset:
+    id: SWE-bench/SWE-bench_Verified
+    task_id: swe_bench_%_resolved
+  value: 85.6
+  source:
+    url: https://huggingface.co/mindlab-research/Macaron-V1-Venti
+    name: Model Card

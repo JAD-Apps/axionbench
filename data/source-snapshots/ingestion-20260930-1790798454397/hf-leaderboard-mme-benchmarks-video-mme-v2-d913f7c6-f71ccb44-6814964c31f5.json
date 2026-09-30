@@ -1,0 +1,166 @@
+{
+  "datasetId": "MME-Benchmarks/Video-MME-v2",
+  "retrievedAt": "2026-09-30T19:49:14.323Z",
+  "projectionOf": "https://huggingface.co/api/datasets/MME-Benchmarks/Video-MME-v2/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/minimax-m3.yaml",
+      "value": 85.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+        "name": "MiniMax-M3 model card",
+        "isExternal": false
+      },
+      "modelId": "MiniMaxAI/MiniMax-M3",
+      "notes": "Model card reports 'VideoMME (w/ sub)'. Mapped to the closest registered benchmark on the Hub, Video-MME-v2.",
+      "lower_is_better": false,
+      "num_parameters": 427040140160
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/videomme_v2.yaml",
+      "value": 61.1,
+      "verified": false,
+      "source": {
+        "url": "https://video-mme-v2.netlify.app/#leaderboard",
+        "name": "VideoMMEv2 leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.5",
+      "pullRequest": 116,
+      "notes": "512 frames",
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/videomme_v2.yaml",
+      "value": 55.9,
+      "verified": false,
+      "source": {
+        "url": "https://video-mme-v2.netlify.app/#leaderboard",
+        "name": "VideoMMEv2 leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3.5-397B-A17B",
+      "pullRequest": 78,
+      "notes": "512 frames",
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/videomme_v2.yaml",
+      "value": 54.4,
+      "verified": false,
+      "source": {
+        "url": "https://video-mme-v2.netlify.app/#leaderboard",
+        "name": "VideoMMEv2 leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.5",
+      "pullRequest": 116,
+      "notes": "64 frames",
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/videomme_v2.yaml",
+      "value": 48.9,
+      "verified": false,
+      "source": {
+        "url": "https://video-mme-v2.netlify.app/#leaderboard",
+        "name": "VideoMMEv2 leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3.5-397B-A17B",
+      "pullRequest": 78,
+      "notes": "64 frames",
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/dots3-note-prev.yaml",
+      "value": 39.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/dots-studio/dots3-note-prev",
+        "name": "dots3-note Preview model card",
+        "isExternal": false
+      },
+      "modelId": "dots-studio/dots3-note-prev",
+      "pullRequest": 5,
+      "notes": "Evaluated with audio input enabled.",
+      "lower_is_better": false,
+      "num_parameters": 288443400864
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+- dataset:
+    id: openai/gsm8k
+    task_id: gsm8k
+  value: 99.6
+  source:
+    url: https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro
+    name: Model Card

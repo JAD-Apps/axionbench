@@ -1,0 +1,104 @@
+# Registers joelniklaus/LEXam-hard as a Hub benchmark (https://huggingface.co/docs/hub/eval-results).
+# Copied verbatim to the root of the dataset repository by lexam_hard.py.
+#
+# The generation prompt and the judge prompt are the LEXam paper's, as run by
+# SwissLegalEvals (https://huggingface.co/blog/joelniklaus/swiss-legal-evals): one
+# response per question, no tools, graded 0.0-1.0 against the reference answer by
+# DeepSeek-R1-0528. Leaderboard values are on the SwissLegalEvals scale: the mean of the
+# German and English mean judge scores, times 100.
+
+name: LEXam-hard
+description: >
+  The 518 open questions of LEXam (law exams of the University of Zurich, German and
+  English) that the strongest open models score lowest on: questions whose mean
+  DeepSeek-R1 judge score over the seven best SwissLegalEvals models is below 50,
+  screened so every question is answerable from its own text. Each answer is graded
+  against the exam's reference answer with the LEXam paper's judge prompt; the score
+  is the mean of the German and English mean judge grades on a 0-100 scale, as in
+  SwissLegalEvals.
+
+evaluation_framework: inspect-ai
+
+tasks:
+  - id: lexam_hard
+    config: default
+    split: test
+
+    field_spec:
+      input: question
+      target: answer
+      metadata:
+        - course
+
+    solvers:
+      - name: prompt_template
+        args:
+          template: |
+            You are an expert in {course} and address legal issues in a structured, exam-style manner.
+            Assume Swiss law applies unless specifically mentioned; if the course context justifies, address legal issues beyond Swiss law as well.
+            Use precise legal language and formal "Sie" when answering.
+            Do NOT state any disclaimer or refer to the need for external legal advice.
+            Do NOT request the user to consult laws or to research on their own.
+            Offer focused legal analyses and individualized advice.
+            Speak directly and authoritatively without mentioning that your response is merely for general information.
+            Incorporate Swiss-specific legal terminology.
+            If you have discovered relevant legal considerations (Erwägungen), respond with a concise, clear legal analysis.
+            Cite only from your identified considerations.
+            Always cite the specific legal provision, explicitly indicating paragraphs (Abs.), numbers (Ziff.), or letters (lit.) where available (e.g., "Art. 74 Abs. 2 Ziff. 2 OR", "Art. 336 lit. a StGB"). Avoid general references (such as "Art. 3 ZGB") without mentioning the specific paragraph, number, or letter, if applicable.
+            If no relevant considerations are found, explicitly state that no pertinent information is available.
+            If you do have reliable sources, share practical guidance or insights from them.
+            Respond in the same language as the question.
+            If the question specifically requests a short answer, provide a concise response.
+            If the prompt asks you to analyze a specific case provided in the exam, but the text or details of that case have not been provided in the prompt, explicitly flag that the required case material is missing.
+
+            Question:
+            {prompt}
+
+            Answer:
+      - name: generate
+
+    scorers:
+      - name: model_graded_qa
+        args:
+          model: hf-inference-providers/deepseek-ai/DeepSeek-R1-0528:novita
+          grade_pattern: '\[\[(\d\.\d)\]\]'
+          template: |
+            Act as a Judge specializing in the evaluation of Swiss law schools exams. Your task is to assess how well the response aligns with the reference answer, with a focus on accuracy, completeness, and legal reasoning.
+
+            Goal:
+            Your task is to assess how well the response aligns with the reference answer, with a focus on accuracy, completeness, and legal reasoning.
+
+            Context:
+            You will be provided with a response (labeled: Model's Answer) to a law school exam question (labeled: Question) and a reference answer (labeled: Reference Answer).
+
+            Return format:
+                After reviewing the response:
+                1. Explanation: Briefly explain your reasoning regarding how the response conforms to or deviates from the reference answer.
+                2. Constructive feedback: Additionally, provide neutral, constructive feedback and corrections in the style of a university professor.
+                3. Correctness score: Assign a final correctness score on a scale from 0.0 to 1.0 (in increments of 0.1). This score should reflect the extent to which the response satisfies the reference answer, where
+                    - 1.0 = complete fulfillment (100%)
+                    - lower scores reflect proportionate shortfalls (e.g. 0.5 = 50% fulfillment).
+                    - strictly follow the format: "[[score]]", e.g., "The correctness score: [[0.5]]".
+
+            Warnings:
+                - In some cases, the reference answer may include only keywords or factual elements to be examined, along with (+), (-) or (+/-). Respect these indications when determining correctness:
+                    - (+) means the element must be affirmed.
+                    - (-) means the element must be denied.
+                    - (-/+) indicates that arguments in either direction are acceptable if legally sound.
+                - Deviations or additional elements not found in the reference answer should generally be penalized unless you are certain they are legally correct and relevant. Assume the reference answer includes all information necessary for a perfect response.
+                - The reference answer may contain citations (e.g., from books or law review articles), which the response does not need to replicate. However, statutes should be cited precisely, specifying Abs., Ziff., or lit. whenever applicable.
+                - If the reference answer includes separate sub-points, use these for proportional scoring guidance (e.g., addressing 2 out of 4 sub-points correctly equals approximately a 0.5 score).
+
+            Judge the below case, give the brief reasoning process and the final grade.
+
+
+            Question:
+            ```{question}```
+
+            Reference Answer:
+            ```{criterion}```
+
+            Model's Answer:
+            ```{answer}```
+
+            Your Judgment:

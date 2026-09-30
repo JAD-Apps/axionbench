@@ -1,0 +1,23 @@
+{
+  "id": "allenai/ACE2S-SHiELD-plus-supplemental-checkpoints",
+  "sha": "bfa46e87892c776f039201ce8abffb5cf1356219",
+  "lastModified": "2026-09-01T23:25:26.000Z",
+  "createdAt": "2026-09-01T17:54:43.000Z",
+  "private": false,
+  "gated": false,
+  "library_name": "fme",
+  "tags": [
+    "fme",
+    "arxiv:2606.07928",
+    "doi:10.57967/hf/10260",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "apache-2.0",
+    "library_name": "fme"
+  },
+  "config": {},
+  "usedStorage": 22409621874,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

@@ -1,0 +1,7 @@
+- dataset:
+    id: mercor/apex-agents
+    task_id: apex-agents
+  value: 37.1
+  source:
+    url: https://huggingface.co/tencent/Hy4-preview
+    name: Model Card

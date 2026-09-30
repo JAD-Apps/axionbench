@@ -1,0 +1,11 @@
+- dataset:
+    id: benchflow/skillsbench
+    task_id: skillsbench_v1_1
+    revision: be2a6ce2cb1f4ff67ce937307cade0c5a0477a13
+  value: 58.4
+  date: "2026-06-11"
+  source:
+    url: https://huggingface.co/datasets/benchflow/skillsbench-leaderboard/raw/main/leaderboard/skillsbench/v1.1/official.json
+    name: SkillsBench v1.1 official leaderboard
+    user: benchflow
+  notes: "with-skills; BenchFlow harness; OpenHands agent; 87 tasks x 3 trials; full 261/261 coverage"

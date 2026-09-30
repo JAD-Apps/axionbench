@@ -1,0 +1,168 @@
+{
+  "datasetId": "MMMU/MMMU_Pro",
+  "retrievedAt": "2026-09-30T19:49:14.278Z",
+  "projectionOf": "https://huggingface.co/api/datasets/MMMU/MMMU_Pro/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 79.48,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/FINAL-Bench/Darwin-180B-RSI",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "FINAL-Bench/Darwin-180B-RSI",
+      "notes": "MMMU-Pro vision setting, all 1,730 items; majority vote over 3 samples (temperature=1.0, top_p=0.95, top_k=20); thinking budget 131,072 tokens; bf16",
+      "lower_is_better": false,
+      "num_parameters": 179999981459
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 79.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moonshotai/Kimi-K2.6",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "moonshotai/Kimi-K2.6",
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 78.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moonshotai/Kimi-K2.5",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "moonshotai/Kimi-K2.5",
+      "pullRequest": 119,
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 76.88,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/internlm/Intern-S2-Preview",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "internlm/Intern-S2-Preview",
+      "pullRequest": 2,
+      "lower_is_better": false,
+      "num_parameters": 36098254656
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 75.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.6-27B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.6-27B",
+      "pullRequest": 36,
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 75.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.6-35B-A3B",
+      "pullRequest": 59,
+      "lower_is_better": false,
+      "num_parameters": 35951822704
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 75,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.5-27B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.5-27B",
+      "pullRequest": 46,
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 66.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/AIDC-AI/Ovis2.6-80B-A3B",
+        "name": "Model Card",
+        "isExternal": true
+      },
+      "modelId": "ATH-MaaS/Ovis2.6-80B-A3B",
+      "pullRequest": 4,
+      "lower_is_better": false,
+      "num_parameters": 80524245992
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 34.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "pullRequest": 70,
+      "lower_is_better": false,
+      "num_parameters": 8292166656
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/mmmu_pro.yaml",
+      "value": 32.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen2.5-VL-3B-Instruct",
+      "pullRequest": 50,
+      "lower_is_better": false,
+      "num_parameters": 3754622976
+    }
+  ]
+}

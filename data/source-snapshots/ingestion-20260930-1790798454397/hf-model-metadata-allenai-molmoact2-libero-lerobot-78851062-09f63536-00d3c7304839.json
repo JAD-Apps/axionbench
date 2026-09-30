@@ -1,0 +1,54 @@
+{
+  "id": "allenai/MolmoAct2-LIBERO-LeRobot",
+  "sha": "f0c5a9567c2b72faadec901e16e055c8b098c2f5",
+  "lastModified": "2026-05-24T00:37:04.000Z",
+  "createdAt": "2026-05-14T04:18:31.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "robotics",
+  "library_name": "lerobot",
+  "tags": [
+    "lerobot",
+    "safetensors",
+    "vision-language-action",
+    "imitation-learning",
+    "robotics",
+    "molmoact2",
+    "libero",
+    "en",
+    "dataset:allenai/MolmoAct2-LIBERO-Dataset",
+    "arxiv:2605.02881",
+    "license:apache-2.0",
+    "region:us"
+  ],
+  "cardData": {
+    "language": [
+      "en"
+    ],
+    "library_name": "lerobot",
+    "pipeline_tag": "robotics",
+    "tags": [
+      "vision-language-action",
+      "imitation-learning",
+      "robotics",
+      "lerobot",
+      "molmoact2",
+      "libero"
+    ],
+    "inference": false,
+    "datasets": [
+      "allenai/MolmoAct2-LIBERO-Dataset"
+    ],
+    "license": "apache-2.0"
+  },
+  "config": {},
+  "safetensors": {
+    "parameters": {
+      "F32": 64,
+      "BF16": 5442196208
+    },
+    "total": 5442196272
+  },
+  "usedStorage": 10884578780,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

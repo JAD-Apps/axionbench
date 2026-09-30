@@ -1,0 +1,814 @@
+{
+  "datasetId": "ScaleAI/SWE-bench_Pro",
+  "retrievedAt": "2026-09-30T19:49:13.760Z",
+  "projectionOf": "https://huggingface.co/api/datasets/ScaleAI/SWE-bench_Pro/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 67.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-2.4T-A95B",
+      "pullRequest": 6,
+      "lower_is_better": false,
+      "num_parameters": 2446182725504
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 65.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy4-preview",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy4-preview",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 779960992733
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/ornith-1.5-397b.yaml",
+      "value": 65.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+        "name": "Ornith-1.5-397B model card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-397B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/Qwen3.8-Flash-Next.yaml",
+      "value": 62.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+        "name": "Qwen3.8-Flash-Next model card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-Flash-Next",
+      "pullRequest": 12,
+      "notes": "harness: Claude Code. 256K context; evaluated on the card's own refined version of the benchmark (problematic tasks corrected).",
+      "lower_is_better": false,
+      "num_parameters": 179999981459
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/Ornith-1.0-397B.yaml",
+      "value": 62.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepreinforce-ai/Ornith-1.0-397B",
+        "name": "Ornith-1.0-397B model card",
+        "isExternal": true
+      },
+      "modelId": "ornith-ai/Ornith-1.0-397B",
+      "pullRequest": 6,
+      "lower_is_better": false,
+      "num_parameters": 396802360816
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 62.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.2",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.2",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/Qwen3.8-27B.yaml",
+      "value": 61.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+        "name": "Qwen3.8-27B model card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-27B",
+      "pullRequest": 22,
+      "notes": "Evaluated with the Claude Code harness, temp=1.0, top_p=0.95, 256K context; baseline models re-evaluated on the same refined task set.",
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/Nex-N2.5-Pro.yaml",
+      "value": 61.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
+        "name": "Nex-N2.5 model card",
+        "isExternal": false
+      },
+      "modelId": "nex-agi/Nex-N2.5-Pro",
+      "pullRequest": 3,
+      "notes": "NexAU harness.",
+      "lower_is_better": false,
+      "num_parameters": 396802360816
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/dots3-note-prev.yaml",
+      "value": 61,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/dots-studio/dots3-note-prev",
+        "name": "dots3-note Preview model card",
+        "isExternal": false
+      },
+      "modelId": "dots-studio/dots3-note-prev",
+      "pullRequest": 5,
+      "lower_is_better": false,
+      "num_parameters": 288443400864
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/ornith-1.5-35b-a3b.yaml",
+      "value": 59.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+        "name": "Ornith-1.5-35B-A3B model card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-35B-A3B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 35951822704
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 59.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/poolside/Laguna-S-2.1",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "poolside/Laguna-S-2.1",
+      "lower_is_better": false,
+      "num_parameters": 117561977600
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/minimax-m3.yaml",
+      "value": 59,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+        "name": "MiniMax-M3 model card",
+        "isExternal": false
+      },
+      "modelId": "MiniMaxAI/MiniMax-M3",
+      "notes": "Evaluated on internal infrastructure using Claude Code as the scaffolding. Testing logic is aligned with the official evaluation.",
+      "lower_is_better": false,
+      "num_parameters": 427040140160
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 58.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moonshotai/Kimi-K2.6",
+        "name": "Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "63e0eea7af523c37e5a77966",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1678663263366-63e0eea7af523c37e5a77966.jpeg",
+          "fullname": "Nathan Habib",
+          "name": "SaylorTwift",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 482,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.6",
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 14,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 58.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.1",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.1",
+      "notes": "high reasoning",
+      "lower_is_better": false,
+      "num_parameters": 753864139008
+    },
+    {
+      "rank": 15,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 58.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.1",
+        "name": "Model Card",
+        "isExternal": true
+      },
+      "modelId": "INCModel3/GLM-5.1-MXFP4-Mixed-CT-AutoRound",
+      "notes": "high reasoning",
+      "lower_is_better": false,
+      "num_parameters": 753864139008
+    },
+    {
+      "rank": 16,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 57.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy3",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy3",
+      "pullRequest": 8,
+      "lower_is_better": false,
+      "num_parameters": 298786155776
+    },
+    {
+      "rank": 17,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 57.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.5-Pro",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 1023182841600
+    },
+    {
+      "rank": 18,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 56.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/inclusionAI/Ling-3.0-flash",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "inclusionAI/Ling-3.0-flash",
+      "lower_is_better": false,
+      "num_parameters": 127486405600
+    },
+    {
+      "rank": 19,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 56.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/stepfun-ai/Step-3.7-Flash",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "stepfun-ai/Step-3.7-Flash",
+      "pullRequest": 4,
+      "lower_is_better": false,
+      "num_parameters": 201365316160
+    },
+    {
+      "rank": 20,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 56.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "MiniMaxAI/MiniMax-M2.7",
+      "pullRequest": 13,
+      "lower_is_better": false,
+      "num_parameters": 228689764864
+    },
+    {
+      "rank": 21,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 56.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.5",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 310775040000
+    },
+    {
+      "rank": 22,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 55.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/thinkingmachines/Inkling-Small",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "thinkingmachines/Inkling-Small",
+      "lower_is_better": false,
+      "num_parameters": 265956439090
+    },
+    {
+      "rank": 23,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 55.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M2.5",
+        "name": "Model card",
+        "isExternal": false,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "MiniMaxAI/MiniMax-M2.5",
+      "pullRequest": 50,
+      "lower_is_better": false,
+      "num_parameters": 228703644928
+    },
+    {
+      "rank": 24,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 55.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Pro",
+      "pullRequest": 110,
+      "lower_is_better": false,
+      "num_parameters": 1598839674782
+    },
+    {
+      "rank": 25,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 54.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/thinkingmachines/Inkling",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "thinkingmachines/Inkling",
+      "lower_is_better": false,
+      "num_parameters": 952377623626
+    },
+    {
+      "rank": 26,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 53.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.6-27B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.6-27B",
+      "pullRequest": 2,
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 27,
+      "filename": ".eval_results/Muse-Glimmer-30B.yaml",
+      "value": 51.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+        "name": "Muse Glimmer-30B model card",
+        "isExternal": false
+      },
+      "modelId": "meta-models/Muse-Glimmer-30B",
+      "pullRequest": 6,
+      "lower_is_better": false,
+      "num_parameters": 29776626688
+    },
+    {
+      "rank": 28,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 50.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moonshotai/Kimi-K2.5",
+        "name": "Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "63e0eea7af523c37e5a77966",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1678663263366-63e0eea7af523c37e5a77966.jpeg",
+          "fullname": "Nathan Habib",
+          "name": "SaylorTwift",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 482,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.5",
+      "pullRequest": 101,
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 29,
+      "filename": ".eval_results/Ornith-1.0-35B.yaml",
+      "value": 50.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B",
+        "name": "Ornith-1.0-35B model card",
+        "isExternal": true
+      },
+      "modelId": "ornith-ai/Ornith-1.0-35B",
+      "pullRequest": 8,
+      "lower_is_better": false,
+      "num_parameters": 664944
+    },
+    {
+      "rank": 30,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 49.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.6-35B-A3B",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 35951822704
+    },
+    {
+      "rank": 31,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 49.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/poolside/Laguna-M.1",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "poolside/Laguna-M.1",
+      "lower_is_better": false,
+      "num_parameters": 225795725568
+    },
+    {
+      "rank": 32,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 47.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/poolside/Laguna-XS-2.1",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "poolside/Laguna-XS-2.1",
+      "lower_is_better": false,
+      "num_parameters": 33442617088
+    },
+    {
+      "rank": 33,
+      "filename": ".eval_results/ornith-1.5-9b.yaml",
+      "value": 47.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+        "name": "Ornith-1.5-9B model card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-9B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 9653104368
+    },
+    {
+      "rank": 34,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 46.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/poolside/Laguna-XS.2",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "poolside/Laguna-XS.2",
+      "lower_is_better": false,
+      "num_parameters": 33442617088
+    },
+    {
+      "rank": 35,
+      "filename": ".eval_results/swe-bench_pro.yaml",
+      "value": 44.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/poolside/Laguna-XS.2",
+        "name": "Model Card",
+        "isExternal": true
+      },
+      "modelId": "MuVeraAI/Laguna-XS.2",
+      "lower_is_better": false,
+      "num_parameters": 33442617088
+    },
+    {
+      "rank": 36,
+      "filename": ".eval_results/.eval_results/swe_bench_pro.yaml",
+      "value": 44.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/papers/2603.00729",
+        "name": "Qwen3-Coder-Next technical report",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3-Coder-Next",
+      "pullRequest": 43,
+      "notes": "SWE-Agent as harness",
+      "lower_is_better": false,
+      "num_parameters": 79674391296
+    },
+    {
+      "rank": 37,
+      "filename": ".eval_results/Ornith-1.0-9B.yaml",
+      "value": 42.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepreinforce-ai/Ornith-1.0-9B",
+        "name": "Ornith-1.0-9B model card",
+        "isExternal": true
+      },
+      "modelId": "ornith-ai/Ornith-1.0-9B",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 1469680
+    },
+    {
+      "rank": 38,
+      "filename": ".eval_results/swe-bench-pro.yaml",
+      "value": 40.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/CohereLabs/North-Mini-Code-1.0",
+        "name": "North Mini Code Model Page",
+        "isExternal": false,
+        "author": {
+          "_id": "640ca1c93623f6a56ddab373",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1678549441248-5e70f6048ce3c604d78fe133.png",
+          "fullname": "Cohere Labs",
+          "name": "CohereLabs",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "enterprise",
+          "followerCount": 3770,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "CohereLabs/North-Mini-Code-1.0",
+      "lower_is_better": false,
+      "num_parameters": 30484303872
+    },
+    {
+      "rank": 39,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 38.7,
+      "verified": false,
+      "source": {
+        "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+        "name": "SWE-Bench Pro official evaluation results",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "pullRequest": 33,
+      "lower_is_better": false,
+      "num_parameters": 480154875392
+    },
+    {
+      "rank": 40,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 36.81,
+      "verified": false,
+      "source": {
+        "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+        "name": "SWE-Bench Pro official evaluation results",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "MiniMaxAI/MiniMax-M2.1",
+      "pullRequest": 33,
+      "lower_is_better": false,
+      "num_parameters": 228689764864
+    },
+    {
+      "rank": 41,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 27.67,
+      "verified": false,
+      "source": {
+        "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+        "name": "SWE-Bench Pro official evaluation results",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2-Instruct",
+      "lower_is_better": false,
+      "num_parameters": 1026408235864
+    },
+    {
+      "rank": 42,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 21.41,
+      "verified": false,
+      "source": {
+        "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+        "name": "SWE-Bench Pro official evaluation results",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3-235B-A22B",
+      "pullRequest": 44,
+      "lower_is_better": false,
+      "num_parameters": 235093634560
+    },
+    {
+      "rank": 43,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 16.2,
+      "verified": false,
+      "source": {
+        "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+        "name": "SWE-Bench Pro official evaluation results",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openai/gpt-oss-120b",
+      "pullRequest": 177,
+      "lower_is_better": false,
+      "num_parameters": 116829156672
+    },
+    {
+      "rank": 44,
+      "filename": ".eval_results/swe_bench_pro.yaml",
+      "value": 9.67,
+      "verified": false,
+      "source": {
+        "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+        "name": "SWE-Bench Pro official evaluation results",
+        "isExternal": true,
+        "author": {
+          "_id": "5f1158120c833276f61f1a84",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1608042047613-5f1158120c833276f61f1a84.jpeg",
+          "fullname": "Niels Rogge",
+          "name": "nielsr",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 1324,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-4.6",
+      "pullRequest": 34,
+      "lower_is_better": false,
+      "num_parameters": 356785898816
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "allenai/OlmoEarth-v1_1-Tiny",
+  "sha": "74fab5714f763d6b94f8b1536bdd3300d77f45e8",
+  "lastModified": "2026-05-15T15:58:26.000Z",
+  "createdAt": "2026-05-14T15:13:40.000Z",
+  "private": false,
+  "gated": false,
+  "tags": [
+    "region:us"
+  ],
+  "cardData": {},
+  "config": {},
+  "usedStorage": 107352651,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

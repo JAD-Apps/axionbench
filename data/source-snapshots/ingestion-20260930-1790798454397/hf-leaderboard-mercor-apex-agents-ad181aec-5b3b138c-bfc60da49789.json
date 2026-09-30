@@ -1,0 +1,312 @@
+{
+  "datasetId": "mercor/apex-agents",
+  "retrievedAt": "2026-09-30T19:49:14.109Z",
+  "projectionOf": "https://huggingface.co/api/datasets/mercor/apex-agents/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 41,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moonshotai/Kimi-K3",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "moonshotai/Kimi-K3",
+      "lower_is_better": false,
+      "num_parameters": 2779931837184
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 37.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy4-preview",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy4-preview",
+      "pullRequest": 12,
+      "lower_is_better": false,
+      "num_parameters": 779960992733
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/dots3-note-prev.yaml",
+      "value": 30.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/dots-studio/dots3-note-prev",
+        "name": "dots3-note Preview model card",
+        "isExternal": false
+      },
+      "modelId": "dots-studio/dots3-note-prev",
+      "pullRequest": 5,
+      "notes": "Multimodal setting via the Archipelago harness; pass@1, judged by Gemini-3.5-flash.",
+      "lower_is_better": false,
+      "num_parameters": 288443400864
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/minimax-m3.yaml",
+      "value": 27.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+        "name": "MiniMax-M3 model card",
+        "isExternal": false
+      },
+      "modelId": "MiniMaxAI/MiniMax-M3",
+      "notes": "Evaluated on the apex-agents benchmark.",
+      "lower_is_better": false,
+      "num_parameters": 427040140160
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 25.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy3",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy3",
+      "pullRequest": 8,
+      "lower_is_better": false,
+      "num_parameters": 298786155776
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 17.2,
+      "verified": false,
+      "source": {
+        "url": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+        "name": "APEX-Agents Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6531a6d5c93c85e11c82d495",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/63b4a97834df1f9a90a0da76/HHWjFJmEitVTMv3Fk85wu.jpeg",
+          "fullname": "Mercor",
+          "name": "mercor",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 145,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-5",
+      "pullRequest": 77,
+      "notes": "harness: react_toolbelt_agent; reasoning_effort: thinking",
+      "lower_is_better": false,
+      "num_parameters": 753864139008
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 16.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/upstage/Solar-Open2-250B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "upstage/Solar-Open2-250B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 250287810304
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 14.4,
+      "verified": false,
+      "source": {
+        "url": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+        "name": "APEX-Agents Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6531a6d5c93c85e11c82d495",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/63b4a97834df1f9a90a0da76/HHWjFJmEitVTMv3Fk85wu.jpeg",
+          "fullname": "Mercor",
+          "name": "mercor",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 145,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.5",
+      "pullRequest": 113,
+      "notes": "harness: react_toolbelt_agent; reasoning_effort: thinking",
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 13.6,
+      "verified": false,
+      "source": {
+        "url": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+        "name": "APEX-Agents Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6531a6d5c93c85e11c82d495",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/63b4a97834df1f9a90a0da76/HHWjFJmEitVTMv3Fk85wu.jpeg",
+          "fullname": "Mercor",
+          "name": "mercor",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 145,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3.5-397B-A17B",
+      "pullRequest": 77,
+      "notes": "harness: react_toolbelt_agent; reasoning_effort: thinking",
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 6.2,
+      "verified": false,
+      "source": {
+        "url": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+        "name": "APEX-Agents Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6531a6d5c93c85e11c82d495",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/63b4a97834df1f9a90a0da76/HHWjFJmEitVTMv3Fk85wu.jpeg",
+          "fullname": "Mercor",
+          "name": "mercor",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 145,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "MiniMaxAI/MiniMax-M2.5",
+      "pullRequest": 59,
+      "notes": "harness: react_toolbelt_agent; reasoning_effort: high",
+      "lower_is_better": false,
+      "num_parameters": 228703644928
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 4.1,
+      "verified": false,
+      "source": {
+        "url": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+        "name": "APEX-Agents Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6531a6d5c93c85e11c82d495",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/63b4a97834df1f9a90a0da76/HHWjFJmEitVTMv3Fk85wu.jpeg",
+          "fullname": "Mercor",
+          "name": "mercor",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 145,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2-Instruct",
+      "pullRequest": 68,
+      "notes": "harness: react_toolbelt_agent; reasoning_effort: thinking",
+      "lower_is_better": false,
+      "num_parameters": 1026408235864
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 4,
+      "verified": false,
+      "source": {
+        "url": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+        "name": "APEX-Agents Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6531a6d5c93c85e11c82d495",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/63b4a97834df1f9a90a0da76/HHWjFJmEitVTMv3Fk85wu.jpeg",
+          "fullname": "Mercor",
+          "name": "mercor",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 145,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-4.6",
+      "pullRequest": 36,
+      "notes": "harness: react_toolbelt_agent; reasoning_effort: high",
+      "lower_is_better": false,
+      "num_parameters": 356785898816
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/apex-agents.yaml",
+      "value": 3.1,
+      "verified": false,
+      "source": {
+        "url": "https://www.mercor.com/apex/apex-agents-leaderboard/",
+        "name": "APEX-Agents Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6531a6d5c93c85e11c82d495",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/63b4a97834df1f9a90a0da76/HHWjFJmEitVTMv3Fk85wu.jpeg",
+          "fullname": "Mercor",
+          "name": "mercor",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 145,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-4.7",
+      "pullRequest": 53,
+      "notes": "harness: react_toolbelt_agent; reasoning_effort: high",
+      "lower_is_better": false,
+      "num_parameters": 358337791296
+    }
+  ]
+}
