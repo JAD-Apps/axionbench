@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { assertAuthorityFloor, composeAuthority, readInputs } from './authority/compose.mjs';
 
 const readJson = async (path) => JSON.parse(await readFile(new URL('../' + path, import.meta.url), 'utf8'));
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -16,11 +17,16 @@ const safeUrl = (value) => {
 };
 const unique = (values) => [...new Set(values.filter(Boolean))];
 
-const [ingestionBytes, input, registry] = await Promise.all([
+const [ingestionBytes, input, registry, authorityInputs] = await Promise.all([
   readFile(new URL('../data/ingestion.json', import.meta.url)),
   readJson('data/ingestion.json'),
   readJson('data/benchmark-registry.json'),
+  readInputs(),
 ]);
+// Original-source admission gate: authority, independent-evaluator and publisher
+// facts are re-validated and must meet the capability floor before publication.
+const authority = composeAuthority(authorityInputs, registry);
+assertAuthorityFloor(authority);
 assert.equal(input.schemaVersion, 2, 'the public projection requires validated typed ingestion v2');
 for (const key of ['models', 'configurations', 'sources', 'observations', 'pricing', 'sourceConflicts']) {
   assert.ok(Array.isArray(input[key]), 'ingestion.' + key + ' must be an array');
@@ -181,6 +187,7 @@ const projection = {
     verifiedBenchmarkObservations: input.observations.filter((row) => row.leaderboardVerified === true).length,
     identityConfirmedModels: models.filter((row) => row.identityVerified).length,
   },
+  authority,
 };
 
 const sources = input.sources
@@ -228,10 +235,17 @@ const manifest = {
     sourceDetails: sources.length,
     sourceConflicts: details.conflicts.length,
     withheldPriceRows: input.pricing.length,
+    authorityObservations: authority.observations.length,
+    authorityAdmittedObservations: authority.observations.filter((row) => row.admitted).length,
+    authorityModels: authority.models.length,
+    authorityFloorSuites: authority.floor.suites.length,
+    authorityFloorDomains: authority.floor.domains.length,
   },
+  authorityInputs: authority.inputDigests,
 };
 await writeFile(new URL('../public/data-manifest.json', import.meta.url), JSON.stringify(manifest));
 console.log('Prepared validated public projection: ' + models.length + ' models, ' + observations.length
   + ' observations (' + manifest.counts.verifiedObservations + ' source-verified), ' + suites.length
   + ' suites across ' + registry.domains.length + ' domains. Source detail is deferred; '
-  + input.pricing.length + ' restricted price rows are withheld.');
+  + input.pricing.length + ' restricted price rows are withheld. Authority: ' + authority.observations.length
+  + ' observations, ' + authority.floor.suites.length + ' admitted capability suites across ' + authority.floor.domains.length + ' domains.');

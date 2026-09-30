@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
-import { admission, comparePanel, decodeWeightSettings, DEFAULT_WEIGHTS, encodeWeightSettings, leaveOneSuiteOut, normalize, rankSensitivity, taskCost } from '../../src/scoring/index.mjs';
+import { admission, comparableValue, comparePanel, decodeWeightSettings, DEFAULT_WEIGHTS, encodeWeightSettings, leaveOneSuiteOut, normalize, rankSensitivity, taskCost } from '../../src/scoring/index.mjs';
 import data from '../../data/ingestion.json' with { type: 'json' };
 import registry from '../../data/benchmark-registry.json' with { type: 'json' };
 
 assert.equal(normalize(75,{min:0,max:100,direction:'higher'}),.75);
 assert.equal(normalize(25,{min:0,max:100,direction:'lower'}),.75);
-assert.equal(normalize(130,{min:0,max:100,direction:'higher'}),1);
+assert.equal(normalize(130,{min:0,max:100,direction:'higher'}),null,'out-of-bounds values are invalid, not clamped');
 assert.equal(normalize(1,{min:0,max:0,direction:'higher'}),null);
 assert.equal(normalize(NaN,{min:0,max:1,direction:'higher'}),null);
 assert.equal(admission(data.observations[0], data.configurations.find(c=>c.id===data.observations[0].configurationId)).eligible,false);
@@ -42,6 +42,23 @@ assert.deepEqual(decodeWeightSettings('?w=nope').weights,DEFAULT_WEIGHTS);
 assert.equal(decodeWeightSettings('?w=nope').valid,false);
 assert.equal(comparePanel(rows.filter(r=>r.modelId==='A'),options).score,null);
 
+// Adversarial repairs (source-authority step): percent normalized once, duplicates,
+// unknown conditions, domain-scoped weights.
+const fracSuites=new Map([['p',{domain:'coding',benchmarkFamilyId:'p',metric:{min:0,max:1,direction:'higher'}}],['q',{domain:'reasoning',benchmarkFamilyId:'q',metric:{min:0,max:1,direction:'higher'}}]]);
+const pobs=(modelId,suiteId,raw,extra={})=>({...obs(modelId,'a',raw),id:`${modelId}:${suiteId}:${raw}`,suiteId,metricDirection:'higher',rawValue:raw,normalization:{status:'normalized',targetUnit:'fraction',normalizedValue:raw/100},...extra});
+assert.equal(comparableValue(pobs('A','p',73.7),fracSuites.get('p').metric),.737,'a raw percent is normalized once before fraction scoring');
+const pct=comparePanel([pobs('A','p',73.7),pobs('B','p',50)],{models:new Map(),suites:fracSuites,configurations:configs,weights:{coding:1}});
+assert.ok(Math.abs(pct.models.A.score-.737)<1e-12 && pct.models.B.score===.5,'percent rows are not clamped to 1 on a 0–1 metric');
+assert.equal(comparePanel([pobs('A','p',73.7,{normalization:{status:'normalized',targetUnit:'fraction',normalizedValue:7.37}}),pobs('B','p',50)],{models:new Map(),suites:fracSuites,configurations:configs,weights:{coding:1}}).eligible,false,'a value outside declared bounds is excluded, not clamped');
+const dup=comparePanel([pobs('A','p',70),pobs('A','p',60),pobs('B','p',50)],{models:new Map(),suites:fracSuites,configurations:configs,weights:{coding:1}});
+assert.equal(dup.eligible,false,'duplicate rows are not selected by array order');
+assert.ok(dup.excludedReasons.some(x=>/duplicate/.test(x.reason)));
+const unknownRows=[pobs('A','p',70),pobs('B','p',50)].map(r=>{const {configurationSignature,...rest}=r;return {...rest,configurationId:'missing'};});
+assert.equal(comparePanel(unknownRows,{models:new Map(),suites:fracSuites,configurations:configs,weights:{coding:1}}).eligible,false,'unknown conditions are not proof of matching');
+assert.throws(()=>comparePanel(rows,{...options,weights:{coding:1,astrology:1}}),/outside the declared capability domains/,'weights must belong to declared domains');
+const scoped=comparePanel([pobs('A','p',70),pobs('B','p',50),pobs('A','q',90)],{models:new Map(),suites:fracSuites,configurations:configs,weights:{coding:1,reasoning:0}});
+assert.equal(scoped.models.A.score,.7,'zero-weight domains do not affect eligibility or score');
+assert.equal(scoped.models.B.score,.5,'a model missing only a zero-weight domain stays eligible');
 const rates={currency:'USD',input:1e-6,cachedInputRead:1e-7,cachedInputWrite:2e-6,output:2e-6,reasoning:null,tiers:[{min_prompt_tokens:100,prompt:'3e-6',completion:'4e-6',input_cache_read:'5e-7',input_cache_write:'6e-6'}]};
 const baseCost=taskCost(rates,{inputTokens:50,cachedReadTokens:10,cachedWriteTokens:5,outputTokens:10,reasoningTokens:0});
 assert.equal(baseCost.status,'priced'); assert.ok(Math.abs(baseCost.totalUsd-0.000081)<1e-15); assert.equal(baseCost.tierMinPromptTokens,null);

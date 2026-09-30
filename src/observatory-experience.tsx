@@ -3,6 +3,9 @@ import { useParentSize } from '@visx/responsive';
 import { scaleLinear } from '@visx/scale';
 import { motion, useReducedMotion } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
+import type { AuthorityBlock } from './authority/logic';
+import AuthorityRanking from './authority-ranking';
+import HeadToHead from './head-to-head';
 
 type Model = {
   id: string; name: string; labId: string; lab: string; catalogId: string | null; revision: string | null;
@@ -39,6 +42,7 @@ type Dataset = {
     status: string; comparability: string | null; sourceIds: string[] }[];
   sourceLimitations: { apiPricesPublished: false; apiPriceRowsObserved: number; apiPriceExclusion: string;
     verifiedBenchmarkObservations: number; identityConfirmedModels: number };
+  authority: AuthorityBlock;
 };
 type Manifest = {
   schemaVersion: string; sourceDigest: string; retrievedAt: string;
@@ -311,7 +315,9 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         if (projection.sourceDigest !== nextManifest.sourceDigest) throw new Error('The data digest does not match the exact captured ingestion file.');
         if (projection.models.length !== nextManifest.counts.models
           || projection.observations.length !== nextManifest.counts.observations
-          || projection.suites.length !== nextManifest.counts.suites) {
+          || projection.suites.length !== nextManifest.counts.suites
+          || projection.authority?.observations.length !== nextManifest.counts.authorityObservations
+          || projection.authority?.models.length !== nextManifest.counts.authorityModels) {
           throw new Error('The public evidence counts do not match their manifest.');
         }
         if (active) {
@@ -461,6 +467,8 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         </aside>
       </div>
 
+      <AuthorityRanking authority={dataset.authority}/>
+
       <div className="frontier-stage" data-testid="frontier-stage">
         <div className="frontier-stage-head">
           <div><span className="eyebrow">One task · one metric · original units</span><h3>{selectedSuite?.name ?? 'No observed benchmark suite'}</h3>
@@ -548,17 +556,18 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         <div className="paired-copy">
           <p className="eyebrow">US–China head-to-head</p>
           <h2 id="paired-title">Compare the same<br/><i>question, side by side.</i></h2>
-          <p>A direct comparison needs sourced lab headquarters and compatible observations from a shared test setup.</p>
+          <p>Two models, one from a United States lab and one from a China lab, compared only where the same evaluator ran the same suite version, metric and test condition for both.</p>
         </div>
         <div className="paired-measure">
-          <div className="paired-number">—</div>
+          <div className="paired-number">{dataset.authority.floor.domains.length.toString().padStart(2, '0')}</div>
           <div className="paired-rule"/>
-          <strong>No matched tests in this capture</strong>
-          <p>Lab headquarters are not represented in the admitted source records. Geography, scores and a winner are therefore not assigned.</p>
+          <strong>Capability domains with admitted evidence</strong>
+          <p>Publisher-reported tables stay visible as facts but never enter a strict match: their evaluation conditions are not stated in a matchable form.</p>
           <a href="#methods">Read the comparison rule <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <div className="paired-foot"><span>Matched benchmark / version / metric / configuration</span><span>UNAVAILABLE · lab headquarters not sourced</span></div>
+      <HeadToHead authority={dataset.authority} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>
+      <div className="paired-foot"><span>Matched source / suite version / metric / test condition</span><span>REGION · DEVELOPER ORGANIZATION COUNTRY (EPOCH AI RECORD)</span></div>
     </section>
 
     <section className="open chapter" id="open-weights" aria-labelledby="open-title">

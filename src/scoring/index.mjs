@@ -4,8 +4,9 @@ const SEPARATE = new Set(['safety', 'preference', 'professional', 'audio-video',
 
 export function normalize(value, metric) {
   if (!Number.isFinite(value) || !metric || !Number.isFinite(metric.min) || !Number.isFinite(metric.max) || metric.max <= metric.min || !['higher', 'lower'].includes(metric.direction)) return null;
-  const bounded = Math.max(metric.min, Math.min(metric.max, value));
-  const scaled = (bounded - metric.min) / (metric.max - metric.min);
+  // Values outside the declared bounds are invalid, never silently clamped.
+  if (value < metric.min || value > metric.max) return null;
+  const scaled = (value - metric.min) / (metric.max - metric.min);
   return metric.direction === 'higher' ? scaled : 1 - scaled;
 }
 
@@ -17,10 +18,25 @@ export function admission(observation, configuration) {
   return { eligible: true, reason: null };
 }
 
+// Raw percentage observations are normalized exactly once, by their documented
+// normalization, before fraction-bounded registry scoring.
+export function comparableValue(observation, metric) {
+  if (metric && metric.max <= 1 && observation.normalization?.status === 'normalized' && observation.normalization.targetUnit === 'fraction') return observation.normalization.normalizedValue;
+  return observation.rawValue;
+}
+export function validateWeights(weights) {
+  const unknown = Object.keys(weights ?? {}).filter((k) => !Object.hasOwn(DEFAULT_WEIGHTS, k));
+  if (unknown.length) throw new Error('weights outside the declared capability domains: ' + unknown.join(', '));
+  if (Object.values(weights).some((v) => !Number.isFinite(v) || v < 0) || !Object.values(weights).some((v) => v > 0)) throw new Error('weights must be nonnegative with at least one positive value');
+  return weights;
+}
+const knownConfiguration = (o, c) => !!o.configurationSignature || (!!c && [c.testedHarness ?? c.harness, c.testCondition].some((v) => v !== null && v !== undefined));
 const configSignature = (c) => c ? JSON.stringify({variant:c.variant ?? null, baseOrInstruct:c.baseOrInstruct ?? null, reasoningMode:c.reasoningMode ?? null, quantization:c.quantization ?? null, harness:c.testedHarness ?? c.harness ?? null, tools:c.tools ?? null, reasoningBudgetTokens:c.reasoningBudgetTokens ?? null, testCondition:c.testCondition ?? null}) : 'configuration-unknown';
 const panelKey = (o, c) => [o.suiteId, o.benchmarkVersion, o.taskId, o.split ?? 'unknown', o.metric, o.metricDirection, o.configurationSignature ?? configSignature(c)].join('|');
 export function comparePanel(rows, { models, suites, configurations, weights = DEFAULT_WEIGHTS, independentOnly = false, cohort, conflictedObservationIds = new Set(), sourceConflicts = [] } = {}) {
+  validateWeights(weights);
   const modelIds = cohort ? [...new Set(cohort)] : [...new Set(rows.map(x => x.modelId))];
+  const excludedReasons = [];
   const conflicts = new Set([...conflictedObservationIds, ...sourceConflicts.flatMap(x => x.observationIds ?? [])]);
   const grouped = new Map();
   for (const row of rows) {
@@ -30,14 +46,27 @@ export function comparePanel(rows, { models, suites, configurations, weights = D
     if (!allowed.eligible || (independentOnly && !row.sourceVerification?.independentReplication)) continue;
     const suite = suites?.get(row.suiteId);
     if (!suite || SEPARATE.has(suite.domain)) continue;
+    // Selection depends only on the selected (positive-weight) domains.
+    if (!(weights[suite.domain] > 0)) continue;
+    // Unknown conditions are not proof of a match.
+    if (!knownConfiguration(row, config)) { excludedReasons.push({ id: row.id, reason: 'unknown test conditions' }); continue; }
+    const score = normalize(comparableValue(row, suite.metric), suite.metric);
+    if (score === null) { excludedReasons.push({ id: row.id, reason: 'value outside the declared metric bounds' }); continue; }
     const key = panelKey(row, config);
     if (!grouped.has(key)) grouped.set(key, []);
-    grouped.get(key).push({ row, suite, score: normalize(row.rawValue, suite.metric) });
+    grouped.get(key).push({ row, suite, score });
+  }
+  // Duplicate rows for one model in one panel are ambiguous; the panel is dropped
+  // rather than choosing by array order.
+  for (const [key, entries] of [...grouped]) {
+    const counts = new Map();
+    for (const e of entries) counts.set(e.row.modelId, (counts.get(e.row.modelId) ?? 0) + 1);
+    if ([...counts.values()].some((n) => n > 1)) { grouped.delete(key); excludedReasons.push({ id: key, reason: 'duplicate observations for one model in one panel' }); }
   }
   // A cohort uses only exact panels represented once for every model. Repeated family variants are
   // capped by averaging within family/domain before domain weighting.
   const common = [...grouped].filter(([, entries]) => modelIds.every(id => entries.some(x => x.row.modelId === id)));
-  if (!common.length) return { version: METHOD_VERSION, eligible: false, score: null, reason: 'no eligible compatible common panel', panelSize: 0, exclusions: rows.length };
+  if (!common.length) return { version: METHOD_VERSION, eligible: false, score: null, reason: 'no eligible compatible common panel', panelSize: 0, exclusions: rows.length, excludedReasons };
   const perModel = new Map();
   for (const id of modelIds) {
     const familyValues = new Map();
@@ -52,14 +81,14 @@ export function comparePanel(rows, { models, suites, configurations, weights = D
     const byDomain = new Map();
     for (const v of familyAverages) { if (!byDomain.has(v.domain)) byDomain.set(v.domain, []); byDomain.get(v.domain).push(v.score); }
     const domainScores = Object.fromEntries([...byDomain].map(([d,vs])=>[d,vs.reduce((s,x)=>s+x,0)/vs.length]));
-    const domains = Object.keys(domainScores);
-    const applicable = domains.reduce((sum,d)=>sum+(weights[d] ?? 0),0);
-    // Missing domains never cause model-specific weight redistribution.
-    const score = domains.length === Object.keys(weights).filter(d => weights[d] > 0).length && applicable > 0
-      ? domains.reduce((sum,d)=>sum+domainScores[d]*weights[d],0)/applicable : null;
+    const selected = Object.keys(weights).filter(d => weights[d] > 0);
+    const total = selected.reduce((sum,d)=>sum+weights[d],0);
+    // Every selected domain must be present; missing domains never cause model-specific renormalization.
+    const score = selected.every(d => Number.isFinite(domainScores[d])) && total > 0
+      ? selected.reduce((sum,d)=>sum+domainScores[d]*weights[d],0)/total : null;
     perModel.set(id, { model: models?.get(id)?.name ?? id, score, domainScores, eligible: score !== null });
   }
-  return { version: METHOD_VERSION, eligible: true, panelSize: common.length, panel: common.map(([key])=>key), exclusions: rows.length - common.reduce((n,[,e])=>n+e.length,0), models: Object.fromEntries(perModel), weights: { ...weights }, score: null };
+  return { version: METHOD_VERSION, eligible: true, panelSize: common.length, panel: common.map(([key])=>key), exclusions: rows.length - common.reduce((n,[,e])=>n+e.length,0), excludedReasons, models: Object.fromEntries(perModel), weights: { ...weights }, score: null };
 }
 
 export function rankSensitivity(result, variants) {
@@ -69,7 +98,8 @@ export function rankSensitivity(result, variants) {
   });
 }
 export function encodeWeightSettings(weights = DEFAULT_WEIGHTS) {
-  if (!weights || Object.entries(weights).some(([k,v])=>SEPARATE.has(k)||!Number.isFinite(v)||v<0) || !Object.values(weights).some(v=>v>0)) throw new Error('weights must be nonnegative capability-domain weights with at least one positive value');
+  if (!weights || Object.keys(weights).some(k=>SEPARATE.has(k))) throw new Error('weights must be nonnegative capability-domain weights with at least one positive value');
+  validateWeights(weights);
   return `w=${encodeURIComponent(JSON.stringify(weights))}`;
 }
 export function decodeWeightSettings(search, fallback = DEFAULT_WEIGHTS) {

@@ -115,7 +115,11 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   for (const id of ['frontier', 'paired', 'open-weights', 'models', 'methods']) {
     check.equal(await page.locator('#' + id + ' h2').count(), 1, 'distinct page chapter is rendered: ' + id);
   }
-  check.match(await page.locator('#paired').innerText(), /headquarters are not represented/i, 'unmatched geography remains unavailable');
+  // Step 8 replaced the unavailable-geography placeholder with the sourced, matched
+  // head-to-head; npm run test:head-to-head exercises it in depth.
+  check.equal(await page.getByTestId('h2h').count(), 1, 'paired chapter mounts the matched US–China comparison');
+  check.match(await page.getByTestId('h2h-region-definition').innerText(), /never inferred from model language/i, 'region definition is labelled');
+  check.equal(await page.getByTestId('authority-rows').locator('li').count(), 10, 'frontier leads with a populated 10-model authority ranking');
   check.equal(await page.locator('#models .directory-count strong').innerText(), '508', 'directory starts from the entire admitted model set');
   await page.screenshot({ path: new URL('../test-results/frontier-desktop.png', import.meta.url).pathname, fullPage: true, animations: 'disabled' });
   for (const [id, name] of [['frontier', 'frontier'], ['paired', 'paired'], ['open-weights', 'size-ruler'], ['models', 'directory'], ['methods', 'methods']]) {

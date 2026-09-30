@@ -23,7 +23,10 @@
     "test:scoring": "node tests/scoring/test-scoring.mjs",
     "test:chart-smoke": "node scripts/chart-smoke.mjs",
     "verify:foundation": "node scripts/verify-foundation.mjs",
-    "verify:design": "node scripts/verify-design.mjs"
+    "verify:design": "node scripts/verify-design.mjs",
+    "test:authority": "node scripts/test-authority.mjs",
+    "test:head-to-head": "node scripts/test-head-to-head.mjs",
+    "data:authority": "node scripts/authority/refresh.mjs"
   },
   "devDependencies": {
     "@types/node": "24.10.0",
