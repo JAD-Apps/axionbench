@@ -302,6 +302,21 @@
             "repository": "project",
             "path": "package.json",
             "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
+            "consistency": "fresh"
           }
         ],
         "writes": [
@@ -356,6 +371,10 @@
           {
             "repository": "project",
             "path": "package.json"
+          },
+          {
+            "repository": "project",
+            "path": "data"
           }
         ],
         "resources": []
@@ -384,6 +403,21 @@
           {
             "repository": "project",
             "path": "package.json",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
             "consistency": "fresh"
           }
         ],
@@ -465,6 +499,21 @@
             "repository": "project",
             "path": "package.json",
             "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
+            "consistency": "fresh"
           }
         ],
         "writes": [
@@ -536,6 +585,21 @@
           {
             "repository": "project",
             "path": "package.json",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
             "consistency": "fresh"
           }
         ],
@@ -609,6 +673,21 @@
             "repository": "project",
             "path": "package.json",
             "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
+            "consistency": "fresh"
           }
         ],
         "writes": [
@@ -664,6 +743,21 @@
           {
             "repository": "project",
             "path": "package.json",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
             "consistency": "fresh"
           }
         ],
@@ -725,6 +819,21 @@
             "repository": "project",
             "path": "package.json",
             "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
+            "consistency": "fresh"
           }
         ],
         "writes": [
@@ -767,7 +876,7 @@
       "bot": "Sil",
       "difficulty": "hard",
       "tier": "architect",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Read-only independent assessment against docs/OVERHAUL-PLAN.md and the owner outcome contract; run the daemon's release verifier and inspect actual screenshots and source-backed coverage. Check visual distinctiveness beyond hero, broad live data/scoring honesty, all named labs/sections, absence of personal subscription details, exact pricing and result links, and compatible animated charts. Any unmet threshold or scope remains a gap; never weaken the contract or edit test expectations to pass. Deployment cannot proceed until this stage passes. Final JadBot evaluation remains required after the last step. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Read-only independent assessment against docs/OVERHAUL-PLAN.md and the owner outcome contract; run the daemon's release verifier and inspect actual screenshots and source-backed coverage. Check visual distinctiveness beyond hero, broad live data/scoring honesty, all named labs/sections, absence of personal subscription details, exact pricing and result links, and compatible animated charts. Any unmet threshold or scope remains a gap; never weaken the contract or edit test expectations to pass. Deployment cannot proceed until this stage passes. Final JadBot evaluation remains required after the last step. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Independent read-only review must inspect and assess the actual candidate and existing verifier/screenshot receipts. The daemon runs this step's verify:release command in its writable verification sandbox after the assessment; do not attempt source/build mutations from the read-only analysis worker or claim a check that was not run. Preserve any unmet requirement as a review gap.",
       "dependsOn": [
         12
       ],
@@ -784,6 +893,21 @@
           {
             "repository": "project",
             "path": "package.json",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
             "consistency": "fresh"
           }
         ],
@@ -819,6 +943,21 @@
           {
             "repository": "project",
             "path": "package.json",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
             "consistency": "fresh"
           }
         ],
@@ -867,6 +1006,21 @@
           {
             "repository": "project",
             "path": "package.json",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "src",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "data",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "scripts",
             "consistency": "fresh"
           }
         ],
