@@ -367,7 +367,7 @@
       "bot": "Mona",
       "difficulty": "hard",
       "tier": "main",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement the original visual blueprint and entire responsive page shell, keeping the hero. Recompose below-fold hierarchy, negative space, type scale, graphite/mineral/cobalt/lime balance, subtle depth and section rhythm; no repeated generic card grid. Frontier defaults to 8–12 source-verified flagships across labs with direct labels, coverage and readable source detail. Build animated visx/Motion ranking, compatible domain matrix and task-cost scatter/Pareto with persistent cohort/view state, keyboard/touch alternatives and exact accessible tables. Only supported view types are selectable; no new fake scores to fill space. test:frontier must exercise actual filters/view transitions/source links/cost state/mobile bounds/keyboard and reduced motion using the real broad dataset. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement the original visual blueprint and entire responsive page shell, keeping the hero. Recompose below-fold hierarchy, negative space, type scale, graphite/mineral/cobalt/lime balance, subtle depth and section rhythm; no repeated generic card grid. Frontier defaults to 8–12 source-verified flagships across labs with direct labels, coverage and readable source detail. Build animated visx/Motion ranking, compatible domain matrix and task-cost scatter/Pareto with persistent cohort/view state, keyboard/touch alternatives and exact accessible tables. Only supported view types are selectable; no new fake scores to fill space. test:frontier must exercise actual filters/view transitions/source links/cost state/mobile bounds/keyboard and reduced motion using the real broad dataset. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Integration contract: the foundation currently mounts src/observatory.tsx from src/main.tsx and uses src/style.css, src/chart-data.ts and scripts/test-harness.mjs. Wire this step into the real rendered application and shared state; creating an unused isolated component is incomplete. Add the advertised npm verify command and meaningful independent interaction checks in scripts/tests. Use the existing sandbox-compatible browser harness and retain earlier gates.",
       "dependsOn": [
         6
       ],
@@ -407,6 +407,30 @@
           {
             "repository": "project",
             "path": "public"
+          },
+          {
+            "repository": "project",
+            "path": "src/observatory.tsx"
+          },
+          {
+            "repository": "project",
+            "path": "src/main.tsx"
+          },
+          {
+            "repository": "project",
+            "path": "src/style.css"
+          },
+          {
+            "repository": "project",
+            "path": "src/chart-data.ts"
+          },
+          {
+            "repository": "project",
+            "path": "scripts"
+          },
+          {
+            "repository": "project",
+            "path": "package.json"
           }
         ],
         "resources": [
@@ -423,7 +447,7 @@
       "bot": "Vorden",
       "difficulty": "hard",
       "tier": "main",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Build a distinctive paired comparison using two models and aligned domain dumbbells/raw benchmark rows with common-condition filters, excluded observations and source drilldown. Source lab headquarters and label the definition; retain other/unknown/global labs outside the regional selectors. Never infer origin from language, endpoints or licence. No unmatched country-average ranking or fake winner. Persist selections and scoring panel in URLs and exports; accessible values match marks. test:head-to-head checks matched/intersected panels, unequal coverage, incompatible harnesses, all-null/tie states, accurate deltas, mobile layouts and real result links. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Build a distinctive paired comparison using two models and aligned domain dumbbells/raw benchmark rows with common-condition filters, excluded observations and source drilldown. Source lab headquarters and label the definition; retain other/unknown/global labs outside the regional selectors. Never infer origin from language, endpoints or licence. No unmatched country-average ranking or fake winner. Persist selections and scoring panel in URLs and exports; accessible values match marks. test:head-to-head checks matched/intersected panels, unequal coverage, incompatible harnesses, all-null/tie states, accurate deltas, mobile layouts and real result links. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Integration contract: the foundation currently mounts src/observatory.tsx from src/main.tsx and uses src/style.css, src/chart-data.ts and scripts/test-harness.mjs. Wire this step into the real rendered application and shared state; creating an unused isolated component is incomplete. Add the advertised npm verify command and meaningful independent interaction checks in scripts/tests. Use the existing sandbox-compatible browser harness and retain earlier gates.",
       "dependsOn": [
         7
       ],
@@ -455,6 +479,30 @@
           {
             "repository": "project",
             "path": "tests/head-to-head"
+          },
+          {
+            "repository": "project",
+            "path": "src/observatory.tsx"
+          },
+          {
+            "repository": "project",
+            "path": "src/main.tsx"
+          },
+          {
+            "repository": "project",
+            "path": "src/style.css"
+          },
+          {
+            "repository": "project",
+            "path": "src/chart-data.ts"
+          },
+          {
+            "repository": "project",
+            "path": "scripts"
+          },
+          {
+            "repository": "project",
+            "path": "package.json"
           }
         ],
         "resources": [
@@ -471,7 +519,7 @@
       "bot": "Vorden",
       "difficulty": "hard",
       "tier": "main",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement grouped exploration for <10B,10–35B,35–100B,100–300B,300B+,undisclosed total parameters; activated MoE parameters are separate labels/filters. Distinguish licence/openness, base/instruct, quantized model and hosted price from self-host cost. Include Meta, DeepSeek, Qwen, Mistral, Kimi, GLM, MiniMax, Nemotron, OLMo/Granite and others in supported sources. Show a bounded representative cohort first, all rows via search/pagination, and small multiples where useful. test:open-weights tests exact band boundaries, unknown parameters, MoE identity, pagination, source details and maximum default series count. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement grouped exploration for <10B,10–35B,35–100B,100–300B,300B+,undisclosed total parameters; activated MoE parameters are separate labels/filters. Distinguish licence/openness, base/instruct, quantized model and hosted price from self-host cost. Include Meta, DeepSeek, Qwen, Mistral, Kimi, GLM, MiniMax, Nemotron, OLMo/Granite and others in supported sources. Show a bounded representative cohort first, all rows via search/pagination, and small multiples where useful. test:open-weights tests exact band boundaries, unknown parameters, MoE identity, pagination, source details and maximum default series count. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Integration contract: the foundation currently mounts src/observatory.tsx from src/main.tsx and uses src/style.css, src/chart-data.ts and scripts/test-harness.mjs. Wire this step into the real rendered application and shared state; creating an unused isolated component is incomplete. Add the advertised npm verify command and meaningful independent interaction checks in scripts/tests. Use the existing sandbox-compatible browser harness and retain earlier gates.",
       "dependsOn": [
         8
       ],
@@ -503,6 +551,30 @@
           {
             "repository": "project",
             "path": "tests/open-weights"
+          },
+          {
+            "repository": "project",
+            "path": "src/observatory.tsx"
+          },
+          {
+            "repository": "project",
+            "path": "src/main.tsx"
+          },
+          {
+            "repository": "project",
+            "path": "src/style.css"
+          },
+          {
+            "repository": "project",
+            "path": "src/chart-data.ts"
+          },
+          {
+            "repository": "project",
+            "path": "scripts"
+          },
+          {
+            "repository": "project",
+            "path": "package.json"
           }
         ],
         "resources": [
