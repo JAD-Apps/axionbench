@@ -1,0 +1,12 @@
+{
+  "capturedAt": "2026-09-30",
+  "purpose": "Source-location/version discovery snapshot; not a benchmark result dataset.",
+  "observations": [
+    {"source":"https://www.swebench.com/","checkedUrl":"https://www.swebench.com/","pageTitle":"SWE-bench Leaderboards","verified":"Official page distinguishes original, Bash Only/Verified, Lite, Multilingual and Multimodal; resolved percentage is the displayed metric. Copyright notice reserves rights."},
+    {"source":"https://www.tbench.ai/","checkedUrl":"https://www.tbench.ai/","pageTitle":"TERMINAL-BENCH 4.0","verified":"Page identifies version 4.0 and resolution rate; leaderboard rows were blank in the retrieved page, so no results are recorded."},
+    {"source":"https://gorilla.cs.berkeley.edu/leaderboard.html","checkedUrl":"https://gorilla.cs.berkeley.edu/leaderboard.html","pageTitle":"Berkeley Function-Calling Leaderboard","verified":"Official page identifies BFCL V4, last updated 2026-04-12, checkpoint f7cf735, and names V1/V2/V3/V4 distinctions."},
+    {"source":"https://lastexam.ai/","checkedUrl":"https://lastexam.ai/","pageTitle":"Humanity's Last Exam","verified":"Official page announces HLE-Diamond on 2026-09-22, HLE-Rolling in 2025, and finalized original HLE with 2,500 questions; these are separate identities."},
+    {"source":"https://labs.scale.com/leaderboard/multichallenge","checkedUrl":"https://labs.scale.com/leaderboard/multichallenge","pageTitle":"Scale Labs Leaderboard: MultiChallenge","verified":"Official page specifies instance-level rubric judging and Rank (Upper Bound): 1 plus the number of models whose lower 95% interval bound exceeds the target model upper bound; update dated 2026-02-03."}
+  ],
+  "limitations": ["Discovery metadata only; no model result observations ingested.", "Rights for each benchmark dataset/result are unverified beyond the page statements above; publication is link-only pending review.", "Only the exact URLs listed here were checked; this file does not attest to all registry links."]
+}

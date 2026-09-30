@@ -1,0 +1,8 @@
+{
+  "snapshotId": "official-pages-2026-09-30",
+  "path": "data/source-snapshots/2026-09-30-official-pages.json",
+  "sha256": "27c04ec8ac19affdafe44f20ad0717e7dcfa127a8be52199cd3d85a5d2262644",
+  "capturedAt": "2026-09-30",
+  "evidenceKind": "source page metadata snapshot; not benchmark observations",
+  "captureMethod": "official source page retrieval; concise facts and source URLs preserved in snapshot"
+}

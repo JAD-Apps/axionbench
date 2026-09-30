@@ -1,0 +1,16 @@
+{
+  "repo": "JAD-Apps/axionbench",
+  "visibility": "PUBLIC",
+  "url": "https://github.com/JAD-Apps/axionbench",
+  "isEmpty": false,
+  "origin": "https://github.com/JAD-Apps/axionbench.git",
+  "branch": "jadbot/428ae444b256",
+  "commit": "a98090e1cd0406101ffcdc041d3e4599a3007eee",
+  "pushedCommit": "a98090e1cd0406101ffcdc041d3e4599a3007eee",
+  "verifiedAt": "2026-09-30T18:35:58.156Z",
+  "verification": {
+    "method": "gh repo view and git ls-remote",
+    "baselinePush": "git push -u origin HEAD",
+    "initialSshAttempt": "failed: Host key verification failed; retry succeeded over HTTPS"
+  }
+}

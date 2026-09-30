@@ -1,107 +1,15 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A clearer view of AI model capability. Explore benchmark rankings, capability profiles, and estimated task pricing with JAD MetaBench.">
-  <meta name="theme-color" content="#101114">
-  <meta property="og:title" content="JAD MetaBench — Find your next model.">
-  <meta property="og:description" content="Compare AI models across seven capabilities, with transparent coverage and estimated API cost per task.">
-  <meta property="og:type" content="website">
-  <title>JAD MetaBench — Find your next model.</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/space-grotesk-600.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="assets/dm-sans-normal-400.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="assets/design.css">
-  <script src="assets/echarts.min.js" defer></script>
-  <script src="assets/data.js" defer></script>
-  <script src="assets/app.js" defer></script>
-  <script src="assets/surface.js" defer></script>
-</head>
-<body>
-  <a class="skip-link" href="#explorer">Skip to benchmark explorer</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="JAD MetaBench home"><img src="assets/favicon.svg" width="31" height="31" alt=""><span><b>JAD</b> <span class="brand-divider">/</span> MetaBench<span class="brand-beta">INDEX 01</span></span></a>
-      <nav aria-label="Main navigation"><a href="#explorer">Explore</a><a href="#routing">Task routing</a><a href="#methodology">Methodology</a></nav>
-      <div class="header-actions"><button class="text-button" id="download-top" type="button">Get the data <span aria-hidden="true">↗</span></button><button class="theme-button" id="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></svg></button></div>
-    </div>
-  </header>
-
-  <main id="top">
-    <div class="hero-shell">
-    <section class="hero container" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="small-cross" aria-hidden="true">+</span> Model intelligence, measured.</div>
-        <h1 id="hero-title">Find your<br><span class="hero-word">next model<span class="hero-period">.</span></span></h1>
-        <p class="hero-lede">Different models. Different strengths.<br>A clearer signal for the work ahead.</p>
-        <div class="hero-actions"><a class="button primary" href="#explorer">Explore the index <span aria-hidden="true">↗</span></a><a class="quiet-link" href="#methodology">Follow the methodology <span aria-hidden="true">↗</span></a></div>
-        <div class="snapshot"><span class="status-dot" aria-hidden="true"></span><span id="snapshot-label">Snapshot · 30 September 2026</span><span class="snapshot-separator">/</span><span>Open, inspectable data</span></div>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="art-label"><span>FIG. 01 / THE INTELLIGENCE FIELD</span><span class="art-coordinate">[ JAD / MB ]</span></div>
-        <div class="surface-stage"><canvas id="intelligence-surface"></canvas><div class="surface-crosshair crosshair-one">+</div><div class="surface-crosshair crosshair-two">+</div><span class="surface-axis axis-y">CAPABILITY ↑</span><span class="surface-axis axis-x">COVERAGE →</span></div>
-        <div class="art-readout"><span class="art-readout-label">CODE / FRONTIER</span><strong id="hero-score">98.8<span> / 100</span></strong><span class="art-readout-source">Source-weighted index<br>30 SEP 2026 SNAPSHOT</span></div>
-        <div class="art-caption"><span>ABSTRACT SIGNAL SURFACE</span><span>COMPARE THE EVIDENCE ↓</span></div>
-      </div>
-    </section>
-    <div class="container hero-bottom"><span>CAPABILITY <span>×</span> COVERAGE <span>×</span> TASK COST</span><a href="#explorer">Scroll to explore <span aria-hidden="true">↓</span></a></div>
-    </div>
-
-    <div class="container metric-strip" id="metrics" aria-label="Dataset summary"></div>
-    <div class="container source-strip"><span>Signals from</span><a href="https://www.bridgebench.ai/leaderboard" target="_blank" rel="noopener noreferrer">BridgeBench <span aria-hidden="true">↗</span></a><span class="source-divider">/</span><a href="https://benchlm.ai/benchmarks/swe-bench-pro" target="_blank" rel="noopener noreferrer">SWE-bench Pro <span aria-hidden="true">↗</span></a><span class="source-divider">/</span><a href="https://benchlm.ai/benchmarks/terminal-bench-4" target="_blank" rel="noopener noreferrer">Terminal-Bench 4.0 <span aria-hidden="true">↗</span></a></div>
-    <div class="container signal-strip" id="signal-strip" aria-label="Capability leaders in this snapshot"></div>
-
-    <section class="container content-section" id="explorer" aria-labelledby="explorer-title">
-      <div class="section-heading"><div><div class="eyebrow section-number">01 / The capability explorer</div><h2 id="explorer-title">One dataset.<br><span class="heading-muted">Four perspectives.</span></h2></div><p>Rank the field. Compare strengths.<br>Find the tradeoff that fits the task.</p></div>
-      <div class="explorer-card">
-        <div class="explorer-toolbar"><div class="view-switch" role="group" aria-label="Chart view">
-          <button type="button" data-view="ranking" aria-pressed="true"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4h14M3 10h10M3 16h6"/></svg>Rankings</button>
-          <button type="button" data-view="tradeoff" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="14" r="1.5"/><circle cx="10" cy="8" r="1.5"/><circle cx="16" cy="4" r="1.5"/></svg>Cost × capability</button>
-          <button type="button" data-view="profile" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2 8 6-3 9H5L2 8zm0 0v15M2 8l13 9M18 8 5 17"/></svg>Profiles</button>
-          <button type="button" data-view="heatmap" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h5v5H3zm9 0h5v5h-5zM3 12h5v5H3zm9 0h5v5h-5z"/></svg>Heatmap</button>
-        </div><label class="developer-filter">Developer <select id="developer-filter"><option value="all">All developers</option></select></label></div>
-        <div class="capability-row"><div id="capability-tabs" class="capability-tabs" role="group" aria-label="Capability"></div><span class="across-note" id="across-note" hidden>Comparing across capabilities</span></div>
-        <div class="explorer-body"><div class="chart-column">
-          <div class="chart-heading"><div><h3 id="chart-title">Code & implementation</h3><p id="chart-subtitle">Normalized capability · higher is better</p></div><span class="badge" id="chart-count"></span></div>
-          <div id="profile-controls" class="profile-controls" hidden><span class="subtle-label">Choose up to 3 models</span><div id="profile-models" class="profile-models"></div><p id="profile-feedback" class="small-note" aria-live="polite"></p></div>
-          <div class="chart-scroll" tabindex="0" role="region" aria-label="Interactive chart. On small screens, scroll horizontally to see the full chart."><div id="chart" role="img" aria-label="Model capability chart"></div></div>
-          <div class="chart-legend" id="chart-legend"></div>
-          <p class="chart-footnote" id="chart-footnote"></p>
-          <details class="chart-accessibility"><summary>Read chart values as a table</summary><div class="table-scroll" tabindex="0"><table id="chart-data-table"></table></div></details>
-        </div><aside class="evidence-sidebar" aria-label="Selected model evidence">
-          <div class="eyebrow">A closer look</div><label class="subtle-label" for="model-select">Inspect a model</label><select id="model-select"></select><div id="model-detail" aria-live="polite"></div>
-        </aside></div>
-        <div class="weights-strip" id="weights-strip"></div>
-      </div>
-      <noscript><p class="empty-state">Enable JavaScript to explore the charts. You can also <a href="data.json">download the complete snapshot</a>.</p></noscript>
-    </section>
-
-    <section class="container content-section" id="routing" aria-labelledby="routing-title">
-      <div class="section-heading"><div><div class="eyebrow section-number">02 / From signal to decision</div><h2 id="routing-title">Pick for the task.<br><span class="heading-muted">Price for the work.</span></h2></div><p>Three ways to choose, using capability<br>and estimated API cost for your task.</p></div>
-      <div class="routing-controls"><label>Task type <select id="routing-capability"></select></label><label>Estimated task tokens <input id="task-tokens" type="number" value="100000" min="1000" max="10000000" step="1000" inputmode="numeric" aria-describedby="pricing-assumption token-feedback"></label><div class="token-presets" role="group" aria-label="Task size presets"><button type="button" data-tokens="10000">10k</button><button type="button" data-tokens="100000" aria-pressed="true">100k</button><button type="button" data-tokens="1000000">1M</button></div><span class="small-note" id="token-feedback" aria-live="polite"></span></div>
-      <div class="routing-cards" id="routing-cards" aria-live="polite"></div>
-      <p class="small-note pricing-assumption" id="pricing-assumption">Estimated task cost uses a fixed token mix: 30% input, 60% cache reads, 10% output. Task size includes all three. These estimates exclude retries, tool charges, and taxes. <a href="#pricing-method">See pricing assumptions ↗</a></p>
-    </section>
-
-    <section class="container content-section" id="matrix" aria-labelledby="matrix-title">
-      <div class="section-heading"><div><div class="eyebrow section-number">03 / The complete picture</div><h2 id="matrix-title">The full index<span class="heading-dot">.</span></h2></div><button class="text-button" type="button" id="download-table">Download CSV <span aria-hidden="true">↓</span></button></div>
-      <div class="matrix-card"><div class="matrix-toolbar"><p><span id="matrix-count">12</span> models <span class="soft-separator">/</span> Scores on a 0–100 index</p><label class="search-field"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="5"/><path d="m12 12 5 5"/></svg><input id="model-search" type="search" placeholder="Find a model…" aria-label="Search models"></label></div><div class="table-scroll" tabindex="0" role="region" aria-label="Full benchmark matrix"><table id="matrix-table"></table></div><div class="matrix-footer"><span>A dash means no data. Brackets show a missing-result range.</span><span>Click a column heading to sort <span aria-hidden="true">↕</span></span></div></div>
-    </section>
-
-    <section class="container content-section methodology" id="methodology" aria-labelledby="methodology-title">
-      <div class="method-intro"><div class="eyebrow section-number">04 / Behind the numbers</div><h2 id="methodology-title">Keep the<br><span class="heading-muted">evidence open.</span></h2><p>MetaBench combines published results into task-specific capability estimates. It is a synthesis of source snapshots, rather than a new evaluation run.</p><a class="quiet-link" id="download-method" href="data.json" download>Inspect the source data <span aria-hidden="true">↗</span></a></div>
-      <div class="method-details">
-        <details open><summary><span>01</span> How scores are combined</summary><div class="detail-content"><p>Each source score is divided by that benchmark’s best score, then combined using capability-specific weights. The display multiplies that fraction by 100. An index of 100 means the source leader’s level; it is not a task success percentage. Missing sources are excluded from the point estimate and the remaining weights are renormalized.</p><div id="method-weights"></div></div></details>
-        <details><summary><span>02</span> What the ranges mean</summary><div class="detail-content"><p>Whiskers show a sensitivity range for missing results, using the model’s lowest and highest observed normalized source scores. They are not statistical confidence intervals. Weighted coverage tells you how much of a capability’s source weight has reported results. A narrow range can still have low coverage.</p><p>Profiles show point estimates for models with data on all six routed capabilities. Heatmap gaps remain empty. See rankings and the model inspector for coverage and ranges.</p></div></details>
-        <details id="pricing-method"><summary><span>03</span> How task pricing and routing work</summary><div class="detail-content"><p>Estimated task cost = blended API dollars per million tokens × task tokens ÷ 1,000,000. Prices are imported from the supplied snapshot, originally from JadBot’s pricing table and the <a href="https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json" target="_blank" rel="noopener noreferrer">LiteLLM pricing catalogue ↗</a>. The fixed blend is 30% input, 60% cache reads, and 10% output. Actual token use, cache hits, and retries will change task cost.</p><p>Economy maximizes capability per estimated dollar among models at or above 60% of the best point estimate. Balanced uses an 85% threshold. Frontier picks the highest point estimate, with lower cost breaking ties. All picks use the full snapshot, independently of the explorer’s developer filter.</p></div></details>
-        <details><summary><span>04</span> Limits and source provenance</summary><div class="detail-content"><p>The 3D axis is a proxy built from front-end, one-shot, and reasoning signals; it is not a dedicated graphics evaluation. Security is informational and excluded from routing because many models share a rating of 200 in <a href="https://www.bridgebench.ai/leaderboard" target="_blank" rel="noopener noreferrer">BridgeBench’s security results ↗</a>, which the supplied snapshot treats as a possible floor.</p><p>Vendor-reported rows and the GPT-6 Sol proxy used for GPT-6.1 Sol’s terminal result are marked in the model inspector. Claude Haiku 4.5 has no results in this snapshot. Source sites may have changed since the dates below; this page does not automatically refresh scores or prices.</p></div></details>
-      </div>
-    </section>
-
-    <section class="container sources-section" aria-labelledby="sources-title"><div class="sources-heading"><h3 id="sources-title">Follow the evidence.</h3><p>Every source opens its published results.</p></div><div id="source-cards" class="source-cards"></div></section>
-  </main>
-  <footer class="container site-footer"><a class="brand" href="#top"><img src="assets/favicon.svg" width="24" height="24" alt=""><span><b>JAD</b> <span class="brand-divider">/</span> MetaBench</span></a><p>Better evidence. More deliberate decisions.</p><a href="#top">Back to top <span aria-hidden="true">↑</span></a></footer>
-  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#171918" />
+    <meta name="description" content="AxionBench is an evidence-led observatory for comparing AI systems." />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <title>AxionBench — model observatory</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
