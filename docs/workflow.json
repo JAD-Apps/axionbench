@@ -68,11 +68,11 @@
     },
     {
       "title": "Document the complete visual blueprint and chart choice",
-      "work": "text",
-      "bot": "Vincent",
+      "work": "ops",
+      "bot": "Peter",
       "difficulty": "hard",
-      "tier": "scribe",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Use docs/OVERHAUL-PLAN.md and inspect the requested live Awwwards Vercel references including below-fold sections. Write docs/DESIGN.md with explicit observations, original composition decisions, typography/spacing/colour tokens, responsive layouts and each view's analytical purpose. Preserve assets/surface.js hero behaviour; overhaul everything else. Select React + current compatible visx modules + Motion after checking current official releases, licensing and bundle size. Record a rejected-alternative comparison and prove custom SVG accessibility/animation requirements. Do not publish third-party screenshots/artwork. The blueprint must cover Frontier, cost, US–China, open weights, catalogue and methods, not only the hero. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Use docs/OVERHAUL-PLAN.md and inspect the requested live Awwwards Vercel references including below-fold sections. Write docs/DESIGN.md with explicit observations, original composition decisions, typography/spacing/colour tokens, responsive layouts and each view's analytical purpose. Preserve assets/surface.js hero behaviour; overhaul everything else. Select React + current compatible visx modules + Motion after checking current official releases, licensing and bundle size. Record a rejected-alternative comparison and prove custom SVG accessibility/animation requirements. Do not publish third-party screenshots/artwork. The blueprint must cover Frontier, cost, US–China, open weights, catalogue and methods, not only the hero. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. This is an operations/source-research stage because live reference and package documentation access requires the network capability; a text-only worker cannot perform that lookup. Retain full design deliverables and existing verifier. Use the owner-approved external read scope; do not change global settings.",
       "dependsOn": [
         1
       ],
