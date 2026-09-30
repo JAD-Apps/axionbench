@@ -1,0 +1,10 @@
+{
+  "provider": "cloudflare-pages",
+  "projectName": "axionbench",
+  "productionBranch": "main",
+  "hostname": "axionbench.jadapps.app",
+  "outputDirectory": "dist",
+  "wranglerVersion": "4.145.0",
+  "forbiddenProjects": ["jad-apps-site-git", "jad-apps-site", "docstudio", "the-system"],
+  "secretNames": ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID"]
+}

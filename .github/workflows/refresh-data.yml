@@ -1,0 +1,40 @@
+name: Refresh data
+# Weekly validated refresh. Promotion happens only through a reviewed pull
+# request; a failed refresh restores the last-good data and opens nothing.
+on:
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci
+      - name: Refresh with validation and last-good retention
+        run: npm run data:refresh -- --audit-dir "$RUNNER_TEMP/axionbench-audit"
+      - name: Open a reviewed pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "No data change."; exit 0; fi
+          branch="data-refresh-$(date -u +%Y%m%d)"
+          git config user.name "axionbench-refresh"
+          git config user.email "axionbench-refresh@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add data public docs/DATA-CHANGELOG.md
+          git commit -m "Refresh source data (validated)"
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" --title "Refresh source data" --body "Automated refresh. See docs/DATA-CHANGELOG.md for counts and file hashes. CI must pass and a maintainer must review before merge."

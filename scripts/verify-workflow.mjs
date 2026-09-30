@@ -4,6 +4,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { createHash } from 'node:crypto';
 import { resolve, relative } from 'node:path';
+import { verifyDeployment } from './release/deployment-gate.mjs';
 
 const exec = promisify(execFile);
 const json = async path => JSON.parse(await readFile(path, 'utf8'));
@@ -42,38 +43,7 @@ const approval = async () => {
   assert.deepEqual(result.items, []);
   return a;
 };
-const fetchBytes = async url => {
-  const response = await fetch(url, { signal: AbortSignal.timeout(30000), redirect: 'error' });
-  assert.equal(response.status, 200, `${url}: expected HTTP 200`);
-  return Buffer.from(await response.arrayBuffer());
-};
-const deployment = async () => {
-  const a = await approval();
-  const d = await json('evidence/deployment.json');
-  assert.equal(d.url, `https://${a.hostname}`);
-  assert.equal(d.repo, a.repo);
-  assert.ok(d.provider && d.projectId && d.deploymentId);
-  assert.match(d.sourceCommit, /^[a-f0-9]{40}$/);
-  digest(d.productSha256); digest(d.dataSha256);
-  assert.ok(Number.isFinite(Date.parse(d.publishedAt)));
-  const [remoteManifestBytes, remoteData, localManifest] = await Promise.all([
-    fetchBytes(`${d.url}/release-manifest.json`), fetchBytes(`${d.url}/data.json`), json('dist/release-manifest.json')
-  ]);
-  const manifest = JSON.parse(remoteManifestBytes);
-  assert.equal(manifest.productSha256, d.productSha256);
-  assert.equal(manifest.dataSha256, d.dataSha256);
-  assert.equal(manifest.sourceCommit, d.sourceCommit);
-  assert.equal(localManifest.productSha256, d.productSha256, 'Hosted release must match the verified product build');
-  assert.equal(sha(remoteData), d.dataSha256);
-  assert.ok(Array.isArray(manifest.files) && manifest.files.length >= 3);
-  for (const f of manifest.files) {
-    repoPath(`dist/${f.path}`); digest(f.sha256);
-    const [hosted, local] = await Promise.all([fetchBytes(`${d.url}/${f.path}`), readFile(`dist/${f.path}`)]);
-    assert.equal(sha(hosted), f.sha256, `Hosted artifact mismatch: ${f.path}`);
-    assert.equal(sha(local), f.sha256, `Local artifact mismatch: ${f.path}`);
-  }
-  return d;
-};
+const deployment = async () => verifyDeployment({ approval: await approval(), deployment: await json('evidence/deployment.json') });
 
 const stage = process.argv[2];
 try {

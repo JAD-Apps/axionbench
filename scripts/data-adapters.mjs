@@ -42,6 +42,23 @@ export async function saveSnapshot(relativePath, bytes) {
   return { path: relativePath, sha256: sha256(bytes), bytes: bytes.length };
 }
 
+// Immutable content-addressed storage: identical bytes are stored once under
+// their SHA-256, an existing object is verified and never rewritten, and a run
+// never copies unchanged cached responses into a new timestamp directory.
+export const BLOB_ROOT = 'data/source-snapshots/blobs';
+export async function saveBlob(bytes, extension, { root = BLOB_ROOT } = {}) {
+  if (!/^[a-z0-9]{1,8}$/.test(extension)) throw new Error(`unsafe blob extension ${extension}`);
+  const hash = sha256(bytes);
+  const path = `${root}/${hash.slice(0, 2)}/${hash}.${extension}`;
+  await mkdir(dirname(path), { recursive: true });
+  try { await writeFile(path, bytes, { flag: 'wx' }); }
+  catch (error) {
+    if (error.code !== 'EEXIST') throw error;
+    if (sha256(await readFile(path)) !== hash) throw new Error(`content-addressed object ${path} no longer matches its name`);
+  }
+  return { path, sha256: hash, bytes: bytes.length };
+}
+
 export async function fetchSnapshot(url, { timeout = 20000, headers = {} } = {}) {
   const response = await fetch(url, { redirect: 'follow', headers, signal: AbortSignal.timeout(timeout) });
   const bytes = Buffer.from(await response.arrayBuffer());

@@ -28,7 +28,14 @@
     "test:head-to-head": "node scripts/test-head-to-head.mjs",
     "test:open-weights": "node scripts/test-open-weights.mjs",
     "test:catalogue": "node scripts/test-catalogue.mjs",
-    "data:authority": "node scripts/authority/refresh.mjs"
+    "data:authority": "node scripts/authority/refresh.mjs",
+    "lint": "node scripts/lint.mjs",
+    "build:release": "node scripts/release/build.mjs",
+    "test:browser": "node scripts/chart-smoke.mjs && node scripts/test-browser-runtime.mjs",
+    "data:refresh": "node scripts/automation/refresh.mjs",
+    "deploy:readback": "node scripts/release/readback.mjs",
+    "test:automation": "node scripts/automation/test-automation.mjs",
+    "verify:automation": "node scripts/automation/verify-automation.mjs"
   },
   "devDependencies": {
     "@types/node": "24.10.0",

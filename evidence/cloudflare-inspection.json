@@ -1,0 +1,19 @@
+{
+  "capturedAt": "2026-10-01",
+  "method": "npx wrangler@4.145.0 pages project list, using the owner's existing Wrangler OAuth session; read-only; credentials and account identifiers not recorded",
+  "observedProjects": [
+    { "name": "jad-apps-site-git", "domains": ["jad-apps-site-git.pages.dev", "jadapps.app", "www.jadapps.app"], "note": "apex production project; must remain untouched" },
+    { "name": "the-system", "domains": ["the-system-4i9.pages.dev"] },
+    { "name": "docstudio", "domains": ["docstudio-434.pages.dev", "docs.jadapps.app"] },
+    { "name": "jad-apps-site", "domains": ["jad-apps-site.pages.dev"] }
+  ],
+  "findings": {
+    "axionbenchPagesProjectExists": false,
+    "approvedHostnameAttachedToAnyProject": false,
+    "plannedIndependentProject": "axionbench"
+  },
+  "notStarted": [
+    "Pages project creation, deployment and custom-domain attachment (later steps)",
+    "DNS record lookup: the owner-recorded attempt returned HTTP 403 and the owner chose dashboard setup; no DNS state is claimed here"
+  ]
+}

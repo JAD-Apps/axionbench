@@ -1,0 +1,46 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24
+          cache: npm
+      - name: Pin the package manager from package.json
+        run: npm install --global npm@11.19.0
+      - name: Frozen install
+        run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run test:unit
+      - name: Data, registry and scoring checks
+        run: |
+          npm run test:registry
+          npm run test:data
+          npm run data:validate
+          npm run test:scoring
+      - name: Clean release build
+        run: npm run build:release
+      - name: Install Chromium for browser checks
+        run: npx playwright-core install --with-deps chromium
+      - name: Browser checks
+        run: npm run test:browser
+      - name: Automation checks
+        run: npm run verify:automation
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: release-manifest
+          path: dist/release-manifest.json
+          if-no-files-found: error

@@ -1,11 +1,19 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { addedSuites, extendRegistry, hfDatasetToSuite } from './registry-coverage.mjs';
-import { endpointIdentitySha256, endpointPriceSha256, fetchSnapshot, labForModelId, normalizeScore, parseEvalResults, parseNonnegativeRate, projectLeaderboardRows, readJson, saveSnapshot, sha256 } from './data-adapters.mjs';
+import { endpointIdentitySha256, endpointPriceSha256, fetchSnapshot, labForModelId, normalizeScore, parseEvalResults, parseNonnegativeRate, projectLeaderboardRows, readJson, saveBlob, sha256 } from './data-adapters.mjs';
 
 const date = new Date().toISOString().slice(0, 10);
 const stamp = date.replaceAll('-', '');
-const sourceRoot = `data/source-snapshots/ingestion-${stamp}-${Date.now()}`;
+// Source bytes live once in content-addressed storage (data/source-snapshots/blobs);
+// this per-run directory holds only small run metadata and failure receipts.
+const sourceRoot = `data/source-snapshots/runs/${stamp}-${Date.now()}`;
+const writeAtomic = async (path, text) => {
+  await mkdir(dirname(path), { recursive: true });
+  const temporary = `${path}.${process.pid}.tmp`;
+  await writeFile(temporary, text);
+  await rename(temporary, path);
+};
 const registryPath = 'data/benchmark-registry.json';
 const ingestionPath = 'data/ingestion.json';
 let previousData = null;
@@ -14,10 +22,16 @@ try {
   if (old.schemaVersion === 2 && Array.isArray(old.observations) && old.observations.length) previousData = old;
 } catch { /* first ingestion run has no last-good dataset */ }
 const previousSourceByUrl = new Map();
+const previousRetrievalByUrlHash = new Map();
+const previousPathByHash = new Map();
 const previousReceiptChecks = new Map();
 const previousRegistryAudit = new Map();
 const cacheIsFresh = (at) => Number.isFinite(Date.parse(at)) && Date.now() - Date.parse(at) <= 6 * 24 * 60 * 60 * 1000;
 if (previousData) {
+  for (const source of previousData.sources) {
+    if (source.snapshotPath && source.snapshotSha256 && !previousPathByHash.has(source.snapshotSha256)) previousPathByHash.set(source.snapshotSha256, source.snapshotPath);
+    if (source.url && source.snapshotSha256 && source.retrievedAt) previousRetrievalByUrlHash.set(`${source.url}\n${source.snapshotSha256}`, source.retrievedAt);
+  }
   const previousSourceById = new Map(previousData.sources.map((source) => [source.id, source]));
   for (const source of previousData.sources) {
     if (!source.url?.startsWith('https://') || !cacheIsFresh(source.retrievedAt)) continue;
@@ -80,16 +94,29 @@ const safeName = (value) => {
   return `${slug}-${sha256(Buffer.from(original)).slice(0, 8)}`;
 };
 const safeJson = (value) => Buffer.from(`${JSON.stringify(value, null, 2)}\n`);
-const sourceForSaved = async ({ id, url, publisher, sourceClass, bytes, retrievedAt, httpStatus = 200, contentType = 'application/json', reuseStatus, projectedFrom, permittedFields, resolvedRevision = null, finalUrl = url }) => {
+const sourceForSaved = async ({ id, url, publisher, sourceClass, bytes, retrievedAt: observedAt, httpStatus = 200, contentType = 'application/json', reuseStatus, projectedFrom, permittedFields, resolvedRevision = null, finalUrl = url }) => {
+  let retrievedAt = observedAt;
   const hash = sha256(bytes);
   const extension = url.includes('/.eval_results/') || url.endsWith('/eval.yaml') ? 'yaml' : url.endsWith('/README.md') ? 'md' : contentType?.includes('text/html') ? 'html' : 'json';
-  const relativePath = `${sourceRoot}/${safeName(id)}-${hash.slice(0, 12)}.${extension}`;
-  const saved = await saveSnapshot(relativePath, bytes);
+  // Reuse the already-committed object for identical bytes (verified, never
+  // copied); only genuinely new bytes create a new content-addressed file.
+  const reusablePath = previousPathByHash.get(hash);
+  let saved = null;
+  if (reusablePath) {
+    try { if (sha256(await readFile(reusablePath)) === hash) saved = { path: reusablePath, sha256: hash, bytes: bytes.length }; } catch { /* missing object falls through to fresh storage */ }
+  }
+  saved ??= await saveBlob(bytes, extension);
+  // Identical bytes keep the retrieval date on which they were first captured;
+  // this run's retrieval is recorded separately as lastVerifiedAt.
+  const originalRetrievedAt = previousRetrievalByUrlHash.get(`${url}\n${hash}`);
+  const lastVerifiedAt = originalRetrievedAt && originalRetrievedAt !== retrievedAt ? retrievedAt : undefined;
+  if (originalRetrievedAt) retrievedAt = originalRetrievedAt;
   snapshotEntries.push({ id, path: saved.path, sha256: saved.sha256, bytes: saved.bytes, url, retrievedAt, httpStatus, contentType });
   return setSource({
     id, url, publisher, sourceClass, rights: reuseStatus,
     snapshotPath: saved.path, snapshotSha256: saved.sha256, retrievedAt, httpStatus, contentType,
     projectionOf: projectedFrom ?? null, permittedFields: permittedFields ?? null, resolvedRevision, finalUrl,
+    ...(lastVerifiedAt ? { lastVerifiedAt } : {}),
   });
 };
 const sourceForFailure = (id, url, publisher, sourceClass, result, reuseStatus) => {
@@ -749,7 +776,7 @@ for (const observation of observations) {
 // Preserve failed and blocked retrieval receipts separately from successful
 // content snapshots so a later rerun cannot erase this attempt's evidence.
 const receiptBytes = safeJson({ capturedAt: new Date().toISOString(), failures: receipts, sourceUrlChecks, urlAudit: urlAudit.map(({ url, status, finalUrl, retrievedAt, contentType, bodyBytes, bodySha256, error }) => ({ url, status, finalUrl, retrievedAt, contentType, bodyBytes, bodySha256, error })) });
-const receiptSaved = await saveSnapshot(`${sourceRoot}/retrieval-receipts-${sha256(receiptBytes).slice(0,12)}.json`, receiptBytes);
+const receiptSaved = await saveBlob(receiptBytes, 'json');
 const receiptSource = setSource({ id: 'retrieval-receipts', url: 'internal://public-source-retrieval-receipts', publisher: 'AxionBench retrieval process', sourceClass: 'retrieval_receipt', rights: 'Project-generated diagnostic evidence', snapshotPath: receiptSaved.path, snapshotSha256: receiptSaved.sha256, retrievedAt: new Date().toISOString(), httpStatus: 200, contentType: 'application/json' });
 snapshotEntries.push({ id: receiptSource.id, ...receiptSaved, retrievedAt: receiptSource.retrievedAt, httpStatus: 200, contentType: 'application/json' });
 
@@ -887,8 +914,8 @@ if (missingLastGoodSuites.length) {
   console.error(`Refresh incomplete; retained last-good data/ingestion.json. Candidate capture omitted ${missingLastGoodSuites.length} previously observed suites: ${missingLastGoodSuites.join(', ')}.`);
   process.exitCode = 1;
 } else {
-  await writeFile(ingestionPath, `${JSON.stringify(payload, null, 2)}\n`);
-  await writeFile('data/coverage-report.json', `${JSON.stringify(coverageReport, null, 2)}\n`);
+  await writeAtomic(ingestionPath, `${JSON.stringify(payload, null, 2)}\n`);
+  await writeAtomic('data/coverage-report.json', `${JSON.stringify(coverageReport, null, 2)}\n`);
   console.log(`Captured ${models.length} models, ${configurations.length} configurations, ${pricing.length} prices, ${observations.length} observations from ${suiteCoverage.length} suites / ${familyCoverage.length} families / ${domainCoverage.length} domains.`);
   console.log(`Named labs in catalogue: ${namedLabs.filter((x) => models.some((model) => model.labId === x)).length}/${namedLabs.length}; primary-card coverage ${verifiedLabs.size}/${namedLabs.length}.`);
   console.log(`Fresh snapshot/receipt reuse: ${sourceCacheHits} source payloads, ${registryAuditCacheHits} registry URL checks, ${receiptCacheHits} result URL checks.`);
