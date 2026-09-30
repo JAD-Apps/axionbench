@@ -1,0 +1,108 @@
+{
+  "id": "Edge0/ARK-ASR-3B",
+  "sha": "1e28271b79edc97635783bea65abc89195a09ed3",
+  "lastModified": "2026-06-27T14:45:58.000Z",
+  "createdAt": "2026-06-22T07:04:45.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "automatic-speech-recognition",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "arkasr",
+    "text-generation",
+    "automatic-speech-recognition",
+    "speech",
+    "audio",
+    "pytorch",
+    "vllm",
+    "ark-asr",
+    "custom_code",
+    "zh",
+    "en",
+    "de",
+    "ja",
+    "fr",
+    "ko",
+    "es",
+    "pl",
+    "it",
+    "ro",
+    "hu",
+    "cs",
+    "nl",
+    "fi",
+    "hr",
+    "sk",
+    "sl",
+    "et",
+    "lt",
+    "arxiv:2605.28139",
+    "license:apache-2.0",
+    "eval-results",
+    "region:us"
+  ],
+  "cardData": {
+    "library_name": "transformers",
+    "tags": [
+      "automatic-speech-recognition",
+      "speech",
+      "audio",
+      "transformers",
+      "pytorch",
+      "safetensors",
+      "vllm",
+      "ark-asr"
+    ],
+    "pipeline_tag": "automatic-speech-recognition",
+    "language": [
+      "zh",
+      "en",
+      "de",
+      "ja",
+      "fr",
+      "ko",
+      "es",
+      "pl",
+      "it",
+      "ro",
+      "hu",
+      "cs",
+      "nl",
+      "fi",
+      "hr",
+      "sk",
+      "sl",
+      "et",
+      "lt"
+    ],
+    "license": "apache-2.0",
+    "repository": "https://github.com/AutoArk/open-audio-opd"
+  },
+  "config": {
+    "architectures": [
+      "ArkasrForConditionalGeneration"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_arkasr.ArkasrConfig",
+      "AutoModelForCausalLM": "modeling_arkasr.ArkasrForConditionalGeneration"
+    },
+    "model_type": "arkasr",
+    "tokenizer_config": {
+      "bos_token": null,
+      "eos_token": "<|im_end|>",
+      "pad_token": "<|endoftext|>",
+      "unk_token": null
+    },
+    "chat_template_jinja": "{% for message in messages %}\n    {% if message.role == \"system\" %}\n<|system|>\n{{ message.content }}\n    {% elif message.role == \"user\" %}\n<|user|>\n{{ message.content }}\n    {% elif message.role == \"assistant\" %}\n<|assistant|>\n{{ message.content }}\n    {% endif %}\n{% endfor %}\n{% if add_generation_prompt %}\n<|assistant|>\n{% endif %}"
+  },
+  "safetensors": {
+    "parameters": {
+      "BF16": 4063438848
+    },
+    "total": 4063438848
+  },
+  "usedStorage": 8139552432,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

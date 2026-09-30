@@ -1,0 +1,400 @@
+{
+  "datasetId": "MathArena/aime_2026",
+  "retrievedAt": "2026-09-30T19:49:14.230Z",
+  "projectionOf": "https://huggingface.co/api/datasets/MathArena/aime_2026/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 100,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/FINAL-Bench/Darwin-180B-RSI",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "FINAL-Bench/Darwin-180B-RSI",
+      "notes": "AIME 2026, all 30 problems; majority vote over 16 samples (maj@16) = 100.0; mean accuracy over 16 samples = 98.75; temperature=1.0, top_p=0.95, top_k=20; thinking budget 131,072 tokens; bf16",
+      "lower_is_better": false,
+      "num_parameters": 179999981459
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 97.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/thinkingmachines/Inkling",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "thinkingmachines/Inkling",
+      "lower_is_better": false,
+      "num_parameters": 952377623626
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 97.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/skt/A.X-K2/blob/fb412dcd22e9c5ac43b2967d6c5e8a7d0e667b0f/README.md#L134-L152",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "skt/A.X-K2",
+      "lower_is_better": false,
+      "num_parameters": 691690231040
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 96.67,
+      "verified": false,
+      "source": {
+        "url": "https://matharena.ai/?comp=aime--aime_2026",
+        "name": "Official MathArena Evaluation",
+        "isExternal": true
+      },
+      "modelId": "stepfun-ai/Step-3.5-Flash",
+      "pullRequest": 26,
+      "lower_is_better": false,
+      "num_parameters": 199384301376
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 96.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moonshotai/Kimi-K2.6",
+        "name": "Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "63e0eea7af523c37e5a77966",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1678663263366-63e0eea7af523c37e5a77966.jpeg",
+          "fullname": "Nathan Habib",
+          "name": "SaylorTwift",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 482,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.6",
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 95.83,
+      "verified": false,
+      "source": {
+        "url": "https://matharena.ai/?comp=aime--aime_2026",
+        "name": "Official MathArena Evaluation",
+        "isExternal": true
+      },
+      "modelId": "moonshotai/Kimi-K2.5",
+      "pullRequest": 88,
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 95.83,
+      "verified": false,
+      "source": {
+        "url": "https://matharena.ai/?comp=aime--aime_2026",
+        "name": "Official MathArena Evaluation",
+        "isExternal": true
+      },
+      "modelId": "zai-org/GLM-5",
+      "lower_is_better": false,
+      "num_parameters": 753864139008
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 95.83,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/inclusionAI/Ring-2.6-1T",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "inclusionAI/Ring-2.6-1T",
+      "notes": "xhigh reasoning effort, Mean@64",
+      "lower_is_better": false,
+      "num_parameters": 1025414425344
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 95.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/upstage/Solar-Open2-250B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "upstage/Solar-Open2-250B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 250287810304
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 95.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/thinkingmachines/Inkling-Small",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "thinkingmachines/Inkling-Small",
+      "lower_is_better": false,
+      "num_parameters": 265956439090
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 95.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.1",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.1",
+      "lower_is_better": false,
+      "num_parameters": 753864139008
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 95.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.1",
+        "name": "Model Card",
+        "isExternal": true
+      },
+      "modelId": "INCModel3/GLM-5.1-MXFP4-Mixed-CT-AutoRound",
+      "lower_is_better": false,
+      "num_parameters": 753864139008
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/Muse-Glimmer-30B.yaml",
+      "value": 94.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+        "name": "Muse Glimmer-30B model card",
+        "isExternal": false
+      },
+      "modelId": "meta-models/Muse-Glimmer-30B",
+      "pullRequest": 6,
+      "lower_is_better": false,
+      "num_parameters": 29776626688
+    },
+    {
+      "rank": 14,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 94.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.6-27B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.6-27B",
+      "pullRequest": 2,
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 15,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 93.33,
+      "verified": false,
+      "source": {
+        "url": "https://matharena.ai/?comp=aime--aime_2026",
+        "name": "Official MathArena Evaluation",
+        "isExternal": true
+      },
+      "modelId": "Qwen/Qwen3.5-397B-A17B",
+      "pullRequest": 47,
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 16,
+      "filename": ".eval_results/openPangu-2.0-Flash.yaml",
+      "value": 93.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/openpangu/openPangu-2.0-Flash",
+        "name": "openPangu-2.0-Flash model card",
+        "isExternal": false
+      },
+      "modelId": "openpangu/openPangu-2.0-Flash",
+      "pullRequest": 4,
+      "notes": "Thinking",
+      "lower_is_better": false,
+      "num_parameters": 100136311993
+    },
+    {
+      "rank": 17,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 93.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/inclusionAI/Ling-3.0-flash",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "inclusionAI/Ling-3.0-flash",
+      "lower_is_better": false,
+      "num_parameters": 127486405600
+    },
+    {
+      "rank": 18,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 92.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.6-35B-A3B",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 35951822704
+    },
+    {
+      "rank": 19,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 92.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/LGAI-EXAONE/EXAONE-4.5-33B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "LGAI-EXAONE/EXAONE-4.5-33B",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 34350097664
+    },
+    {
+      "rank": 20,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 90.83,
+      "verified": false,
+      "source": {
+        "url": "https://matharena.ai/?comp=aime--aime_2026",
+        "name": "Official MathArena Evaluation",
+        "isExternal": true
+      },
+      "modelId": "Qwen/Qwen3.5-27B",
+      "pullRequest": 34,
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 21,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 90,
+      "verified": false,
+      "source": {
+        "url": "https://matharena.ai/?comp=aime--aime_2026",
+        "name": "Official MathArena Evaluation",
+        "isExternal": true
+      },
+      "modelId": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+      "pullRequest": 19,
+      "lower_is_better": false,
+      "num_parameters": 123611012096
+    },
+    {
+      "rank": 22,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 87.5,
+      "verified": false,
+      "source": {
+        "url": "https://matharena.ai/?comp=aime--aime_2026",
+        "name": "Official MathArena Evaluation",
+        "isExternal": true
+      },
+      "modelId": "Qwen/Qwen3-30B-A3B-Thinking-2507",
+      "pullRequest": 12,
+      "lower_is_better": false,
+      "num_parameters": 30532122624
+    },
+    {
+      "rank": 23,
+      "filename": ".eval_results/openPangu-2.0-Flash.yaml",
+      "value": 86.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/openpangu/openPangu-2.0-Flash",
+        "name": "openPangu-2.0-Flash model card",
+        "isExternal": false
+      },
+      "modelId": "openpangu/openPangu-2.0-Flash",
+      "pullRequest": 4,
+      "notes": "Non-Thinking",
+      "lower_is_better": false,
+      "num_parameters": 100136311993
+    },
+    {
+      "rank": 24,
+      "filename": ".eval_results/MathArena--aime_2026.yaml",
+      "value": 82.5,
+      "verified": false,
+      "source": {
+        "url": "https://matharena.ai/?comp=aime--aime_2026",
+        "name": "Official MathArena Evaluation",
+        "isExternal": true
+      },
+      "modelId": "Qwen/Qwen3-4B-Thinking-2507",
+      "pullRequest": 16,
+      "lower_is_better": false,
+      "num_parameters": 4022468096
+    },
+    {
+      "rank": 25,
+      "filename": ".eval_results/aime_2026.yaml",
+      "value": 73.85,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/inclusionAI/Ling-2.6-flash",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "inclusionAI/Ling-2.6-flash",
+      "lower_is_better": false,
+      "num_parameters": 107494409216
+    }
+  ]
+}

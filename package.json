@@ -13,6 +13,9 @@
     "clean:build": "vite build --emptyOutDir",
     "test:unit": "vitest run",
     "test:registry": "node scripts/test-registry.mjs",
+    "data:ingest": "node scripts/ingest-data.mjs",
+    "data:validate": "node scripts/data-validate.mjs",
+    "test:data": "node scripts/test-data.mjs",
     "test:chart-smoke": "node scripts/chart-smoke.mjs",
     "verify:foundation": "node scripts/verify-foundation.mjs",
     "verify:design": "node scripts/verify-design.mjs"

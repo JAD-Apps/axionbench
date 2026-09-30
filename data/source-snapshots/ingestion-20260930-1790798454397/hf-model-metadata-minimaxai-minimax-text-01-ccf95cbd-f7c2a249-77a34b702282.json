@@ -1,0 +1,48 @@
+{
+  "id": "MiniMaxAI/MiniMax-Text-01",
+  "sha": "a7351bf2bee0e1253919d349f1ad304e6dac13e9",
+  "lastModified": "2025-07-03T05:13:03.000Z",
+  "createdAt": "2025-01-12T13:48:31.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "text-generation",
+  "tags": [
+    "safetensors",
+    "minimax_text_01",
+    "text-generation",
+    "conversational",
+    "custom_code",
+    "arxiv:2501.08313",
+    "eval-results",
+    "region:us"
+  ],
+  "cardData": {
+    "pipeline_tag": "text-generation"
+  },
+  "config": {
+    "architectures": [
+      "MiniMaxText01ForCausalLM"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_minimax_text_01.MiniMaxText01Config",
+      "AutoModelForCausalLM": "modeling_minimax_text_01.MiniMaxText01ForCausalLM"
+    },
+    "model_type": "minimax_text_01",
+    "num_experts_per_tok": 2,
+    "tokenizer_config": {
+      "bos_token": "<beginning_of_sentence>",
+      "eos_token": "<end_of_sentence>",
+      "unk_token": "<end_of_document>",
+      "chat_template": "{% for message in messages %}{% if message['role'] == 'system' %}{{ '<beginning_of_sentence>system ai_setting=assistant\\n' + message['content'][0]['text'] + '<end_of_sentence>\\n'}}{% elif message['role'] == 'user' %}{{ '<beginning_of_sentence>user name=user\\n' + message['content'][0]['text'] + '<end_of_sentence>\\n'}}{% elif message['role'] == 'assistant' %}{{ '<beginning_of_sentence>ai name=assistant\\n' }}{% for content in message['content'] | selectattr('type', 'equalto', 'text') %}{% generation %}{{ content['text'] }}{% endgeneration %}{% endfor %}{{ '<end_of_sentence>\\n' }}{% elif message['role'] == 'function' %}{{ '<beginning_of_sentence>system function_response=functions\\n' + '{\"name\": \"' + message['name'] + '\", \"response\": ' + message['content'][0]['text'] + '}' + '<end_of_sentence>\\n'}}{% endif %}{% endfor %}{% if tools %}{% for function in tools %}{{ '<beginning_of_sentence>system function_setting=functions\\n' + function | tojson + '<end_of_sentence>\\n'}}{% endfor %}{% endif %}{% if add_generation_prompt %}{{ '<beginning_of_sentence>ai name=assistant\\n' }}{% endif %}"
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "F32": 1244921856,
+      "BF16": 454844733440
+    },
+    "total": 456089655296
+  },
+  "usedStorage": 914671710156,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

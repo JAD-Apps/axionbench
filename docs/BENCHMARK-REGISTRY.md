@@ -1,19 +1,19 @@
 # Benchmark registry
 
-`data/benchmark-registry.json` is the canonical registry input; `src/benchmark-registry.ts` defines the TypeScript contract for benchmark identity, capability domain, metric scale/direction, original source, rights posture, and availability state. It currently covers 15 capability domains and 52 distinct suite/version identities. `scripts/test-registry.mjs` validates registry structure and adverse fixtures, verifies the SHA-256 of the captured source metadata snapshot, and rechecks only the five primary pages preserved in that snapshot.
+`data/benchmark-registry.json` is the suite/version registry; `src/benchmark-registry.ts` defines its typed contract. The registry contains **69 suite/version identities**, grouped into **56 benchmark families** across **15 capability domains**. The registry coverage and actual result coverage are reported separately in `data/coverage-report.json`.
 
-## Availability and publication
+## Availability and family identity
 
-`pending` means an identity and discovery source are recorded, but no permitted, configuration-matched observation snapshot is present. `unsupported` means the cited location does not currently establish a sufficiently exact historical result/version identity for safe comparison. `available` is reserved for a later source-backed observation adapter; this registry contains no available result rows. The snapshot is discovery metadata, not model scores. No scores are fabricated or inferred from the registry.
+`pending` means a suite identity is recorded but has no admitted observation. `unsupported` means its currently cited information does not establish a sufficiently exact result/version identity. `available` is used for the 25 suite versions with captured numeric observations linked to original result evidence. Registry rows do not contribute to the launch threshold unless an observation actually joins to them.
 
-All suites are link-only pending per-dataset and per-result reuse review. A source code licence does not automatically grant rights to republish benchmark data. Registry links must point to the genuine result/source location; versions with no verified independent result endpoint point only to the documented official suite page and remain pending/unsupported. Only URLs in `data/source-snapshots/2026-09-30-official-pages.json` are live rechecked by this command; other links receive HTTPS/URL syntax validation and are explicitly not represented as live verified.
+Each version has a `benchmarkFamilyId`. Versions such as original/Verified/Pro/Multilingual SWE-bench, HLE variants, Terminal-Bench versions, and MMMU variants remain separate suite identities while family coverage counts the family once. The current data contains 25 observed suite versions across 22 families; the exact suite-to-family counts and observation counts are in the coverage report.
+
+## Source links and observations
+
+The ingestion audit GETs every registry reference and records redirect URL, status, retrieval time, response size, and body SHA-256. The 2026-09-30 capture audited all 69 suite references across 59 distinct URLs; all resolved with 2xx/3xx status. It corrected two stale references: FollowBench now points to `https://github.com/YJiangcm/FollowBench`, and OmniBench to `https://m-a-p.ai/OmniBench`. A reachable landing page alone is not represented as a benchmark result. Each admitted observation separately links to its actual model-card result file and, where present, exact leaderboard row and numeric value.
+
+`npm run test:registry` checks registry structure, family distinctions, metric bounds, unknown states, and adversarial mutations. It also rechecks the five primary discovery URLs in `data/source-snapshots/manifest.json`. `npm run data:validate` checks the full current registry URL audit, all observation/result joins, evidence hashes, freshness, aliases, units, privacy, provider pricing, and genuine observed coverage. Thus the five-page registry test is not being presented as the full URL audit.
 
 ## Version identity notes
 
-HLE original, dynamic HLE-Rolling and HLE-Diamond are independent suites; the official HLE page announced Diamond on 2026-09-22 and says original HLE was finalized at 2,500 questions. SWE-bench original, Verified, Lite, Multilingual, Multimodal and Pro remain separate. SWE-bench's live official page describes separate rows and defines resolved rate. Terminal-Bench 4.0 has an official live page, while its retrieved result table was empty; older 2.x is unsupported pending an exact historical result source. Berkeley Function Calling Leaderboard currently identifies BFCL V4 and checkpoint `f7cf735`; V3 remains unsupported as a result identity. Original τ-bench and τ²-bench are distinct and require separate protocol/domain metadata.
-
-The current official Terminal-Bench page specifies resolution rate and 95% confidence intervals, but the registry does not copy any score or interval. The BFCL page reports V4 and its checkpoint/update metadata. No launch observation coverage is claimed by this registry step.
-
-## Focused regression check
-
-Run `npm run test:registry`. This performs no writes or benchmark evaluations. It validates unique IDs, domain breadth, proper bounds and directions, HTTPS source syntax, source and rights metadata, explicit unknown states/reasons, named version distinctions, and adversarial mutations. Live network checks are limited to the four URLs listed in the captured snapshot; a transport error is a failure requiring investigation, not a reason to skip the check.
+HLE original, rolling, and Diamond; SWE-bench variants; Terminal-Bench 2.x and 4; BFCL V3/V4; and original τ-bench/τ²-bench retain distinct version identities. Family IDs group versions only for coverage and later compatibility rules. Protocol fields such as split, frame budget, task setup, grader, and evaluation framework remain observation-level fields; where source material does not report them, the data records unknown/null rather than assuming the benchmark default.

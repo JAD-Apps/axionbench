@@ -1,0 +1,8 @@
+name: Video-MME-v2
+description: Video-MME-v2 is a benchmark for evaluating the next stage of video understanding capabilities of multimodal large language models.
+evaluation_framework: video-mme-v2
+
+tasks:
+  - id: video-mme-v2
+    config: default
+    split: test

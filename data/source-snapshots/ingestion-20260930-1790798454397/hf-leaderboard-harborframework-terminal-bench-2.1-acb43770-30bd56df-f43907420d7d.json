@@ -1,0 +1,553 @@
+{
+  "datasetId": "harborframework/terminal-bench-2.1",
+  "retrievedAt": "2026-09-30T19:49:14.010Z",
+  "projectionOf": "https://huggingface.co/api/datasets/harborframework/terminal-bench-2.1/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/DeepSeek-V4.1-Flash.yaml",
+      "value": 90.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+        "name": "DeepSeek-V4.1-Flash model card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "pullRequest": 29,
+      "notes": "DeepSeek Harness, Minimal mode, 1M-token context.",
+      "lower_is_better": false,
+      "num_parameters": 763205315794
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/MiMo-V2.6-Pro-RL.yaml",
+      "value": 89.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+        "name": "MiMo-V2.6-Pro-RL model card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.6-Pro-RL",
+      "pullRequest": 5,
+      "lower_is_better": false,
+      "num_parameters": 1024216603392
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 88.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.3",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.3",
+      "notes": "harness: claude code",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 87.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Pro-0813",
+      "pullRequest": 19,
+      "notes": "DeepSeek Harness (minimal mode), max reasoning effort, temperature=1.0, top_p=0.95.",
+      "lower_is_better": false,
+      "num_parameters": 1650497936906
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/MiMo-V2.6-Flash-RL.yaml",
+      "value": 87.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL",
+        "name": "MiMo-V2.6-Flash-RL model card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.6-Flash-RL",
+      "pullRequest": 4,
+      "lower_is_better": false,
+      "num_parameters": 310756322688
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 86.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-2.4T-A95B",
+      "pullRequest": 38,
+      "notes": "Reported under the \"Qwen3.8-Max\" product tier (vision input, non-thinking support, 1M context by default, built-in tools) -- may not be identical to the raw open checkpoint alone. Evaluated with Claude Code (avg@10), 5h timeout, max_tokens=131072.",
+      "lower_is_better": false,
+      "num_parameters": 2446182725504
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 86.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-397B",
+      "pullRequest": 2,
+      "notes": "Terminus-2 harness (Harbor framework), parser=json, temperature=1.0, top_p=1.0, 128K context, 4h timeout, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 85.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy4-preview",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy4-preview",
+      "pullRequest": 12,
+      "lower_is_better": false,
+      "num_parameters": 779960992733
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 85.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-397B",
+      "pullRequest": 2,
+      "notes": "Claude Code 2.1.126 harness, parser=json, temperature=1.0, top_p=1.0, max_new_tokens=131072, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/GLM-5.3-Flash.yaml",
+      "value": 84.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+        "name": "GLM-5.3-Flash model card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.3-Flash",
+      "lower_is_better": false,
+      "num_parameters": 321323031390
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 83.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
+      "lower_is_better": false,
+      "num_parameters": 304646824126
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 82.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.2",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.2",
+      "pullRequest": 64,
+      "notes": "Best reported harness: Claude Code 2.1.167 (temperature=1.0, top_p=0.95, max_new_tokens=131072, no wall-clock limit, averaged over 5 runs).",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 82.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "pullRequest": 69,
+      "notes": "DeepSeek Harness (minimal mode), max reasoning effort, temperature=1.0, top_p=0.95.",
+      "lower_is_better": false,
+      "num_parameters": 304180418494
+    },
+    {
+      "rank": 14,
+      "filename": ".eval_results/Nex-N2.5-Pro.yaml",
+      "value": 82.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
+        "name": "Nex-N2.5 model card",
+        "isExternal": false
+      },
+      "modelId": "nex-agi/Nex-N2.5-Pro",
+      "pullRequest": 3,
+      "notes": "NexAU harness.",
+      "lower_is_better": false,
+      "num_parameters": 396802360816
+    },
+    {
+      "rank": 15,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 81,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.2",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.2",
+      "pullRequest": 64,
+      "notes": "Terminus-2 harness (temperature=1.0, top_p=1.0, 256K context, max_episodes=500).",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 16,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 78.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.0-397B",
+      "pullRequest": 23,
+      "notes": "Claude Code 2.1.126 harness, parser=json, temperature=1.0, top_p=1.0, max_new_tokens=131072, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 396802360816
+    },
+    {
+      "rank": 17,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 77.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.0-397B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.0-397B",
+      "pullRequest": 23,
+      "notes": "Terminus-2 harness (Harbor framework), parser=json, temperature=1.0, top_p=1.0, 128K context, 4h timeout, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 396802360816
+    },
+    {
+      "rank": 18,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 75.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/dots-studio/dots3-note-prev",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "dots-studio/dots3-note-prev",
+      "pullRequest": 9,
+      "notes": "Terminus-2 harness, parser=json, 10h timeout, temperature=0.7, top_p=0.95, max_tokens=81920, 256K context.",
+      "lower_is_better": false,
+      "num_parameters": 288443400864
+    },
+    {
+      "rank": 19,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 73,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-27B",
+      "pullRequest": 158,
+      "notes": "Row labeled \"(Terminus)\" as the harness; no further hyperparameter footnote given for this row.",
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 20,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 71.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy3",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy3",
+      "pullRequest": 25,
+      "notes": "Terminus-2 scaffold, parser=xml, agent timeout=4h, max episodes=500, highest reasoning-effort tier.",
+      "lower_is_better": false,
+      "num_parameters": 298786155776
+    },
+    {
+      "rank": 21,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 70.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/meituan-longcat/LongCat-2.0",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "meituan-longcat/LongCat-2.0",
+      "pullRequest": 5,
+      "notes": "Measured in-house under LongCat's own unified harness; no further scaffold/temperature/context details given.",
+      "lower_is_better": false,
+      "num_parameters": 1775560491136
+    },
+    {
+      "rank": 22,
+      "filename": ".eval_results/terminal-bench_2.1.yaml",
+      "value": 70.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/poolside/Laguna-S-2.1",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "poolside/Laguna-S-2.1",
+      "pullRequest": 41,
+      "lower_is_better": false,
+      "num_parameters": 117561977600
+    },
+    {
+      "rank": 23,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 64.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.0-35B",
+      "pullRequest": 36,
+      "notes": "Terminus-2 harness (Harbor framework), parser=json, temperature=1.0, top_p=1.0, 128K context, 4h timeout, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 664944
+    },
+    {
+      "rank": 24,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 63.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/thinkingmachines/Inkling",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "thinkingmachines/Inkling",
+      "pullRequest": 18,
+      "notes": "Best Harness. Effort=0.99",
+      "lower_is_better": false,
+      "num_parameters": 952377623626
+    },
+    {
+      "rank": 25,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 62.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.0-35B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.0-35B",
+      "pullRequest": 36,
+      "notes": "Claude Code 2.1.126 harness, parser=json, temperature=1.0, top_p=1.0, max_new_tokens=131072, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 664944
+    },
+    {
+      "rank": 26,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 59.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/stepfun-ai/Step-3.7-Flash",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "stepfun-ai/Step-3.7-Flash",
+      "pullRequest": 16,
+      "lower_is_better": false,
+      "num_parameters": 201365316160
+    },
+    {
+      "rank": 27,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 56.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16",
+      "pullRequest": 11,
+      "notes": "BF16 checkpoint. Evaluated via NVIDIA's NeMo Evaluator SDK using the Harbor framework, with extended sandboxing via AWS ECS.",
+      "lower_is_better": false,
+      "num_parameters": 560524578816
+    },
+    {
+      "rank": 28,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 53.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
+      "pullRequest": 13,
+      "notes": "NVFP4-quantized checkpoint (same base model as the BF16 release, which scores 56.4). Evaluated via NVIDIA's NeMo Evaluator SDK using the Harbor framework, with extended sandboxing via AWS ECS.",
+      "lower_is_better": false,
+      "num_parameters": 302826566168
+    },
+    {
+      "rank": 29,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 51.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "meta-models/Muse-Glimmer-30B",
+      "pullRequest": 61,
+      "notes": "Terminus-2 harness, High Reasoning mode.",
+      "lower_is_better": false,
+      "num_parameters": 29776626688
+    },
+    {
+      "rank": 30,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 47,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-9B",
+      "pullRequest": 11,
+      "notes": "Claude Code 2.1.126 harness, parser=json, temperature=1.0, top_p=1.0, max_new_tokens=131072, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 9653104368
+    },
+    {
+      "rank": 31,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 46.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-9B",
+      "pullRequest": 11,
+      "notes": "Terminus-2 harness (Harbor framework), parser=json, temperature=1.0, top_p=1.0, 128K context, 4h timeout, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 9653104368
+    },
+    {
+      "rank": 32,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 43.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.0-9B",
+      "pullRequest": 15,
+      "notes": "Terminus-2 harness (Harbor framework), parser=json, temperature=1.0, top_p=1.0, 128K context, 4h timeout, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 1469680
+    },
+    {
+      "rank": 33,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 40.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.0-9B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.0-9B",
+      "pullRequest": 15,
+      "notes": "Claude Code 2.1.126 harness, parser=json, temperature=1.0, top_p=1.0, max_new_tokens=131072, avg of 5 runs.",
+      "lower_is_better": false,
+      "num_parameters": 1469680
+    },
+    {
+      "rank": 34,
+      "filename": ".eval_results/terminal-bench-2.1.yaml",
+      "value": 24.58,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+      "pullRequest": 9,
+      "notes": "Evaluated with NVIDIA's NeMo Evaluator SDK (consistent in-house harness used across NVIDIA's release suite).",
+      "lower_is_better": false,
+      "num_parameters": 31577937344
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "datasetId": "datacurve/deep-swe",
+  "retrievedAt": "2026-09-30T19:49:14.047Z",
+  "projectionOf": "https://huggingface.co/api/datasets/datacurve/deep-swe/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/DeepSeek-V4.1-Flash.yaml",
+      "value": 74.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+        "name": "DeepSeek-V4.1-Flash model card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "pullRequest": 29,
+      "notes": "Reported as 'DeepSWE v1.1'; official mini-swe-agent harness.",
+      "lower_is_better": false,
+      "num_parameters": 763205315794
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/MiMo-V2.6-Pro-RL.yaml",
+      "value": 71.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+        "name": "MiMo-V2.6-Pro-RL model card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.6-Pro-RL",
+      "pullRequest": 5,
+      "lower_is_better": false,
+      "num_parameters": 1024216603392
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/deep_swe_v1_1.yaml",
+      "value": 71.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/mindlab-research/Macaron-V1.1",
+        "name": "Macaron-V1.1 model card",
+        "isExternal": false
+      },
+      "modelId": "mindlab-research/Macaron-V1.1",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/MiMo-V2.6-Flash-RL.yaml",
+      "value": 67.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL",
+        "name": "MiMo-V2.6-Flash-RL model card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.6-Flash-RL",
+      "pullRequest": 4,
+      "lower_is_better": false,
+      "num_parameters": 310756322688
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/deep-swe.yaml",
+      "value": 67.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moonshotai/Kimi-K3",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "moonshotai/Kimi-K3",
+      "lower_is_better": false,
+      "num_parameters": 2779931837184
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/deep-swe.yaml",
+      "value": 66.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.3",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.3",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/deep-swe.yaml",
+      "value": 64.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy4-preview",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy4-preview",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 779960992733
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/GLM-5.3-Flash.yaml",
+      "value": 63.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+        "name": "GLM-5.3-Flash model card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.3-Flash",
+      "notes": "Reported as DeepSWE v1.1 on the model card, run via the mini-swe-agent harness with 400K context.",
+      "lower_is_better": false,
+      "num_parameters": 321323031390
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/deep-swe.yaml",
+      "value": 59.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
+      "lower_is_better": false,
+      "num_parameters": 304646824126
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/Qwen3.8-Flash-Next.yaml",
+      "value": 58.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+        "name": "Qwen3.8-Flash-Next model card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-Flash-Next",
+      "pullRequest": 12,
+      "notes": "harness: Claude Code / mini-SWE-agent (best of two). Reported as 'DeepSWE 1.1' on the card; 256K context.",
+      "lower_is_better": false,
+      "num_parameters": 179999981459
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/deep_swe.yaml",
+      "value": 58.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/mindlab-research/Macaron-V1-Venti",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "mindlab-research/Macaron-V1-Venti",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/deep-swe.yaml",
+      "value": 58.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/mindlab-research/Macaron-V1-Coding-Venti/blob/0a7ec8fdf72e0757decabd90cc3305bed1fed1c6/README.md#L68-L76",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "mindlab-research/Macaron-V1-Coding-Venti",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/deep-swe.yaml",
+      "value": 56.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-2.4T-A95B",
+      "pullRequest": 6,
+      "lower_is_better": false,
+      "num_parameters": 2446182725504
+    },
+    {
+      "rank": 14,
+      "filename": ".eval_results/ornith-1.5-397b.yaml",
+      "value": 56,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+        "name": "Ornith-1.5-397B model card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-397B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 15,
+      "filename": ".eval_results/Nex-N2.5-Pro.yaml",
+      "value": 55.8,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
+        "name": "Nex-N2.5 model card",
+        "isExternal": false
+      },
+      "modelId": "nex-agi/Nex-N2.5-Pro",
+      "pullRequest": 3,
+      "notes": "NexAU harness.",
+      "lower_is_better": false,
+      "num_parameters": 396802360816
+    },
+    {
+      "rank": 16,
+      "filename": ".eval_results/deep-swe.yaml",
+      "value": 54.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "pullRequest": 38,
+      "lower_is_better": false,
+      "num_parameters": 304180418494
+    },
+    {
+      "rank": 17,
+      "filename": ".eval_results/deep-swe.yaml",
+      "value": 46.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.2",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.2",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 18,
+      "filename": ".eval_results/Qwen3.8-27B.yaml",
+      "value": 42.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+        "name": "Qwen3.8-27B model card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-27B",
+      "pullRequest": 22,
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 19,
+      "filename": ".eval_results/deepswe.yaml",
+      "value": 40.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/poolside/Laguna-S-2.1",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "poolside/Laguna-S-2.1",
+      "lower_is_better": false,
+      "num_parameters": 117561977600
+    },
+    {
+      "rank": 20,
+      "filename": ".eval_results/deep-swe.yaml",
+      "value": 28,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy3",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy3",
+      "pullRequest": 8,
+      "lower_is_better": false,
+      "num_parameters": 298786155776
+    },
+    {
+      "rank": 21,
+      "filename": ".eval_results/ornith-1.5-35b-a3b.yaml",
+      "value": 22,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+        "name": "Ornith-1.5-35B-A3B model card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-35B-A3B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 35951822704
+    }
+  ]
+}

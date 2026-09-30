@@ -1,0 +1,309 @@
+{
+  "datasetId": "crosbylegal/RedlineBench",
+  "retrievedAt": "2026-09-30T19:49:14.528Z",
+  "projectionOf": "https://huggingface.co/api/datasets/crosbylegal/RedlineBench/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 56.9,
+      "verified": false,
+      "source": {
+        "url": "https://intelligence.crosby.ai/benchmark/",
+        "name": "RedlineBench report",
+        "isExternal": true,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "crosbylegal/claude-opus-5",
+      "notes": "agent=claude-code; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); post-publication run",
+      "lower_is_better": false
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 56.2,
+      "verified": false,
+      "source": {
+        "url": "https://intelligence.crosby.ai/benchmark/",
+        "name": "RedlineBench report",
+        "isExternal": true,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "crosbylegal/gpt-5.6-sol",
+      "notes": "agent=claude-code; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); post-publication run",
+      "lower_is_better": false
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 55.5,
+      "verified": false,
+      "source": {
+        "url": "https://intelligence.crosby.ai/benchmark/",
+        "name": "RedlineBench report",
+        "isExternal": true,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "crosbylegal/gpt-5.6-luna",
+      "notes": "agent=claude-code; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); post-publication run",
+      "lower_is_better": false
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 51,
+      "verified": false,
+      "source": {
+        "url": "https://intelligence.crosby.ai/benchmark/",
+        "name": "RedlineBench report",
+        "isExternal": true,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "crosbylegal/gemini-3.6-flash",
+      "notes": "agent=opencode; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); post-publication run",
+      "lower_is_better": false
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 50.5,
+      "verified": false,
+      "source": {
+        "url": "https://intelligence.crosby.ai/benchmark/",
+        "name": "RedlineBench report",
+        "isExternal": true,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "crosbylegal/gpt-5.5",
+      "notes": "agent=claude-code; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); published report figure",
+      "lower_is_better": false
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 49.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moonshotai/Kimi-K3",
+        "name": "Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K3",
+      "pullRequest": 176,
+      "notes": "agent=kimi-k3; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); post-publication run",
+      "lower_is_better": false,
+      "num_parameters": 2779931837184
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 49.3,
+      "verified": false,
+      "source": {
+        "url": "https://intelligence.crosby.ai/benchmark/",
+        "name": "RedlineBench report",
+        "isExternal": true,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "crosbylegal/gpt-5.6-terra",
+      "notes": "agent=claude-code; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); post-publication run",
+      "lower_is_better": false
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 47.3,
+      "verified": false,
+      "source": {
+        "url": "https://intelligence.crosby.ai/benchmark/",
+        "name": "RedlineBench report",
+        "isExternal": true,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "crosbylegal/claude-fable-5",
+      "notes": "agent=claude-code; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); published report figure",
+      "lower_is_better": false
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 45.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.2",
+        "name": "Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-5.2",
+      "pullRequest": 19,
+      "notes": "agent=glm-5.2; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); post-publication run",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 45.1,
+      "verified": false,
+      "source": {
+        "url": "https://intelligence.crosby.ai/benchmark/",
+        "name": "RedlineBench report",
+        "isExternal": true,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "crosbylegal/gemini-3.5-flash",
+      "notes": "agent=opencode; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); published report figure",
+      "lower_is_better": false
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/redlinebench.yaml",
+      "value": 44.4,
+      "verified": false,
+      "source": {
+        "url": "https://intelligence.crosby.ai/benchmark/",
+        "name": "RedlineBench report",
+        "isExternal": true,
+        "author": {
+          "_id": "6a305ec8c17415c833135ab3",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6342f326aa45ed8ecf954c80/bjQGFQhNkm75Za3XOByzu.png",
+          "fullname": "Crosby",
+          "name": "crosbylegal",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 10,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "crosbylegal/claude-opus-4-8",
+      "notes": "agent=claude-code; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); published report figure",
+      "lower_is_better": false
+    }
+  ]
+}

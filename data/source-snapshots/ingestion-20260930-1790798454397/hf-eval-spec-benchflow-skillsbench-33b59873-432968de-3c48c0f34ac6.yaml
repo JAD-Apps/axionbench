@@ -1,0 +1,11 @@
+name: "SkillsBench v1.1"
+description: >
+  SkillsBench v1.1 evaluates how well AI agents use structured Skills to complete
+  realistic professional tasks. The headline metric is paired with-skills versus
+  without-skills lift under a fixed BenchFlow harness.
+evaluation_framework: benchflow
+
+tasks:
+  - id: skillsbench_v1_1
+    config: default
+    split: test

@@ -1,0 +1,47 @@
+{
+  "id": "allenai/Olmo-Hybrid-7B",
+  "sha": "4f1cc566f9fdf3ce68da2ab6a788a83d89896dcf",
+  "lastModified": "2026-05-26T22:25:27.000Z",
+  "createdAt": "2026-01-28T00:33:58.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "olmo_hybrid",
+    "text-generation",
+    "en",
+    "license:apache-2.0",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "apache-2.0",
+    "language": [
+      "en"
+    ],
+    "library_name": "transformers"
+  },
+  "config": {
+    "model_type": "olmo_hybrid",
+    "architectures": [
+      "OlmoHybridForCausalLM"
+    ],
+    "tokenizer_config": {
+      "bos_token": null,
+      "eos_token": "<|endoftext|>",
+      "pad_token": "<|pad|>",
+      "unk_token": "<|endoftext|>"
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "BF16": 7430870688
+    },
+    "total": 7430870688
+  },
+  "usedStorage": 44080077302152,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

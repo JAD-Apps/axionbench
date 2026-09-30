@@ -1,0 +1,9 @@
+- dataset:
+    id: openai/gsm8k
+    task_id: gsm8k
+  value: 94.16
+  date: '2026-04-29'
+  source:
+    url: https://huggingface.co/ibm-granite/granite-4.1-30b
+    name: Model Card
+    user: SaylorTwift

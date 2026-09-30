@@ -1,0 +1,647 @@
+{
+  "datasetId": "likaixin/ScreenSpot-Pro",
+  "retrievedAt": "2026-09-30T19:49:14.574Z",
+  "projectionOf": "https://huggingface.co/api/datasets/likaixin/ScreenSpot-Pro/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/Muse-Glimmer-30B.yaml",
+      "value": 75.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+        "name": "Muse Glimmer-30B model card",
+        "isExternal": false
+      },
+      "modelId": "meta-models/Muse-Glimmer-30B",
+      "pullRequest": 6,
+      "lower_is_better": false,
+      "num_parameters": 29776626688
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 70.4,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B",
+        "name": "Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3.5-122B-A10B",
+      "pullRequest": 17,
+      "lower_is_better": false,
+      "num_parameters": 125086497008
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 70.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.5-27B",
+        "name": "Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3.5-27B",
+      "pullRequest": 38,
+      "lower_is_better": false,
+      "num_parameters": 27781427952
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 69.6,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "inclusionAI/UI-Venus-1.5-30B-A3B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 31070754032
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 68.4,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "inclusionAI/UI-Venus-1.5-8B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 8767123696
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 65.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+        "name": "Model Card",
+        "isExternal": false,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3.5-397B-A17B",
+      "pullRequest": 66,
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 63.6,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Salesforce/GTA1-32B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 33452718336
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 61.9,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "inclusionAI/UI-Venus-Ground-72B",
+      "pullRequest": 2,
+      "lower_is_better": false,
+      "num_parameters": 73410777344
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 61.6,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "ByteDance-Seed/UI-TARS-1.5-7B",
+      "pullRequest": 18,
+      "lower_is_better": false,
+      "num_parameters": 8292166656
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 57.7,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "inclusionAI/UI-Venus-1.5-2B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 2438696960
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 55.5,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Salesforce/GTA1-7B",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 8292166656
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 53.3,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen2.5-VL-72B-Instruct",
+      "pullRequest": 34,
+      "lower_is_better": false,
+      "num_parameters": 73410777344
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 50.8,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "inclusionAI/UI-Venus-Ground-7B",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 8292166656
+    },
+    {
+      "rank": 14,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 45,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "KDEGroup/UI-AGILE-3B",
+      "lower_is_better": false,
+      "num_parameters": 3754622976
+    },
+    {
+      "rank": 15,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 38.1,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "ByteDance-Seed/UI-TARS-72B-SFT",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 73405560320
+    },
+    {
+      "rank": 16,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 35.7,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "ByteDance-Seed/UI-TARS-7B-SFT",
+      "pullRequest": 5,
+      "lower_is_better": false,
+      "num_parameters": 8291375616
+    },
+    {
+      "rank": 17,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 27.7,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "ByteDance-Seed/UI-TARS-2B-SFT",
+      "pullRequest": 8,
+      "lower_is_better": false,
+      "num_parameters": 2442359296
+    },
+    {
+      "rank": 18,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 26.8,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "pullRequest": 67,
+      "lower_is_better": false,
+      "num_parameters": 8292166656
+    },
+    {
+      "rank": 19,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 22.9,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "xlangai/Aguvis-7B-720P",
+      "pullRequest": 4,
+      "lower_is_better": false,
+      "num_parameters": 8288472576
+    },
+    {
+      "rank": 20,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 16.1,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen2.5-VL-3B-Instruct",
+      "pullRequest": 48,
+      "lower_is_better": false,
+      "num_parameters": 3754622976
+    },
+    {
+      "rank": 21,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 7.7,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/CogAgent",
+      "pullRequest": 1,
+      "lower_is_better": false
+    },
+    {
+      "rank": 22,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 3,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openbmb/MiniCPM-V-2",
+      "pullRequest": 28,
+      "lower_is_better": false,
+      "num_parameters": 3434965792
+    },
+    {
+      "rank": 23,
+      "filename": ".eval_results/screenspot_pro.yaml",
+      "value": 0.1,
+      "verified": false,
+      "source": {
+        "url": "https://gui-agent.github.io/grounding-leaderboard/",
+        "name": "ScreenSpot-Pro Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "6141a88b3a0ec78603c9e784",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg",
+          "fullname": "merve",
+          "name": "merve",
+          "type": "user",
+          "isPro": true,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 11033,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen-VL",
+      "pullRequest": 14,
+      "lower_is_better": false
+    }
+  ]
+}

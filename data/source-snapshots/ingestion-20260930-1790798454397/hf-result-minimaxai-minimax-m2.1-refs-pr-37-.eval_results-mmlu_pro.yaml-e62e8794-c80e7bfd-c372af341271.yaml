@@ -1,0 +1,7 @@
+- dataset:
+    id: TIGER-Lab/MMLU-Pro
+    task_id: mmlu_pro
+  source:
+    name: EvalEval
+    url: https://huggingface.co/datasets/evaleval/EEE_datastore/blob/192329fb7d6b15b7b0936a1a58ae862aa7e8ba24/flat/objects/dd/c9/ddc99cec-f5d3-4cc4-9cc5-bb534377b5f6.json
+  value: 88.0

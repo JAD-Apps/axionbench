@@ -1,0 +1,280 @@
+[
+  {
+    "id": "ai21labs/AI21-Jamba2-Mini",
+    "sha": null,
+    "lastModified": "2026-02-16T14:16:19.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "jamba",
+      "text-generation",
+      "conversational",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us",
+      "deploy:azure"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba2-Mini-FP8",
+    "sha": null,
+    "lastModified": "2026-02-02T11:38:55.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "jamba",
+      "text-generation",
+      "conversational",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "compressed-tensors",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba2-3B",
+    "sha": null,
+    "lastModified": "2026-02-02T11:38:31.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "jamba",
+      "text-generation",
+      "conversational",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us",
+      "deploy:azure"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Reasoning-3B-GGUF",
+    "sha": null,
+    "lastModified": "2026-02-02T11:37:51.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "gguf",
+      "text-generation",
+      "arxiv:2507.02782",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us",
+      "conversational"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Mini-1.7-FP8",
+    "sha": null,
+    "lastModified": "2026-02-02T11:36:14.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "jamba",
+      "license:other",
+      "compressed-tensors",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Mini-1.7",
+    "sha": null,
+    "lastModified": "2026-02-02T11:35:20.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "jamba",
+      "license:other",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Large-1.7-FP8",
+    "sha": null,
+    "lastModified": "2026-02-02T11:34:42.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "jamba",
+      "license:other",
+      "compressed-tensors",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Mini-1.6",
+    "sha": null,
+    "lastModified": "2026-02-02T11:33:49.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "jamba",
+      "text-generation",
+      "conversational",
+      "license:other",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Large-1.6",
+    "sha": null,
+    "lastModified": "2026-02-02T11:32:50.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "jamba",
+      "text-generation",
+      "conversational",
+      "license:other",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Mini-1.5",
+    "sha": null,
+    "lastModified": "2026-02-02T11:32:20.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "jamba",
+      "text-generation",
+      "mamba",
+      "moe",
+      "conversational",
+      "en",
+      "fr",
+      "de",
+      "nl",
+      "es",
+      "pt",
+      "it",
+      "ar",
+      "he",
+      "arxiv:2305.14314",
+      "license:other",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Large-1.5",
+    "sha": null,
+    "lastModified": "2026-02-02T11:31:21.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "safetensors",
+      "jamba",
+      "mamba",
+      "moe",
+      "text-generation",
+      "conversational",
+      "en",
+      "fr",
+      "de",
+      "nl",
+      "es",
+      "pt",
+      "it",
+      "ar",
+      "he",
+      "license:other",
+      "eval-results",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Large-1.7",
+    "sha": null,
+    "lastModified": "2026-02-02T11:29:54.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "jamba",
+      "license:other",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/AI21-Jamba-Reasoning-3B",
+    "sha": null,
+    "lastModified": "2025-10-08T13:06:09.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "jamba",
+      "text-generation",
+      "conversational",
+      "arxiv:2507.02782",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/Jamba-tiny-reward-dev",
+    "sha": null,
+    "lastModified": "2024-12-05T15:01:33.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "jamba",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/Jamba-tiny-dev",
+    "sha": null,
+    "lastModified": "2024-10-01T08:48:15.000Z",
+    "pipeline_tag": null,
+    "tags": [
+      "safetensors",
+      "jamba",
+      "license:apache-2.0",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/Jamba-v0.1",
+    "sha": null,
+    "lastModified": "2024-09-11T17:29:22.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "jamba",
+      "text-generation",
+      "mamba",
+      "moe",
+      "custom_code",
+      "arxiv:2403.19887",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  },
+  {
+    "id": "ai21labs/Jamba-tiny-random",
+    "sha": null,
+    "lastModified": "2024-04-24T06:50:37.000Z",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "transformers",
+      "safetensors",
+      "jamba",
+      "text-generation",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ]
+  }
+]

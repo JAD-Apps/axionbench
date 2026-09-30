@@ -1,0 +1,271 @@
+{
+  "datasetId": "hkust-nlp/Toolathlon",
+  "retrievedAt": "2026-09-30T19:49:14.043Z",
+  "projectionOf": "https://huggingface.co/api/datasets/hkust-nlp/Toolathlon/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/MiMo-V2.6-Pro-RL.yaml",
+      "value": 76.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL",
+        "name": "MiMo-V2.6-Pro-RL model card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.6-Pro-RL",
+      "pullRequest": 5,
+      "lower_is_better": false,
+      "num_parameters": 1024216603392
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/moonshotai__Kimi-K3.yaml",
+      "value": 76.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/moonshotai/Kimi-K3",
+        "name": "moonshotai/Kimi-K3 model card",
+        "isExternal": false
+      },
+      "modelId": "moonshotai/Kimi-K3",
+      "lower_is_better": false,
+      "num_parameters": 2779931837184
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/toolathlon_verified.yaml",
+      "value": 76,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/mindlab-research/Macaron-V1.1",
+        "name": "Macaron-V1.1 model card",
+        "isExternal": false
+      },
+      "modelId": "mindlab-research/Macaron-V1.1",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/deepseek-ai__DeepSeek-V4-Flash-Vision-Exp.yaml",
+      "value": 75.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
+        "name": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp model card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
+      "pullRequest": 16,
+      "lower_is_better": false,
+      "num_parameters": 304646824126
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/deepseek-ai__DeepSeek-V4-Pro-0813.yaml",
+      "value": 74.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+        "name": "deepseek-ai/DeepSeek-V4-Pro-0813 model card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Pro-0813",
+      "pullRequest": 21,
+      "lower_is_better": false,
+      "num_parameters": 1650497936906
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/tencent__Hy4-preview.yaml",
+      "value": 74.1,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/tencent/Hy4-preview",
+        "name": "tencent/Hy4-preview model card",
+        "isExternal": false
+      },
+      "modelId": "tencent/Hy4-preview",
+      "pullRequest": 13,
+      "lower_is_better": false,
+      "num_parameters": 779960992733
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/MiMo-V2.6-Flash-RL.yaml",
+      "value": 73.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Flash-RL",
+        "name": "MiMo-V2.6-Flash-RL model card",
+        "isExternal": false
+      },
+      "modelId": "XiaomiMiMo/MiMo-V2.6-Flash-RL",
+      "pullRequest": 4,
+      "lower_is_better": false,
+      "num_parameters": 310756322688
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/Qwen__Qwen3.8-Flash-Next.yaml",
+      "value": 73.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+        "name": "Qwen/Qwen3.8-Flash-Next model card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-Flash-Next",
+      "pullRequest": 41,
+      "lower_is_better": false,
+      "num_parameters": 179999981459
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/zai-org__GLM-5.3.yaml",
+      "value": 73,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/zai-org/GLM-5.3",
+        "name": "zai-org/GLM-5.3 model card",
+        "isExternal": false
+      },
+      "modelId": "zai-org/GLM-5.3",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/Qwen__Qwen3.8-2.4T-A95B.yaml",
+      "value": 72.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+        "name": "Qwen/Qwen3.8-2.4T-A95B model card",
+        "isExternal": false
+      },
+      "modelId": "Qwen/Qwen3.8-2.4T-A95B",
+      "pullRequest": 39,
+      "lower_is_better": false,
+      "num_parameters": 2446182725504
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/ornith-ai__Ornith-1.5-397B.yaml",
+      "value": 71.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-397B",
+        "name": "ornith-ai/Ornith-1.5-397B model card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-397B",
+      "pullRequest": 5,
+      "lower_is_better": false,
+      "num_parameters": 403397928944
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/deepseek-ai__DeepSeek-V4-Flash-0731.yaml",
+      "value": 70.3,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
+        "name": "deepseek-ai/DeepSeek-V4-Flash-0731 model card",
+        "isExternal": false
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Flash-0731",
+      "pullRequest": 75,
+      "lower_is_better": false,
+      "num_parameters": 304180418494
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/Nex-N2.5-Pro.yaml",
+      "value": 68.5,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/nex-agi/Nex-N2.5-Pro",
+        "name": "Nex-N2.5 model card",
+        "isExternal": false
+      },
+      "modelId": "nex-agi/Nex-N2.5-Pro",
+      "pullRequest": 3,
+      "lower_is_better": false,
+      "num_parameters": 396802360816
+    },
+    {
+      "rank": 14,
+      "filename": ".eval_results/dots-studio__dots3-note-prev.yaml",
+      "value": 55.6,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/dots-studio/dots3-note-prev",
+        "name": "dots-studio/dots3-note-prev model card",
+        "isExternal": false
+      },
+      "modelId": "dots-studio/dots3-note-prev",
+      "pullRequest": 10,
+      "lower_is_better": false,
+      "num_parameters": 288443400864
+    },
+    {
+      "rank": 15,
+      "filename": ".eval_results/poolside__Laguna-S-2.1.yaml",
+      "value": 49.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/poolside/Laguna-S-2.1",
+        "name": "poolside/Laguna-S-2.1 model card",
+        "isExternal": false
+      },
+      "modelId": "poolside/Laguna-S-2.1",
+      "pullRequest": 42,
+      "lower_is_better": false,
+      "num_parameters": 117561977600
+    },
+    {
+      "rank": 16,
+      "filename": ".eval_results/ornith-ai__Ornith-1.5-35B-A3B.yaml",
+      "value": 48.7,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B",
+        "name": "ornith-ai/Ornith-1.5-35B-A3B model card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-35B-A3B",
+      "pullRequest": 32,
+      "lower_is_better": false,
+      "num_parameters": 35951822704
+    },
+    {
+      "rank": 17,
+      "filename": ".eval_results/ornith-ai__Ornith-1.5-9B.yaml",
+      "value": 41.2,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/ornith-ai/Ornith-1.5-9B",
+        "name": "ornith-ai/Ornith-1.5-9B model card",
+        "isExternal": false
+      },
+      "modelId": "ornith-ai/Ornith-1.5-9B",
+      "pullRequest": 13,
+      "lower_is_better": false,
+      "num_parameters": 9653104368
+    }
+  ]
+}

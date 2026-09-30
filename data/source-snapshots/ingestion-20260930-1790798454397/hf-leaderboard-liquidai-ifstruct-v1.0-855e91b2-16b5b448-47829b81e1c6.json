@@ -1,0 +1,93 @@
+{
+  "datasetId": "LiquidAI/ifstruct-v1.0",
+  "retrievedAt": "2026-09-30T19:49:14.597Z",
+  "projectionOf": "https://huggingface.co/api/datasets/LiquidAI/ifstruct-v1.0/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/Agents-A1.yaml",
+      "value": 93.25,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/InternScience/Agents-A1-ifstruct-eval-20260703-041434",
+        "name": "Agents-A1 eval trace",
+        "isExternal": true
+      },
+      "modelId": "InternScience/Agents-A1",
+      "lower_is_better": false,
+      "num_parameters": 35107181936
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/openai-gpt-oss-20b.yaml",
+      "value": 91.95,
+      "verified": false,
+      "source": {
+        "url": "https://www.liquid.ai/blog/ifstruct-v1.0",
+        "name": "Liquid AI — IFStruct v1.0 blog (gpt-oss-20b)",
+        "isExternal": true
+      },
+      "modelId": "openai/gpt-oss-20b",
+      "pullRequest": 263,
+      "lower_is_better": false,
+      "num_parameters": 20914757184
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/nvidia-NVIDIA-Nemotron-3-Nano-30B-A3B-BF16.yaml",
+      "value": 86.8,
+      "verified": false,
+      "source": {
+        "url": "https://www.liquid.ai/blog/ifstruct-v1.0",
+        "name": "Liquid AI — IFStruct v1.0 blog (Nemotron-3-Nano-30B-A3B)",
+        "isExternal": true
+      },
+      "modelId": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+      "pullRequest": 66,
+      "lower_is_better": false,
+      "num_parameters": 31577937344
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/ibm-granite-granite-4.1-8b.yaml",
+      "value": 68.45,
+      "verified": false,
+      "source": {
+        "url": "https://www.liquid.ai/blog/ifstruct-v1.0",
+        "name": "Liquid AI — IFStruct v1.0 blog (granite-4.1-8b)",
+        "isExternal": true
+      },
+      "modelId": "ibm-granite/granite-4.1-8b",
+      "pullRequest": 10,
+      "lower_is_better": false,
+      "num_parameters": 8791592960
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/ibm-granite-granite-4.0-h-tiny.yaml",
+      "value": 38.75,
+      "verified": false,
+      "source": {
+        "url": "https://www.liquid.ai/blog/ifstruct-v1.0",
+        "name": "Liquid AI — IFStruct v1.0 blog (granite-4.0-h-tiny)",
+        "isExternal": true
+      },
+      "modelId": "ibm-granite/granite-4.0-h-tiny",
+      "pullRequest": 9,
+      "lower_is_better": false,
+      "num_parameters": 6939037248
+    }
+  ]
+}

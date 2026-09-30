@@ -1,0 +1,32 @@
+{
+  "id": "allenai/MolmoAct2-FAST-Tokenizer",
+  "sha": "d45593b4c863d0bc1ca064f8b352fa16b75c38e8",
+  "lastModified": "2026-05-05T14:34:17.000Z",
+  "createdAt": "2026-05-05T13:09:56.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "robotics",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "robotics",
+    "tokenizer",
+    "action-tokenizer",
+    "arxiv:2605.02881",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "cardData": {
+    "library_name": "transformers",
+    "tags": [
+      "robotics",
+      "tokenizer",
+      "action-tokenizer"
+    ]
+  },
+  "config": {
+    "tokenizer_config": {}
+  },
+  "usedStorage": 0,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

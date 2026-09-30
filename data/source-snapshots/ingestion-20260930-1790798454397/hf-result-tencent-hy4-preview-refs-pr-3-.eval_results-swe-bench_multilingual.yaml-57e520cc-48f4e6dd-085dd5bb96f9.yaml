@@ -1,0 +1,7 @@
+- dataset:
+    id: SWE-bench/SWE-bench_Multilingual
+    task_id: swe_bench_multilingual_%_resolved
+  value: 82.9
+  source:
+    url: https://huggingface.co/tencent/Hy4-preview
+    name: Model Card

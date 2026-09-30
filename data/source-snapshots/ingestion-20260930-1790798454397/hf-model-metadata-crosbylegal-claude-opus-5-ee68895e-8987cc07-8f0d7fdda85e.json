@@ -1,0 +1,15 @@
+{
+  "id": "crosbylegal/claude-opus-5",
+  "sha": "22aec4846a9dab931a259a0d0ee1a4cd403354fd",
+  "lastModified": "2026-08-20T04:51:05.000Z",
+  "createdAt": "2026-08-20T04:51:04.000Z",
+  "private": false,
+  "gated": false,
+  "tags": [
+    "eval-results",
+    "region:us"
+  ],
+  "config": {},
+  "usedStorage": 0,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

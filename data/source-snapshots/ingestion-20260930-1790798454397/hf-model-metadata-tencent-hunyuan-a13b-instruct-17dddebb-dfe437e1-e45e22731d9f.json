@@ -1,0 +1,55 @@
+{
+  "id": "tencent/Hunyuan-A13B-Instruct",
+  "sha": "290ddb9a56ed23c2c83a1c8081533e58925df952",
+  "lastModified": "2025-08-21T08:36:52.000Z",
+  "createdAt": "2025-06-25T12:39:52.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "hunyuan_v1_moe",
+    "text-generation",
+    "conversational",
+    "custom_code",
+    "license:other",
+    "eval-results",
+    "endpoints_compatible",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "other",
+    "license_name": "tencent-hunyuan-a13b",
+    "license_link": "https://github.com/Tencent-Hunyuan/Hunyuan-A13B/blob/main/LICENSE",
+    "library_name": "transformers"
+  },
+  "config": {
+    "architectures": [
+      "HunYuanMoEV1ForCausalLM"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_hunyuan.HunYuanConfig",
+      "AutoModel": "hunyuan.HunYuanModel",
+      "AutoModelForCausalLM": "hunyuan.HunYuanMoEV1ForCausalLM"
+    },
+    "model_type": "hunyuan_v1_moe",
+    "num_experts": 64,
+    "tokenizer_config": {
+      "bos_token": "<|startoftext|>",
+      "eos_token": "<|eos|>",
+      "pad_token": "<|pad|>",
+      "chat_template": "{% set context = {'has_head': true} %}{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = message['content'] %}{% if loop.index0 == 0 %}{% if content == '' %}{% set _ = context.update({'has_head': false}) %}{% elif message['role'] == 'system' %}{% set content = '<|startoftext|>' + content + '<|extra_4|>' %}{% endif %}{% endif %}{% if message['role'] == 'user' %}{% if loop.index0 == 1 and not context.has_head %}{% set content = '<|startoftext|>' + content %}{% endif %}{% if loop.index0 == 1 and context.has_head %}{% set content = content + '<|extra_0|>' %}{% else %}{% set content = '<|startoftext|>' + content + '<|extra_0|>' %}{% endif %}{% elif message['role'] == 'assistant' %}{% set content = content + '<|eos|>' %}{% endif %}{{ content }}{% endfor %}"
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "F32": 8388608,
+      "BF16": 80384794624
+    },
+    "total": 80393183232
+  },
+  "usedStorage": 482436254851,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}

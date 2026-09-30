@@ -1,0 +1,14 @@
+{
+  "receiptClass": "tool-command diagnostic; upstream response body was not captured by the failed run",
+  "recordedAt": "2026-09-30T19:55:48Z",
+  "command": "npm run data:ingest",
+  "scriptLocation": "scripts/ingest-data.mjs:406",
+  "sourceUrl": "https://huggingface.co/api/datasets?filter=benchmark:official&limit=100",
+  "httpStatus": 429,
+  "diagnostic": "Error: Hugging Face benchmark catalog retrieval failed: 429",
+  "failureCategory": "public source rate limiting after a large upstream retrieval batch",
+  "exactAttemptTime": null,
+  "rawResponseBytesCaptured": false,
+  "lastGoodDatasetChanged": false,
+  "relatedPartialSnapshots": "The failed attempt captured provider and model-card snapshots under a timestamped data/source-snapshots/ingestion-* directory but stopped before writing a new ingestion dataset or manifest."
+}

@@ -1,0 +1,12 @@
+- dataset:
+    id: joelniklaus/LEXam-hard
+    task_id: lexam_hard
+    revision: 1bd50ee3ac80286fed27e5b89f03f4d8b4494244
+  value: 40.82
+  date: '2026-07-30'
+  source:
+    url: https://huggingface.co/buckets/joelniklaus/SwissLegalEvals
+    name: SwissLegalEvals per-sample details (lighteval)
+    user: joelniklaus
+  notes: lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge;
+    mean of the German and English means over the 518 questions, 0-100

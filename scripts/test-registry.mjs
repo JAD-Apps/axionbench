@@ -27,7 +27,7 @@ function validate(input) {
     if (!suite.source?.trim() || !suite.rights?.trim()) fail(`missing source/rights metadata: ${suite.id}`);
     if (!states.has(suite.state)) fail(`unknown availability state: ${suite.id}`);
     if (suite.state !== 'available' && !suite.reason?.trim()) fail(`unavailable suite requires a reason: ${suite.id}`);
-    if (!suite.version?.trim() || !suite.metric?.name?.trim()) fail(`missing version or metric identity: ${suite.id}`);
+    if (!suite.version?.trim() || !suite.metric?.name?.trim() || !suite.benchmarkFamilyId?.trim()) fail(`missing version, family or metric identity: ${suite.id}`);
     const { min, max, direction } = suite.metric;
     if (!Number.isFinite(min) || !Number.isFinite(max) || min >= max) fail(`invalid metric bounds: ${suite.id}`);
     if (!['higher', 'lower'].includes(direction)) fail(`invalid metric direction: ${suite.id}`);
@@ -56,6 +56,11 @@ assert(['hle-original','hle-rolling','hle-diamond'].every((id) => ids.has(id)), 
 assert(['swebench-full','swebench-verified','swebench-lite','swebench-pro'].every((id) => ids.has(id)), 'SWE variants must stay distinct');
 assert(['terminal-bench-4','terminal-bench-2'].every((id) => ids.has(id)), 'Terminal-Bench versions must stay distinct');
 assert(['bfcl-v4','bfcl-v3','tau-bench','tau2'].every((id) => ids.has(id)), 'BFCL/tau variants must stay distinct');
+const familyOf = (id) => registry.suites.find((suite) => suite.id === id).benchmarkFamilyId;
+assert(new Set(['hle-original','hle-rolling','hle-diamond'].map(familyOf)).size === 1, 'HLE variants must retain one family identity');
+assert(new Set(['swebench-full','swebench-verified','swebench-lite','swebench-pro'].map(familyOf)).size === 1, 'SWE-bench variants must retain one family identity');
+assert(new Set(['terminal-bench-4','terminal-bench-2','terminal-bench-2.1'].map(familyOf)).size === 1, 'Terminal-Bench variants must retain one family identity');
+assert(registry.suites.filter((suite) => suite.id.startsWith('terminal-bench-')).length >= 3, 'Terminal-Bench 2.1, 4.0 and historical identity should remain distinct');
 for (const panel of ['safety','preference','professional','audio-video']) assert(observedDomains.has(panel), `missing separate panel ${panel}`);
 
 // Live validation is deliberately limited to URLs in the captured source snapshot.

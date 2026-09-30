@@ -1,0 +1,19 @@
+- dataset:
+    id: cais/hle
+    task_id: hle
+  value: 47.6
+  date: "2026-06-30"
+  source:
+    url: https://huggingface.co/InternScience/Agents-A1
+    name: "Agents-A1 model card"
+  notes: "With tools"
+
+- dataset:
+    id: LiquidAI/ifstruct-v1.0
+    task_id: ifstruct_v1
+    revision: 1454d7a76ff95188c3c5e4eccce49a70c2b5f665
+  value: 93.25
+  date: "2026-07-03"
+  source:
+    url: https://huggingface.co/datasets/InternScience/Agents-A1-ifstruct-eval-20260703-041434
+    name: "Agents-A1 eval trace"

@@ -1,0 +1,79 @@
+{
+  "datasetId": "FutureMa/EvasionBench",
+  "retrievedAt": "2026-09-30T19:49:14.467Z",
+  "projectionOf": "https://huggingface.co/api/datasets/FutureMa/EvasionBench/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/evasionbench.yaml",
+      "value": 82.91,
+      "verified": false,
+      "source": {
+        "url": "https://arxiv.org/abs/2601.09142",
+        "name": "EvasionBench Paper",
+        "isExternal": true
+      },
+      "modelId": "zai-org/GLM-4.7",
+      "pullRequest": 43,
+      "lower_is_better": false,
+      "num_parameters": 358337791296
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/evasionbench.yaml",
+      "value": 78.16,
+      "verified": false,
+      "source": {
+        "url": "https://arxiv.org/abs/2601.09142",
+        "name": "EvasionBench Paper",
+        "isExternal": true
+      },
+      "modelId": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+      "pullRequest": 31,
+      "lower_is_better": false,
+      "num_parameters": 480154875392
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/evasionbench.yaml",
+      "value": 71.31,
+      "verified": false,
+      "source": {
+        "url": "https://arxiv.org/abs/2601.09142",
+        "name": "EvasionBench Paper",
+        "isExternal": true
+      },
+      "modelId": "MiniMaxAI/MiniMax-M2.1",
+      "pullRequest": 27,
+      "lower_is_better": false,
+      "num_parameters": 228689764864
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/evasionbench.yaml",
+      "value": 66.68,
+      "verified": false,
+      "source": {
+        "url": "https://arxiv.org/abs/2601.09142",
+        "name": "EvasionBench Paper",
+        "isExternal": true
+      },
+      "modelId": "moonshotai/Kimi-K2-Instruct-0905",
+      "pullRequest": 23,
+      "lower_is_better": false,
+      "num_parameters": 1026470735448
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+- dataset:
+    id: crosbylegal/RedlineBench
+    task_id: redline_overall
+  value: 56.9
+  date: "2026-08-20"
+  source:
+    url: https://intelligence.crosby.ai/benchmark/
+    name: RedlineBench report
+    user: crosbylegal
+  notes: "agent=claude-code; 3-LLM judge panel (majority vote); turn-weighted weighted pass rate (0-100); post-publication run"

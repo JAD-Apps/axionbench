@@ -1,0 +1,493 @@
+{
+  "datasetId": "PaddlePaddle/Real5-OmniDocBench",
+  "retrievedAt": "2026-09-30T19:49:14.601Z",
+  "projectionOf": "https://huggingface.co/api/datasets/PaddlePaddle/Real5-OmniDocBench/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 93.19,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "PaddlePaddle/PaddleOCR-VL-1.6",
+      "lower_is_better": false,
+      "num_parameters": 958588736
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 92.05,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "PaddlePaddle/PaddleOCR-VL-1.5",
+      "lower_is_better": false,
+      "num_parameters": 958588736
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 90.76,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-5.3-Flash",
+      "pullRequest": 49,
+      "lower_is_better": false,
+      "num_parameters": 321323031390
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 90.72,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "XingChen-AGI/TeleOCR",
+      "pullRequest": 2,
+      "lower_is_better": false,
+      "num_parameters": 1415072768
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 90.32,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-OCR",
+      "pullRequest": 63,
+      "lower_is_better": false,
+      "num_parameters": 1325258240
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 89.76,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.6",
+      "pullRequest": 56,
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 89.09,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.5",
+      "pullRequest": 130,
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 88.94,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "opendatalab/MinerU2.5-Pro-2604-1.2B",
+      "pullRequest": 8,
+      "lower_is_better": false,
+      "num_parameters": 1156026624
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 88.9,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen3-VL-235B-A22B-Instruct",
+      "pullRequest": 26,
+      "lower_is_better": false,
+      "num_parameters": 235670022896
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 86.92,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "Qwen/Qwen2.5-VL-72B-Instruct",
+      "pullRequest": 38,
+      "lower_is_better": false,
+      "num_parameters": 73410777344
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 86.38,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "dots-studio/dots.ocr",
+      "pullRequest": 53,
+      "lower_is_better": false,
+      "num_parameters": 3039179264
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 85.61,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "opendatalab/MinerU2.5-2509-1.2B",
+      "pullRequest": 16,
+      "lower_is_better": false,
+      "num_parameters": 1156026624
+    },
+    {
+      "rank": 13,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 76.95,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "opendatalab/MinerU2.0-2505-0.9B",
+      "pullRequest": 4,
+      "lower_is_better": false,
+      "num_parameters": 1029247520
+    },
+    {
+      "rank": 14,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 73.99,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "deepseek-ai/DeepSeek-OCR",
+      "pullRequest": 116,
+      "lower_is_better": false,
+      "num_parameters": 3336106240
+    },
+    {
+      "rank": 15,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 73.01,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "deepseek-ai/DeepSeek-OCR-2",
+      "pullRequest": 33,
+      "lower_is_better": false,
+      "num_parameters": 3389119360
+    },
+    {
+      "rank": 16,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 61.78,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "ByteDance/Dolphin",
+      "pullRequest": 10,
+      "lower_is_better": false,
+      "num_parameters": 397726220
+    },
+    {
+      "rank": 17,
+      "filename": ".eval_results/real5_omnidocbench.yaml",
+      "value": 61.48,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "name": "Real5-OmniDocBench Leaderboard",
+        "isExternal": true,
+        "author": {
+          "_id": "62067d5d3906f102bc9658bd",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1654942635336-5f3ff69679c1ba4c353d0c5a.png",
+          "fullname": "PaddlePaddle",
+          "name": "PaddlePaddle",
+          "type": "org",
+          "isHf": false,
+          "isHfAdmin": false,
+          "isMod": false,
+          "plan": "team",
+          "followerCount": 4401,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "ByteDance/Dolphin-1.5",
+      "pullRequest": 1,
+      "lower_is_better": false,
+      "num_parameters": 397726220
+    }
+  ]
+}

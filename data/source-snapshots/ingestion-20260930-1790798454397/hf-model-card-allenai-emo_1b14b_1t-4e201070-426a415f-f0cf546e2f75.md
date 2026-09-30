@@ -1,0 +1,55 @@
+---
+license: apache-2.0
+language:
+- en
+library_name: transformers
+pipeline_tag: text-generation
+tags:
+- moe
+- mixture-of-experts
+- modularity
+datasets:
+- allenai/OLMoE-mix-0924
+---
+
+# Emo_1b14b_1T
+
+The main release of **EMO** from [EMO: Pretraining Mixture of Experts for Emergent Modularity](https://arxiv.org/abs/2605.06663) — referred to as **EMO** (1T tokens, midtrained) in the paper.
+
+1B-active / 14B-total parameter Mixture-of-Experts model (128 experts: 127 routed + 1 shared, k=8 active per token) pretrained on 1T tokens of the OLMoE pretraining mix and annealed under the EMO objective for an additional 50B tokens. Tokens within the same document are constrained to route through a shared pool of experts during training, producing expert subsets that can be deployed in isolation for specific domains with minimal performance degradation.
+
+## Usage
+
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_id = "allenai/Emo_1b14b_1T"
+model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
+
+inputs = tokenizer(["Language modeling is "], return_tensors="pt", return_token_type_ids=False)
+out = model.generate(**inputs, max_new_tokens=100, do_sample=True, temperature=1.0, top_p=0.7)
+print(tokenizer.batch_decode(out, skip_special_tokens=True)[0])
+```
+
+## Citation
+
+```bibtex
+@article{wang2026emo,
+  title  = {EMO: Pretraining Mixture of Experts for Emergent Modularity},
+  author = {Wang, Ryan and Bhagia, Akshita and Min, Sewon},
+  year   = {2026},
+  url    = {https://arxiv.org/abs/2605.06663}
+}
+```
+
+
+## License
+
+This model is licensed under Apache 2.0. It is intended for research and educational use in accordance with Ai2's [Responsible Use Guidelines](https://allenai.org/responsible-use)
+
+
+## Links
+
+- Paper: https://arxiv.org/abs/2605.06663
+- Code: https://github.com/allenai/EMO

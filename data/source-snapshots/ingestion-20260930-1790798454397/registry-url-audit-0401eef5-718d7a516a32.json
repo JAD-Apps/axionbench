@@ -1,0 +1,2032 @@
+{
+  "capturedAt": "2026-09-30T20:00:56.272Z",
+  "method": "GET, redirect-following, response body SHA-256; page reachability is not treated as proof of a result table",
+  "suites": [
+    {
+      "suiteId": "swebench-full",
+      "url": "https://www.swebench.com/",
+      "audit": {
+        "url": "https://www.swebench.com/",
+        "status": 200,
+        "finalUrl": "https://www.swebench.com/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:21.984Z",
+        "bodyBytes": 2392125,
+        "bodySha256": "c862011a4ee1d1a7199fad6ca0905fa5c64f58216f7217ac1eddf37f28788433",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "swebench-verified",
+      "url": "https://www.swebench.com/",
+      "audit": {
+        "url": "https://www.swebench.com/",
+        "status": 200,
+        "finalUrl": "https://www.swebench.com/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:21.984Z",
+        "bodyBytes": 2392125,
+        "bodySha256": "c862011a4ee1d1a7199fad6ca0905fa5c64f58216f7217ac1eddf37f28788433",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/ornith-ai/Ornith-1.5-397B/resolve/9da5af2aff28a44e67cfabfd2327defabffb9bdd/.eval_results/ornith-1.5-397b.yaml",
+        "https://huggingface.co/mindlab-research/Macaron-V1-Venti/resolve/be05322da0f462b08e29166ab92eb98dd4c93d6c/.eval_results/swe_bench_verified.yaml",
+        "https://huggingface.co/MiniMaxAI/MiniMax-M3/resolve/f0e1c1e04d40177e4673a22097036854f536e9c0/.eval_results/minimax-m3.yaml",
+        "https://huggingface.co/meta-models/Muse-Glimmer-30B/resolve/8c2caa0bdd5ce71ed1d0f518174291d7212da0cb/.eval_results/Muse-Glimmer-30B.yaml"
+      ]
+    },
+    {
+      "suiteId": "swebench-lite",
+      "url": "https://www.swebench.com/",
+      "audit": {
+        "url": "https://www.swebench.com/",
+        "status": 200,
+        "finalUrl": "https://www.swebench.com/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:21.984Z",
+        "bodyBytes": 2392125,
+        "bodySha256": "c862011a4ee1d1a7199fad6ca0905fa5c64f58216f7217ac1eddf37f28788433",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "swebench-multilingual",
+      "url": "https://www.swebench.com/",
+      "audit": {
+        "url": "https://www.swebench.com/",
+        "status": 200,
+        "finalUrl": "https://www.swebench.com/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:21.984Z",
+        "bodyBytes": 2392125,
+        "bodySha256": "c862011a4ee1d1a7199fad6ca0905fa5c64f58216f7217ac1eddf37f28788433",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/ornith-ai/Ornith-1.5-397B/resolve/9da5af2aff28a44e67cfabfd2327defabffb9bdd/.eval_results/ornith-1.5-397b.yaml",
+        "https://huggingface.co/tencent/Hy4-preview/resolve/7e11291ba8e1b64f0f2d10af030ed554879f105b/.eval_results/swe-bench_multilingual.yaml",
+        "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/resolve/21a7c3ca68484a9987d62fd51b78130d9b9a11f8/.eval_results/Qwen3.8-Flash-Next.yaml"
+      ]
+    },
+    {
+      "suiteId": "swebench-multimodal",
+      "url": "https://www.swebench.com/",
+      "audit": {
+        "url": "https://www.swebench.com/",
+        "status": 200,
+        "finalUrl": "https://www.swebench.com/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:21.984Z",
+        "bodyBytes": 2392125,
+        "bodySha256": "c862011a4ee1d1a7199fad6ca0905fa5c64f58216f7217ac1eddf37f28788433",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "swebench-pro",
+      "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+      "audit": {
+        "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+        "status": 200,
+        "finalUrl": "https://labs.scale.com/leaderboard/swe_bench_pro",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.653Z",
+        "bodyBytes": 149202,
+        "bodySha256": "d2d2820f2b9affa4ce5ea4aea1437c4041357d330b28bc57cd37a0a6b1c72575",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/ornith-ai/Ornith-1.5-397B/resolve/9da5af2aff28a44e67cfabfd2327defabffb9bdd/.eval_results/ornith-1.5-397b.yaml",
+        "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B/resolve/4839562c98581611923ce3924958b762244e3f2b/.eval_results/swe-bench_pro.yaml",
+        "https://huggingface.co/tencent/Hy4-preview/resolve/7e11291ba8e1b64f0f2d10af030ed554879f105b/.eval_results/swe-bench_pro.yaml",
+        "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/resolve/21a7c3ca68484a9987d62fd51b78130d9b9a11f8/.eval_results/Qwen3.8-Flash-Next.yaml",
+        "https://huggingface.co/MiniMaxAI/MiniMax-M3/resolve/f0e1c1e04d40177e4673a22097036854f536e9c0/.eval_results/minimax-m3.yaml",
+        "https://huggingface.co/meta-models/Muse-Glimmer-30B/resolve/8c2caa0bdd5ce71ed1d0f518174291d7212da0cb/.eval_results/Muse-Glimmer-30B.yaml"
+      ]
+    },
+    {
+      "suiteId": "livecodebench",
+      "url": "https://livecodebench.github.io/",
+      "audit": {
+        "url": "https://livecodebench.github.io/",
+        "status": 200,
+        "finalUrl": "https://livecodebench.github.io/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.142Z",
+        "bodyBytes": 22770,
+        "bodySha256": "8c21afea9af5905445c6996ea92b927b488843b26a816d29e911c4b0f030dd40",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "bigcodebench",
+      "url": "https://github.com/bigcode-project/bigcodebench",
+      "audit": {
+        "url": "https://github.com/bigcode-project/bigcodebench",
+        "status": 200,
+        "finalUrl": "https://github.com/bigcode-project/bigcodebench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.473Z",
+        "bodyBytes": 366539,
+        "bodySha256": "ea21e555b0b24605d0dd4cccd2cc46f2600858686f509ffab81255bc69dc3e6f",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "terminal-bench-4",
+      "url": "https://www.tbench.ai/",
+      "audit": {
+        "url": "https://www.tbench.ai/",
+        "status": 200,
+        "finalUrl": "https://www.tbench.ai/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.839Z",
+        "bodyBytes": 135508,
+        "bodySha256": "83c74a46e4e773aaf8ab322f305cd0f5539a2c567fe1dfaab2668732e99f6f3c",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/464a25703556819f5cc55addc01c2628f4a06707/.eval_results/DeepSeek-V4.1-Flash.yaml",
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/resolve/695f995c489f229e236b95c9a48f6c28d646c867/.eval_results/MiMo-V2.6-Pro-RL.yaml"
+      ]
+    },
+    {
+      "suiteId": "terminal-bench-2",
+      "url": "https://www.tbench.ai/",
+      "audit": {
+        "url": "https://www.tbench.ai/",
+        "status": 200,
+        "finalUrl": "https://www.tbench.ai/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.839Z",
+        "bodyBytes": 135508,
+        "bodySha256": "83c74a46e4e773aaf8ab322f305cd0f5539a2c567fe1dfaab2668732e99f6f3c",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "gpqa-diamond",
+      "url": "https://github.com/idavidrein/gpqa",
+      "audit": {
+        "url": "https://github.com/idavidrein/gpqa",
+        "status": 200,
+        "finalUrl": "https://github.com/idavidrein/gpqa",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.558Z",
+        "bodyBytes": 285994,
+        "bodySha256": "3cc688164029370821ae2a2e468c7b5d6ccff9a245321b6ea0026526cd2924b0",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/464a25703556819f5cc55addc01c2628f4a06707/.eval_results/DeepSeek-V4.1-Flash.yaml",
+        "https://huggingface.co/FINAL-Bench/Darwin-180B-RSI/resolve/bc3c7b0410b40c085b78084e13f01c12df31087b/.eval_results/gpqa_diamond.yaml",
+        "https://huggingface.co/ornith-ai/Ornith-1.5-397B/resolve/9da5af2aff28a44e67cfabfd2327defabffb9bdd/.eval_results/ornith-1.5-397b.yaml",
+        "https://huggingface.co/moonshotai/Kimi-K3/resolve/f831ab66814297da540d832a5235f8e904f29d06/.eval_results/gpqa.yaml",
+        "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/resolve/21a7c3ca68484a9987d62fd51b78130d9b9a11f8/.eval_results/Qwen3.8-Flash-Next.yaml",
+        "https://huggingface.co/meta-models/Muse-Glimmer-30B/resolve/8c2caa0bdd5ce71ed1d0f518174291d7212da0cb/.eval_results/Muse-Glimmer-30B.yaml"
+      ]
+    },
+    {
+      "suiteId": "hle-original",
+      "url": "https://lastexam.ai/",
+      "audit": {
+        "url": "https://lastexam.ai/",
+        "status": 200,
+        "finalUrl": "https://lastexam.ai/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.478Z",
+        "bodyBytes": 467850,
+        "bodySha256": "1ceab46b10ee69777117db9af5851f3e59efd67ff698984f37c1b196bd7e041c",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/464a25703556819f5cc55addc01c2628f4a06707/.eval_results/DeepSeek-V4.1-Flash.yaml",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/464a25703556819f5cc55addc01c2628f4a06707/.eval_results/DeepSeek-V4.1-Flash.yaml",
+        "https://huggingface.co/ornith-ai/Ornith-1.5-397B/resolve/9da5af2aff28a44e67cfabfd2327defabffb9bdd/.eval_results/ornith-1.5-397b.yaml",
+        "https://huggingface.co/ornith-ai/Ornith-1.5-397B/resolve/9da5af2aff28a44e67cfabfd2327defabffb9bdd/.eval_results/ornith-1.5-397b.yaml",
+        "https://huggingface.co/zai-org/GLM-5.3/resolve/aca966e4e02791568aa6a4ced368624b3d897f42/.eval_results/hle.yaml",
+        "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/resolve/21a7c3ca68484a9987d62fd51b78130d9b9a11f8/.eval_results/Qwen3.8-Flash-Next.yaml",
+        "https://huggingface.co/InternScience/Agents-A1/resolve/e4a30b76e439b5093ac4c14efa6017718781d48f/.eval_results/Agents-A1.yaml",
+        "https://huggingface.co/meta-models/Muse-Glimmer-30B/resolve/8c2caa0bdd5ce71ed1d0f518174291d7212da0cb/.eval_results/Muse-Glimmer-30B.yaml"
+      ]
+    },
+    {
+      "suiteId": "hle-rolling",
+      "url": "https://lastexam.ai/",
+      "audit": {
+        "url": "https://lastexam.ai/",
+        "status": 200,
+        "finalUrl": "https://lastexam.ai/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.478Z",
+        "bodyBytes": 467850,
+        "bodySha256": "1ceab46b10ee69777117db9af5851f3e59efd67ff698984f37c1b196bd7e041c",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "hle-diamond",
+      "url": "https://lastexam.ai/",
+      "audit": {
+        "url": "https://lastexam.ai/",
+        "status": 200,
+        "finalUrl": "https://lastexam.ai/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.478Z",
+        "bodyBytes": 467850,
+        "bodySha256": "1ceab46b10ee69777117db9af5851f3e59efd67ff698984f37c1b196bd7e041c",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "arc-agi-2",
+      "url": "https://arcprize.org/leaderboard",
+      "audit": {
+        "url": "https://arcprize.org/leaderboard",
+        "status": 200,
+        "finalUrl": "https://arcprize.org/leaderboard",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.304Z",
+        "bodyBytes": 47291,
+        "bodySha256": "878dbbc035df2ac3eb37e61cc19c46e0c0cc4a3b6dd99d862d111efdf285e50f",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "bbh",
+      "url": "https://github.com/suzgunmirac/BIG-Bench-Hard",
+      "audit": {
+        "url": "https://github.com/suzgunmirac/BIG-Bench-Hard",
+        "status": 200,
+        "finalUrl": "https://github.com/suzgunmirac/BIG-Bench-Hard",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.626Z",
+        "bodyBytes": 269701,
+        "bodySha256": "dd3307ad69be54dcfe69ae09cf7da836c2834c5784f1e8de91e0c24bbd35028f",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "aime-2025",
+      "url": "https://github.com/openai/simple-evals",
+      "audit": {
+        "url": "https://github.com/openai/simple-evals",
+        "status": 200,
+        "finalUrl": "https://github.com/openai/simple-evals",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.652Z",
+        "bodyBytes": 372737,
+        "bodySha256": "b1fe1ea6ffcd17ba6daeef5e2022e06645748a575dcf8d1879e665f703a87fa1",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "math-500",
+      "url": "https://github.com/hendrycks/math",
+      "audit": {
+        "url": "https://github.com/hendrycks/math",
+        "status": 200,
+        "finalUrl": "https://github.com/hendrycks/math",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.908Z",
+        "bodyBytes": 251994,
+        "bodySha256": "2284cbc54a143fe6275038ce3bc3ea9c4a1119bcc3de98af893eccd870d24a2e",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "frontiermath",
+      "url": "https://epoch.ai/frontiermath",
+      "audit": {
+        "url": "https://epoch.ai/frontiermath",
+        "status": 200,
+        "finalUrl": "https://epoch.ai/frontiermath",
+        "contentType": "text/html",
+        "retrievedAt": "2026-09-30T19:49:22.657Z",
+        "bodyBytes": 70303,
+        "bodySha256": "a1ff14c69b1793e116fa7255d2faf9aed30beb27ef2695f27299bac707229471",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "mmlu-pro",
+      "url": "https://github.com/TIGER-AI-Lab/MMLU-Pro",
+      "audit": {
+        "url": "https://github.com/TIGER-AI-Lab/MMLU-Pro",
+        "status": 200,
+        "finalUrl": "https://github.com/TIGER-AI-Lab/MMLU-Pro",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.900Z",
+        "bodyBytes": 306886,
+        "bodySha256": "60d93b87e96324461e7123432b9effe06cc199d783a47f5c9ffa90d3051b7e18",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/FINAL-Bench/Darwin-180B-RSI/resolve/bc3c7b0410b40c085b78084e13f01c12df31087b/.eval_results/mmlu_pro.yaml",
+        "https://huggingface.co/MiniMaxAI/MiniMax-M2.1/resolve/8ebe9b2c63c6b3471d2a32342590bd95212f0849/.eval_results/mmlu_pro.yaml"
+      ]
+    },
+    {
+      "suiteId": "helm",
+      "url": "https://crfm.stanford.edu/helm/",
+      "audit": {
+        "url": "https://crfm.stanford.edu/helm/",
+        "status": 200,
+        "finalUrl": "https://crfm.stanford.edu/helm/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.872Z",
+        "bodyBytes": 1295,
+        "bodySha256": "7b5ae08a8aad37b4ba0fe04ccb68d68a62d23695ec874aff3e81833acca8cca0",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "ifeval",
+      "url": "https://github.com/google-research/google-research/tree/master/instruction_following_eval",
+      "audit": {
+        "url": "https://github.com/google-research/google-research/tree/master/instruction_following_eval",
+        "status": 200,
+        "finalUrl": "https://github.com/google-research/google-research/tree/master/instruction_following_eval",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.048Z",
+        "bodyBytes": 322053,
+        "bodySha256": "de3ad98293632d3ec1b46a7f210f5fbf38c2d912de978ddb2f89de9dd77b0ffc",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "multichallenge",
+      "url": "https://labs.scale.com/leaderboard/multichallenge",
+      "audit": {
+        "url": "https://labs.scale.com/leaderboard/multichallenge",
+        "status": 200,
+        "finalUrl": "https://labs.scale.com/leaderboard/multichallenge",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:22.844Z",
+        "bodyBytes": 133347,
+        "bodySha256": "4cf36dc4169fe1cd3c1932e41b366741ae2caf6e4815808ad4e95fffa3e20551",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "followbench",
+      "url": "https://github.com/YJiangcm/FollowBench",
+      "audit": {
+        "url": "https://github.com/YJiangcm/FollowBench",
+        "status": 200,
+        "finalUrl": "https://github.com/YJiangcm/FollowBench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T20:00:55.996Z",
+        "bodyBytes": 318353,
+        "bodySha256": "10ded967a34509e0eaea1f8de16156471904edff0b8d834ac6dabb387afd5666",
+        "cachedFromPreviousAudit": false,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "ruler",
+      "url": "https://github.com/NVIDIA/RULER",
+      "audit": {
+        "url": "https://github.com/NVIDIA/RULER",
+        "status": 200,
+        "finalUrl": "https://github.com/NVIDIA/RULER",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.140Z",
+        "bodyBytes": 377140,
+        "bodySha256": "ae58b3204b8df7e89eb837ca543e992bf4ea61392ddd21a6bef46a6c95220579",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "longbench-v2",
+      "url": "https://github.com/THUDM/LongBench",
+      "audit": {
+        "url": "https://github.com/THUDM/LongBench",
+        "status": 200,
+        "finalUrl": "https://github.com/THUDM/LongBench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.531Z",
+        "bodyBytes": 304259,
+        "bodySha256": "1d47d83db10f32cc4b8aa1fb3a11cdf0d3a8a164daa96d3c3d0441fe7338ac6d",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "mrcr",
+      "url": "https://huggingface.co/datasets/openai/mrcr",
+      "audit": {
+        "url": "https://huggingface.co/datasets/openai/mrcr",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/openai/mrcr",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.013Z",
+        "bodyBytes": 278013,
+        "bodySha256": "4c7e26c7fb17ce4c478c6c615a8b65a3498f40ee4856ac80ce196558e5989881",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "bfcl-v4",
+      "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+      "audit": {
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "status": 200,
+        "finalUrl": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.175Z",
+        "bodyBytes": 16207,
+        "bodySha256": "ef72a8621b6ea1b8aa1d1b7691f73cc3079fd38e86f599c9a38cb626c911fc29",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "bfcl-v3",
+      "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+      "audit": {
+        "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "status": 200,
+        "finalUrl": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.175Z",
+        "bodyBytes": 16207,
+        "bodySha256": "ef72a8621b6ea1b8aa1d1b7691f73cc3079fd38e86f599c9a38cb626c911fc29",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "tau-bench",
+      "url": "https://github.com/sierra-research/tau-bench",
+      "audit": {
+        "url": "https://github.com/sierra-research/tau-bench",
+        "status": 200,
+        "finalUrl": "https://github.com/sierra-research/tau-bench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.265Z",
+        "bodyBytes": 316832,
+        "bodySha256": "2eaa03cba35e2c3cd54016bc1c2fdae10fd6d8f9eeaa0bf9ea310b4d24d60f63",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "tau2",
+      "url": "https://github.com/sierra-research/tau-bench",
+      "audit": {
+        "url": "https://github.com/sierra-research/tau-bench",
+        "status": 200,
+        "finalUrl": "https://github.com/sierra-research/tau-bench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.265Z",
+        "bodyBytes": 316832,
+        "bodySha256": "2eaa03cba35e2c3cd54016bc1c2fdae10fd6d8f9eeaa0bf9ea310b4d24d60f63",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "osworld",
+      "url": "https://os-world.github.io/",
+      "audit": {
+        "url": "https://os-world.github.io/",
+        "status": 200,
+        "finalUrl": "http://osworld-v1.xlang.ai/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.474Z",
+        "bodyBytes": 153030,
+        "bodySha256": "bf37e00ce23e8c5472d485a6eb3b291ffa2de220b44040402516e41cbc48c516",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "webarena",
+      "url": "https://github.com/web-arena-x/webarena",
+      "audit": {
+        "url": "https://github.com/web-arena-x/webarena",
+        "status": 200,
+        "finalUrl": "https://github.com/web-arena-x/webarena",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.385Z",
+        "bodyBytes": 368312,
+        "bodySha256": "e55aff557ccb5c5f154d8b2b8ba11aa5cc13a832a5ccfd998c472c397ddb7aab",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "gaia",
+      "url": "https://huggingface.co/datasets/gaia-benchmark/GAIA",
+      "audit": {
+        "url": "https://huggingface.co/datasets/gaia-benchmark/GAIA",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/gaia-benchmark/GAIA",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.151Z",
+        "bodyBytes": 159707,
+        "bodySha256": "65b19b066fd45ad55cbedf2ce1eabc5d69278f3b6f75412a665890bc49a45493",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "mmmu",
+      "url": "https://mmmu-benchmark.github.io/",
+      "audit": {
+        "url": "https://mmmu-benchmark.github.io/",
+        "status": 200,
+        "finalUrl": "https://mmmu-benchmark.github.io/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.354Z",
+        "bodyBytes": 40229,
+        "bodySha256": "4f00a8c6523a84776718e95e4f1a1e0277868e8315505257276718952dd464bd",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "mmmu-pro",
+      "url": "https://mmmu-benchmark.github.io/",
+      "audit": {
+        "url": "https://mmmu-benchmark.github.io/",
+        "status": 200,
+        "finalUrl": "https://mmmu-benchmark.github.io/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.354Z",
+        "bodyBytes": 40229,
+        "bodySha256": "4f00a8c6523a84776718e95e4f1a1e0277868e8315505257276718952dd464bd",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/FINAL-Bench/Darwin-180B-RSI/resolve/bc3c7b0410b40c085b78084e13f01c12df31087b/.eval_results/mmmu_pro.yaml",
+        "https://huggingface.co/MiniMaxAI/MiniMax-M3/resolve/f0e1c1e04d40177e4673a22097036854f536e9c0/.eval_results/minimax-m3.yaml",
+        "https://huggingface.co/moonshotai/Kimi-K2.6/resolve/7eb5002f6aadc958aed6a9177b7ed26bb94011bb/.eval_results/mmmu_pro.yaml",
+        "https://huggingface.co/meta-models/Muse-Glimmer-30B/resolve/8c2caa0bdd5ce71ed1d0f518174291d7212da0cb/.eval_results/Muse-Glimmer-30B.yaml"
+      ]
+    },
+    {
+      "suiteId": "mathvista",
+      "url": "https://mathvista.github.io/",
+      "audit": {
+        "url": "https://mathvista.github.io/",
+        "status": 200,
+        "finalUrl": "https://mathvista.github.io/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.473Z",
+        "bodyBytes": 79491,
+        "bodySha256": "ae92439181366330a5364821cfff665f8eac869cff527fc22c324842320650a0",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "charxiv",
+      "url": "https://github.com/princeton-nlp/CharXiv",
+      "audit": {
+        "url": "https://github.com/princeton-nlp/CharXiv",
+        "status": 200,
+        "finalUrl": "https://github.com/princeton-nlp/CharXiv",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.630Z",
+        "bodyBytes": 387952,
+        "bodySha256": "0a3dafa4d252454356397bd39460d4a7d4e990b5d6e14f70ff8d012867258254",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "docvqa",
+      "url": "https://www.docvqa.org/",
+      "audit": {
+        "url": "https://www.docvqa.org/",
+        "status": 200,
+        "finalUrl": "https://www.docvqa.org/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.632Z",
+        "bodyBytes": 174152,
+        "bodySha256": "5fd7566d4895360a10fdc99f66d38fc342e7cc99f8d5bf5c186c09eb2feb3ac4",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "simpleqa-verified",
+      "url": "https://huggingface.co/datasets/google/simpleqa-verified",
+      "audit": {
+        "url": "https://huggingface.co/datasets/google/simpleqa-verified",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/google/simpleqa-verified",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.514Z",
+        "bodyBytes": 645104,
+        "bodySha256": "a5efddbb3227f7bd099da832060f3acb58dfa6eca20dee48c6cebb46879dab1d",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "longfact",
+      "url": "https://github.com/google-deepmind/long-form-factuality",
+      "audit": {
+        "url": "https://github.com/google-deepmind/long-form-factuality",
+        "status": 200,
+        "finalUrl": "https://github.com/google-deepmind/long-form-factuality",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.810Z",
+        "bodyBytes": 300654,
+        "bodySha256": "dab3c455f59ce8b7c95434bee8912fb1f9a9419801807530c50be938486a4004",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "global-mmlu",
+      "url": "https://huggingface.co/datasets/CohereForAI/Global-MMLU",
+      "audit": {
+        "url": "https://huggingface.co/datasets/CohereForAI/Global-MMLU",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/CohereLabs/Global-MMLU",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.007Z",
+        "bodyBytes": 1946044,
+        "bodySha256": "452f0556810b07dd9b38f374b952ad078a6fd054424958ec6ce83df65475085b",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "mmmlu",
+      "url": "https://huggingface.co/datasets/openai/MMMLU",
+      "audit": {
+        "url": "https://huggingface.co/datasets/openai/MMMLU",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/openai/MMMLU",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.079Z",
+        "bodyBytes": 780687,
+        "bodySha256": "c778f97987e37b8b1c1b887a7af9479f9e312a55b318e3b423eec483b589559c",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "legalbench",
+      "url": "https://github.com/HazyResearch/legalbench",
+      "audit": {
+        "url": "https://github.com/HazyResearch/legalbench",
+        "status": 200,
+        "finalUrl": "https://github.com/HazyResearch/legalbench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.955Z",
+        "bodyBytes": 302329,
+        "bodySha256": "7621a0318f6b7d53b0229d09015b73b90e17f43d9892bc945387e8cb02e73e4b",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "medqa",
+      "url": "https://github.com/jind11/MedQA",
+      "audit": {
+        "url": "https://github.com/jind11/MedQA",
+        "status": 200,
+        "finalUrl": "https://github.com/jind11/MedQA",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.893Z",
+        "bodyBytes": 263707,
+        "bodySha256": "a00dc92857ec6b54252e3fc286fd5e964189b21e5358c00440b5b2f9ad91f0c0",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "financebench",
+      "url": "https://github.com/patronus-ai/financebench",
+      "audit": {
+        "url": "https://github.com/patronus-ai/financebench",
+        "status": 200,
+        "finalUrl": "https://github.com/patronus-ai/financebench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:23.942Z",
+        "bodyBytes": 264546,
+        "bodySha256": "604fe535c65d57dac3081441afdd8c05aabbd4d1cf4bbd755d51dc013a5dc39a",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "harmbench",
+      "url": "https://github.com/centerforaisafety/HarmBench",
+      "audit": {
+        "url": "https://github.com/centerforaisafety/HarmBench",
+        "status": 200,
+        "finalUrl": "https://github.com/centerforaisafety/HarmBench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.151Z",
+        "bodyBytes": 343664,
+        "bodySha256": "e92b9021a4ac9477128f2737a56d63232120e5455c1f84935d31c61f0594f63b",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "strongreject",
+      "url": "https://github.com/alexandrasouly/strongreject",
+      "audit": {
+        "url": "https://github.com/alexandrasouly/strongreject",
+        "status": 200,
+        "finalUrl": "https://github.com/alexandrasouly/strongreject",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.216Z",
+        "bodyBytes": 282337,
+        "bodySha256": "a88f1c84a1f8d76c1a41de051f06701986cd3c539771424160aa5e4a0bd889ff",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "xstest",
+      "url": "https://github.com/paul-rottger/exaggerated-safety",
+      "audit": {
+        "url": "https://github.com/paul-rottger/exaggerated-safety",
+        "status": 200,
+        "finalUrl": "https://github.com/paul-rottger/xstest",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.463Z",
+        "bodyBytes": 268364,
+        "bodySha256": "eadc77f8b0f26bd44ed498b46a5033fdb0772b2b07467fb2f1e8de77c8553161",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "arena",
+      "url": "https://arena.ai/leaderboard",
+      "audit": {
+        "url": "https://arena.ai/leaderboard",
+        "status": 200,
+        "finalUrl": "https://arena.ai/leaderboard",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.868Z",
+        "bodyBytes": 728345,
+        "bodySha256": "c6107fca14db23b010d444a6f1d514e279834de3fef75d8d6e4c504f8e45dcbf",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "omnibench",
+      "url": "https://m-a-p.ai/OmniBench",
+      "audit": {
+        "url": "https://m-a-p.ai/OmniBench",
+        "status": 200,
+        "finalUrl": "https://m-a-p.ai/OmniBench/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T20:00:56.265Z",
+        "bodyBytes": 37841,
+        "bodySha256": "0d59633a044d6fb3bf469ec728d306d243cfabed95a3577cc0f2169a4ffa8c70",
+        "cachedFromPreviousAudit": false,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "video-mme",
+      "url": "https://video-mme.github.io/",
+      "audit": {
+        "url": "https://video-mme.github.io/",
+        "status": 200,
+        "finalUrl": "https://video-mme.github.io/",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.304Z",
+        "bodyBytes": 2093,
+        "bodySha256": "3f6aa45bd721ef52b4c6af77536a2125bd291df0ae6187aec108d2f411b2a458",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": []
+    },
+    {
+      "suiteId": "gsm8k",
+      "url": "https://huggingface.co/datasets/openai/gsm8k",
+      "audit": {
+        "url": "https://huggingface.co/datasets/openai/gsm8k",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/openai/gsm8k",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.590Z",
+        "bodyBytes": 539715,
+        "bodySha256": "7acb44c14f3c2f94a3f42119814ba783b48de67d532ae179737c9f7a74904b8e",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro/resolve/59f35d73be91594622d5b5004325f9e9d983a243/.eval_results/gsm8k.yaml",
+        "https://huggingface.co/ibm-granite/granite-4.1-30b/resolve/b1413f78add016720b90b34c13c4e704962c1815/.eval_results/gsm8k.yaml"
+      ]
+    },
+    {
+      "suiteId": "aime-2026",
+      "url": "https://huggingface.co/datasets/MathArena/aime_2026",
+      "audit": {
+        "url": "https://huggingface.co/datasets/MathArena/aime_2026",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/MathArena/aime_2026",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.490Z",
+        "bodyBytes": 315592,
+        "bodySha256": "569a106030e6167220b6acea05aa6bf983ab81e85b9fe4555ca7ffeb0bfb7def",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/FINAL-Bench/Darwin-180B-RSI/resolve/bc3c7b0410b40c085b78084e13f01c12df31087b/.eval_results/aime_2026.yaml",
+        "https://huggingface.co/thinkingmachines/Inkling/resolve/828496eeae4c243ff1a22f7f28ff83694f2f7bc9/.eval_results/aime_2026.yaml",
+        "https://huggingface.co/meta-models/Muse-Glimmer-30B/resolve/8c2caa0bdd5ce71ed1d0f518174291d7212da0cb/.eval_results/Muse-Glimmer-30B.yaml"
+      ]
+    },
+    {
+      "suiteId": "hmmt-feb-2026",
+      "url": "https://huggingface.co/datasets/MathArena/hmmt_feb_2026",
+      "audit": {
+        "url": "https://huggingface.co/datasets/MathArena/hmmt_feb_2026",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/MathArena/hmmt_feb_2026",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.449Z",
+        "bodyBytes": 368716,
+        "bodySha256": "2a49e1e3b27c8753d94b29a6caf69c3c226bde409044c9f7fe8580aacd9b280b",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/FINAL-Bench/Darwin-180B-RSI/resolve/bc3c7b0410b40c085b78084e13f01c12df31087b/.eval_results/hmmt_feb_2026.yaml",
+        "https://huggingface.co/moonshotai/Kimi-K2.6/resolve/7eb5002f6aadc958aed6a9177b7ed26bb94011bb/.eval_results/hmmt_feb_2026.yaml"
+      ]
+    },
+    {
+      "suiteId": "terminal-bench-2.1",
+      "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2.1",
+      "audit": {
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2.1",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/harborframework/terminal-bench-2.1",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.561Z",
+        "bodyBytes": 201220,
+        "bodySha256": "2e61b14b331a2820bb9b0faf0c8be760e13bed65aa92fc6a3e7860f89d3ad9d7",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/464a25703556819f5cc55addc01c2628f4a06707/.eval_results/DeepSeek-V4.1-Flash.yaml",
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/resolve/695f995c489f229e236b95c9a48f6c28d646c867/.eval_results/MiMo-V2.6-Pro-RL.yaml"
+      ]
+    },
+    {
+      "suiteId": "deep-swe",
+      "url": "https://huggingface.co/datasets/datacurve/deep-swe",
+      "audit": {
+        "url": "https://huggingface.co/datasets/datacurve/deep-swe",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/datacurve/deep-swe",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.591Z",
+        "bodyBytes": 193911,
+        "bodySha256": "81c21af9f4995d45380ac53568e595559a225f6086f8a6c8508b4cc528f0dc79",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/resolve/464a25703556819f5cc55addc01c2628f4a06707/.eval_results/DeepSeek-V4.1-Flash.yaml",
+        "https://huggingface.co/ornith-ai/Ornith-1.5-397B/resolve/9da5af2aff28a44e67cfabfd2327defabffb9bdd/.eval_results/ornith-1.5-397b.yaml",
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/resolve/695f995c489f229e236b95c9a48f6c28d646c867/.eval_results/MiMo-V2.6-Pro-RL.yaml",
+        "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/resolve/21a7c3ca68484a9987d62fd51b78130d9b9a11f8/.eval_results/Qwen3.8-Flash-Next.yaml"
+      ]
+    },
+    {
+      "suiteId": "toolathlon",
+      "url": "https://huggingface.co/datasets/hkust-nlp/Toolathlon",
+      "audit": {
+        "url": "https://huggingface.co/datasets/hkust-nlp/Toolathlon",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/hkust-nlp/Toolathlon",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.603Z",
+        "bodyBytes": 167413,
+        "bodySha256": "7d280eb01432097887596bdf38ed62464ca14c7c6c293cbb3b59b86965cb711c",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-RL/resolve/695f995c489f229e236b95c9a48f6c28d646c867/.eval_results/MiMo-V2.6-Pro-RL.yaml",
+        "https://huggingface.co/moonshotai/Kimi-K3/resolve/f831ab66814297da540d832a5235f8e904f29d06/.eval_results/moonshotai__Kimi-K3.yaml"
+      ]
+    },
+    {
+      "suiteId": "apex-agents",
+      "url": "https://huggingface.co/datasets/mercor/apex-agents",
+      "audit": {
+        "url": "https://huggingface.co/datasets/mercor/apex-agents",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/mercor/apex-agents",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.789Z",
+        "bodyBytes": 230474,
+        "bodySha256": "d48b94248740eda9151b61d6c9762981b5d0b1de58886210d13f64595aa1f4b7",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/moonshotai/Kimi-K3/resolve/f831ab66814297da540d832a5235f8e904f29d06/.eval_results/apex-agents.yaml",
+        "https://huggingface.co/tencent/Hy4-preview/resolve/25ae40c93a999882aa55b73c56e44faa82a5a7d9/.eval_results/apex-agents.yaml",
+        "https://huggingface.co/MiniMaxAI/MiniMax-M3/resolve/f0e1c1e04d40177e4673a22097036854f536e9c0/.eval_results/minimax-m3.yaml"
+      ]
+    },
+    {
+      "suiteId": "video-mme-v2",
+      "url": "https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2",
+      "audit": {
+        "url": "https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.828Z",
+        "bodyBytes": 886108,
+        "bodySha256": "e51676fd769b0eca7e301f50b0320caef35eb5a2383f29a962abeba6d9f2f0c9",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/MiniMaxAI/MiniMax-M3/resolve/f0e1c1e04d40177e4673a22097036854f536e9c0/.eval_results/minimax-m3.yaml",
+        "https://huggingface.co/moonshotai/Kimi-K2.5/resolve/d0ae5ee6435699d2c38e725a860449bf1a573c47/.eval_results/videomme_v2.yaml",
+        "https://huggingface.co/moonshotai/Kimi-K2.5/resolve/d0ae5ee6435699d2c38e725a860449bf1a573c47/.eval_results/videomme_v2.yaml"
+      ]
+    },
+    {
+      "suiteId": "open-asr",
+      "url": "https://huggingface.co/datasets/hf-audio/open-asr-leaderboard",
+      "audit": {
+        "url": "https://huggingface.co/datasets/hf-audio/open-asr-leaderboard",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/hf-audio/open-asr-leaderboard",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:25.024Z",
+        "bodyBytes": 815320,
+        "bodySha256": "1fd601ced5067ef12b3eb3e41f0c7085a26edc80c965eb7a375c8fb669196195",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/Edge0/ARK-ASR-3B/resolve/1e28271b79edc97635783bea65abc89195a09ed3/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-preview-2B/resolve/c98175cb20e48bd9be4e95f6c85f2af18899f780/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-preview-2B/resolve/c98175cb20e48bd9be4e95f6c85f2af18899f780/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-preview-2B/resolve/c98175cb20e48bd9be4e95f6c85f2af18899f780/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-preview-2B/resolve/c98175cb20e48bd9be4e95f6c85f2af18899f780/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-preview-2B/resolve/c98175cb20e48bd9be4e95f6c85f2af18899f780/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-preview-2B/resolve/c98175cb20e48bd9be4e95f6c85f2af18899f780/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-preview-2B/resolve/c98175cb20e48bd9be4e95f6c85f2af18899f780/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-preview-2B/resolve/c98175cb20e48bd9be4e95f6c85f2af18899f780/.eval_results/open_asr_leaderboard.yaml",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-preview-2B/resolve/c98175cb20e48bd9be4e95f6c85f2af18899f780/.eval_results/open_asr_leaderboard.yaml"
+      ]
+    },
+    {
+      "suiteId": "skillsbench",
+      "url": "https://huggingface.co/datasets/benchflow/skillsbench",
+      "audit": {
+        "url": "https://huggingface.co/datasets/benchflow/skillsbench",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/benchflow/skillsbench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.741Z",
+        "bodyBytes": 204021,
+        "bodySha256": "f28aeed4f68bcce56172c036c5273ec36e04b6c27f01cce947c15ebf7cca9cdb",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/tencent/Hy4-preview/resolve/7e11291ba8e1b64f0f2d10af030ed554879f105b/.eval_results/skillsbench.yaml",
+        "https://huggingface.co/zai-org/GLM-5.1/resolve/065d888c77197588d2413941712a8b98cf8d75db/.eval_results/skillsbench.yaml",
+        "https://huggingface.co/meta-models/Muse-Glimmer-30B/resolve/8c2caa0bdd5ce71ed1d0f518174291d7212da0cb/.eval_results/Muse-Glimmer-30B.yaml"
+      ]
+    },
+    {
+      "suiteId": "evasionbench",
+      "url": "https://huggingface.co/datasets/FutureMa/EvasionBench",
+      "audit": {
+        "url": "https://huggingface.co/datasets/FutureMa/EvasionBench",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/FutureMa/EvasionBench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.846Z",
+        "bodyBytes": 901099,
+        "bodySha256": "7cfdd1b3639fe1f828244a19164e9121d9f3dc169495c9c7c896c056711bfb44",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/zai-org/GLM-4.7/resolve/2f8cb479ce584f051b6b271a7d77c06c69fae6bd/.eval_results/evasionbench.yaml",
+        "https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct/resolve/35591b9cece61644af90a0a2e14c1f7cc9ba12ef/.eval_results/evasionbench.yaml"
+      ]
+    },
+    {
+      "suiteId": "redlinebench",
+      "url": "https://huggingface.co/datasets/crosbylegal/RedlineBench",
+      "audit": {
+        "url": "https://huggingface.co/datasets/crosbylegal/RedlineBench",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/crosbylegal/RedlineBench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:25.051Z",
+        "bodyBytes": 1460682,
+        "bodySha256": "4e1c4cfff63be43de26cde7bb4bd51e31825d1350982fb29f9f71170b7653e71",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/crosbylegal/claude-opus-5/resolve/22aec4846a9dab931a259a0d0ee1a4cd403354fd/.eval_results/redlinebench.yaml",
+        "https://huggingface.co/crosbylegal/gpt-5.6-sol/resolve/150c7ffea0887ae5e79136689e086a74265702ee/.eval_results/redlinebench.yaml"
+      ]
+    },
+    {
+      "suiteId": "ifstruct",
+      "url": "https://huggingface.co/datasets/LiquidAI/ifstruct-v1.0",
+      "audit": {
+        "url": "https://huggingface.co/datasets/LiquidAI/ifstruct-v1.0",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/LiquidAI/ifstruct-v1.0",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:25.034Z",
+        "bodyBytes": 737399,
+        "bodySha256": "5798c489badc2884d5c37cf1517898374529550ac8f7310260bb7e61122061b5",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/InternScience/Agents-A1/resolve/e4a30b76e439b5093ac4c14efa6017718781d48f/.eval_results/Agents-A1.yaml",
+        "https://huggingface.co/openai/gpt-oss-20b/resolve/67793f079b27d332576d89ea37b9a7f8c9d1afab/.eval_results/openai-gpt-oss-20b.yaml"
+      ]
+    },
+    {
+      "suiteId": "screenspot-pro",
+      "url": "https://huggingface.co/datasets/likaixin/ScreenSpot-Pro",
+      "audit": {
+        "url": "https://huggingface.co/datasets/likaixin/ScreenSpot-Pro",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/likaixin/ScreenSpot-Pro",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.928Z",
+        "bodyBytes": 203529,
+        "bodySha256": "44fd06f82c5b885b5e22ebdb41daf6bbdaa2036374303a61109cf3b822026b4c",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/meta-models/Muse-Glimmer-30B/resolve/8c2caa0bdd5ce71ed1d0f518174291d7212da0cb/.eval_results/Muse-Glimmer-30B.yaml",
+        "https://huggingface.co/Qwen/Qwen3.5-122B-A10B/resolve/1dff0572fadb3f584c7c0678e762833a6988d234/.eval_results/screenspot_pro.yaml"
+      ]
+    },
+    {
+      "suiteId": "olmocr-bench",
+      "url": "https://huggingface.co/datasets/allenai/olmOCR-bench",
+      "audit": {
+        "url": "https://huggingface.co/datasets/allenai/olmOCR-bench",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/allenai/olmOCR-bench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:25.036Z",
+        "bodyBytes": 637260,
+        "bodySha256": "8e1ae4499c2cc792935651ada700c951d17e5e0a4f5318be2632a8bb6a66c2da",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/infly/Infinity-Parser2-Pro/resolve/b27d470100514329fc6439aada8f16ccea5f9e2a/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/infly/Infinity-Parser2-Pro/resolve/b27d470100514329fc6439aada8f16ccea5f9e2a/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/infly/Infinity-Parser2-Pro/resolve/b27d470100514329fc6439aada8f16ccea5f9e2a/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/infly/Infinity-Parser2-Pro/resolve/b27d470100514329fc6439aada8f16ccea5f9e2a/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/infly/Infinity-Parser2-Pro/resolve/b27d470100514329fc6439aada8f16ccea5f9e2a/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/infly/Infinity-Parser2-Pro/resolve/b27d470100514329fc6439aada8f16ccea5f9e2a/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/infly/Infinity-Parser2-Pro/resolve/b27d470100514329fc6439aada8f16ccea5f9e2a/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/infly/Infinity-Parser2-Pro/resolve/b27d470100514329fc6439aada8f16ccea5f9e2a/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/infly/Infinity-Parser2-Pro/resolve/b27d470100514329fc6439aada8f16ccea5f9e2a/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/datalab-to/chandra-ocr-2/resolve/af93b47dba1b47b6640c86ccf487ed2260ab9a09/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/datalab-to/chandra-ocr-2/resolve/af93b47dba1b47b6640c86ccf487ed2260ab9a09/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/datalab-to/chandra-ocr-2/resolve/af93b47dba1b47b6640c86ccf487ed2260ab9a09/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/datalab-to/chandra-ocr-2/resolve/af93b47dba1b47b6640c86ccf487ed2260ab9a09/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/datalab-to/chandra-ocr-2/resolve/af93b47dba1b47b6640c86ccf487ed2260ab9a09/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/datalab-to/chandra-ocr-2/resolve/af93b47dba1b47b6640c86ccf487ed2260ab9a09/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/datalab-to/chandra-ocr-2/resolve/af93b47dba1b47b6640c86ccf487ed2260ab9a09/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/datalab-to/chandra-ocr-2/resolve/af93b47dba1b47b6640c86ccf487ed2260ab9a09/.eval_results/olmocrbench.yaml",
+        "https://huggingface.co/datalab-to/chandra-ocr-2/resolve/af93b47dba1b47b6640c86ccf487ed2260ab9a09/.eval_results/olmocrbench.yaml"
+      ]
+    },
+    {
+      "suiteId": "real5-omnidocbench",
+      "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+      "audit": {
+        "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:24.981Z",
+        "bodyBytes": 280682,
+        "bodySha256": "6c53aef83ee0833135027035024dceadd5d294944af8fe4227c7cc3ee1322a20",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6/resolve/c5630abae1d940eafe0697512a0325494b02ab42/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6/resolve/c5630abae1d940eafe0697512a0325494b02ab42/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6/resolve/c5630abae1d940eafe0697512a0325494b02ab42/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6/resolve/c5630abae1d940eafe0697512a0325494b02ab42/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6/resolve/c5630abae1d940eafe0697512a0325494b02ab42/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6/resolve/c5630abae1d940eafe0697512a0325494b02ab42/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.5/resolve/2a4195faa5e7914c12f2fc601d72c81caf8d2da5/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.5/resolve/2a4195faa5e7914c12f2fc601d72c81caf8d2da5/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.5/resolve/2a4195faa5e7914c12f2fc601d72c81caf8d2da5/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.5/resolve/2a4195faa5e7914c12f2fc601d72c81caf8d2da5/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.5/resolve/2a4195faa5e7914c12f2fc601d72c81caf8d2da5/.eval_results/real5_omnidocbench.yaml",
+        "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.5/resolve/2a4195faa5e7914c12f2fc601d72c81caf8d2da5/.eval_results/real5_omnidocbench.yaml"
+      ]
+    },
+    {
+      "suiteId": "lexam-hard",
+      "url": "https://huggingface.co/datasets/joelniklaus/LEXam-hard",
+      "audit": {
+        "url": "https://huggingface.co/datasets/joelniklaus/LEXam-hard",
+        "status": 200,
+        "finalUrl": "https://huggingface.co/datasets/joelniklaus/LEXam-hard",
+        "contentType": "text/html; charset=utf-8",
+        "retrievedAt": "2026-09-30T19:49:25.117Z",
+        "bodyBytes": 902895,
+        "bodySha256": "16ceb79f09cdda53f1fb2b2f9de8ee1197c896bea27a1932659e98faa87ef8f4",
+        "cachedFromPreviousAudit": true,
+        "error": null,
+        "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+      },
+      "actualObservationResultUrls": [
+        "https://huggingface.co/FINAL-Bench/Darwin-180B-RSI/resolve/bc3c7b0410b40c085b78084e13f01c12df31087b/.eval_results/lexam_hard.yaml",
+        "https://huggingface.co/thinkingmachines/Inkling/resolve/c4d5197d6356025713a2472e6907e087b3e8d159/.eval_results/lexam-hard.yaml"
+      ]
+    }
+  ],
+  "uniqueUrls": [
+    {
+      "url": "https://arcprize.org/leaderboard",
+      "status": 200,
+      "finalUrl": "https://arcprize.org/leaderboard",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.304Z",
+      "bodyBytes": 47291,
+      "bodySha256": "878dbbc035df2ac3eb37e61cc19c46e0c0cc4a3b6dd99d862d111efdf285e50f",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://arena.ai/leaderboard",
+      "status": 200,
+      "finalUrl": "https://arena.ai/leaderboard",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.868Z",
+      "bodyBytes": 728345,
+      "bodySha256": "c6107fca14db23b010d444a6f1d514e279834de3fef75d8d6e4c504f8e45dcbf",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://crfm.stanford.edu/helm/",
+      "status": 200,
+      "finalUrl": "https://crfm.stanford.edu/helm/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.872Z",
+      "bodyBytes": 1295,
+      "bodySha256": "7b5ae08a8aad37b4ba0fe04ccb68d68a62d23695ec874aff3e81833acca8cca0",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://epoch.ai/frontiermath",
+      "status": 200,
+      "finalUrl": "https://epoch.ai/frontiermath",
+      "contentType": "text/html",
+      "retrievedAt": "2026-09-30T19:49:22.657Z",
+      "bodyBytes": 70303,
+      "bodySha256": "a1ff14c69b1793e116fa7255d2faf9aed30beb27ef2695f27299bac707229471",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/alexandrasouly/strongreject",
+      "status": 200,
+      "finalUrl": "https://github.com/alexandrasouly/strongreject",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.216Z",
+      "bodyBytes": 282337,
+      "bodySha256": "a88f1c84a1f8d76c1a41de051f06701986cd3c539771424160aa5e4a0bd889ff",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/bigcode-project/bigcodebench",
+      "status": 200,
+      "finalUrl": "https://github.com/bigcode-project/bigcodebench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.473Z",
+      "bodyBytes": 366539,
+      "bodySha256": "ea21e555b0b24605d0dd4cccd2cc46f2600858686f509ffab81255bc69dc3e6f",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/centerforaisafety/HarmBench",
+      "status": 200,
+      "finalUrl": "https://github.com/centerforaisafety/HarmBench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.151Z",
+      "bodyBytes": 343664,
+      "bodySha256": "e92b9021a4ac9477128f2737a56d63232120e5455c1f84935d31c61f0594f63b",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/google-deepmind/long-form-factuality",
+      "status": 200,
+      "finalUrl": "https://github.com/google-deepmind/long-form-factuality",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.810Z",
+      "bodyBytes": 300654,
+      "bodySha256": "dab3c455f59ce8b7c95434bee8912fb1f9a9419801807530c50be938486a4004",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/google-research/google-research/tree/master/instruction_following_eval",
+      "status": 200,
+      "finalUrl": "https://github.com/google-research/google-research/tree/master/instruction_following_eval",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.048Z",
+      "bodyBytes": 322053,
+      "bodySha256": "de3ad98293632d3ec1b46a7f210f5fbf38c2d912de978ddb2f89de9dd77b0ffc",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/HazyResearch/legalbench",
+      "status": 200,
+      "finalUrl": "https://github.com/HazyResearch/legalbench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.955Z",
+      "bodyBytes": 302329,
+      "bodySha256": "7621a0318f6b7d53b0229d09015b73b90e17f43d9892bc945387e8cb02e73e4b",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/hendrycks/math",
+      "status": 200,
+      "finalUrl": "https://github.com/hendrycks/math",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.908Z",
+      "bodyBytes": 251994,
+      "bodySha256": "2284cbc54a143fe6275038ce3bc3ea9c4a1119bcc3de98af893eccd870d24a2e",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/idavidrein/gpqa",
+      "status": 200,
+      "finalUrl": "https://github.com/idavidrein/gpqa",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.558Z",
+      "bodyBytes": 285994,
+      "bodySha256": "3cc688164029370821ae2a2e468c7b5d6ccff9a245321b6ea0026526cd2924b0",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/jind11/MedQA",
+      "status": 200,
+      "finalUrl": "https://github.com/jind11/MedQA",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.893Z",
+      "bodyBytes": 263707,
+      "bodySha256": "a00dc92857ec6b54252e3fc286fd5e964189b21e5358c00440b5b2f9ad91f0c0",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/NVIDIA/RULER",
+      "status": 200,
+      "finalUrl": "https://github.com/NVIDIA/RULER",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.140Z",
+      "bodyBytes": 377140,
+      "bodySha256": "ae58b3204b8df7e89eb837ca543e992bf4ea61392ddd21a6bef46a6c95220579",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/openai/simple-evals",
+      "status": 200,
+      "finalUrl": "https://github.com/openai/simple-evals",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.652Z",
+      "bodyBytes": 372737,
+      "bodySha256": "b1fe1ea6ffcd17ba6daeef5e2022e06645748a575dcf8d1879e665f703a87fa1",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/patronus-ai/financebench",
+      "status": 200,
+      "finalUrl": "https://github.com/patronus-ai/financebench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.942Z",
+      "bodyBytes": 264546,
+      "bodySha256": "604fe535c65d57dac3081441afdd8c05aabbd4d1cf4bbd755d51dc013a5dc39a",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/paul-rottger/exaggerated-safety",
+      "status": 200,
+      "finalUrl": "https://github.com/paul-rottger/xstest",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.463Z",
+      "bodyBytes": 268364,
+      "bodySha256": "eadc77f8b0f26bd44ed498b46a5033fdb0772b2b07467fb2f1e8de77c8553161",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/princeton-nlp/CharXiv",
+      "status": 200,
+      "finalUrl": "https://github.com/princeton-nlp/CharXiv",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.630Z",
+      "bodyBytes": 387952,
+      "bodySha256": "0a3dafa4d252454356397bd39460d4a7d4e990b5d6e14f70ff8d012867258254",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/sierra-research/tau-bench",
+      "status": 200,
+      "finalUrl": "https://github.com/sierra-research/tau-bench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.265Z",
+      "bodyBytes": 316832,
+      "bodySha256": "2eaa03cba35e2c3cd54016bc1c2fdae10fd6d8f9eeaa0bf9ea310b4d24d60f63",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/suzgunmirac/BIG-Bench-Hard",
+      "status": 200,
+      "finalUrl": "https://github.com/suzgunmirac/BIG-Bench-Hard",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.626Z",
+      "bodyBytes": 269701,
+      "bodySha256": "dd3307ad69be54dcfe69ae09cf7da836c2834c5784f1e8de91e0c24bbd35028f",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/THUDM/LongBench",
+      "status": 200,
+      "finalUrl": "https://github.com/THUDM/LongBench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.531Z",
+      "bodyBytes": 304259,
+      "bodySha256": "1d47d83db10f32cc4b8aa1fb3a11cdf0d3a8a164daa96d3c3d0441fe7338ac6d",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/TIGER-AI-Lab/MMLU-Pro",
+      "status": 200,
+      "finalUrl": "https://github.com/TIGER-AI-Lab/MMLU-Pro",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.900Z",
+      "bodyBytes": 306886,
+      "bodySha256": "60d93b87e96324461e7123432b9effe06cc199d783a47f5c9ffa90d3051b7e18",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/web-arena-x/webarena",
+      "status": 200,
+      "finalUrl": "https://github.com/web-arena-x/webarena",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.385Z",
+      "bodyBytes": 368312,
+      "bodySha256": "e55aff557ccb5c5f154d8b2b8ba11aa5cc13a832a5ccfd998c472c397ddb7aab",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://github.com/YJiangcm/FollowBench",
+      "status": 200,
+      "finalUrl": "https://github.com/YJiangcm/FollowBench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T20:00:55.996Z",
+      "bodyBytes": 318353,
+      "bodySha256": "10ded967a34509e0eaea1f8de16156471904edff0b8d834ac6dabb387afd5666",
+      "cachedFromPreviousAudit": false,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+      "status": 200,
+      "finalUrl": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.175Z",
+      "bodyBytes": 16207,
+      "bodySha256": "ef72a8621b6ea1b8aa1d1b7691f73cc3079fd38e86f599c9a38cb626c911fc29",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/allenai/olmOCR-bench",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/allenai/olmOCR-bench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:25.036Z",
+      "bodyBytes": 637260,
+      "bodySha256": "8e1ae4499c2cc792935651ada700c951d17e5e0a4f5318be2632a8bb6a66c2da",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/benchflow/skillsbench",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/benchflow/skillsbench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.741Z",
+      "bodyBytes": 204021,
+      "bodySha256": "f28aeed4f68bcce56172c036c5273ec36e04b6c27f01cce947c15ebf7cca9cdb",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/CohereForAI/Global-MMLU",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/CohereLabs/Global-MMLU",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.007Z",
+      "bodyBytes": 1946044,
+      "bodySha256": "452f0556810b07dd9b38f374b952ad078a6fd054424958ec6ce83df65475085b",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/crosbylegal/RedlineBench",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/crosbylegal/RedlineBench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:25.051Z",
+      "bodyBytes": 1460682,
+      "bodySha256": "4e1c4cfff63be43de26cde7bb4bd51e31825d1350982fb29f9f71170b7653e71",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/datacurve/deep-swe",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/datacurve/deep-swe",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.591Z",
+      "bodyBytes": 193911,
+      "bodySha256": "81c21af9f4995d45380ac53568e595559a225f6086f8a6c8508b4cc528f0dc79",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/FutureMa/EvasionBench",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/FutureMa/EvasionBench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.846Z",
+      "bodyBytes": 901099,
+      "bodySha256": "7cfdd1b3639fe1f828244a19164e9121d9f3dc169495c9c7c896c056711bfb44",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/gaia-benchmark/GAIA",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/gaia-benchmark/GAIA",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.151Z",
+      "bodyBytes": 159707,
+      "bodySha256": "65b19b066fd45ad55cbedf2ce1eabc5d69278f3b6f75412a665890bc49a45493",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/google/simpleqa-verified",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/google/simpleqa-verified",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.514Z",
+      "bodyBytes": 645104,
+      "bodySha256": "a5efddbb3227f7bd099da832060f3acb58dfa6eca20dee48c6cebb46879dab1d",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2.1",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/harborframework/terminal-bench-2.1",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.561Z",
+      "bodyBytes": 201220,
+      "bodySha256": "2e61b14b331a2820bb9b0faf0c8be760e13bed65aa92fc6a3e7860f89d3ad9d7",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/hf-audio/open-asr-leaderboard",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/hf-audio/open-asr-leaderboard",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:25.024Z",
+      "bodyBytes": 815320,
+      "bodySha256": "1fd601ced5067ef12b3eb3e41f0c7085a26edc80c965eb7a375c8fb669196195",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/hkust-nlp/Toolathlon",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/hkust-nlp/Toolathlon",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.603Z",
+      "bodyBytes": 167413,
+      "bodySha256": "7d280eb01432097887596bdf38ed62464ca14c7c6c293cbb3b59b86965cb711c",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/joelniklaus/LEXam-hard",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/joelniklaus/LEXam-hard",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:25.117Z",
+      "bodyBytes": 902895,
+      "bodySha256": "16ceb79f09cdda53f1fb2b2f9de8ee1197c896bea27a1932659e98faa87ef8f4",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/likaixin/ScreenSpot-Pro",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/likaixin/ScreenSpot-Pro",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.928Z",
+      "bodyBytes": 203529,
+      "bodySha256": "44fd06f82c5b885b5e22ebdb41daf6bbdaa2036374303a61109cf3b822026b4c",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/LiquidAI/ifstruct-v1.0",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/LiquidAI/ifstruct-v1.0",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:25.034Z",
+      "bodyBytes": 737399,
+      "bodySha256": "5798c489badc2884d5c37cf1517898374529550ac8f7310260bb7e61122061b5",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/MathArena/aime_2026",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/MathArena/aime_2026",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.490Z",
+      "bodyBytes": 315592,
+      "bodySha256": "569a106030e6167220b6acea05aa6bf983ab81e85b9fe4555ca7ffeb0bfb7def",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/MathArena/hmmt_feb_2026",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/MathArena/hmmt_feb_2026",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.449Z",
+      "bodyBytes": 368716,
+      "bodySha256": "2a49e1e3b27c8753d94b29a6caf69c3c226bde409044c9f7fe8580aacd9b280b",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/mercor/apex-agents",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/mercor/apex-agents",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.789Z",
+      "bodyBytes": 230474,
+      "bodySha256": "d48b94248740eda9151b61d6c9762981b5d0b1de58886210d13f64595aa1f4b7",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/MME-Benchmarks/Video-MME-v2",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.828Z",
+      "bodyBytes": 886108,
+      "bodySha256": "e51676fd769b0eca7e301f50b0320caef35eb5a2383f29a962abeba6d9f2f0c9",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/openai/gsm8k",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/openai/gsm8k",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.590Z",
+      "bodyBytes": 539715,
+      "bodySha256": "7acb44c14f3c2f94a3f42119814ba783b48de67d532ae179737c9f7a74904b8e",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/openai/MMMLU",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/openai/MMMLU",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.079Z",
+      "bodyBytes": 780687,
+      "bodySha256": "c778f97987e37b8b1c1b887a7af9479f9e312a55b318e3b423eec483b589559c",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/openai/mrcr",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/openai/mrcr",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.013Z",
+      "bodyBytes": 278013,
+      "bodySha256": "4c7e26c7fb17ce4c478c6c615a8b65a3498f40ee4856ac80ce196558e5989881",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+      "status": 200,
+      "finalUrl": "https://huggingface.co/datasets/PaddlePaddle/Real5-OmniDocBench",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.981Z",
+      "bodyBytes": 280682,
+      "bodySha256": "6c53aef83ee0833135027035024dceadd5d294944af8fe4227c7cc3ee1322a20",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://labs.scale.com/leaderboard/multichallenge",
+      "status": 200,
+      "finalUrl": "https://labs.scale.com/leaderboard/multichallenge",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.844Z",
+      "bodyBytes": 133347,
+      "bodySha256": "4cf36dc4169fe1cd3c1932e41b366741ae2caf6e4815808ad4e95fffa3e20551",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://lastexam.ai/",
+      "status": 200,
+      "finalUrl": "https://lastexam.ai/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.478Z",
+      "bodyBytes": 467850,
+      "bodySha256": "1ceab46b10ee69777117db9af5851f3e59efd67ff698984f37c1b196bd7e041c",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://livecodebench.github.io/",
+      "status": 200,
+      "finalUrl": "https://livecodebench.github.io/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.142Z",
+      "bodyBytes": 22770,
+      "bodySha256": "8c21afea9af5905445c6996ea92b927b488843b26a816d29e911c4b0f030dd40",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://m-a-p.ai/OmniBench",
+      "status": 200,
+      "finalUrl": "https://m-a-p.ai/OmniBench/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T20:00:56.265Z",
+      "bodyBytes": 37841,
+      "bodySha256": "0d59633a044d6fb3bf469ec728d306d243cfabed95a3577cc0f2169a4ffa8c70",
+      "cachedFromPreviousAudit": false,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://mathvista.github.io/",
+      "status": 200,
+      "finalUrl": "https://mathvista.github.io/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.473Z",
+      "bodyBytes": 79491,
+      "bodySha256": "ae92439181366330a5364821cfff665f8eac869cff527fc22c324842320650a0",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://mmmu-benchmark.github.io/",
+      "status": 200,
+      "finalUrl": "https://mmmu-benchmark.github.io/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.354Z",
+      "bodyBytes": 40229,
+      "bodySha256": "4f00a8c6523a84776718e95e4f1a1e0277868e8315505257276718952dd464bd",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://os-world.github.io/",
+      "status": 200,
+      "finalUrl": "http://osworld-v1.xlang.ai/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.474Z",
+      "bodyBytes": 153030,
+      "bodySha256": "bf37e00ce23e8c5472d485a6eb3b291ffa2de220b44040402516e41cbc48c516",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://scale.com/leaderboard/swe_bench_pro_public",
+      "status": 200,
+      "finalUrl": "https://labs.scale.com/leaderboard/swe_bench_pro",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.653Z",
+      "bodyBytes": 149202,
+      "bodySha256": "d2d2820f2b9affa4ce5ea4aea1437c4041357d330b28bc57cd37a0a6b1c72575",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://video-mme.github.io/",
+      "status": 200,
+      "finalUrl": "https://video-mme.github.io/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:24.304Z",
+      "bodyBytes": 2093,
+      "bodySha256": "3f6aa45bd721ef52b4c6af77536a2125bd291df0ae6187aec108d2f411b2a458",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://www.docvqa.org/",
+      "status": 200,
+      "finalUrl": "https://www.docvqa.org/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:23.632Z",
+      "bodyBytes": 174152,
+      "bodySha256": "5fd7566d4895360a10fdc99f66d38fc342e7cc99f8d5bf5c186c09eb2feb3ac4",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://www.swebench.com/",
+      "status": 200,
+      "finalUrl": "https://www.swebench.com/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:21.984Z",
+      "bodyBytes": 2392125,
+      "bodySha256": "c862011a4ee1d1a7199fad6ca0905fa5c64f58216f7217ac1eddf37f28788433",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    },
+    {
+      "url": "https://www.tbench.ai/",
+      "status": 200,
+      "finalUrl": "https://www.tbench.ai/",
+      "contentType": "text/html; charset=utf-8",
+      "retrievedAt": "2026-09-30T19:49:22.839Z",
+      "bodyBytes": 135508,
+      "bodySha256": "83c74a46e4e773aaf8ab322f305cd0f5539a2c567fe1dfaab2668732e99f6f3c",
+      "cachedFromPreviousAudit": true,
+      "error": null,
+      "interpretation": "reachable page; reachability does not establish that a model-specific results table exists"
+    }
+  ]
+}

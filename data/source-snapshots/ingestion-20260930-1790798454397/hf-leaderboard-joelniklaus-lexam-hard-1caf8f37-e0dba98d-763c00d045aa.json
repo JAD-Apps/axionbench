@@ -1,0 +1,352 @@
+{
+  "datasetId": "joelniklaus/LEXam-hard",
+  "retrievedAt": "2026-09-30T19:49:14.747Z",
+  "projectionOf": "https://huggingface.co/api/datasets/joelniklaus/LEXam-hard/leaderboard",
+  "fields": [
+    "rank",
+    "filename",
+    "value",
+    "verified",
+    "source",
+    "modelId",
+    "pullRequest",
+    "notes",
+    "lower_is_better",
+    "num_parameters"
+  ],
+  "rows": [
+    {
+      "rank": 1,
+      "filename": ".eval_results/lexam_hard.yaml",
+      "value": 45.72,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/FINAL-Bench/Darwin-180B-RSI",
+        "name": "Model Card",
+        "isExternal": false
+      },
+      "modelId": "FINAL-Bench/Darwin-180B-RSI",
+      "notes": "LEXam-hard, all 518 open questions; single sample (temperature=1.0, top_p=0.95, top_k=20); thinking budget 32,768 tokens, responses truncated at 32K regenerated with a 120K budget (60 items); judged by DeepSeek-R1-0528 with the LEXam paper judge prompt (eval.yaml); score = mean of German and English mean grades x 100 (de 44.37, en 47.07); 1 item without a parsable grade counted as 0; bf16",
+      "lower_is_better": false,
+      "num_parameters": 179999981459
+    },
+    {
+      "rank": 2,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 40.82,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "thinkingmachines/Inkling",
+      "pullRequest": 21,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 952377623626
+    },
+    {
+      "rank": 3,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 38.93,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Pro",
+      "pullRequest": 214,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 1598839674782
+    },
+    {
+      "rank": 4,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 38.19,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "deepseek-ai/DeepSeek-V4-Flash",
+      "pullRequest": 57,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 290944616402
+    },
+    {
+      "rank": 5,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 37.55,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "openai/gpt-oss-120b",
+      "pullRequest": 232,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 116829156672
+    },
+    {
+      "rank": 6,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 37.55,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "zai-org/GLM-5.2",
+      "pullRequest": 65,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 753329940480
+    },
+    {
+      "rank": 7,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 37.07,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "MiniMaxAI/MiniMax-M3",
+      "pullRequest": 29,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 427040140160
+    },
+    {
+      "rank": 8,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 36.69,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4",
+      "pullRequest": 14,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 302826566168
+    },
+    {
+      "rank": 9,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 36.18,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K2.6",
+      "pullRequest": 58,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 1026879376368
+    },
+    {
+      "rank": 10,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 31.89,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "mistralai/Mistral-Medium-3.5-128B",
+      "pullRequest": 34,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 127704210176
+    },
+    {
+      "rank": 11,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 29.54,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "moonshotai/Kimi-K3",
+      "pullRequest": 184,
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 2779931837184
+    },
+    {
+      "rank": 12,
+      "filename": ".eval_results/lexam-hard.yaml",
+      "value": 24.44,
+      "verified": false,
+      "source": {
+        "url": "https://huggingface.co/buckets/joelniklaus/SwissLegalEvals",
+        "name": "SwissLegalEvals per-sample details (lighteval)",
+        "isExternal": true,
+        "author": {
+          "_id": "5fae5f68b8423e1d80b8a988",
+          "avatarUrl": "https://cdn-avatars.huggingface.co/v1/production/uploads/1656078368144-5fae5f68b8423e1d80b8a988.jpeg",
+          "fullname": "Joel Niklaus",
+          "name": "joelniklaus",
+          "type": "user",
+          "isPro": false,
+          "isHf": true,
+          "isHfAdmin": false,
+          "isMod": false,
+          "followerCount": 167,
+          "isUserFollowing": false
+        }
+      },
+      "modelId": "swiss-ai/Apertus-v1.5-70B",
+      "notes": "lighteval, LEXam paper prompts, one response per question, no tools; DeepSeek-R1-0528 judge; mean of the German and English means over the 518 questions, 0-100",
+      "lower_is_better": false,
+      "num_parameters": 72005819139
+    }
+  ]
+}

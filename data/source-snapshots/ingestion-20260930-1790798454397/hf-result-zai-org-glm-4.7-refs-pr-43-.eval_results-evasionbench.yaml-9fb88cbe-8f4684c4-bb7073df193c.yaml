@@ -1,0 +1,8 @@
+- dataset:
+    id: FutureMa/EvasionBench
+    task_id: evasion_bench
+  value: 82.91
+  date: "2026-02-10"
+  source:
+    url: https://arxiv.org/abs/2601.09142
+    name: EvasionBench Paper

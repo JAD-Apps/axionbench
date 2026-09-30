@@ -1,0 +1,48 @@
+{
+  "id": "Sao10K/L3-8B-Lunaris-v1",
+  "sha": "8479c2a7ee119c935b9a02c921cc2a85b698dfe8",
+  "lastModified": "2024-06-29T18:21:32.000Z",
+  "createdAt": "2024-06-26T00:40:12.000Z",
+  "private": false,
+  "gated": false,
+  "pipeline_tag": "text-generation",
+  "library_name": "transformers",
+  "tags": [
+    "transformers",
+    "safetensors",
+    "llama",
+    "text-generation",
+    "conversational",
+    "en",
+    "license:llama3",
+    "text-generation-inference",
+    "endpoints_compatible",
+    "deploy:azure",
+    "region:us"
+  ],
+  "cardData": {
+    "license": "llama3",
+    "language": [
+      "en"
+    ]
+  },
+  "config": {
+    "architectures": [
+      "LlamaForCausalLM"
+    ],
+    "model_type": "llama",
+    "tokenizer_config": {
+      "bos_token": "<|begin_of_text|>",
+      "chat_template": "{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n\n'+ message['content'] | trim + '<|eot_id|>' %}{% if loop.index0 == 0 %}{% set content = bos_token + content %}{% endif %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|start_header_id|>assistant<|end_header_id|>\n\n' }}{% endif %}",
+      "eos_token": "<|eot_id|>"
+    }
+  },
+  "safetensors": {
+    "parameters": {
+      "BF16": 8030261248
+    },
+    "total": 8030261248
+  },
+  "usedStorage": 16060556336,
+  "_projection": "Filtered public model repository metadata. Author account fields, follower counts, avatars, access tokens and unrelated repository file lists are excluded."
+}
