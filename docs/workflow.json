@@ -1,0 +1,796 @@
+{
+  "schemaVersion": 1,
+  "title": "AxionBench — frontier model observatory and public launch",
+  "autoStart": false,
+  "maxCostUsd": null,
+  "maxRounds": 3,
+  "workerLimit": 1,
+  "collaborate": true,
+  "request": "Execute docs/OVERHAUL-PLAN.md end to end through JadBot. Preserve the animated contour hero, completely rebuild the rest to an original professional standard informed by researched Awwwards Vercel entries, replace ECharts with custom animated visx/Motion charts, ingest all permitted source models including Meta and current US/Chinese/global labs, and broaden benchmark coverage/scoring across domains. Keep 8–12 frontier models on primary charts, separate open weights by total parameter count and offer matched US–China head-to-head. Public pricing uses tasks/tokens only and every benchmark mention links to its genuine result. First verify distinct naming plus John's explicit exact repo/hostname selection; second create the public repo; final verify and open the real deployed custom domain in John's Windows browser. John explicitly selected AxionBench, approving JAD-Apps/axionbench and axionbench.jadapps.app. Read the saved owner reply and naming research, then execute the entire approved workflow. Each implementation step must create its specified concrete check scripts, and missing scripts/assertions remain failures. Read actual official releases/scores and keep unavailable/conflicting observations honest. Do not claim end-to-end proof until real worker/source-bound verifier/independent evaluator/integration/public repository/HTTPS/browser receipts exist. Network, deployment and GUI operations are explicitly owner-requested within this project only. Use existing provider authority, never change global routing/network policy, reauthenticate needlessly or publish secrets. Model/script verifiers may not edit or invent the immutable owner approval. Subsequent evidence-only commits may differ from sourceCommit; exact product tree/data digest binds hosted content.",
+  "steps": [
+    {
+      "title": "Confirm a distinct name and explicit owner approval",
+      "work": "analysis",
+      "bot": "Sil",
+      "difficulty": "hard",
+      "tier": "architect",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Read docs/naming-research.json and docs/owner-approval.json. Independently check the proposed name against AI benchmarks and aggregation sites, using primary evidence and GitHub searches. A candidate is not approved unless the saved owner reply explicitly selects its exact repo and hostname. Do not edit/fabricate owner-approval.json; only the owner-facing coordinator may record an actual reply. If approval is pending, report that precise gate and leave external work untouched. This stage must be first. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [],
+      "verifyCmd": "node scripts/verify-workflow.mjs naming",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "unknown"
+      }
+    },
+    {
+      "title": "Create the approved public repository",
+      "work": "ops",
+      "bot": "Peter",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. After the naming verifier passes, read exact approved repo/hostname. Inspect gh authentication read-only; never print credentials or reauthenticate unnecessarily. Create the matching public JAD-Apps repo only if absent, refuse an unrelated existing repo, set the correct origin in this project's Git common directory, and push the reviewed baseline without force. Exclude videos, private daemon receipts, credentials, subscriptions and unrelated JadBot files. Read back visibility and origin. Record evidence/repository.json and update only this JadBot project's remote metadata via its owning API if available. Do not deploy or modify DNS. The daemon seals workflow commits; do not manually commit worker edits. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        0
+      ],
+      "verifyCmd": "node scripts/verify-workflow.mjs repository",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "evidence/repository.json"
+          }
+        ],
+        "resources": [
+          {
+            "key": "network:github",
+            "mode": "exclusive"
+          },
+          {
+            "key": "repository:origin",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Document the complete visual blueprint and chart choice",
+      "work": "text",
+      "bot": "Vincent",
+      "difficulty": "hard",
+      "tier": "scribe",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Use docs/OVERHAUL-PLAN.md and inspect the requested live Awwwards Vercel references including below-fold sections. Write docs/DESIGN.md with explicit observations, original composition decisions, typography/spacing/colour tokens, responsive layouts and each view's analytical purpose. Preserve assets/surface.js hero behaviour; overhaul everything else. Select React + current compatible visx modules + Motion after checking current official releases, licensing and bundle size. Record a rejected-alternative comparison and prove custom SVG accessibility/animation requirements. Do not publish third-party screenshots/artwork. The blueprint must cover Frontier, cost, US–China, open weights, catalogue and methods, not only the hero. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        1
+      ],
+      "verifyCmd": "node scripts/verify-workflow.mjs design",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "docs/DESIGN.md"
+          }
+        ],
+        "resources": [
+          {
+            "key": "network:design-references",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Build the application foundation and chart proof",
+      "work": "code",
+      "bot": "Vorden",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Migrate the standalone preview to a static React/TypeScript/Vite application with locally hosted licensed fonts. Keep the canvas contour hero and pointer/offscreen/reduced-motion behaviour. Replace ECharts with pinned visx + Motion compatible versions. Commit a matching npm lockfile and packageManager; fill trusted dependency cache for frozen worktree preparation, never borrow node_modules. Build real accessible animated ranking/scatter prototypes using existing source values labelled as the old snapshot, not new invented data. Add verify:foundation (strict typecheck + clean build + focused chart smoke), test:unit and reusable test harnesses. Avoid broken npm test scripts during migration. Source and asset output must be self-contained and portable. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        2
+      ],
+      "verifyCmd": "npm run verify:foundation",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "src"
+          },
+          {
+            "repository": "project",
+            "path": "public"
+          },
+          {
+            "repository": "project",
+            "path": "scripts"
+          },
+          {
+            "repository": "project",
+            "path": "tests"
+          },
+          {
+            "repository": "project",
+            "path": "package.json"
+          },
+          {
+            "repository": "project",
+            "path": "package-lock.json"
+          },
+          {
+            "repository": "project",
+            "path": "index.html"
+          }
+        ],
+        "resources": [
+          {
+            "key": "dependency:npm-cache",
+            "mode": "exclusive"
+          },
+          {
+            "key": "network:npm",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Create the broad benchmark and source registry",
+      "work": "code",
+      "bot": "Erin",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement typed benchmark/configuration/source schemas and registry with >=30 distinct suites and >=11 capability domains plus separate safety, preference, professional and audio/video panels. Use primary sources in the plan as discovery leads and verify actual result locations, current versions and rights. Record pending/unsupported suites honestly with reasons. Distinguish HLE original/Rolling/Diamond, SWE variants, Terminal-Bench versions, BFCL versions, tau variants, years/splits and measured metrics. Add immutable permitted source snapshots/hashes and live-link validation with explicit exclusions; no made-up deep links. test:registry must validate coverage, real URLs, unique identities, metric bounds/directions, licence/source metadata, unknown-state handling and duplicates. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        3
+      ],
+      "verifyCmd": "npm run test:registry",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "data"
+          },
+          {
+            "repository": "project",
+            "path": "src/data"
+          },
+          {
+            "repository": "project",
+            "path": "tests/registry"
+          },
+          {
+            "repository": "project",
+            "path": "scripts"
+          }
+        ],
+        "resources": [
+          {
+            "key": "network:benchmark-sources",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Ingest the full current model catalogue and real results",
+      "work": "code",
+      "bot": "Erin",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement source adapters and ingest verified current public models/results. Cover every lab named in the plan including Meta and all supported source models, not the prior 12 entries. Canonicalize exact versions, thinking modes, base/instruct, provider endpoints, quantization and tested harnesses using original cards/releases. Obtain actual observations from >=15 suites across >=8 capability domains, preserve source conflicts and unavailable values, and publish detailed coverage counts. Save authentic retrieved snapshots and hashes, result URL, evaluation/retrieved times, source class, splits/budgets/graders or explicit unknowns. Add provider API pricing/caching/reasoning metadata with original URLs; unknown price/parameters remain null. data:validate checks all joins, aliases, units, provenance, freshness, privacy and genuine observed coverage; don't count pending registry entries as data. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        4
+      ],
+      "verifyCmd": "npm run data:validate",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "data"
+          },
+          {
+            "repository": "project",
+            "path": "src/data"
+          },
+          {
+            "repository": "project",
+            "path": "scripts"
+          },
+          {
+            "repository": "project",
+            "path": "tests/data"
+          }
+        ],
+        "resources": [
+          {
+            "key": "network:model-and-benchmark-sources",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Implement transparent domain scoring and sensitivity",
+      "work": "code",
+      "bot": "Richard",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement the versioned methodology in the plan with hand-calculated and adversarial fixtures. Normalization uses declared bounds/direction; fixed domain weights and family caps prevent duplicated related tests dominating. Compare one compatible common panel per cohort. No per-model missing-weight renormalization, zero imputation, unsupported overall scores, fake CIs or mixing harnesses. Explain eligibility, panel size, exclusions, source class and version. Separate safety, human preference, latency and cost. Offer explicit task weights/reset/share, rank sensitivity and leave-one-suite-out/independent-only views. Price scenarios correctly count input/cache/output/reasoning billing and reject invalid amounts. test:scoring checks expected numeric values, nulls, missing domains, correlated duplicates, conflicts, saturation, ties, direction and compatibility independently of implementation. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        5
+      ],
+      "verifyCmd": "npm run test:scoring",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "src/scoring"
+          },
+          {
+            "repository": "project",
+            "path": "tests/scoring"
+          },
+          {
+            "repository": "project",
+            "path": "docs/METHODOLOGY.md"
+          },
+          {
+            "repository": "project",
+            "path": "data/scoring.json"
+          }
+        ],
+        "resources": []
+      }
+    },
+    {
+      "title": "Rebuild the visual system and frontier experience",
+      "work": "code",
+      "bot": "Mona",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement the original visual blueprint and entire responsive page shell, keeping the hero. Recompose below-fold hierarchy, negative space, type scale, graphite/mineral/cobalt/lime balance, subtle depth and section rhythm; no repeated generic card grid. Frontier defaults to 8–12 source-verified flagships across labs with direct labels, coverage and readable source detail. Build animated visx/Motion ranking, compatible domain matrix and task-cost scatter/Pareto with persistent cohort/view state, keyboard/touch alternatives and exact accessible tables. Only supported view types are selectable; no new fake scores to fill space. test:frontier must exercise actual filters/view transitions/source links/cost state/mobile bounds/keyboard and reduced motion using the real broad dataset. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        6
+      ],
+      "verifyCmd": "npm run test:frontier",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "src/components"
+          },
+          {
+            "repository": "project",
+            "path": "src/styles"
+          },
+          {
+            "repository": "project",
+            "path": "src/pages"
+          },
+          {
+            "repository": "project",
+            "path": "tests/frontier"
+          },
+          {
+            "repository": "project",
+            "path": "public"
+          }
+        ],
+        "resources": [
+          {
+            "key": "gui:headless-browser",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Build matched US–China model comparisons",
+      "work": "code",
+      "bot": "Vorden",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Build a distinctive paired comparison using two models and aligned domain dumbbells/raw benchmark rows with common-condition filters, excluded observations and source drilldown. Source lab headquarters and label the definition; retain other/unknown/global labs outside the regional selectors. Never infer origin from language, endpoints or licence. No unmatched country-average ranking or fake winner. Persist selections and scoring panel in URLs and exports; accessible values match marks. test:head-to-head checks matched/intersected panels, unequal coverage, incompatible harnesses, all-null/tie states, accurate deltas, mobile layouts and real result links. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        7
+      ],
+      "verifyCmd": "npm run test:head-to-head",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "src/components/head-to-head"
+          },
+          {
+            "repository": "project",
+            "path": "src/pages"
+          },
+          {
+            "repository": "project",
+            "path": "tests/head-to-head"
+          }
+        ],
+        "resources": [
+          {
+            "key": "gui:headless-browser",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Build the open-weight explorer by parameter size",
+      "work": "code",
+      "bot": "Vorden",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement grouped exploration for <10B,10–35B,35–100B,100–300B,300B+,undisclosed total parameters; activated MoE parameters are separate labels/filters. Distinguish licence/openness, base/instruct, quantized model and hosted price from self-host cost. Include Meta, DeepSeek, Qwen, Mistral, Kimi, GLM, MiniMax, Nemotron, OLMo/Granite and others in supported sources. Show a bounded representative cohort first, all rows via search/pagination, and small multiples where useful. test:open-weights tests exact band boundaries, unknown parameters, MoE identity, pagination, source details and maximum default series count. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        8
+      ],
+      "verifyCmd": "npm run test:open-weights",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "src/components/open-weights"
+          },
+          {
+            "repository": "project",
+            "path": "src/pages"
+          },
+          {
+            "repository": "project",
+            "path": "tests/open-weights"
+          }
+        ],
+        "resources": [
+          {
+            "key": "gui:headless-browser",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Finish catalogue, methods and reusable snapshots",
+      "work": "code",
+      "bot": "Vorden",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement the full searchable sortable catalogue, benchmark library, model detail and methodology pages, with quality/coverage/source/freshness disclosure, licensed exports and real model-result links for every benchmark mention. Allow lab/openness/region/parameters/modality/source filters with URL round-trip and reset; CSV/JSON match displayed rows and stable IDs. Include unscored models as unscored and all permitted source models. Reference the scoring implementation, weights, confidence handling and source exclusions exactly. Snapshot history only where archived data actually exists; otherwise omit historical charts. test:catalogue checks filters/search/sorting/pagination/exports/deep links/nulls/coverage/benchmark anchors and absence of subscriptions. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        9
+      ],
+      "verifyCmd": "npm run test:catalogue",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "src/pages"
+          },
+          {
+            "repository": "project",
+            "path": "src/components"
+          },
+          {
+            "repository": "project",
+            "path": "tests/catalogue"
+          },
+          {
+            "repository": "project",
+            "path": "docs"
+          },
+          {
+            "repository": "project",
+            "path": "scripts"
+          }
+        ],
+        "resources": [
+          {
+            "key": "gui:headless-browser",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Add validated refresh, CI and deployment tooling",
+      "work": "ops",
+      "bot": "Peter",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement bounded, schema-validating data refresh with last-good retention, coverage/changelog and a reviewed PR path. Add public-repo CI for frozen install, lint/typecheck/unit/data/browser/build and a repeatable approved-host deployment, with least needed secrets referenced only by name. Use an independent Cloudflare Pages project after read-only account/zone/resource inspection; do not touch apex or jad-apps-site-git. Add release-product digest/source/data manifest, clean dist generation, deployment readback and rollback documentation. verify:automation validates workflows, failing refresh fixture/last-good retention, product manifest hashes and credential-free output. No paid eval requests and no deployment/DNS write in this stage. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        10
+      ],
+      "verifyCmd": "npm run verify:automation",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": ".github"
+          },
+          {
+            "repository": "project",
+            "path": "scripts"
+          },
+          {
+            "repository": "project",
+            "path": "docs/DEPLOYMENT.md"
+          },
+          {
+            "repository": "project",
+            "path": "package.json"
+          },
+          {
+            "repository": "project",
+            "path": "package-lock.json"
+          },
+          {
+            "repository": "project",
+            "path": "tests/automation"
+          }
+        ],
+        "resources": [
+          {
+            "key": "network:hosting-readonly",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Perform the full visual and interaction acceptance pass",
+      "work": "code",
+      "bot": "Mona",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Inspect the actual rendered complete site at 1440/1920 desktop and 320/390/768 responsive widths. Capture representative hero/frontier/head-to-head/open-weight/catalogue/method screenshots; inspect them visually and fix hierarchy, alignment, negative space, clutter, clipping, contrast and readable marks. Test pointer/touch/keyboard, deep-link roundtrip, motion/reduced motion, invalid/missing/conflicting data states, exports, result links, chart animations, performance and console errors. Do not settle for technically green yet visually unfinished. Add verify:release = all meaningful unit/scoring/registry/data/interaction/accessibility/clean-build gates and root jadbot:verify with no mutations to external hosting/GUI. Keep failures actionable and record real screenshots/commands, not declarations of taste as fake test success. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        11
+      ],
+      "verifyCmd": "npm run verify:release",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "src"
+          },
+          {
+            "repository": "project",
+            "path": "tests"
+          },
+          {
+            "repository": "project",
+            "path": "scripts"
+          },
+          {
+            "repository": "project",
+            "path": "docs/VISUAL-REVIEW.md"
+          },
+          {
+            "repository": "project",
+            "path": "package.json"
+          },
+          {
+            "repository": "project",
+            "path": "evidence/visual"
+          }
+        ],
+        "resources": [
+          {
+            "key": "gui:headless-browser",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Independently review the combined release candidate",
+      "work": "analysis",
+      "bot": "Sil",
+      "difficulty": "hard",
+      "tier": "architect",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Read-only independent assessment against docs/OVERHAUL-PLAN.md and the owner outcome contract; run the daemon's release verifier and inspect actual screenshots and source-backed coverage. Check visual distinctiveness beyond hero, broad live data/scoring honesty, all named labs/sections, absence of personal subscription details, exact pricing and result links, and compatible animated charts. Any unmet threshold or scope remains a gap; never weaken the contract or edit test expectations to pass. Deployment cannot proceed until this stage passes. Final JadBot evaluation remains required after the last step. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        12
+      ],
+      "verifyCmd": "npm run verify:release",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [],
+        "resources": [
+          {
+            "key": "gui:headless-browser",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Publish the exact verified release to the approved host",
+      "work": "ops",
+      "bot": "Peter",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Recheck exact approved repo/subdomain and passed candidate release checks. Freeze the product tree digest and sourceCommit. Push the reviewed candidate non-forcibly to the approved public repo and deploy a clean build to its independent Cloudflare Pages project. Associate only the approved custom hostname and its CNAME after checking for conflicts; never overwrite unrelated resources. Use configured credentials privately and normal owner authority. Record evidence/deployment.json with HTTPS URL, provider/project/deployment IDs, sourceCommit, productSha256, dataSha256 and publishedAt; fetch hosted release-manifest.json and data.json to prove exact content and TLS. Ensure all assets/paths/headers respond correctly. The verifier is read-only and must not repeat writes. If access is missing preserve build and report exact gap; no substitute localhost success. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        13
+      ],
+      "verifyCmd": "node scripts/verify-workflow.mjs deployment",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "evidence/deployment.json"
+          }
+        ],
+        "resources": [
+          {
+            "key": "network:github",
+            "mode": "exclusive"
+          },
+          {
+            "key": "deployment:cloudflare-pages",
+            "mode": "exclusive"
+          },
+          {
+            "key": "dns:approved-jadapps-subdomain",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Verify production and open it in John's browser",
+      "work": "ops",
+      "bot": "Alex",
+      "difficulty": "hard",
+      "tier": "main",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Final step. Verify public custom HTTPS URL, manifest and data hashes, all representative production interactions and production screenshots using pinned Playwright; write evidence/production-tests.json with actual assertions/results and matching productSha256. Then open that exact verified URL in John's Windows browser using the available powershell.exe Start-Process or the authorized connected-browser tool. Observe that browser's real page via the connected bridge (preferred) or a targeted Windows browser observation; don't treat process exit as rendered proof. Save evidence/browser.json with exact URL, timestamp, opening method, observed tab/window URL+title, productSha256 and an independently captured screenshot path/hash. Keep secret/unrelated tabs out of evidence. If observation unavailable report a truthful browser-proof gap, not a mocked receipt. Leave the site open. This stage cannot claim later workflow integration completed; coordinator checks final evaluator/merge receipts separately. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "dependsOn": [
+        14
+      ],
+      "verifyCmd": "node scripts/verify-workflow.mjs browser",
+      "workerLimit": 1,
+      "effects": {
+        "kind": "known",
+        "reads": [
+          {
+            "repository": "project",
+            "path": "docs",
+            "consistency": "fresh"
+          },
+          {
+            "repository": "project",
+            "path": "package.json",
+            "consistency": "fresh"
+          }
+        ],
+        "writes": [
+          {
+            "repository": "project",
+            "path": "evidence/browser.json"
+          },
+          {
+            "repository": "project",
+            "path": "evidence/production-tests.json"
+          },
+          {
+            "repository": "project",
+            "path": "evidence/production"
+          }
+        ],
+        "resources": [
+          {
+            "key": "gui:owner-browser",
+            "mode": "exclusive"
+          },
+          {
+            "key": "gui:headless-browser",
+            "mode": "exclusive"
+          },
+          {
+            "key": "network:production-readback",
+            "mode": "exclusive"
+          }
+        ]
+      }
+    }
+  ]
+}

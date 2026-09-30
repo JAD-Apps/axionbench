@@ -1,0 +1,156 @@
+{
+  "checkedAt": "2026-09-30",
+  "scope": "Exact-name web searches, AI benchmark/aggregation searches and GitHub public repository searches; not a trademark clearance.",
+  "approvalStatus": "approved",
+  "selectedName": "AxionBench",
+  "conflicts": [
+    {
+      "name": "MetaBench",
+      "reason": "Existing LLM benchmark and directly similar aggregation platform",
+      "sources": [
+        "https://github.com/adkipnis/metabench",
+        "https://github.com/nMaroulis/metabench"
+      ]
+    },
+    {
+      "name": "OmniBench",
+      "reason": "Several existing multimodal/agent AI benchmarks",
+      "sources": [
+        "https://github.com/antgroup/OmniBench",
+        "https://github.com/m-a-p/OmniBench"
+      ]
+    },
+    {
+      "name": "NexusBench",
+      "reason": "Existing function/tool/agent benchmark",
+      "sources": [
+        "https://github.com/nexusflowai/NexusBench"
+      ]
+    },
+    {
+      "name": "ModelVantage",
+      "reason": "Existing LLM monitoring service",
+      "sources": [
+        "https://modelvantage.com/"
+      ]
+    },
+    {
+      "name": "OmniGauge",
+      "reason": "Existing AI quota/pricing tool",
+      "sources": [
+        "https://pypi.org/project/omnigauge/"
+      ]
+    },
+    {
+      "name": "BenchSignal",
+      "reason": "Existing science-data service",
+      "sources": [
+        "https://benchsignal.com/"
+      ]
+    },
+    {
+      "name": "FrontierMap",
+      "reason": "Existing AI research tool",
+      "sources": [
+        "https://jopro.org/research/projects/frontiermap/"
+      ]
+    },
+    {
+      "name": "ZenithBench",
+      "reason": "Matching GitHub repository exists; avoid ambiguity",
+      "sources": [
+        "https://github.com/alghifari0101/ZenithBench"
+      ]
+    },
+    {
+      "name": "ModelStrata",
+      "reason": "Matching GitHub repository exists",
+      "sources": [
+        "https://github.com/c0decave/modelstrata"
+      ]
+    },
+    {
+      "name": "ParallaxIndex",
+      "reason": "Matching GitHub repositories exist",
+      "sources": [
+        "https://github.com/Thulrus/ParallaxIndex"
+      ]
+    }
+  ],
+  "ownerRejected": [
+    "Model Meridian"
+  ],
+  "previousShortlist": [
+    "StratumBench",
+    "ApertureBench",
+    "Evalory"
+  ],
+  "shortlist": [
+    {
+      "name": "AxionBench",
+      "repo": "JAD-Apps/axionbench",
+      "hostname": "axionbench.jadapps.app",
+      "webQueries": [
+        "\"AxionBench\"",
+        "\"AxionBench\" AI benchmark"
+      ],
+      "finding": "No matching AI benchmark found in these searches",
+      "githubMatchingRepositories": 0,
+      "approved": false
+    },
+    {
+      "name": "EvalSpectra",
+      "repo": "JAD-Apps/evalspectra",
+      "hostname": "evalspectra.jadapps.app",
+      "webQueries": [
+        "\"EvalSpectra\"",
+        "\"EvalSpectra\" AI benchmark"
+      ],
+      "finding": "No matching AI benchmark found in these searches",
+      "githubMatchingRepositories": 0,
+      "approved": false
+    },
+    {
+      "name": "BenchSpectrum",
+      "repo": "JAD-Apps/benchspectrum",
+      "hostname": "benchspectrum.jadapps.app",
+      "webQueries": [
+        "\"BenchSpectrum\"",
+        "\"BenchSpectrum\" AI benchmark"
+      ],
+      "finding": "No matching AI benchmark found in these searches",
+      "githubMatchingRepositories": 0,
+      "approved": false
+    },
+    {
+      "name": "BenchAxiom",
+      "repo": "JAD-Apps/benchaxiom",
+      "hostname": "benchaxiom.jadapps.app",
+      "webQueries": [
+        "\"BenchAxiom\"",
+        "\"BenchAxiom\" AI benchmark"
+      ],
+      "finding": "No matching AI benchmark found in these searches",
+      "githubMatchingRepositories": 0,
+      "approved": false
+    }
+  ],
+  "githubQueries": [
+    {
+      "query": "AxionBench OR ZenithBench OR ModelStrata OR ParallaxIndex",
+      "totalCount": 5,
+      "matchingNames": [
+        "c0decave/modelstrata",
+        "rahmicaglar/Parallaxindex",
+        "alghifari0101/ZenithBench",
+        "Thulrus/ParallaxIndex",
+        "Pranali0405/ParallaxIndexPg"
+      ]
+    },
+    {
+      "query": "BenchAxiom OR EvalSpectra OR BenchSpectrum OR ModelVantage",
+      "totalCount": 0,
+      "matchingNames": []
+    }
+  ]
+}

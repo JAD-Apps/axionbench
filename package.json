@@ -1,0 +1,14 @@
+{
+  "name": "jad-metabench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.19.0",
+  "description": "A standalone, static model capability and task cost explorer.",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/smoke.mjs"
+  },
+  "devDependencies": { "playwright-core": "1.62.1" }
+}

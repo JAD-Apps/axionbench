@@ -1,0 +1,10 @@
+node_modules/
+dist/
+test-artifacts/
+demo/raw/
+.DS_Store
+demo/
+evidence/local/
+.env*
+.wrangler/
+.vercel/

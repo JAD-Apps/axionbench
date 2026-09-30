@@ -1,0 +1,11 @@
+{
+  "status": "approved",
+  "name": "AxionBench",
+  "repo": "JAD-Apps/axionbench",
+  "hostname": "axionbench.jadapps.app",
+  "ownerReply": "AxionBench — short, research-lab feel",
+  "approvalQuestion": "Choosing one approves its matching public JAD-Apps/<lowercase-name> repo and <lowercase-name>.jadapps.app subdomain",
+  "approvedAt": "2026-09-30T18:27:22Z",
+  "recordedBy": "owner-facing Codex coordinator",
+  "instruction": "Immutable owner selection; workflow workers must not manufacture, weaken or replace this record."
+}
