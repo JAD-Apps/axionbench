@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile, stat } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { createHash } from 'node:crypto';
@@ -29,6 +29,17 @@ const approval = async () => {
   assert.match(a.hostname, /^[a-z0-9-]+\.jadapps\.app$/);
   assert.equal(c.githubMatchingRepositories, 0);
   assert.ok(!r.conflicts.some(c => c.name.toLowerCase() === a.name.toLowerCase()));
+  const evidence = await json('docs/naming-evidence/receipt.json');
+  assert.equal(evidence.exitCode, 0);
+  assert.equal(evidence.sourceClass, 'GitHub public API');
+  assert.equal(evidence.source, 'https://api.github.com/search/repositories?q=AxionBench&per_page=100');
+  assert.ok(Number.isFinite(Date.parse(evidence.capturedAt)));
+  const bytes = await readFile(repoPath(evidence.path));
+  assert.equal(sha(bytes), evidence.sha256, 'Naming evidence must match the captured public API bytes');
+  const result = JSON.parse(bytes);
+  assert.equal(result.incomplete_results, false);
+  assert.equal(result.total_count, 0, 'Naming search must precede approved public repository creation');
+  assert.deepEqual(result.items, []);
   return a;
 };
 const fetchBytes = async url => {

@@ -10,11 +10,11 @@
   "steps": [
     {
       "title": "Confirm a distinct name and explicit owner approval",
-      "work": "analysis",
-      "bot": "Sil",
+      "work": "ops",
+      "bot": "Peter",
       "difficulty": "hard",
-      "tier": "architect",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Read docs/naming-research.json and docs/owner-approval.json. Independently check the proposed name against AI benchmarks and aggregation sites, using primary evidence and GitHub searches. A candidate is not approved unless the saved owner reply explicitly selects its exact repo and hostname. Do not edit/fabricate owner-approval.json; only the owner-facing coordinator may record an actual reply. If approval is pending, report that precise gate and leave external work untouched. This stage must be first. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success.",
+      "tier": "main",
+      "brief": "Operational public-source naming check. Read docs/OVERHAUL-PLAN.md, docs/naming-research.json, docs/owner-approval.json and docs/naming-evidence/receipt.json. Verify the actual explicit owner selection approves AxionBench, JAD-Apps/axionbench and axionbench.jadapps.app. Inspect the authentic GitHub public API snapshot and its hash/timestamp; perform a fresh exact-name public API lookup when available and preserve genuine evidence. Search similar AI benchmarks/aggregation sites against primary sources. Treat GitHub search access as an ops/network investigation, not an unsupported read-only analyst shell operation. Do not change or fabricate owner-approval.json or claim legal trademark clearance. If a collision appears, report it before external creation. Do not create the public repo, publish, set DNS or modify unrelated projects; those belong to later dependent stages. Run the exact naming verifier. The previous blocked analyst attempt stays preserved; this is a corrected fresh attempt.",
       "dependsOn": [],
       "verifyCmd": "node scripts/verify-workflow.mjs naming",
       "workerLimit": 1,
