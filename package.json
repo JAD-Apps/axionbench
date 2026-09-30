@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit",
     "clean:build": "vite build --emptyOutDir",
     "test:unit": "vitest run",
+    "test:registry": "node scripts/test-registry.mjs",
     "test:chart-smoke": "node scripts/chart-smoke.mjs",
     "verify:foundation": "node scripts/verify-foundation.mjs",
     "verify:design": "node scripts/verify-design.mjs"
