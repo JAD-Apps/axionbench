@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "title": "AxionBench — frontier model observatory and public launch",
+  "title": "AxionBench \u2014 frontier model observatory and public launch",
   "autoStart": false,
   "maxCostUsd": null,
   "maxRounds": 3,
   "workerLimit": 1,
   "collaborate": true,
-  "request": "Execute docs/OVERHAUL-PLAN.md end to end through JadBot. Preserve the animated contour hero, completely rebuild the rest to an original professional standard informed by researched Awwwards Vercel entries, replace ECharts with custom animated visx/Motion charts, ingest all permitted source models including Meta and current US/Chinese/global labs, and broaden benchmark coverage/scoring across domains. Keep 8–12 frontier models on primary charts, separate open weights by total parameter count and offer matched US–China head-to-head. Public pricing uses tasks/tokens only and every benchmark mention links to its genuine result. First verify distinct naming plus John's explicit exact repo/hostname selection; second create the public repo; final verify and open the real deployed custom domain in John's Windows browser. John explicitly selected AxionBench, approving JAD-Apps/axionbench and axionbench.jadapps.app. Read the saved owner reply and naming research, then execute the entire approved workflow. Each implementation step must create its specified concrete check scripts, and missing scripts/assertions remain failures. Read actual official releases/scores and keep unavailable/conflicting observations honest. Do not claim end-to-end proof until real worker/source-bound verifier/independent evaluator/integration/public repository/HTTPS/browser receipts exist. Network, deployment and GUI operations are explicitly owner-requested within this project only. Use existing provider authority, never change global routing/network policy, reauthenticate needlessly or publish secrets. Model/script verifiers may not edit or invent the immutable owner approval. Subsequent evidence-only commits may differ from sourceCommit; exact product tree/data digest binds hosted content.",
+  "request": "Execute docs/OVERHAUL-PLAN.md end to end through JadBot. Preserve the animated contour hero, completely rebuild the rest to an original professional standard informed by researched Awwwards Vercel entries, replace ECharts with custom animated visx/Motion charts, ingest all permitted source models including Meta and current US/Chinese/global labs, and broaden benchmark coverage/scoring across domains. Keep 8\u201312 frontier models on primary charts, separate open weights by total parameter count and offer matched US\u2013China head-to-head. Public pricing uses tasks/tokens only and every benchmark mention links to its genuine result. First verify distinct naming plus John's explicit exact repo/hostname selection; second create the public repo; final verify and open the real deployed custom domain in John's Windows browser. John explicitly selected AxionBench, approving JAD-Apps/axionbench and axionbench.jadapps.app. Read the saved owner reply and naming research, then execute the entire approved workflow. Each implementation step must create its specified concrete check scripts, and missing scripts/assertions remain failures. Read actual official releases/scores and keep unavailable/conflicting observations honest. Do not claim end-to-end proof until real worker/source-bound verifier/independent evaluator/integration/public repository/HTTPS/browser receipts exist. Network, deployment and GUI operations are explicitly owner-requested within this project only. Use existing provider authority, never change global routing/network policy, reauthenticate needlessly or publish secrets. Model/script verifiers may not edit or invent the immutable owner approval. Subsequent evidence-only commits may differ from sourceCommit; exact product tree/data digest binds hosted content.",
   "steps": [
     {
       "title": "Confirm a distinct name and explicit owner approval",
@@ -72,7 +72,7 @@
       "bot": "Peter",
       "difficulty": "hard",
       "tier": "main",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Use docs/OVERHAUL-PLAN.md and inspect the requested live Awwwards Vercel references including below-fold sections. Write docs/DESIGN.md with explicit observations, original composition decisions, typography/spacing/colour tokens, responsive layouts and each view's analytical purpose. Preserve assets/surface.js hero behaviour; overhaul everything else. Select React + current compatible visx modules + Motion after checking current official releases, licensing and bundle size. Record a rejected-alternative comparison and prove custom SVG accessibility/animation requirements. Do not publish third-party screenshots/artwork. The blueprint must cover Frontier, cost, US–China, open weights, catalogue and methods, not only the hero. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. This is an operations/source-research stage because live reference and package documentation access requires the network capability; a text-only worker cannot perform that lookup. Retain full design deliverables and existing verifier. Use the owner-approved external read scope; do not change global settings.",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Use docs/OVERHAUL-PLAN.md and inspect the requested live Awwwards Vercel references including below-fold sections. Write docs/DESIGN.md with explicit observations, original composition decisions, typography/spacing/colour tokens, responsive layouts and each view's analytical purpose. Preserve assets/surface.js hero behaviour; overhaul everything else. Select React + current compatible visx modules + Motion after checking current official releases, licensing and bundle size. Record a rejected-alternative comparison and prove custom SVG accessibility/animation requirements. Do not publish third-party screenshots/artwork. The blueprint must cover Frontier, cost, US\u2013China, open weights, catalogue and methods, not only the hero. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. This is an operations/source-research stage because live reference and package documentation access requires the network capability; a text-only worker cannot perform that lookup. Retain full design deliverables and existing verifier. Use the owner-approved external read scope; do not change global settings.",
       "dependsOn": [
         1
       ],
@@ -386,7 +386,7 @@
       "bot": "Mona",
       "difficulty": "hard",
       "tier": "main",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement the original visual blueprint and entire responsive page shell, keeping the hero. Recompose below-fold hierarchy, negative space, type scale, graphite/mineral/cobalt/lime balance, subtle depth and section rhythm; no repeated generic card grid. Frontier defaults to 8–12 source-verified flagships across labs with direct labels, coverage and readable source detail. Build animated visx/Motion ranking, compatible domain matrix and task-cost scatter/Pareto with persistent cohort/view state, keyboard/touch alternatives and exact accessible tables. Only supported view types are selectable; no new fake scores to fill space. test:frontier must exercise actual filters/view transitions/source links/cost state/mobile bounds/keyboard and reduced motion using the real broad dataset. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Integration contract: the foundation currently mounts src/observatory.tsx from src/main.tsx and uses src/style.css, src/chart-data.ts and scripts/test-harness.mjs. Wire this step into the real rendered application and shared state; creating an unused isolated component is incomplete. Add the advertised npm verify command and meaningful independent interaction checks in scripts/tests. Use the existing sandbox-compatible browser harness and retain earlier gates. Performance and release data contract: the captured ingestion file is already about 6 MB. Do not embed the whole catalogue, source receipts and endpoint payloads into the initial JavaScript bundle. Use compact validated public data projections, deferred detail loading and route/component splitting where appropriate. Preserve complete catalogue access and exports, source identifiers, real missing states and exact data digest binding. The live production data.json must be generated from the new admitted dataset, not the legacy twelve-model preview. Show the preserved hero immediately while data loads; provide useful accessible loading/failure states. Measure the actual initial gzip JS budget from docs/DESIGN.md and fix avoidable excess rather than declaring it acceptable. Read docs/VISUAL-REFERENCE-REVIEW.md for the coordinator's actual rendered reference observations and specific section compositions. Implement and inspect those hierarchy/spacing principles in the real complete page; the below-hero frontier should not remain the foundation's small-heading/sidebar chart layout. Preserve the hero and deliver distinct frontier, paired, size-ruler, directory and methods chapters.",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement the original visual blueprint and entire responsive page shell, keeping the hero. Recompose below-fold hierarchy, negative space, type scale, graphite/mineral/cobalt/lime balance, subtle depth and section rhythm; no repeated generic card grid. Frontier defaults to 8\u201312 source-verified flagships across labs with direct labels, coverage and readable source detail. Build animated visx/Motion ranking, compatible domain matrix and task-cost scatter/Pareto with persistent cohort/view state, keyboard/touch alternatives and exact accessible tables. Only supported view types are selectable; no new fake scores to fill space. test:frontier must exercise actual filters/view transitions/source links/cost state/mobile bounds/keyboard and reduced motion using the real broad dataset. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Integration contract: the foundation currently mounts src/observatory.tsx from src/main.tsx and uses src/style.css, src/chart-data.ts and scripts/test-harness.mjs. Wire this step into the real rendered application and shared state; creating an unused isolated component is incomplete. Add the advertised npm verify command and meaningful independent interaction checks in scripts/tests. Use the existing sandbox-compatible browser harness and retain earlier gates. Performance and release data contract: the captured ingestion file is already about 6 MB. Do not embed the whole catalogue, source receipts and endpoint payloads into the initial JavaScript bundle. Use compact validated public data projections, deferred detail loading and route/component splitting where appropriate. Preserve complete catalogue access and exports, source identifiers, real missing states and exact data digest binding. The live production data.json must be generated from the new admitted dataset, not the legacy twelve-model preview. Show the preserved hero immediately while data loads; provide useful accessible loading/failure states. Measure the actual initial gzip JS budget from docs/DESIGN.md and fix avoidable excess rather than declaring it acceptable. Read docs/VISUAL-REFERENCE-REVIEW.md for the coordinator's actual rendered reference observations and specific section compositions. Implement and inspect those hierarchy/spacing principles in the real complete page; the below-hero frontier should not remain the foundation's small-heading/sidebar chart layout. Preserve the hero and deliver distinct frontier, paired, size-ruler, directory and methods chapters.",
       "dependsOn": [
         6
       ],
@@ -476,16 +476,16 @@
       }
     },
     {
-      "title": "Build matched US–China model comparisons",
+      "title": "Build matched US\u2013China model comparisons",
       "work": "code",
       "bot": "Vorden",
       "difficulty": "hard",
       "tier": "main",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Build a distinctive paired comparison using two models and aligned domain dumbbells/raw benchmark rows with common-condition filters, excluded observations and source drilldown. Source lab headquarters and label the definition; retain other/unknown/global labs outside the regional selectors. Never infer origin from language, endpoints or licence. No unmatched country-average ranking or fake winner. Persist selections and scoring panel in URLs and exports; accessible values match marks. test:head-to-head checks matched/intersected panels, unequal coverage, incompatible harnesses, all-null/tie states, accurate deltas, mobile layouts and real result links. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Integration contract: the foundation currently mounts src/observatory.tsx from src/main.tsx and uses src/style.css, src/chart-data.ts and scripts/test-harness.mjs. Wire this step into the real rendered application and shared state; creating an unused isolated component is incomplete. Add the advertised npm verify command and meaningful independent interaction checks in scripts/tests. Use the existing sandbox-compatible browser harness and retain earlier gates.",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Build a distinctive paired comparison using two models and aligned domain dumbbells/raw benchmark rows with common-condition filters, excluded observations and source drilldown. Source lab headquarters and label the definition; retain other/unknown/global labs outside the regional selectors. Never infer origin from language, endpoints or licence. No unmatched country-average ranking or fake winner. Persist selections and scoring panel in URLs and exports; accessible values match marks. test:head-to-head checks matched/intersected panels, unequal coverage, incompatible harnesses, all-null/tie states, accurate deltas, mobile layouts and real result links. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Integration contract: the foundation currently mounts src/observatory.tsx from src/main.tsx and uses src/style.css, src/chart-data.ts and scripts/test-harness.mjs. Wire this step into the real rendered application and shared state; creating an unused isolated component is incomplete. Add the advertised npm verify command and meaningful independent interaction checks in scripts/tests. Use the existing sandbox-compatible browser harness and retain earlier gates. Before regional implementation, complete the mandatory original-source admission work in docs/SOURCE-AUTHORITY-IMPLEMENTATION.md. The previous scoring fixtures passed but current capture admitted zero real results; this is a known release blocker. Implement original DeepSWE v1.1 complete configuration ingestion plus broad documented publisher observations and repair the scoring counterexamples. Wire the real validated public projection into frontier and paired views, preserving all earlier gates. Do not claim completion with empty panels or fixture-only authority results. Add and run npm run test:authority; it must inspect actual source facts, completeness, admission and the 15-suite/8-capability-domain positive floor.",
       "dependsOn": [
         7
       ],
-      "verifyCmd": "npm run test:head-to-head",
+      "verifyCmd": "npm run test:authority && npm run test:head-to-head",
       "workerLimit": 1,
       "effects": {
         "kind": "known",
@@ -519,31 +519,7 @@
         "writes": [
           {
             "repository": "project",
-            "path": "src/components/head-to-head"
-          },
-          {
-            "repository": "project",
-            "path": "src/pages"
-          },
-          {
-            "repository": "project",
-            "path": "tests/head-to-head"
-          },
-          {
-            "repository": "project",
-            "path": "src/observatory.tsx"
-          },
-          {
-            "repository": "project",
-            "path": "src/main.tsx"
-          },
-          {
-            "repository": "project",
-            "path": "src/style.css"
-          },
-          {
-            "repository": "project",
-            "path": "src/chart-data.ts"
+            "path": "src"
           },
           {
             "repository": "project",
@@ -551,12 +527,32 @@
           },
           {
             "repository": "project",
+            "path": "tests"
+          },
+          {
+            "repository": "project",
+            "path": "data"
+          },
+          {
+            "repository": "project",
+            "path": "public"
+          },
+          {
+            "repository": "project",
+            "path": "docs"
+          },
+          {
+            "repository": "project",
             "path": "package.json"
+          },
+          {
+            "repository": "project",
+            "path": "package-lock.json"
           }
         ],
         "resources": [
           {
-            "key": "gui:headless-browser",
+            "key": "network:benchmark-sources",
             "mode": "exclusive"
           }
         ]
@@ -568,7 +564,7 @@
       "bot": "Vorden",
       "difficulty": "hard",
       "tier": "main",
-      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement grouped exploration for <10B,10–35B,35–100B,100–300B,300B+,undisclosed total parameters; activated MoE parameters are separate labels/filters. Distinguish licence/openness, base/instruct, quantized model and hosted price from self-host cost. Include Meta, DeepSeek, Qwen, Mistral, Kimi, GLM, MiniMax, Nemotron, OLMo/Granite and others in supported sources. Show a bounded representative cohort first, all rows via search/pagination, and small multiples where useful. test:open-weights tests exact band boundaries, unknown parameters, MoE identity, pagination, source details and maximum default series count. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Integration contract: the foundation currently mounts src/observatory.tsx from src/main.tsx and uses src/style.css, src/chart-data.ts and scripts/test-harness.mjs. Wire this step into the real rendered application and shared state; creating an unused isolated component is incomplete. Add the advertised npm verify command and meaningful independent interaction checks in scripts/tests. Use the existing sandbox-compatible browser harness and retain earlier gates.",
+      "brief": "Read docs/OVERHAUL-PLAN.md before starting. Implement grouped exploration for <10B,10\u201335B,35\u2013100B,100\u2013300B,300B+,undisclosed total parameters; activated MoE parameters are separate labels/filters. Distinguish licence/openness, base/instruct, quantized model and hosted price from self-host cost. Include Meta, DeepSeek, Qwen, Mistral, Kimi, GLM, MiniMax, Nemotron, OLMo/Granite and others in supported sources. Show a bounded representative cohort first, all rows via search/pagination, and small multiples where useful. test:open-weights tests exact band boundaries, unknown parameters, MoE identity, pagination, source details and maximum default series count. Own only the stated deliverables, keep related meaningful tests/docs in this step, use project-relative paths and never require this run to merge itself. Save actual evidence, preserve failed receipts, and do not invent success. Integration contract: the foundation currently mounts src/observatory.tsx from src/main.tsx and uses src/style.css, src/chart-data.ts and scripts/test-harness.mjs. Wire this step into the real rendered application and shared state; creating an unused isolated component is incomplete. Add the advertised npm verify command and meaningful independent interaction checks in scripts/tests. Use the existing sandbox-compatible browser harness and retain earlier gates.",
       "dependsOn": [
         8
       ],
