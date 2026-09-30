@@ -190,6 +190,13 @@ for (const observation of data.observations) {
   assert.equal(observation.benchmarkVersion, suite.version, `benchmark version mismatch ${observation.id}`);
   assert.ok(observation.claimsEvidenceId === observation.resultSourceId, `numeric score claim does not point to its evidence ${observation.id}`);
   assert.ok(observation.sourceClass && observation.sourceVerification?.status, `source class / verification state missing ${observation.id}`);
+  if (observation.leaderboardSourceId) {
+    const config = data.configurations.find((x) => x.id === observation.configurationId);
+    assert.ok(observation.leaderboardSubmission && Object.hasOwn(observation.leaderboardSubmission, 'author'), `submission author (possibly explicit null) missing ${observation.id}`);
+    assert.equal(observation.leaderboardSubmission.verified, observation.leaderboardVerified, `submission verification flag mismatch ${observation.id}`);
+    assert.equal(observation.leaderboardSubmission.revisionRef, config.revision.ref, `submission revision ref mismatch ${observation.id}`);
+    assert.equal(observation.leaderboardSubmission.revisionStatus, config.revision.ref.startsWith('refs/pr/') ? 'unmerged model-repository pull request' : 'non-PR repository ref; publisher confirmation still required', `submission revision status mismatch ${observation.id}`);
+  } else assert.equal(observation.leaderboardSubmission, null, `leaderboard submission metadata without leaderboard row ${observation.id}`);
   assert.equal(observation.sourceVerification.independentReplication, false, 'unverified community scores must not be described as independently replicated');
   if (observation.leaderboardSourceId) {
     assert.ok(sourceIds.has(observation.leaderboardSourceId), `unknown leaderboard source ${observation.id}`);

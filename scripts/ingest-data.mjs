@@ -689,6 +689,13 @@ for (const selection of selectedRows) {
       leaderboardModelId: hasBoardJoin ? claimBoardRow.modelId : null,
       leaderboardFilename: hasBoardJoin ? claimBoardRow.filename : null,
       leaderboardVerified: hasBoardJoin ? claimBoardRow.verified === true : null,
+      leaderboardSubmission: hasBoardJoin ? {
+        author: claimBoardRow.author ?? null,
+        pullRequest: claimBoardRow.pullRequest ?? null,
+        revisionRef: card.ref,
+        revisionStatus: card.ref.startsWith('refs/pr/') ? 'unmerged model-repository pull request' : 'non-PR repository ref; publisher confirmation still required',
+        verified: claimBoardRow.verified === true,
+      } : null,
       externalSourceUrl: claimBoardRow?.source?.isExternal ? claimBoardRow.source.url ?? null : null,
       evaluatedAt: block.date, retrievedAt: card.source.retrievedAt,
       sourceClass: claimBoardRow?.source?.isExternal ? 'public model-card result; leaderboard also identifies external source' : hasBoardJoin ? 'model-card self-reported result; public leaderboard unverified' : 'model-card-only self-reported result; no matching public leaderboard row',

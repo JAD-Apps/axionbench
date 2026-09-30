@@ -144303,7 +144303,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 29,
+        "revisionRef": "refs/pr/29",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-deepseek-deepseek-v4.1-flash-20260910-18d25a00:hle-original:8c480e80bb3b",
@@ -144369,7 +144376,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 29,
+        "revisionRef": "refs/pr/29",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-deepseek-deepseek-v4.1-flash-20260910-18d25a00:hle-original:7ec560a78c60",
@@ -144435,7 +144449,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 29,
+        "revisionRef": "refs/pr/29",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-deepseek-deepseek-v4.1-flash-20260910-18d25a00:terminal-bench-2.1:5d4b1bfbe2e5",
@@ -144502,7 +144523,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 29,
+        "revisionRef": "refs/pr/29",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-deepseek-deepseek-v4.1-flash-20260910-18d25a00:terminal-bench-4:54b05e5d735e",
@@ -144569,7 +144597,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 29,
+        "revisionRef": "refs/pr/29",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-deepseek-deepseek-v4.1-flash-20260910-18d25a00:deep-swe:4757db3c0f0b",
@@ -144635,7 +144670,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 29,
+        "revisionRef": "refs/pr/29",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-final-bench-darwin-180b-rsi-af542088:gpqa-diamond:25f48719c934",
@@ -144701,7 +144743,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-xiaomi-mimo-v2.5-pro-20260422-5bad9700:gsm8k:8b02192d6ba6",
@@ -144768,7 +144817,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 1,
+        "revisionRef": "refs/pr/1",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-ornith-ai-ornith-1.5-397b-037e8f37:swebench-verified:96e00e69941f",
@@ -144835,7 +144891,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 1,
+        "revisionRef": "refs/pr/1",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-ornith-ai-ornith-1.5-397b-037e8f37:swebench-pro:e1c1f88c4298",
@@ -144902,7 +144965,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 1,
+        "revisionRef": "refs/pr/1",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-ornith-ai-ornith-1.5-397b-037e8f37:swebench-multilingual:1125c70630d1",
@@ -144969,7 +145039,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 1,
+        "revisionRef": "refs/pr/1",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-ornith-ai-ornith-1.5-397b-037e8f37:deep-swe:2d5724b2786a",
@@ -145035,7 +145112,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 1,
+        "revisionRef": "refs/pr/1",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-ornith-ai-ornith-1.5-397b-037e8f37:hle-original:0bef0a784d24",
@@ -145101,7 +145185,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 1,
+        "revisionRef": "refs/pr/1",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-ornith-ai-ornith-1.5-397b-037e8f37:hle-original:dba9983a0f5a",
@@ -145167,7 +145258,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 1,
+        "revisionRef": "refs/pr/1",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-ornith-ai-ornith-1.5-397b-037e8f37:gpqa-diamond:e20112d2af60",
@@ -145233,7 +145331,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 1,
+        "revisionRef": "refs/pr/1",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-qwen-qwen3.8-2.4t-a95b-20260812-77197fb8:swebench-pro:e807c7a0ab04",
@@ -145300,7 +145405,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 6,
+        "revisionRef": "refs/pr/6",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-moonshotai-kimi-k3-20260715-96093c75:gpqa-diamond:e5711cb189f6",
@@ -145366,7 +145478,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-z-ai-glm-5.3-20260816-b8cb98de:hle-original:06ae8b1e9d1f",
@@ -145432,7 +145551,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-ibm-granite-granite-4.1-30b-26ae4044:gsm8k:985dce618538",
@@ -145499,7 +145625,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 4,
+        "revisionRef": "refs/pr/4",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-mindlab-research-macaron-v1-venti-7078e940:swebench-verified:f20125a44795",
@@ -145566,7 +145699,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-tencent-hy4-preview-20260827-81575402:swebench-pro:2f84c0f712db",
@@ -145633,7 +145773,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 3,
+        "revisionRef": "refs/pr/3",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-tencent-hy4-preview-20260827-81575402:swebench-multilingual:e1f3cbb13d49",
@@ -145700,7 +145847,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 3,
+        "revisionRef": "refs/pr/3",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-xiaomi-mimo-v2.6-pro-20260921-5c703e05:toolathlon:7258692c49e2",
@@ -145766,7 +145920,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 5,
+        "revisionRef": "refs/pr/5",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-xiaomi-mimo-v2.6-pro-20260921-5c703e05:terminal-bench-2.1:0892c0e9d5c7",
@@ -145833,7 +145994,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 5,
+        "revisionRef": "refs/pr/5",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-xiaomi-mimo-v2.6-pro-20260921-5c703e05:deep-swe:0ad4651c9ce8",
@@ -145899,7 +146067,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 5,
+        "revisionRef": "refs/pr/5",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-xiaomi-mimo-v2.6-pro-20260921-5c703e05:terminal-bench-4:d5a618b0fbb5",
@@ -145966,7 +146141,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 5,
+        "revisionRef": "refs/pr/5",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-final-bench-darwin-180b-rsi-af542088:mmlu-pro:a7cd6ed7316d",
@@ -146033,7 +146215,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-qwen-qwen3.8-flash-20260826-00bdf0f7:deep-swe:a49a47d4d84c",
@@ -146099,7 +146288,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 12,
+        "revisionRef": "refs/pr/12",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-qwen-qwen3.8-flash-20260826-00bdf0f7:swebench-pro:e5068ffeb0fc",
@@ -146166,7 +146362,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 12,
+        "revisionRef": "refs/pr/12",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-qwen-qwen3.8-flash-20260826-00bdf0f7:swebench-multilingual:86f05613874e",
@@ -146233,7 +146436,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 12,
+        "revisionRef": "refs/pr/12",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-qwen-qwen3.8-flash-20260826-00bdf0f7:gpqa-diamond:a965332d4a45",
@@ -146299,7 +146509,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 12,
+        "revisionRef": "refs/pr/12",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-qwen-qwen3.8-flash-20260826-00bdf0f7:hle-original:4b2b6ea1bc6f",
@@ -146365,7 +146582,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 12,
+        "revisionRef": "refs/pr/12",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-final-bench-darwin-180b-rsi-af542088:aime-2026:f6d035e4534f",
@@ -146432,7 +146656,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-moonshotai-kimi-k3-20260715-96093c75:apex-agents:74f07d527a52",
@@ -146498,7 +146729,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-moonshotai-kimi-k3-20260715-96093c75:toolathlon:c62e4d673803",
@@ -146564,7 +146802,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-minimax-minimax-m2.1-36abe028:mmlu-pro:5e5a266b2539",
@@ -146641,6 +146886,13 @@
         "bodySha256": "dbb885497a50905e1a6d168b0ae4a4d46ad249dff5f66cbe407fd43ce11c4cc4",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 37,
+        "revisionRef": "refs/pr/37",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
       }
     },
     {
@@ -146708,7 +146960,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-tencent-hy4-preview-20260827-81575402:apex-agents:26033b5e6ee3",
@@ -146774,7 +147033,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 12,
+        "revisionRef": "refs/pr/12",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-thinkingmachines-inkling-20260715-cb22afb3:aime-2026:1706cc791353",
@@ -146841,7 +147107,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-final-bench-darwin-180b-rsi-af542088:mmmu-pro:b01ac63d8e5c",
@@ -146908,7 +147181,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-minimax-minimax-m3-20260531-e24845f3:swebench-verified:36fcb4c73a5d",
@@ -146975,7 +147255,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-minimax-minimax-m3-20260531-e24845f3:swebench-pro:3ebd5a014cbe",
@@ -147042,7 +147329,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-minimax-minimax-m3-20260531-e24845f3:mmmu-pro:eb6084cd6a1c",
@@ -147108,7 +147402,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:or-minimax-minimax-m3-20260531-e24845f3:video-mme-v2:91b718c9b67d",
@@ -147175,7 +147470,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-minimax-minimax-m3-20260531-e24845f3:apex-agents:d7663c09cba9",
@@ -147241,7 +147543,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-moonshotai-kimi-k2.6-20260420-2830ae72:hmmt-feb-2026:41d0df074198",
@@ -147308,7 +147617,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-tencent-hy4-preview-20260827-81575402:skillsbench:8ab5329b1246",
@@ -147375,7 +147691,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 3,
+        "revisionRef": "refs/pr/3",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-edge0-ark-asr-3b-8ba267b5:open-asr:b547928796b5",
@@ -147452,6 +147775,13 @@
         "bodySha256": "5a5057519666a85228e11bfe46dec4522ab8fc38975c4df2c499cddded00f02f",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
       }
     },
     {
@@ -147518,7 +147848,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-edge0-ark-asr-3b-8ba267b5:open-asr:123db1894918",
@@ -147584,7 +147915,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-edge0-ark-asr-3b-8ba267b5:open-asr:67baf67a5390",
@@ -147650,7 +147982,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-edge0-ark-asr-3b-8ba267b5:open-asr:87275d33aaa0",
@@ -147716,7 +148049,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-edge0-ark-asr-3b-8ba267b5:open-asr:d85ea38ee861",
@@ -147782,7 +148116,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-edge0-ark-asr-3b-8ba267b5:open-asr:c7a46f2a06a5",
@@ -147848,7 +148183,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-edge0-ark-asr-3b-8ba267b5:open-asr:6d0afbf98ff5",
@@ -147914,7 +148250,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-edge0-ark-asr-3b-8ba267b5:open-asr:f02b065dcfde",
@@ -147980,7 +148317,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-edge0-ark-asr-3b-8ba267b5:open-asr:6f355686311e",
@@ -148046,7 +148384,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:or-moonshotai-kimi-k2.6-20260420-2830ae72:mmmu-pro:22de209098d9",
@@ -148113,7 +148452,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-moonshotai-kimi-k2.5-0127-3444edae:video-mme-v2:0a242c57b955",
@@ -148190,6 +148536,13 @@
         "bodySha256": "7dc9c295f6f6404a7c9a08a0fa18a0ae83587254283fb2a8fc2afec5bc435110",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 116,
+        "revisionRef": "refs/pr/116",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
       }
     },
     {
@@ -148267,6 +148620,13 @@
         "bodySha256": "7dc9c295f6f6404a7c9a08a0fa18a0ae83587254283fb2a8fc2afec5bc435110",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 116,
+        "revisionRef": "refs/pr/116",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
       }
     },
     {
@@ -148344,6 +148704,13 @@
         "bodySha256": "5bb24ac517ccc741cde1559c20bcb646fba8d1c787ddecd8bf0f8917d995976f",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 43,
+        "revisionRef": "refs/pr/43",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
       }
     },
     {
@@ -148421,6 +148788,13 @@
         "bodySha256": "b4d534e9e0327272813fd9fa2e4412af46b41ac11b326e043fe8a2e63637d2f9",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
       }
     },
     {
@@ -148487,7 +148861,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-openmoss-team-moss-transcribe-preview-2b-b42e4790:open-asr:03c4b1f48eb9",
@@ -148553,7 +148928,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-openmoss-team-moss-transcribe-preview-2b-b42e4790:open-asr:9cd82e23937c",
@@ -148619,7 +148995,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-openmoss-team-moss-transcribe-preview-2b-b42e4790:open-asr:bf6414421f47",
@@ -148685,7 +149062,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-openmoss-team-moss-transcribe-preview-2b-b42e4790:open-asr:4de5e89b92c9",
@@ -148751,7 +149129,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-openmoss-team-moss-transcribe-preview-2b-b42e4790:open-asr:f57633a23978",
@@ -148817,7 +149196,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-openmoss-team-moss-transcribe-preview-2b-b42e4790:open-asr:422f0d6ab102",
@@ -148883,7 +149263,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-openmoss-team-moss-transcribe-preview-2b-b42e4790:open-asr:8ecdae1defe9",
@@ -148949,7 +149330,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:or-z-ai-glm-5.1-20260406-f96e4276:skillsbench:8ae7aad1f560",
@@ -149026,6 +149408,13 @@
         "bodySha256": "42aa5b7bf21774d3d4e6a2b604d98628c05b846e01b71938f40bbca5e08d425f",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 41,
+        "revisionRef": "refs/pr/41",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
       }
     },
     {
@@ -149103,6 +149492,13 @@
         "bodySha256": "518f6484b240f5a166147d43044a9847870f43f962ef582c3637c940f71b3acf",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
       }
     },
     {
@@ -149169,7 +149565,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-internscience-agents-a1-884b5985:ifstruct:4a4455822b66",
@@ -149246,6 +149649,13 @@
         "bodySha256": "05351a3b6408c57ef1f6218a241803f9567d85089a4b3ede9e2ff6e117394b38",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
       }
     },
     {
@@ -149323,6 +149733,13 @@
         "bodySha256": "5bb24ac517ccc741cde1559c20bcb646fba8d1c787ddecd8bf0f8917d995976f",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 31,
+        "revisionRef": "refs/pr/31",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
       }
     },
     {
@@ -149389,7 +149806,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 6,
+        "revisionRef": "refs/pr/6",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-meta-muse-glimmer-30b-20260810-2b190dcd:mmmu-pro:ad90729be101",
@@ -149455,7 +149879,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:or-meta-muse-glimmer-30b-20260810-2b190dcd:aime-2026:16fe2e40e36b",
@@ -149522,7 +149947,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 6,
+        "revisionRef": "refs/pr/6",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-meta-muse-glimmer-30b-20260810-2b190dcd:swebench-verified:6a74f6ab94fb",
@@ -149589,7 +150021,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 6,
+        "revisionRef": "refs/pr/6",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-meta-muse-glimmer-30b-20260810-2b190dcd:swebench-pro:e280cdf1bba8",
@@ -149656,7 +150095,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 6,
+        "revisionRef": "refs/pr/6",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-meta-muse-glimmer-30b-20260810-2b190dcd:hle-original:dcb9d6393c5e",
@@ -149722,7 +150168,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 6,
+        "revisionRef": "refs/pr/6",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-meta-muse-glimmer-30b-20260810-2b190dcd:skillsbench:ac5d8ee0d760",
@@ -149789,7 +150242,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 6,
+        "revisionRef": "refs/pr/6",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:or-meta-muse-glimmer-30b-20260810-2b190dcd:screenspot-pro:3c4f6bca868e",
@@ -149856,7 +150316,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 6,
+        "revisionRef": "refs/pr/6",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-infly-infinity-parser2-pro-8e53385b:olmocr-bench:11adc0a41e35",
@@ -149933,6 +150400,13 @@
         "bodySha256": "e7d91fd724954177ee724d897de5a1a43944a43740bf0688de669b952cf142bc",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
       }
     },
     {
@@ -149999,7 +150473,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-infly-infinity-parser2-pro-8e53385b:olmocr-bench:b6cd447a0e93",
@@ -150065,7 +150540,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-infly-infinity-parser2-pro-8e53385b:olmocr-bench:28e5e16a6e1c",
@@ -150131,7 +150607,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-infly-infinity-parser2-pro-8e53385b:olmocr-bench:72225c7830e3",
@@ -150197,7 +150674,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-infly-infinity-parser2-pro-8e53385b:olmocr-bench:5b286577ea4e",
@@ -150263,7 +150741,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-infly-infinity-parser2-pro-8e53385b:olmocr-bench:eaf3ecfb9398",
@@ -150329,7 +150808,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-infly-infinity-parser2-pro-8e53385b:olmocr-bench:b6750016dbc2",
@@ -150395,7 +150875,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-infly-infinity-parser2-pro-8e53385b:olmocr-bench:3126fa50970a",
@@ -150461,7 +150942,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-crosbylegal-gpt-5.6-sol-75ea69cb:redlinebench:e7cacfc2670a",
@@ -150538,6 +151020,13 @@
         "bodySha256": "518f6484b240f5a166147d43044a9847870f43f962ef582c3637c940f71b3acf",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
       }
     },
     {
@@ -150615,6 +151104,13 @@
         "bodySha256": "cbd7b3df93f8006a65f12b4fd3e1de323b293d174f2fcd4a2323ce80c5b7beac",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 263,
+        "revisionRef": "refs/pr/263",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
       }
     },
     {
@@ -150692,6 +151188,13 @@
         "bodySha256": "d507559cac545456478c7d12258e087bd426aa232891c0e715022598ee776992",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
       }
     },
     {
@@ -150758,7 +151261,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-paddlepaddle-paddleocr-vl-1.6-378c00cd:real5-omnidocbench:a0f677744ba0",
@@ -150824,7 +151328,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-paddlepaddle-paddleocr-vl-1.6-378c00cd:real5-omnidocbench:2def2287c4fb",
@@ -150890,7 +151395,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-paddlepaddle-paddleocr-vl-1.6-378c00cd:real5-omnidocbench:91b260edb1c8",
@@ -150956,7 +151462,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-paddlepaddle-paddleocr-vl-1.6-378c00cd:real5-omnidocbench:b689f140f98c",
@@ -151022,7 +151529,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:or-qwen-qwen3.5-122b-a10b-20260224-90b6bc0f:screenspot-pro:dad668f56cee",
@@ -151089,7 +151597,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 17,
+        "revisionRef": "refs/pr/17",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-datalab-to-chandra-ocr-2-b3d79049:olmocr-bench:0eaf4e9672d3",
@@ -151156,7 +151671,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-datalab-to-chandra-ocr-2-b3d79049:olmocr-bench:ba6101f6dbd5",
@@ -151222,7 +151744,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-datalab-to-chandra-ocr-2-b3d79049:olmocr-bench:c51d91f2f7eb",
@@ -151288,7 +151811,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-datalab-to-chandra-ocr-2-b3d79049:olmocr-bench:2a363459772c",
@@ -151354,7 +151878,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-datalab-to-chandra-ocr-2-b3d79049:olmocr-bench:9991950b78c9",
@@ -151420,7 +151945,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-datalab-to-chandra-ocr-2-b3d79049:olmocr-bench:ea4b1c7e16ae",
@@ -151486,7 +152012,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-datalab-to-chandra-ocr-2-b3d79049:olmocr-bench:5d338c51a261",
@@ -151552,7 +152079,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-datalab-to-chandra-ocr-2-b3d79049:olmocr-bench:0178fa302437",
@@ -151618,7 +152146,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-datalab-to-chandra-ocr-2-b3d79049:olmocr-bench:b6cd447a0e93",
@@ -151684,7 +152213,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-final-bench-darwin-180b-rsi-af542088:lexam-hard:fe8a069cc73b",
@@ -151751,7 +152281,14 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
+      }
     },
     {
       "id": "obs:hf-paddlepaddle-paddleocr-vl-1.5-f93d0dfc:real5-omnidocbench:da6d0f2a7e3a",
@@ -151828,6 +152365,13 @@
         "bodySha256": "d507559cac545456478c7d12258e087bd426aa232891c0e715022598ee776992",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": null,
+        "revisionRef": "main",
+        "revisionStatus": "non-PR repository ref; publisher confirmation still required",
+        "verified": false
       }
     },
     {
@@ -151894,7 +152438,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-paddlepaddle-paddleocr-vl-1.5-f93d0dfc:real5-omnidocbench:a49821e0cf06",
@@ -151960,7 +152505,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-paddlepaddle-paddleocr-vl-1.5-f93d0dfc:real5-omnidocbench:e28d74c8c053",
@@ -152026,7 +152572,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-paddlepaddle-paddleocr-vl-1.5-f93d0dfc:real5-omnidocbench:fd4852b65886",
@@ -152092,7 +152639,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:hf-paddlepaddle-paddleocr-vl-1.5-f93d0dfc:real5-omnidocbench:05d6cedeb82e",
@@ -152158,7 +152706,8 @@
         "error": null,
         "cachedFromPreviousReceipt": true
       },
-      "externalSourceUrlCheck": null
+      "externalSourceUrlCheck": null,
+      "leaderboardSubmission": null
     },
     {
       "id": "obs:or-thinkingmachines-inkling-20260715-cb22afb3:lexam-hard:5bb5b85aa0bf",
@@ -152235,6 +152784,13 @@
         "bodySha256": "f500cfd4186e96fd8b579ac4fe48ea5719b53c5485ba56fe50fd4f05d3d38979",
         "error": null,
         "cachedFromPreviousReceipt": true
+      },
+      "leaderboardSubmission": {
+        "author": null,
+        "pullRequest": 21,
+        "revisionRef": "refs/pr/21",
+        "revisionStatus": "unmerged model-repository pull request",
+        "verified": false
       }
     }
   ],

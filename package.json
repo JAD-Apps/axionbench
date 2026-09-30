@@ -16,6 +16,7 @@
     "data:ingest": "node scripts/ingest-data.mjs",
     "data:validate": "node scripts/data-validate.mjs",
     "test:data": "node scripts/test-data.mjs",
+    "test:scoring": "node tests/scoring/test-scoring.mjs",
     "test:chart-smoke": "node scripts/chart-smoke.mjs",
     "verify:foundation": "node scripts/verify-foundation.mjs",
     "verify:design": "node scripts/verify-design.mjs"
