@@ -35,7 +35,11 @@
     "data:refresh": "node scripts/automation/refresh.mjs",
     "deploy:readback": "node scripts/release/readback.mjs",
     "test:automation": "node scripts/automation/test-automation.mjs",
-    "verify:automation": "node scripts/automation/verify-automation.mjs"
+    "verify:automation": "node scripts/automation/verify-automation.mjs",
+    "test:acceptance": "node scripts/test-acceptance.mjs",
+    "verify:release": "node scripts/release/verify-release.mjs",
+    "jadbot:verify": "npm run verify:release",
+    "release:check": "node scripts/release/check-dist.mjs"
   },
   "devDependencies": {
     "@types/node": "24.10.0",

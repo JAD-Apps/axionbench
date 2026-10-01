@@ -1,0 +1,139 @@
+{
+  "finishedAt": "2026-09-30T23:42:14.864Z",
+  "passed": false,
+  "candidate": {
+    "productSha256": "a2d192d1a5af0f9b71a03db0b27b5a7abb08351d18a14ff6e278e6d6a708e8ee",
+    "dataSha256": "b45464a28a60d6e81a65a1b5940206629e64081de8ef022a5dc81fcf96110411",
+    "sourceCommit": "c74f4b4921d8594ee30b50ce2e77553610bdc598",
+    "sourceDirty": true,
+    "fileCount": 19
+  },
+  "results": [
+    {
+      "script": "lint",
+      "label": "static parse, JSON and conflict-marker lint",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 1.8
+    },
+    {
+      "script": "typecheck",
+      "label": "strict TypeScript",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 4.1
+    },
+    {
+      "script": "test:unit",
+      "label": "unit regression suite (vitest)",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.8
+    },
+    {
+      "script": "test:scoring",
+      "label": "hand-calculated and adversarial scoring fixtures",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.3
+    },
+    {
+      "script": "test:registry",
+      "label": "benchmark registry breadth and live source reachability",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.2
+    },
+    {
+      "script": "test:data",
+      "label": "ingestion adapter fixtures",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.2
+    },
+    {
+      "script": "data:validate",
+      "label": "public data contract validation",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 1.8
+    },
+    {
+      "script": "test:authority",
+      "label": "benchmark-authority adapters and publisher facts",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 5.7
+    },
+    {
+      "script": "verify:design",
+      "label": "design blueprint contract",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.2
+    },
+    {
+      "script": "test:frontier",
+      "label": "frontier build, bundle budget and browser checks",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 22.4
+    },
+    {
+      "script": "test:chart-smoke",
+      "label": "hero preservation and chart smoke in Chromium",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 7
+    },
+    {
+      "script": "test:head-to-head",
+      "label": "matched US–China comparison",
+      "exitCode": 1,
+      "error": null,
+      "seconds": 43.5
+    },
+    {
+      "script": "test:open-weights",
+      "label": "open-weight parameter groups",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 44.7
+    },
+    {
+      "script": "test:catalogue",
+      "label": "catalogue, methods and snapshots",
+      "exitCode": 1,
+      "error": null,
+      "seconds": 24.2
+    },
+    {
+      "script": "test:acceptance",
+      "label": "visual and interaction acceptance at 320–1920 px",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 35.9
+    },
+    {
+      "script": "verify:automation",
+      "label": "refresh, CI and deployment tooling (offline)",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 3.5
+    },
+    {
+      "script": "build:release",
+      "label": "clean release build and manifest",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 2.6
+    },
+    {
+      "script": "release:check",
+      "label": "dist matches its release manifest",
+      "exitCode": 0,
+      "error": null,
+      "seconds": 0.2
+    }
+  ]
+}

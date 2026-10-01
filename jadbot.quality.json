@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "release": { "artifact": "dist/release-manifest.json" },
+  "health": [
+    "npm run release:check"
+  ],
+  "recovery": [
+    {
+      "fault": "rm -f dist/index.html",
+      "assert": "! npm run release:check",
+      "recover": "npm run build:release",
+      "assertRecovered": "npm run release:check"
+    }
+  ],
+  "timeoutSeconds": 2400
+}

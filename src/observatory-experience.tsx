@@ -548,6 +548,8 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         <div className="open-heading">
           <p className="eyebrow">A size ruler, not a leaderboard</p>
           <h2 id="open-title">Find the model<br/><i>at the scale you need.</i></h2>
+        </div>
+        <div className="open-lead">
           <p>Groups use the captured total parameter count. Activated MoE parameters are a separate, card-stated measurement and never set the group. Public weights, an open-source licence, a quantized checkpoint and a hosted price are four different facts.</p>
           <p className="open-count"><strong>{dataset.openWeights.rows.length.toLocaleString()}</strong> entries with a model repository reference in this snapshot</p>
         </div>

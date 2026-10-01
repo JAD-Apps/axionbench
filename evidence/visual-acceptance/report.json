@@ -1,0 +1,113 @@
+{
+  "widths": [
+    320,
+    390,
+    768,
+    1440,
+    1920
+  ],
+  "screenshots": [
+    "320-hero.jpg",
+    "320-frontier.jpg",
+    "320-paired.jpg",
+    "320-open-weights.jpg",
+    "320-models.jpg",
+    "320-methods.jpg",
+    "390-hero.jpg",
+    "390-frontier.jpg",
+    "390-paired.jpg",
+    "390-open-weights.jpg",
+    "390-models.jpg",
+    "390-methods.jpg",
+    "768-hero.jpg",
+    "768-frontier.jpg",
+    "768-paired.jpg",
+    "768-open-weights.jpg",
+    "768-models.jpg",
+    "768-methods.jpg",
+    "1440-hero.jpg",
+    "1440-frontier.jpg",
+    "1440-paired.jpg",
+    "1440-open-weights.jpg",
+    "1440-models.jpg",
+    "1440-methods.jpg",
+    "1920-hero.jpg",
+    "1920-frontier.jpg",
+    "1920-paired.jpg",
+    "1920-open-weights.jpg",
+    "1920-models.jpg",
+    "1920-methods.jpg"
+  ],
+  "checks": [
+    {
+      "name": "responsive 320px",
+      "detail": "1225 ms to chapters; 10 ranking marks"
+    },
+    {
+      "name": "contrast@390",
+      "detail": "3546 text elements checked"
+    },
+    {
+      "name": "responsive 390px",
+      "detail": "1072 ms to chapters; 10 ranking marks"
+    },
+    {
+      "name": "responsive 768px",
+      "detail": "1152 ms to chapters; 10 ranking marks"
+    },
+    {
+      "name": "contrast@1440",
+      "detail": "3546 text elements checked"
+    },
+    {
+      "name": "responsive 1440px",
+      "detail": "1169 ms to chapters; 10 ranking marks"
+    },
+    {
+      "name": "responsive 1920px",
+      "detail": "1052 ms to chapters; 10 ranking marks"
+    },
+    {
+      "name": "keyboard",
+      "detail": "skip link, visible focus, arrow-key panel change updates rows and URL"
+    },
+    {
+      "name": "deep-link roundtrip",
+      "detail": "15 parameters across frontier, head-to-head, open weights and catalogue"
+    },
+    {
+      "name": "exports",
+      "detail": "open weights 53, catalogue 34, head-to-head bound to yi-34b-chat"
+    },
+    {
+      "name": "result links",
+      "detail": "140 ranking links match captured result URLs"
+    },
+    {
+      "name": "data failure states",
+      "detail": "invalid JSON, HTTP 404 and digest conflict each fail closed with an alert and keep the hero"
+    },
+    {
+      "name": "motion",
+      "detail": "bars animate for ~311 ms and settle at full length"
+    },
+    {
+      "name": "reduced motion",
+      "detail": "200 sampled marks all drawn at final length"
+    },
+    {
+      "name": "touch",
+      "detail": "band tab, catalogue paging and model detail operate by tap"
+    }
+  ],
+  "timings": {
+    "chaptersReady@320": 1225,
+    "chaptersReady@390": 1072,
+    "chaptersReady@768": 1152,
+    "chaptersReady@1440": 1169,
+    "chaptersReady@1920": 1052,
+    "rankingAnimationMs": 311
+  },
+  "failures": [],
+  "passed": true
+}

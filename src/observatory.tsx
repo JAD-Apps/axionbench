@@ -32,6 +32,7 @@ export function Observatory() {
 
   return <>
     <header className="topbar">
+      <a className="skip-link" href="#frontier">Skip to the frontier</a>
       <a className="wordmark" href="#top" aria-label="AxionBench home">AXION<span>BENCH</span></a>
       <nav aria-label="Main navigation">
         <a href="#frontier">Frontier</a>
