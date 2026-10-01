@@ -123,9 +123,11 @@ export function defaultCommands(auditDir) {
   return [
     ['npm', 'run', 'data:ingest'],
     ...(auditDir ? [['npm', 'run', 'data:authority', '--', auditDir]] : []),
+    ...(auditDir ? [['python3', 'scripts/pricing/capture-google.py', '--audit-dir', auditDir + '/pricing']] : []),
     ['node', 'scripts/build-observatory-data.mjs'],
     ['npm', 'run', 'data:validate'],
     ['npm', 'run', 'test:data'],
+    ['npm', 'run', 'test:pricing'],
   ];
 }
 

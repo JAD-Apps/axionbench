@@ -35,9 +35,12 @@ assert(data.suites.length >= 30 && data.domains.length >= 11, 'registry coverage
 assert(data.models.some((model) => /meta/i.test(model.lab)), 'Meta identities remain in the complete catalogue');
 assert.equal(data.sourceLimitations.identityConfirmedModels, 9, 'the captured exact-release watchlist has nine entries');
 assert.equal(data.sourceLimitations.verifiedBenchmarkObservations, 0, 'no unverified source claim is promoted to a verified result');
-assert.equal(data.sourceLimitations.apiPricesPublished, false, 'source-restricted endpoint rates are withheld');
+assert.equal(data.sourceLimitations.apiPricesPublished, true, 'licensed original-provider factual tariffs are published');
+assert.equal(data.sourceLimitations.restrictedRoutedPricesPublished, false, 'source-restricted routed endpoint rates remain withheld');
 assert.equal(data.sourceLimitations.apiPriceRowsObserved, 1328, 'the withheld-rate count comes from the captured ingestion');
-assert.equal(Object.hasOwn(data, 'pricing'), false, 'the public projection contains no endpoint price catalogue');
+assert.equal(data.pricing.records.length, 11, 'the public projection contains eleven licensed exact-endpoint text tariffs');
+assert.equal(data.pricing.source.licence, 'CC BY 4.0', 'original pricing reuse permission is explicit');
+assert(data.pricing.records.every((price) => price.sourceUrl.startsWith('https://ai.google.dev/gemini-api/docs/pricing#')), 'no restricted routed rates enter the public price projection');
 assert.equal(JSON.stringify(data).includes('/data/source-snapshots/'), false, 'local source snapshot paths are not published');
 assert(data.observations.every((row) => row.resultUrl?.startsWith('https://') && row.sourceIds.length > 0),
   'each captured observation keeps an HTTPS original result and source identifiers');
@@ -136,10 +139,10 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.match(await page.locator('#models tbody').innerText(), /Meta/i);
   await page.getByRole('button', { name: '10–35B' }).click();
   check.equal(await page.getByRole('button', { name: '10–35B' }).getAttribute('aria-pressed'), 'true', 'parameter ruler selection is operable');
-  check.match(await page.locator('.task-cost-note').innerText(), /1,328 API price rows[\s\S]*withheld/i,
-    'cost chapter reports real source restrictions without exposing rates');
-  check.equal(await page.getByTestId('view-cost').isDisabled(), true, 'unsupported task-cost view is not selectable');
-  check.equal(await page.locator('[data-chart-kind="scatter"]').count(), 0, 'no scatter/Pareto marks are fabricated');
+  check.equal(await page.getByTestId('task-cost').count(), 1, 'licensed task-cost feature is actually mounted');
+  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '#task-cost', 'task-cost control enters the functional cost section');
+  check(await page.getByTestId('cost-plot').locator('[role="button"]').count() >= 8, 'real endpoint prices populate the cost plot');
+  check.equal(await page.getByTestId('domain-weights').count(), 1, 'custom domain weights and sensitivity are actually mounted');
   await page.getByTestId('view-ranking').click();
   await page.getByTestId('cohort-filter').selectOption('reported');
   await page.getByTestId('suite-filter').selectOption('hle-original');
@@ -233,8 +236,8 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   await page.goto(origin + '/?view=cost', { waitUntil: 'networkidle' });
   await page.getByTestId('frontier-stage').waitFor();
   check.equal(await page.getByTestId('view-ranking').getAttribute('aria-pressed'), 'true', 'unsupported URL view falls back to supported ranking');
-  check.equal(await page.getByTestId('view-cost').isDisabled(), true, 'unsupported cost remains disabled after navigation');
-  check.equal(await page.locator('[data-chart-kind="scatter"]').count(), 0, 'unsupported query cannot render invented values');
+  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '#task-cost', 'functional task-cost section remains reachable after navigation');
+  check(await page.getByTestId('cost-table').locator('tbody tr').count() >= 8, 'licensed exact endpoint estimates remain populated after navigation');
 
   const failurePage = await newPage();
   await failurePage.route('**/data-manifest.json', (route) => route.fulfill({ status: 503, contentType: 'text/plain', body: 'Snapshot unavailable in regression fixture.' }));
@@ -262,7 +265,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.deepEqual(errors, [], 'browser has no uncaught errors or console errors');
   report.browserChecks = [
     'hero during blocked manifest load', 'default 9-model / 8-lab identity watchlist', 'missing and unverified states',
-    'five chapters and complete directory export', 'Meta directory search and parameter band', 'unavailable restricted-price view',
+    'five chapters and complete directory export', 'Meta directory search and parameter band', 'licensed original-provider task costs and source-restricted routed rows withheld',
     'real suite/domain/lab filters', 'ranking/table parity', 'keyboard and touch selection', 'reduced-motion stability',
     'deferred permission/source hash detail', 'activated original result URL', 'persistent URL cohort/view state',
     'unsupported view rejection', 'horizontal bounds at 360/390/768/1280/1440 px',

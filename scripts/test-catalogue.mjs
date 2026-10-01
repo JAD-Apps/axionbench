@@ -126,7 +126,9 @@ for (const r of rows) {
 assert.equal(evidenceTotal, data.authority.observations.length + data.observations.length);
 assert.match(JSON.stringify(exportJson(data, rows, CAT_DEFAULTS)), /redistribution terms are not established/);
 assert.doesNotMatch(exportCsv(rows) + JSON.stringify(data.scoring), /subscription|quota|seat price|plan price/i, 'no subscription or quota data');
-assert.equal(data.sourceLimitations.apiPricesPublished, false);
+assert.equal(data.sourceLimitations.apiPricesPublished, true, 'separate permitted token tariff projection is mounted');
+assert.equal(data.sourceLimitations.restrictedRoutedPricesPublished, false, 'catalogue source prices remain withheld');
+assert.equal(data.pricing.records.length, 11, 'licensed price coverage is explicit rather than inferred from catalogue identities');
 
 // ---- Browser ----
 const parseCsv = (text) => {

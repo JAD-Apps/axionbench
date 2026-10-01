@@ -1,0 +1,102 @@
+import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { withBuiltBrowser } from './test-harness.mjs';
+const build = spawnSync('npm', ['run', 'build'], { stdio: 'inherit' });
+assert.equal(build.status, 0);
+const dataBytes = await readFile('public/data.json');
+const data = JSON.parse(dataBytes);
+const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const checks = [];
+const screenshots = [];
+await mkdir('test-results/cost-weights', { recursive: true });
+await withBuiltBrowser(async ({ page, newPage, origin }) => {
+  const errors = []; page.on('pageerror', (error) => errors.push(error.message));
+  page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+  const pass = (name, observed) => checks.push({ name, observed });
+  await page.goto(origin, { waitUntil: 'networkidle' });
+  await page.getByTestId('task-cost').waitFor();
+  assert.equal(await page.getByTestId('domain-weights').count(), 1);
+  const points = page.getByTestId('cost-plot').locator('[role="button"]');
+  assert((await points.count()) >= 8 && (await points.count()) <= 12); pass('Source-priced scatter populated', await points.count());
+  await points.first().focus(); await page.keyboard.press('Enter'); assert.equal(await points.first().getAttribute('aria-pressed'), 'true');
+  pass('Keyboard inspection selects a real point', await points.first().getAttribute('aria-label'));
+  const flash = page.getByTestId('cost-table').locator('tbody tr').filter({ hasText: 'gemini-3.8-flash' });
+  assert.match(await flash.innerText(), /\$0\.0150/);
+  await page.getByTestId('cost-reasoningTokens').fill('1000'); assert.match(await flash.innerText(), /\$0\.01875/);
+  pass('Thinking changes cost once at source output rate', await flash.innerText());
+  await page.getByTestId('cost-cachedReadTokens').fill('50000'); assert.match(await flash.innerText(), /Unsupported/);
+  await page.getByTestId('cost-cacheStoredTokens').fill('50000'); await page.getByTestId('cost-cacheHours').fill('1');
+  assert.match(await flash.innerText(), /\$0\.0475/); pass('Explicit cache storage included', await flash.innerText());
+  await page.getByTestId('cost-cachedWriteTokens').fill('1'); assert.match(await flash.innerText(), /Unsupported/);
+  assert.equal(await points.count(), 0); pass('Unknown used tariff suppresses scatter', 0);
+  await page.getByTestId('cost-reset').click(); assert.equal(await page.getByTestId('cost-inputTokens').inputValue(), '10000');
+  assert.match(await page.getByTestId('weight-score').innerText(), /Insufficient common coverage/);
+  await page.getByTestId('weight-covered').click();
+  assert.doesNotMatch(await page.getByTestId('weight-score').innerText(), /Insufficient/);
+  assert.match(await page.getByTestId('domain-weights').innerText(), /CUSTOM \/ USER WEIGHTS/);
+  pass('Covered-domain custom comparison becomes available', await page.getByTestId('weight-score').innerText());
+  await page.getByTestId('weight-coding').fill('2');
+  assert.equal(await page.getByTestId('weight-coding').inputValue(), '2');
+  assert.match(await page.getByTestId('weight-independent').innerText(), /Insufficient common coverage/);
+  await page.getByTestId('domain-weights').getByText(/Leave one suite out/).click();
+  assert((await page.getByTestId('weight-omissions').locator('li').count()) >= 2);
+  pass('Sensitivity and real suite omissions visible', await page.getByTestId('weight-sensitivity').innerText());
+  const saved = page.url(); const restored = await newPage(); await restored.goto(saved, { waitUntil: 'networkidle' });
+  assert.equal(await restored.getByTestId('weight-coding').inputValue(), '2');
+  assert.equal(await restored.getByTestId('cost-outputTokens').inputValue(), '2000');
+  assert.match(await restored.getByTestId('weight-score').innerText(), /GPT-6 Astra/);
+  pass('Exact scenario/model/weight URL roundtrip', saved);
+  await restored.close();
+  await page.bringToFront();
+  const weightDownload = page.waitForEvent('download'); await page.getByTestId('weight-export').click();
+  const wd = await weightDownload; await wd.saveAs('test-results/cost-weights/weights-export.json');
+  const exportedWeights = JSON.parse(await readFile('test-results/cost-weights/weights-export.json'));
+  assert.equal(exportedWeights.weights.coding, 2); assert.equal(exportedWeights.productDataDigest, sha(dataBytes));
+  assert(exportedWeights.commonPanel.every((row) => row.resultUrl.startsWith('https://')));
+  const costDownload = page.waitForEvent('download'); await page.getByTestId('cost-export').click();
+  const cd = await costDownload; await cd.saveAs('test-results/cost-weights/cost-export.json');
+  const exportedCost = JSON.parse(await readFile('test-results/cost-weights/cost-export.json'));
+  assert.equal(exportedCost.task.inputTokens, 10000); assert.equal(exportedCost.productDataDigest, sha(dataBytes));
+  assert.equal(exportedCost.pricingSource.licence, 'CC BY 4.0'); pass('Both exports agree with mounted data and preserved source links', { costRows: exportedCost.rows.length, weightRows: exportedWeights.commonPanel.length });
+  await page.getByTestId('weight-reset').click(); assert.match(await page.getByTestId('weight-score').innerText(), /Insufficient/);
+  assert.equal(await page.getByTestId('weight-coding').inputValue(), '1'); pass('Reset restores honest equal default', await page.getByTestId('weight-score').innerText());
+  for (const width of [320, 390, 768, 1440, 1920]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.waitForTimeout(100);
+    await page.waitForFunction(() => {
+      const container = document.querySelector('[data-testid="cost-plot"]');
+      const svg = container?.querySelector('svg');
+      const marks = svg?.querySelectorAll('[role="button"]');
+      if (!container || !svg || !marks?.length || Math.abs(svg.viewBox.baseVal.width - container.getBoundingClientRect().width) >= 1) return false;
+      const costs = Array.from(marks, (mark) => Number(mark.getAttribute('aria-label').match(/\$([\d.]+)/)[1]));
+      const max = Math.max(0.001, ...costs) * 1.12;
+      return Array.from(marks).every((mark, index) => {
+        const expected = 52 + costs[index] / max * (svg.viewBox.baseVal.width - 76);
+        const actual = new DOMMatrix(getComputedStyle(mark).transform).m41;
+        return Math.abs(actual - expected) < 0.1;
+      });
+    });
+    for (const [feature, locator] of [['cost', 'task-cost'], ['weights', 'domain-weights']]) {
+      const target = page.getByTestId(locator); await target.scrollIntoViewIfNeeded();
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, 'no page overflow at ' + width);
+      const plot = await page.getByTestId('cost-plot').locator('svg[aria-labelledby="cost-chart-title cost-chart-description"]').boundingBox();
+      assert(plot.height <= 351, 'cost SVG retains its intended physical height after responsive resize');
+      await target.evaluate((node) => window.scrollTo(0, node.getBoundingClientRect().top + scrollY - 90));
+      const path = `test-results/cost-weights/${width}-${feature}.png`; await page.screenshot({ path });
+      screenshots.push({ path, sha256: sha(await readFile(path)), viewport: width, feature });
+      if (feature === 'cost') {
+        const chart = page.getByTestId('cost-plot'); await chart.scrollIntoViewIfNeeded();
+        const plotPath = `test-results/cost-weights/${width}-plot.png`; await chart.screenshot({ path: plotPath });
+        const geometry = await chart.evaluate((node) => { const svg = node.querySelector('svg'); return { container: node.getBoundingClientRect().width, viewBox: svg.viewBox.baseVal.width, height: svg.getBoundingClientRect().height, marks: Array.from(svg.querySelectorAll('[role="button"]'), (mark) => ({ label: mark.getAttribute('aria-label'), transform: getComputedStyle(mark).transform })) }; });
+        assert(Math.abs(geometry.viewBox - geometry.container) < 1);
+        screenshots.push({ path: plotPath, sha256: sha(await readFile(plotPath)), viewport: width, feature: 'plot', geometry });
+      }
+    }
+  }
+  pass('Desktop/mobile/responsive render and reduced motion', { widths: [320, 390, 768, 1440, 1920], reducedMotion: await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches) });
+  assert.equal(errors.length, 0); pass('No runtime console/page errors', errors);
+});
+await writeFile('test-results/cost-weights/report.json', JSON.stringify({ passed: true, at: new Date().toISOString(), dataSha256: sha(dataBytes), priceSourceSha256: data.pricing.source.sha256, checks, screenshots }, null, 2) + '\n');
+console.log('Mounted cost/weights keyboard, math, reset, share state, exports, sensitivity and responsive browser checks passed.');

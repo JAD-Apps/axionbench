@@ -51,6 +51,65 @@ a:hover{color:var(--cobalt)}
 .page-loading.failure p{margin:10px 0;color:#535952}
 .loading-indicator{width:12px;height:12px;border:2px solid #acb3a8;border-top-color:var(--cobalt);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+.cost-experience,.weight-experience{max-width:1440px;margin:96px auto 0;padding-top:32px;border-top:1px solid #aeb4aa}
+.cost-experience h3,.weight-experience h3{margin:8px 0 0;font:600 clamp(27px,3.5vw,44px)/1.1 var(--display);letter-spacing:-.04em}
+.cost-lead{max-width:780px;color:#545d55;font-size:16px;line-height:1.6}
+.cost-controls{margin-top:32px;display:grid;gap:24px}
+.cost-controls label,.weight-models label{display:grid;gap:8px;font:11px var(--mono);color:#586057}
+.cost-controls input,.cost-controls select,.weight-controls input,.weight-models select{min-width:0;max-width:100%;min-height:44px;padding:10px 12px;border:1px solid #bdc4b9;background:var(--paper);color:var(--ink);font:13px "DM Sans",sans-serif}
+.cost-panel-control{max-width:720px}
+.token-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 24px}
+.feature-actions{display:flex;flex-wrap:wrap;gap:12px}
+.feature-actions button,.cost-view-link{min-height:42px;padding:10px 14px;border:1px solid #bbc1b7;background:transparent;color:var(--ink);font-size:12px;cursor:pointer;text-decoration:none}
+.feature-actions button:hover,.cost-view-link:hover{background:var(--graphite);color:var(--signal)}
+.feature-actions button:disabled{opacity:.5;cursor:not-allowed}
+.cost-conditions,.cost-pareto-note,.price-attribution{font-size:12px;line-height:1.65;color:#586057}
+.cost-conditions{max-width:960px;margin:22px 0 30px}
+.cost-stage-head{display:flex;justify-content:space-between;align-items:center;gap:20px;border-block:1px solid var(--rule);padding:15px 0;font-size:12px}
+.cost-stage-head a{color:var(--cobalt)}
+.cost-plot{margin:20px 0;min-height:350px}
+.cost-plot svg{display:block}
+.cost-plot [role=button]{cursor:pointer}
+.svg-axis-label{fill:var(--muted);font:11px var(--mono)}
+.cost-experience table,.weight-sensitivity table{width:100%;border-collapse:collapse;text-align:left;font-size:12px}
+.cost-experience th,.cost-experience td,.weight-sensitivity th,.weight-sensitivity td{padding:14px 12px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.55}
+.cost-experience th,.weight-sensitivity th{font-weight:500}
+.cost-experience table{min-width:790px}
+.cost-experience table th:first-child{min-width:190px}
+.cost-experience table th:nth-child(2){min-width:125px}
+.cost-experience table th:nth-child(3){min-width:170px}
+.cost-experience table th:nth-child(4){min-width:130px}
+.cost-experience table th:last-child{min-width:90px}
+.cost-experience tr.selected{background:#e8eddb}
+.cost-experience small{display:block;color:#687069;font-size:11px;line-height:1.5;margin-top:4px}
+.cost-experience th button{border:0;background:transparent;min-height:44px;padding:8px 0;text-align:left;color:var(--ink);font-weight:500;cursor:pointer}
+.rate-detail{margin-top:24px;padding:22px 0;border-block:1px solid var(--rule)}
+.rate-detail h4,.weight-sensitivity h4{margin:0 0 16px;font:600 20px var(--display)}
+.rate-detail dl{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.rate-detail dt{font-size:11px;color:var(--muted)}
+.rate-detail dd{margin:6px 0 0;font:600 22px var(--display)}
+.rate-detail p,.weight-results p,.weight-sensitivity p{font-size:13px;line-height:1.65;color:#545d55}
+.cost-missing{margin:24px 0}
+.cost-missing summary,.weight-results summary,.weight-sensitivity summary{font-size:13px;cursor:pointer;padding:10px 0}
+.cost-missing li,.weight-results li,.weight-sensitivity li{font-size:12px;line-height:1.7;margin:8px 0}
+.price-attribution .mono-label{overflow-wrap:anywhere}
+.weight-models{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:32px 0}
+.weight-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px}
+.weight-controls label{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:13px;text-transform:capitalize}
+.weight-controls label small{display:block;color:#687069;font-size:11px;margin-top:5px;text-transform:none}
+.weight-controls input{width:88px;flex:0 0 88px}
+.weight-controls .feature-actions{margin-top:24px}
+.weight-results{padding:28px;background:var(--paper);align-self:start}
+.weight-score{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:20px 0}
+.weight-score strong{font:600 clamp(32px,4vw,56px) var(--display);letter-spacing:-.05em}
+.weight-score span{display:block;font-size:13px;margin-top:8px}
+.weight-score>p{grid-column:1/-1;font:600 26px/1.2 var(--display);color:var(--ink)}
+.weight-missing{padding-top:15px;border-top:1px solid var(--rule)}
+.weight-sensitivity{margin-top:42px;padding-top:24px;border-top:1px solid var(--rule)}
+.weight-sensitivity>div:first-child{max-width:800px}
+.weight-sensitivity .table-scroll{max-height:460px;margin:20px 0}
+@media(max-width:800px){.token-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.weight-layout{grid-template-columns:1fr;gap:32px}.cost-experience,.weight-experience{margin-top:64px}.rate-detail dl{grid-template-columns:repeat(2,minmax(0,1fr))}.cost-stage-head{align-items:start;flex-direction:column;gap:10px}}
+@media(max-width:480px){.weight-models{grid-template-columns:1fr;gap:16px}.weight-results{padding:20px}.token-controls{gap:16px 12px}.cost-controls label{font-size:10px}.cost-experience .coverage-head,.weight-experience .coverage-head{display:block}.cost-experience .coverage-head>span,.weight-experience .coverage-head>span{display:block;margin-top:18px}.feature-actions button{flex:1 1 auto}.weight-score{grid-template-columns:1fr}.cost-plot{min-height:300px}}
 .chapter{padding:clamp(68px,8vw,116px) clamp(20px,6.4vw,96px);scroll-margin-top:64px}
 .chapter-index{max-width:1440px;margin:0 auto 52px;padding-bottom:13px;display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid var(--rule);color:#5d655e;font-size:9px}
 .chapter-index span:last-child{text-align:right}

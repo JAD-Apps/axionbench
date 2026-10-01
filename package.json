@@ -39,7 +39,10 @@
     "test:acceptance": "node scripts/test-acceptance.mjs",
     "verify:release": "node scripts/release/verify-release.mjs",
     "jadbot:verify": "npm run verify:release",
-    "release:check": "node scripts/release/check-dist.mjs"
+    "release:check": "node scripts/release/check-dist.mjs",
+    "test:pricing": "node scripts/test-pricing.mjs",
+    "test:weights": "node scripts/test-weights.mjs",
+    "test:cost-weights": "node scripts/test-cost-weights.mjs"
   },
   "devDependencies": {
     "@types/node": "24.10.0",

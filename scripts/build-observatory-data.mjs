@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { assertAuthorityFloor, composeAuthority, readInputs } from './authority/compose.mjs';
 import { deriveOpenWeights } from './open-weights/derive.mjs';
+import { validatePriceFacts } from '../src/pricing/logic.ts';
 
 const readJson = async (path) => JSON.parse(await readFile(new URL('../' + path, import.meta.url), 'utf8'));
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -18,16 +19,20 @@ const safeUrl = (value) => {
 };
 const unique = (values) => [...new Set(values.filter(Boolean))];
 
-const [ingestionBytes, input, registry, authorityInputs] = await Promise.all([
+const [ingestionBytes, input, registry, authorityInputs, priceBytes] = await Promise.all([
   readFile(new URL('../data/ingestion.json', import.meta.url)),
   readJson('data/ingestion.json'),
   readJson('data/benchmark-registry.json'),
   readInputs(),
+  readFile(new URL('../data/public-price-facts.json', import.meta.url)),
 ]);
 // Original-source admission gate: authority, independent-evaluator and publisher
 // facts are re-validated and must meet the capability floor before publication.
 const authority = composeAuthority(authorityInputs, registry);
 assertAuthorityFloor(authority);
+const pricing = validatePriceFacts(JSON.parse(priceBytes));
+assert(pricing.records.every((price) => authority.models.some((model) => model.key === price.modelKey)), 'public tariffs join exact authority identities only');
+assert(Date.now() - Date.parse(pricing.source.retrievedAt) <= 7 * 86400000, 'public tariffs require a fresh licensed capture');
 assert.equal(input.schemaVersion, 2, 'the public projection requires validated typed ingestion v2');
 for (const key of ['models', 'configurations', 'sources', 'observations', 'pricing', 'sourceConflicts']) {
   assert.ok(Array.isArray(input[key]), 'ingestion.' + key + ' must be an array');
@@ -182,13 +187,16 @@ const projection = {
     })),
   })),
   sourceLimitations: {
-    apiPricesPublished: false,
+    apiPricesPublished: true,
+    apiPriceRowsPublished: pricing.records.length,
+    restrictedRoutedPricesPublished: false,
     apiPriceRowsObserved: input.pricing.length,
-    apiPriceExclusion: 'All captured API rate sources explicitly exclude redistribution because terms are not established; values and endpoint payloads are withheld.',
+    apiPriceExclusion: 'Captured routed endpoint payloads and rates remain withheld because reuse terms are not established. A separate licensed original-provider factual tariff projection is published with attribution.',
     verifiedBenchmarkObservations: input.observations.filter((row) => row.leaderboardVerified === true).length,
     identityConfirmedModels: models.filter((row) => row.identityVerified).length,
   },
   authority,
+  pricing,
   // Open-weight explorer facts, re-derived from SHA-256-checked repository snapshots.
   openWeights: await deriveOpenWeights(input),
   // Checked-in scoring definition, published verbatim so the methodology page cannot drift from it.
@@ -211,6 +219,11 @@ const sources = input.sources
     resolvedRevision: row.resolvedRevision ?? null,
     contentType: row.contentType ?? null,
   }));
+sources.push({ id: pricing.source.id, url: pricing.source.url, finalUrl: pricing.source.url,
+  publisher: pricing.source.publisher, sourceClass: 'original_provider_pricing', rights: pricing.source.licence + ': ' + pricing.source.licenceUrl,
+  permittedFields: ['standard paid text tariff facts', 'billing conditions', 'source coordinates', 'source hash'],
+  snapshotSha256: pricing.source.sha256, retrievedAt: pricing.source.retrievedAt, httpStatus: 200,
+  resolvedRevision: null, contentType: 'text/html' });
 const details = {
   schemaVersion: 'axionbench-source-details-v1',
   sourceDigest: projection.sourceDigest,
@@ -240,6 +253,7 @@ const manifest = {
     sourceDetails: sources.length,
     sourceConflicts: details.conflicts.length,
     withheldPriceRows: input.pricing.length,
+    permittedPriceRows: pricing.records.length,
     authorityObservations: authority.observations.length,
     authorityAdmittedObservations: authority.observations.filter((row) => row.admitted).length,
     authorityModels: authority.models.length,
@@ -248,6 +262,7 @@ const manifest = {
     authorityFloorDomains: authority.floor.domains.length,
   },
   authorityInputs: authority.inputDigests,
+  pricingInput: { path: 'data/public-price-facts.json', sha256: digest(priceBytes) },
 };
 await writeFile(new URL('../public/data-manifest.json', import.meta.url), JSON.stringify(manifest));
 console.log('Prepared validated public projection: ' + models.length + ' models, ' + observations.length

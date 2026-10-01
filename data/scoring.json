@@ -1,12 +1,46 @@
 {
   "schemaVersion": 1,
   "methodVersion": "axion-domain-v1",
-  "normalization": "Linear clamp to each registry metric min/max, oriented so higher normalized values are better. Unknown or inferred units are not admitted.",
-  "defaultWeights": {"coding":1,"reasoning":1,"mathematics":1,"knowledge":1,"instruction-following":1,"long-context":1,"tool-use":1,"agents":1,"vision-documents":1,"factuality":1,"multilingual":1},
+  "normalization": "Reject values outside each registry metric min/max, then linearly orient valid values so higher normalized values are better. Unknown or inferred units are not admitted.",
+  "defaultWeights": {
+    "coding": 1,
+    "reasoning": 1,
+    "mathematics": 1,
+    "knowledge": 1,
+    "instruction-following": 1,
+    "long-context": 1,
+    "tool-use": 1,
+    "agents": 1,
+    "vision-documents": 1,
+    "factuality": 1,
+    "multilingual": 1
+  },
   "familyCap": "Average compatible suite rows within each benchmark family, then average families equally within each capability domain.",
   "cohortRule": "Require the same exact suite version, task, split, metric, direction and tested configuration for every cohort model. A configured domain weight is never redistributed per model; missing a positively weighted domain makes the overall score unavailable.",
-  "eligibility": ["source-authority or independent replication", "documented metric units", "normalized metric bounds", "no unmerged refs/pr/* model repository revision", "compatible exact common panel"],
-  "separatePanels": ["safety", "preference", "professional", "audio-video", "latency", "cost"],
-  "currentCaptureAudit": {"observations":118,"documentedUnits":0,"inferredUnits":116,"unknownUnits":2,"huggingFaceVerified":0,"independentReplications":0,"defaultAdmittedObservations":0,"reason":"No current observation meets the documented-unit and publisher/authority confirmation admission rules."},
+  "eligibility": [
+    "source-authority or independent replication",
+    "documented metric units",
+    "normalized metric bounds",
+    "no unmerged refs/pr/* model repository revision",
+    "compatible exact common panel"
+  ],
+  "separatePanels": [
+    "safety",
+    "preference",
+    "professional",
+    "audio-video",
+    "latency",
+    "cost"
+  ],
+  "currentCaptureAudit": {
+    "observations": 118,
+    "documentedUnits": 0,
+    "inferredUnits": 116,
+    "unknownUnits": 2,
+    "huggingFaceVerified": 0,
+    "independentReplications": 0,
+    "defaultAdmittedObservations": 0,
+    "reason": "No current observation meets the documented-unit and publisher/authority confirmation admission rules."
+  },
   "priceScenario": "USD task cost is available only when every positively used token class has a source rate; prompt-token threshold overrides supersede base prompt/completion/cache rates. No rate is inferred from a missing field."
 }

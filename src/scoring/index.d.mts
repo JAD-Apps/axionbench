@@ -1,0 +1,12 @@
+export type WeightSettings = Record<string, number>;
+export type PanelResult = { version: string; eligible: boolean; score: null; reason?: string; panelSize: number;
+  panel?: string[]; exclusions: number; models?: Record<string, { model: string; score: number | null;
+    domainScores: Record<string, number>; eligible: boolean }>; weights?: WeightSettings };
+export const DEFAULT_WEIGHTS: Readonly<WeightSettings>;
+export const METHOD_VERSION: string;
+export function validateWeights(weights: WeightSettings): WeightSettings;
+export function encodeWeightSettings(weights?: WeightSettings): string;
+export function decodeWeightSettings(search: string, fallback?: WeightSettings): { weights: WeightSettings; valid: boolean };
+export function comparePanel(rows: unknown[], options: Record<string, unknown>): PanelResult;
+export function rankSensitivity(result: PanelResult, variants: WeightSettings[]): { weights: WeightSettings; ranking: string[]; ties: string[] }[];
+export function leaveOneSuiteOut(rows: unknown[], options: Record<string, unknown>): { omittedSuite: string; result: PanelResult }[];

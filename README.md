@@ -1,62 +1,42 @@
 # AxionBench
 
-The full redesign is specified in [the product plan](docs/OVERHAUL-PLAN.md) and [the executable JadBot workflow](docs/workflow.json). John approved `JAD-Apps/axionbench` and `axionbench.jadapps.app`. The files below are the working preview baseline; the new chart stack, broad benchmark coverage, catalogue and public deployment are workflow deliverables, not completed claims.
+An evidence-led observatory for comparing AI systems. The preserved animated contour hero leads into source-backed frontier rankings, explicit task-cost scenarios, matched US–China comparisons, an open-weight size explorer, the complete supported-source catalogue, and methods.
 
-## Baseline preview
+The UI uses React, custom visx SVG charts and Motion. Fonts and the original procedural hero are local. No paid evaluation calls, subscription pricing, private quotas or execution economics are included.
 
-A self-contained model benchmark explorer with four animated Apache ECharts views: rankings with missing-result ranges, capability versus estimated task cost, six-axis profiles, and a capability heatmap. The original snapshot’s scores, coverage, missingness, weights, and source dates are preserved. Public pricing uses the supplied blended API rates, without subscription multipliers or personal routing policy.
+## Run and verify
 
-## Preview
-
-Open `index.html` directly, or run:
-
-```sh
-npm run dev
-```
-
-Then visit `http://localhost:7942`. Set `PORT` to use another port. Node 18 or newer is sufficient. No package install is needed for preview or build. Fonts, chart code, and data are all local; only outgoing source-result links require a network connection.
-
-## Host
-
-```sh
-npm run build
-```
-
-Upload the contents of `dist/` to any static host. Paths are relative, so the site can also live in a subdirectory. There is no API, account, database, environment secret, or runtime server to configure.
-
-For Vercel, use **Other** as the framework preset, `npm run build` as the build command, and `dist` as the output directory. The same output works on Netlify, Cloudflare Pages, GitHub Pages, or a plain web server. No deployment has been performed by this project setup.
-
-## Update the snapshot
-
-```sh
-python3 scripts/import-data.py /path/to/original-metabench.html
-npm run build
-```
-
-The importer also accepts an original MetaBench JSON snapshot. It writes `data.json` and the matching classic-script `assets/data.js`, which keeps direct `file://` use working. The site does not fetch prices or benchmark scores automatically. The import requires the original snapshot’s `apiUsdPerMTok` field and strips personal plan metadata.
-
-## Interpretation
-
-- Displayed scores are the original normalized fractions multiplied by 100, not success percentages.
-- Whiskers are sensitivity ranges for missing results, not statistical confidence intervals.
-- Task prices are estimates for a 30% input / 60% cache-read / 10% output token mix. Changing the task token budget scales all model estimates. Independent per-model token consumption, retries, fees, and taxes are not known.
-- Economy maximizes index per dollar within 60% of the leading score; Balanced uses 85%; Frontier chooses the highest score. Coverage remains visible; these are point-estimate choices.
-- Profiles require data on all six routed capabilities. Missing heatmap cells stay empty. Security is informational, and 3D is a proxy.
-- Every benchmark reference links to its supplied result source, with model-specific links for published BridgeBench models. Other benchmark links use the corresponding BenchLM results page from the original snapshot.
-
-## Release verification
+Use Node 24, the pinned npm version in `package.json`, and Python 3 for source extraction.
 
 ```sh
 npm ci
-npm run verify:release   # also available as npm run jadbot:verify
+npm run dev -- --port 7944
+npm run verify:release
 ```
 
-`verify:release` runs every gate in order: lint, typecheck, unit, scoring, registry, data, authority, design, frontier, chart smoke, head-to-head, open weights, catalogue, visual/interaction acceptance, automation, clean release build and `release:check`. It continues past a failure so one run shows every problem, and writes a receipt to `test-results/release-verify.json` with each gate's full output in `test-results/release-logs/`. Only one gate runs per worktree at a time; a second run waits for the first. It never deploys, changes DNS, pushes to Git or opens a GUI browser; the registry gate makes read-only HTTPS requests to captured source URLs.
+`verify:release` runs the source/data, scoring, licensed pricing, domain-weight, interaction, desktop/mobile, accessibility, reduced-motion, export, refresh and release-integrity gates serially. It records actual exit codes and complete logs under ignored `test-results/`. Browser checks use cached Playwright Chromium, or `CHROMIUM_PATH`. No verification command publishes a site or manipulates the owner's browser.
 
-Browser checks use Playwright's cached Chromium on Linux, or `CHROMIUM_PATH`. `npm run test:acceptance` captures every chapter at 320, 390, 768, 1440 and 1920 px into `test-results/acceptance/`. See `docs/VISUAL-ACCEPTANCE.md` for what it asserts and the reviewed findings.
+## Evidence and interpretation
 
-## Design references and dependencies
+The supported-source capture contains 508 catalogue models and 118 community result claims. Those earlier claims remain excluded from default scoring because units and source confirmation are insufficient. A separate original-source authority projection contains 1,433 observations and reaches 23 admitted capability suite versions across 8 domains. Counts are recomputed by the data gates; catalogue breadth is distinct from measured coverage.
 
-Visual references were reviewed in Awwwards’ Vercel catalogue: [Vercel Ship 2025](https://www.awwwards.com/sites/vercel-ship-2025) for typographic scale and negative space, [Boc.Studio](https://www.awwwards.com/sites/boc-studio) for dimensional forms, and [Infinity Signal](https://www.awwwards.com/sites/infinity-signal) for compact signal annotations. The canvas sculpture is original procedural artwork, explicitly labelled as an abstract surface; it is not a data chart. No reference artwork or branding is shipped.
+Raw benchmark results stay primary. Strict comparisons require a shared source, suite version, metric, condition and reasoning setting. Related suites share a family cap. Equal default weights cover 11 capability domains; incomplete comparisons remain unavailable. User weights, reset and shared URLs create an explicitly labelled custom common-panel comparison. Weight sensitivity and suite omissions are scenarios, never statistical confidence intervals.
 
-Apache ECharts 6.1.0 is bundled under Apache-2.0, with its license and notice in `assets/`. DM Sans, Space Grotesk, and IBM Plex Mono fonts are locally bundled under the included SIL Open Font Licenses. The hero animation pauses off screen, pauses when the tab is hidden, and honors reduced-motion preferences along with the chart animations.
+Task estimates use 11 exact Google standard text API endpoint tariffs, adapted under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) from [Google's original pricing](https://ai.google.dev/gemini-api/docs/pricing). They include thinking once at the output tariff, explicit cache storage, documented long-prompt tiers and introductory-rate expiry. Other endpoint prices and unsupported used token classes remain unknown. The 1,328 captured routed price rows are withheld while their reuse terms are unsettled. The scenario token budget does not reproduce benchmark token consumption or establish cost per successful task.
+
+Every plotted result and mentioned benchmark has its original result link. Exports retain active settings, data hashes, provenance and limitations. Open weights and open-source licensing are separate facts; parameter groups use total counts and display activated MoE counts separately when documented.
+
+## Refresh and publication
+
+```sh
+npm run data:refresh -- --audit-dir /absolute/private/source-audit
+npm run build:release
+```
+
+Refresh captures original sources, validates contracts and source permissions, and restores last-good projections on failure. Raw source audit bytes stay private. See [source acceptance](docs/SOURCE-ACCEPTANCE.md), [pricing](docs/PRICING.md), [methods](docs/METHODOLOGY.md), [automation](docs/AUTOMATION.md) and [deployment](docs/DEPLOYMENT.md).
+
+Approved public project: `JAD-Apps/axionbench`, hosted independently at `axionbench.jadapps.app`. Publication requires a separate independent review, a clean product tree, the exact HTTPS product/data digest, and a new actual owner-browser observation. Direct project verification and native workflow completion are separate receipts.
+
+## Design and licences
+
+The original graphite, mineral, cobalt and controlled-lime composition was informed by rendered research from the requested [Awwwards Vercel collection](https://www.awwwards.com/websites/vercel/). Reference artwork is excluded. The canvas is decorative procedural artwork; charts use documented data. DM Sans, Space Grotesk and IBM Plex Mono are locally hosted with their SIL Open Font Licences. See [design](docs/DESIGN.md) and [visual reference review](docs/VISUAL-REFERENCE-REVIEW.md).

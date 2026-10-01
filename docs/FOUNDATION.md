@@ -1,5 +1,7 @@
 # React and chart foundation
 
+This document records the earlier historical foundation, before the current authority-backed observatory replaced the preview. The legacy root `data.json` and ECharts preview have been archived privately and removed from the product. Current source, pricing, scoring and mounted verification are described in [FRONTIER-EXPERIENCE.md](FRONTIER-EXPERIENCE.md), [METHODOLOGY.md](METHODOLOGY.md) and [PRICING.md](PRICING.md).
+
 This step establishes the portable React/TypeScript/Vite entry point and proves two SVG chart shapes before later work replaces the broader page composition. `npm run verify:foundation` runs a strict typecheck, clean Vite production build, unit regressions and a focused browser smoke against the built output. `npm run test:unit` is also independently runnable.
 
 The ranking and cost/capability scatter consume the existing `data.json` snapshot. The UI explicitly labels it historical and does not present its rows as a current model survey. Ranking omits null capability values. Scatter additionally omits rows without a positive public API price. Both views share lab/capability filters, selection and a table of the same scored rows; SVG marks have keyboard selection and expose values and coverage in accessible names. Motion transitions follow reduced-motion preference. Analytical charting is SVG; canvas is retained only for the original hero sculpture.

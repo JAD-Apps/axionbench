@@ -137,7 +137,11 @@ assert.deepEqual([kimi.band, kimi.total.status, kimi.activated.value, kimi.moe.s
 assert.equal(byName(/Gemma 4 31B/).activated.value, null, 'family-card regression: the dense 31B is not given its sibling\'s 3.8B');
 assert.equal(byName(/gpt-oss-120b/).activated.status, 'ambiguous', 'a card covering two models stays ambiguous');
 assert.match(block.hostedPrice, /^Withheld/); assert.match(block.selfHostCost, /^Not estimated/);
-assert.equal(data.sourceLimitations.apiPricesPublished, false);
+assert.equal(data.sourceLimitations.apiPricesPublished, true, 'separately licensed endpoint quotes are published');
+assert.equal(data.sourceLimitations.apiPriceRowsPublished, 11, 'permitted pricing coverage stays explicit');
+assert.equal(data.sourceLimitations.restrictedRoutedPricesPublished, false, 'restricted routed prices remain withheld');
+assert.equal(data.pricing.records.length, 11);
+assert.equal(data.pricing.source.licence, 'CC BY 4.0');
 
 // ---- Browser: rendered, wired into the real page and shared URL state ----
 const defaultScoped = filterRows(rows, DEFAULT_FILTERS);

@@ -1,5 +1,3 @@
-import snapshot from '../data.json';
-
 export type Capability = { score: number; coverage: number; sources: string[] } | null;
 export type Model = {
   model: string;
@@ -8,8 +6,6 @@ export type Model = {
   apiUsdPerMTok: number | null;
   capabilities: Record<string, Capability>;
 };
-export const data = snapshot as { builtAt: string; capabilities: Record<string, { label: string }>; sources: Record<string, { label: string; source: string }>; models: Model[] };
-
 export function rankingRows(models: Model[], capability: string) {
   return models.flatMap(model => {
     const value = model.capabilities[capability];

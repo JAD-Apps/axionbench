@@ -9,3 +9,5 @@ evidence/local/
 .env*
 .wrangler/
 .vercel/
+__pycache__/
+*.py[cod]

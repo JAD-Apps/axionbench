@@ -10,6 +10,9 @@ import type { CatalogueInput } from './catalogue/logic';
 import HeadToHead from './head-to-head';
 import OpenWeights from './open-weights';
 import type { OpenWeightsBlock } from './open-weights/logic';
+import TaskCost from './task-cost';
+import DomainWeights from './domain-weights';
+import type { PriceBlock } from './pricing/logic';
 
 type Model = {
   id: string; name: string; labId: string; lab: string; catalogId: string | null; revision: string | null;
@@ -44,9 +47,10 @@ type Dataset = {
   observations: Observation[]; domains: string[]; suites: Suite[]; sourceIds: string[];
   sourceConflicts: { id: string; modelId: string; suiteId: string; observationIds: string[]; values: number[] | null;
     status: string; comparability: string | null; sourceIds: string[] }[];
-  sourceLimitations: { apiPricesPublished: false; apiPriceRowsObserved: number; apiPriceExclusion: string;
+  sourceLimitations: { apiPricesPublished: boolean; apiPriceRowsObserved: number; apiPriceRowsPublished: number; apiPriceExclusion: string;
     verifiedBenchmarkObservations: number; identityConfirmedModels: number };
   authority: AuthorityBlock;
+  pricing: PriceBlock;
   openWeights: OpenWeightsBlock;
   scoring: CatalogueInput['scoring'];
 };
@@ -481,9 +485,7 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
           <div className="view-switch" role="group" aria-label="Frontier view">
             <button type="button" data-testid="view-ranking" aria-pressed={view === 'ranking'} onClick={() => toggleView('ranking')}>Ranking plot</button>
             <button type="button" data-testid="view-table" aria-pressed={view === 'table'} onClick={() => toggleView('table')}>Exact rows</button>
-            <button type="button" data-testid="view-cost" aria-disabled="true" disabled title="No captured rate source permits redistribution.">
-              Task cost <span aria-hidden="true">·</span> unavailable
-            </button>
+            <a className="cost-view-link" data-testid="view-cost" href="#task-cost">Task cost ↘</a>
           </div>
         </div>
         <div className="cohort-note" role="note">
@@ -513,13 +515,8 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         </div>
         <EvidenceMatrix models={matrixModels} dataset={dataset}/>
       </div>
-      <section className="task-cost-note" aria-labelledby="cost-note-title">
-        <div className="cost-index">COST <span>/</span> 00</div>
-        <div><p className="eyebrow">Task cost and Pareto view</p><h3 id="cost-note-title">No rate is plotted without reuse permission.</h3>
-          <p>The captured {sourceLimits.apiPriceRowsObserved.toLocaleString()} API price rows come from sources that explicitly exclude redistribution while terms remain unsettled. Their values and endpoint payloads are withheld, so a cost scatter and Pareto frontier are unavailable in this release.</p>
-        </div>
-        <span className="unavailable-tag">VIEW UNAVAILABLE</span>
-      </section>
+      <TaskCost authority={dataset.authority} pricing={dataset.pricing} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>
+      <DomainWeights authority={dataset.authority} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>
     </section>
 
     <section className="paired chapter dark-chapter" id="paired" aria-labelledby="paired-title">
@@ -583,7 +580,7 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         <article><span>01</span><div><h3>Identity is its own evidence</h3><p>Official release matches confirm a model name or revision only. They do not confirm a benchmark result or tested endpoint configuration.</p></div></article>
         <article><span>02</span><div><h3>Missing stays visible</h3><p>Unknown dates, parameters, units, graders, prices and test conditions remain unknown. A missing result has no plotted mark and never becomes zero.</p></div></article>
         <article><span>03</span><div><h3>Panels keep their meaning</h3><p>Results are shown only within the selected registered suite and metric. No per-model missingness renormalization, universal score or confidence interval is claimed.</p></div></article>
-        <article><span>04</span><div><h3>Source rights affect the view</h3><p>The {sourceLimits.apiPriceRowsObserved.toLocaleString()} captured endpoint price rows are excluded from publication because their source terms do not permit reuse in this build.</p></div></article>
+        <article><span>04</span><div><h3>Source rights affect the view</h3><p>{sourceLimits.apiPriceRowsPublished} original-provider text tariffs are published under CC BY 4.0 with attribution. The {sourceLimits.apiPriceRowsObserved.toLocaleString()} captured routed endpoint rows remain excluded while their reuse terms are unsettled.</p></div></article>
       </div>
       <BenchmarkLibrary input={dataset as unknown as CatalogueInput}/>
       <Methodology input={dataset as unknown as CatalogueInput} manifest={manifest}/>
@@ -596,6 +593,6 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
       </div>
       <p className="snapshot-note">This page covers the captured source-admitted snapshot, not every model or test in existence. Source detail includes the recorded reuse terms, retrieval status, identifiers and hashes when available.</p>
     </section>
-    <footer><span>AXIONBENCH <i>/</i> EVIDENCE IN CONTEXT</span><a href="#top">Back to top ↑</a></footer>
+    <footer><span>AXIONBENCH <i>/</i> EVIDENCE IN CONTEXT</span><a href="/privacy.html">Privacy</a><a href="#top">Back to top ↑</a></footer>
   </>;
 }

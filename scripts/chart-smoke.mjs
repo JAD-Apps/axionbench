@@ -60,8 +60,11 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   check.equal(stillAfter.hash, stillBefore.hash, 'reduced-motion contour remains static');
   check.equal(await page.locator('.plot-empty').count(), 1, 'the nine identity-matched flagships show real missing values');
   check.equal(await page.locator('.ranking-row').count(), 0, 'missing benchmark observations create no score marks');
-  check.equal(await page.getByTestId('view-cost').isDisabled(), true, 'source-restricted task cost is unavailable');
-  check.equal(await page.locator('[data-chart-kind="scatter"]').count(), 0, 'no unsupported cost scatter is rendered');
+  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '#task-cost', 'cost control reaches the mounted licensed tariff scenario');
+  check.equal(await page.getByTestId('task-cost').count(), 1, 'permitted task cost is mounted');
+  check.equal(await page.getByTestId('cost-plot').locator('[role="button"]').count(), 9, 'the real matched panel plots nine quoted endpoint identities');
+  check.equal(await page.getByTestId('cost-table').locator('tbody tr').count(), 9, 'accessible cost table uses the same supported identities');
+  check.equal(data.sourceLimitations.restrictedRoutedPricesPublished, false, 'restricted routed API payloads remain withheld');
   check.equal(await page.locator('script[src*="echarts"]').count(), 0, 'ECharts is not loaded');
 
   await page.getByTestId('view-table').click();
