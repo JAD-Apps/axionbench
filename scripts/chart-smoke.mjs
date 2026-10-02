@@ -74,7 +74,7 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   await page.getByTestId('view-table').click();
   check.equal(await page.locator('[data-testid="result-table"] tbody tr').count(), 9, 'accessible exact table covers the full default cohort');
   check.equal(await page.locator('[data-testid="result-table"] .missing-value').count(), 9, 'all missing states are explicit');
-  await page.getByTestId('view-ranking').click();
+  await page.getByTestId('view-bars').click();
   await page.getByTestId('cohort-filter').selectOption('reported');
   await page.getByTestId('suite-filter').selectOption('hle-original');
   const rows = data.observations.filter((observation) => observation.suiteId === 'hle-original');
@@ -94,8 +94,8 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   check.equal(await page.locator('[data-testid="result-table"] tbody tr').count(), rows.length, 'exact table and chart use the same observation set');
   const hrefs = await page.locator('[data-testid="result-table"] a[href^="https://"]').evaluateAll((nodes) => nodes.map((node) => node.href));
   for (const row of rows) check(hrefs.includes(row.resultUrl), 'accessible row links to original result ' + row.id);
-  await page.getByTestId('view-ranking').click();
-  check.equal(await page.getByTestId('view-ranking').getAttribute('aria-pressed'), 'true', 'ranking view transition is explicit');
+  await page.getByTestId('view-bars').click();
+  check.equal(await page.getByTestId('view-bars').getAttribute('aria-pressed'), 'true', 'ranking view transition is explicit');
   await page.getByTestId('domain-filter').selectOption('coding');
   const firstCodingSuite = data.suites.find((suite) => suite.domain === 'coding' && suite.observationCount > 0);
   check.ok(firstCodingSuite, 'captured coding domain has an observed suite');

@@ -125,7 +125,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
     const capture = 'test-results/frontier-route-' + testId + '.png';
     await page.screenshot({ path: capture, animations: 'disabled' }); report.renderedEvidence.push(capture);
     if (testId === 'h2h') check.match(await page.getByTestId('h2h-region-definition').innerText(), /never inferred from model language/i);
-    if (testId === 'authority-ranking') check.equal(await page.getByTestId('authority-rows').locator('li').count(), 10);
+    if (testId === 'authority-ranking') check.equal(await page.getByTestId('authority-rows').locator('li').count(), new Set(data.authority.observations.filter(r => r.currentPolicy?.scoringEligible).map(r => r.modelKey)).size, 'current ranking shows only qualified exact identities');
     if (testId === 'catalogue') {
       check.equal(await page.locator('#models .directory-count strong').innerText(), (data.models.length + data.authority.models.length).toLocaleString());
       check.equal(await page.locator('a.export[href="/data.json"]').count(), 1);
@@ -138,7 +138,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check(await page.getByTestId('cost-plot').locator('[role="button"]').count() >= 8);
   await page.goto(origin + '/domains', { waitUntil: 'networkidle' }); check.equal(await page.getByTestId('domain-weights').count(), 1);
   await page.goto(origin + '/benchmarks', { waitUntil: 'networkidle' });
-  await page.getByTestId('view-ranking').click();
+  await page.getByTestId('view-bars').click();
   await page.getByTestId('cohort-filter').selectOption('reported');
   await page.getByTestId('suite-filter').selectOption('hle-original');
   const hleRows = data.observations.filter((row) => row.suiteId === 'hle-original');
@@ -146,7 +146,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.equal(hleRows.length, 8, 'test suite has eight captured rows in this source snapshot');
   check.equal(await page.locator('.ranking-row[aria-label$="unverified"]').count(), hleRows.length,
     'all displayed score claims retain unverified source labels');
-  check.equal(await page.locator('.ranking-figure svg .bar-value').count(), hleRows.length,
+  check.deepEqual(await page.locator('#frontier .ranking-row strong').allTextContents(), hleRows.sort((a,b)=>b.value-a.value).map(r=>r.unit?.label ? r.valueText + ' ' + r.unit.label : r.valueText + ' · unit ' + (r.unit?.status ?? 'unknown')),
     'each reported mark retains its exact source value label');
   const firstMark = page.locator('.ranking-row').first();
   await firstMark.focus();
@@ -155,9 +155,9 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   await page.waitForFunction(() => new URL(location.href).searchParams.has('selected'));
   const selectedUrl = new URL(page.url());
   check.equal(selectedUrl.searchParams.get('selected'), await firstMark.getAttribute('data-observation-id'), 'keyboard selection is shareable');
-  const firstReducedWidth = await firstMark.locator('rect').getAttribute('width');
+  const firstReducedWidth = await page.locator('#frontier canvas').evaluate(c=>c.toDataURL());
   await page.waitForTimeout(100);
-  check.equal(await firstMark.locator('rect').getAttribute('width'), firstReducedWidth,
+  check.equal(await page.locator('#frontier canvas').evaluate(c=>c.toDataURL()), firstReducedWidth,
     'reduced-motion preference keeps the mark stable after rendering');
   const secondMark = page.locator('.ranking-row').nth(1);
   await secondMark.tap();
@@ -193,7 +193,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.equal(popup.url(), expectedLink, 'activating a result source opens its exact original URL');
   await popup.close();
 
-  await page.getByTestId('view-ranking').click();
+  await page.getByTestId('view-bars').click();
   await page.getByTestId('domain-filter').selectOption('coding');
   const firstCodingSuite = data.suites.find((suite) => suite.domain === 'coding' && suite.observationCount > 0);
   check.equal(await page.getByTestId('suite-filter').inputValue(), firstCodingSuite.id, 'domain filter chooses an observed suite in the selected domain');
@@ -210,7 +210,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   await page.getByTestId('view-table').click();
   check.match(await page.locator('[data-testid="result-table"] tbody').innerText(), /No captured result matches these filters/i,
     'empty result table explains that no rows match');
-  await page.getByTestId('view-ranking').click();
+  await page.getByTestId('view-bars').click();
   const chosenLab = codingLabs[0];
   await page.getByTestId('lab-filter').selectOption(chosenLab);
   const expectedLabRows = codingRows.filter((row) => data.models.find((model) => model.id === row.modelId).labId === chosenLab);
@@ -219,18 +219,18 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.equal(new URL(page.url()).searchParams.get('domain'), 'coding', 'domain is retained in the URL');
   check.equal(new URL(page.url()).searchParams.get('suite'), 'swebench-pro', 'suite is retained in the URL');
   check.equal(new URL(page.url()).searchParams.get('lab'), chosenLab, 'lab is retained in the URL');
-  check.equal(new URL(page.url()).searchParams.get('view'), 'ranking', 'view is retained in the URL');
+  check.equal(new URL(page.url()).searchParams.get('view'), 'bars', 'view is retained in the URL');
   await page.reload({ waitUntil: 'networkidle' });
   await page.getByTestId('frontier-stage').waitFor();
   check.equal(await page.getByTestId('cohort-filter').inputValue(), 'reported', 'reload restores shared cohort state');
   check.equal(await page.getByTestId('domain-filter').inputValue(), 'coding', 'reload restores shared domain state');
   check.equal(await page.getByTestId('suite-filter').inputValue(), 'swebench-pro', 'reload restores shared suite state');
   check.equal(await page.getByTestId('lab-filter').inputValue(), chosenLab, 'reload restores shared lab state');
-  check.equal(await page.getByTestId('view-ranking').getAttribute('aria-pressed'), 'true', 'reload restores a supported view');
+  check.equal(await page.getByTestId('view-bars').getAttribute('aria-pressed'), 'true', 'reload restores a supported view');
 
   await page.goto(origin + '/benchmarks?view=cost', { waitUntil: 'networkidle' });
   await page.getByTestId('frontier-stage').waitFor();
-  check.equal(await page.getByTestId('view-ranking').getAttribute('aria-pressed'), 'true', 'unsupported URL view falls back to supported ranking');
+  check.equal(await page.getByTestId('view-bars').getAttribute('aria-pressed'), 'true', 'unsupported URL view falls back to supported ranking');
   check.equal(await page.getByTestId('view-cost').getAttribute('href'), '/task-pricing', 'functional task-cost section remains reachable after navigation');
   const benchmarkURL = page.url();
   await page.goto(origin + '/task-pricing', { waitUntil: 'networkidle' });

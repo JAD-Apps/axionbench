@@ -40,12 +40,17 @@ function Hero({ status }: { status: string }) {
 
 export function Observatory() {
   const [locationKey, setLocationKey] = useState(() => location.pathname + location.search);
+  const [restoration, setRestoration] = useState(0);
   const [dataStatus, setDataStatus] = useState('Loading the public evidence snapshot…');
   const route = findRoute(location.pathname);
   useEffect(() => {
     let frame = 0;
     function restore() {
       setLocationKey(location.pathname + location.search);
+      // A Back after hard reload can restore the same URL as this shell's
+      // initial key, while mounted controls have since changed via pushState.
+      // Always restore the route's URL state, even when that key is identical.
+      setRestoration(value => value + 1);
       frame = requestAnimationFrame(() => {
         const fragment = location.hash.slice(1);
         const target = (fragment && document.getElementById(fragment)) || document.getElementById('route-title');
@@ -83,7 +88,7 @@ export function Observatory() {
         {route?.id !== 'overview' && <p>{route?.description ?? 'There is no comparison at this address.'}</p>}
       </div>
       {route?.id === 'overview' && <Hero status={dataStatus}/>}
-      {route ? <ExperienceBoundary key={locationKey}>
+      {route ? <ExperienceBoundary key={locationKey + '|' + restoration}>
         <Suspense fallback={<section className="page-loading" role="status"><span className="loading-indicator" aria-hidden="true"/>Preparing the comparison…</section>}>
           <FrontierExperience route={route.id} onDatasetStatus={setDataStatus}/>
         </Suspense>

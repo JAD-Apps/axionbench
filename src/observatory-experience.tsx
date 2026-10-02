@@ -1,7 +1,7 @@
-import { AxisBottom } from '@visx/axis';
-import { useParentSize } from '@visx/responsive';
-import { scaleLinear } from '@visx/scale';
-import { motion, useReducedMotion } from 'motion/react';
+import CoreChart from './charts/core-chart';
+import { downloadRows, RowControls, ViewControls } from './charts/controls';
+import { capturedViewRows } from './charts/rows';
+import { saveQuery } from './charts/state';
 import { useEffect, useMemo, useState } from 'react';
 import type { AuthorityBlock } from './authority/logic';
 import AuthorityRanking from './authority-ranking';
@@ -80,12 +80,10 @@ type Props = { route: RouteId; onDatasetStatus: (status: string) => void };
 type Ranked = { observation: Observation; model: Model };
 
 const defaultSuite = 'gpqa-diamond';
-const supportedViews = ['ranking', 'table'] as const;
+const supportedViews = ['bars', 'dots', 'table'] as const;
 type View = (typeof supportedViews)[number];
 const hex = (bytes: ArrayBuffer) => [...new Uint8Array(bytes)].map((value) => value.toString(16).padStart(2, '0')).join('');
-const rawLabel = (observation: Observation) => observation.unit?.label
-  ? observation.valueText + ' ' + observation.unit.label
-  : observation.valueText + ' · unit ' + (observation.unit?.status ?? 'unknown');
+const rawLabel = (observation: Observation) => capturedViewRows([{ observation, model: { id: observation.modelId, name: '', lab: '' } }])[0].valueLabel;
 
 async function verifiedJson<T>(url: string, expectedBytes: number, expectedHash: string): Promise<T> {
   const response = await fetch(url, { cache: 'no-cache' });
@@ -141,59 +139,19 @@ function SourceDetails({ ids, dataset, loadDetails }: {
   </details>;
 }
 
-function FrontierPlot({ rows, selected, onSelect, emptyDescription }: {
-  rows: Ranked[]; selected: string; onSelect: (id: string) => void; emptyDescription: string;
+function FrontierPlot({ rows, watchlist, view, selected, onSelect, emptyDescription }: {
+  rows: Ranked[]; watchlist: Model[]; view: 'bars' | 'dots'; selected: string; onSelect: (id: string) => void; emptyDescription: string;
 }) {
-  const reduce = !!useReducedMotion();
-  const { parentRef, width } = useParentSize({ debounceTime: 40 });
-  const maxValue = Math.max(1, ...rows.map((row) => Math.abs(row.observation.value)));
-  const plotWidth = Math.max(60, width);
-  const scale = scaleLinear({ domain: [0, maxValue * 1.08], range: [0, Math.max(10, plotWidth - 60)], nice: true });
-  const units = [...new Set(rows.map((row) => row.observation.unit?.label).filter((value): value is string => !!value))];
-  const unitLabel = units.length === 1 ? units[0] : units.length > 1 ? 'source units vary' : 'unit not recorded';
+  const projected = useMemo(() => capturedViewRows(rows, watchlist), [rows, watchlist]);
+  // Mixed or unknown native units cannot share a truthful numerical axis.
+  const units = [...new Set(projected.map(row => row.unit))];
+  const comparableUnits = units.length === 1 && !units[0].startsWith('unit ');
   return <div className="plot-shell" data-testid="frontier-plot">
-    {rows.length === 0
-      ? <div className="plot-empty" role="status">
-          <span className="empty-glyph" aria-hidden="true">∅</span>
-          <div><strong>No plotted result is available for this filter combination.</strong>
-            <p>{emptyDescription}</p>
-          </div>
-        </div>
-      : <figure className="ranking-figure">
-          <figcaption className="chart-summary" id="ranking-caption">
-            <strong>Reported results on one selected suite</strong>
-            <span>Raw published metric · {rows[0].observation.metric} · {unitLabel} · {rows[0].observation.direction === 'lower' ? 'lower is better' : 'higher is better'}</span>
-          </figcaption>
-          <div className="ranking-rows" ref={parentRef}>
-              {rows.map(({ observation, model }, index) => <button
-                className={'ranking-row' + (selected === observation.id ? ' selected' : '')}
-                type="button" key={observation.id} aria-pressed={selected === observation.id}
-                aria-label={model.name + ', ' + model.lab + ', reported ' + rawLabel(observation)
-                  + ', ' + observation.sourceClass + ', ' + (observation.verified ? 'verified' : 'unverified')}
-                data-model-id={model.id} data-observation-id={observation.id}
-                onClick={() => onSelect(observation.id)}>
-                <span className="ranking-label">
-                  <strong>{model.name}</strong>
-                  <small>{model.lab} <i aria-hidden="true">·</i> {observation.version ?? 'version unknown'}</small>
-                </span>
-                <svg width={Math.max(10, plotWidth - 60)} height="44" role="img" aria-labelledby={'bar-label-' + index}>
-                  <title id={'bar-label-' + index}>{model.name}: {rawLabel(observation)}; {observation.verified ? 'source verified' : 'not source verified'}</title>
-                  <line x1="0" y1="35" x2={Math.max(10, plotWidth - 60)} y2="35" className="bar-track"/>
-                  <motion.rect x="0" y="12" height="13" rx="1" fill={selected === observation.id ? '#c9f36a' : '#315cde'}
-                    initial={reduce ? false : { width: 0 }}
-                    animate={{ width: scale(Math.max(0, observation.value)) }}
-                    transition={{ duration: reduce ? 0 : 0.36, ease: 'easeOut', delay: reduce ? 0 : Math.min(index * 0.025, 0.2) }}/>
-                  <text x={Math.min(scale(Math.max(0, observation.value)) + 7, plotWidth - 58)} y="23" className="bar-value">{observation.valueText}</text>
-                </svg>
-              </button>)}
-              <svg width={plotWidth} height="40" aria-hidden="true" className="axis-svg">
-                <g transform="translate(0,4)">
-                  <AxisBottom scale={scale} numTicks={5} stroke="#b8bcb5" tickStroke="#b8bcb5"
-                    tickLabelProps={() => ({ fill: '#5c625d', fontSize: 11, textAnchor: 'middle' as const })}/>
-                </g>
-              </svg>
-          </div>
-        </figure>}
+    {!rows.length ? <div className="plot-empty" role="status"><strong>No plotted result is available for this filter combination.</strong><p>{emptyDescription}</p></div>
+      : <figure className="ranking-figure"><figcaption className="chart-summary"><strong>Reported results on one selected suite</strong><span>Raw published metric · {rows[0].observation.metric} · {units.join(' / ')} · {rows[0].observation.direction === 'lower' ? 'lower is better' : 'higher is better'}</span></figcaption>
+        {comparableUnits ? <CoreChart rows={projected} view={view} name="captured" selected={selected} onSelect={onSelect}/> : <p role="status">A shared axis is unavailable: native units differ or are not documented. Exact claims remain below.</p>}
+        <RowControls rows={projected} selected={selected} onSelect={onSelect} className="ranking-row"/>
+      </figure>}
   </div>;
 }
 
@@ -297,7 +255,7 @@ export default function ObservatoryExperience({ route, onDatasetStatus }: Props)
   const [domain, setDomain] = useState('all');
   const [suiteId, setSuiteId] = useState(defaultSuite);
   const [labId, setLabId] = useState('all');
-  const [view, setView] = useState<View>('ranking');
+  const [view, setView] = useState<View>('bars');
   const [selected, setSelected] = useState('');
   const [sourceDetailsPromise, setSourceDetailsPromise] = useState<Promise<SourceDetails> | null>(null);
 
@@ -398,12 +356,13 @@ export default function ObservatoryExperience({ route, onDatasetStatus }: Props)
     url.searchParams.set('cohort', cohort);
     url.searchParams.set('domain', domain);
     url.searchParams.set('suite', effectiveSuite);
+    url.searchParams.set('suiteVersion', selectedSuite?.version ?? 'unknown');
     url.searchParams.set('lab', labId);
     url.searchParams.set('view', view);
     if (selected) url.searchParams.set('selected', selected);
     else url.searchParams.delete('selected');
     history.replaceState(null, '', url);
-  }, [dataset, cohort, domain, effectiveSuite, labId, view, selected, route]);
+  }, [dataset, cohort, domain, effectiveSuite, labId, view, selected, route, selectedSuite]);
 
   useEffect(() => {
     if (!dataset) return;
@@ -413,14 +372,17 @@ export default function ObservatoryExperience({ route, onDatasetStatus }: Props)
   }, [dataset]);
 
   function changeDomain(next: string) {
+    saveQuery({ domain: next, selected: null });
     setDomain(next);
     const firstSuite = dataset?.suites.find((row) => row.observationCount > 0 && (next === 'all' || row.domain === next));
-    if (firstSuite) setSuiteId(firstSuite.id);
+    if (firstSuite) { saveQuery({ suite: firstSuite.id }); setSuiteId(firstSuite.id); }
     setSelected('');
   }
 
+  function selectCaptured(id: string) { saveQuery({ selected: id }); setSelected(id); }
+
   function toggleView(next: View) {
-    if (supportedViews.includes(next)) setView(next);
+    if (supportedViews.includes(next)) { saveQuery({ view: next }); setView(next); }
   }
 
   if (!dataset) return <section className={'page-loading' + (failure ? ' failure' : '')} aria-labelledby="loading-title">
@@ -453,7 +415,7 @@ export default function ObservatoryExperience({ route, onDatasetStatus }: Props)
         <div className="frontier-controls" aria-label="Frontier filters">
           <label>Cohort
             <select aria-label="Cohort" data-testid="cohort-filter" value={cohort} onChange={(event) => {
-              setCohort(event.target.value as 'flagships' | 'reported'); setSelected('');
+              saveQuery({ cohort: event.target.value, selected: null }); setCohort(event.target.value as 'flagships' | 'reported'); setSelected('');
             }}>
               <option value="flagships">Official release matches ({watchlist.length})</option>
               <option value="reported">Captured result claims ({resultBySuite.length})</option>
@@ -467,23 +429,22 @@ export default function ObservatoryExperience({ route, onDatasetStatus }: Props)
           </label>
           <label>Benchmark
             <select aria-label="Benchmark" data-testid="suite-filter" value={effectiveSuite} onChange={(event) => {
-              setSuiteId(event.target.value); setSelected('');
+              saveQuery({ suite: event.target.value, selected: null }); setSuiteId(event.target.value); setSelected('');
             }}>
               {suitesInDomain.map((row) => <option key={row.id} value={row.id}>{row.name} · {row.domain}</option>)}
             </select>
           </label>
           <label>Lab
             <select aria-label="Lab" data-testid="lab-filter" value={labId} onChange={(event) => {
-              setLabId(event.target.value); setSelected('');
+              saveQuery({ lab: event.target.value, selected: null }); setLabId(event.target.value); setSelected('');
             }}>
               <option value="all">All labs</option>
               {allLabs.map((row) => <option key={row.id} value={row.id}>{row.name}</option>)}
             </select>
           </label>
-          <div className="view-switch" role="group" aria-label="Frontier view">
-            <button type="button" data-testid="view-ranking" aria-pressed={view === 'ranking'} onClick={() => toggleView('ranking')}>Ranking plot</button>
-            <button type="button" data-testid="view-table" aria-pressed={view === 'table'} onClick={() => toggleView('table')}>Exact rows</button>
+          <div><ViewControls name="Captured benchmark views" views={supportedViews} value={view} onChange={toggleView} prefix="view"/>
             <a className="cost-view-link" data-testid="view-cost" href="/task-pricing">Task cost ↘</a>
+            <button onClick={() => downloadRows('captured-benchmark', capturedViewRows(activeRows, filteredWatchlist), { suite: effectiveSuite, suiteVersion: selectedSuite?.version ?? null, cohort, domain, lab: labId, view, sourceDigest: dataset.sourceDigest })}>Export captured rows</button>
           </div>
         </div>
         <div className="cohort-note" role="note">
@@ -492,17 +453,17 @@ export default function ObservatoryExperience({ route, onDatasetStatus }: Props)
             ? <p><strong>Identity match is not a benchmark result.</strong> The default cohort covers {visibleWatchlist.length} source-matched entries; {dataset.observations.filter((row) => visibleWatchlist.some((model) => model.id === row.modelId)).length} captured observations reference these identities and none are verified.</p>
             : <p><strong>Captured model-card claims.</strong> Values retain their source-reported units and verification state; they are not an independently verified ranking.</p>}
         </div>
-        {view === 'ranking'
-          ? <FrontierPlot rows={activeRows} selected={selected} onSelect={setSelected}
+        {view !== 'table'
+          ? <FrontierPlot rows={activeRows} watchlist={filteredWatchlist} view={view} selected={selected} onSelect={selectCaptured}
               emptyDescription={cohort === 'flagships'
                 ? 'The ' + visibleWatchlist.length + ' official release identity matches in this filtered cohort have no benchmark-verified result in the current snapshot.'
                 : 'No captured source claim matches this selected suite, domain and lab. Change a filter to inspect another source claim.'}/>
-          : <ResultTable rows={activeRows} watchlist={filteredWatchlist} selected={selected} onSelect={setSelected}
+          : <ResultTable rows={activeRows} watchlist={filteredWatchlist} selected={selected} onSelect={selectCaptured}
               dataset={dataset} loadDetails={loadDetails}/>}
-        {view === 'ranking' && <div className="exact-table-slot">
+        {view !== 'table' && <div className="exact-table-slot">
           <details>
             <summary><span>Accessible exact values and source rows</span><small>Open the table for text values, missing states and original links</small></summary>
-            <ResultTable rows={activeRows} watchlist={filteredWatchlist} selected={selected} onSelect={setSelected}
+            <ResultTable rows={activeRows} watchlist={filteredWatchlist} selected={selected} onSelect={selectCaptured}
               dataset={dataset} loadDetails={loadDetails}/>
           </details>
         </div>}

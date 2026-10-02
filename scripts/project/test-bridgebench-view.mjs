@@ -13,6 +13,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert }) => {
     await page.goto(origin + '/benchmarks?bridgeAxis=reasoning', { waitUntil: 'networkidle' });
     const root = page.getByTestId('bridgebench');
     await root.waitFor();
+    await root.getByTestId('bridge-view-table').click();
     assert.equal(await root.locator('tbody tr').count(), 27);
     assert.equal(await root.getByLabel('Rating axis').inputValue(), 'reasoning');
     assert.equal(await root.locator('tbody tr').filter({ hasText: 'Unverified:' }).count(), 8);
@@ -27,7 +28,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert }) => {
       await root.getByLabel('Rating axis').selectOption(axis.id);
       assert.equal(new URL(page.url()).searchParams.get('bridgeAxis'), axis.id);
       const sol = root.locator('tbody tr').filter({ has: page.getByRole('link', { name: 'GPT-6.1 Sol', exact: true }) });
-      assert.equal((await sol.locator('td').first().innerText()).trim(), String(data.bridgeBench.records.find(r => r.modelKey === 'gpt-6-1-sol').ratings[axis.id]));
+      assert.equal((await sol.locator('[data-cell=value]').evaluate(el=>el.childNodes[0].textContent)).trim(), String(data.bridgeBench.records.find(r => r.modelKey === 'gpt-6-1-sol').ratings[axis.id]));
     }
     await page.reload({ waitUntil: 'networkidle' });
     assert.equal(await page.getByTestId('bridgebench').getByLabel('Rating axis').inputValue(), 'cost');

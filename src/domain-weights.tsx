@@ -1,3 +1,7 @@
+import CoreChart from './charts/core-chart';
+import { RowControls, ViewControls, ViewTable } from './charts/controls';
+import { domainViewRows } from './charts/rows';
+import { saveQuery, useViewState } from './charts/state';
 import { useEffect, useMemo, useState } from 'react';
 import type { AuthorityBlock } from './authority/logic';
 import { pct } from './authority/logic';
@@ -5,6 +9,7 @@ import { rankResult } from './scoring/authority';
 import { currentAuthorityPanel as authorityPanel, currentWeightSensitivity as weightSensitivity } from './current/logic';
 import { DEFAULT_WEIGHTS, decodeWeightSettings, encodeWeightSettings, validateWeights, type PanelResult, type WeightSettings } from './scoring/index.mjs';
 
+const views = ['heatmap', 'radar', 'table'] as const;
 const rankLabel = (result: PanelResult) => {
   const ranked = rankResult(result);
   if (!ranked.length) return 'Insufficient common coverage';
@@ -26,6 +31,10 @@ export default function DomainWeights({ authority, digest }: { authority: Author
   const decoded = decodeWeightSettings(location.search);
   const [weights, setWeights] = useState<WeightSettings>(() => ({ ...Object.fromEntries(Object.keys(DEFAULT_WEIGHTS).map((key) => [key, 0])), ...decoded.weights }));
   const [notice, setNotice] = useState(decoded.valid ? '' : 'Invalid saved weights were reset to the equal default.');
+  const [view, setView] = useViewState('domainView', views, 'heatmap');
+  const [cell, setCell] = useState(new URLSearchParams(location.search).get('domainCell') ?? '');
+  const viewRows = useMemo(() => domainViewRows(authority, cohort, weights), [authority, cohort, weights]);
+  const selectCell = (id: string) => { saveQuery({ domainCell: id }); setCell(id); };
   const sensitivity = useMemo(() => weightSensitivity(authority, cohort, weights), [authority, cohort, weights]);
   const { result, rows } = sensitivity.base;
   const available = useMemo(() => authorityPanel(authority, cohort, { ...DEFAULT_WEIGHTS }).coveredDomains, [authority, cohort]);
@@ -42,11 +51,13 @@ export default function DomainWeights({ authority, digest }: { authority: Author
     const url = new URL(location.href);
     url.searchParams.set('w', new URLSearchParams(encodeWeightSettings(weights)).get('w')!);
     url.searchParams.set('weight-models', cohort.join(','));
+    url.searchParams.set('domainSuites', [...new Set(viewRows.filter(r => r.value !== null).map(r => r.version))].join('|') || 'none');
+    url.searchParams.set('domainSnapshot', digest);
     history.replaceState(null, '', url);
-  }, [weights, cohort]);
+  }, [weights, cohort, viewRows, digest]);
   function update(domain: string, value: number) {
     const next = { ...weights, [domain]: value };
-    try { validateWeights(next); setWeights(next); setNotice(''); }
+    try { validateWeights(next); saveQuery({ w: new URLSearchParams(encodeWeightSettings(next)).get('w') }); setWeights(next); setNotice(''); }
     catch { setNotice('At least one capability domain must have a positive weight.'); }
   }
   async function share() {
@@ -55,7 +66,7 @@ export default function DomainWeights({ authority, digest }: { authority: Author
   }
   function download() {
     const payload = { schemaVersion: 'axionbench-weight-sensitivity-v1', productDataDigest: digest, cohort,
-      weights, defaultWeights: DEFAULT_WEIGHTS, custom: !isDefault, commonPanel: rows,
+      view, viewRows, weights, defaultWeights: DEFAULT_WEIGHTS, custom: !isDefault, commonPanel: rows,
       result, sensitivity: { weightRuns: sensitivity.weightRuns, leaveOneSuiteOut: sensitivity.omissions, independentOnly: sensitivity.independent },
       caveat: 'Fixed cohort/common panel, source family caps, no missing-value imputation. Weight and omission scenarios are not statistical confidence intervals.' };
     const href = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }));
@@ -66,14 +77,17 @@ export default function DomainWeights({ authority, digest }: { authority: Author
     <div className="coverage-head"><div><p className="eyebrow">A declared point of view</p><h3 id="weight-title">Choose what matters. Keep the panel fixed.</h3></div><span>{isDefault ? 'DEFAULT / EQUAL DOMAINS' : 'CUSTOM / USER WEIGHTS'}</span></div>
     <p className="cost-lead">The same source, suite version, metric, test condition and reasoning setting must be present for both models. Families are capped before domains are weighted. An incomplete positively weighted domain makes the comparison unavailable.</p>
     <div className="weight-models">{cohort.map((key, index) => <label key={index}>Model {index + 1}<select aria-label={'Weight model ' + (index + 1)} data-testid={'weight-model-' + index} value={key}
-      onChange={(event) => { const next = [...cohort]; next[index] = event.target.value; setCohort(next); }}>
+      onChange={(event) => { const next = [...cohort]; next[index] = event.target.value; saveQuery({ 'weight-models': next.join(',') }); setCohort(next); }}>
       {candidates.map((model) => <option key={model.key} value={model.key} disabled={cohort[1 - index] === model.key}>{model.name} · {model.lab ?? 'Lab unknown'}</option>)}</select></label>)}</div>
+    <ViewControls name="Domain views" views={views} value={view} onChange={setView} prefix="domain-view"/>
+    {view !== 'table' && <><CoreChart rows={viewRows} view={view} name="domains" selected={cell} onSelect={selectCell} normalized/><RowControls rows={viewRows} selected={cell} onSelect={selectCell}/></>}
+    {view === 'table' ? <ViewTable rows={viewRows} caption="Comparable normalized domain values" testId="domain-table"/> : <details className="exact-table-slot"><summary>Accessible domain values, missing states and sources</summary><ViewTable rows={viewRows} caption="Comparable normalized domain values" testId="domain-table"/></details>}
     <div className="weight-layout"><div className="weight-controls" aria-label="Capability domain weights">
       {Object.keys(DEFAULT_WEIGHTS).map((domain) => <label key={domain}><span>{domain.replaceAll('-', ' ')}<small>{available.includes(domain) ? 'Common panel available' : 'No compatible common panel'}</small></span>
         <input type="number" min="0" max="10" step="0.25" aria-label={domain + ' weight'} data-testid={'weight-' + domain} value={weights[domain] ?? 0}
           onChange={(event) => { const value = Number(event.target.value); if (Number.isFinite(value) && value >= 0 && value <= 10) update(domain, value); }}/></label>)}
-      <div className="feature-actions"><button data-testid="weight-reset" onClick={() => { setWeights({ ...DEFAULT_WEIGHTS }); setNotice('Equal default weights restored.'); }}>Reset equal weights</button>
-        <button data-testid="weight-covered" disabled={!available.length} onClick={() => { setWeights(Object.fromEntries(Object.keys(DEFAULT_WEIGHTS).map((key) => [key, available.includes(key) ? 1 : 0]))); setNotice('Custom subset uses only this pair’s common domains.'); }}>Use covered domains</button>
+      <div className="feature-actions"><button data-testid="weight-reset" onClick={() => { saveQuery({ w: new URLSearchParams(encodeWeightSettings({ ...DEFAULT_WEIGHTS })).get('w') }); setWeights({ ...DEFAULT_WEIGHTS }); setNotice('Equal default weights restored.'); }}>Reset equal weights</button>
+        <button data-testid="weight-covered" disabled={!available.length} onClick={() => { const next = Object.fromEntries(Object.keys(DEFAULT_WEIGHTS).map((key) => [key, available.includes(key) ? 1 : 0])); saveQuery({ w: new URLSearchParams(encodeWeightSettings(next)).get('w') }); setWeights(next); setNotice('Custom subset uses only this pair’s common domains.'); }}>Use covered domains</button>
         <button data-testid="weight-share" onClick={share}>Share weights</button><button data-testid="weight-export" onClick={download}>Export sensitivity ↗</button></div>
     </div><div className="weight-results">
       <p className="eyebrow">{isDefault ? 'Equal default index / 11 domains' : 'Custom common-panel index / ' + selected.length + ' domains'}</p>

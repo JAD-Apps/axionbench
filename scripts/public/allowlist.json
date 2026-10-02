@@ -113,11 +113,19 @@
     "src/home/logic.ts",
     "src/versions.tsx",
     "public/404.html",
-    "scripts/project/test-routes.mjs",
     "docs/ROUTES.md",
     "docs/DESIGN.md",
     "docs/VISUAL-REFERENCE-REVIEW.md",
-    "scripts/verify-design.mjs"
+    "scripts/verify-design.mjs",
+    "src/charts/rows.ts",
+    "src/charts/state.ts",
+    "src/charts/controls.tsx",
+    "src/charts/core-chart.tsx",
+    "src/charts/heatmap.ts",
+    "src/charts/registry.ts",
+    "tests/core-views.test.ts",
+    "docs/CORE-VIEWS.md",
+    "src/charts/reduced-motion.ts"
   ],
   "templates": [
     "README.md",
@@ -135,6 +143,8 @@
     "FROZEN-SNAPSHOT.json",
     "public/data.json",
     "public/data-details.json",
-    "public/data-manifest.json"
+    "public/data-manifest.json",
+    "scripts/test-routes.mjs",
+    "scripts/test-core-views.mjs"
   ]
 }

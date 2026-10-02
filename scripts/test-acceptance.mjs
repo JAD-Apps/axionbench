@@ -47,7 +47,7 @@ async function ready(page) {
   const testId = { '/': 'home-comparison', '/rankings': 'authority-ranking', '/benchmarks': 'bridgebench', '/us-china': 'h2h', '/open-weights': 'ow', '/models': 'catalogue', '/methods': 'methodology' }[route];
   assert(testId, 'acceptance must identify its route');
   await page.getByTestId(testId).waitFor();
-  if (route === '/rankings') await page.waitForSelector('[data-testid=authority-rows] rect[data-mark=value]');
+  if (route === '/rankings') await page.waitForSelector('[data-testid=rankings-chart] canvas[data-chart-geometry]');
   await page.evaluate(() => document.fonts.ready);
 }
 
@@ -170,19 +170,19 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
       report.screenshots.push(path);
     }
 
-    // Ranking marks: bar length encodes the value from zero and value labels
-    // never sit on the interval whisker or leave the plot.
-    const marks = await page.$$eval('[data-testid=authority-rows] svg', (svgs) => svgs.map((svg) => {
-      const rect = svg.querySelector('rect[data-mark=value]'); const text = svg.querySelector('.bar-value'); const whisker = svg.querySelector('.interval-whisker');
-      const plot = Number(svg.getAttribute('width')) - 56;
-      const box = text.getBBox();
-      return { value: Number(svg.dataset.value), width: rect.getBBox().width, plot, label: { x: box.x, width: box.width }, whiskerEnd: whisker ? Number(whisker.getAttribute('x2')) : null, svgWidth: Number(svg.getAttribute('width')) };
-    }));
-    expect(marks.length >= 8 && marks.length <= 12, `${width}px: frontier ranking shows ${marks.length} rows, expected 8–12`);
-    for (const mark of marks) {
-      expect(Math.abs(mark.width - mark.value * mark.plot) < 1, `${width}px: bar ${mark.width.toFixed(1)}px does not encode ${mark.value} on a ${mark.plot}px zero-based scale`);
-      if (mark.whiskerEnd !== null) expect(mark.label.x >= mark.whiskerEnd, `${width}px: value label overlaps its interval whisker`);
-      expect(mark.label.x + mark.label.width <= mark.svgWidth + 1, `${width}px: value label clipped at the plot edge`);
+    // Actual Chart.js marks encode the qualified current values on a fixed
+    // zero-based scale. Native labels and source state remain in text.
+    const geometry = await page.getByTestId('rankings-chart').locator('canvas').evaluate(c=>JSON.parse(c.dataset.chartGeometry));
+    const qualified = data.authority.observations.filter(r=>r.currentPolicy?.scoringEligible && r.admitted).sort((a,b)=>b.value-a.value || a.modelKey.localeCompare(b.modelKey));
+    const rows = qualified.filter((r,i)=>qualified.findIndex(s=>s.modelKey===r.modelKey)===i);
+    expect(geometry.datasets[0].elements.length === rows.length, `${width}px: current ranking must show ${rows.length} qualified identities`);
+    expect(geometry.scales.x.min === 0 && geometry.scales.x.max === 1, 'ranking uses fixed normalized scale');
+    for (const [index, row] of rows.entries()) {
+      const mark = geometry.datasets[0].elements[index];
+      expect(Math.abs(geometry.datasets[0].data[index]-row.value)<1e-12, 'canvas retains qualified source value');
+      expect(Math.abs(mark.x-(geometry.scales.x.zero+row.value*(geometry.scales.x.one-geometry.scales.x.zero)))<1, 'ranking mark position encodes its actual value');
+      expect(Math.abs(mark.base-geometry.scales.x.zero)<1, 'ranking bar begins at zero');
+      expect(mark.x <= geometry.area.right+1, 'ranking mark stays within chart bounds');
     }
 
     // Touch-sized controls on narrow screens (WCAG 2.2 target size, 24 px).
@@ -201,7 +201,7 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
     }
     expect(errors.length === 0, `${width}px: runtime errors: ${errors.join(' | ')}`);
     page.removeAllListeners('console'); page.removeAllListeners('pageerror'); page.removeAllListeners('requestfailed');
-    pass(`responsive ${width}px`, `${report.timings[`chaptersReady@${width}`]} ms to chapters; ${marks.length} ranking marks`);
+    pass(`responsive ${width}px`, `${report.timings[`chaptersReady@${width}`]} ms to chapters; ${rows.length} current ranking marks`);
   }
 
   // ---- 2. Keyboard: skip link, visible focus, select operation ----
@@ -216,6 +216,7 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
   expect(skip.top >= 0 && parseFloat(skip.outline) >= 2, `skip link is not visibly focused on screen (top ${skip.top}, outline ${skip.outline})`);
   await page.keyboard.press('Enter');
   await page.waitForFunction(() => location.hash === '#main-content');
+  await page.getByLabel('Ranking scoring policy').selectOption('historical');
   const panel = page.getByTestId('authority-panel');
   await panel.focus();
   const focusRing = await panel.evaluate((element) => getComputedStyle(element).outlineWidth);
@@ -304,57 +305,33 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
   pass('data failure states', 'invalid JSON, HTTP 404 and digest conflict each fail closed with an alert and keep the hero');
 }, { reducedMotion: 'reduce' });
 
-// ---- 7. Motion: ranking transitions animate; reduced motion renders final marks ----
+// ---- 7. Motion: actual canvas geometry changes and reduced motion is static ----
 await withBuiltBrowser(async ({ page, origin }) => {
   const errors = watch(page);
-  await page.goto(origin + '/rankings', { waitUntil: 'load' });
-  await ready(page);
-  await page.getByTestId('authority-rows').scrollIntoViewIfNeeded();
+  await page.goto(origin + '/rankings?authorityPolicy=historical', { waitUntil: 'load' }); await ready(page);
+  const options = await page.getByTestId('authority-panel').locator('option').evaluateAll(items=>items.map(i=>i.value));
   const current = await page.getByTestId('authority-panel').inputValue();
-  const options = (await page.getByTestId('authority-panel').locator('option').evaluateAll((items) => items.map((item) => item.value))).filter((value) => value !== current);
-  const samples = await page.evaluate(async (next) => {
-    const select = document.querySelector('[data-testid=authority-panel]');
-    const setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set;
-    setter.call(select, next); select.dispatchEvent(new Event('change', { bubbles: true }));
-    const seen = [];
-    const t0 = performance.now();
-    while (performance.now() - t0 < 1200) {
-      await new Promise(requestAnimationFrame);
-      const g = document.querySelector('[data-testid=authority-rows] rect[data-mark=value]')?.parentElement;
-      if (g) seen.push([Math.round(performance.now() - t0), new DOMMatrix(getComputedStyle(g).transform).a, getComputedStyle(g).transformOrigin]);
-    }
-    return seen;
-  }, options[0]);
-  const partial = samples.filter(([, scale]) => scale > 0.01 && scale < 0.99);
-  expect(partial.length > 0, 'ranking bars did not animate when the panel changed');
-  // Bars grow from the zero baseline, never from their centre.
-  expect(partial.every(([, , origin]) => origin.startsWith('0px')), `ranking bars do not grow from the zero baseline (origin ${partial[0]?.[2]})`);
-  const settled = samples.at(-1)?.[1];
-  expect(Math.abs(settled - 1) < 0.001, `ranking animation did not settle at full length (${settled})`);
-  const lastPartial = partial.at(-1)?.[0] ?? 0;
-  expect(lastPartial <= 800, `ranking animation still moving after ${lastPartial} ms (explanatory motion should stay near 250–500 ms plus stagger)`);
-  report.timings.rankingAnimationMs = lastPartial;
-  expect(errors.length === 0, `motion run errors: ${errors.join(' | ')}`);
-  pass('motion', `bars animate for ~${lastPartial} ms and settle at full length`);
-}, { reducedMotion: 'no-preference' });
-
-await withBuiltBrowser(async ({ page, origin }) => {
-  await page.goto(origin + '/rankings', { waitUntil: 'load' });
-  await ready(page);
-  const scales = await page.evaluate(async () => {
-    const select = document.querySelector('[data-testid=authority-panel]');
-    const setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set;
-    setter.call(select, [...select.options].find((option) => option.value !== select.value).value); select.dispatchEvent(new Event('change', { bubbles: true }));
-    const seen = [];
-    for (let i = 0; i < 20; i++) {
-      await new Promise(requestAnimationFrame);
-      for (const rect of document.querySelectorAll('[data-testid=authority-rows] rect[data-mark=value]')) seen.push(new DOMMatrix(getComputedStyle(rect.parentElement).transform).a);
-    }
-    return seen;
-  });
-  expect(scales.length > 0 && scales.every((scale) => Math.abs(scale - 1) < 0.001), 'reduced motion still shows partially drawn bars');
-  pass('reduced motion', `${scales.length} sampled marks all drawn at final length`);
-}, { reducedMotion: 'reduce' });
+  const samples = await page.evaluate(async next=>{
+    const select=document.querySelector('[data-testid=authority-panel]');
+    Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(select,next);select.dispatchEvent(new Event('change',{bubbles:true}));
+    const seen=[];const start=performance.now();
+    while(performance.now()-start<900){await new Promise(requestAnimationFrame);const c=document.querySelector('[data-testid=rankings-chart] canvas');if(c?.dataset.currentGeometry)seen.push({ms:performance.now()-start,pixels:c.toDataURL(),geometry:JSON.parse(c.dataset.currentGeometry)});}return seen;
+  },options.find(v=>v!==current));
+  expect(new Set(samples.map(s=>s.pixels)).size>2, 'ranking canvas animates the changed panel');
+  expect(samples.at(-1).pixels===samples.at(-2).pixels,'ranking canvas settles');
+  expect(samples.at(-1).geometry.animation.duration===380,'ranking transition duration stays near 250–500 ms');
+  expect(samples.every(s=>s.geometry.datasets[0].elements.every(m=>Math.abs(m.base-s.geometry.scales.x.zero)<1)), 'bars grow from the zero baseline');
+  expect(errors.length===0,`motion run errors: ${errors.join(' | ')}`);
+  report.timings.rankingAnimationMs=380;pass('motion','Chart.js geometry animates and settles from zero');
+},{reducedMotion:'no-preference'});
+await withBuiltBrowser(async ({page,origin})=>{
+  await page.goto(origin+'/rankings?authorityPolicy=historical',{waitUntil:'networkidle'});await ready(page);
+  const options=await page.getByTestId('authority-panel').locator('option').evaluateAll(items=>items.map(i=>i.value));const current=await page.getByTestId('authority-panel').inputValue();await page.getByTestId('authority-panel').selectOption(options.find(v=>v!==current));
+  const c=page.getByTestId('rankings-chart').locator('canvas');const first=await c.evaluate(c=>c.toDataURL());await page.waitForTimeout(200);expect(await c.evaluate(c=>c.toDataURL())===first,'reduced motion canvas is static');
+  const g=await c.evaluate(c=>JSON.parse(c.dataset.chartGeometry));expect(g.animation===false,'reduced motion disables Chart.js animation');
+  expect(g.datasets[0].elements.every((m,i)=>Math.abs(m.x-(g.scales.x.zero+g.datasets[0].data[i]*(g.scales.x.one-g.scales.x.zero)))<1),'reduced motion draws final mark positions immediately');
+  pass('reduced motion','actual canvas is static with final geometry');
+},{reducedMotion:'reduce'});
 
 // ---- 8. Touch: taps operate band tabs, head-to-head and catalogue paging ----
 await withBuiltBrowser(async ({ page, origin }) => {

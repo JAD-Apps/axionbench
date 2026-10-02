@@ -25,6 +25,7 @@ export const GATES = [
   ['test:authority', 'benchmark-authority adapters and publisher facts'],
   ['verify:design', 'design blueprint contract'],
   ['test:frontier', 'frontier build, bundle budget and browser checks'],
+  ['test:core-views', 'custom Chart.js values, views, history, lifecycle and reduced motion'],
   ['test:chart-smoke', 'hero preservation and chart smoke in Chromium'],
   ['test:head-to-head', 'matched US–China comparison'],
   ['test:open-weights', 'open-weight parameter groups'],
