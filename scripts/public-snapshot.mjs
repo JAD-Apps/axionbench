@@ -46,6 +46,7 @@ pkg.scripts = {
   'clean:build': 'vite build --emptyOutDir', 'preclean:build': 'node scripts/public/validate.mjs', typecheck: 'tsc --noEmit',
   lint: 'node scripts/public/lint.mjs', 'test:unit': 'vitest run', 'test:scoring': 'node tests/scoring/test-scoring.mjs',
   'test:pricing': 'node scripts/test-pricing.mjs', 'test:weights': 'node scripts/test-weights.mjs',
+  'test:current-policy': 'node scripts/test-current-policy.mjs',
   'test:boundary': 'node scripts/public/test-boundary.mjs', 'data:validate': 'node scripts/public/validate.mjs',
   'data:refresh': 'node scripts/public/refresh.mjs', 'data:authority': 'node scripts/public/refresh.mjs',
   'test:chart-smoke': 'node scripts/chart-smoke.mjs', 'test:cost-weights': 'node scripts/test-cost-weights.mjs',

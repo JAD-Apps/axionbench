@@ -17,6 +17,7 @@
     "preclean:build": "node scripts/build-observatory-data.mjs",
     "test:unit": "vitest run --exclude \"publication/**\" --exclude \"test-results/**\" --exclude \"tests/project/**\" && node --test tests/project/*.test.mjs",
     "test:registry": "node scripts/test-registry.mjs",
+    "test:current-policy": "node scripts/test-current-policy.mjs",
     "data:ingest": "node scripts/ingest-data.mjs",
     "data:validate": "node scripts/data-validate.mjs",
     "test:data": "node scripts/test-data.mjs",

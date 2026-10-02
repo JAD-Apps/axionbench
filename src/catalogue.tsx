@@ -160,6 +160,7 @@ export function BenchmarkLibrary({ input }: { input: CatalogueInput }) {
         <div>{link ? <a className="benchmark-mention" href={link} target="_blank" rel="noreferrer">{b.name} ↗</a> : <strong>{b.name}</strong>}
           <small>{b.domain} · {b.version ?? 'version unknown'}</small></div>
         <p>{b.admitted} admitted · {b.reported} reported, not admitted · {b.models} models{b.admitted + b.reported === 0 && ' · no captured model result; the link is the benchmark\'s own page'}</p>
+        {b.note && <p>{b.note}</p>}
         {b.results.length > 0 && <details><summary>Result sources ({b.results.length})</summary>
           <ul>{b.results.map((r) => <li key={r.url}><a href={r.url} target="_blank" rel="noreferrer">{r.label} ↗</a></li>)}</ul></details>}
         {b.url && <a className="library-page" href={b.url} target="_blank" rel="noreferrer">Benchmark page ↗</a>}

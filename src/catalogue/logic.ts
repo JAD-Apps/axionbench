@@ -40,6 +40,7 @@ export type ScoringInput = {
 export type CatalogueInput = {
   retrievedAt: string; sourceDigest: string; models: InputModel[]; observations: InputObservation[]; suites: InputSuite[];
   authority: AuthorityInput; openWeights: { rows: OpenWeightRow[] }; scoring: ScoringInput;
+  bridgeBench?: { id: string; records: { modelKey: string; modelLabel: string; ratings: Record<string, number | null>; resultUrl: string }[] };
 };
 
 export type CatalogueRow = {
@@ -98,6 +99,15 @@ export function buildCatalogue(input: CatalogueInput): Catalogue {
   const addResult = (benchmark: Benchmark | undefined, url: string, label: string) => {
     if (benchmark && url && !benchmark.results.some((row) => row.url === url)) benchmark.results.push({ url, label });
   };
+  if (input.bridgeBench) {
+    const benchmark = suiteById.get(input.bridgeBench.id);
+    if (benchmark) {
+      benchmark.reported = input.bridgeBench.records.reduce((sum, row) => sum + Object.values(row.ratings).filter(value => value !== null).length, 0);
+      benchmark.note = 'Native BridgeBench comparative publisher ratings. Proprietary protocol; excluded from capability scoring. Overall includes cost and speed.';
+      benchmarkModels.set(benchmark.id, new Set(input.bridgeBench.records.map(row => 'rating:' + row.modelKey)));
+      for (const row of input.bridgeBench.records) addResult(benchmark, row.resultUrl, 'BridgeBench publisher rating · ' + row.modelLabel);
+    }
+  }
   const rows: CatalogueRow[] = [];
 
   const byModel = new Map<string, InputObservation[]>();

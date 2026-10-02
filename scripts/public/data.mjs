@@ -3,6 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { composeAuthority, assertAuthorityFloor, readInputs } from '../authority/compose.mjs';
+import { currentCoverage } from '../authority/current-policy.mjs';
 import { validatePriceFacts } from '../../src/pricing/logic.ts';
 import { bandFor } from '../../src/open-weights/logic.ts';
 import { sha256, readJson, jsonBytes } from './boundary.mjs';
@@ -12,7 +13,7 @@ const unique = (rows, key, label) => { const ids = rows.map(row => row[key]); as
 const https = (value, label) => { const url = new URL(value); assert.equal(url.protocol, 'https:', `${label}: original HTTPS URL required`); assert(!url.username && !url.password, `${label}: URL credentials`); };
 const time = (value, label, now) => { assert(Number.isFinite(Date.parse(value)) && Date.parse(value) <= now + 300000, `${label}: invalid/future retrieval date`); };
 
-export async function derivePublic(root, { now = Date.now(), requireFreshPrices = true } = {}) {
+export async function derivePublic(root, { now = Date.now(), requireFreshPrices = true, requireFreshCurrent = true } = {}) {
   await validatePermittedFacts(root);
   const frozen = await readJson(root, 'data/frozen-catalogue.json');
   const details = await readJson(root, 'data/frozen-source-details.json');
@@ -74,7 +75,7 @@ export async function derivePublic(root, { now = Date.now(), requireFreshPrices 
   assert.deepEqual(registry.domains, frozen.domains);
   assert.deepEqual(registry.suites.map(row => row.id), frozen.suites.map(row => row.id));
   const inputs = await readInputs(pathToFileURL(root.replace(/\/$/, '') + '/'));
-  const authority = composeAuthority(inputs, registry); assertAuthorityFloor(authority);
+  const authority = composeAuthority(inputs, registry, { requireFreshCurrent }); assertAuthorityFloor(authority);
   const authorityModels = unique(authority.models, 'key', 'authority models');
   const authoritySuites = unique(authority.suites, 'id', 'authority suites');
   const authoritySources = unique(authority.sources, 'id', 'authority sources');
@@ -100,13 +101,15 @@ export async function derivePublic(root, { now = Date.now(), requireFreshPrices 
   const deepSwe = inputs.deepswe.json;
   assert.deepEqual(deepSwe, (await import('./boundary.mjs')).permittedDeepSwe(deepSwe), 'historical benchmark cost/efficiency fields excluded');
   const scoring = await readJson(root, 'data/scoring.json');
-  const projection = { ...frozen, sourceLimitations: { ...frozen.sourceLimitations, apiPriceRowsPublished: pricing.records.length }, authority, pricing, scoring };
+  const projection = { ...frozen, sourceLimitations: { ...frozen.sourceLimitations, apiPriceRowsPublished: pricing.records.length },
+    currentModels: inputs.current.json.models, bridgeBench: inputs.current.json.bridgeBench,
+    pricingVerification: inputs.current.json.pricingVerification, currentCoverage: currentCoverage(authority, inputs.current.json), authority, pricing, scoring };
   assert.equal(projection.sourceLimitations.restrictedRoutedPricesPublished, false);
   const priceSource = { id: pricing.source.id, url: pricing.source.url, finalUrl: pricing.source.url,
     publisher: pricing.source.publisher, sourceClass: 'original_provider_pricing', rights: pricing.source.licence + ': ' + pricing.source.licenceUrl,
     permittedFields: ['standard paid text tariff facts', 'billing conditions', 'source coordinates', 'source hash'],
     snapshotSha256: pricing.source.sha256, retrievedAt: pricing.source.retrievedAt, httpStatus: 200, resolvedRevision: null, contentType: 'text/html' };
-  const publicDetails = { ...details, sources: [...details.sources, priceSource] };
+  const publicDetails = { ...details, currentSources: inputs.current.json.sources, sources: [...details.sources, priceSource] };
   const projectionBytes = Buffer.from(JSON.stringify(projection));
   const detailsBytes = Buffer.from(JSON.stringify(publicDetails));
   const manifest = { schemaVersion: 'axionbench-data-manifest-v1', sourceDigest: frozen.sourceDigest, retrievedAt: frozen.retrievedAt,

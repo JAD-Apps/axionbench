@@ -8,7 +8,7 @@ import { acquireGateLock } from '../release/gate-lock.mjs';
 import { sha256, validateSource } from './boundary.mjs';
 import { scanDist } from '../release/manifest.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url));
-const gates = ['lint', 'data:validate', 'test:boundary', 'typecheck', 'test:unit', 'test:scoring', 'test:pricing', 'test:weights',
+const gates = ['lint', 'data:validate', 'test:current-policy', 'test:boundary', 'typecheck', 'test:unit', 'test:scoring', 'test:pricing', 'test:weights',
   'build', 'test:chart-smoke', 'test:cost-weights', 'test:acceptance', 'build:release', 'release:check'];
 const unlock = await acquireGateLock();
 const run = new Date().toISOString().replace(/[:.]/g, '-');

@@ -5,6 +5,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { sha256, slug, stableRowsSha256 } from './common.mjs';
+import { applyCurrentPolicy, validateCurrentEvidence, validateBenchmarkPolicy } from './current-policy.mjs';
 
 export const CAPABILITY_DOMAINS = ['coding', 'reasoning', 'mathematics', 'knowledge', 'instruction-following', 'long-context', 'tool-use', 'agents', 'vision-documents', 'factuality', 'multilingual'];
 export const SEPARATE_PANELS = ['professional', 'safety', 'preference', 'audio-video'];
@@ -18,6 +19,8 @@ export const INPUTS = {
   bfcl: 'data/authority/bfcl-v4.json',
   longbench: 'data/authority/longbench-v2.json',
   mapping: 'data/authority/mapping.json',
+  current: 'data/current-source-evidence.json',
+  currentSpecs: 'data/current-source-specs.json',
 };
 
 const HEX = /^[a-f0-9]{64}$/;
@@ -68,7 +71,9 @@ function resolveOrganization(label, mapping) {
   return mapping.organizationAliases[label] ?? label;
 }
 
-export function composeAuthority(inputs, registry) {
+export function composeAuthority(inputs, registry, { requireFreshCurrent = true } = {}) {
+  validateCurrentEvidence(inputs.current.json, inputs.currentSpecs.json, { requireFresh: requireFreshCurrent });
+  validateBenchmarkPolicy(registry, inputs.current.json, { requireFresh: requireFreshCurrent });
   const { deepswe, publisher, epoch, bfcl, longbench, mapping } = Object.fromEntries(Object.entries(inputs).map(([k, v]) => [k, v.json]));
   validateDeepSwe(deepswe);
   for (const benchmark of epoch.benchmarks) validateRows(benchmark, `Epoch ${benchmark.suiteId}`, benchmark.sourceFileSha256);
@@ -246,7 +251,7 @@ export function composeAuthority(inputs, registry) {
   const floorDomains = [...new Set(floorRows.map((row) => row.domain))].sort();
   const separate = [...new Set(observations.filter((row) => SEPARATE_PANELS.includes(row.domain)).map((row) => row.suiteId))].sort();
 
-  return {
+  return applyCurrentPolicy({
     schemaVersion: 'axionbench-authority-v1',
     inputDigests: Object.fromEntries(Object.entries(inputs).map(([key, value]) => [key, { path: value.path, sha256: value.sha256 }])),
     regionDefinition: mapping.regionDefinition,
@@ -254,7 +259,7 @@ export function composeAuthority(inputs, registry) {
     sources, suites: suiteList, models, observations, exclusions,
     floor: { requiredSuites: FLOOR.suites, requiredDomains: FLOOR.domains, suites: floorSuites, domains: floorDomains,
       separatePanelSuites: separate, met: floorSuites.length >= FLOOR.suites && floorDomains.length >= FLOOR.domains },
-  };
+  }, registry, inputs.current.json);
 }
 
 export function assertAuthorityFloor(block) {

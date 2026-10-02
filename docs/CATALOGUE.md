@@ -1,4 +1,8 @@
-# Catalogue, benchmark library and methodology (step 10)
+# Catalogue, benchmark library and methodology
+
+The current cohort is separate from the full 508-model catalogue. [Current policy](CURRENT-POLICY.md) documents 12 verified defaults, selectable recent versions back to OpenAI 5.5 and Anthropic 4.5/4.6, and the 30 explicitly retained identity requests. Names do not inherit another version’s result or tariff. For example, GPT-6 Luna is distinct from GPT-5.6 Luna; Muse Spark 1.1, 1.2 and 1.3 remain separate from an unverified unspecified “Meta Muse”.
+
+The current capture confirms 29 requested identities; unknown release dates, parameters, prices and statistical confidence stay null with reasons. Primary confirmation is not evidence of a benchmark score. BridgeBench retains 27 visible result identities, including eight with no first-party confirmation in this capture, rather than dropping them from its rating views.
 
 Verify with `npm run test:catalogue`. It runs `npm run test:open-weights` first (which chains head-to-head, frontier and the production build).
 

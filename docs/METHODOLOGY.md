@@ -2,6 +2,10 @@
 
 Method `axion-domain-v1` is a comparison aid, not a universal capability claim. Raw benchmark results, coverage and provenance remain primary. The checked-in definition and fixed initial domain weights are in `data/scoring.json`; executable rules are in `src/scoring/index.mjs`.
 
+The [current/version policy](CURRENT-POLICY.md) adds stricter product eligibility without changing this mathematical foundation. Current mode requires first-party model identity, a maintained exact benchmark and pinned tested harness. Four BFCL configuration rows across two identities qualify; two rows belong to the 12 default models. The full default cohort has no common current capability panel, so its composite is null. Existing qualified historical coverage remains 23 suites across eight capability domains.
+
+BridgeBench’s 270 published values are selectable comparative ratings, in their native units. Overall includes cost and speed. They stay outside the accuracy index, family coverage and independent measurement panels. Every rating has an exact model result link, content-hash snapshot version and a visible scoring exclusion. For example, an overall rating of 646 is displayed as “646 BridgeBench rating”, never “64.6% accuracy”. Unknown scores, dates and uncertainty are never zero-filled.
+
 ## Admission and comparability
 
 An observation is excluded from a default aggregate unless its unit is documented, its metric can be normalized using the registry's declared lower and upper bounds and direction, and its result is confirmed by a publisher/benchmark authority or an independent replication. A result from a model repository's `refs/pr/*` revision is excluded as an unmerged community submission even when the target repository belongs to a known lab. The capture preserves the reported result for inspection and does not promote a model card or a parsed numeric value to an authoritative score. Unverified results and unknown/inferred units remain visible in raw evidence.

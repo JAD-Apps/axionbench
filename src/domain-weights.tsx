@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { AuthorityBlock } from './authority/logic';
 import { pct } from './authority/logic';
-import { authorityPanel, rankResult, weightSensitivity } from './scoring/authority';
+import { rankResult } from './scoring/authority';
+import { currentAuthorityPanel as authorityPanel, currentWeightSensitivity as weightSensitivity } from './current/logic';
 import { DEFAULT_WEIGHTS, decodeWeightSettings, encodeWeightSettings, validateWeights, type PanelResult, type WeightSettings } from './scoring/index.mjs';
 
 const rankLabel = (result: PanelResult) => {
@@ -13,7 +14,7 @@ const rankLabel = (result: PanelResult) => {
 
 export default function DomainWeights({ authority, digest }: { authority: AuthorityBlock; digest: string }) {
   const candidates = useMemo(() => {
-    const measured = new Set(authority.observations.filter((row) => row.admitted && row.primary && row.configuration.conditionsKnown).map((row) => row.modelKey));
+    const measured = new Set(authority.observations.filter((row) => row.currentPolicy?.scoringEligible === true).map((row) => row.modelKey));
     return authority.models.filter((model) => measured.has(model.key)).sort((a, b) => a.name.localeCompare(b.name));
   }, [authority]);
   const defaults = ['gpt-6-astra', 'gemini-3-8-flash'].filter((key) => candidates.some((model) => model.key === key));

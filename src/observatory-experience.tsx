@@ -12,6 +12,8 @@ import OpenWeights from './open-weights';
 import type { OpenWeightsBlock } from './open-weights/logic';
 import TaskCost from './task-cost';
 import DomainWeights from './domain-weights';
+import BridgeBench from './bridgebench';
+import type { BridgeDataset } from './current/logic';
 import type { PriceBlock } from './pricing/logic';
 
 type Model = {
@@ -50,6 +52,7 @@ type Dataset = {
   sourceLimitations: { apiPricesPublished: boolean; apiPriceRowsObserved: number; apiPriceRowsPublished: number; apiPriceExclusion: string;
     verifiedBenchmarkObservations: number; identityConfirmedModels: number };
   authority: AuthorityBlock;
+  bridgeBench: BridgeDataset;
   pricing: PriceBlock;
   openWeights: OpenWeightsBlock;
   scoring: CatalogueInput['scoring'];
@@ -519,6 +522,7 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
       <DomainWeights authority={dataset.authority} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>
     </section>
 
+    <BridgeBench dataset={dataset.bridgeBench}/>
     <section className="paired chapter dark-chapter" id="paired" aria-labelledby="paired-title">
       <div className="chapter-index"><span>02 / TWO SYSTEMS</span><span>MATCHED TESTS ONLY</span></div>
       <div className="paired-composition">

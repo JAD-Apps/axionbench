@@ -22,7 +22,8 @@ export function assertPublicFields(value) {
 }
 export const RUNTIME_DIRS = new Set(['.git', 'node_modules', 'dist', 'test-results']);
 export const FACT_FILES = ['data/authority-deepswe.json', 'data/publisher-percentage-facts.json',
-  'data/authority/epoch-hub.json', 'data/authority/bfcl-v4.json', 'data/authority/longbench-v2.json', 'data/public-price-facts.json'];
+  'data/authority/epoch-hub.json', 'data/authority/bfcl-v4.json', 'data/authority/longbench-v2.json', 'data/public-price-facts.json',
+  'data/current-source-evidence.json'];
 export const REFRESH_FILES = [...FACT_FILES, 'public/data.json', 'public/data-details.json', 'public/data-manifest.json', SOURCE_MANIFEST];
 export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 export const jsonBytes = value => Buffer.from(JSON.stringify(value, null, 2) + '\n');

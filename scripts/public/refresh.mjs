@@ -23,6 +23,7 @@ export async function captureFacts({ stage, auditDir }) {
   for (const [script, args] of [
     ['scripts/publisher-tables.py', [target('data/publisher-percentage-facts.json'), auditDir]],
     ['scripts/pricing/capture-google.py', ['--output', target('data/public-price-facts.json'), '--audit-dir', auditDir]],
+    ['scripts/authority/current-capture.py', ['--output', target('data/current-source-evidence.json'), '--audit-dir', auditDir]],
   ]) {
     const result = spawnSync('python3', [target(script), ...args], { cwd: stage, stdio: 'inherit', timeout: 180000, env: { ...process.env, PYTHONDONTWRITEBYTECODE: '1' } });
     assert.equal(result.status, 0, `${script}: source extraction failed (${result.error?.message ?? result.status})`);
@@ -36,7 +37,7 @@ export async function runPublicRefresh({ root, auditDir, capture = captureFacts,
   const beforeManifest = await validateSource(root);
   // A stale last-good capture may be refreshed. Only the candidate promotion
   // and normal prebuild/CI gate require a currently quoteable capture.
-  const beforeData = await validateData(root, { requireFreshPrices: false });
+  const beforeData = await validateData(root, { requireFreshPrices: false, requireFreshCurrent: false });
   const before = new Map();
   for (const path of REFRESH_FILES) before.set(path, await readFile(join(root, path)));
   await mkdir(audit, { recursive: true, mode: 0o700 });

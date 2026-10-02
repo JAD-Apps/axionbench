@@ -12,6 +12,9 @@ export type AuthorityObservation = {
   counts: Record<string, number> | null; evaluatedAt: string | null; evaluatedAtBasis: string; resultUrl: string;
   tableCell?: { table: number; row: number; column: number };
   admitted: boolean; exclusion: string | null; matchable: boolean;
+  currentPolicy?: { scoringEligible: boolean; lifecycle: string; reason: string; versionId: string | null;
+    harnessVersion: string | null; originalSourceSha256: string | null; retrievedAt: string | null;
+    verifiedAt: string | null; resultUrl: string; factualProjectionSha256: string };
 };
 export type AuthoritySuite = { id: string; name: string; version: string; domain: string; familyId: string; benchmarkUrl: string | null };
 export type AuthoritySource = { id: string; name: string; publisher: string; provenance: string; url: string; resultUrl: string;
