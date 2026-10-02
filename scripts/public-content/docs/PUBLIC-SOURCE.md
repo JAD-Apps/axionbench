@@ -1,0 +1,11 @@
+# Public source boundary
+
+The public tree contains current frontend code, procedural hero, local licensed fonts, public assets, the complete frozen limited factual catalogue, original-result URLs and hashes, reviewed authority fact projections, Google licensed text-tariff cells, portable validation and refresh code. It contains no raw ingestion, original provider payloads, source-page prose/artwork, owner records, private workflow receipts, reference media or private Git ancestry.
+
+`FROZEN-SNAPSHOT.json` binds exact frozen catalogue/source-metadata files, registry and scoring definition. Their counts and all model/configuration/observation/conflict/source joins are validated. Open-weight grouping uses total parameters, never activated MoE counts; source hashes and unknowns remain intact. The public validator cannot replay excluded model-card raw bytes. A new frozen snapshot needs an independent review with the private raw-source checks before publication.
+
+Authority is independently re-derived by the unchanged reviewed composition logic from DeepSWE, Epoch, BFCL, LongBench and original publisher percentage cells. Source documents retain original-byte hashes and corresponding result links. Epoch and Google pricing retain explicit CC BY 4.0 attribution. Other sources carry their existing limited factual-extraction basis; the public snapshot grants no licence for their raw pages, payloads or artwork. Source-reported rights restrictions and unknowns remain inspectable. Publisher competitor claims and unknown test conditions remain excluded from strict comparisons.
+
+Google tariffs are the separately licensed standard paid text source. Every numerical rate must agree with its quoted paid source cell and exact endpoint. The cache/thinking/tier/expiry/freshness semantics are checked along with independent hand arithmetic. Other endpoint prices remain unavailable. Benchmark historical cost fields are absent from the authority input, and routed pricing records are absent from the entire source tree.
+
+The public source manifest verifies each actual file size and SHA-256 and rejects extra or excluded files. The frozen source and original-response hashes provide provenance; they do not substitute for private raw-source replay, independent review, genuine hosted CI, public repository visibility, HTTPS readback or owner-browser proof.
