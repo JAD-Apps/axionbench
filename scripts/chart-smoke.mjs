@@ -58,15 +58,19 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   check(stillBefore.visiblePixels > 0, 'reduced-motion contour has painted pixels');
   check(stillAfter.visiblePixels > 0, 'reduced-motion contour remains visible');
   check.equal(stillAfter.hash, stillBefore.hash, 'reduced-motion contour remains static');
+  await page.goto(origin + '/benchmarks', { waitUntil: 'networkidle' });
   check.equal(await page.locator('.plot-empty').count(), 1, 'the nine identity-matched flagships show real missing values');
   check.equal(await page.locator('.ranking-row').count(), 0, 'missing benchmark observations create no score marks');
-  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '#task-cost', 'cost control reaches the mounted licensed tariff scenario');
+  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '/task-pricing', 'cost control reaches the mounted licensed tariff scenario');
+  const benchmarkURL = page.url();
+  await page.goto(origin + '/task-pricing', { waitUntil: 'networkidle' });
   check.equal(await page.getByTestId('task-cost').count(), 1, 'permitted task cost is mounted');
   check.equal(await page.getByTestId('cost-plot').locator('[role="button"]').count(), 9, 'the real matched panel plots nine quoted endpoint identities');
   check.equal(await page.getByTestId('cost-table').locator('tbody tr').count(), 9, 'accessible cost table uses the same supported identities');
   check.equal(data.sourceLimitations.restrictedRoutedPricesPublished, false, 'restricted routed API payloads remain withheld');
   check.equal(await page.locator('script[src*="echarts"]').count(), 0, 'ECharts is not loaded');
 
+  await page.goto(benchmarkURL, { waitUntil: 'networkidle' });
   await page.getByTestId('view-table').click();
   check.equal(await page.locator('[data-testid="result-table"] tbody tr').count(), 9, 'accessible exact table covers the full default cohort');
   check.equal(await page.locator('[data-testid="result-table"] .missing-value').count(), 9, 'all missing states are explicit');

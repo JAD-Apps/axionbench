@@ -107,7 +107,17 @@
     "scripts/test-current-policy.mjs",
     "src/current/logic.ts",
     "src/bridgebench.tsx",
-    "docs/CURRENT-POLICY.md"
+    "docs/CURRENT-POLICY.md",
+    "src/routes.ts",
+    "src/home-comparison.tsx",
+    "src/home/logic.ts",
+    "src/versions.tsx",
+    "public/404.html",
+    "scripts/project/test-routes.mjs",
+    "docs/ROUTES.md",
+    "docs/DESIGN.md",
+    "docs/VISUAL-REFERENCE-REVIEW.md",
+    "scripts/verify-design.mjs"
   ],
   "templates": [
     "README.md",

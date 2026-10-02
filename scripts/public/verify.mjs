@@ -9,7 +9,7 @@ import { sha256, validateSource } from './boundary.mjs';
 import { scanDist } from '../release/manifest.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const gates = ['lint', 'data:validate', 'test:current-policy', 'test:boundary', 'typecheck', 'test:unit', 'test:scoring', 'test:pricing', 'test:weights',
-  'build', 'test:chart-smoke', 'test:cost-weights', 'test:acceptance', 'build:release', 'release:check'];
+  'build', 'verify:design', 'test:routes', 'test:chart-smoke', 'test:cost-weights', 'test:acceptance', 'build:release', 'release:check'];
 const unlock = await acquireGateLock();
 const run = new Date().toISOString().replace(/[:.]/g, '-');
 const dir = `test-results/public-${run}`;
@@ -32,7 +32,7 @@ try {
   }
   const manifest = await validateSource(root).catch(() => null);
   const release = JSON.parse(await readFile('dist/release-manifest.json', 'utf8').catch(() => 'null'));
-  const artifacts = ['acceptance', 'cost-weights', 'public-boundary.json', 'pricing.json', 'weights.json'];
+  const artifacts = ['routes', 'acceptance', 'cost-weights', 'public-boundary.json', 'pricing.json', 'weights.json'];
   await mkdir(`${dir}/evidence`, { recursive: true });
   for (const artifact of artifacts) {
     try { await cp(`test-results/${artifact}`, `${dir}/evidence/${artifact}`, { recursive: true, errorOnExist: true }); }

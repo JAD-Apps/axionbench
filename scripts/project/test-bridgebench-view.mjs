@@ -5,21 +5,24 @@ import { sha256 } from '../authority/common.mjs';
 const bytes = await readFile('public/data.json');
 const data = JSON.parse(bytes);
 const results = [];
-await withBuiltBrowser(async ({ page, origin, assert }) => {
+await withBuiltBrowser(async ({ page, newPage, origin, assert }) => {
   const errors = []; page.on('pageerror', e => errors.push(e.message));
   assert.equal(sha256(await (await page.request.get(origin + '/data.json')).body()), sha256(bytes), 'built browser serves the exact qualified data bytes');
   for (const width of [390, 768, 1440]) {
     await page.setViewportSize({ width, height: 950 });
-    await page.goto(origin + '/?bridgeAxis=reasoning', { waitUntil: 'networkidle' });
+    await page.goto(origin + '/benchmarks?bridgeAxis=reasoning', { waitUntil: 'networkidle' });
     const root = page.getByTestId('bridgebench');
     await root.waitFor();
     assert.equal(await root.locator('tbody tr').count(), 27);
     assert.equal(await root.getByLabel('Rating axis').inputValue(), 'reasoning');
     assert.equal(await root.locator('tbody tr').filter({ hasText: 'Unverified:' }).count(), 8);
     assert.match(await root.innerText(), /native BridgeBench rating units/);
-    const library = page.locator('#benchmark-bridgebench-published-ratings');
+    const libraryPage = await newPage();
+    await libraryPage.goto(origin + '/benchmark-archive', { waitUntil: 'networkidle' });
+    const library = libraryPage.locator('#benchmark-bridgebench-published-ratings');
     assert.match(await library.innerText(), /270 reported, not admitted · 27 models/);
     assert.equal(await library.locator('details a').count(), 27);
+    await libraryPage.close();
     for (const axis of data.bridgeBench.axes) {
       await root.getByLabel('Rating axis').selectOption(axis.id);
       assert.equal(new URL(page.url()).searchParams.get('bridgeAxis'), axis.id);

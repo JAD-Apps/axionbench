@@ -1,23 +1,13 @@
-# Rendered reference review
+# Visual reference review
 
-Coordinator browser inspection on 30 September 2026 supplements the text research in `docs/DESIGN.md`. Live Thirdway, Driftime's 2025 report and Vercel Ship returned HTTP 200 and were rendered at 1440 × 1000. The first Thirdway capture showed a loader; a subsequent capture after normal load and wheel scrolling showed its actual body. Driftime and Vercel emitted a hydration warning during this inspection. These are reference observations, not AxionBench acceptance evidence. No reference screenshots or artwork are shipped with the product.
+On 2 October 2026, real Chromium rendered https://www.awwwards.com/websites/vercel/ at 1440 × 1000. After dismissing its cookie overlay, the collection showed links to the three exact entry pages below. All three detail pages returned HTTP 200, listed Vercel as a technology and linked their live websites. Their live pages also returned HTTP 200 and were rendered. This establishes membership at inspection time; the earlier planning timeout does not.
 
-## Observed components and useful principles
+| Collection entry | Linked site rendered | Observation | Original AxionBench decision |
+| --- | --- | --- | --- |
+| [BOC Studio](https://www.awwwards.com/sites/boc-studio) | [boc.studio](https://boc.studio/) | A broad moving sculptural image sits behind a narrow orange identity strip. The type is compact and aligned; the work area uses clear category filters. | Use one original contour study on the overview and a compact shared identity/navigation rail. Keep motion away from values and practical controls. No orange strip, studio sculpture or portfolio layout is copied. |
+| [Infinity Signal](https://www.awwwards.com/sites/infinity-signal) | [Infinity Signal live page](https://infinitytechstack.uk/infinity-signal) | A dark canvas, a bounded top navigation, an oversized title, strongly separated measurements and a concise primary action establish the product before its detailed indicator content. | Put task controls and real recommendation cards immediately after the split hero. Use aligned white numbers and explicit units. Use cyan/violet selectively, without the reference’s gradient title, ticker, cyberpunk texture or financial figures. |
+| [Driftime’s 2025 Impact Report](https://www.awwwards.com/sites/driftimes-2025-impact-report) | [2025.driftime.com](https://2025.driftime.com/) | Oversized report lettering dominates the first view. Small menu/audio controls occupy its top corners; chapter labels and a narrow reading sequence separate sections. | Give each analytical page one clear title and a short explanation, followed by controls and evidence. Use generous space between title and data, without background lettering, audio prompts or a long scrolling report. |
 
-- [Thirdway](https://www.thirdway.com/) moves from a horizontal strip of imagery into a large, spacious statement, then another broad visual area. Its fixed central navigation is compact. Carry forward the shift in scale and breathing room between chapters. AxionBench uses its own sans typography, cool reading surfaces and analytical diagrams.
-- [Driftime 2025](https://2025.driftime.com/) places a narrow reading column over an oversized typographic background, with a persistent chapter/progress indicator. Carry forward the contrast between a clear reading column and a strong surrounding composition, plus a concise chapter index. Data labels and axes must remain unobscured; decorative type stops outside analytical marks.
-- [Vercel Ship](https://vercel.com/ship) uses restrained rules, an asymmetric list/visual stage, a large quiet gap, then a three-column section opening. Carry forward a shared underlying grid with different section compositions. AxionBench's analytical controls remain readable and distinct from subdued secondary metadata.
+The original result is an ink-black benchmark comparison product, with Space Grotesk headings, DM Sans controls and IBM Plex measurement labels under their shipped font licences. The hero and comparison structure are drawn in project code. No reference screenshots, images or fonts have been copied into product assets.
 
-## AxionBench implementation decisions
-
-Preserve the animated contour hero, including its existing motion behavior. Give the remaining page a deliberately different rhythm:
-
-1. A mineral frontier chapter with an expressive 48–64 px section heading, a short explanation, a compact control rail and one generous primary plot. Show its selected metric, source tier and measurement date at first use. Avoid a small sidebar heading beside an otherwise generic dashboard card.
-2. A graphite paired comparison stage, with balanced model identities and aligned shared-scale marks. Keep a clear visual centre and generous space around the actual comparison.
-3. An open-weight chapter organized around a horizontal size ruler and a bounded selected-band cohort. Total parameters define the bands; activated parameters are a separate measurement. Use small multiples or concise rows where they clarify the shape.
-4. A compact but readable full directory, reached through search and filters, with stable table hierarchy and generous section margins. The completeness of the directory must not produce hundreds of series on the main chart.
-5. A methods chapter with an editorial reading column, inspectable coverage and source detail, and a contrasting measurement accent. Keep evidence available without letting every caveat dominate the main composition.
-
-Use locally licensed Space Grotesk, DM Sans and IBM Plex Mono consistently. Keep the graphite/mineral/cobalt/lime palette from the blueprint. Reserve lime for selection and hero highlights, cobalt for measurements and links, and dark surfaces for focused comparisons. Thin rules and aligned typography organize content; repeated rounded tiles must not become the whole page.
-
-Treat mark readability, hierarchy and whitespace as acceptance criteria. Inspect full-page and section captures at the specified desktop/mobile widths after genuine interactions. Motion should explain sorting, filtering and selection. Reduced motion must keep the same values and controls. A successful compile or isolated component test does not establish the finished visual quality.
+Local reference PNGs and HTML are stored only in ignored `test-results/references/`. Candidate screenshots are separate in `test-results/routes/`. A reference observation is not a product acceptance result, benchmark qualification or independent review.

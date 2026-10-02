@@ -149,7 +149,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
-  await page.goto(origin, { waitUntil: 'networkidle' });
+  await page.goto(origin + '/models', { waitUntil: 'networkidle' });
   const table = page.getByTestId('cat-table');
   await table.waitFor();
   const visible = () => page.locator('[data-testid="cat-row"]').evaluateAll((n) => n.map((x) => x.getAttribute('data-id')));
@@ -254,7 +254,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
 
   // Model detail deep link + result links.
   const target = rows.find((r) => r.admitted >= 3 && r.origin === 'authority');
-  await page.goto(origin + '/?catModel=' + encodeURIComponent(target.id), { waitUntil: 'networkidle' });
+  await page.goto(origin + '/models?catModel=' + encodeURIComponent(target.id), { waitUntil: 'networkidle' });
   const detail = page.getByTestId('model-detail');
   await detail.waitFor();
   check.equal(await detail.getAttribute('data-id'), target.id);
@@ -264,19 +264,21 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.deepEqual(mentions, expectedEvidence.map((e) => [e.suiteId, e.resultUrl]), 'every benchmark mention links to that observation\'s original result');
   check.ok(await detail.evaluate((n) => { const r = n.getBoundingClientRect(); return r.top < window.innerHeight; }), 'deep link scrolls the detail into view');
   const nullTarget = rows.find((r) => r.admitted === 0 && r.reported === 0 && r.origin === 'catalogue');
-  await page.goto(origin + '/?catModel=' + encodeURIComponent(nullTarget.id), { waitUntil: 'networkidle' });
+  await page.goto(origin + '/models?catModel=' + encodeURIComponent(nullTarget.id), { waitUntil: 'networkidle' });
   check.match(await page.getByTestId('model-detail').innerText(), /stays in the catalogue as unscored/);
   check.match(await page.getByTestId('model-detail').innerText(), /Undisclosed|Unknown/);
   await page.getByTestId('model-close').click();
   check.equal(search().get('catModel'), null);
-  await page.goto(origin + '/?catModel=does-not-exist', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/models?catModel=does-not-exist', { waitUntil: 'networkidle' });
   check.equal(await page.getByTestId('model-detail').count(), 0, 'unknown model ID in the URL is ignored');
-  await page.goto(origin, { waitUntil: 'networkidle' });
+  await page.goto(origin + '/models', { waitUntil: 'networkidle' });
   await page.locator('[data-testid="cat-row"] .cat-open').first().click();
   check.equal(search().get('catModel') !== null, true, 'opening a row writes its ID to the URL');
   await page.getByTestId('cat-reset').click();
 
-  // Benchmark library: anchors, links, deep link.
+  // Benchmark library: its own route retains anchors, links and deep links.
+  await page.goto(origin + '/benchmark-archive', { waitUntil: 'networkidle' });
+  await page.getByTestId('benchmark-library').waitFor();
   const entries = page.locator('[data-testid="benchmark-entry"]');
   check.equal(await entries.count(), cat.benchmarks.length);
   for (const b of cat.benchmarks) {
@@ -290,10 +292,12 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   await page.getByTestId('library-domain').selectOption('coding');
   check.equal(await entries.count(), cat.benchmarks.filter((b) => b.domain === 'coding').length);
   check.equal(search().get('benDomain'), 'coding');
-  await page.goto(origin + '/#benchmark-gpqa-diamond', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/benchmark-archive#benchmark-gpqa-diamond', { waitUntil: 'networkidle' });
   check.ok(await page.locator('[id="benchmark-gpqa-diamond"]').evaluate((n) => { const r = n.getBoundingClientRect(); return r.top >= 0 && r.top < window.innerHeight; }), 'benchmark hash deep link scrolls to its entry');
 
   // Methodology.
+  await page.goto(origin + '/methods', { waitUntil: 'networkidle' });
+  await page.getByTestId('methodology').waitFor();
   const method = page.getByTestId('methodology');
   await method.scrollIntoViewIfNeeded();
   const weights = await page.getByTestId('method-weights').locator('li').evaluateAll((n) => Object.fromEntries(n.map((x) => [x.querySelector('span').textContent, Number(x.querySelector('strong').textContent)])));
@@ -311,7 +315,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   for (const width of [360, 768]) {
     const narrow = await newPage();
     await narrow.setViewportSize({ width, height: 900 });
-    await narrow.goto(origin + '/?catRegion=cn', { waitUntil: 'networkidle' });
+    await narrow.goto(origin + '/models?catRegion=cn', { waitUntil: 'networkidle' });
     await narrow.getByTestId('cat-table').waitFor();
     check.ok(await narrow.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), 'no page overflow at ' + width);
     await narrow.locator('#models').scrollIntoViewIfNeeded();

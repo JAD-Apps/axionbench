@@ -46,7 +46,8 @@
     "test:cost-weights": "node scripts/test-cost-weights.mjs",
     "public:prepare": "node scripts/public-snapshot.mjs",
     "verify:public": "node scripts/project/verify-public-boundary.mjs --archive-test",
-    "test:public-boundary": "node --test tests/project/public-boundary.test.mjs"
+    "test:public-boundary": "node --test tests/project/public-boundary.test.mjs",
+    "test:routes": "node scripts/project/test-routes.mjs"
   },
   "devDependencies": {
     "@types/node": "24.10.0",

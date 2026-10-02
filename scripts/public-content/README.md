@@ -2,6 +2,8 @@
 
 AxionBench compares model results, coverage and estimated API task costs. Each result keeps its source link and date. Missing scores, unknown prices and incompatible test versions stay explicit.
 
+The dark overview pairs task controls with Economy, Balanced and Frontier comparisons. Rankings, benchmarks, domains, pricing, versions, open weights, US–China, models, methods and the benchmark archive each have their own page. See [page URLs and shared filters](docs/ROUTES.md).
+
 Use Node 24, Python 3 and `npm@11.19.0`, as pinned in `package.json`. Keep `package-lock.json` unchanged when installing:
 
 ```sh

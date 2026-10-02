@@ -93,7 +93,7 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
-  await page.goto(origin, { waitUntil: 'networkidle' });
+  await page.goto(origin + '/us-china', { waitUntil: 'networkidle' });
   const h2h = page.getByTestId('h2h');
   await h2h.waitFor();
   const url = () => new URL(page.url()).searchParams;

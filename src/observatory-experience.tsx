@@ -15,6 +15,9 @@ import DomainWeights from './domain-weights';
 import BridgeBench from './bridgebench';
 import type { BridgeDataset } from './current/logic';
 import type { PriceBlock } from './pricing/logic';
+import type { RouteId } from './routes';
+import HomeComparison from './home-comparison';
+import Versions from './versions';
 
 type Model = {
   id: string; name: string; labId: string; lab: string; catalogId: string | null; revision: string | null;
@@ -40,7 +43,7 @@ type Suite = {
   metric: { name: string; direction: string; min: number; max: number } | null;
   url: string | null; state: string; reason: string; observationCount: number;
 };
-type Dataset = {
+export type Dataset = {
   schemaVersion: string; sourceDigest: string; retrievedAt: string; models: Model[];
   configurations: Record<string, { id: string; modelId: string; revision: unknown; variant: string | null;
     baseOrInstruct: string | null; reasoningMode: unknown; providerEndpoint: unknown; quantization: string | null;
@@ -55,6 +58,7 @@ type Dataset = {
   bridgeBench: BridgeDataset;
   pricing: PriceBlock;
   openWeights: OpenWeightsBlock;
+  currentModels: { key: string; name: string; labId: string; apiId: string; selection: string; lifecycle: string; identityVerified: boolean; identityReason: string | null; originalSourceUrl: string; retrievedAt: string; releaseDate: string | null }[];
   scoring: CatalogueInput['scoring'];
 };
 type Manifest = {
@@ -72,7 +76,7 @@ type SourceDetails = {
   schemaVersion: string; sourceDigest: string; sources: SourceRecord[];
   conflicts: Dataset['sourceConflicts'];
 };
-type Props = { onDatasetStatus: (status: string) => void };
+type Props = { route: RouteId; onDatasetStatus: (status: string) => void };
 type Ranked = { observation: Observation; model: Model };
 
 const defaultSuite = 'gpqa-diamond';
@@ -285,7 +289,7 @@ function EvidenceMatrix({ models, dataset }: { models: Model[]; dataset: Dataset
   </details>;
 }
 
-export default function ObservatoryExperience({ onDatasetStatus }: Props) {
+export default function ObservatoryExperience({ route, onDatasetStatus }: Props) {
   const [dataset, setDataset] = useState<Dataset | null>(null);
   const [manifest, setManifest] = useState<Manifest | null>(null);
   const [failure, setFailure] = useState('');
@@ -334,8 +338,7 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
             ? defaultSuite : (projection.suites.find((row) => row.observationCount > 0)?.id ?? ''));
           if (initialLab === 'all' || projection.models.some((row) => row.labId === initialLab)) setLabId(initialLab);
           if (initialView && supportedViews.includes(initialView as View)) setView(initialView as View);
-          onDatasetStatus(projection.models.length + ' catalogued models · ' + projection.observations.length
-            + ' reported observations · snapshot ' + projection.retrievedAt.slice(0, 10));
+          onDatasetStatus(projection.currentModels.filter(model => model.selection === 'default').length + ' current model defaults · publisher ratings retrieved ' + projection.bridgeBench.records[0].retrievedAt.slice(0, 10));
         }
       })
       .catch((error: unknown) => {
@@ -390,7 +393,7 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
     .sort((a, b) => a.name.localeCompare(b.name));
 
   useEffect(() => {
-    if (!dataset || !effectiveSuite) return;
+    if (!dataset || !effectiveSuite || route !== 'benchmarks') return;
     const url = new URL(location.href);
     url.searchParams.set('cohort', cohort);
     url.searchParams.set('domain', domain);
@@ -400,7 +403,7 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
     if (selected) url.searchParams.set('selected', selected);
     else url.searchParams.delete('selected');
     history.replaceState(null, '', url);
-  }, [dataset, cohort, domain, effectiveSuite, labId, view, selected]);
+  }, [dataset, cohort, domain, effectiveSuite, labId, view, selected, route]);
 
   useEffect(() => {
     if (!dataset) return;
@@ -431,23 +434,15 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
   const resultBySuite = dataset.observations.filter((row) => row.suiteId === effectiveSuite);
 
   return <>
+    {route === 'overview' && <HomeComparison dataset={dataset}/>}
+    {route === 'versions' && <Versions models={dataset.currentModels}/>}
+    {route === 'rankings' && <section className="chapter"><AuthorityRanking authority={dataset.authority}/></section>}
+    {route === 'pricing' && <section className="chapter"><TaskCost authority={dataset.authority} pricing={dataset.pricing} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/></section>}
+    {route === 'domains' && <section className="chapter"><DomainWeights authority={dataset.authority} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/></section>}
+    {route === 'archive' && <section className="chapter"><BenchmarkLibrary input={dataset as unknown as CatalogueInput}/></section>}
+    {route === 'benchmarks' && <>
+    <BridgeBench dataset={dataset.bridgeBench}/>
     <section className="frontier chapter" id="frontier" aria-labelledby="frontier-title">
-      <div className="chapter-index"><span>01 / THE FRONTIER</span><span>RESULTS, WITH CONDITIONS</span></div>
-      <div className="frontier-intro">
-        <div className="chapter-heading">
-          <p className="eyebrow">The visible edge of the evidence</p>
-          <h2 id="frontier-title">A clearer view<br/><i>of what was measured.</i></h2>
-          <p>Start with nine model identities matched to captured official releases. Benchmark scores appear only when this snapshot has a reported result; no result is filled in.</p>
-        </div>
-        <aside className="frontier-proof" aria-label="Snapshot evidence counts">
-          <div><strong>{watchlist.length.toString().padStart(2, '0')}</strong><span>official release identity matches</span></div>
-          <div><strong>{sourceLimits.verifiedBenchmarkObservations.toString().padStart(2, '0')}</strong><span>benchmark observations marked verified</span></div>
-          <a href="#methods">How to read this capture <span aria-hidden="true">↘</span></a>
-        </aside>
-      </div>
-
-      <AuthorityRanking authority={dataset.authority}/>
-
       <div className="frontier-stage" data-testid="frontier-stage">
         <div className="frontier-stage-head">
           <div><span className="eyebrow">One task · one metric · original units</span><h3>{selectedSuite?.name ?? 'No observed benchmark suite'}</h3>
@@ -488,7 +483,7 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
           <div className="view-switch" role="group" aria-label="Frontier view">
             <button type="button" data-testid="view-ranking" aria-pressed={view === 'ranking'} onClick={() => toggleView('ranking')}>Ranking plot</button>
             <button type="button" data-testid="view-table" aria-pressed={view === 'table'} onClick={() => toggleView('table')}>Exact rows</button>
-            <a className="cost-view-link" data-testid="view-cost" href="#task-cost">Task cost ↘</a>
+            <a className="cost-view-link" data-testid="view-cost" href="/task-pricing">Task cost ↘</a>
           </div>
         </div>
         <div className="cohort-note" role="note">
@@ -518,12 +513,10 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         </div>
         <EvidenceMatrix models={matrixModels} dataset={dataset}/>
       </div>
-      <TaskCost authority={dataset.authority} pricing={dataset.pricing} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>
-      <DomainWeights authority={dataset.authority} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>
     </section>
 
-    <BridgeBench dataset={dataset.bridgeBench}/>
-    <section className="paired chapter dark-chapter" id="paired" aria-labelledby="paired-title">
+    </>}
+    {route === 'regional' && <section className="paired chapter dark-chapter" id="paired" aria-labelledby="paired-title">
       <div className="chapter-index"><span>02 / TWO SYSTEMS</span><span>MATCHED TESTS ONLY</span></div>
       <div className="paired-composition">
         <div className="paired-copy">
@@ -536,14 +529,15 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
           <div className="paired-rule"/>
           <strong>Capability domains with admitted evidence</strong>
           <p>Publisher-reported tables stay visible as facts but never enter a strict match: their evaluation conditions are not stated in a matchable form.</p>
-          <a href="#methods">Read the comparison rule <span aria-hidden="true">↗</span></a>
+          <a href="/methods">Read the comparison rule <span aria-hidden="true">↗</span></a>
         </div>
       </div>
       <HeadToHead authority={dataset.authority} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>
       <div className="paired-foot"><span>Matched source / suite version / metric / test condition</span><span>REGION · DEVELOPER ORGANIZATION COUNTRY (EPOCH AI RECORD)</span></div>
     </section>
 
-    <section className="open chapter" id="open-weights" aria-labelledby="open-title">
+    }
+    {route === 'open' && <section className="open chapter" id="open-weights" aria-labelledby="open-title">
       <div className="chapter-index"><span>03 / OPEN WEIGHTS</span><span>TOTAL PARAMETERS DEFINE THE GROUP</span></div>
       <div className="open-composition">
         <div className="open-heading">
@@ -560,7 +554,8 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
       </div>
     </section>
 
-    <section className="directory chapter" id="models" aria-labelledby="directory-title">
+    }
+    {route === 'models' && <section className="directory chapter" id="models" aria-labelledby="directory-title">
       <div className="chapter-index"><span>04 / THE CATALOGUE</span><span>ALL SOURCE MODELS · UNSCORED INCLUDED</span></div>
       <div className="directory-head">
         <div><p className="eyebrow">Browse the wider field</p><h2 id="directory-title">A field of models.<br/><i>Evidence attached.</i></h2></div>
@@ -574,7 +569,8 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
       </div>
     </section>
 
-    <section className="methods chapter" id="methods" aria-labelledby="methods-title">
+    }
+    {route === 'methods' && <section className="methods chapter" id="methods" aria-labelledby="methods-title">
       <div className="chapter-index"><span>05 / METHODS & COVERAGE</span><span>PROVENANCE BEFORE SUMMARY</span></div>
       <div className="methods-intro">
         <div><p className="eyebrow">How to read this observatory</p><h2 id="methods-title">Every number<br/><i>has a context.</i></h2></div>
@@ -586,7 +582,7 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
         <article><span>03</span><div><h3>Panels keep their meaning</h3><p>Results are shown only within the selected registered suite and metric. No per-model missingness renormalization, universal score or confidence interval is claimed.</p></div></article>
         <article><span>04</span><div><h3>Source rights affect the view</h3><p>{sourceLimits.apiPriceRowsPublished} original-provider text tariffs are published under CC BY 4.0 with attribution. The {sourceLimits.apiPriceRowsObserved.toLocaleString()} captured routed endpoint rows remain excluded while their reuse terms are unsettled.</p></div></article>
       </div>
-      <BenchmarkLibrary input={dataset as unknown as CatalogueInput}/>
+      <p><a href="/benchmark-archive">Browse the benchmark registry and archive ↗</a></p>
       <Methodology input={dataset as unknown as CatalogueInput} manifest={manifest}/>
       <div className="integrity-panel">
         <div><p className="eyebrow">Data integrity</p><h3>Bound to one captured input.</h3></div>
@@ -597,6 +593,6 @@ export default function ObservatoryExperience({ onDatasetStatus }: Props) {
       </div>
       <p className="snapshot-note">This page covers the captured source-admitted snapshot, not every model or test in existence. Source detail includes the recorded reuse terms, retrieval status, identifiers and hashes when available.</p>
     </section>
-    <footer><span>AXIONBENCH <i>/</i> EVIDENCE IN CONTEXT</span><a href="/privacy.html">Privacy</a><a href="#top">Back to top ↑</a></footer>
+    }
   </>;
 }

@@ -24,8 +24,8 @@ const knownResultUrls = new Set([
 ].filter(Boolean));
 
 const WIDTHS = [320, 390, 768, 1440, 1920];
-const CHAPTERS = [['hero', '.hero'], ['frontier', '#frontier'], ['paired', '#paired'], ['open-weights', '#open-weights'],
-  ['models', '#models'], ['methods', '#methods']];
+const CHAPTERS = [['hero', '.hero', '/'], ['benchmarks', '#frontier', '/benchmarks'], ['paired', '#paired', '/us-china'], ['open-weights', '#open-weights', '/open-weights'],
+  ['models', '#models', '/models'], ['methods', '#methods', '/methods'], ['frontier', '[data-testid=authority-ranking]', '/rankings']];
 const report = { widths: WIDTHS, screenshots: [], checks: [], timings: {}, failures: [] };
 const pass = (name, detail = '') => { report.checks.push({ name, detail }); console.log(`ok  ${name}${detail ? ` — ${detail}` : ''}`); };
 
@@ -43,8 +43,11 @@ function watch(page) {
 }
 
 async function ready(page) {
-  await page.waitForSelector('#methods [data-testid=methodology]', { timeout: 30000 });
-  await page.waitForSelector('[data-testid=authority-rows] rect[data-mark=value]');
+  const route = new URL(page.url()).pathname.replace(/\/$/, '') || '/';
+  const testId = { '/': 'home-comparison', '/rankings': 'authority-ranking', '/benchmarks': 'bridgebench', '/us-china': 'h2h', '/open-weights': 'ow', '/models': 'catalogue', '/methods': 'methodology' }[route];
+  assert(testId, 'acceptance must identify its route');
+  await page.getByTestId(testId).waitFor();
+  if (route === '/rankings') await page.waitForSelector('[data-testid=authority-rows] rect[data-mark=value]');
   await page.evaluate(() => document.fonts.ready);
 }
 
@@ -124,13 +127,11 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
     expect(layout.scrollWidth <= layout.width, `${width}px: page scrolls horizontally (${layout.scrollWidth} > ${layout.width})`);
     expect(layout.offenders.length === 0, `${width}px: elements escape the viewport: ${layout.offenders.join('; ')}`);
 
-    // Every chapter stays reachable from the navigation without hidden scrolling.
-    const hiddenNav = await page.$$eval('.topbar nav a', (links) => links.filter((link) => {
-      const rect = link.getBoundingClientRect(); const bar = link.parentElement.getBoundingClientRect();
-      return rect.left < Math.max(0, bar.left) - 1 || rect.right > Math.min(document.documentElement.clientWidth, bar.right) + 1;
-    }).map((link) => link.textContent));
-    expect(hiddenNav.length === 0, `${width}px: navigation links cut off: ${hiddenNav.join(', ')}`);
-
+    // Every page remains reachable when keyboard focus scrolls the compact rail.
+    for (const link of await page.locator('.topbar nav a').all()) {
+      await link.focus();
+      expect(await link.evaluate(el => { const r = el.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth + 1; }), `${width}px: focused navigation link is clipped`);
+    }
     // A wrapped (taller) top bar must not cover the start of a chapter reached by an anchor link.
     const anchor = await page.evaluate(() => ({ bar: document.querySelector('.topbar').getBoundingClientRect().height, padding: parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) }));
     expect(anchor.padding >= anchor.bar, `${width}px: scroll-padding-top ${anchor.padding}px is smaller than the ${anchor.bar}px sticky top bar, so anchor targets are covered`);
@@ -156,7 +157,11 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
     });
     expect(crushed.length === 0, `${width}px: table columns too narrow for a single word: ${crushed.join('; ')}`);
 
-    for (const [name, selector] of CHAPTERS) {
+    for (const [name, selector, routePath] of CHAPTERS) {
+      await page.goto(origin + routePath, { waitUntil: 'networkidle' }); await ready(page);
+      const routeLayout = await page.evaluate(overflowProbe);
+      expect(routeLayout.scrollWidth <= routeLayout.width && routeLayout.offenders.length === 0, `${width}px ${routePath}: route overflow ${JSON.stringify(routeLayout)}`);
+      if (width === 390 || width === 1440) { const routeContrast = await page.evaluate(contrastProbe, 'header *, main *, footer *'); expect(routeContrast.failures.length === 0, `${width}px ${routePath}: contrast failures ${routeContrast.failures.slice(0,8).join('; ')}`); }
       // Park each chapter just below the sticky top bar, as a visitor sees it (the hero then sits at scroll 0).
       await page.$eval(selector, (element) => window.scrollTo(0, element.getBoundingClientRect().top + window.scrollY - document.querySelector('.topbar').getBoundingClientRect().height));
       await page.waitForTimeout(250);
@@ -201,16 +206,16 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
 
   // ---- 2. Keyboard: skip link, visible focus, select operation ----
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto(origin + '/', { waitUntil: 'load' });
+  await page.goto(origin + '/rankings', { waitUntil: 'load' });
   await ready(page);
   await page.bringToFront();
   await page.keyboard.press('Tab');
   await page.waitForFunction(() => document.activeElement?.classList.contains('skip-link') && document.activeElement.getBoundingClientRect().top >= 0, null, { timeout: 3000 }).catch(() => {});
   const skip = await page.evaluate(() => ({ text: document.activeElement?.textContent, href: document.activeElement?.getAttribute('href'), outline: getComputedStyle(document.activeElement).outlineWidth, top: document.activeElement.getBoundingClientRect().top }));
-  expect(skip.href === '#frontier' && /skip/i.test(skip.text ?? ''), `first Tab stop is not the skip link (${skip.text})`);
+  expect(skip.href === '#main-content' && /skip/i.test(skip.text ?? ''), `first Tab stop is not the skip link (${skip.text})`);
   expect(skip.top >= 0 && parseFloat(skip.outline) >= 2, `skip link is not visibly focused on screen (top ${skip.top}, outline ${skip.outline})`);
   await page.keyboard.press('Enter');
-  await page.waitForFunction(() => location.hash === '#frontier');
+  await page.waitForFunction(() => location.hash === '#main-content');
   const panel = page.getByTestId('authority-panel');
   await panel.focus();
   const focusRing = await panel.evaluate((element) => getComputedStyle(element).outlineWidth);
@@ -223,53 +228,53 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
   expect(before !== after || (await panel.inputValue()) !== panelBefore, 'keyboard change of the benchmark panel did not update the ranking');
   pass('keyboard', 'skip link, visible focus, arrow-key panel change updates rows and URL');
 
-  // ---- 3. Combined deep link across every chapter, then roundtrip ----
+  // ---- 3. Each page owns a separate share link; roundtrip every control set. ----
   await page.getByTestId('authority-cohort').selectOption('all');
-  const cnOptions = await page.getByTestId('h2h-cn').locator('option').evaluateAll((items) => items.map((item) => item.value));
-  const cnPick = cnOptions.at(-1);
-  await page.getByTestId('h2h-cn').selectOption(cnPick);
+  const sharedPages = [{ path: '/rankings', url: page.url(), testId: 'authority-cohort', value: 'all', keys: ['authority', 'authorityCohort'] }];
+  await page.goto(origin + '/us-china', { waitUntil: 'networkidle' }); await ready(page);
+  const cnOptions = await page.getByTestId('h2h-cn').locator('option').evaluateAll(items => items.map(item => item.value));
+  const cnPick = cnOptions.at(-1); await page.getByTestId('h2h-cn').selectOption(cnPick);
+  await page.waitForFunction(value => new URL(location.href).searchParams.get('cn') === value, cnPick);
+  sharedPages.push({ path: '/us-china', url: page.url(), testId: 'h2h-cn', value: cnPick, keys: ['us','cn'] });
+  await page.goto(origin + '/open-weights', { waitUntil: 'networkidle' }); await ready(page);
   await page.locator('.band-tabs button[data-band]').nth(1).click();
-  await page.getByTestId('cat-query').fill('llama');
-  await page.waitForFunction(() => new URL(location.href).searchParams.get('catQ') === 'llama');
-  const shared = page.url();
-  const params = new URL(shared).searchParams;
-  for (const key of ['authority', 'authorityCohort', 'us', 'cn', 'owBand', 'catQ', 'suite', 'cohort']) expect(params.has(key), `combined share URL lost ${key}: ${shared}`);
-  const state = async (target) => ({
-    authority: await target.getByTestId('authority-panel').inputValue(),
-    cohort: await target.getByTestId('authority-cohort').inputValue(),
-    cn: await target.getByTestId('h2h-cn').inputValue(),
-    band: await target.locator('.band-tabs button[aria-pressed=true]').getAttribute('data-band'),
-    query: await target.getByTestId('cat-query').inputValue(),
-    catTotal: await target.getByTestId('cat-total').textContent(),
-    owTotal: await target.getByTestId('ow-total').textContent(),
-  });
-  const original = await state(page);
-  const reopened = await newPage();
-  const reopenErrors = watch(reopened);
-  await reopened.goto(shared, { waitUntil: 'load' });
-  await ready(reopened);
-  const restored = await state(reopened);
-  expect(JSON.stringify(restored) === JSON.stringify(original), `deep link roundtrip differs: ${JSON.stringify(original)} vs ${JSON.stringify(restored)}`);
-  expect(original.cn === cnPick && original.cohort === 'all', 'deep link state did not take the chosen values');
-  expect(reopenErrors.length === 0, `runtime errors on reopened link: ${reopenErrors.join(' | ')}`);
-  await reopened.close();
-  pass('deep-link roundtrip', `${[...params.keys()].length} parameters across frontier, head-to-head, open weights and catalogue`);
+  const band = await page.locator('.band-tabs button[aria-pressed=true]').getAttribute('data-band');
+  await page.waitForFunction(value => new URL(location.href).searchParams.get('owBand') === value, band);
+  const owTotal = await page.getByTestId('ow-total').textContent();
+  sharedPages.push({ path: '/open-weights', url: page.url(), band, keys: ['owBand'] });
+  await page.goto(origin + '/models', { waitUntil: 'networkidle' }); await ready(page);
+  await page.getByTestId('cat-query').fill('llama'); await page.waitForFunction(() => new URL(location.href).searchParams.get('catQ') === 'llama');
+  const catTotal = await page.getByTestId('cat-total').textContent();
+  sharedPages.push({ path: '/models', url: page.url(), testId: 'cat-query', value: 'llama', keys: ['catQ'] });
+  for (const saved of sharedPages) {
+    for (const key of saved.keys) expect(new URL(saved.url).searchParams.has(key), `${saved.path} lost share key ${key}`);
+    const reopened = await newPage(); const reopenErrors = watch(reopened); await reopened.goto(saved.url, { waitUntil: 'networkidle' }); await ready(reopened);
+    if (saved.testId) expect(await reopened.getByTestId(saved.testId).inputValue() === saved.value, `${saved.path} share roundtrip differs`);
+    else expect(await reopened.locator('.band-tabs button[aria-pressed=true]').getAttribute('data-band') === saved.band, 'open-weight share roundtrip differs');
+    expect(reopenErrors.length === 0, `${saved.path} roundtrip runtime errors: ${reopenErrors.join(' | ')}`); await reopened.close();
+  }
+  const original = { owTotal, catTotal };
+  pass('deep-link roundtrip', 'separate ranking, US–China, open-weight and catalogue URLs restore their controls');
 
   // ---- 4. Exports agree with visible counts ----
   const download = async (testId) => {
     const [file] = await Promise.all([page.waitForEvent('download'), page.getByTestId(testId).click()]);
     return JSON.parse(await readFile(await file.path(), 'utf8'));
   };
+  await page.goto(sharedPages.find(row => row.path === '/open-weights').url, { waitUntil: 'networkidle' }); await ready(page);
   const owExport = await download('ow-export');
   const owRows = owExport.rows ?? owExport.entries ?? owExport.models;
   expect(Array.isArray(owRows) && owRows.length === Number(original.owTotal), `open-weight export has ${owRows?.length} rows, page shows ${original.owTotal}`);
+  await page.goto(sharedPages.find(row => row.path === '/models').url, { waitUntil: 'networkidle' }); await ready(page);
   const catExport = await download('cat-export-json');
   const catRows = catExport.rows ?? catExport.models;
   expect(Array.isArray(catRows) && catRows.length === Number(original.catTotal.replace(/\D/g, '')), `catalogue export has ${catRows?.length} rows, page shows ${original.catTotal}`);
+  await page.goto(sharedPages.find(row => row.path === '/us-china').url, { waitUntil: 'networkidle' }); await ready(page);
   const h2hExport = await download('h2h-export');
   expect(JSON.stringify(h2hExport).includes(cnPick), 'head-to-head export does not name the selected China lab model');
   pass('exports', `open weights ${owRows?.length}, catalogue ${catRows?.length}, head-to-head bound to ${cnPick}`);
 
+  await page.goto(origin + '/rankings', { waitUntil: 'networkidle' }); await ready(page);
   // ---- 5. Result links are genuine captured HTTPS results ----
   const links = await page.$$eval('[data-testid=authority-rows] a, [data-testid=authority-table] a', (items) => items.map((item) => item.href));
   expect(links.length > 0, 'no ranking result links rendered');
@@ -302,7 +307,7 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
 // ---- 7. Motion: ranking transitions animate; reduced motion renders final marks ----
 await withBuiltBrowser(async ({ page, origin }) => {
   const errors = watch(page);
-  await page.goto(origin + '/', { waitUntil: 'load' });
+  await page.goto(origin + '/rankings', { waitUntil: 'load' });
   await ready(page);
   await page.getByTestId('authority-rows').scrollIntoViewIfNeeded();
   const current = await page.getByTestId('authority-panel').inputValue();
@@ -334,7 +339,7 @@ await withBuiltBrowser(async ({ page, origin }) => {
 }, { reducedMotion: 'no-preference' });
 
 await withBuiltBrowser(async ({ page, origin }) => {
-  await page.goto(origin + '/', { waitUntil: 'load' });
+  await page.goto(origin + '/rankings', { waitUntil: 'load' });
   await ready(page);
   const scales = await page.evaluate(async () => {
     const select = document.querySelector('[data-testid=authority-panel]');
@@ -355,12 +360,13 @@ await withBuiltBrowser(async ({ page, origin }) => {
 await withBuiltBrowser(async ({ page, origin }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const errors = watch(page);
-  await page.goto(origin + '/', { waitUntil: 'load' });
+  await page.goto(origin + '/open-weights', { waitUntil: 'load' });
   await ready(page);
   const tab = page.locator('.band-tabs button[data-band]').nth(2);
   await tab.scrollIntoViewIfNeeded();
   await tab.tap();
   expect(await tab.getAttribute('aria-pressed') === 'true', 'tapping a parameter band did not select it');
+  await page.goto(origin + '/models', { waitUntil: 'networkidle' }); await ready(page);
   const next = page.getByTestId('cat-next');
   await next.scrollIntoViewIfNeeded();
   const pageBefore = await page.getByTestId('cat-page').textContent();
