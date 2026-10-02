@@ -2,16 +2,14 @@
 // product source before preparing its own frozen dependencies and running its
 // real portable gates. Never copies dependencies or private Git history.
 import assert from 'node:assert/strict';
-import { spawn } from 'node:child_process';
-import { mkdir, readFile, readdir, lstat, writeFile } from 'node:fs/promises';
-import { createWriteStream } from 'node:fs';
+import { readFile, readdir, lstat } from 'node:fs/promises';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateSource, sha256 } from './public/boundary.mjs';
+import { validateSource } from './public/boundary.mjs';
 import { validateData } from './public/data.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const product = join(root, 'publication/product');
+export async function verifyPrivatePublic(product) {
 // The private release gate remains an executable, so don't import its runner.
 const requiredPrivateGates = ['lint','typecheck','test:unit','test:scoring','test:pricing','test:weights','test:cost-weights','test:registry','test:data','data:validate','test:authority','verify:design','test:frontier','test:chart-smoke','test:head-to-head','test:open-weights','test:catalogue','test:acceptance','verify:automation','build:release','release:check'];
 const gateSource = await readFile(join(root, 'scripts/release/verify-release.mjs'), 'utf8');
@@ -45,30 +43,5 @@ assert.deepEqual(publicFacts, privateFacts, 'public facts and exact joins preser
 assert.deepEqual(expected.projection.pricing, privatePricing); assert.deepEqual(expected.projection.scoring, privateScoring);
 const scoringTests = await readFile(join(root, 'tests/scoring/test-scoring.mjs'), 'utf8');
 assert.equal(await readFile(join(product, 'tests/scoring/test-scoring.mjs'), 'utf8'), scoringTests.replace("import data from '../../data/ingestion.json' with { type: 'json' };", "import data from '../../scripts/public/scoring-data.mjs';"), 'all original hand/adversarial scoring assertions are retained');
-const dir = `test-results/public-candidate-${new Date().toISOString().replace(/[:.]/g, '-')}`;
-await mkdir(dir, { recursive: true });
-const results = [];
-// npm run exports user .npmrc settings as npm_config_* variables. npm 11.19
-// rejects allow-scripts when that export is mistaken for a project install CLI
-// flag. Remove only the derived environment copy; npm ci still reads the actual
-// user/global/project .npmrc policy. No configuration file is changed.
-const installEnv = { ...process.env };
-for (const key of Object.keys(installEnv)) if (key.toLowerCase() === 'npm_config_allow_scripts') delete installEnv[key];
-for (const [label, args] of [['frozen-install', ['ci', '--include=dev', '--no-audit', '--no-fund']], ['portable-gates', ['run', 'verify:public']]]) {
-  const path = `${dir}/${label}.log`, log = createWriteStream(path);
-  const status = await new Promise(resolve => {
-    const child = spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, { cwd: product, shell: process.platform === 'win32', env: installEnv });
-    for (const stream of [child.stdout, child.stderr]) stream.on('data', bytes => { process.stdout.write(bytes); log.write(bytes); });
-    child.once('error', error => { log.write(error.message); resolve(null); }); child.once('close', code => resolve(code));
-  });
-  await new Promise(resolve => log.end(resolve));
-  results.push({ label, command: ['npm', ...args], exitCode: status, log: path, logSha256: sha256(await readFile(path)) });
-  if (status !== 0) break;
+return { publicManifest, expected, privateData, privateGatesRetained: requiredPrivateGates.length };
 }
-const receipt = { schemaVersion: 'axionbench-private-public-integration-v1', at: new Date().toISOString(), passed: results.length === 2 && results.every(r => r.exitCode === 0),
-  publicSourceSha256: publicManifest.sourceSha256, privateSourceDigest: privateData.sourceDigest, publicDataSha256: expected.manifest.projection.sha256,
-  productPath: 'publication/product', privateGatesRetained: requiredPrivateGates.length, results, independentReview: false, hostedCI: false };
-await writeFile(`${dir}/receipt.json`, JSON.stringify(receipt, null, 2) + '\n');
-await writeFile('test-results/public-candidate.json', JSON.stringify(receipt, null, 2) + '\n');
-console.log(`Private/public source integration ${receipt.passed ? 'passed' : 'FAILED'}: ${dir}/receipt.json`);
-if (!receipt.passed) process.exitCode = 1;

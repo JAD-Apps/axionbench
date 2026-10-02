@@ -27,7 +27,8 @@ try {
       child.once('close', code => resolve(code));
     });
     await new Promise(resolve => log.end(resolve));
-    results.push({ script, exitCode: code, milliseconds: Date.now() - start, log: logPath, logSha256: sha256(await readFile(logPath)) });
+    const logBytes = await readFile(logPath);
+    results.push({ script, command: `npm run ${script}`, exitCode: code, milliseconds: Date.now() - start, log: logPath, logBytes: logBytes.length, logSha256: sha256(logBytes) });
   }
   const manifest = await validateSource(root).catch(() => null);
   const release = JSON.parse(await readFile('dist/release-manifest.json', 'utf8').catch(() => 'null'));
@@ -39,7 +40,7 @@ try {
   }
   const capturedEvidence = (await scanDist(`${dir}/evidence`)).files;
   const receipt = { schemaVersion: 'axionbench-portable-verification-v1', at: new Date().toISOString(),
-    passed: results.every(row => row.exitCode === 0), publicSourceSha256: manifest?.sourceSha256 ?? null,
+    passed: manifest !== null && release !== null && results.every(row => row.exitCode === 0), publicSourceSha256: manifest?.sourceSha256 ?? null,
     productSha256: release?.productSha256 ?? null, dataSha256: release?.dataSha256 ?? null,
     kind: 'local-command-execution', independentReview: false, hostedCI: false, results, evidenceRoot: `${dir}/evidence`, capturedEvidence };
   await writeFile(`${dir}/receipt.json`, JSON.stringify(receipt, null, 2) + '\n');

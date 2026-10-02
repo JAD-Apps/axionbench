@@ -91,10 +91,18 @@ export async function buildManifest(distDir, { sourceCommit, sourceDirty, builtA
 
 // Pure structural validation: run before any fetch. Recomputes both digests from
 // the listed per-file hashes so a claimed digest cannot disagree with its files.
-export function validateManifest(manifest) {
+export function validateManifest(manifest, { sourceArchiveSha256 } = {}) {
   assert.equal(manifest?.schemaVersion, SCHEMA_VERSION, 'unknown manifest schema');
   assert.deepEqual(manifest.digestFormat, { product: PRODUCT_DIGEST_FORMAT, control: CONTROL_DIGEST_FORMAT }, 'unknown digest format');
-  assert.match(manifest.sourceCommit, /^[a-f0-9]{40}$/, 'sourceCommit must be a full commit id');
+  if (sourceArchiveSha256 === undefined) {
+    assert.match(manifest.sourceCommit, /^[a-f0-9]{40}$/, 'sourceCommit must be a full commit id');
+    assert(!Object.hasOwn(manifest, 'sourceArchiveSha256'), 'checkout manifest cannot claim archive provenance');
+  } else {
+    assert.match(sourceArchiveSha256, HEX64, 'expected archive source digest required');
+    assert.equal(manifest.sourceCommit, null, 'archive cannot claim a Git commit');
+    assert.equal(manifest.sourceDirty, true, 'uncommitted archive must remain explicit');
+    assert.equal(manifest.sourceArchiveSha256, sourceArchiveSha256, 'archive source identity mismatch');
+  }
   assert.equal(typeof manifest.sourceDirty, 'boolean', 'sourceDirty must be recorded');
   assert.ok(Number.isFinite(Date.parse(manifest.builtAt)), 'builtAt must be a timestamp');
   for (const [name, list] of [['files', manifest.files], ['controlFiles', manifest.controlFiles]]) {

@@ -11,6 +11,8 @@ export async function validatePermittedFacts(root) {
   const deep = await readJson(root, 'data/authority-deepswe.json');
   keys(deep, 'schemaVersion benchmark version family domain source provenance independentReplication metrics taskSetSize configurationCount modelCount rows', 'DeepSWE');
   keys(deep.source, 'url resultUrl sha256 retrievedAt generatedAt httpStatus', 'DeepSWE source');
+  assert.equal(deep.provenance, 'original benchmark-authority measurement', 'DeepSWE provenance');
+  assert.equal(deep.independentReplication, false, 'DeepSWE replication claim');
   assert.equal(deep.source.url, 'https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json');
   keys(deep.metrics, 'passAt1 passAt4', 'DeepSWE metrics'); metric(deep.metrics.passAt1); metric(deep.metrics.passAt4);
   for (const row of deep.rows) {
@@ -21,6 +23,7 @@ export async function validatePermittedFacts(root) {
   const epoch = await readJson(root, 'data/authority/epoch-hub.json');
   keys(epoch, 'schemaVersion publisher provenance licence source countryDefinition organizations modelAttributions benchmarks', 'Epoch');
   keys(epoch.source, 'url hubUrl sha256 bytes retrievedAt generatedAt generatedAtBasis httpStatus', 'Epoch source');
+  assert.equal(epoch.provenance, 'independent evaluator measurement', 'Epoch provenance');
   assert.equal(epoch.source.url, 'https://epoch.ai/data/benchmark_data.zip');
   keys(epoch.licence, 'name url attribution', 'Epoch licence'); assert.equal(epoch.licence.name, 'CC BY 4.0'); assert.equal(epoch.licence.url, 'https://creativecommons.org/licenses/by/4.0/'); assert(epoch.licence.attribution);
   for (const row of epoch.organizations) keys(row, 'organization countries', 'Epoch organization');
@@ -33,12 +36,14 @@ export async function validatePermittedFacts(root) {
   const bfcl = await readJson(root, 'data/authority/bfcl-v4.json');
   keys(bfcl, 'schemaVersion benchmark suiteId version domain familyId publisher provenance metric evaluationCommit source rowCount rowsSha256 rows', 'BFCL');
   keys(bfcl.source, 'url resultUrl sha256 pageSha256 retrievedAt generatedAt generatedAtBasis httpStatus', 'BFCL source');
+  assert.equal(bfcl.provenance, 'original benchmark-authority measurement', 'BFCL provenance');
   assert.equal(bfcl.source.url, 'https://gorilla.cs.berkeley.edu/data_overall.csv');
   keys(bfcl.metric, 'name unit direction min max evidence', 'BFCL metric'); assert(bfcl.metric.evidence);
   for (const row of bfcl.rows) keys(row, 'rank model modelKey mode overallPercent organization licence modelLink', 'BFCL row');
   const long = await readJson(root, 'data/authority/longbench-v2.json');
   keys(long, 'schemaVersion benchmark suiteId version domain familyId publisher provenance metric conditions source rowCount rowsSha256 rows', 'LongBench');
   keys(long.source, 'url resultUrl sha256 retrievedAt generatedAt generatedAtBasis httpStatus', 'LongBench source');
+  assert.equal(long.provenance, 'original benchmark-authority leaderboard', 'LongBench provenance');
   assert.equal(long.source.url, 'https://longbench2.github.io/');
   keys(long.metric, 'name unit direction min max evidence', 'LongBench metric'); assert(long.metric.evidence);
   for (const row of long.rows) keys(row, 'model modelKey organization reasoningModel baseline parameters context date overallWithoutCotPercent overallWithCotPercent', 'LongBench row');

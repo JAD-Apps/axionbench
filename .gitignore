@@ -11,3 +11,5 @@ evidence/local/
 .vercel/
 __pycache__/
 *.py[cod]
+publication/
+/data/source-snapshots/blobs/b1/b1cf5d3eec2479602d6757520c61351becb27b8cc6a509aec1b8b491605cab92.html

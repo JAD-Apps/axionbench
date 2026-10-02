@@ -1,8 +1,8 @@
 # AxionBench
 
-An evidence-led observatory for comparing AI systems. The animated contour hero leads into custom visx/Motion charts, explicit token task costs, matched US–China comparisons, open weights grouped by total parameters, a broad catalogue and transparent methods. Missing data stays unknown.
+AxionBench compares model results, coverage and estimated API task costs. Each result keeps its source link and date. Missing scores, unknown prices and incompatible test versions stay explicit.
 
-Use Node 24, Python 3 and the exact npm version in `package.json`:
+Use Node 24, Python 3 and `npm@11.19.0`, as pinned in `package.json`. Keep `package-lock.json` unchanged when installing:
 
 ```sh
 npm ci --include=dev
@@ -12,16 +12,16 @@ npm run build:release
 npm run release:check
 ```
 
-Browser checks require cached Playwright Chromium or `CHROMIUM_PATH`. To prepare it, run `npx playwright-core install --with-deps chromium`. Verification runs serially and records real command exits, logs and hashes in ignored `test-results/`. It performs no publication or owner-browser operations. Local results do not establish hosted CI, independent review or deployment.
+Browser checks need cached Playwright Chromium or `CHROMIUM_PATH`. To install the browser on a CI runner, use `npx playwright-core install --with-deps chromium`. Verification checks scoring, pricing, weights, provenance, source permissions, browser interactions and every release file. It writes command exits and hashed logs into ignored `test-results/`. It does not deploy the site.
 
-The frozen catalogue contains 508 supported-source identities, including Meta and unscored entries, 118 inspectable community claims, and 289 open-weight entries. Those community claims do not enter default scoring. The initial authority snapshot contains 1,433 observations, including publisher comparison claims that are excluded, and covers 23 admitted capability suite versions across 8 domains. Authority counts can change on reviewed refresh; current counts are recomputed in `public/data-manifest.json`. The default frontier chooses ten representatives from the original DeepSWE panel. Scoring requires shared tests, known configurations, fixed weights and family caps. Missing positively weighted domains prevent an aggregate; sensitivity is a scenario, not a confidence interval.
+A public source archive needs no private captures or Git checkout. Its release manifest records the verified source digest and an explicit uncommitted state. A public Git checkout records its own commit. Neither build borrows a commit from an enclosing repository.
 
-Task tariffs cover eleven exact Google standard paid text endpoints under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), attributed to [Google's original pricing](https://ai.google.dev/gemini-api/docs/pricing). Cache storage, prompt tiers, thinking billed once, expiry and freshness are explicit. Other endpoint tariffs remain unknown. Scenario costs do not reproduce historical benchmark spend or imply cost per success.
+To refresh permitted facts, choose a writable audit directory outside the repository:
 
 ```sh
-npm run data:refresh -- --audit-dir /tmp/axionbench-source-audit
+npm run data:refresh -- --audit-dir "$RUNNER_TEMP/axionbench-source-audit"
 ```
 
-Refresh captures original authority and licensed price bytes outside the repository, stages only permitted facts, validates the candidate and retains last-good data on failure. It never stages or commits Git files. The frozen catalogue, community observations and open-weight facts require a separate reviewed snapshot; refresh does not claim to update them. See [public boundary](docs/PUBLIC-SOURCE.md), [automation](docs/AUTOMATION.md), [methods](docs/METHODOLOGY.md) and [pricing](docs/PRICING.md).
+Set `RUNNER_TEMP` to your external scratch directory when running locally. Raw responses stay there. Refresh validates a candidate and restores last-good public files if capture or promotion fails. It updates the permitted authority and licensed tariff facts; catalogue identities and open-weight metadata need a separately reviewed snapshot. The GitHub refresh job opens a review branch. It is not the requested daily JadBot API update; that workflow and remote transaction are still assigned to later implementation stages.
 
-Every result retains its original URL and source hash. Raw payloads, routed prices, source artwork, reference videos, owner/workflow records and private Git ancestry are excluded. Fonts are local with their included SIL Open Font Licences. `PUBLIC-SOURCE-MANIFEST.json` lists every public source byte; the release manifest separately binds served product/data bytes. This source candidate does not certify publication or HTTPS deployment.
+See [public source rules](docs/PUBLIC-SOURCE.md), [methods](docs/METHODOLOGY.md), [pricing](docs/PRICING.md) and [refresh behaviour](docs/AUTOMATION.md). Counts and coverage come from `public/data-manifest.json`. Source hashes bind captured facts; they do not establish an independent evaluation or grant rights to republish raw source pages. Fonts include their local SIL Open Font Licences.

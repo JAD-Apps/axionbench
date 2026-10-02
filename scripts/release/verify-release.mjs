@@ -7,7 +7,7 @@
 // registry gate performs read-only HTTPS GETs of captured primary source URLs.
 import { spawn } from 'node:child_process';
 import { createWriteStream } from 'node:fs';
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile, cp } from 'node:fs/promises';
 import { acquireGateLock } from './gate-lock.mjs';
 
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
@@ -31,6 +31,7 @@ export const GATES = [
   ['test:catalogue', 'catalogue, methods and snapshots'],
   ['test:acceptance', 'visual and interaction acceptance at 320–1920 px'],
   ['verify:automation', 'refresh, CI and deployment tooling (offline)'],
+  ['verify:public', 'product-only snapshot, source boundary and portable public gates'],
   ['build:release', 'clean release build and manifest'],
   ['release:check', 'dist matches its release manifest'],
 ];
@@ -53,6 +54,15 @@ function runGate(script) {
 
 // Gates rebuild and serve the shared dist/; a second run in this worktree waits here.
 const releaseLock = await acquireGateLock();
+// Retain authentic earlier logs/receipts, including failures, before replacing
+// the working latest receipt. Historical direct receipts stay historical.
+try {
+  const previous = await readFile('test-results/release-verify.json');
+  const archive = `test-results/release-history/${new Date().toISOString().replace(/[:.]/g, '-')}`;
+  await mkdir(archive, { recursive: true });
+  await writeFile(`${archive}/receipt.json`, previous, { flag: 'wx' });
+  await cp(LOG_DIR, `${archive}/logs`, { recursive: true, errorOnExist: true });
+} catch (error) { if (error.code !== 'ENOENT') throw error; }
 await rm(LOG_DIR, { recursive: true, force: true });
 await mkdir(LOG_DIR, { recursive: true });
 const results = [];

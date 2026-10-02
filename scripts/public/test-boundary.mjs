@@ -9,7 +9,7 @@ import { boundaryTestDirectory } from './temp-directory.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const manifest = await validateSource(root);
 await validateData(root);
-const base = await boundaryTestDirectory();
+const base = await boundaryTestDirectory({ temporaryRoot: join(root, 'test-results', 'scratch') });
 const checks = [];
 async function fixture(label, work) {
   const dir = join(base, String(checks.length)); await mkdir(dir);
@@ -67,6 +67,32 @@ try {
   await fixture('frozen byte digest rejects invented identity', async dir => {
     await mutate(dir, 'data/frozen-catalogue.json', d => { d.models[0].name = 'invented'; });
     await assert.rejects(validateData(dir), /frozen snapshot changed/);
+  });
+  await fixture('missing permitted facts fail before validation or build', async dir => {
+    await rm(join(dir, 'data/public-price-facts.json'));
+    await assert.rejects(scanSource(dir), /missing permitted public source file/);
+    await assert.rejects(validateData(dir), error => error.code === 'ENOENT');
+  });
+  await fixture('credential-shaped content and private imports cannot hide in permitted files', async dir => {
+    const path = join(dir, 'public/privacy.html');
+    const before = await readFile(path);
+    for (const value of ['ghp_' + 'a'.repeat(30), 'AKIA' + 'A'.repeat(16), 'Bearer ' + 'x'.repeat(40), 'CLOUDFLARE_API_TOKEN=' + 'x'.repeat(40)]) {
+      await writeFile(path, value); await assert.rejects(scanSource(dir), /credential/);
+    }
+    await writeFile(path, before);
+    await writeFile(join(dir, 'scripts/public/scoring-data.mjs'), 'import data from ' + JSON.stringify(['..', '..', 'data', 'ingestion.json'].join('/')) + ';');
+    await assert.rejects(scanSource(dir), /private.*dependency/);
+  });
+  await fixture('invalid provenance and invented replication claims are rejected', async dir => {
+    await mutate(dir, 'data/authority/bfcl-v4.json', d => { d.provenance = 'publisher-own'; });
+    await assert.rejects(validateData(dir), /BFCL provenance/);
+    await writeFile(join(dir, 'data/authority/bfcl-v4.json'), await readFile(join(root, 'data/authority/bfcl-v4.json')));
+    await mutate(dir, 'data/publisher-percentage-facts.json', d => { d.sources[0].cells[0].independentReplication = true; });
+    await assert.rejects(validateData(dir));
+  });
+  await fixture('private metadata cannot hide in an allowed factual projection', async dir => {
+    await mutate(dir, 'data/frozen-catalogue.json', d => { d.models[0].subscription = { quota: 123 }; });
+    await assert.rejects(scanSource(dir), /private field/);
   });
   await fixture('exact configuration joins reject related-model transfer', async dir => {
     await mutate(dir, 'data/frozen-catalogue.json', d => { d.configurations[d.observations[0].configurationId].modelId = d.models.find(m => m.id !== d.observations[0].modelId).id; }, { frozen: true });
