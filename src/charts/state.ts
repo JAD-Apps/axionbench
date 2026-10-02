@@ -16,3 +16,13 @@ export function useViewState<T extends string>(key: string, views: readonly T[],
   useEffect(() => { saveQuery({ [key]: view }, true); }, [key, view]);
   return [view, (next: T) => { saveQuery({ [key]: next }); setView(next); }] as const;
 }
+
+// Each route owns its query keys. Unknown/other-route filters cannot hitchhike
+// into a copied URL. Navigation links explicitly supply any intended inputs.
+export function useRouteQuery(keys: readonly string[]) {
+  useEffect(() => {
+    const url = new URL(location.href);
+    for (const key of [...url.searchParams.keys()]) if (!keys.includes(key)) url.searchParams.delete(key);
+    if (url.href !== location.href) history.replaceState(null, '', url);
+  }, [keys]);
+}

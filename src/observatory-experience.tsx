@@ -396,8 +396,8 @@ export default function ObservatoryExperience({ route, onDatasetStatus }: Props)
   const resultBySuite = dataset.observations.filter((row) => row.suiteId === effectiveSuite);
 
   return <>
-    {route === 'overview' && <HomeComparison dataset={dataset}/>}
-    {route === 'versions' && <Versions models={dataset.currentModels}/>}
+    {route === 'overview' && <HomeComparison dataset={dataset} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>}
+    {route === 'versions' && <Versions models={dataset.currentModels} authority={dataset.authority} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/>}
     {route === 'rankings' && <section className="chapter"><AuthorityRanking authority={dataset.authority}/></section>}
     {route === 'pricing' && <section className="chapter"><TaskCost authority={dataset.authority} pricing={dataset.pricing} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/></section>}
     {route === 'domains' && <section className="chapter"><DomainWeights authority={dataset.authority} digest={manifest?.projection.sha256 ?? dataset.sourceDigest}/></section>}

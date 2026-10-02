@@ -48,7 +48,8 @@
     "verify:public": "node scripts/project/verify-public-boundary.mjs --archive-test",
     "test:public-boundary": "node --test tests/project/public-boundary.test.mjs",
     "test:routes": "node scripts/project/test-routes.mjs",
-    "test:core-views": "node scripts/project/test-core-views.mjs"
+    "test:core-views": "node scripts/project/test-core-views.mjs",
+    "test:cost-version-views": "node scripts/project/test-cost-version-views.mjs"
   },
   "devDependencies": {
     "@types/node": "24.10.0",

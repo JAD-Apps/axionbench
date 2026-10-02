@@ -101,7 +101,7 @@ export async function verifyPublicBoundary() {
     const portableDescriptor = { path: 'test-results/public-verify.json', bytes: portableBytes.length, sha256: sha256(portableBytes) };
     const portable = await readReceiptArtifact(candidate, portableDescriptor);
     await verifyCommandEvidence(candidate, portable, { sourceSha256: source.sourceSha256, commands:
-      ['lint','data:validate','test:current-policy','test:boundary','typecheck','test:unit','test:scoring','test:pricing','test:weights','build','verify:design','test:routes','test:chart-smoke','test:cost-weights','test:acceptance','build:release','release:check'].map(script => `npm run ${script}`) });
+      ['lint','data:validate','test:current-policy','test:boundary','typecheck','test:unit','test:scoring','test:pricing','test:weights','build','verify:design','test:routes','test:chart-smoke','test:cost-weights','test:cost-version-views','test:acceptance','build:release','release:check'].map(script => `npm run ${script}`) });
     await validateSource(candidate); await validateData(candidate);
     release = validateManifest(JSON.parse(await readFile(join(candidate, 'dist/release-manifest.json'))), { sourceArchiveSha256: source.sourceSha256 });
     compareWithBuild(release, await scanDist(join(candidate, 'dist')));

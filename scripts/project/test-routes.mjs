@@ -110,8 +110,10 @@ await withBuiltBrowser(async ({page, origin, newPage}) => {
   await page.getByLabel('Version developer').selectOption('openai');
   await page.waitForFunction(()=>new URL(location.href).searchParams.get('versionLab')==='openai');
   const versionURL=page.url();
+  await page.goBack({waitUntil:'networkidle'});await ready(page,'versions');assert.equal(await page.getByLabel('Version developer').inputValue(),'all');
   await page.goBack({waitUntil:'networkidle'});await ready(page,'overview');
   assert.equal(await page.getByLabel('Total task tokens').inputValue(),'1000000'); assert.equal(await page.getByLabel('Task type').inputValue(),'backend');assert.equal(page.url(),homeURL);
+  await page.goForward({waitUntil:'networkidle'});await ready(page,'versions');assert.equal(await page.getByLabel('Version developer').inputValue(),'all');
   await page.goForward({waitUntil:'networkidle'});await ready(page,'versions');assert.equal(page.url(),versionURL);assert.equal(await page.getByLabel('Version developer').inputValue(),'openai');
   await page.reload({waitUntil:'networkidle'});await ready(page,'versions');assert.equal(await page.getByLabel('Version developer').inputValue(),'openai');
   record('history and route-scoped query state', {homeURL:new URL(homeURL).pathname+new URL(homeURL).search,versionURL:new URL(versionURL).pathname+new URL(versionURL).search});
@@ -130,7 +132,13 @@ await withBuiltBrowser(async ({page, origin, newPage}) => {
       }
     }
   }
-  await page.getByLabel('Homepage benchmark').selectOption('current');assert.equal(await page.getByText('No eligible recommendation',{exact:true}).count(),3);
+  await page.getByLabel('Homepage benchmark').selectOption('current');
+  for (const id of ['economy','balanced','frontier']) {
+    const card = page.getByTestId('recommendation-' + id);
+    await card.getByRole('heading',{name:'No eligible recommendation',exact:true}).waitFor();
+    assert.equal(await card.getAttribute('data-model-key'),'');
+  }
+  assert.equal(await page.locator('.recommendation').count(),3);
   await page.getByLabel('Homepage benchmark').selectOption('bridgebench');await page.reload({waitUntil:'networkidle'});await ready(page,'overview');assert.equal(await page.getByLabel('Task type').inputValue(),'security');
   const pixels=await page.locator('canvas').evaluate(c=>c.toDataURL());await page.waitForTimeout(250);assert.equal(await page.locator('canvas').evaluate(c=>c.toDataURL()),pixels,'reduced-motion hero remains static');
   record('homepage controls and native source parity', '5 task axes × 3 budgets × 3 tiers; exact ratings/costs/links, independent missing state, reload, keyboard and static reduced motion');

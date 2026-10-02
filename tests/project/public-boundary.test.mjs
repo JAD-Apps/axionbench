@@ -49,6 +49,18 @@ test('allowlisted snapshot needs no private audit files and refuses nonempty out
   const source = await preparePublicSnapshot(candidate);
   assert(source.files.every(row => !row.path.includes('source-snapshots') && !row.path.startsWith('evidence/') && !row.path.includes('/project/')));
   assert.deepEqual(await validateSource(candidate), source);
+  // Browser receipts must hash files in the public archive itself. A private
+  // preparation path can parse successfully yet fail only at runtime.
+  const publicPaths = new Set(source.files.map(row => row.path));
+  for (const name of ['test-routes.mjs', 'test-core-views.mjs', 'test-cost-version-views.mjs']) {
+    const text = await readFile(join(candidate, 'scripts', name), 'utf8');
+    const references = text.match(/const sourcePaths = \[([^\]]+)\]/)?.[1];
+    assert(references, name + ': source identity evidence must be declared');
+    for (const [, path] of references.matchAll(/'([^']+)'/g)) assert(publicPaths.has(path), name + ': private or missing runtime evidence path ' + path);
+  }
+  const pkg = JSON.parse(await readFile(join(candidate, 'package.json'), 'utf8'));
+  assert.equal(pkg.scripts['test:cost-version-views'], 'node scripts/test-cost-version-views.mjs');
+
   await assert.rejects(preparePublicSnapshot(candidate), /must be empty/);
   await writeFile(join(candidate, 'extra.json'), '{}');
   await assert.rejects(scanSource(candidate), /unallowlisted file/);

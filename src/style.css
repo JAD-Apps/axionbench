@@ -726,3 +726,22 @@ footer{background:#080a0f;border-top:1px solid #303849;color:#a9b5ca;gap:24px;pa
 @media (prefers-reduced-motion:reduce) {
   .core-chart *, .core-row-list *, .core-view-controls * { animation:none !important; transition:none !important; }
 }
+
+/* Task and release controls stay compact while charts keep room to breathe. */
+.version-controls { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin:28px 0; }
+.version-controls label, .home-weights label { display:flex; flex-direction:column; gap:9px; color:var(--muted); font-size:13px; }
+.version-controls select { width:100%; min-width:0; }
+.version-identities, .home-data, .home-weights { margin:28px 0; border-top:1px solid var(--rule); padding-top:22px; }
+.home-data summary, .home-weights summary, .version-identities summary { cursor:pointer; color:var(--ink); }
+.home-weights > label { flex-direction:row; align-items:center; margin:20px 0; }
+.home-weights input[type=checkbox] { width:20px; min-height:20px; }
+.home-weights button, .home-data > button { margin:18px 12px 0 0; }
+.home-data .core-view-controls { margin-top:22px; }
+.comparison-unavailable { padding:32px; margin:22px 0; border:1px dashed var(--rule); background:var(--panel); }
+.comparison-chart { margin-top:24px; }
+.recommendation-links { flex-wrap:wrap; row-gap:12px; }
+@media(max-width:800px) { .version-controls { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:480px) { .version-controls { grid-template-columns:minmax(0,1fr); } }
+/* Keep the complete measured cohort usable without a hundreds-row page. */
+.cost-experience .table-scroll { max-height:560px; overflow:auto; }
+.cost-experience .table-scroll thead { position:sticky; top:0; background:var(--paper); z-index:1; }

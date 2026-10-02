@@ -48,6 +48,7 @@ pkg.scripts = {
   'test:pricing': 'node scripts/test-pricing.mjs', 'test:weights': 'node scripts/test-weights.mjs',
   'test:current-policy': 'node scripts/test-current-policy.mjs',
   'test:core-views': 'node scripts/test-core-views.mjs',
+  'test:cost-version-views': 'node scripts/test-cost-version-views.mjs',
   'test:routes': 'node scripts/test-routes.mjs', 'verify:design': 'node scripts/verify-design.mjs',
   'test:boundary': 'node scripts/public/test-boundary.mjs', 'data:validate': 'node scripts/public/validate.mjs',
   'data:refresh': 'node scripts/public/refresh.mjs', 'data:authority': 'node scripts/public/refresh.mjs',
@@ -65,13 +66,15 @@ const privateImport = "import data from '../../data/ingestion.json' with { type:
 assert.equal(scoringTests.split(privateImport).length, 2, 'one exact private scoring fixture import must be replaced');
 await writeFile(join(target, 'tests/scoring/test-scoring.mjs'), scoringTests.replace(privateImport, "import data from '../../scripts/public/scoring-data.mjs';"));
 // Portable browser entry points live outside the private project namespace.
-// Copy only these two product checks; admission/audit scripts remain forbidden.
-for (const name of ['test-routes.mjs', 'test-core-views.mjs']) {
+// Copy only these product checks; admission/audit scripts remain forbidden.
+for (const name of ['test-routes.mjs', 'test-core-views.mjs', 'test-cost-version-views.mjs']) {
   const original = await readFile(join(root, 'scripts/project', name), 'utf8');
   assert(original.includes("from '../test-harness.mjs'"), 'expected browser harness import');
   const portable = original.replaceAll("from '../../src/", "from '../src/")
     .replaceAll("from '../test-harness.mjs'", "from './test-harness.mjs'")
-    .replaceAll('scripts/project/' + name, 'scripts/' + name);
+    .replaceAll('scripts/project/' + name, 'scripts/' + name)
+    .replaceAll('scripts/project/test-routes.mjs', 'scripts/test-routes.mjs')
+    .replaceAll('scripts/public-content/README.md', 'README.md');
   await writeFile(join(target, 'scripts', name), portable);
 }
 await writePublicData(target);

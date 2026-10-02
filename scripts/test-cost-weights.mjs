@@ -21,7 +21,7 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
   weightPage.on('pageerror', error => errors.push(error.message));
   weightPage.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
   assert.equal(await weightPage.getByTestId('domain-weights').count(), 1);
-  const points = page.getByTestId('cost-plot').locator('[role="button"]');
+  const points = page.getByTestId('cost-points').locator('button');
   assert((await points.count()) >= 8 && (await points.count()) <= 12); pass('Source-priced scatter populated', await points.count());
   await points.first().focus(); await page.keyboard.press('Enter'); assert.equal(await points.first().getAttribute('aria-pressed'), 'true');
   pass('Keyboard inspection selects a real point', await points.first().getAttribute('aria-label'));
@@ -78,32 +78,29 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
     await weightPage.setViewportSize({ width, height: 1000 });
     await page.waitForTimeout(100);
     await page.waitForFunction(() => {
-      const container = document.querySelector('[data-testid="cost-plot"]');
-      const svg = container?.querySelector('svg');
-      const marks = svg?.querySelectorAll('[role="button"]');
-      if (!container || !svg || !marks?.length || Math.abs(svg.viewBox.baseVal.width - container.getBoundingClientRect().width) >= 1) return false;
-      const costs = Array.from(marks, (mark) => Number(mark.getAttribute('aria-label').match(/\$([\d.]+)/)[1]));
-      const max = Math.max(0.001, ...costs) * 1.12;
-      return Array.from(marks).every((mark, index) => {
-        const expected = 52 + costs[index] / max * (svg.viewBox.baseVal.width - 76);
-        const actual = new DOMMatrix(getComputedStyle(mark).transform).m41;
-        return Math.abs(actual - expected) < 0.1;
+      const canvas = document.querySelector('[data-testid="task-cost-chart"] canvas');
+      if (!canvas?.dataset.chartGeometry) return false;
+      const g = JSON.parse(canvas.dataset.chartGeometry);
+      return g.datasets[0].data.every((point, i) => {
+        const expectedX = g.area.left + (point.x - g.scales.x.min) / (g.scales.x.max - g.scales.x.min) * (g.area.right - g.area.left);
+        const expectedY = g.area.bottom - (point.y - g.scales.y.min) / (g.scales.y.max - g.scales.y.min) * (g.area.bottom - g.area.top);
+        return Math.abs(g.datasets[0].elements[i].x - expectedX) < .1 && Math.abs(g.datasets[0].elements[i].y - expectedY) < .1;
       });
     });
     for (const [feature, locator] of [['cost', 'task-cost'], ['weights', 'domain-weights']]) {
       const targetPage = feature === 'weights' ? weightPage : page;
       const target = targetPage.getByTestId(locator); await target.scrollIntoViewIfNeeded();
       assert.equal(await targetPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, 'no page overflow at ' + width);
-      const plot = await page.getByTestId('cost-plot').locator('svg[aria-labelledby="cost-chart-title cost-chart-description"]').boundingBox();
-      assert(plot.height <= 351, 'cost SVG retains its intended physical height after responsive resize');
+      const plot = await page.getByTestId('cost-plot').locator('canvas').boundingBox();
+      assert(plot.height <= 351, 'Chart.js cost canvas retains its intended physical height after responsive resize');
       await target.evaluate((node) => window.scrollTo(0, node.getBoundingClientRect().top + scrollY - 90));
       const path = `test-results/cost-weights/${width}-${feature}.png`; await targetPage.screenshot({ path });
       screenshots.push({ path, sha256: sha(await readFile(path)), viewport: width, feature });
       if (feature === 'cost') {
         const chart = page.getByTestId('cost-plot'); await chart.scrollIntoViewIfNeeded();
         const plotPath = `test-results/cost-weights/${width}-plot.png`; await chart.screenshot({ path: plotPath });
-        const geometry = await chart.evaluate((node) => { const svg = node.querySelector('svg'); return { container: node.getBoundingClientRect().width, viewBox: svg.viewBox.baseVal.width, height: svg.getBoundingClientRect().height, marks: Array.from(svg.querySelectorAll('[role="button"]'), (mark) => ({ label: mark.getAttribute('aria-label'), transform: getComputedStyle(mark).transform })) }; });
-        assert(Math.abs(geometry.viewBox - geometry.container) < 1);
+        const geometry = await chart.evaluate(node => { const canvas = node.querySelector('canvas'); return { container: canvas.parentElement.getBoundingClientRect().width, outer: node.getBoundingClientRect().width, canvas: canvas.getBoundingClientRect().width, height: canvas.getBoundingClientRect().height, chart: JSON.parse(canvas.dataset.chartGeometry) }; });
+        assert(Math.abs(geometry.canvas - geometry.container) < 1);
         screenshots.push({ path: plotPath, sha256: sha(await readFile(plotPath)), viewport: width, feature: 'plot', geometry });
       }
     }

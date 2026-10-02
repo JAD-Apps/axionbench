@@ -14,8 +14,8 @@ export type CoreView = 'bars' | 'dots' | 'heatmap' | 'radar';
 const colors = ['#6ce5ef', '#aa98ff'];
 const font = { family: '"DM Sans", sans-serif', size: 12 };
 
-export default function CoreChart({ rows, view, name, selected = '', onSelect, normalized = false }: {
-  rows: ViewRow[]; view: CoreView; name: string; selected?: string; onSelect?: (id: string) => void; normalized?: boolean;
+export default function CoreChart({ rows, view, name, selected = '', onSelect, normalized = false, minimumRange = 1 }: {
+  rows: ViewRow[]; view: CoreView; name: string; selected?: string; onSelect?: (id: string) => void; normalized?: boolean; minimumRange?: number;
 }) {
   const reduce = useChartReducedMotion();
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -68,7 +68,7 @@ export default function CoreChart({ rows, view, name, selected = '', onSelect, n
     const grid = { color: '#263044', tickColor: '#263044' };
     const measured = plotRows.filter(row => row.value !== null);
     const min = normalized ? 0 : Math.min(0, ...measured.map(row => row.value!));
-    const max = normalized ? 1 : Math.max(1, ...measured.map(row => row.value!)) * 1.08;
+    const max = normalized ? 1 : Math.max(minimumRange, ...measured.map(row => row.value!)) * 1.08;
     if (view === 'radar') {
       config.options!.scales = { r: { min: 0, max: 1, grid, angleLines: { color: '#263044' },
         pointLabels: { color: '#c0cadc', font }, ticks: { ...ticks, stepSize: .25, backdropColor: '#080a0f', callback: v => `${Number(v) * 100}%` } } };
@@ -141,7 +141,7 @@ export default function CoreChart({ rows, view, name, selected = '', onSelect, n
     canvas.current.dataset.animation = reduce ? 'off' : '380ms';
     canvas.current.dataset.rowIds = JSON.stringify(plotRows.map(row => row.id));
     canvas.current.dataset.values = JSON.stringify(plotRows.map(row => row.value));
-  }, [rows, view, reduce, selected, onSelect, normalized]);
+  }, [rows, view, reduce, selected, onSelect, normalized, minimumRange]);
 
   useEffect(() => { setHovered(''); }, [view, rows]);
   return <div className="core-chart" data-testid={`${name}-chart`} data-view={view} data-reduced-motion={String(reduce)}>

@@ -65,8 +65,8 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   const benchmarkURL = page.url();
   await page.goto(origin + '/task-pricing', { waitUntil: 'networkidle' });
   check.equal(await page.getByTestId('task-cost').count(), 1, 'permitted task cost is mounted');
-  check.equal(await page.getByTestId('cost-plot').locator('[role="button"]').count(), 9, 'the real matched panel plots nine quoted endpoint identities');
-  check.equal(await page.getByTestId('cost-table').locator('tbody tr').count(), 9, 'accessible cost table uses the same supported identities');
+  check.equal(await page.getByTestId('cost-points').locator('button').count(), 9, 'the real matched panel plots nine quoted endpoint identities');
+  check.equal(await page.getByTestId('cost-table').locator('tbody tr').count(), new Set(data.authority.observations.filter(r => r.admitted && r.primary && r.configuration.conditionsKnown && ['benchmark-authority', 'independent-evaluator'].includes(r.provenance) && [r.sourceId, r.suiteId, r.metric, r.configuration.condition].join('|') === 'epoch-hub|gpqa-diamond|score|Epoch AI run').map(r => r.modelKey)).size, 'accessible cost table retains priced and unpriced exact identities');
   check.equal(data.sourceLimitations.restrictedRoutedPricesPublished, false, 'restricted routed API payloads remain withheld');
   check.equal(await page.locator('script[src*="echarts"]').count(), 0, 'ECharts is not loaded');
 

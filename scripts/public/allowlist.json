@@ -125,7 +125,11 @@
     "src/charts/registry.ts",
     "tests/core-views.test.ts",
     "docs/CORE-VIEWS.md",
-    "src/charts/reduced-motion.ts"
+    "src/charts/reduced-motion.ts",
+    "src/pricing/views.ts",
+    "src/versions/logic.ts",
+    "src/charts/comparison-chart.tsx",
+    "docs/VERSIONS.md"
   ],
   "templates": [
     "README.md",
@@ -145,6 +149,7 @@
     "public/data-details.json",
     "public/data-manifest.json",
     "scripts/test-routes.mjs",
-    "scripts/test-core-views.mjs"
+    "scripts/test-core-views.mjs",
+    "scripts/test-cost-version-views.mjs"
   ]
 }
