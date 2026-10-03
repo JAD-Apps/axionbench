@@ -49,7 +49,8 @@
     "test:public-boundary": "node --test tests/project/public-boundary.test.mjs",
     "test:routes": "node scripts/project/test-routes.mjs",
     "test:core-views": "node scripts/project/test-core-views.mjs",
-    "test:cost-version-views": "node scripts/project/test-cost-version-views.mjs"
+    "test:cost-version-views": "node scripts/project/test-cost-version-views.mjs",
+    "test:cohort-views": "node scripts/project/test-cohort-views.mjs"
   },
   "devDependencies": {
     "@types/node": "24.10.0",
@@ -61,10 +62,6 @@
     "vitest": "5.0.3"
   },
   "dependencies": {
-    "@visx/axis": "4.0.0",
-    "@visx/responsive": "4.0.0",
-    "@visx/scale": "4.0.0",
-    "@visx/shape": "4.0.0",
     "chart.js": "4.5.1",
     "motion": "13.4.6",
     "react": "19.3.0",

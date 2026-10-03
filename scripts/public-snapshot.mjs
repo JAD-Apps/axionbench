@@ -48,6 +48,7 @@ pkg.scripts = {
   'test:pricing': 'node scripts/test-pricing.mjs', 'test:weights': 'node scripts/test-weights.mjs',
   'test:current-policy': 'node scripts/test-current-policy.mjs',
   'test:core-views': 'node scripts/test-core-views.mjs',
+  'test:cohort-views': 'node scripts/test-cohort-views.mjs',
   'test:cost-version-views': 'node scripts/test-cost-version-views.mjs',
   'test:routes': 'node scripts/test-routes.mjs', 'verify:design': 'node scripts/verify-design.mjs',
   'test:boundary': 'node scripts/public/test-boundary.mjs', 'data:validate': 'node scripts/public/validate.mjs',
@@ -67,7 +68,7 @@ assert.equal(scoringTests.split(privateImport).length, 2, 'one exact private sco
 await writeFile(join(target, 'tests/scoring/test-scoring.mjs'), scoringTests.replace(privateImport, "import data from '../../scripts/public/scoring-data.mjs';"));
 // Portable browser entry points live outside the private project namespace.
 // Copy only these product checks; admission/audit scripts remain forbidden.
-for (const name of ['test-routes.mjs', 'test-core-views.mjs', 'test-cost-version-views.mjs']) {
+for (const name of ['test-routes.mjs', 'test-core-views.mjs', 'test-cost-version-views.mjs', 'test-cohort-views.mjs']) {
   const original = await readFile(join(root, 'scripts/project', name), 'utf8');
   assert(original.includes("from '../test-harness.mjs'"), 'expected browser harness import');
   const portable = original.replaceAll("from '../../src/", "from '../src/")

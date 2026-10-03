@@ -80,7 +80,6 @@
     "src/benchmark-registry.ts",
     "src/catalogue.tsx",
     "src/catalogue/logic.ts",
-    "src/chart-data.ts",
     "src/data/ingestion.ts",
     "src/domain-weights.tsx",
     "src/head-to-head.tsx",
@@ -129,7 +128,12 @@
     "src/pricing/views.ts",
     "src/versions/logic.ts",
     "src/charts/comparison-chart.tsx",
-    "docs/VERSIONS.md"
+    "docs/VERSIONS.md",
+    "src/charts/cohort-chart.tsx",
+    "src/charts/cohort-rows.ts",
+    "docs/OPEN-WEIGHTS.md",
+    "docs/HEAD-TO-HEAD.md",
+    "docs/CATALOGUE.md"
   ],
   "templates": [
     "README.md",
@@ -150,6 +154,7 @@
     "public/data-manifest.json",
     "scripts/test-routes.mjs",
     "scripts/test-core-views.mjs",
-    "scripts/test-cost-version-views.mjs"
+    "scripts/test-cost-version-views.mjs",
+    "scripts/test-cohort-views.mjs"
   ]
 }

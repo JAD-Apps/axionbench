@@ -12,7 +12,7 @@ export type Origin = 'catalogue' | 'authority';
 export type InputModel = {
   id: string; name: string; labId: string; lab: string; releaseDate: string | null; parameters: number | null;
   activatedParameters: number | null; weightsAvailability: string; modalities: { input?: string[] } | null;
-  originalSourceUrl: string | null; identitySourceId: string | null; identityVerified: boolean;
+  originalSourceUrl: string | null; identitySourceId: string | null; identityVerified: boolean; revision?: string;
 };
 export type InputObservation = {
   id: string; modelId: string; suiteId: string; metric: string; valueText: string; unit: { label: string | null; status: string } | null;
@@ -26,7 +26,7 @@ export type AuthorityInput = {
   regionDefinition: string;
   sources: { id: string; name: string; publisher: string; provenance: string; url: string; resultUrl: string; retrievedAt: string; licence: string }[];
   suites: { id: string; name: string; version: string; domain: string; familyId: string; benchmarkUrl: string | null }[];
-  models: { key: string; name: string; labId: string | null; lab: string | null; region: Region; country: string | null }[];
+  models: { key: string; name: string; labId: string | null; lab: string | null; region: Region; country: string | null; currentIdentity?: { lifecycle: string; identityVerified: boolean; originalSourceUrl?: string; apiId?: string; releaseDate?: string | null } }[];
   observations: { id: string; sourceId: string; suiteId: string; metric: string; modelKey: string; rawText: string; rawUnit: string;
     resultUrl: string; domain: string; admitted: boolean; exclusion: string | null; configuration: { id: string; conditionsKnown: boolean } | null;
     interval: { low: number; high: number; method: string } | null }[];
@@ -50,6 +50,7 @@ export type CatalogueRow = {
   admitted: number; reported: number; excluded: number; suites: number; domains: number;
   scoreState: 'unscored'; scoreReason: string; freshness: string | null;
   sourceUrl: string | null; sourceId: string | null;
+  lifecycle: 'current' | 'archive' | 'unknown'; version: string | null;
 };
 export type EvidenceRow = {
   id: string; suiteId: string; suiteName: string; domain: string; metric: string; display: string; configuration: string | null;
@@ -134,6 +135,7 @@ export function buildCatalogue(input: CatalogueInput): Catalogue {
       domains: unique(own.map((o) => suiteById.get(o.suiteId)?.domain).filter((d): d is string => !!d && capability.has(d))).length,
       scoreState: 'unscored', scoreReason: own.length ? 'Reported results are not admitted to the score: ' + input.scoring.currentCaptureAudit.reason : SCORE_REASON_NONE,
       freshness: own.map((o) => o.retrievedAt).sort().at(-1) ?? null, sourceUrl: model.originalSourceUrl, sourceId: model.identitySourceId,
+      lifecycle: 'unknown', version: model.revision ?? null,
     });
   }
 
@@ -163,7 +165,9 @@ export function buildCatalogue(input: CatalogueInput): Catalogue {
       domains: unique(admitted.map((o) => o.domain).filter((d) => capability.has(d))).length,
       scoreState: 'unscored', scoreReason: admitted.length ? SCORE_REASON_COHORT : SCORE_REASON_NONE,
       freshness: admitted.map((o) => sourceById.get(o.sourceId)?.retrievedAt ?? '').filter(Boolean).sort().at(-1) ?? null,
-      sourceUrl: null, sourceId: own[0]?.sourceId ?? null,
+      sourceUrl: model.currentIdentity?.originalSourceUrl ?? own[0]?.resultUrl ?? null, sourceId: own[0]?.sourceId ?? null,
+      lifecycle: model.currentIdentity?.identityVerified ? model.currentIdentity.lifecycle === 'current' ? 'current' : ['version', 'retired'].includes(model.currentIdentity.lifecycle) ? 'archive' : 'unknown' : 'unknown',
+      version: model.currentIdentity?.apiId ?? model.key,
     });
   }
   const benchmarks = [...suiteById.values()].map((b) => ({ ...b, models: benchmarkModels.get(b.id)?.size ?? 0 }))
@@ -195,22 +199,23 @@ export const SORT_KEYS = ['name', 'lab', 'release', 'parameters', 'evidence', 'd
 export type SortKey = (typeof SORT_KEYS)[number];
 export type CatFilters = {
   lab: string; openness: 'all' | Openness; region: 'all' | Region; band: 'all' | BandId; modality: string; origin: 'all' | Origin;
-  evidence: 'all' | 'admitted' | 'none'; query: string; sort: SortKey; dir: 'asc' | 'desc'; page: number; model: string;
+  evidence: 'all' | 'admitted' | 'none'; lifecycle: 'all' | 'current' | 'archive' | 'unknown'; query: string; sort: SortKey; dir: 'asc' | 'desc'; page: number; model: string;
 };
 export const CAT_DEFAULTS: CatFilters = { lab: 'all', openness: 'all', region: 'all', band: 'all', modality: 'all', origin: 'all', evidence: 'all',
-  query: '', sort: 'evidence', dir: 'desc', page: 0, model: '' };
+  lifecycle: 'all', query: '', sort: 'evidence', dir: 'desc', page: 0, model: '' };
 export const OPENNESS: Openness[] = ['public-weights', 'gated', 'repository-unchecked', 'unknown'];
 export const REGIONS: Region[] = ['us', 'cn', 'global', 'other', 'unknown'];
 export const MODALITIES = ['text', 'image', 'audio', 'video', 'file'];
 const BAND_IDS = PARAMETER_BANDS.map((band) => band.id) as string[];
 const KEYS = { lab: 'catLab', openness: 'catOpen', region: 'catRegion', band: 'catBand', modality: 'catMod', origin: 'catSource', evidence: 'catEvidence',
-  query: 'catQ', sort: 'catSort', dir: 'catDir', page: 'catPage', model: 'catModel' } as const;
+  lifecycle: 'catLifecycle', query: 'catQ', sort: 'catSort', dir: 'catDir', page: 'catPage', model: 'catModel' } as const;
 
 export function matches(row: CatalogueRow, f: CatFilters) {
   const q = f.query.trim().toLocaleLowerCase();
   return (f.lab === 'all' || row.labId === f.lab) && (f.openness === 'all' || row.openness === f.openness)
     && (f.region === 'all' || row.region === f.region) && (f.band === 'all' || row.parameterBand === f.band)
     && (f.modality === 'all' || row.inputModalities.includes(f.modality)) && (f.origin === 'all' || row.origin === f.origin)
+    && (f.lifecycle === 'all' || row.lifecycle === f.lifecycle)
     && (f.evidence === 'all' || (f.evidence === 'admitted' ? row.admitted > 0 : row.admitted === 0))
     && (!q || [row.name, row.lab, row.id, row.sourceId ?? ''].some((text) => text.toLocaleLowerCase().includes(q)));
 }
@@ -254,6 +259,7 @@ export function decodeCatFilters(params: URLSearchParams, rows: CatalogueRow[]):
     lab: pick('lab', ['all', ...rows.map((row) => row.labId)], 'all'), openness: pick('openness', ['all', ...OPENNESS], 'all'),
     region: pick('region', ['all', ...REGIONS], 'all'), band: pick('band', ['all', ...BAND_IDS], 'all'),
     modality: pick('modality', ['all', ...MODALITIES], 'all'), origin: pick('origin', ['all', 'catalogue', 'authority'], 'all'),
+    lifecycle: pick('lifecycle', ['all', 'current', 'archive', 'unknown'], 'all'),
     evidence: pick('evidence', ['all', 'admitted', 'none'], 'all'), query: (params.get(KEYS.query) ?? '').slice(0, 120),
     sort: pick('sort', SORT_KEYS, CAT_DEFAULTS.sort), dir: pick('dir', ['asc', 'desc'], CAT_DEFAULTS.dir),
     page: Number.isInteger(page) && page >= 1 ? page - 1 : 0, model: rows.some((row) => row.id === model) ? model : '',
@@ -274,7 +280,7 @@ export const catalogueParameterKeys = Object.values(KEYS);
 // ---- Exports: the same filtered, sorted rows the table shows (every page), with stable IDs ----
 export const CSV_COLUMNS = ['id', 'name', 'lab', 'source_family', 'region', 'openness', 'total_parameters', 'parameter_group', 'activated_parameters',
   'input_modalities', 'release_date', 'admitted_results', 'reported_unverified_results', 'excluded_results', 'suites', 'capability_domains',
-  'score_state', 'latest_evidence_retrieval', 'source_url'] as const;
+  'score_state', 'latest_evidence_retrieval', 'source_url', 'lifecycle', 'version'] as const;
 const csvCell = (value: unknown) => {
   let text = value === null || value === undefined ? '' : String(value);
   // A spreadsheet must not execute a cell a source happened to start with a formula character.
@@ -283,7 +289,7 @@ const csvCell = (value: unknown) => {
 };
 export const csvRecord = (row: CatalogueRow) => [row.id, row.name, row.lab, row.origin, row.region, row.openness, row.parameters, row.parameterBand,
   row.activatedParameters, row.inputModalities.join('|'), row.releaseDate, row.admitted, row.reported, row.excluded, row.suites, row.domains,
-  row.scoreState, row.freshness, row.sourceUrl];
+  row.scoreState, row.freshness, row.sourceUrl, row.lifecycle, row.version];
 export function exportCsv(rows: CatalogueRow[]) {
   return [CSV_COLUMNS.join(','), ...rows.map((row) => csvRecord(row).map(csvCell).join(','))].join('\r\n') + '\r\n';
 }

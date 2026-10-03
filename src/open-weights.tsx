@@ -1,5 +1,7 @@
-import { scaleLog } from '@visx/scale';
-import { motion, useReducedMotion } from 'motion/react';
+import CohortChart from './charts/cohort-chart';
+import { parameterRows } from './charts/cohort-rows';
+import { ViewControls, RowControls } from './charts/controls';
+import { useRouteQuery, useViewState } from './charts/state';
 import { useEffect, useMemo, useState } from 'react';
 import {
   PARAMETER_BANDS, bandCounts, decodeFilters, encodeFilters, exportRows, filterRows, formatParameters, paginate, representatives,
@@ -8,10 +10,8 @@ import {
 
 type Props = { block: OpenWeightsBlock; digest: string };
 
-// One shared log axis across all panels so small multiples are directly comparable.
-const axis = scaleLog({ domain: [1e8, 3e12], range: [2, 98], clamp: true });
-const at = (value: number) => `${axis(value)}%`;
-const TICKS = [1e9, 1e10, 1e11, 1e12];
+const VIEWS = ['buckets', 'scatter', 'heatmap', 'table'] as const;
+const KEYS = ['owView', 'owBand', 'owMoe', 'owLicence', 'owAccess', 'owVariant', 'owQuant', 'owLab', 'owQ', 'owPage'];
 
 const TOTAL_NOTE: Record<OpenWeightRow['total']['status'], string> = {
   'tensor-total': 'safetensors total',
@@ -42,31 +42,6 @@ const ACCESS_LABEL: Record<OpenWeightRow['access']['status'], string> = {
 const VARIANT_LABEL: Record<OpenWeightRow['variant']['kind'], string> = {
   base: 'Base', instruct: 'Instruct / chat', 'fine-tune': 'Fine-tune', 'not-stated': 'Base/instruct not stated',
 };
-
-function seriesLabel(row: OpenWeightRow) {
-  const activated = row.activated.value === null ? 'activated count not stated'
-    : `${row.activated.approximate ? 'about ' : ''}${formatParameters(row.activated.value)} activated (model card)`;
-  return `${row.name}: ${formatParameters(row.total.value)} total parameters; ${activated}`;
-}
-
-function Ruler({ row, index, reduce, band }: { row: OpenWeightRow; index: number; reduce: boolean; band: (typeof PARAMETER_BANDS)[number] }) {
-  const total = row.total.value!;
-  const activated = row.activated.value;
-  const transition = { duration: reduce ? 0 : 0.38, ease: 'easeOut' as const, delay: reduce ? 0 : Math.min(index * 0.035, 0.28) };
-  const bandLow = Math.max(band.low ?? 1e8, 1e8);
-  const bandHigh = Math.min(band.high ?? 3e12, 3e12);
-  return <svg className="ow-ruler" width="100%" height={22} role="img" aria-label={seriesLabel(row)}
-    data-total={total} data-activated={activated ?? ''}>
-    <title>{seriesLabel(row)}</title>
-    <rect x={at(bandLow)} y={3} width={`${axis(bandHigh) - axis(bandLow)}%`} height={16} className="ow-band-shade"/>
-    {TICKS.map((tick) => <line key={tick} x1={at(tick)} x2={at(tick)} y1={4} y2={18} className="ow-tick"/>)}
-    <motion.g initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={transition}>
-      {activated !== null && <line x1={at(activated)} x2={at(total)} y1={11} y2={11} className="ow-link"/>}
-      {activated !== null && <circle cx={at(activated)} cy={11} r={4.5} className="ow-activated" data-mark="activated"/>}
-      <circle cx={at(total)} cy={11} r={5.5} className="ow-total" data-mark="total"/>
-    </motion.g>
-  </svg>;
-}
 
 function SourceLine({ label, source }: { label: string; source: OpenWeightRow['sources']['metadata'] }) {
   if (!source) return <div><dt>{label}</dt><dd>Not captured</dd></div>;
@@ -100,7 +75,15 @@ function Evidence({ row, block }: { row: OpenWeightRow; block: OpenWeightsBlock 
 }
 
 export default function OpenWeights({ block, digest }: Props) {
-  const reduce = !!useReducedMotion();
+  useRouteQuery(KEYS);
+  const [chartView, setChartView] = useViewState('owView', VIEWS, 'buckets');
+  const [selected, setSelected] = useState('');
+  const parameterRange = useMemo<[number, number]>(() => {
+    const known = block.rows.flatMap(r => [r.total.value, r.activated.value]).filter((v): v is number => v !== null && v > 0);
+    const low = known.length ? 10 ** Math.floor(Math.log10(Math.min(...known))) : 1e8;
+    const high = known.length ? 10 ** Math.ceil(Math.log10(Math.max(...known))) : 1e12;
+    return [low, high > low ? high : low * 10];
+  }, [block]);
   const labs = useMemo(() => [...new Map(block.rows.map((row) => [row.labId, row.lab])).entries()]
     .sort((a, b) => a[1].localeCompare(b[1])), [block]);
   const [filters, setFilters] = useState<OwFilters>(() => decodeFilters(new URLSearchParams(location.search), labs.map(([id]) => id)));
@@ -108,6 +91,11 @@ export default function OpenWeights({ block, digest }: Props) {
   const counts = useMemo(() => bandCounts(scoped), [scoped]);
   const filtered = useMemo(() => filterRows(block.rows, filters), [block, filters]);
   const view = paginate(filtered, filters.page);
+
+  const plotRows = useMemo(() => parameterRows(view.rows), [filtered, view.page]);
+  const bucketPanels = useMemo(() => PARAMETER_BANDS.map(band => {
+    const reps = representatives(scoped, band.id); return { band, reps, rows: parameterRows(reps) };
+  }), [scoped]);
 
   useEffect(() => {
     history.replaceState(null, '', encodeFilters({ ...filters, page: view.page }, new URL(location.href)));
@@ -122,7 +110,7 @@ export default function OpenWeights({ block, digest }: Props) {
   </label>;
 
   function download() {
-    const blob = new Blob([JSON.stringify(exportRows(block, filtered, filters, digest), null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify({ ...exportRows(block, filtered, filters, digest), view: chartView, page: view.page + 1, plottedRows: chartView === 'buckets' ? bucketPanels.filter(p => p.band.id !== 'undisclosed' && (filters.band === 'all' || filters.band === p.band.id)).flatMap(p => p.rows) : chartView === 'table' ? [] : plotRows, parameterRange }, null, 2)], { type: 'application/json' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = 'axionbench-open-weights.json';
@@ -131,29 +119,34 @@ export default function OpenWeights({ block, digest }: Props) {
   }
 
   return <div className="ow" data-testid="ow">
+    <ViewControls name="Open-weight view" views={VIEWS} value={chartView} onChange={setChartView} prefix="ow-view"/>
+    <p>Available weights and an open-source licence are separate facts. A licence label alone does not establish that the whole model is open source. Parameter size is not a capability score.</p>
     <div className="band-tabs" role="group" aria-label="Total parameter group">
       <button type="button" aria-pressed={filters.band === 'all'} onClick={() => update({ band: 'all' })}>All sizes <small>{scoped.length}</small></button>
       {PARAMETER_BANDS.map((band) => <button type="button" key={band.id} aria-pressed={filters.band === band.id}
         data-band={band.id} onClick={() => update({ band: band.id })}>{band.label} <small>{counts[band.id]}</small></button>)}
     </div>
 
-    <div className="ow-multiples" data-testid="ow-multiples">
-      {PARAMETER_BANDS.map((band) => {
-        const reps = representatives(scoped, band.id);
-        return <figure key={band.id} className={'ow-panel' + (filters.band === band.id ? ' active' : '')} data-testid="ow-panel" data-band={band.id}>
+    {chartView === 'buckets' && <div className="ow-multiples" data-testid="ow-multiples">
+      {bucketPanels.filter(({ band }) => filters.band === 'all' || filters.band === band.id).map(({ band, reps, rows }) =>
+        <figure key={band.id} className="ow-panel" data-testid="ow-panel" data-band={band.id}>
           <figcaption><strong>{band.label}</strong><span>{reps.length} of {counts[band.id]} shown · one per lab</span></figcaption>
-          {reps.length === 0 ? <p className="ow-empty">No entries match the current filters.</p>
-            : <ul>{reps.map((row, index) => <li key={row.modelId} data-testid="ow-series" data-model-id={row.modelId}>
-                <span className="ow-name"><strong>{row.name}</strong><small>{row.lab}</small></span>
-                {band.id === 'undisclosed'
-                  ? <span className="ow-undisclosed">{TOTAL_NOTE[row.total.status]}</span>
-                  : <Ruler row={row} index={index} reduce={reduce} band={band}/>}
-              </li>)}</ul>}
-        </figure>;
-      })}
-      <p className="ow-legend"><span className="ow-key total"/>Total parameters (sets the group)
-        <span className="ow-key activated"/>Activated per token (MoE, card-stated) · log scale 0.1B–3T</p>
-    </div>
+          {reps.length === 0 ? <p className="ow-empty">No entries match the current filters.</p> : <>
+            {band.id !== 'undisclosed' && <CohortChart rows={rows} view="scatter" name={`ow-${band.id}`} parameterRange={parameterRange} selected={selected} onSelect={setSelected}/>}
+            <ul>{reps.map(row => <li key={row.modelId} data-testid="ow-series" data-model-id={row.modelId}>
+              <span className="ow-name"><strong>{row.name}</strong><small>{row.lab}</small></span>
+              {band.id === 'undisclosed' ? <span className="ow-undisclosed">{TOTAL_NOTE[row.total.status]}</span> :
+                <span>{formatParameters(row.total.value)} total · {formatParameters(row.activated.value)} activated</span>}
+            </li>)}</ul>
+            {band.id !== 'undisclosed' && <RowControls rows={rows} selected={selected} onSelect={setSelected} testId={`ow-${band.id}-values`}/>}
+          </>}
+        </figure>)}
+    </div>}
+    {(chartView === 'scatter' || chartView === 'heatmap') && plotRows.length > 0 && <>
+      <p>Chart shows page {view.page + 1} of the filtered rows below. Unknown counts stay in the table{chartView === 'heatmap' ? ' and appear as hatched cells' : ' and have no numerical mark'}.</p>
+      <CohortChart rows={plotRows} view={chartView} name="ow" parameterRange={parameterRange} selected={selected} onSelect={setSelected}/>
+      <RowControls rows={plotRows} selected={selected} onSelect={setSelected} testId="ow-values"/>
+    </>}
 
     <div className="ow-controls">
       <label className="search">Search open-weight models
@@ -193,6 +186,7 @@ export default function OpenWeights({ block, digest }: Props) {
         </tr>)}</tbody>
       </table>
     </div>
+    {filtered.length === 0 && <p role="status">No entry matches these filters. Choose All sizes or broaden the filters.</p>}
     <div className="pagination">
       <button type="button" data-testid="ow-prev" aria-label="Previous open-weight page" disabled={view.page === 0}
         onClick={() => setFilters((current) => ({ ...current, page: view.page - 1 }))}>← Previous</button>

@@ -135,7 +135,9 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   }
   await page.goto(origin + '/task-pricing', { waitUntil: 'networkidle' });
   check.equal(await page.getByTestId('task-cost').count(), 1);
-  check(await page.getByTestId('cost-plot').locator('[role="button"]').count() >= 8);
+  check.equal(await page.getByTestId('cost-plot').locator('canvas').count(), 1, 'task pricing renders Chart.js');
+  check(await page.getByTestId('cost-points').locator('button').count() >= 8, 'at least eight actual priced values are keyboard-accessible');
+  check.equal(await page.getByTestId('cost-points').locator('button').count(), (await page.getByTestId('cost-table').locator('tbody tr').evaluateAll(rows => rows.filter(row => row.querySelectorAll('td')[1]?.textContent.trim().startsWith('$')).length)), 'keyboard task-cost values match every priced factual table row');
   await page.goto(origin + '/domains', { waitUntil: 'networkidle' }); check.equal(await page.getByTestId('domain-weights').count(), 1);
   await page.goto(origin + '/benchmarks', { waitUntil: 'networkidle' });
   await page.getByTestId('view-bars').click();

@@ -16,7 +16,7 @@ Chart.js is pinned to 4.5.1 with the existing exact npm package manager and lock
 
 The original heatmap uses the registered scatter controller and `src/charts/heatmap.ts`, a local `afterDatasetsDraw` plugin. Scatter x/y values are categorical domain/model positions, never scores. The plugin draws rounded cells from each row’s normalized value, on a fixed cyan intensity scale; null cells use hatching and a dash. Chart.js supplies scale positions, resizing and point hit testing. No matrix dependency or stock appearance is used. This follows the [Chart.js plugin interface](https://www.chartjs.org/docs/latest/developers/plugins.html). Lifecycle cleanup follows [Chart.js destroy](https://www.chartjs.org/docs/latest/api/classes/Chart.html#destroy).
 
-The replaced authority/benchmark visx components are removed. Remaining visx imports belong to task pricing, open weights and regional views, which are replaced in later phases. Motion remains for the hero/page and useful row transitions. The initial homepage JavaScript remains separate from the detailed comparison chunk.
+All chart datasets have migrated to Chart.js; obsolete visx dependencies and components are removed. Motion remains for the hero/page and useful row transitions. The initial homepage JavaScript remains separate from the detailed comparison chunk.
 
 ## Share links and checks
 

@@ -29,6 +29,7 @@ export const GATES = [
   ['test:chart-smoke', 'hero preservation and chart smoke in Chromium'],
   ['test:head-to-head', 'matched US–China comparison'],
   ['test:open-weights', 'open-weight parameter groups'],
+  ['test:cohort-views', 'Chart.js cohort views, coverage, URL state and value parity'],
   ['test:catalogue', 'catalogue, methods and snapshots'],
   ['test:acceptance', 'visual and interaction acceptance at 320–1920 px'],
   ['verify:automation', 'refresh, CI and deployment tooling (offline)'],

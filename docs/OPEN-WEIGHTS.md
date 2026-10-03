@@ -1,45 +1,35 @@
-# Open-weight explorer (step 9)
+# Open weights
 
-Chapter `#open-weights` mounts `src/open-weights.tsx`. It gets its data from `openWeights` in `public/data.json`, which `scripts/build-observatory-data.mjs` builds through `scripts/open-weights/derive.mjs`. All the pure logic lives in `src/open-weights/logic.ts`: bands, extraction, classification, cohort, pagination and URL state. The build, the page and the test share that one module.
+Open `/open-weights` directly or use the main navigation. The page offers **Buckets**, **Scatter**, **Heatmap** and **Table**. Available weights and an open-source licence are separate facts; neither a public repository nor a licence field alone establishes that the whole model is open source. Parameter size is not a capability score.
 
-## What is included
+The `openWeights` projection comes from `scripts/open-weights/derive.mjs`, called by the existing data build. Captured repository metadata and model cards are checked against their recorded SHA-256. The page, build and tests share `src/open-weights/logic.ts`.
 
-Every ingested model whose `weightsAvailability` is not `unknown` is included. This snapshot has 289. Each fact is read from the committed Hugging Face repository metadata and the model-card snapshot. The build checks each snapshot against its recorded SHA-256 and fails if one does not match.
+## Counts and unknowns
 
-| Fact | Rule |
-|---|---|
-| Total parameters / group | The safetensors `total` counts only when every weight dtype is a plain float. `I64`/`BOOL` index buffers are allowed. Integer or packed dtypes (`I32`, `I8`, `U8`, …) mark a quantized checkpoint. Its tensor count is not a parameter count, so it goes into **Undisclosed**. Bands: `<10B`, `10–35B`, `35–100B`, `100–300B`, `300B+`. The lower bound is inclusive and the upper bound exclusive. A missing, zero or non-finite total also goes into Undisclosed. |
-| Activated (MoE) | This value is taken only from the model's own card, as a one-subject table row, a `key: value` line or a prose statement. If statements disagree, the value is `ambiguous`. A value that is not below the total is `inconsistent`. In a family-card table whose header names other sizes, the row is not attributed to this model. The activated count **never** sets the group. |
-| MoE identity | `stated-activated` means the card states an activated count. `architecture-class` means the architecture class name contains "MoE". Otherwise the value is `not-established`. The page never asserts that a model is dense. |
-| Weights access | `public` means hub `gated=false`. `gated` means hub `gated=auto/manual`. `not-verified` means no metadata snapshot was captured. |
-| Licence | This comes from the hub `license` field. The classes are OSI-approved, custom/non-OSI, not stated and not verified. Weights access and licence are separate facts. |
-| Base / instruct | This comes from the repository name first, then the `base_model:finetune:` tag. Otherwise it is "not stated". |
-| Quantized | This is set by a `base_model:quantized` tag, a configuration quantization other than bf16/fp16/fp32, a quantization token in the repository name, or integer tensor dtypes. |
-| Hosted price vs self-host | Hosted API prices are withheld because the captured rate sources do not permit redistribution. Self-host cost is not estimated because no hardware-cost source is captured. Neither value is shown as zero. |
+Only a safetensors total with plain floating-point weight dtypes qualifies as a total parameter count. I64/BOOL index buffers are allowed. Packed or integer weight tensors do not establish a parameter count. Missing, zero, invalid or quantized-only totals remain **Undisclosed**, outside every numerical bucket.
 
-## Interaction
+Buckets use total parameters: `<10B`, `10–35B`, `35–100B`, `100–300B` and `300B+`. The lower bound is inclusive; the upper bound is exclusive. For example, a 309B total with 15B activated belongs in `300B+`, never `10–35B`.
 
-- **Band tabs:** there is one tab per band and one for all sizes. The tabs show counts under the current filters.
-- **Small multiples:** there is one panel per band, and all panels share a log axis from 0.1B to 3T. The default cohort has at most `MAX_PANEL_SERIES` = 8 entries per panel. It shows one model per lab, with the required labs first (Meta, DeepSeek, Qwen, Mistral, Kimi, GLM, MiniMax, NVIDIA Nemotron, OLMo, Granite). The Undisclosed panel lists reasons and plots no position.
-- **Filters:** the filters cover MoE, weights access, licence, base/instruct, quantized, lab and search. All rows are reachable in a paginated table (20 per page), and each row has a source-details disclosure. That disclosure shows the metadata and card links, the SHA-256, the retrieval time and the verbatim activated quote.
-- **URL state:** it is kept in `owBand`, `owMoe`, `owLicence`, `owAccess`, `owVariant`, `owQuant`, `owLab`, `owQ` and `owPage`. Parameters from other chapters are preserved.
-- **Export:** the JSON export contains every filtered row, not just the visible page. It is bound to the projection digest.
+Activated parameters per token come from this checkpoint's own model card. Conflicting statements remain ambiguous; a count at or above an established total is inconsistent. Family-card tables naming sibling sizes cannot supply another checkpoint's count. Activated counts never set the bucket. Architecture-class evidence of MoE is kept separately from a card-stated activated count; an unknown architecture is not asserted to be dense.
 
-## Verification
+Weights access uses captured hub gating metadata. Licence classes reflect the recorded licence ID: OSI-approved, custom/non-OSI, not stated or not verified. Base/instruct and quantization labels retain their recorded basis. Source details show metadata/card links, retrieval dates, hashes and the captured activated-count quotation.
 
-`npm run test:open-weights` first runs `npm run test:head-to-head`, which itself runs the frontier gate and the production build. It then checks:
+## Views and sharing
 
-- Band boundaries, unknown totals and packed-tensor handling.
-- Activated extraction, including family-card, ambiguous and inconsistent cases, and MoE identity.
-- Licence, access and base/instruct classification, pagination, the representative cap, and the URL round trip.
-- Every real row re-read against its snapshot SHA-256, with each activated quote found verbatim in its card.
-- That all required labs are present.
-- Browser checks: panel series ≤ 8 and marks equal to row values; every row reachable by pagination; keyboard band selection; the separate filters; reload persistence; export parity; source details; reduced motion; and no overflow at 360, 390 and 768 px.
+Buckets show at most eight representatives per bucket, one per lab, using the existing value-independent lab priority and evidence-count rule. Selecting a bucket shows that panel alone. The Undisclosed panel lists reasons and draws no numerical positions.
 
-Screenshots and `test-results/open-weights-evidence.json` are written to the ignored `test-results/` directory.
+Scatter shows two distinguishable series on the selected table page: total parameters (cyan circles) and activated parameters (violet squares). Heatmap shows the same page with Total and Activated columns; native counts label each cell. All parameter charts use one logarithmic range computed from the complete captured parameter dataset. Heatmap intensity uses that range too. Unknown cells are hatched and labelled `—`; unknown scatter counts have no mark. An independently stated activated count may still be shown when the total is unknown.
 
-## Known limits
+The table keeps every filtered entry reachable, 20 per page. Keyboard value controls expose chart values and exact sources. Pointer inspection uses the same factual projection. Data changes animate for 380ms; reduced motion stops Chart.js animation, including when the preference changes while the page is open.
 
-- For 70 entries the total stays undisclosed. The main causes are quantized-only checkpoints (for example Kimi K2.5–K3, DeepSeek V4 and gpt-oss) and repositories without safetensors metadata.
-- Activated counts appear only where a card states one clearly (36 entries). The gpt-oss cards describe two models, so they stay ambiguous.
-- Base/instruct is not stated for most repositories.
+Own URL keys are `owView`, `owBand`, `owMoe`, `owLicence`, `owAccess`, `owVariant`, `owQuant`, `owLab`, `owQ` and `owPage`. Reload restores views, filters, buckets and page. Other-route keys are removed from the rendered page URL. Pure encoding functions leave unrelated keys alone.
+
+JSON exports contain every filtered row, the projection digest, method, filters, chosen view, page, shared parameter range and plotted factual rows. Exported sources preserve source identity, hash and retrieval time. An export therefore distinguishes a bounded graphical page from the full filtered dataset.
+
+Hosted API pricing and self-host cost remain separate. A weight download does not supply either price. Source-restricted routed rates remain withheld; self-host cost stays unestimated without captured hardware-cost evidence.
+
+## Checks and limits
+
+In the full source workspace, `npm run test:open-weights` runs the existing extraction, classification, source-hash, quoted-card, band-boundary, pagination and browser checks. It retains its head-to-head/frontier dependencies. The portable product source declares `npm run test:cohort-views` for all four views at 390, 768 and 1440px, real logarithmic geometry, table/export parity, keyboard controls, URL history/reload, unknown cells and live reduced motion. Fresh screenshots, current source hashes and the report are written under ignored `test-results/cohort-views/`.
+
+Counts describe the captured snapshot. Unknown totals, ambiguous activated statements, unchecked licences and unstated checkpoint variants stay visible. No model's total or licence is inferred from its family name.

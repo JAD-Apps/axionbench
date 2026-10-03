@@ -30,7 +30,7 @@ The total budget uses a declared 5:1 uncached-input/output split, rounded to who
 
 The contour preserves its shape, rotation and pointer response, with cyan/violet highlights. It suspends offscreen and when the document is hidden; `prefers-reduced-motion` renders a static frame. Navigation disposes observers and listeners before the hero unmounts. Motion for React remains for useful transitions; animation must convey changed data, use 250–500 ms transitions and finish immediately under reduced motion.
 
-Rankings, benchmark scores and domains now use custom Chart.js views. Task pricing, open weights and regional views retain visx until their assigned replacement phases. The chart contract remains an accessible table with matching rows and source links, native units, visible missingness, explicit scale and a named canvas. Chart.js is selected for the new design; Remaining visx removal belongs to those later phases. See [core views](CORE-VIEWS.md) for the current menus and qualification checks. ECharts and Recharts are not selected.
+All datasets now use custom Chart.js views. The obsolete visx dependencies and chart components are removed. Motion for React remains for the hero and useful row transitions. Charts share factual projections with accessible values, matching tables and source links; native units, unknowns, explicit scales and named canvases remain mandatory. See [core views](CORE-VIEWS.md), [open weights](OPEN-WEIGHTS.md) and [US–China](HEAD-TO-HEAD.md) for the menus and qualification checks. ECharts and Recharts are prohibited.
 
 ## Verification
 

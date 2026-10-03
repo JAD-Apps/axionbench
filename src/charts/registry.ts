@@ -1,12 +1,12 @@
 import {
   Chart, BarController, ScatterController, RadarController, LineController,
-  BarElement, PointElement, LineElement, CategoryScale, LinearScale, RadialLinearScale,
+  BarElement, PointElement, LineElement, CategoryScale, LinearScale, LogarithmicScale, RadialLinearScale,
 } from 'chart.js';
 import type { Chart as ChartInstance } from 'chart.js';
 
 // Explicit registration keeps the initial home route free of chart controllers.
 Chart.register(BarController, ScatterController, RadarController, LineController, BarElement, PointElement,
-  LineElement, CategoryScale, LinearScale, RadialLinearScale);
+  LineElement, CategoryScale, LinearScale, LogarithmicScale, RadialLinearScale);
 
 function geometry(chart: ChartInstance, final: boolean) {
   return JSON.stringify({
