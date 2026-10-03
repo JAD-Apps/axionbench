@@ -10,6 +10,29 @@ The normal prebuild refuses price captures older than seven days or from the fut
 
 Every original source adapter checks complete source shape, units, versions, identities and bounds. DeepSWE historical cost/efficiency fields are removed before admission. Unknown or new publisher mappings fail until reviewed. Suite/domain coverage cannot regress; observation drops greater than 10% are refused. The staged file set must remain identical. Validation recomputes public data and file hashes before promotion. Partial promotion is rolled back byte for byte, including the source manifest. An immutable external receipt records success or failure; raw payloads promoted and Git operations are zero. The frozen catalogue/community/open-weight projection is never edited by this command.
 
-The public CI workflow uses the exact package manager, frozen lockfile installation and actual portable gate; it uploads local execution receipts/screenshots even on failure. Weekly/manual refresh runs that same gate and only opens a review branch with an explicit allowlist of factual projections. It never adds an audit directory or pushes `main`. A GitHub-token push does not automatically trigger a follow-up push workflow; a token-created pull request can require approval to run its workflows. Approve the branch CI or dispatch Portable public CI before merge, following [GitHub's documented event behavior](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow). Workflows are defined here; their execution must be verified independently after publication.
+The public CI workflow uses the exact package manager, frozen lockfile installation and actual portable gate; it uploads local execution receipts/screenshots even on failure. The manual refresh workflow (no schedule) runs that same gate and only opens a review branch with an explicit allowlist of factual projections. It never adds an audit directory or pushes `main`. A GitHub-token push does not automatically trigger a follow-up push workflow; a token-created pull request can require approval to run its workflows. Approve the branch CI or dispatch Portable public CI before merge, following [GitHub's documented event behavior](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow). Workflows are defined here; their execution must be verified independently after publication.
 
-`npm run build:release` builds a clean static `dist` and binds every served file, control file and `data.json` hash using `axionbench-release-manifest-v1`. `release:check` recomputes the complete build, rejecting omitted, extra or changed files. The original product/control digest formats are preserved. Subsequent release operations must independently verify repository ancestry, a clean source commit, HTTPS readback of every file and actual browser acceptance.
+`npm run build:release` builds a clean static `dist` and binds every served file, control file and `data.json` hash using `axionbench-release-manifest-v1`. `release:check` recomputes the complete build, rejecting omitted, extra or changed files. The original product/control digest formats are preserved. In a checkout the manifest records the code commit; refreshed data files that differ from it are listed separately in `dataOverlay` with their own digest, `sourceDirty` stays `true`, and any changed code file sets `codeDirty: true`.
+
+## Daily site update
+
+The daily update runs as a scheduled JadBot workflow, not a GitHub schedule:
+
+```sh
+npm run publish:daily -- --state-dir <persistent dir outside the repository> --audit-dir <private dir outside the repository>
+```
+
+It refuses to start if code files differ from the commit, runs `npm run data:refresh`, builds the release and publishes it as one Cloudflare Pages production deployment through the Pages API. `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` come from the environment (local secret storage or runner injection), are read only by `scripts/release/pages-api.mjs` and are never printed or stored.
+
+The transaction, in order: an immutable read-only snapshot of the build with `publication.json` (refresh key and dates); qualification (hashes, limits, every route, data binding, credential-free text); a project check (`axionbench`, branch `main`, `axionbench.jadapps.app` attached); upload of only the missing assets; one deployment carrying `commit_message="axionbench data <key> snapshot <sha>"`; deployment status; HTTPS readback of every hosted byte from the approved hostname; and only then `last-success.json`.
+
+- Keys are `YYYY-MM-DD.rN` (UTC, not in the future, at most 3 days old, newer than the published key). Rerunning a published key with the same code and data does nothing; the same key with different content is refused before any Cloudflare call.
+- A timed-out deployment create is reconciled through the deployment listing by its snapshot-specific message, never blindly repeated. A killed run resumes from `transactions/<key>.json`.
+- Limits: 2,000 files, 25 MiB per file, 128 MiB in total, 500 files or 40 MiB per upload request, up to 4 attempts for idempotent calls.
+- If a new deployment fails its status or readback, production is rolled back to the recorded last-good deployment and that is verified by readback. Local data files return to their pre-refresh bytes. `last-success.json` is unchanged.
+
+Other commands: `publish:site` (publish the current tree; `--dry-run` makes no network call), `publish:candidate` (offline staging and qualification), `publish:verify` (read-only; checks Cloudflare's production deployment and every hosted byte), `publish:rollback --to previous|<deployment id>|<key>`, `publish:status`, `production:check -- --dist dist` or `-- --url https://axionbench.jadapps.app`, and `capture:verify` for screenshot/video evidence.
+
+The Methods page shows the published daily refresh, source retrieval, data validation and build dates separately. A build that the daily update did not publish says so.
+
+Known limits: asset keys use SHA-256 where Wrangler uses BLAKE3, and the asset endpoints are the ones Wrangler uses rather than documented API reference entries; the first live deployment has to confirm both. Readback assumes Pages serves `x/index.html` at `/x/` and the root `404.html` with HTTP 404 for unknown paths.

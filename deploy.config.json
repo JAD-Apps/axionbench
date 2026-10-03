@@ -3,6 +3,7 @@
   "projectName": "axionbench",
   "productionBranch": "main",
   "hostname": "axionbench.jadapps.app",
+  "repo": "JAD-Apps/axionbench",
   "outputDirectory": "dist",
   "wranglerVersion": "4.145.0",
   "forbiddenProjects": ["jad-apps-site-git", "jad-apps-site", "docstudio", "the-system"],

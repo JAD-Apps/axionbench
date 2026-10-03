@@ -50,7 +50,18 @@
     "test:routes": "node scripts/project/test-routes.mjs",
     "test:core-views": "node scripts/project/test-core-views.mjs",
     "test:cost-version-views": "node scripts/project/test-cost-version-views.mjs",
-    "test:cohort-views": "node scripts/project/test-cohort-views.mjs"
+    "test:cohort-views": "node scripts/project/test-cohort-views.mjs",
+    "publish:daily": "node scripts/release/publish.mjs daily",
+    "publish:site": "node scripts/release/publish.mjs run",
+    "publish:candidate": "node scripts/release/publish.mjs candidate",
+    "publish:verify": "node scripts/release/publish.mjs verify",
+    "publish:rollback": "node scripts/release/publish.mjs rollback",
+    "publish:status": "node scripts/release/publish.mjs status",
+    "production:check": "node scripts/release/production-check.mjs",
+    "capture:verify": "node scripts/release/verify-capture.mjs",
+    "receipts:verify": "node scripts/project/verify-receipts.mjs",
+    "public:patches": "node scripts/project/prepare-public-patches.mjs",
+    "test:update-transaction": "node --test tests/project/update-transaction.test.mjs"
   },
   "devDependencies": {
     "@types/node": "24.10.0",

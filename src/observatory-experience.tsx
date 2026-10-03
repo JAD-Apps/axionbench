@@ -3,6 +3,7 @@ import { downloadRows, RowControls, ViewControls } from './charts/controls';
 import { capturedViewRows } from './charts/rows';
 import { saveQuery } from './charts/state';
 import { useEffect, useMemo, useState } from 'react';
+import { PublicationDates } from './publication-dates';
 import type { AuthorityBlock } from './authority/logic';
 import AuthorityRanking from './authority-ranking';
 import { BenchmarkLibrary, Catalogue, Methodology } from './catalogue';
@@ -550,7 +551,7 @@ export default function ObservatoryExperience({ route, onDatasetStatus }: Props)
         <dl><div><dt>Source ingestion SHA-256</dt><dd className="mono-label">{dataset.sourceDigest}</dd></div>
           <div><dt>Projection</dt><dd>{manifest?.projection.bytes.toLocaleString() ?? 'Unknown'} bytes · verified against manifest</dd></div>
           <div><dt>Deferred source detail</dt><dd>{manifest?.details.bytes.toLocaleString() ?? 'Unknown'} bytes · loaded and checked on disclosure</dd></div>
-          <div><dt>Snapshot retrieved</dt><dd>{dataset.retrievedAt}</dd></div></dl>
+          <PublicationDates retrievedAt={dataset.retrievedAt}/></dl>
       </div>
       <p className="snapshot-note">This page covers the captured source-admitted snapshot, not every model or test in existence. Source detail includes the recorded reuse terms, retrieval status, identifiers and hashes when available.</p>
     </section>

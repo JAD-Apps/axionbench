@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { validateOverlay } from './source-identity.mjs';
 
 export const SCHEMA_VERSION = 'axionbench-release-manifest-v1';
 export const PRODUCT_DIGEST_FORMAT = 'axionbench-product-v1';
@@ -73,7 +74,9 @@ export async function scanDist(distDir) {
   return { files: served, controlFiles: control };
 }
 
-export async function buildManifest(distDir, { sourceCommit, sourceDirty, builtAt = new Date().toISOString() }) {
+// Optional identity: codeDirty and dataOverlay (see source-identity.mjs) and a
+// publication binding added by the daily publication snapshot.
+export async function buildManifest(distDir, { sourceCommit, sourceDirty, codeDirty, dataOverlay, publication, builtAt = new Date().toISOString() }) {
   const { files, controlFiles } = await scanDist(distDir);
   const data = files.find((file) => file.path === 'data.json');
   assert.ok(data, 'build has no data.json');
@@ -81,6 +84,9 @@ export async function buildManifest(distDir, { sourceCommit, sourceDirty, builtA
     schemaVersion: SCHEMA_VERSION,
     digestFormat: { product: PRODUCT_DIGEST_FORMAT, control: CONTROL_DIGEST_FORMAT },
     sourceCommit, sourceDirty, builtAt,
+    ...(codeDirty === undefined ? {} : { codeDirty }),
+    ...(dataOverlay ? { dataOverlay } : {}),
+    ...(publication ? { publication } : {}),
     productSha256: canonicalDigest(files),
     controlSha256: canonicalDigest(controlFiles, CONTROL_DIGEST_FORMAT),
     dataSha256: data.sha256,
@@ -104,6 +110,9 @@ export function validateManifest(manifest, { sourceArchiveSha256 } = {}) {
     assert.equal(manifest.sourceArchiveSha256, sourceArchiveSha256, 'archive source identity mismatch');
   }
   assert.equal(typeof manifest.sourceDirty, 'boolean', 'sourceDirty must be recorded');
+  if (Object.hasOwn(manifest, 'codeDirty')) assert.equal(typeof manifest.codeDirty, 'boolean', 'codeDirty must be boolean');
+  if (manifest.codeDirty === true) assert.equal(manifest.sourceDirty, true, 'changed code cannot be labelled a clean source');
+  validateOverlay(manifest);
   assert.ok(Number.isFinite(Date.parse(manifest.builtAt)), 'builtAt must be a timestamp');
   for (const [name, list] of [['files', manifest.files], ['controlFiles', manifest.controlFiles]]) {
     assert.ok(Array.isArray(list), `${name} must be an array`);

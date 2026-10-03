@@ -3,7 +3,9 @@
 // local release build with its manifest hashes, and credential-free output.
 import assert from 'node:assert/strict';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { readFile } from 'node:fs/promises';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { DEFAULT_MAX_CHANGES } from './refresh.mjs';
 import { findSecrets } from './secrets.mjs';
 import { compareWithBuild, scanDist, validateManifest, sha256 } from '../release/manifest.mjs';
@@ -58,7 +60,9 @@ await check('workflow files are structurally valid, pinned and least-privilege',
   assert.match(deploy, /deploy:readback/);
   assert.ok(deploy.indexOf('build:release') < deploy.indexOf('pages deploy'), 'deploy must build before publishing');
   const refresh = await text('.github/workflows/refresh-data.yml');
-  assert.match(refresh, /schedule:/); assert.match(refresh, /npm run data:refresh/);
+  assert.match(refresh, /workflow_dispatch:/); assert.match(refresh, /npm run data:refresh/);
+  assert.ok(!/^\s+schedule:/m.test(refresh), 'the GitHub cron is not the authoritative updater; the daily update runs in JadBot');
+  for (const name of workflowNames) assert.ok(!/^\s+schedule:/m.test(await text(`.github/workflows/${name}.yml`)), `${name}: no GitHub schedule`);
   assert.match(refresh, /gh pr create --base main/, 'refresh promotes through a reviewed pull request');
   assert.ok(!/git push[^\n]*\bmain\b/.test(refresh), 'refresh must never push to main');
 });
@@ -67,6 +71,8 @@ await check('deployment configuration matches the immutable owner approval', asy
   const approval = await json('docs/owner-approval.json');
   assert.equal(approval.status, 'approved');
   assert.equal(config.hostname, approval.hostname);
+  assert.equal(config.repo, approval.repo);
+  assert.equal(config.productionBranch, 'main');
   assert.equal(config.provider, 'cloudflare-pages');
   assert.ok(!config.forbiddenProjects.includes(config.projectName));
   assert.equal(config.projectName, 'axionbench');
@@ -79,6 +85,29 @@ await check('deployment configuration matches the immutable owner approval', asy
 });
 
 await check('refresh, manifest, deployment-gate and credential fixtures pass', async () => { run('node', ['scripts/automation/test-automation.mjs']); });
+
+await check('publication tooling: credentials by name only, declared commands and quality profile resolve', async () => {
+  for (const script of ['publish:daily', 'publish:site', 'publish:candidate', 'publish:verify', 'publish:rollback', 'production:check', 'capture:verify', 'receipts:verify', 'public:patches']) {
+    const [, file] = /node (\S+\.mjs)/.exec(pkg.scripts[script]) ?? [];
+    assert.ok(file, `${script} must run a node script`); await readFile(file);
+  }
+  const modules = ['scripts/release/pages-api.mjs', 'scripts/release/publication.mjs', 'scripts/release/publish.mjs', 'scripts/release/source-identity.mjs', 'scripts/release/production-check.mjs', 'scripts/release/verify-capture.mjs', 'scripts/project/verify-receipts.mjs', 'scripts/project/prepare-public-patches.mjs'];
+  for (const path of modules) {
+    const source = await text(path);
+    assert.deepEqual(findSecrets(source), [], `${path}: credential-shaped text`);
+    assert.ok(!/console\.(log|error)\([^)]*\btoken\b/i.test(source), `${path}: never logs a token`);
+    if (path !== 'scripts/release/pages-api.mjs') assert.ok(!/process\.env\.CLOUDFLARE_/.test(source), `${path}: credentials are read only by pages-api.mjs`);
+  }
+  assert.ok(!/git (commit|push)/.test(await text('scripts/project/prepare-public-patches.mjs')), 'patch preparation never commits or pushes');
+  const quality = await json('jadbot.quality.json');
+  assert.deepEqual(Object.keys(quality).sort(), ['health', 'recovery', 'release', 'schemaVersion', 'timeoutSeconds', 'validation']);
+  for (const command of [...quality.validation, ...quality.health, ...quality.recovery.flatMap((row) => [row.fault, row.assert, row.recover, row.assertRecovered])]) {
+    for (const [, script] of command.matchAll(/npm run ([\w:-]+)/g)) assert.ok(pkg.scripts[script], `quality command uses missing script ${script}`);
+    for (const [, file] of command.matchAll(/node (scripts\/[\w/.-]+\.mjs)/g)) await readFile(file);
+  }
+  for (const row of quality.recovery) assert.match(row.assert, /^! /, 'each fault must be asserted as a failure');
+  assert.deepEqual(await json('scripts/public-content/jadbot.quality.json'), quality, 'public quality profile matches');
+});
 
 await check('credential scanner flags credential shapes and ignores name-only references', async () => {
   assert.equal(findSecrets('CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}').length, 0);
@@ -107,14 +136,29 @@ await check('clean release build produces a complete, hash-exact manifest', asyn
   assert.equal(manifest.sourceCommit, execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim());
 });
 
+await check('real build passes route health and stages as an immutable publication candidate offline', async () => {
+  run('node', ['scripts/release/production-check.mjs', '--dist', 'dist']);
+  const state = await mkdtemp(join(tmpdir(), 'axionbench-candidate-'));
+  try {
+    run('node', ['scripts/release/publish.mjs', 'candidate', '--dist', 'dist', '--state-dir', state]);
+    const report = JSON.parse(captured.at(-2));
+    assert.equal(report.status, 'candidate-qualified');
+    const manifest = await json('dist/release-manifest.json');
+    assert.equal(report.publishable, manifest.sourceDirty === false || manifest.codeDirty === false, 'publishability follows the code identity');
+    const published = JSON.parse(await readFile(join(state, 'snapshots', report.snapshotSha256, 'publication.json'), 'utf8'));
+    assert.equal(published.refreshKey, report.key);
+    assert.equal(JSON.parse(await readFile('dist/publication.json', 'utf8')).status, 'unpublished', 'the build itself never claims a publication');
+  } finally { await rm(state, { recursive: true, force: true }); }
+});
+
 await check('build output, tracked configuration and command output are credential-free', async () => {
   const manifest = await json('dist/release-manifest.json');
   for (const file of manifest.files) {
     if (/\.(png|jpe?g|webp|ttf|woff2?)$/.test(file.path)) continue;
     assert.deepEqual(findSecrets(await text(`dist/${file.path}`)), [], `dist/${file.path}`);
   }
-  for (const path of ['deploy.config.json', 'package.json', 'evidence/cloudflare-inspection.json', 'docs/DEPLOYMENT.md', 'docs/AUTOMATION.md']) assert.deepEqual(findSecrets(await text(path)), [], path);
+  for (const path of ['deploy.config.json', 'package.json', 'jadbot.quality.json', 'evidence/cloudflare-inspection.json', 'docs/DEPLOYMENT.md', 'docs/AUTOMATION.md']) assert.deepEqual(findSecrets(await text(path)), [], path);
   assert.deepEqual(findSecrets(captured.join('\n')), [], 'captured command output');
 });
 
-console.log(`verify:automation passed ${checks.length} checks. No network, deployment, DNS or browser operation was performed.`);
+console.log(`verify:automation passed ${checks.length} checks. No network, deployment, DNS, Cloudflare or browser operation was performed.`);

@@ -4,8 +4,22 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { MANIFEST_NAME, compareWithBuild, expectedHeaders, parseHeadersFile, scanDist, sha256, validateManifest } from './manifest.mjs';
+import { publishableSource } from './source-identity.mjs';
 
 const digest = (value) => assert.match(value, /^[a-f0-9]{64}$/);
+
+// Cloudflare Pages serves HTML without its extension and redirects the
+// extension form (/about/index.html -> /about/, /contact.html -> /contact), so
+// readback requests the canonical URL with redirects refused. The root 404.html
+// is served for unmatched paths with HTTP 404 and is read through a probe path.
+export const MISSING_PROBE = '/__axionbench-readback-missing';
+export function hostedRequest(path) {
+  if (path === '404.html') return { urlPath: MISSING_PROBE, status: 404 };
+  if (path === 'index.html') return { urlPath: '/', status: 200 };
+  if (path.endsWith('/index.html')) return { urlPath: `/${path.slice(0, -'index.html'.length)}`, status: 200 };
+  if (path.endsWith('.html')) return { urlPath: `/${path.slice(0, -'.html'.length)}`, status: 200 };
+  return { urlPath: `/${path}`, status: 200 };
+}
 
 export async function verifyDeployment({ approval, deployment: d, distDir = 'dist', fetcher = fetch }) {
   assert.equal(d.url, `https://${approval.hostname}`, 'deployment URL must be the exact approved hostname');
@@ -19,7 +33,7 @@ export async function verifyDeployment({ approval, deployment: d, distDir = 'dis
   const localManifestBytes = await readFile(join(distDir, MANIFEST_NAME));
   const localManifest = validateManifest(JSON.parse(localManifestBytes));
   compareWithBuild(localManifest, await scanDist(distDir));
-  assert.equal(localManifest.sourceDirty, false, 'a release must be built from a clean committed tree');
+  assert.ok(publishableSource(localManifest), 'a release must be built from a clean committed tree (or clean code plus a validated data overlay)');
   assert.equal(localManifest.sourceCommit, d.sourceCommit, 'local manifest sourceCommit differs from the deployment record');
   assert.equal(localManifest.productSha256, d.productSha256, 'Hosted release must match the verified product build');
   assert.equal(localManifest.dataSha256, d.dataSha256, 'local data hash differs from the deployment record');
@@ -28,9 +42,9 @@ export async function verifyDeployment({ approval, deployment: d, distDir = 'dis
   const headerRules = parseHeadersFile(await readFile(join(distDir, '_headers'), 'utf8'));
 
   // ---- hosted checks ----
-  const get = async (path) => {
+  const get = async (path, status = 200) => {
     const response = await fetcher(`${d.url}${path}`, { signal: AbortSignal.timeout(30000), redirect: 'error' });
-    assert.equal(response.status, 200, `${d.url}${path}: expected HTTP 200`);
+    assert.equal(response.status, status, `${d.url}${path}: expected HTTP ${status}`);
     return { bytes: Buffer.from(await response.arrayBuffer()), headers: response.headers };
   };
   const remoteManifest = await get(`/${MANIFEST_NAME}`);
@@ -41,7 +55,8 @@ export async function verifyDeployment({ approval, deployment: d, distDir = 'dis
   assert.equal(manifest.sourceCommit, d.sourceCommit);
   assert.equal(sha256((await get('/data.json')).bytes), d.dataSha256, 'hosted data.json differs from the verified data');
   for (const file of manifest.files) {
-    const hosted = await get(`/${file.path}`);
+    const request = hostedRequest(file.path);
+    const hosted = await get(request.urlPath, request.status);
     assert.equal(sha256(hosted.bytes), file.sha256, `Hosted artifact mismatch: ${file.path}`);
     assert.equal(hosted.bytes.length, file.bytes, `Hosted artifact size mismatch: ${file.path}`);
   }

@@ -57,6 +57,10 @@ pkg.scripts = {
   'test:acceptance': 'node scripts/test-acceptance.mjs', 'build:release': 'node scripts/public/release.mjs',
   'release:check': 'node scripts/public/check-release.mjs', 'verify:public': 'node scripts/public/verify.mjs',
   'verify:release': 'npm run verify:public', verify: 'npm run verify:public', 'jadbot:verify': 'npm run verify:release',
+  'publish:daily': 'node scripts/release/publish.mjs daily', 'publish:site': 'node scripts/release/publish.mjs run',
+  'publish:candidate': 'node scripts/release/publish.mjs candidate', 'publish:verify': 'node scripts/release/publish.mjs verify',
+  'publish:rollback': 'node scripts/release/publish.mjs rollback', 'publish:status': 'node scripts/release/publish.mjs status',
+  'production:check': 'node scripts/release/production-check.mjs', 'capture:verify': 'node scripts/release/verify-capture.mjs',
 };
 await writeFile(join(target, 'package.json'), jsonBytes(pkg));
 for (const path of allowlist.templates) {

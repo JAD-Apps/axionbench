@@ -1,7 +1,7 @@
 name: Refresh permitted public facts
+# Manual review tool. The daily site update runs in JadBot through
+# `npm run publish:daily`; see docs/AUTOMATION.md.
 on:
-  schedule:
-    - cron: '17 5 * * 1'
   workflow_dispatch:
 permissions:
   contents: write
@@ -40,7 +40,7 @@ jobs:
           git config user.name "axionbench-refresh"
           git config user.email "axionbench-refresh@users.noreply.github.com"
           git checkout -b "$branch"
-          git add data/authority-deepswe.json data/publisher-percentage-facts.json data/authority/epoch-hub.json data/authority/bfcl-v4.json data/authority/longbench-v2.json data/public-price-facts.json public/data.json public/data-details.json public/data-manifest.json PUBLIC-SOURCE-MANIFEST.json
+          git add data/authority-deepswe.json data/publisher-percentage-facts.json data/authority/epoch-hub.json data/authority/bfcl-v4.json data/authority/longbench-v2.json data/public-price-facts.json data/current-source-evidence.json public/data.json public/data-details.json public/data-manifest.json PUBLIC-SOURCE-MANIFEST.json
           git diff --cached --quiet && exit 0
           git commit -m "Refresh permitted source facts"
           git push origin "$branch"

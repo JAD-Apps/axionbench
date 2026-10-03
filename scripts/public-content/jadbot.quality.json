@@ -1,12 +1,34 @@
 {
   "schemaVersion": 1,
   "release": { "artifact": "dist/release-manifest.json" },
-  "health": ["npm run release:check"],
-  "recovery": [{
-    "fault": "rm -f dist/index.html",
-    "assert": "! npm run release:check",
-    "recover": "npm run build:release",
-    "assertRecovered": "npm run release:check"
-  }],
+  "validation": [
+    "npm run release:check",
+    "node scripts/release/production-check.mjs --dist dist",
+    "node scripts/release/publish.mjs candidate --dist dist --state-dir \"$(mktemp -d)\""
+  ],
+  "health": [
+    "npm run release:check",
+    "node scripts/release/production-check.mjs --dist dist"
+  ],
+  "recovery": [
+    {
+      "fault": "rm -f dist/index.html",
+      "assert": "! npm run release:check",
+      "recover": "npm run build:release",
+      "assertRecovered": "npm run release:check"
+    },
+    {
+      "fault": "printf 'corrupt' >> dist/data.json",
+      "assert": "! npm run release:check",
+      "recover": "npm run build:release",
+      "assertRecovered": "npm run release:check && node scripts/release/production-check.mjs --dist dist"
+    },
+    {
+      "fault": "rm -rf dist/rankings",
+      "assert": "! node scripts/release/production-check.mjs --dist dist",
+      "recover": "npm run build:release",
+      "assertRecovered": "node scripts/release/production-check.mjs --dist dist"
+    }
+  ],
   "timeoutSeconds": 2400
 }

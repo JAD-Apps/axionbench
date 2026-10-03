@@ -44,12 +44,20 @@ try {
     assert.match(ci, /contents: read/); assert.match(ci, /pull_request:/); assert.match(ci, /workflow_dispatch:/);
     const refresh = await readFile(join(dir, '.github/workflows/refresh-data.yml'), 'utf8');
     assert.match(refresh, /--audit-dir "\$RUNNER_TEMP\/axionbench-source-audit"/); assert.match(refresh, /gh pr create --base main/);
+    assert.match(refresh, /workflow_dispatch:/); assert(!/^\s+schedule:/m.test(refresh), 'the GitHub cron is not the authoritative updater');
     const stage = /^\s+git add (.+)$/m.exec(refresh); assert(stage);
     assert.deepEqual(stage[1].trim().split(/\s+/).sort(), REFRESH_FILES.slice().sort(), 'CI cannot stage raw directories or unrelated files');
     assert(!/git push[^\n]*\bmain\b|pages deploy|wrangler|git add (?:\.|-A|--all)(?:\s|$)/m.test(refresh));
     const quality = await readJson(dir, 'jadbot.quality.json');
-    assert.equal(quality.release.artifact, 'dist/release-manifest.json'); assert.deepEqual(quality.health, ['npm run release:check']);
-    assert.deepEqual(quality.recovery, [{ fault: 'rm -f dist/index.html', assert: '! npm run release:check', recover: 'npm run build:release', assertRecovered: 'npm run release:check' }]);
+    assert.equal(quality.release.artifact, 'dist/release-manifest.json');
+    assert.deepEqual(quality.health, ['npm run release:check', 'node scripts/release/production-check.mjs --dist dist']);
+    assert.deepEqual(quality.recovery[0], { fault: 'rm -f dist/index.html', assert: '! npm run release:check', recover: 'npm run build:release', assertRecovered: 'npm run release:check' });
+    for (const row of quality.recovery) { assert.match(row.assert, /^! /); assert.equal(row.recover, 'npm run build:release'); }
+    assert(quality.validation.some(command => command.startsWith('node scripts/release/publish.mjs candidate')), 'candidate artifact command');
+    for (const command of [...quality.validation, ...quality.health, ...quality.recovery.flatMap(row => [row.assert, row.assertRecovered])])
+      for (const [, script] of command.matchAll(/node (scripts\/[\w/.-]+\.mjs)/g)) await readFile(join(dir, script));
+    const deploy = await readJson(dir, 'deploy.config.json');
+    assert.deepEqual([deploy.projectName, deploy.hostname, deploy.repo], ['axionbench', 'axionbench.jadapps.app', 'JAD-Apps/axionbench']);
   });
   await fixture('manifest rejects tampered asset and omitted/extra files', async dir => {
     const path = 'public/assets/surface.js'; await writeFile(join(dir, path), 'tampered');

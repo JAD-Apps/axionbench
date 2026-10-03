@@ -133,7 +133,17 @@
     "src/charts/cohort-rows.ts",
     "docs/OPEN-WEIGHTS.md",
     "docs/HEAD-TO-HEAD.md",
-    "docs/CATALOGUE.md"
+    "docs/CATALOGUE.md",
+    "scripts/automation/secrets.mjs",
+    "scripts/release/deployment-gate.mjs",
+    "scripts/release/pages-api.mjs",
+    "scripts/release/production-check.mjs",
+    "scripts/release/publication.mjs",
+    "scripts/release/publish.mjs",
+    "scripts/release/source-identity.mjs",
+    "scripts/release/verify-capture.mjs",
+    "public/publication.json",
+    "src/publication-dates.tsx"
   ],
   "templates": [
     "README.md",
@@ -142,7 +152,8 @@
     ".github/workflows/ci.yml",
     ".github/workflows/refresh-data.yml",
     ".gitignore",
-    "jadbot.quality.json"
+    "jadbot.quality.json",
+    "deploy.config.json"
   ],
   "generated": [
     "package.json",
