@@ -1,5 +1,6 @@
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
+import { exactReleaseMatch } from '../src/data/current-policy.mjs';
 import { addedSuites, extendRegistry, hfDatasetToSuite } from './registry-coverage.mjs';
 import { endpointIdentitySha256, endpointPriceSha256, fetchSnapshot, labForModelId, normalizeScore, parseEvalResults, parseNonnegativeRate, projectLeaderboardRows, readJson, saveBlob, sha256 } from './data-adapters.mjs';
 
@@ -400,7 +401,7 @@ const officialReleasePages = [
   { labId: 'xai', url: 'https://docs.x.ai/docs/models', needles: ['grok-4.7', 'Grok 4.7'], currentName: 'Grok 4.7' },
   { labId: 'cohere', url: 'https://docs.cohere.com/docs/models', needles: ['Command A+'], currentName: 'Command A+' },
   { labId: 'minimax', url: 'https://platform.minimax.io/docs/guides/models-intro', needles: ['MiniMax M2-her'], currentName: 'MiniMax M2-her' },
-  { labId: 'meta', url: 'https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/', needles: ['Muse Spark 1.1', 'Muse Spark'], currentName: 'Muse Spark 1.1' },
+  { labId: 'meta', url: 'https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/', needles: ['Muse Spark 1.1'], currentName: 'Muse Spark 1.1' },
   { labId: 'meta', url: 'https://ai.meta.com/events/', needles: ['Muse Spark 1.3'], currentName: 'Muse Spark 1.3' },
   { labId: 'ibm-granite', url: 'https://research.ibm.com/blog/introducing-granite-4-2', needles: ['Granite 4.2'], currentName: 'Granite 4.2' },
 ];
@@ -418,7 +419,7 @@ await mapLimit(officialReleasePages, 4, async (page, index) => {
 });
 for (const page of officialPageEvidence) {
   if (!page.matchedNeedle || !page.source.snapshotPath) continue;
-  const exact = models.find((model) => model.labId === page.labId && model.name.toLowerCase().includes(page.currentName.toLowerCase()));
+  const exact = models.find((model) => model.labId === page.labId && exactReleaseMatch(model.name, page.currentName));
   if (exact) {
     exact.originalSourceUrl = page.url;
     exact.originalSourceStatus = 'exact current model version matched in captured official release/model page';

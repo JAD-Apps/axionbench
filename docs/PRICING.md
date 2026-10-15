@@ -1,5 +1,7 @@
 # Licensed public task pricing
 
+The [current identity policy](CURRENT-POLICY.md) transfers no tariff across versions. For example, a Gemini 3.8 Flash quote cannot price an unrelated model, and GPT-6 Luna has no licensed quote in this snapshot. Its task cost stays null. This update reused the existing licensed capture without changing its retrieval date or claiming a new fetch. Caching, thinking/output billing, the greater-than-200K threshold, promotion expiry and missing-rate checks are unchanged.
+
 `data/public-price-facts.json` is a narrow factual projection of the standard paid **text-token** tables on [Google Gemini Developer API pricing](https://ai.google.dev/gemini-api/docs/pricing). The page explicitly grants CC BY 4.0 reuse. Attribution, licence link, retrieval time, original-byte SHA-256, exact endpoint identity and table coordinates are retained. Presentation is adapted; no source artwork, account details, raw HTML or routed provider payloads are published.
 
 The current capture contains 11 exact endpoints. Prices join only identical authority model keys; related or newer versions receive no transferred quote. The existing 1,328 routed price rows remain excluded while their reuse terms are unsettled. This licensed source subset does not claim complete provider price coverage.

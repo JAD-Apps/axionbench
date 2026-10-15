@@ -7,10 +7,17 @@ const keys = (value, allowed, label) => {
   assert.deepEqual(Object.keys(value).sort(), allowed.split(' ').sort(), `${label}: unpermitted or missing fact fields`);
 };
 const metric = value => keys(value, 'unit direction min max', 'metric');
+const sourceKeys = (source, allowed, label) => {
+  keys(source, allowed + (Object.hasOwn(source, 'verifiedAt') ? ' verifiedAt' : ''), label);
+  if (Object.hasOwn(source, 'verifiedAt')) {
+    assert(Number.isFinite(Date.parse(source.verifiedAt)), `${label}: verification date invalid`);
+    assert(Date.parse(source.verifiedAt) >= Date.parse(source.retrievedAt), `${label}: verification predates original retrieval`);
+  }
+};
 export async function validatePermittedFacts(root) {
   const deep = await readJson(root, 'data/authority-deepswe.json');
   keys(deep, 'schemaVersion benchmark version family domain source provenance independentReplication metrics taskSetSize configurationCount modelCount rows', 'DeepSWE');
-  keys(deep.source, 'url resultUrl sha256 retrievedAt generatedAt httpStatus', 'DeepSWE source');
+  sourceKeys(deep.source, 'url resultUrl sha256 retrievedAt generatedAt httpStatus', 'DeepSWE source');
   assert.equal(deep.provenance, 'original benchmark-authority measurement', 'DeepSWE provenance');
   assert.equal(deep.independentReplication, false, 'DeepSWE replication claim');
   assert.equal(deep.source.url, 'https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json');
@@ -22,7 +29,7 @@ export async function validatePermittedFacts(root) {
   }
   const epoch = await readJson(root, 'data/authority/epoch-hub.json');
   keys(epoch, 'schemaVersion publisher provenance licence source countryDefinition organizations modelAttributions benchmarks', 'Epoch');
-  keys(epoch.source, 'url hubUrl sha256 bytes retrievedAt generatedAt generatedAtBasis httpStatus', 'Epoch source');
+  sourceKeys(epoch.source, 'url hubUrl sha256 bytes retrievedAt generatedAt generatedAtBasis httpStatus', 'Epoch source');
   assert.equal(epoch.provenance, 'independent evaluator measurement', 'Epoch provenance');
   assert.equal(epoch.source.url, 'https://epoch.ai/data/benchmark_data.zip');
   keys(epoch.licence, 'name url attribution', 'Epoch licence'); assert.equal(epoch.licence.name, 'CC BY 4.0'); assert.equal(epoch.licence.url, 'https://creativecommons.org/licenses/by/4.0/'); assert(epoch.licence.attribution);
@@ -35,14 +42,14 @@ export async function validatePermittedFacts(root) {
   }
   const bfcl = await readJson(root, 'data/authority/bfcl-v4.json');
   keys(bfcl, 'schemaVersion benchmark suiteId version domain familyId publisher provenance metric evaluationCommit source rowCount rowsSha256 rows', 'BFCL');
-  keys(bfcl.source, 'url resultUrl sha256 pageSha256 retrievedAt generatedAt generatedAtBasis httpStatus', 'BFCL source');
+  sourceKeys(bfcl.source, 'url resultUrl sha256 pageSha256 retrievedAt generatedAt generatedAtBasis httpStatus', 'BFCL source');
   assert.equal(bfcl.provenance, 'original benchmark-authority measurement', 'BFCL provenance');
   assert.equal(bfcl.source.url, 'https://gorilla.cs.berkeley.edu/data_overall.csv');
   keys(bfcl.metric, 'name unit direction min max evidence', 'BFCL metric'); assert(bfcl.metric.evidence);
   for (const row of bfcl.rows) keys(row, 'rank model modelKey mode overallPercent organization licence modelLink', 'BFCL row');
   const long = await readJson(root, 'data/authority/longbench-v2.json');
   keys(long, 'schemaVersion benchmark suiteId version domain familyId publisher provenance metric conditions source rowCount rowsSha256 rows', 'LongBench');
-  keys(long.source, 'url resultUrl sha256 retrievedAt generatedAt generatedAtBasis httpStatus', 'LongBench source');
+  sourceKeys(long.source, 'url resultUrl sha256 retrievedAt generatedAt generatedAtBasis httpStatus', 'LongBench source');
   assert.equal(long.provenance, 'original benchmark-authority leaderboard', 'LongBench provenance');
   assert.equal(long.source.url, 'https://longbench2.github.io/');
   keys(long.metric, 'name unit direction min max evidence', 'LongBench metric'); assert(long.metric.evidence);

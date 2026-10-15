@@ -1,5 +1,7 @@
 # Catalogue, benchmark library and methodology (step 10)
 
+The [current identity policy](CURRENT-POLICY.md) adds a separate 12-model confirmed shortlist and recent-version records. Of 25 requested candidates, 10 remain explicitly unverified and excluded from defaults. Plain, Pro and Contributor are separate identities. Catalogue revision dates are not assumed release dates. The complete catalogue remains 814 entries; no cross-source merge was introduced.
+
 Verify with `npm run test:catalogue`. It runs `npm run test:open-weights` first (which chains head-to-head, frontier and the production build).
 
 ## Where things live

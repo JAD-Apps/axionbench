@@ -1,6 +1,8 @@
 # Benchmark registry
 
-`data/benchmark-registry.json` is the suite/version registry; `src/benchmark-registry.ts` defines its typed contract. The registry contains **69 suite/version identities**, grouped into **56 benchmark families** across **15 capability domains**. The registry coverage and actual result coverage are reported separately in `data/coverage-report.json`.
+`data/benchmark-registry.json` is the suite/version registry; `src/benchmark-registry.ts` defines its typed contract. It contains **70 identities**, **57 families** and **15 domains**, including separate panels. BridgeBench adds an explicitly unverified native-rating identity, not a capability measurement. The older `data/coverage-report.json` counts describe the 69-reference capture, not a new BridgeBench retrieval.
+
+See [current policy and measured coverage](CURRENT-POLICY.md) for current/version/retired admission. Exact maintained benchmark/harness versions, comparable conditions, documented units and a saturation assessment are required. Current coverage is zero; historical observations remain intact. BridgeBench's unknown/null bounds cannot become accuracy percentages.
 
 ## Availability and family identity
 

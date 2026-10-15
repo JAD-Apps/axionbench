@@ -69,6 +69,7 @@ export async function refreshAuthority({output,auditDir,fetcher=fetch}) {
   assert.equal(response.status,200,`authority retrieval failed: HTTP ${response.status}`);
   const bytes=Buffer.from(await response.arrayBuffer());
   const projection=projectAuthority(bytes,new Date().toISOString());
+  projection.source.verifiedAt=projection.source.retrievedAt;
   await mkdir(auditDir,{recursive:true});
   const rawPath=resolve(auditDir,`${projection.source.sha256}.json`);
   try { await writeFile(rawPath,bytes,{flag:'wx',mode:0o600}); }

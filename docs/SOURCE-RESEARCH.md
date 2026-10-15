@@ -1,5 +1,7 @@
 # Verified ingestion leads
 
+The [current identity and benchmark policy](CURRENT-POLICY.md) records the later local hash/claim replay and its measured coverage: 15 of 25 identities confirmed, 12 shortlist candidates, zero current-qualified observations and zero BridgeBench ratings. The dated source-location leads below remain historical research, not evidence that missing source retrievals occurred. Publisher-own identity facts and independent measurements stay distinct.
+
 These are coordinator source-location checks from 30 September 2026, not admitted benchmark observations or a completed catalogue. The ingestion stage must capture its own immutable source evidence, review reuse status, establish exact identities and units, and pass the unchanged coverage gate.
 
 ## Publisher result tables

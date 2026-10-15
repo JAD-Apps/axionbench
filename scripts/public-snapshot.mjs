@@ -37,7 +37,7 @@ await writeFile(join(target, 'data/frozen-source-details.json'), jsonBytes(detai
 await writeFile(join(target, 'FROZEN-SNAPSHOT.json'), jsonBytes({ schemaVersion: 'axionbench-frozen-snapshot-v1', sourceDigest: frozen.sourceDigest,
   counts: { models: frozen.models.length, observations: frozen.observations.length, configurations: Object.keys(frozen.configurations).length,
     openWeights: frozen.openWeights.rows.length, sources: details.sources.length, suites: frozen.suites.length },
-  files: Object.fromEntries(await Promise.all(['data/frozen-catalogue.json', 'data/frozen-source-details.json', 'data/benchmark-registry.json', 'data/scoring.json']
+  files: Object.fromEntries(await Promise.all(['data/frozen-catalogue.json', 'data/frozen-source-details.json', 'data/benchmark-registry.json', 'data/scoring.json', 'data/model-identities.json', 'data/authority/bridgebench.json']
     .map(async path => [path, sha256(await readFile(join(target, path)))]))),
   limitation: 'A frozen, limited factual projection. Source-reported reuse restrictions and unknowns are retained; this manifest grants no additional permissions. Catalogue identities, community claims and open-weight metadata require a separately reviewed snapshot to change.' }));
 const pkg = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'));

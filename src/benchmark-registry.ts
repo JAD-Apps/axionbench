@@ -8,8 +8,10 @@ export type MetricDirection = 'higher' | 'lower';
 export interface BenchmarkMetric {
   name: string;
   direction: MetricDirection;
-  min: number;
-  max: number;
+  min: number | null;
+  max: number | null;
+  kind?: 'native-comparative';
+  unit?: string;
 }
 
 export interface BenchmarkSuite {
@@ -24,6 +26,14 @@ export interface BenchmarkSuite {
   rights: string;
   state: RegistryState;
   reason?: string;
+  currentPolicy?: {
+    status: 'current' | 'version' | 'retired' | 'unverified';
+    exactVersion: string | null;
+    maintained: boolean;
+    maintenanceEvidence: { retrievedAt: string; url: string; sha256: string } | null;
+    saturated: boolean | null;
+    reason: string;
+  };
 }
 
 export type BenchmarkSource = SourceRecord;

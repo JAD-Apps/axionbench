@@ -29,7 +29,10 @@ function validate(input) {
     if (suite.state !== 'available' && !suite.reason?.trim()) fail(`unavailable suite requires a reason: ${suite.id}`);
     if (!suite.version?.trim() || !suite.metric?.name?.trim() || !suite.benchmarkFamilyId?.trim()) fail(`missing version, family or metric identity: ${suite.id}`);
     const { min, max, direction } = suite.metric;
-    if (!Number.isFinite(min) || !Number.isFinite(max) || min >= max) fail(`invalid metric bounds: ${suite.id}`);
+    if (suite.metric.kind === 'native-comparative') {
+      if (suite.id !== 'bridgebench' || min !== null || max !== null || suite.metric.unit !== 'native rating'
+        || suite.currentPolicy?.status === 'current') fail(`native ratings cannot enter bounded capability scoring: ${suite.id}`);
+    } else if (!Number.isFinite(min) || !Number.isFinite(max) || min >= max) fail(`invalid metric bounds: ${suite.id}`);
     if (!['higher', 'lower'].includes(direction)) fail(`invalid metric direction: ${suite.id}`);
   }
   if (observedDomains.size < 11) fail('fewer than 11 domains represented by suites');
@@ -47,6 +50,8 @@ for (const mutate of [
   (x) => { x.suites[0].state = 'probably'; },
   (x) => { x.suites[0].url = 'javascript:alert(1)'; },
   (x) => { x.suites[0].rights = ''; },
+  (x) => { x.suites.find((s) => s.id === 'bridgebench').metric.max = 100; },
+  (x) => { x.suites.find((s) => s.id === 'bridgebench').currentPolicy.status = 'current'; },
 ]) {
   const fixture = structuredClone(registry);
   mutate(fixture);

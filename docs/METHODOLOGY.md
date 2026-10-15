@@ -1,5 +1,7 @@
 # AxionBench scoring method
 
+See [current policy](CURRENT-POLICY.md) for current-default admission and measured coverage. Historical admission remains intact; current eligibility additionally requires exact primary identity, maintained benchmark/harness version, compatible conditions and assessed saturation. Unknowns remain null. BridgeBench native publisher ratings form a separate dataset, never an accuracy/Elo normalization or additional cost/speed capability vote.
+
 Method `axion-domain-v1` is a comparison aid, not a universal capability claim. Raw benchmark results, coverage and provenance remain primary. The checked-in definition and fixed initial domain weights are in `data/scoring.json`; executable rules are in `src/scoring/index.mjs`.
 
 ## Admission and comparability

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "axionbench-native-ratings-v1",
+  "id": "bridgebench",
+  "name": "BridgeBench",
+  "status": "unverified",
+  "reason": "No BridgeBench primary snapshot, publisher guide capture or exact per-model result links were supplied in this network-disabled workspace. Retrieval is required before ratings can be published.",
+  "url": "https://www.bridgebench.ai/leaderboard",
+  "publisherUrl": "https://www.bridgebench.ai/",
+  "guideUrl": "https://www.bridgebench.ai/blog/how-the-leaderboard-works",
+  "unit": "native rating",
+  "provenance": "publisher-rating",
+  "capabilityEligible": false,
+  "snapshotVersion": null,
+  "source": null,
+  "rowsSha256": null,
+  "rows": [],
+  "methodologyLimit": "Publisher comparative ratings; the proprietary calculation has not been independently verified. Do not infer accuracy percentages or Arena Elo.",
+  "costSpeedTreatment": "Overall ratings may include cost and speed. They cannot count as additional independent capability measurements."
+}

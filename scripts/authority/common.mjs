@@ -37,7 +37,9 @@ export async function replaceProjection(output, projection, { generatedKey = 'ge
   let previous = null;
   try { previous = JSON.parse(await readFile(output, 'utf8')); }
   catch (error) { if (error.code !== 'ENOENT') throw error; }
+  const checkedAt = projection.source.retrievedAt;
   if (previous?.source?.sha256 === projection.source.sha256) projection.source.retrievedAt = previous.source.retrievedAt;
+  projection.source.verifiedAt = checkedAt;
   const before = previous?.source?.[generatedKey];
   const after = projection.source[generatedKey];
   if (before && after) assert.ok(Date.parse(after) >= Date.parse(before), `stale refresh refused: source ${generatedKey} ${after} is older than last-good ${before}`);

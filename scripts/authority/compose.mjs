@@ -234,12 +234,22 @@ export function composeAuthority(inputs, registry) {
 
   // Admission and floor.
   const suiteList = [...suites.values()];
+  const sourceById = new Map(sources.map((source) => [source.id, source]));
+  const originals = { 'deepswe-v1.1': deepswe.source, 'epoch-hub': epoch.source, 'bfcl-v4': bfcl.source, 'longbench-v2': longbench.source };
+  for (const source of sources) source.verifiedAt = originals[source.id]?.verifiedAt ?? null;
   for (const row of observations) {
     const suite = suites.get(row.suiteId);
     row.domain = suite.domain;
     row.admitted = ADMITTED_PROVENANCE.includes(row.provenance);
     row.exclusion = row.admitted ? null : 'publisher comparison claim about another lab’s model; not an admitted measurement';
     row.matchable = row.admitted && row.configuration.conditionsKnown && row.primary;
+    const original = sourceById.get(row.sourceId);
+    row.benchmarkVersion = suite.version;
+    row.originalSourceSha256 = original.sha256;
+    row.retrievedAt = original.retrievedAt;
+    row.verifiedAt = original.verifiedAt;
+    // Hash each actual factual row, including its source tier and configuration.
+    row.factualProjectionSha256 = sha256(JSON.stringify(row));
   }
   const floorRows = observations.filter((row) => row.admitted && CAPABILITY_DOMAINS.includes(row.domain));
   const floorSuites = [...new Set(floorRows.map((row) => row.suiteId))].sort();

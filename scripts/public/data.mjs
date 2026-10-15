@@ -7,6 +7,7 @@ import { validatePriceFacts } from '../../src/pricing/logic.ts';
 import { bandFor } from '../../src/open-weights/logic.ts';
 import { sha256, readJson, jsonBytes } from './boundary.mjs';
 import { validatePermittedFacts } from './permissions.mjs';
+import { composeCurrentPolicy } from '../current-policy.mjs';
 
 const unique = (rows, key, label) => { const ids = rows.map(row => row[key]); assert(ids.every(Boolean) && new Set(ids).size === ids.length, `${label}: duplicate/missing identity`); return new Map(rows.map(row => [row[key], row])); };
 const https = (value, label) => { const url = new URL(value); assert.equal(url.protocol, 'https:', `${label}: original HTTPS URL required`); assert(!url.username && !url.password, `${label}: URL credentials`); };
@@ -79,7 +80,11 @@ export async function derivePublic(root, { now = Date.now(), requireFreshPrices 
   const authoritySuites = unique(authority.suites, 'id', 'authority suites');
   const authoritySources = unique(authority.sources, 'id', 'authority sources');
   unique(authority.observations, 'id', 'authority observations');
-  for (const source of authority.sources) { https(source.resultUrl, source.id); time(source.retrievedAt, source.id, now); assert.match(source.sha256, /^[a-f0-9]{64}$/); }
+  for (const source of authority.sources) {
+    https(source.resultUrl, source.id); time(source.retrievedAt, source.id, now);
+    if (source.verifiedAt !== null) time(source.verifiedAt, `${source.id} later verification`, now);
+    assert.match(source.sha256, /^[a-f0-9]{64}$/);
+  }
   for (const row of authority.observations) {
     assert(authorityModels.has(row.modelKey) && authoritySuites.has(row.suiteId) && authoritySources.has(row.sourceId), `${row.id}: exact authority join`);
     const epochBenchmark = row.sourceId === 'epoch-hub' ? inputs.epoch.json.benchmarks.find(benchmark => benchmark.suiteId === row.suiteId) : null;
@@ -100,7 +105,8 @@ export async function derivePublic(root, { now = Date.now(), requireFreshPrices 
   const deepSwe = inputs.deepswe.json;
   assert.deepEqual(deepSwe, (await import('./boundary.mjs')).permittedDeepSwe(deepSwe), 'historical benchmark cost/efficiency fields excluded');
   const scoring = await readJson(root, 'data/scoring.json');
-  const projection = { ...frozen, sourceLimitations: { ...frozen.sourceLimitations, apiPriceRowsPublished: pricing.records.length }, authority, pricing, scoring };
+  const currentPolicy = composeCurrentPolicy(await readJson(root, 'data/model-identities.json'), authority, registry, await readJson(root, 'data/authority/bridgebench.json'), now);
+  const projection = { ...frozen, sourceLimitations: { ...frozen.sourceLimitations, apiPriceRowsPublished: pricing.records.length }, authority, currentPolicy, pricing, scoring };
   assert.equal(projection.sourceLimitations.restrictedRoutedPricesPublished, false);
   const priceSource = { id: pricing.source.id, url: pricing.source.url, finalUrl: pricing.source.url,
     publisher: pricing.source.publisher, sourceClass: 'original_provider_pricing', rights: pricing.source.licence + ': ' + pricing.source.licenceUrl,

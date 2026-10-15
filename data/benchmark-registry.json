@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "registryVersion": "2026-09-30.1",
+  "registryVersion": "2026-10-02.1",
   "policy": "Registry entries describe public benchmark identities and source links only. No results are implied. Dataset/code rights require per-source review before republishing observations.",
   "domains": [
     "coding",
@@ -36,7 +36,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "No permitted model observation snapshot ingested in this registry step.",
-      "benchmarkFamilyId": "swe-bench"
+      "benchmarkFamilyId": "swe-bench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "swebench-verified",
@@ -54,7 +62,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "available",
       "reason": "Captured 4 public model-card result observation(s); see data/ingestion.json.",
-      "benchmarkFamilyId": "swe-bench"
+      "benchmarkFamilyId": "swe-bench",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "swebench-lite",
@@ -72,7 +88,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Official results page verified; no observation snapshot ingested.",
-      "benchmarkFamilyId": "swe-bench"
+      "benchmarkFamilyId": "swe-bench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "swebench-multilingual",
@@ -90,7 +114,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "available",
       "reason": "Captured 3 public model-card result observation(s); see data/ingestion.json.",
-      "benchmarkFamilyId": "swe-bench"
+      "benchmarkFamilyId": "swe-bench",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "swebench-multimodal",
@@ -108,7 +140,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Image-task protocol and results not yet ingested.",
-      "benchmarkFamilyId": "swe-bench"
+      "benchmarkFamilyId": "swe-bench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "swebench-pro",
@@ -126,7 +166,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "available",
       "reason": "Captured 6 public model-card result observation(s); see data/ingestion.json.",
-      "benchmarkFamilyId": "swe-bench"
+      "benchmarkFamilyId": "swe-bench",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "livecodebench",
@@ -144,7 +192,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Track, date range, and result snapshot not ingested.",
-      "benchmarkFamilyId": "livecodebench"
+      "benchmarkFamilyId": "livecodebench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "bigcodebench",
@@ -162,7 +218,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Track-specific public model observations not ingested.",
-      "benchmarkFamilyId": "bigcodebench"
+      "benchmarkFamilyId": "bigcodebench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "terminal-bench-4",
@@ -180,7 +244,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "available",
       "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
-      "benchmarkFamilyId": "terminal-bench"
+      "benchmarkFamilyId": "terminal-bench",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "terminal-bench-2",
@@ -198,7 +270,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "unsupported",
       "reason": "Historical leaderboard result location/version not established; do not merge with 4.0.",
-      "benchmarkFamilyId": "terminal-bench"
+      "benchmarkFamilyId": "terminal-bench",
+      "currentPolicy": {
+        "status": "retired",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Historical version; 2.1 and 4.0 remain distinct identities."
+      }
     },
     {
       "id": "gpqa-diamond",
@@ -216,7 +296,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "available",
       "reason": "Captured 6 public model-card result observation(s); see data/ingestion.json.",
-      "benchmarkFamilyId": "gpqa-diamond"
+      "benchmarkFamilyId": "gpqa-diamond",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "hle-original",
@@ -234,7 +322,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "available",
       "reason": "Captured 8 public model-card result observation(s); see data/ingestion.json.",
-      "benchmarkFamilyId": "humanitys-last-exam"
+      "benchmarkFamilyId": "humanitys-last-exam",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "hle-rolling",
@@ -252,7 +348,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Dynamic release must be pinned by snapshot date; no observation ingested.",
-      "benchmarkFamilyId": "humanitys-last-exam"
+      "benchmarkFamilyId": "humanitys-last-exam",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "hle-diamond",
@@ -270,7 +374,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Official release announcement verified; results/protocol not ingested.",
-      "benchmarkFamilyId": "humanitys-last-exam"
+      "benchmarkFamilyId": "humanitys-last-exam",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "arc-agi-2",
@@ -288,7 +400,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Submission compute and evaluation conditions not ingested.",
-      "benchmarkFamilyId": "arc-agi-2"
+      "benchmarkFamilyId": "arc-agi-2",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "bbh",
@@ -306,7 +426,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "No compatible aggregate observation ingested.",
-      "benchmarkFamilyId": "bbh"
+      "benchmarkFamilyId": "bbh",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "aime-2025",
@@ -324,7 +452,15 @@
       "rights": "link-only; contest and evaluator terms require review",
       "state": "pending",
       "reason": "Year, split, and protocol need to match before comparison.",
-      "benchmarkFamilyId": "aime"
+      "benchmarkFamilyId": "aime",
+      "currentPolicy": {
+        "status": "retired",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Historical fixed 2025 contest version."
+      }
     },
     {
       "id": "math-500",
@@ -342,7 +478,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "No source-backed observation snapshot ingested.",
-      "benchmarkFamilyId": "math-500"
+      "benchmarkFamilyId": "math-500",
+      "currentPolicy": {
+        "status": "retired",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Legacy mathematics set kept for historical comparison; current saturation/maintenance evidence is absent."
+      }
     },
     {
       "id": "frontiermath",
@@ -360,7 +504,15 @@
       "rights": "link-only; access/results terms must be reviewed",
       "state": "pending",
       "reason": "Public result availability and model-level permissions need verification.",
-      "benchmarkFamilyId": "frontiermath"
+      "benchmarkFamilyId": "frontiermath",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "mmlu-pro",
@@ -378,7 +530,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "available",
       "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
-      "benchmarkFamilyId": "mmlu-pro"
+      "benchmarkFamilyId": "mmlu-pro",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "helm",
@@ -396,7 +556,15 @@
       "rights": "link-only; scenario-specific terms must be reviewed",
       "state": "pending",
       "reason": "HELM is a suite; do not collapse heterogeneous scenario metrics.",
-      "benchmarkFamilyId": "helm"
+      "benchmarkFamilyId": "helm",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "ifeval",
@@ -414,7 +582,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "No compatible strict/prompt observation ingested.",
-      "benchmarkFamilyId": "ifeval"
+      "benchmarkFamilyId": "ifeval",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "multichallenge",
@@ -432,7 +608,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Official page uses binary instance-level rubrics and reports percentages plus 95% intervals; result ingestion and cohort-specific rank calculation are not implemented.",
-      "benchmarkFamilyId": "multichallenge"
+      "benchmarkFamilyId": "multichallenge",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "followbench",
@@ -450,7 +634,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "No source-backed observation snapshot ingested.",
-      "benchmarkFamilyId": "followbench"
+      "benchmarkFamilyId": "followbench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "ruler",
@@ -468,7 +660,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Measured context length and task results not ingested.",
-      "benchmarkFamilyId": "ruler"
+      "benchmarkFamilyId": "ruler",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "longbench-v2",
@@ -486,7 +686,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "No source-backed observation snapshot ingested.",
-      "benchmarkFamilyId": "longbench-v2"
+      "benchmarkFamilyId": "longbench-v2",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "mrcr",
@@ -504,7 +712,15 @@
       "rights": "link-only; dataset card terms must be reviewed",
       "state": "pending",
       "reason": "No observation with context length and setup ingested.",
-      "benchmarkFamilyId": "mrcr"
+      "benchmarkFamilyId": "mrcr",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "bfcl-v4",
@@ -522,7 +738,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Official page and evaluation checkpoint verified; no observation snapshot ingested.",
-      "benchmarkFamilyId": "berkeley-function-calling"
+      "benchmarkFamilyId": "berkeley-function-calling",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "bfcl-v3",
@@ -540,11 +764,19 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "unsupported",
       "reason": "Historical version-specific result table not verified; keep separate from V4.",
-      "benchmarkFamilyId": "berkeley-function-calling"
+      "benchmarkFamilyId": "berkeley-function-calling",
+      "currentPolicy": {
+        "status": "retired",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Older BFCL version; V4 has a distinct captured authority identity."
+      }
     },
     {
       "id": "tau-bench",
-      "name": "τ-bench",
+      "name": "\u03c4-bench",
       "version": "original; retail/airline domain and pass metric required",
       "domain": "tool-use",
       "metric": {
@@ -558,11 +790,19 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Domain and policy-compliance protocol need explicit observation metadata.",
-      "benchmarkFamilyId": "tau-bench"
+      "benchmarkFamilyId": "tau-bench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "tau2",
-      "name": "τ²-bench",
+      "name": "\u03c4\u00b2-bench",
       "version": "tau2; environment/domain required",
       "domain": "tool-use",
       "metric": {
@@ -575,8 +815,16 @@
       "source": "Sierra Research",
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
-      "reason": "Successor results must not be pooled with original τ-bench.",
-      "benchmarkFamilyId": "tau2-bench"
+      "reason": "Successor results must not be pooled with original \u03c4-bench.",
+      "benchmarkFamilyId": "tau2-bench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "osworld",
@@ -594,7 +842,15 @@
       "rights": "link-only; environment/data terms must be reviewed",
       "state": "pending",
       "reason": "Agent harness, environment, and budget not ingested.",
-      "benchmarkFamilyId": "osworld"
+      "benchmarkFamilyId": "osworld",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "webarena",
@@ -612,7 +868,15 @@
       "rights": "link-only; environment/data terms must be reviewed",
       "state": "pending",
       "reason": "Agent harness, site state, and budget not ingested.",
-      "benchmarkFamilyId": "webarena"
+      "benchmarkFamilyId": "webarena",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "gaia",
@@ -630,7 +894,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Tool access, level, and split not ingested.",
-      "benchmarkFamilyId": "gaia"
+      "benchmarkFamilyId": "gaia",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "mmmu",
@@ -648,7 +920,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "No source-backed observation snapshot ingested.",
-      "benchmarkFamilyId": "mmmu"
+      "benchmarkFamilyId": "mmmu",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "mmmu-pro",
@@ -666,7 +946,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "available",
       "reason": "Captured 4 public model-card result observation(s); see data/ingestion.json.",
-      "benchmarkFamilyId": "mmmu"
+      "benchmarkFamilyId": "mmmu",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "mathvista",
@@ -684,7 +972,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Split and image resolution not ingested.",
-      "benchmarkFamilyId": "mathvista"
+      "benchmarkFamilyId": "mathvista",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "charxiv",
@@ -702,7 +998,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Split-specific results not ingested.",
-      "benchmarkFamilyId": "charxiv"
+      "benchmarkFamilyId": "charxiv",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "docvqa",
@@ -720,7 +1024,15 @@
       "rights": "link-only; challenge terms must be reviewed",
       "state": "pending",
       "reason": "No source-backed observation snapshot ingested.",
-      "benchmarkFamilyId": "docvqa"
+      "benchmarkFamilyId": "docvqa",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "simpleqa-verified",
@@ -738,7 +1050,15 @@
       "rights": "link-only; dataset card terms must be reviewed",
       "state": "pending",
       "reason": "Verified subset result protocol not ingested.",
-      "benchmarkFamilyId": "simpleqa-verified"
+      "benchmarkFamilyId": "simpleqa-verified",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "longfact",
@@ -756,7 +1076,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Judge and generation protocol not ingested.",
-      "benchmarkFamilyId": "longfact"
+      "benchmarkFamilyId": "longfact",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "global-mmlu",
@@ -774,7 +1102,15 @@
       "rights": "link-only; dataset card terms must be reviewed",
       "state": "pending",
       "reason": "Per-language result rows and protocol not ingested.",
-      "benchmarkFamilyId": "global-mmlu"
+      "benchmarkFamilyId": "global-mmlu",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "mmmlu",
@@ -792,7 +1128,15 @@
       "rights": "link-only; dataset card terms must be reviewed",
       "state": "pending",
       "reason": "Per-language result rows and protocol not ingested.",
-      "benchmarkFamilyId": "mmmlu"
+      "benchmarkFamilyId": "mmmlu",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "legalbench",
@@ -810,7 +1154,15 @@
       "rights": "link-only; task terms must be reviewed",
       "state": "pending",
       "reason": "Professional panel retained separately; task observations not ingested.",
-      "benchmarkFamilyId": "legalbench"
+      "benchmarkFamilyId": "legalbench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "medqa",
@@ -828,7 +1180,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Professional panel retained separately; no observation ingested.",
-      "benchmarkFamilyId": "medqa"
+      "benchmarkFamilyId": "medqa",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "financebench",
@@ -846,7 +1206,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Professional panel retained separately; no observation ingested.",
-      "benchmarkFamilyId": "financebench"
+      "benchmarkFamilyId": "financebench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "harmbench",
@@ -864,7 +1232,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Safety panel separate; setup and refusal tradeoffs not ingested.",
-      "benchmarkFamilyId": "harmbench"
+      "benchmarkFamilyId": "harmbench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "strongreject",
@@ -882,7 +1258,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Safety panel separate; grader-specific results not ingested.",
-      "benchmarkFamilyId": "strongreject"
+      "benchmarkFamilyId": "strongreject",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "xstest",
@@ -900,7 +1284,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Safety panel separate; over-refusal and harmful-request behavior are not one metric.",
-      "benchmarkFamilyId": "xstest"
+      "benchmarkFamilyId": "xstest",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "arena",
@@ -918,7 +1310,15 @@
       "rights": "link-only; result reuse and attribution terms must be reviewed",
       "state": "pending",
       "reason": "Preference panel separate; no dated permitted observation snapshot ingested.",
-      "benchmarkFamilyId": "arena"
+      "benchmarkFamilyId": "arena",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "omnibench",
@@ -936,7 +1336,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Audio/video panel separate; no source-backed observation ingested.",
-      "benchmarkFamilyId": "omnibench"
+      "benchmarkFamilyId": "omnibench",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "video-mme",
@@ -954,7 +1362,15 @@
       "rights": "link-only; dataset terms must be reviewed",
       "state": "pending",
       "reason": "Audio/video panel separate; duration/subtitle conditions not ingested.",
-      "benchmarkFamilyId": "video-mme"
+      "benchmarkFamilyId": "video-mme",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "gsm8k",
@@ -972,7 +1388,15 @@
       "source": "OpenAI / Hugging Face public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "retired",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Small arithmetic benchmark kept for historical comparison; excluded from frontier defaults by policy."
+      }
     },
     {
       "id": "aime-2026",
@@ -990,7 +1414,15 @@
       "source": "MathArena public leaderboard / AIME source",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 3 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 3 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "hmmt-feb-2026",
@@ -1008,7 +1440,15 @@
       "source": "MathArena public leaderboard / HMMT source",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "terminal-bench-2.1",
@@ -1026,7 +1466,15 @@
       "source": "Harbor Framework public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "deep-swe",
@@ -1044,7 +1492,15 @@
       "source": "DataCurve public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 4 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 4 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": "v1.1",
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "v1.1 source artifact is captured; exact mini-swe-agent revision and active maintenance/saturation qualification are not established."
+      }
     },
     {
       "id": "toolathlon",
@@ -1062,7 +1518,15 @@
       "source": "HKUST NLP public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "apex-agents",
@@ -1080,7 +1544,15 @@
       "source": "Mercor public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 3 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 3 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "video-mme-v2",
@@ -1098,7 +1570,15 @@
       "source": "Video-MME authors public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 3 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 3 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "open-asr",
@@ -1116,7 +1596,15 @@
       "source": "Hugging Face Audio public leaderboard",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 19 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 19 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "skillsbench",
@@ -1134,7 +1622,15 @@
       "source": "BenchFlow public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 3 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 3 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "evasionbench",
@@ -1152,7 +1648,15 @@
       "source": "EvasionBench authors public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "redlinebench",
@@ -1170,7 +1674,15 @@
       "source": "RedlineBench public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "ifstruct",
@@ -1188,7 +1700,15 @@
       "source": "Liquid AI public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "screenspot-pro",
@@ -1206,7 +1726,15 @@
       "source": "ScreenSpot-Pro authors public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "olmocr-bench",
@@ -1224,7 +1752,15 @@
       "source": "AllenAI public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 18 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 18 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "real5-omnidocbench",
@@ -1242,7 +1778,15 @@
       "source": "Real5 OmniDocBench public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 12 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 12 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
     },
     {
       "id": "lexam-hard",
@@ -1260,7 +1804,50 @@
       "source": "LEXam authors public eval results",
       "rights": "public source link and structured result metadata; reuse licence must be reviewed",
       "state": "available",
-      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json."
+      "reason": "Captured 2 public model-card result observation(s); see data/ingestion.json.",
+      "currentPolicy": {
+        "status": "version",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Exact maintained benchmark/harness revision and a saturation assessment have not been qualified for default admission. Historical observations remain available."
+      }
+    },
+    {
+      "id": "bridgebench",
+      "name": "BridgeBench",
+      "version": "unverified current publisher snapshot",
+      "benchmarkFamilyId": "bridgebench",
+      "domain": "preference",
+      "metric": {
+        "name": "published comparative rating",
+        "direction": "higher",
+        "min": null,
+        "max": null,
+        "kind": "native-comparative",
+        "unit": "native rating"
+      },
+      "url": "https://www.bridgebench.ai/leaderboard",
+      "source": "BridgeBench publisher",
+      "rights": "link-only until current facts and permitted reuse are verified; no raw publisher bytes may be published",
+      "state": "unsupported",
+      "reason": "No current primary snapshot, publisher guide capture or exact per-model result links are available in this network-disabled workspace.",
+      "currentPolicy": {
+        "status": "unverified",
+        "exactVersion": null,
+        "maintained": false,
+        "maintenanceEvidence": null,
+        "saturated": null,
+        "reason": "Native publisher ratings are a separate selectable dataset, excluded from capability scoring and accuracy/Elo normalization."
+      }
     }
-  ]
+  ],
+  "currentPolicy": {
+    "version": "current-exact-v1",
+    "defaultRule": "Fresh primary model identity, actively maintained exact benchmark version and harness revision, declared units and comparable conditions are all required. Historical availability is not current admission.",
+    "freshnessDays": 7,
+    "saturationRule": "A version with confirmed saturation is excluded. An unassessed saturation state is not current-default evidence. Preserve family caps and every historical identity.",
+    "sourceTierRule": "Publisher-own claims and independent/authority measurements stay distinct. Publisher comparison claims and proprietary ratings never supply independent capability evidence."
+  }
 }

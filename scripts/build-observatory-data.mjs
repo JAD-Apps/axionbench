@@ -4,6 +4,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { assertAuthorityFloor, composeAuthority, readInputs } from './authority/compose.mjs';
 import { deriveOpenWeights } from './open-weights/derive.mjs';
 import { validatePriceFacts } from '../src/pricing/logic.ts';
+import { composeCurrentPolicy, qualifyIdentities } from './current-policy.mjs';
+import { exactReleaseMatch } from '../src/data/current-policy.mjs';
 
 const readJson = async (path) => JSON.parse(await readFile(new URL('../' + path, import.meta.url), 'utf8'));
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -30,6 +32,10 @@ const [ingestionBytes, input, registry, authorityInputs, priceBytes] = await Pro
 // facts are re-validated and must meet the capability floor before publication.
 const authority = composeAuthority(authorityInputs, registry);
 assertAuthorityFloor(authority);
+const identities = await readJson('data/model-identities.json');
+assert.deepEqual(await qualifyIdentities(input, await readJson('data/model-policy.json'), { verificationAt: identities.verificationAt }), identities,
+  'current identity projection must replay the original captures exactly');
+const currentPolicy = composeCurrentPolicy(identities, authority, registry, await readJson('data/authority/bridgebench.json'));
 const pricing = validatePriceFacts(JSON.parse(priceBytes));
 assert(pricing.records.every((price) => authority.models.some((model) => model.key === price.modelKey)), 'public tariffs join exact authority identities only');
 assert(Date.now() - Date.parse(pricing.source.retrievedAt) <= 7 * 86400000, 'public tariffs require a fresh licensed capture');
@@ -83,7 +89,17 @@ const configurations = Object.fromEntries(input.configurations.map((row) => [row
   sourceIds: unique(row.configurationEvidenceSourceIds),
 }]));
 
-const models = input.models.map((row) => ({
+const models = input.models.map((row) => {
+  const exactIdentity = identities.models.find((model) => model.catalogueId === row.id);
+  const correction = exactIdentity ? {
+    originalSourceUrl: exactIdentity.evidence?.url ?? null,
+    identitySourceId: exactIdentity.evidence?.sourceId ?? row.catalogSourceId,
+    identityBasis: exactIdentity.evidence?.scope ?? 'provider catalogue listing; exact primary identity is unverified',
+    identityStatus: exactIdentity.verified ? 'Exact publisher product/version identity confirmed; release date and benchmark eligibility are separate.' : exactIdentity.reason,
+    identityEvidence: exactIdentity.evidence,
+    sourceIds: unique([row.catalogSourceId, ...(row.aliases ?? []).map((alias) => alias.sourceId), exactIdentity.evidence?.sourceId, row.parameterEvidenceId]),
+  } : {};
+  return {
   id: row.id,
   name: row.name,
   labId: row.labId,
@@ -100,8 +116,9 @@ const models = input.models.map((row) => ({
   originalSourceUrl: safeUrl(row.originalSourceUrl),
   identitySourceId: row.sourceEvidence?.sourceId ?? row.catalogSourceId ?? null,
   identityBasis: row.sourceEvidence?.identityBasis ?? null,
-  identityVerified: row.originalSourceStatus === 'exact current model version matched in captured official release/model page'
-    && row.sourceEvidence?.primaryReleaseVerified === true,
+  identityVerified: exactIdentity?.verified
+    ?? (row.originalSourceStatus === 'exact current model version matched in captured official release/model page'
+      && row.sourceEvidence?.primaryReleaseVerified === true && exactReleaseMatch(row.name, row.sourceEvidence?.verifiedClaim ?? '')),
   identityStatus: row.originalSourceStatus ?? 'unknown',
   sourceIds: unique([
     row.catalogSourceId,
@@ -109,7 +126,9 @@ const models = input.models.map((row) => ({
     row.parameterEvidenceId,
     ...(row.aliases ?? []).map((alias) => alias.sourceId),
   ]),
-}));
+  ...correction,
+  };
+});
 
 const observations = input.observations.map((row) => ({
   id: row.id,
@@ -160,6 +179,7 @@ const suites = registry.suites.map((row) => ({
   url: safeUrl(row.url),
   state: row.state,
   reason: row.reason,
+  currentPolicy: row.currentPolicy,
   observationCount: input.observations.filter((observation) => observation.suiteId === row.id).length,
 }));
 
@@ -172,7 +192,7 @@ const projection = {
   observations,
   domains: registry.domains,
   suites,
-  sourceIds: input.sources.map((row) => row.id),
+  sourceIds: unique([...input.sources.map((row) => row.id), ...identities.models.map((model) => model.evidence?.sourceId)]),
   sourceConflicts: input.sourceConflicts.map((row) => ({
     id: row.id,
     modelId: row.modelId,
@@ -196,6 +216,7 @@ const projection = {
     identityConfirmedModels: models.filter((row) => row.identityVerified).length,
   },
   authority,
+  currentPolicy,
   pricing,
   // Open-weight explorer facts, re-derived from SHA-256-checked repository snapshots.
   openWeights: await deriveOpenWeights(input),
@@ -219,6 +240,15 @@ const sources = input.sources
     resolvedRevision: row.resolvedRevision ?? null,
     contentType: row.contentType ?? null,
   }));
+for (const identity of identities.models) {
+  const evidence = identity.evidence;
+  if (!evidence || sources.some((source) => source.id === evidence.sourceId)) continue;
+  const original = authority.sources.find((source) => source.id === evidence.sourceId);
+  assert(original, 'identity evidence joins an original source');
+  sources.push({ id: evidence.sourceId, url: original.url, finalUrl: original.url, publisher: original.publisher,
+    sourceClass: original.provenance, rights: original.licence, permittedFields: ['publisher product/version identity'],
+    snapshotSha256: original.sha256, retrievedAt: original.retrievedAt, httpStatus: 200, resolvedRevision: null, contentType: null });
+}
 sources.push({ id: pricing.source.id, url: pricing.source.url, finalUrl: pricing.source.url,
   publisher: pricing.source.publisher, sourceClass: 'original_provider_pricing', rights: pricing.source.licence + ': ' + pricing.source.licenceUrl,
   permittedFields: ['standard paid text tariff facts', 'billing conditions', 'source coordinates', 'source hash'],
