@@ -24,6 +24,13 @@ export interface BenchmarkSuite {
   rights: string;
   state: RegistryState;
   reason?: string;
+  currentPolicy?: {
+    lifecycle: 'current' | 'version' | 'retired' | 'unverified';
+    defaultEligible: boolean; saturated: boolean; versionId: string | null;
+    harnessVersion: string | null; unit: string | null; sourceId: string | null;
+    originalSourceSha256: string | null; maintainedAt: string | null;
+    familyId: string; reason: string;
+  };
 }
 
 export type BenchmarkSource = SourceRecord;

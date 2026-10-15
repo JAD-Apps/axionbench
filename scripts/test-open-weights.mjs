@@ -151,7 +151,7 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
-  await page.goto(origin, { waitUntil: 'networkidle' });
+  await page.goto(origin + '/open-weights', { waitUntil: 'networkidle' });
   const ow = page.locator('#open-weights [data-testid="ow"]');
   await ow.waitFor();
   const url = () => new URL(page.url()).searchParams;
@@ -166,21 +166,23 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
     const ids = await panel.getByTestId('ow-series').evaluateAll((n) => n.map((x) => x.getAttribute('data-model-id')));
     check.deepEqual(ids, expected.map((row) => row.modelId), `panel ${band.id} shows its representatives`);
     check.ok(ids.length <= MAX_PANEL_SERIES, `panel ${band.id} series ≤ ${MAX_PANEL_SERIES}`);
-    const marks = panel.locator('svg[role="img"]');
-    if (band.id === 'undisclosed') check.equal(await marks.count(), 0, 'unknown totals have no plotted position');
-    else {
-      check.equal(await marks.count(), expected.length);
-      for (const [i, row] of expected.entries()) {
-        check.equal(Number(await marks.nth(i).getAttribute('data-total')), row.total.value, `mark total ${row.modelId}`);
-        check.equal(await marks.nth(i).getAttribute('data-activated'), row.activated.value === null ? '' : String(row.activated.value));
-        check.match(await marks.nth(i).getAttribute('aria-label'), new RegExp(row.activated.value === null ? 'activated count not stated' : 'activated \\(model card\\)'));
+    const canvas = panel.locator('canvas');
+    if (band.id === 'undisclosed') {
+      check.equal(await canvas.count(), 0, 'undisclosed has no numerical position');
+      check.ok(await panel.locator('.ow-undisclosed').count() === expected.length);
+    } else if (expected.length) {
+      await page.waitForFunction(el => !!el.dataset.chartGeometry, await canvas.elementHandle());
+      const geometry = JSON.parse(await canvas.getAttribute('data-chart-geometry'));
+      for (const [index, key] of ['total', 'activated'].entries()) {
+        const plotted = expected.filter(row => row[key].value !== null);
+        check.deepEqual(geometry.datasets[index].data.map(point => point.x), plotted.map(row => row[key].value), `${band.id}: Chart.js ${key} values`);
       }
     }
     series += ids.length;
   }
   check.ok(series <= PARAMETER_BANDS.length * MAX_PANEL_SERIES && series < 60, 'default view never renders hundreds of series');
   report.defaultSeries = series;
-  check.ok(await page.locator('#open-weights .ow-activated').count() > 0, 'activated MoE marks are drawn separately from totals');
+  check.ok(await page.locator('#open-weights canvas').count() > 0, 'parameter Chart.js panels are drawn; total/activated dataset parity checked above');
 
   // All rows through pagination.
   check.equal(await page.getByTestId('ow-total').innerText(), String(rows.length));
@@ -206,7 +208,7 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   check.equal(url().get('owBand'), '300-plus'); check.equal(url().get('owPage'), null, 'filter changes reset the page');
   check.equal(await page.getByTestId('ow-total').innerText(), String(plus.length));
   check.deepEqual(await tableIds(), plus.slice(0, PAGE_SIZE).map((row) => row.modelId));
-  check.equal(await page.locator('[data-testid="ow-panel"].active').getAttribute('data-band'), '300-plus');
+  check.equal(await page.locator('[data-testid="ow-panel"]').getAttribute('data-band'), '300-plus');
 
   // MoE, licence and quantized filters are separate.
   await page.getByRole('button', { name: /^All sizes/ }).click();
@@ -224,7 +226,7 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   await ow.waitFor();
   check.equal(await page.getByTestId('ow-moe').inputValue(), 'stated-activated');
   check.equal(await page.getByTestId('ow-total').innerText(), String(combined.length), 'reload restores filters');
-  check.ok(url().get('cohort'), 'the frontier chapter\'s parameters coexist with explorer state');
+  check.equal(url().get('cohort'), null, 'explorer URLs contain their own route state');
 
   // Export equals every filtered row, not only the visible page.
   const downloadPromise = page.waitForEvent('download');
@@ -251,19 +253,18 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   check.equal(await page.getByTestId('ow-total').innerText(), String(rows.filter((row) => row.labId === 'meta').length), 'Meta is explorable');
   await page.getByTestId('ow-lab').selectOption('all');
 
-  // Reduced motion keeps marks stable.
-  const mark = page.locator('#open-weights .ow-total').first();
-  const cx = await mark.getAttribute('cx');
-  await page.waitForTimeout(120);
-  check.equal(await mark.getAttribute('cx'), cx);
+  // Reduced motion stops real Chart.js animation.
+  const mark = page.locator('#open-weights canvas').first();
+  await page.waitForFunction(el => !!el.dataset.chartGeometry, await mark.elementHandle());
+  check.equal(JSON.parse(await mark.getAttribute('data-chart-geometry')).animation, false);
 
   for (const width of [360, 390, 768]) {
     await page.setViewportSize({ width, height: 900 });
     await page.waitForTimeout(80);
     const bounds = await page.evaluate(() => ({ viewport: innerWidth, page: document.documentElement.scrollWidth }));
     check.ok(bounds.page <= bounds.viewport, `no horizontal overflow at ${width}px: ${JSON.stringify(bounds)}`);
-    const box = await page.locator('#open-weights .ow-ruler').first().boundingBox();
-    check.ok(box && box.x >= 0 && box.x + box.width <= width + 1, `ruler fits at ${width}px`);
+    const box = await page.locator('#open-weights canvas').first().boundingBox();
+    check.ok(box && box.x >= 0 && box.x + box.width <= width + 1, `Chart.js fits at ${width}px`);
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await ow.screenshot({ path: new URL('test-results/open-weights-mobile.png', root).pathname, animations: 'disabled' });

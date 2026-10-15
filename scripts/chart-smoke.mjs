@@ -58,19 +58,23 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   check(stillBefore.visiblePixels > 0, 'reduced-motion contour has painted pixels');
   check(stillAfter.visiblePixels > 0, 'reduced-motion contour remains visible');
   check.equal(stillAfter.hash, stillBefore.hash, 'reduced-motion contour remains static');
+  await page.goto(origin + '/benchmarks', { waitUntil: 'networkidle' });
   check.equal(await page.locator('.plot-empty').count(), 1, 'the nine identity-matched flagships show real missing values');
   check.equal(await page.locator('.ranking-row').count(), 0, 'missing benchmark observations create no score marks');
-  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '#task-cost', 'cost control reaches the mounted licensed tariff scenario');
+  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '/task-pricing', 'cost control reaches the mounted licensed tariff scenario');
+  const benchmarkURL = page.url();
+  await page.goto(origin + '/task-pricing', { waitUntil: 'networkidle' });
   check.equal(await page.getByTestId('task-cost').count(), 1, 'permitted task cost is mounted');
-  check.equal(await page.getByTestId('cost-plot').locator('[role="button"]').count(), 9, 'the real matched panel plots nine quoted endpoint identities');
-  check.equal(await page.getByTestId('cost-table').locator('tbody tr').count(), 9, 'accessible cost table uses the same supported identities');
+  check.equal(await page.getByTestId('cost-points').locator('button').count(), 9, 'the real matched panel plots nine quoted endpoint identities');
+  check.equal(await page.getByTestId('cost-table').locator('tbody tr').count(), new Set(data.authority.observations.filter(r => r.admitted && r.primary && r.configuration.conditionsKnown && ['benchmark-authority', 'independent-evaluator'].includes(r.provenance) && [r.sourceId, r.suiteId, r.metric, r.configuration.condition].join('|') === 'epoch-hub|gpqa-diamond|score|Epoch AI run').map(r => r.modelKey)).size, 'accessible cost table retains priced and unpriced exact identities');
   check.equal(data.sourceLimitations.restrictedRoutedPricesPublished, false, 'restricted routed API payloads remain withheld');
   check.equal(await page.locator('script[src*="echarts"]').count(), 0, 'ECharts is not loaded');
 
+  await page.goto(benchmarkURL, { waitUntil: 'networkidle' });
   await page.getByTestId('view-table').click();
   check.equal(await page.locator('[data-testid="result-table"] tbody tr').count(), 9, 'accessible exact table covers the full default cohort');
   check.equal(await page.locator('[data-testid="result-table"] .missing-value').count(), 9, 'all missing states are explicit');
-  await page.getByTestId('view-ranking').click();
+  await page.getByTestId('view-bars').click();
   await page.getByTestId('cohort-filter').selectOption('reported');
   await page.getByTestId('suite-filter').selectOption('hle-original');
   const rows = data.observations.filter((observation) => observation.suiteId === 'hle-original');
@@ -90,8 +94,8 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   check.equal(await page.locator('[data-testid="result-table"] tbody tr').count(), rows.length, 'exact table and chart use the same observation set');
   const hrefs = await page.locator('[data-testid="result-table"] a[href^="https://"]').evaluateAll((nodes) => nodes.map((node) => node.href));
   for (const row of rows) check(hrefs.includes(row.resultUrl), 'accessible row links to original result ' + row.id);
-  await page.getByTestId('view-ranking').click();
-  check.equal(await page.getByTestId('view-ranking').getAttribute('aria-pressed'), 'true', 'ranking view transition is explicit');
+  await page.getByTestId('view-bars').click();
+  check.equal(await page.getByTestId('view-bars').getAttribute('aria-pressed'), 'true', 'ranking view transition is explicit');
   await page.getByTestId('domain-filter').selectOption('coding');
   const firstCodingSuite = data.suites.find((suite) => suite.domain === 'coding' && suite.observationCount > 0);
   check.ok(firstCodingSuite, 'captured coding domain has an observed suite');

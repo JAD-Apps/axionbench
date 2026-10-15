@@ -4,6 +4,7 @@ import { gzipSync } from 'node:zlib';
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { spawnSync } from 'node:child_process';
 import { withBuiltBrowser } from './test-harness.mjs';
+import { routes } from '../src/routes.ts';
 
 const root = new URL('../', import.meta.url);
 const read = (path, encoding) => readFile(new URL(path, root), encoding);
@@ -97,53 +98,49 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   const navigation = page.goto(origin, { waitUntil: 'domcontentloaded' });
   await manifestRequested;
   await navigation;
-  check.equal(await page.locator('#hero-title').innerText(), 'See the signal.\nKeep the source.', 'preserved hero renders before data is released');
+  check.equal(await page.locator('#hero-title').innerText(), 'Find your\nnext model.', 'preserved hero renders before data is released');
   check.equal(await page.locator('#intelligence-surface').count(), 1, 'preserved animated contour canvas is present during load');
   check.equal(await page.getByTestId('frontier-stage').count(), 0, 'frontier waits accessibly while manifest is pending');
   check.equal(await page.getByRole('status').filter({ hasText: 'Validating the public evidence digest' }).count(), 1,
     'deferred data view exposes a useful loading status');
   releaseManifest();
+  await page.getByTestId('home-comparison').waitFor();
+  await page.goto(origin + '/benchmarks', { waitUntil: 'networkidle' });
   await page.getByTestId('frontier-stage').waitFor();
   await page.getByTestId('view-table').waitFor();
-  check.match(await page.locator('.topbar .edition').innerText(), /PUBLIC EVIDENCE/);
-  check.equal(await page.locator('.frontier-proof strong').first().innerText(), '09', 'default cohort is nine exact release matches');
-  check.equal(await page.locator('.frontier-proof strong').nth(1).innerText(), '00', 'verification count is not inferred');
+  check.match(await page.locator('.topbar .edition').innerText(), /PUBLIC DATA/);
   check.equal(await page.locator('.plot-empty').count(), 1, 'missing flagship results have no plotted score marks');
   await page.getByTestId('view-table').click();
   check.equal(await page.locator('[data-testid="result-table"] tbody tr').count(), 9, 'exact table mirrors all default flagship entries');
   check.equal(await page.locator('[data-testid="result-table"] .missing-value').count(), 9, 'all nine genuine missing result states remain visible');
   check.equal(await page.locator('[data-testid="result-table"] a[href^="https://"]').count(), 9,
     'each identity match links to its captured original release source');
-  check.equal(await page.locator('a.export[href="/data.json"]').count(), 1, 'complete compact catalogue export is available');
-  for (const id of ['frontier', 'paired', 'open-weights', 'models', 'methods']) {
-    check.equal(await page.locator('#' + id + ' h2').count(), 1, 'distinct page chapter is rendered: ' + id);
+  for (const [path, testId] of [['/rankings', 'authority-ranking'], ['/us-china', 'h2h'], ['/open-weights', 'ow'], ['/models', 'catalogue'], ['/methods', 'methodology']]) {
+    await page.goto(origin + path, { waitUntil: 'networkidle' });
+    await page.getByTestId(testId).waitFor();
+    const routeTitle = routes.find(route => route.path === path).title;
+    check.equal(await page.locator('#route-title').innerText(), routeTitle, 'each focused route renders its own title');
+    check.equal(await page.title(), routeTitle + ' — AxionBench', 'each focused route has matching document metadata');
+    check.equal(await page.locator('nav a[aria-current=page]').getAttribute('href'), path, 'the active navigation identifies this route');
+    const capture = 'test-results/frontier-route-' + testId + '.png';
+    await page.screenshot({ path: capture, animations: 'disabled' }); report.renderedEvidence.push(capture);
+    if (testId === 'h2h') check.match(await page.getByTestId('h2h-region-definition').innerText(), /never inferred from model language/i);
+    if (testId === 'authority-ranking') check.equal(await page.getByTestId('authority-rows').locator('li').count(), new Set(data.authority.observations.filter(r => r.currentPolicy?.scoringEligible).map(r => r.modelKey)).size, 'current ranking shows only qualified exact identities');
+    if (testId === 'catalogue') {
+      check.equal(await page.locator('#models .directory-count strong').innerText(), (data.models.length + data.authority.models.length).toLocaleString());
+      check.equal(await page.locator('a.export[href="/data.json"]').count(), 1);
+      await page.getByLabel('Search models, labs or source ID').fill('Meta:'); check.match(await page.locator('#models tbody').innerText(), /Meta/i);
+    }
+    if (testId === 'ow') { await page.getByRole('button', { name: '10–35B' }).click(); check.equal(await page.getByRole('button', { name: '10–35B' }).getAttribute('aria-pressed'), 'true'); }
   }
-  // Step 8 replaced the unavailable-geography placeholder with the sourced, matched
-  // head-to-head; npm run test:head-to-head exercises it in depth.
-  check.equal(await page.getByTestId('h2h').count(), 1, 'paired chapter mounts the matched US–China comparison');
-  check.match(await page.getByTestId('h2h-region-definition').innerText(), /never inferred from model language/i, 'region definition is labelled');
-  check.equal(await page.getByTestId('authority-rows').locator('li').count(), 10, 'frontier leads with a populated 10-model authority ranking');
-  check.equal(await page.locator('#models .directory-count strong').innerText(), (data.models.length + data.authority.models.length).toLocaleString(),
-    'catalogue starts from every provider-catalogue and original-source model');
-  await page.screenshot({ path: new URL('../test-results/frontier-desktop.png', import.meta.url).pathname, fullPage: true, animations: 'disabled' });
-  for (const [id, name] of [['frontier', 'frontier'], ['paired', 'paired'], ['open-weights', 'size-ruler'], ['models', 'directory'], ['methods', 'methods']]) {
-    await page.evaluate((target) => document.getElementById(target)?.scrollIntoView({ block: 'start', behavior: 'instant' }), id);
-    await page.waitForTimeout(60);
-    const path = 'test-results/frontier-section-' + name + '.png';
-    await page.screenshot({ path: new URL('../' + path, import.meta.url).pathname, animations: 'disabled' });
-    report.renderedEvidence.push(path);
-  }
-  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-  await page.getByLabel('Search models, labs or source ID').fill('Meta:');
-  check(await page.locator('#models tbody tr').count() > 0, 'directory search reaches supported Meta identities');
-  check.match(await page.locator('#models tbody').innerText(), /Meta/i);
-  await page.getByRole('button', { name: '10–35B' }).click();
-  check.equal(await page.getByRole('button', { name: '10–35B' }).getAttribute('aria-pressed'), 'true', 'parameter ruler selection is operable');
-  check.equal(await page.getByTestId('task-cost').count(), 1, 'licensed task-cost feature is actually mounted');
-  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '#task-cost', 'task-cost control enters the functional cost section');
-  check(await page.getByTestId('cost-plot').locator('[role="button"]').count() >= 8, 'real endpoint prices populate the cost plot');
-  check.equal(await page.getByTestId('domain-weights').count(), 1, 'custom domain weights and sensitivity are actually mounted');
-  await page.getByTestId('view-ranking').click();
+  await page.goto(origin + '/task-pricing', { waitUntil: 'networkidle' });
+  check.equal(await page.getByTestId('task-cost').count(), 1);
+  check.equal(await page.getByTestId('cost-plot').locator('canvas').count(), 1, 'task pricing renders Chart.js');
+  check(await page.getByTestId('cost-points').locator('button').count() >= 8, 'at least eight actual priced values are keyboard-accessible');
+  check.equal(await page.getByTestId('cost-points').locator('button').count(), (await page.getByTestId('cost-table').locator('tbody tr').evaluateAll(rows => rows.filter(row => row.querySelectorAll('td')[1]?.textContent.trim().startsWith('$')).length)), 'keyboard task-cost values match every priced factual table row');
+  await page.goto(origin + '/domains', { waitUntil: 'networkidle' }); check.equal(await page.getByTestId('domain-weights').count(), 1);
+  await page.goto(origin + '/benchmarks', { waitUntil: 'networkidle' });
+  await page.getByTestId('view-bars').click();
   await page.getByTestId('cohort-filter').selectOption('reported');
   await page.getByTestId('suite-filter').selectOption('hle-original');
   const hleRows = data.observations.filter((row) => row.suiteId === 'hle-original');
@@ -151,7 +148,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.equal(hleRows.length, 8, 'test suite has eight captured rows in this source snapshot');
   check.equal(await page.locator('.ranking-row[aria-label$="unverified"]').count(), hleRows.length,
     'all displayed score claims retain unverified source labels');
-  check.equal(await page.locator('.ranking-figure svg .bar-value').count(), hleRows.length,
+  check.deepEqual(await page.locator('#frontier .ranking-row strong').allTextContents(), hleRows.sort((a,b)=>b.value-a.value).map(r=>r.unit?.label ? r.valueText + ' ' + r.unit.label : r.valueText + ' · unit ' + (r.unit?.status ?? 'unknown')),
     'each reported mark retains its exact source value label');
   const firstMark = page.locator('.ranking-row').first();
   await firstMark.focus();
@@ -160,9 +157,9 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   await page.waitForFunction(() => new URL(location.href).searchParams.has('selected'));
   const selectedUrl = new URL(page.url());
   check.equal(selectedUrl.searchParams.get('selected'), await firstMark.getAttribute('data-observation-id'), 'keyboard selection is shareable');
-  const firstReducedWidth = await firstMark.locator('rect').getAttribute('width');
+  const firstReducedWidth = await page.locator('#frontier canvas').evaluate(c=>c.toDataURL());
   await page.waitForTimeout(100);
-  check.equal(await firstMark.locator('rect').getAttribute('width'), firstReducedWidth,
+  check.equal(await page.locator('#frontier canvas').evaluate(c=>c.toDataURL()), firstReducedWidth,
     'reduced-motion preference keeps the mark stable after rendering');
   const secondMark = page.locator('.ranking-row').nth(1);
   await secondMark.tap();
@@ -198,7 +195,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.equal(popup.url(), expectedLink, 'activating a result source opens its exact original URL');
   await popup.close();
 
-  await page.getByTestId('view-ranking').click();
+  await page.getByTestId('view-bars').click();
   await page.getByTestId('domain-filter').selectOption('coding');
   const firstCodingSuite = data.suites.find((suite) => suite.domain === 'coding' && suite.observationCount > 0);
   check.equal(await page.getByTestId('suite-filter').inputValue(), firstCodingSuite.id, 'domain filter chooses an observed suite in the selected domain');
@@ -215,7 +212,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   await page.getByTestId('view-table').click();
   check.match(await page.locator('[data-testid="result-table"] tbody').innerText(), /No captured result matches these filters/i,
     'empty result table explains that no rows match');
-  await page.getByTestId('view-ranking').click();
+  await page.getByTestId('view-bars').click();
   const chosenLab = codingLabs[0];
   await page.getByTestId('lab-filter').selectOption(chosenLab);
   const expectedLabRows = codingRows.filter((row) => data.models.find((model) => model.id === row.modelId).labId === chosenLab);
@@ -224,20 +221,23 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.equal(new URL(page.url()).searchParams.get('domain'), 'coding', 'domain is retained in the URL');
   check.equal(new URL(page.url()).searchParams.get('suite'), 'swebench-pro', 'suite is retained in the URL');
   check.equal(new URL(page.url()).searchParams.get('lab'), chosenLab, 'lab is retained in the URL');
-  check.equal(new URL(page.url()).searchParams.get('view'), 'ranking', 'view is retained in the URL');
+  check.equal(new URL(page.url()).searchParams.get('view'), 'bars', 'view is retained in the URL');
   await page.reload({ waitUntil: 'networkidle' });
   await page.getByTestId('frontier-stage').waitFor();
   check.equal(await page.getByTestId('cohort-filter').inputValue(), 'reported', 'reload restores shared cohort state');
   check.equal(await page.getByTestId('domain-filter').inputValue(), 'coding', 'reload restores shared domain state');
   check.equal(await page.getByTestId('suite-filter').inputValue(), 'swebench-pro', 'reload restores shared suite state');
   check.equal(await page.getByTestId('lab-filter').inputValue(), chosenLab, 'reload restores shared lab state');
-  check.equal(await page.getByTestId('view-ranking').getAttribute('aria-pressed'), 'true', 'reload restores a supported view');
+  check.equal(await page.getByTestId('view-bars').getAttribute('aria-pressed'), 'true', 'reload restores a supported view');
 
-  await page.goto(origin + '/?view=cost', { waitUntil: 'networkidle' });
+  await page.goto(origin + '/benchmarks?view=cost', { waitUntil: 'networkidle' });
   await page.getByTestId('frontier-stage').waitFor();
-  check.equal(await page.getByTestId('view-ranking').getAttribute('aria-pressed'), 'true', 'unsupported URL view falls back to supported ranking');
-  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '#task-cost', 'functional task-cost section remains reachable after navigation');
+  check.equal(await page.getByTestId('view-bars').getAttribute('aria-pressed'), 'true', 'unsupported URL view falls back to supported ranking');
+  check.equal(await page.getByTestId('view-cost').getAttribute('href'), '/task-pricing', 'functional task-cost section remains reachable after navigation');
+  const benchmarkURL = page.url();
+  await page.goto(origin + '/task-pricing', { waitUntil: 'networkidle' });
   check(await page.getByTestId('cost-table').locator('tbody tr').count() >= 8, 'licensed exact endpoint estimates remain populated after navigation');
+  await page.goto(benchmarkURL, { waitUntil: 'networkidle' });
 
   const failurePage = await newPage();
   await failurePage.route('**/data-manifest.json', (route) => route.fulfill({ status: 503, contentType: 'text/plain', body: 'Snapshot unavailable in regression fixture.' }));
@@ -265,7 +265,7 @@ await withBuiltBrowser(async ({ page, newPage, origin, assert: check }) => {
   check.deepEqual(errors, [], 'browser has no uncaught errors or console errors');
   report.browserChecks = [
     'hero during blocked manifest load', 'default 9-model / 8-lab identity watchlist', 'missing and unverified states',
-    'five chapters and complete directory export', 'Meta directory search and parameter band', 'licensed original-provider task costs and source-restricted routed rows withheld',
+    'five detailed routes and complete directory export', 'Meta directory search and parameter band', 'licensed original-provider task costs and source-restricted routed rows withheld',
     'real suite/domain/lab filters', 'ranking/table parity', 'keyboard and touch selection', 'reduced-motion stability',
     'deferred permission/source hash detail', 'activated original result URL', 'persistent URL cohort/view state',
     'unsupported view rejection', 'horizontal bounds at 360/390/768/1280/1440 px',

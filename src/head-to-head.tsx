@@ -1,5 +1,7 @@
-import { scaleLinear } from '@visx/scale';
-import { motion, useReducedMotion } from 'motion/react';
+import CohortChart from './charts/cohort-chart';
+import { matchedRows, coverageRows } from './charts/cohort-rows';
+import { ViewControls, RowControls, ViewTable } from './charts/controls';
+import { useRouteQuery, useViewState } from './charts/state';
 import { useEffect, useMemo, useState } from 'react';
 import {
   comparisonExport, decodeH2H, encodeH2H, headToHead, pct, points, regionalModels,
@@ -7,33 +9,8 @@ import {
 } from './authority/logic';
 
 type Props = { authority: AuthorityBlock; digest: string };
-const US = '#7f9dff';
-const CN = '#c9f36a';
-
-function Dumbbell({ a, b, label, strong, index, reduce }: {
-  a: number; b: number; label: string; strong: boolean; index: number; reduce: boolean;
-}) {
-  // Percentage coordinates keep the plot exact at any container width without
-  // re-measurement; visx supplies the linear mapping, Motion the entrance.
-  const x = scaleLinear({ domain: [0, 1], range: [2, 98] });
-  const at = (value: number) => `${x(value)}%`;
-  const transition = { duration: reduce ? 0 : 0.42, ease: 'easeOut' as const, delay: reduce ? 0 : Math.min(index * 0.03, 0.24) };
-  const height = strong ? 34 : 26;
-  const y = height / 2;
-  const half = strong ? 6.5 : 4.5;
-  return <div className="dumbbell-plot">
-    <svg width="100%" height={height} role="img" aria-label={label} data-a-value={a} data-b-value={b}>
-      <title>{label}</title>
-      {[0.25, 0.5, 0.75].map((tick) => <line key={tick} x1={at(tick)} x2={at(tick)} y1={2} y2={height - 2} className="dumbbell-grid"/>)}
-      <line x1={at(0)} x2={at(1)} y1={y} y2={y} className="dumbbell-track"/>
-      <motion.g initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={transition}>
-        <line x1={at(Math.min(a, b))} x2={at(Math.max(a, b))} y1={y} y2={y} className={strong ? 'dumbbell-link strong' : 'dumbbell-link'}/>
-        <circle cx={at(a)} cy={y} r={strong ? 7 : 5} fill={US} data-mark="us"/>
-        <svg x={at(b)} y={0} overflow="visible"><rect x={-half} y={y - half} width={half * 2} height={half * 2} fill={CN} data-mark="cn"/></svg>
-      </motion.g>
-    </svg>
-  </div>;
-}
+const VIEWS = ['paired', 'grouped', 'coverage', 'table'] as const;
+const KEYS = ['h2hView', 'us', 'cn', 'h2hDomain', 'h2hSetting', 'h2hSource', 'h2hMethod'];
 
 function Evidence({ row, authority, side }: { row: AuthorityObservation; authority: AuthorityBlock; side: string }) {
   const source = authority.sources.find((item) => item.id === row.sourceId);
@@ -54,7 +31,9 @@ function Evidence({ row, authority, side }: { row: AuthorityObservation; authori
 }
 
 export default function HeadToHead({ authority, digest }: Props) {
-  const reduce = !!useReducedMotion();
+  useRouteQuery(KEYS);
+  const [chartView, setChartView] = useViewState('h2hView', VIEWS, 'paired');
+  const [selected, setSelected] = useState('');
   const regional = useMemo(() => regionalModels(authority), [authority]);
   const [state, setState] = useState<H2HState | null>(() => decodeH2H(authority, new URLSearchParams(location.search)));
   const result = useMemo(() => state ? headToHead(authority, state.a, state.b, state.filters) : null, [authority, state]);
@@ -62,6 +41,10 @@ export default function HeadToHead({ authority, digest }: Props) {
   const models = useMemo(() => new Map(authority.models.map((model) => [model.key, model])), [authority]);
   const domains = useMemo(() => [...new Set(authority.observations.filter((row) => row.matchable).map((row) => row.domain))].sort(), [authority]);
   const sources = authority.sources.filter((source) => authority.observations.some((row) => row.sourceId === source.id && row.matchable));
+
+  const panelRows = useMemo(() => result ? matchedRows(authority, result) : [], [authority, result]);
+  const domainRows = useMemo(() => result ? matchedRows(authority, result, true) : [], [authority, result]);
+  const observedCoverage = useMemo(() => result ? coverageRows(authority, result) : [], [authority, result]);
 
   useEffect(() => {
     if (!state) return;
@@ -77,15 +60,13 @@ export default function HeadToHead({ authority, digest }: Props) {
   const a = models.get(state.a)!;
   const b = models.get(state.b)!;
   const update = (next: { a?: string; b?: string; filters?: Partial<H2HState['filters']> }) =>
-    setState({ a: next.a ?? state.a, b: next.b ?? state.b, filters: { ...state.filters, ...next.filters } });
+    setState(current => current ? { a: next.a ?? current.a, b: next.b ?? current.b, filters: { ...current.filters, ...next.filters } } : null);
   const suiteLabel = (row: MatchedRow) => {
     const suite = suites.get(row.suiteId);
     return `${suite?.name ?? row.suiteId} ${suite?.version ?? ''}`.trim();
   };
-  const describe = (row: { a: number; b: number }, name: string) =>
-    `${name}: ${a.name} ${pct(row.a)}, ${b.name} ${pct(row.b)}, difference ${points((row.b - row.a) * 100)} for ${b.name}`;
   function download() {
-    const payload = comparisonExport(authority, result!, digest);
+    const payload = { ...comparisonExport(authority, result!, digest), view: chartView, plottedRows: chartView === 'coverage' ? observedCoverage : chartView === 'table' ? [] : panelRows, domainRows, observedCoverage };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -96,6 +77,7 @@ export default function HeadToHead({ authority, digest }: Props) {
   const outsideCounts = regional.outside.reduce<Record<string, number>>((counts, model) => ({ ...counts, [model.region]: (counts[model.region] ?? 0) + 1 }), {});
 
   return <div className="h2h" data-testid="h2h">
+    <ViewControls name="US–China view" views={VIEWS} value={chartView} onChange={setChartView} prefix="h2h-view"/>
     <div className="h2h-controls" aria-label="Head-to-head selections">
       <label><span><i className="h2h-key us" aria-hidden="true"/>United States lab model</span>
         <select data-testid="h2h-us" value={state.a} onChange={(event) => update({ a: event.target.value })}>
@@ -126,6 +108,9 @@ export default function HeadToHead({ authority, digest }: Props) {
 
     <p className="h2h-definition" data-testid="h2h-region-definition"><strong>Region definition.</strong> {authority.regionDefinition}</p>
 
+    <p className="h2h-definition">{a.name}: {a.lab ?? 'Lab unknown'} · {a.country ?? 'Country unknown'} · {a.regionNote}<br/>
+      {b.name}: {b.lab ?? 'Lab unknown'} · {b.country ?? 'Country unknown'} · {b.regionNote}<br/>
+      Historical observations remain inspectable; appearing here does not establish current scoring eligibility. Exact evaluation and source dates are in each row's Sources.</p>
     <div className="h2h-summary" data-testid="h2h-summary" aria-live="polite">
       <div><strong data-testid="h2h-matched-count">{result.counts.matched}</strong><span>matched tests</span></div>
       <div><strong>{result.counts.aHigher}</strong><span>{a.name} higher</span></div>
@@ -143,23 +128,25 @@ export default function HeadToHead({ authority, digest }: Props) {
             <p>No mark is drawn and no difference is computed. Unmatched coverage and exclusions remain listed below.</p></div>
         </div>
       : <figure className="h2h-figure">
-          <figcaption><strong>Aligned domain dumbbells</strong><span>Domain rows average matched suites (within a benchmark family first); raw benchmark rows follow. Scale 0–100% of each source’s own metric.</span></figcaption>
-          <div className="h2h-legend"><span><i className="h2h-key us" aria-hidden="true"/>{a.name} (circle)</span><span><i className="h2h-key cn" aria-hidden="true"/>{b.name} (square)</span></div>
+          {(chartView === 'paired' || chartView === 'grouped') && <>
+            <CohortChart rows={domainRows} view={chartView} name="h2h-domains" selected={selected} onSelect={setSelected}/>
+            <RowControls rows={domainRows} selected={selected} onSelect={setSelected} testId="h2h-domain-values"/>
+            <CohortChart rows={panelRows} view={chartView} name="h2h" selected={selected} onSelect={setSelected}/>
+            <RowControls rows={panelRows} selected={selected} onSelect={setSelected} testId="h2h-values"/>
+          </>}
+          <figcaption><strong>Matched domain means</strong><span>Domain rows average matched suites (within a benchmark family first); raw benchmark rows follow. Scale 0–100% of each source’s own metric.</span></figcaption>
+          <div className="h2h-legend"><span><i className="h2h-key us" aria-hidden="true"/>{a.name} (cyan circle / first bar)</span><span><i className="h2h-key cn" aria-hidden="true"/>{b.name} (violet square / second bar)</span></div>
           <ol className="dumbbell-list" data-testid="h2h-dumbbells">
-            {result.domains.map((domain, domainIndex) => <li key={domain.domain} className="dumbbell-domain">
-              <div className="dumbbell-row strong" data-testid="h2h-domain-row" data-domain={domain.domain}>
+            {result.domains.map((domain) => <li key={domain.domain} className="dumbbell-domain">
+              <div className="dumbbell-row strong" data-testid="h2h-domain-row" data-domain={domain.domain} data-a-value={domain.a} data-b-value={domain.b}>
                 <div className="dumbbell-label"><strong>{domain.domain}</strong>
                   <small>{domain.suites} matched suite{domain.suites === 1 ? '' : 's'} · {domain.families} famil{domain.families === 1 ? 'y' : 'ies'}</small></div>
-                <Dumbbell a={domain.a} b={domain.b} strong index={domainIndex} reduce={reduce}
-                  label={describe(domain, `${domain.domain} domain mean`)}/>
                 <div className="dumbbell-values"><span className="us">{pct(domain.a)}</span><span className="cn">{pct(domain.b)}</span>
                   <em>{domain.leader === 'tie' ? 'tie' : points(domain.deltaPoints)}</em></div>
               </div>
-              <ol>{result.matched.filter((row) => row.domain === domain.domain).map((row, index) => <li key={row.id}
-                className="dumbbell-row" data-testid="h2h-suite-row" data-row-id={row.id}>
-                <div className="dumbbell-label"><span>{suiteLabel(row)}</span><small>{row.condition} · {row.metric}</small></div>
-                <Dumbbell a={row.a.value} b={row.b.value} strong={false} index={domainIndex + index} reduce={reduce}
-                  label={describe({ a: row.a.value, b: row.b.value }, suiteLabel(row))}/>
+              <ol>{result.matched.filter((row) => row.domain === domain.domain).map((row) => <li key={row.id}
+                className="dumbbell-row" data-testid="h2h-suite-row" data-row-id={row.id} data-a-value={row.a.value} data-b-value={row.b.value}>
+                <div className="dumbbell-label"><a href={row.a.resultUrl} target="_blank" rel="noreferrer">{suiteLabel(row)} ↗</a><small>{row.condition} · {row.metric}</small></div>
                 <div className="dumbbell-values"><span className="us">{pct(row.a.value)}</span><span className="cn">{pct(row.b.value)}</span>
                   <em>{row.leader === 'tie' ? 'tie' : points(row.deltaPoints)}</em></div>
               </li>)}</ol>
@@ -167,6 +154,12 @@ export default function HeadToHead({ authority, digest }: Props) {
           </ol>
         </figure>}
 
+    {chartView === 'coverage' && <>
+      <p>Coverage counts observed compatible results for this pair under these filters. Shared results count once per model. Unmatched observations stay separate; registry membership, pending identities and excluded observations do not count.</p>
+      <CohortChart rows={observedCoverage} view="grouped" name="h2h-coverage" selected={selected} onSelect={setSelected}/>
+      <RowControls rows={observedCoverage} selected={selected} onSelect={setSelected}/>
+      <ViewTable rows={observedCoverage} caption="Observed compatible coverage under the active filters" testId="h2h-coverage-table"/>
+    </>}
     <div className="h2h-actions">
       <button type="button" data-testid="h2h-export" onClick={download} disabled={!state}>Export this comparison (JSON) ↓</button>
       <span>Export and share link keep both models, filters and the {result.method} panel definition.</span>
@@ -181,7 +174,7 @@ export default function HeadToHead({ authority, digest }: Props) {
           <tbody>{result.matched.length === 0
             ? <tr><td colSpan={5}><span className="missing-value">No matched rows.</span></td></tr>
             : result.matched.map((row) => <tr key={row.id} data-row-id={row.id}>
-              <th scope="row">{suiteLabel(row)}<small>{row.domain} · {row.condition} · {row.metric}</small></th>
+              <th scope="row"><a href={row.a.resultUrl} target="_blank" rel="noreferrer">{suiteLabel(row)} ↗</a><small>{row.domain} · {row.condition} · {row.metric}</small></th>
               <td data-cell="us">{pct(row.a.value)}<small>setting {row.a.configuration.setting ?? 'not stated'}</small></td>
               <td data-cell="cn">{pct(row.b.value)}<small>setting {row.b.configuration.setting ?? 'not stated'}</small></td>
               <td data-cell="delta">{row.leader === 'tie' ? 'tie (±0.0 pp)' : points(row.deltaPoints)}</td>
@@ -194,15 +187,15 @@ export default function HeadToHead({ authority, digest }: Props) {
     </details>
 
     <div className="h2h-lists">
-      <details data-testid="h2h-unmatched"><summary>Unequal coverage ({result.onlyA.length + result.onlyB.length})</summary>
+      <details data-testid="h2h-unmatched" open><summary>Unequal coverage ({result.onlyA.length + result.onlyB.length})</summary>
         <p>Observed for only one model under the active filters, so no comparison is made.</p>
         <ul>{[...result.onlyA.map((row) => ['US', row] as const), ...result.onlyB.map((row) => ['China', row] as const)].map(([side, row]) =>
-          <li key={row.id}><span>{side} only</span> {suites.get(row.suiteId)?.name ?? row.suiteId} · {row.configuration.condition ?? 'condition not stated'} · {row.rawText}
+          <li key={row.id}><span>{side} only</span> <a href={row.resultUrl} target="_blank" rel="noreferrer">{suites.get(row.suiteId)?.name ?? row.suiteId} ↗</a> · {row.configuration.condition ?? 'condition not stated'} · {row.rawText}
             <a href={row.resultUrl} target="_blank" rel="noreferrer">result ↗</a></li>)}</ul>
       </details>
       <details data-testid="h2h-excluded"><summary>Excluded observations ({result.excluded.length})</summary>
         <ul>{result.excluded.map((item) => <li key={item.observation.id + item.reason} data-reason={item.reason}>
-          <span>{item.side === 'a' ? 'US' : 'China'}</span> {suites.get(item.observation.suiteId)?.name ?? item.observation.suiteId} · {item.observation.rawText} · {item.reason}
+          <span>{item.side === 'a' ? 'US' : 'China'}</span> <a href={item.observation.resultUrl} target="_blank" rel="noreferrer">{suites.get(item.observation.suiteId)?.name ?? item.observation.suiteId} ↗</a> · {item.observation.rawText} · {item.reason}
           <a href={item.observation.resultUrl} target="_blank" rel="noreferrer">result ↗</a></li>)}</ul>
       </details>
       <details data-testid="h2h-outside"><summary>Outside the regional selectors ({regional.outside.length} models)</summary>

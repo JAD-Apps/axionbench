@@ -3,7 +3,8 @@
 import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 
-const tracked = execFileSync('git', ['ls-files', '-z', '--cached', '--others', '--exclude-standard'], { encoding: 'utf8' }).split('\0').filter(Boolean);
+const deleted = new Set(execFileSync('git', ['ls-files', '-z', '--deleted'], { encoding: 'utf8' }).split('\0').filter(Boolean));
+const tracked = execFileSync('git', ['ls-files', '-z', '--cached', '--others', '--exclude-standard'], { encoding: 'utf8' }).split('\0').filter(path => path && !deleted.has(path));
 const problems = [];
 for (const path of tracked) {
   if (path.startsWith('data/source-snapshots/')) continue;

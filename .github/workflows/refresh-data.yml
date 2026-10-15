@@ -1,9 +1,9 @@
 name: Refresh data
-# Weekly validated refresh. Promotion happens only through a reviewed pull
+# Manual validated refresh that proposes data changes as a reviewed pull
 # request; a failed refresh restores the last-good data and opens nothing.
+# The authoritative daily update is the JadBot workflow running
+# `npm run publish:daily` (docs/AUTOMATION.md), not a GitHub schedule.
 on:
-  schedule:
-    - cron: '17 5 * * 1'
   workflow_dispatch:
 permissions:
   contents: write

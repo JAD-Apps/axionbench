@@ -1,6 +1,7 @@
 /* Original procedural signal sculpture: a visual identity, not benchmark data. */
 (() => {
   const canvas = document.getElementById('intelligence-surface');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -46,7 +47,7 @@
         const a=project(lat,lon),b=project(lat,lon+Math.PI*2/90);
         const front=(a.z+1.2)/2.4;
         const green=band>15 && band<21;
-        ctx.strokeStyle=green?`rgba(200,246,107,${.09+front*.47})`:`rgba(174,199,218,${.04+front*.32})`;
+        ctx.strokeStyle=green?`rgba(108,229,239,${.09+front*.47})`:`rgba(174,199,218,${.04+front*.32})`;
         ctx.lineWidth=green?.8:.6;
         ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
         if(step%3===0)points.push({...a,green});
@@ -55,10 +56,10 @@
     points.sort((a,b)=>a.z-b.z);
     for(const p of points){
       const front=(p.z+1.2)/2.4;
-      ctx.fillStyle=p.green?`rgba(218,255,150,${.2+front*.8})`:`rgba(189,215,234,${.12+front*.65})`;
+      ctx.fillStyle=p.green?`rgba(170,152,255,${.2+front*.8})`:`rgba(189,215,234,${.12+front*.65})`;
       ctx.beginPath();ctx.arc(p.x,p.y,.45+front*.7,0,Math.PI*2);ctx.fill();
     }
-    ctx.strokeStyle='#c8f66b70';ctx.lineWidth=.7;
+    ctx.strokeStyle='#6ce5ef70';ctx.lineWidth=.7;
     ctx.beginPath();ctx.moveTo(width*.04,height*.5);ctx.lineTo(width*.12,height*.5);ctx.moveTo(width*.5,height*.035);ctx.lineTo(width*.5,height*.09);ctx.stroke();
   }
   function tick(time) {
@@ -70,10 +71,20 @@
     if (motion.matches) { if(frame)cancelAnimationFrame(frame);frame=null;draw(0);return; }
     if(visible&&!document.hidden&&!frame){last=performance.now();frame=requestAnimationFrame(tick);}
   }
-  stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();pointer={x:(e.clientX-r.left)/r.width-.5,y:(e.clientY-r.top)/r.height-.5};});
-  stage.addEventListener('pointerleave',()=>{pointer={x:0,y:0};});
-  new ResizeObserver(resize).observe(canvas);
-  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();}).observe(canvas);
+  const move = e => {const r=stage.getBoundingClientRect();pointer={x:(e.clientX-r.left)/r.width-.5,y:(e.clientY-r.top)/r.height-.5};};
+  const leave = () => {pointer={x:0,y:0};};
+  stage.addEventListener('pointermove', move);
+  stage.addEventListener('pointerleave', leave);
+  const sizeObserver = new ResizeObserver(resize); sizeObserver.observe(canvas);
+  const visibilityObserver = new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();}); visibilityObserver.observe(canvas);
+  function dispose() {
+    visible=false; if(frame)cancelAnimationFrame(frame); frame=null;
+    sizeObserver.disconnect(); visibilityObserver.disconnect();
+    stage.removeEventListener('pointermove',move); stage.removeEventListener('pointerleave',leave);
+    document.removeEventListener('visibilitychange',schedule); motion.removeEventListener('change',schedule);
+    window.removeEventListener('axion:dispose-surface',dispose);
+  }
+  window.addEventListener('axion:dispose-surface',dispose);
   document.addEventListener('visibilitychange',schedule);
   motion.addEventListener('change',schedule);
   resize(); schedule();

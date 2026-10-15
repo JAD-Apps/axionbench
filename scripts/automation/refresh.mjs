@@ -1,9 +1,15 @@
 // npm run data:refresh -- [--audit-dir <private dir outside the repo>] [--max-changes N]
+//                         [--publish --state-dir <dir outside the repo> [--key YYYY-MM-DD.rN]]
 // Bounded refresh transaction: snapshot every committed data projection, run the
 // real adapters, schema/admission validation and regression guards, then either
 // keep the new data with a changelog entry or restore the last-good bytes.
 // Source blobs are immutable and content-addressed, so a failed run never alters
 // last-good records or the bytes they reference.
+// With --publish a validated refresh continues into the publication transaction
+// (scripts/release/publication.mjs): clean release build, immutable snapshot,
+// authenticated Cloudflare Pages deployment and HTTPS readback. If publication
+// fails, production keeps or regains its verified last-good deployment and the
+// local projections return to their pre-refresh bytes.
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises';
@@ -131,12 +137,37 @@ export function defaultCommands(auditDir) {
   ];
 }
 
+// Refresh, then publish. Publication failures restore the pre-refresh bytes.
+export async function refreshAndPublish({ root, refresh, publish, auditDir }) {
+  const before = await snapshotProtected(root);
+  const refreshed = await refresh();
+  if (!refreshed.ok) return { ok: false, stage: 'refresh', refresh: refreshed.receipt };
+  let publication;
+  try { publication = await publish(); } catch (error) { publication = { ok: false, status: 'failed-before-start', message: error.message }; }
+  if (publication.ok) return { ok: true, stage: 'published', refresh: refreshed.receipt, publication };
+  const unexpected = await restoreProtected(root, before);
+  if (auditDir && refreshed.changed) await writeFile(join(auditDir, `publish-failure-${Date.now()}.json`), `${JSON.stringify({ publication, restoredFiles: before.size, unexpected }, null, 2)}\n`, { mode: 0o600, flag: 'wx' }).catch(() => {});
+  return { ok: false, stage: 'publication', refresh: refreshed.receipt, publication, localDataRestored: { files: before.size, unexpectedNewProtectedFiles: unexpected } };
+}
+
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
   const option = (name) => { const at = args.indexOf(name); return at >= 0 ? args[at + 1] : null; };
   const auditDir = option('--audit-dir');
   const root = fileURLToPath(new URL('../../', import.meta.url));
-  const result = await runRefresh({ root, commands: defaultCommands(auditDir), auditDir, maxChanges: Number(option('--max-changes') ?? DEFAULT_MAX_CHANGES) });
-  console.log(JSON.stringify(result.receipt));
-  if (!result.ok) { console.error(`Refresh failed at "${result.receipt.stage}": ${result.receipt.message}. Last-good data restored.`); process.exitCode = 1; }
+  const refresh = () => runRefresh({ root, commands: defaultCommands(auditDir), auditDir, maxChanges: Number(option('--max-changes') ?? DEFAULT_MAX_CHANGES) });
+  if (args.includes('--publish')) {
+    assert.ok(option('--state-dir'), '--publish needs --state-dir <directory outside the repository>');
+    const { outsideRepository } = await import('../public/boundary.mjs');
+    const { publishBuilt } = await import('../release/publish.mjs');
+    const { defaultKey } = await import('../release/publication.mjs');
+    const stateDir = await outsideRepository(root, option('--state-dir'));
+    const result = await refreshAndPublish({ root, auditDir, refresh, publish: () => publishBuilt({ root, stateDir, key: option('--key') ?? defaultKey() }) });
+    console.log(JSON.stringify(result, null, 2));
+    if (!result.ok) process.exitCode = 1;
+  } else {
+    const result = await refresh();
+    console.log(JSON.stringify(result.receipt));
+    if (!result.ok) { console.error(`Refresh failed at "${result.receipt.stage}": ${result.receipt.message}. Last-good data restored.`); process.exitCode = 1; }
+  }
 }

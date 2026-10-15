@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://axionbench.jadapps.app/</loc></url>
+  <url><loc>https://axionbench.jadapps.app/rankings</loc></url>
+  <url><loc>https://axionbench.jadapps.app/benchmarks</loc></url>
+  <url><loc>https://axionbench.jadapps.app/domains</loc></url>
+  <url><loc>https://axionbench.jadapps.app/task-pricing</loc></url>
+  <url><loc>https://axionbench.jadapps.app/versions</loc></url>
+  <url><loc>https://axionbench.jadapps.app/open-weights</loc></url>
+  <url><loc>https://axionbench.jadapps.app/us-china</loc></url>
+  <url><loc>https://axionbench.jadapps.app/models</loc></url>
+  <url><loc>https://axionbench.jadapps.app/methods</loc></url>
+  <url><loc>https://axionbench.jadapps.app/benchmark-archive</loc></url>
   <url><loc>https://axionbench.jadapps.app/privacy.html</loc></url>
 </urlset>

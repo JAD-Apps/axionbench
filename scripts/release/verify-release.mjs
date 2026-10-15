@@ -7,7 +7,8 @@
 // registry gate performs read-only HTTPS GETs of captured primary source URLs.
 import { spawn } from 'node:child_process';
 import { createWriteStream } from 'node:fs';
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile, cp } from 'node:fs/promises';
+import { sha256 } from './manifest.mjs';
 import { acquireGateLock } from './gate-lock.mjs';
 
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
@@ -25,12 +26,15 @@ export const GATES = [
   ['test:authority', 'benchmark-authority adapters and publisher facts'],
   ['verify:design', 'design blueprint contract'],
   ['test:frontier', 'frontier build, bundle budget and browser checks'],
+  ['test:core-views', 'custom Chart.js values, views, history, lifecycle and reduced motion'],
   ['test:chart-smoke', 'hero preservation and chart smoke in Chromium'],
   ['test:head-to-head', 'matched US–China comparison'],
   ['test:open-weights', 'open-weight parameter groups'],
+  ['test:cohort-views', 'Chart.js cohort views, coverage, URL state and value parity'],
   ['test:catalogue', 'catalogue, methods and snapshots'],
   ['test:acceptance', 'visual and interaction acceptance at 320–1920 px'],
   ['verify:automation', 'refresh, CI and deployment tooling (offline)'],
+  ['verify:public', 'product-only snapshot, source boundary and portable public gates'],
   ['build:release', 'clean release build and manifest'],
   ['release:check', 'dist matches its release manifest'],
 ];
@@ -53,6 +57,15 @@ function runGate(script) {
 
 // Gates rebuild and serve the shared dist/; a second run in this worktree waits here.
 const releaseLock = await acquireGateLock();
+// Retain authentic earlier logs/receipts, including failures, before replacing
+// the working latest receipt. Historical direct receipts stay historical.
+try {
+  const previous = await readFile('test-results/release-verify.json');
+  const archive = `test-results/release-history/${new Date().toISOString().replace(/[:.]/g, '-')}`;
+  await mkdir(archive, { recursive: true });
+  await writeFile(`${archive}/receipt.json`, previous, { flag: 'wx' });
+  await cp(LOG_DIR, `${archive}/logs`, { recursive: true, errorOnExist: true });
+} catch (error) { if (error.code !== 'ENOENT') throw error; }
 await rm(LOG_DIR, { recursive: true, force: true });
 await mkdir(LOG_DIR, { recursive: true });
 const results = [];
@@ -60,7 +73,8 @@ for (const [script, label] of GATES) {
   console.log(`\n=== ${script} — ${label}`);
   const started = Date.now();
   const { exitCode, error } = await runGate(script);
-  results.push({ script, label, exitCode, error, seconds: Math.round((Date.now() - started) / 100) / 10, log: logPath(script) });
+  const logBytes = await readFile(logPath(script));
+  results.push({ script, label, exitCode, error, logBytes: logBytes.length, logSha256: sha256(logBytes), milliseconds: Date.now() - started, seconds: Math.round((Date.now() - started) / 100) / 10, log: logPath(script) });
   if (exitCode !== 0) console.error(`!!! ${script} failed (exit ${exitCode ?? error}). Full output: ${logPath(script)}. Rerun with: npm run ${script}`);
 }
 

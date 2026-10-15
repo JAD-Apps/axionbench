@@ -93,7 +93,7 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
-  await page.goto(origin, { waitUntil: 'networkidle' });
+  await page.goto(origin + '/us-china', { waitUntil: 'networkidle' });
   const h2h = page.getByTestId('h2h');
   await h2h.waitFor();
   const url = () => new URL(page.url()).searchParams;
@@ -114,10 +114,11 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
     const rows = page.locator('[data-testid="h2h-table"] tbody tr[data-row-id]');
     check.equal(await rows.count(), result.matched.length, `${label}: table mirrors matched rows`);
     for (const row of result.matched) {
-      const mark = page.locator(`[data-testid="h2h-suite-row"][data-row-id="${row.id}"] svg[role="img"]`);
+      const mark = page.locator(`[data-testid="h2h-suite-row"][data-row-id="${row.id}"]`);
       check.equal(Number(await mark.getAttribute('data-a-value')), row.a.value, `${label}: US mark value ${row.id}`);
       check.equal(Number(await mark.getAttribute('data-b-value')), row.b.value, `${label}: China mark value ${row.id}`);
-      check.match(await mark.getAttribute('aria-label'), new RegExp(`${pct(row.a.value).replace('.', '\\.')}.*${pct(row.b.value).replace('.', '\\.')}`), `${label}: accessible label states both values`);
+      check.equal(await mark.locator('.us').innerText(), pct(row.a.value), `${label}: accessible US value`);
+      check.equal(await mark.locator('.cn').innerText(), pct(row.b.value), `${label}: accessible China value`);
       const tr = page.locator(`[data-testid="h2h-table"] tr[data-row-id="${row.id}"]`);
       check.match(await tr.locator('[data-cell="us"]').innerText(), new RegExp('^' + pct(row.a.value).replace('.', '\\.')));
       check.match(await tr.locator('[data-cell="cn"]').innerText(), new RegExp('^' + pct(row.b.value).replace('.', '\\.')));
@@ -126,17 +127,16 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
       check.deepEqual(hrefs, [row.a.resultUrl, row.b.resultUrl], `${label}: genuine result links for ${row.id}`);
     }
     for (const domain of result.domains) {
-      const svg = page.locator(`[data-testid="h2h-domain-row"][data-domain="${domain.domain}"] svg[role="img"]`);
+      const svg = page.locator(`[data-testid="h2h-domain-row"][data-domain="${domain.domain}"]`);
       check.ok(Math.abs(Number(await svg.getAttribute('data-a-value')) - domain.a) < 1e-12 && Math.abs(Number(await svg.getAttribute('data-b-value')) - domain.b) < 1e-12, `${label}: domain mark ${domain.domain}`);
     }
     check.match(await page.getByTestId('h2h-excluded').locator('summary').innerText(), new RegExp(`\\(${result.excluded.length}\\)`), `${label}: exclusions listed`);
     check.match(await page.getByTestId('h2h-unmatched').locator('summary').innerText(), new RegExp(`\\(${result.onlyA.length + result.onlyB.length}\\)`), `${label}: unequal coverage listed`);
   };
   await verify(expected, 'default');
-  const firstMark = page.locator('[data-testid="h2h-suite-row"] circle').first();
-  const cx = await firstMark.getAttribute('cx');
-  await page.waitForTimeout(120);
-  check.equal(await firstMark.getAttribute('cx'), cx, 'reduced motion keeps marks stable');
+  const firstCanvas = page.getByTestId('h2h-chart').locator('canvas');
+  await page.waitForFunction(el => !!el.dataset.chartGeometry, await firstCanvas.elementHandle());
+  check.equal(JSON.parse(await firstCanvas.getAttribute('data-chart-geometry')).animation, false, 'reduced motion stops Chart.js animation');
 
   // Keyboard selection of a different pair; URL persistence and reload.
   await page.getByTestId('h2h-us').focus();
@@ -177,27 +177,26 @@ await withBuiltBrowser(async ({ page, origin, assert: check }) => {
   await page.getByTestId('h2h-source').selectOption('any');
 
   // Frontier authority ranking (mounted projection).
+  await page.goto(origin + '/rankings?authorityPolicy=historical', { waitUntil: 'networkidle' });
+  await page.getByTestId('authority-rows').waitFor();
   const ranking = page.getByTestId('authority-rows').locator('li');
   check.equal(await ranking.count(), 10, 'frontier authority ranking shows 10 distinct models');
   await page.getByTestId('authority-cohort').selectOption('all');
   check.equal(await ranking.count(), 70, 'all 70 DeepSWE configurations are selectable');
   await page.getByTestId('authority-config').selectOption('mini_swe_agent_kimi_k3_max');
   check.equal(url().get('authorityConfig'), 'mini_swe_agent_kimi_k3_max', 'configuration selection persists');
-  check.equal(await page.locator('.authority-row.selected').count(), 1);
+  check.equal(await page.locator('[data-testid=authority-rows] button[aria-pressed=true]').count(), 1);
 
+  await page.goto(origin + '/us-china', { waitUntil: 'networkidle' });
+  await h2h.waitFor();
   // Mobile layouts.
   for (const width of [360, 390, 768]) {
     await page.setViewportSize({ width, height: 900 });
-    // Wait for the debounced parent-size measurement to settle (bounded), then assert.
-    await page.waitForFunction((w) => {
-      const svg = document.querySelector('[data-testid="h2h-suite-row"] svg[role="img"]');
-      const r = svg?.getBoundingClientRect();
-      return !!r && r.right <= w + 1 && (w > 700 || r.width > w * 0.6);
-    }, width, { timeout: 5000 }).catch(() => {});
+    await page.waitForFunction(() => !!document.querySelector('[data-testid=h2h-chart] canvas')?.dataset.chartGeometry);
     const bounds = await page.evaluate(() => ({ viewport: innerWidth, page: document.documentElement.scrollWidth }));
     check.ok(bounds.page <= bounds.viewport, `no horizontal overflow at ${width}px: ${JSON.stringify(bounds)}`);
-    const box = await page.locator('[data-testid="h2h-suite-row"] svg[role="img"]').first().boundingBox();
-    check.ok(box && (width > 700 || box.width > width * 0.6) && box.x >= 0 && box.x + box.width <= width + 1, `dumbbell uses the mobile width at ${width}px`);
+    const box = await page.getByTestId('h2h-chart').locator('canvas').boundingBox();
+    check.ok(box && (width > 700 || box.width > width * 0.6) && box.x >= 0 && box.x + box.width <= width + 1, `Chart.js uses the mobile width at ${width}px`);
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(150);

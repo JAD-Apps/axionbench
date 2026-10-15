@@ -1,0 +1,739 @@
+{
+  "schemaVersion": "axionbench-current-source-specs-v1",
+  "sources": [
+    {
+      "id": "bfcl-current",
+      "url": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+      "publisher": "Gorilla team / UC Berkeley",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "bfcl-repo",
+      "url": "https://api.github.com/repos/ShishirPatil/gorilla/commits?path=berkeley-function-call-leaderboard&per_page=1",
+      "publisher": "Gorilla team / UC Berkeley",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "bridge-guide",
+      "url": "https://www.bridgebench.ai/blog/how-the-leaderboard-works",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-home",
+      "url": "https://www.bridgebench.ai/",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-leaderboard",
+      "url": "https://www.bridgebench.ai/leaderboard",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-claude-fable-5-1",
+      "url": "https://www.bridgebench.ai/leaderboard/claude-fable-5-1",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-claude-fable-5",
+      "url": "https://www.bridgebench.ai/leaderboard/claude-fable-5",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-claude-opus-5-5",
+      "url": "https://www.bridgebench.ai/leaderboard/claude-opus-5-5",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-claude-opus-5",
+      "url": "https://www.bridgebench.ai/leaderboard/claude-opus-5",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-claude-sonnet-5-5",
+      "url": "https://www.bridgebench.ai/leaderboard/claude-sonnet-5-5",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-claude-sonnet-5",
+      "url": "https://www.bridgebench.ai/leaderboard/claude-sonnet-5",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-deepseek-v4-1-flash",
+      "url": "https://www.bridgebench.ai/leaderboard/deepseek-v4-1-flash",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-deepseek-v4-pro",
+      "url": "https://www.bridgebench.ai/leaderboard/deepseek-v4-pro",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-gemini-3-8-flash",
+      "url": "https://www.bridgebench.ai/leaderboard/gemini-3-8-flash",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-glm-5-3-flash",
+      "url": "https://www.bridgebench.ai/leaderboard/glm-5-3-flash",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-glm-5-3",
+      "url": "https://www.bridgebench.ai/leaderboard/glm-5-3",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-gpt-5-6-luna",
+      "url": "https://www.bridgebench.ai/leaderboard/gpt-5-6-luna",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-gpt-5-6-sol",
+      "url": "https://www.bridgebench.ai/leaderboard/gpt-5-6-sol",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-gpt-5-6-terra",
+      "url": "https://www.bridgebench.ai/leaderboard/gpt-5-6-terra",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-gpt-6-1-sol",
+      "url": "https://www.bridgebench.ai/leaderboard/gpt-6-1-sol",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-gpt-6-astra",
+      "url": "https://www.bridgebench.ai/leaderboard/gpt-6-astra",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-gpt-6-luna",
+      "url": "https://www.bridgebench.ai/leaderboard/gpt-6-luna",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-gpt-6-sol",
+      "url": "https://www.bridgebench.ai/leaderboard/gpt-6-sol",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-grok-4-6",
+      "url": "https://www.bridgebench.ai/leaderboard/grok-4-6",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-grok-4-7",
+      "url": "https://www.bridgebench.ai/leaderboard/grok-4-7",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-kimi-k3",
+      "url": "https://www.bridgebench.ai/leaderboard/kimi-k3",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-mimo-v2-6-pro",
+      "url": "https://www.bridgebench.ai/leaderboard/mimo-v2-6-pro",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-muse-spark-1-3",
+      "url": "https://www.bridgebench.ai/leaderboard/muse-spark-1-3",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-qwen3-8-2-4t-a95b",
+      "url": "https://www.bridgebench.ai/leaderboard/qwen3-8-2-4t-a95b",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-qwen3-8-flash-next",
+      "url": "https://www.bridgebench.ai/leaderboard/qwen3-8-flash-next",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-qwen3-8-max",
+      "url": "https://www.bridgebench.ai/leaderboard/qwen3-8-max",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "bridge-result-step-5-preview",
+      "url": "https://www.bridgebench.ai/leaderboard/step-5-preview",
+      "publisher": "BridgeMind / BridgeBench",
+      "sourceClass": "original_publisher_rating_page"
+    },
+    {
+      "id": "claude-fable-5-1",
+      "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+      "publisher": "Anthropic",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "url": "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
+      "publisher": "Anthropic",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "claude-opus-4-5",
+      "url": "https://platform.claude.com/docs/en/models/opus-4-5/overview",
+      "publisher": "Anthropic",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "claude-opus-4-6",
+      "url": "https://platform.claude.com/docs/en/models/opus-4-6/overview",
+      "publisher": "Anthropic",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "claude-opus-5-5",
+      "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview",
+      "publisher": "Anthropic",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "claude-sonnet-4-5",
+      "url": "https://platform.claude.com/docs/en/models/sonnet-4-5/overview",
+      "publisher": "Anthropic",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "url": "https://platform.claude.com/docs/en/models/sonnet-4-6/overview",
+      "publisher": "Anthropic",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "claude-sonnet-5-5",
+      "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+      "publisher": "Anthropic",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "deepseek-release",
+      "url": "https://api-docs.deepseek.com/news/news260910/",
+      "publisher": "DeepSeek",
+      "sourceClass": "original_model_release"
+    },
+    {
+      "id": "deepswe-current",
+      "url": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json",
+      "publisher": "Datacurve",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "epoch-current",
+      "url": "https://epoch.ai/benchmarks",
+      "publisher": "Epoch AI",
+      "sourceClass": "original_independent_evaluator"
+    },
+    {
+      "id": "glm-models",
+      "url": "https://docs.z.ai/guides/llm/glm-5.3",
+      "publisher": "Z.ai",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "google-model",
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+      "publisher": "Google",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "google-pricing",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "publisher": "Google",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "gpqa-repo",
+      "url": "https://api.github.com/repos/idavidrein/gpqa/commits?per_page=1",
+      "publisher": "GPQA authors",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "gpt-5.5",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+      "publisher": "OpenAI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+      "publisher": "OpenAI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "publisher": "OpenAI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+      "publisher": "OpenAI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "gpt-6-astra",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "publisher": "OpenAI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "gpt-6-luna",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "publisher": "OpenAI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "gpt-6-sol",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-sol",
+      "publisher": "OpenAI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "gpt-6.1-sol",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "publisher": "OpenAI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "hle-current",
+      "url": "https://lastexam.ai/",
+      "publisher": "CAIS / Scale AI",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "kimi-models",
+      "url": "https://platform.moonshot.ai/docs/guide/models",
+      "publisher": "Moonshot AI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "longbench-repo",
+      "url": "https://api.github.com/repos/THUDM/LongBench/commits?per_page=1",
+      "publisher": "LongBench authors / THUDM",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "meta-models",
+      "url": "https://dev.meta.ai/docs/models",
+      "publisher": "Meta",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "minimax-m3",
+      "url": "https://platform.minimax.io/docs/guides/text-generation",
+      "publisher": "MiniMax",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "minimax-models",
+      "url": "https://platform.minimax.io/docs/guides/models-intro",
+      "publisher": "MiniMax",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "qwen-flash",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/raw/main/README.md",
+      "publisher": "Alibaba / Qwen",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "qwen-max",
+      "url": "https://help.aliyun.com/zh/model-studio/models",
+      "publisher": "Alibaba / Qwen",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "qwen-models",
+      "url": "https://qwen.ai/blog?id=qwen3.8",
+      "publisher": "Alibaba / Qwen",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "swe-current",
+      "url": "https://www.swebench.com/",
+      "publisher": "SWE-bench authors",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "swe-repo",
+      "url": "https://api.github.com/repos/SWE-bench/SWE-bench/commits?per_page=1",
+      "publisher": "SWE-bench authors",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "terminal-current",
+      "url": "https://www.tbench.ai/leaderboard",
+      "publisher": "Terminal-Bench / Stanford / Harbor / Laude Institute",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "terminal-repo",
+      "url": "https://api.github.com/repos/laude-institute/terminal-bench/commits?per_page=1",
+      "publisher": "Terminal-Bench / Stanford / Harbor / Laude Institute",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "xai-models",
+      "url": "https://docs.x.ai/docs/models",
+      "publisher": "xAI",
+      "sourceClass": "original_model_documentation"
+    },
+    {
+      "id": "bfcl-results",
+      "url": "https://gorilla.cs.berkeley.edu/data_overall.csv",
+      "publisher": "Gorilla team / UC Berkeley",
+      "sourceClass": "original_benchmark_authority"
+    },
+    {
+      "id": "epoch-results",
+      "url": "https://epoch.ai/data/benchmark_data.zip",
+      "publisher": "Epoch AI",
+      "sourceClass": "original_independent_evaluator"
+    },
+    {
+      "id": "longbench-results",
+      "url": "https://longbench2.github.io/",
+      "publisher": "LongBench authors / THUDM",
+      "sourceClass": "original_benchmark_authority"
+    }
+  ],
+  "models": [
+    {
+      "key": "gpt-6-astra",
+      "name": "GPT-6 Astra",
+      "labId": "openai",
+      "sourceId": "gpt-6-astra",
+      "claim": "gpt-6-astra",
+      "apiId": "gpt-6-astra",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "gpt-6-1-sol",
+      "name": "GPT-6.1 Sol",
+      "labId": "openai",
+      "sourceId": "gpt-6.1-sol",
+      "claim": "gpt-6.1-sol",
+      "apiId": "gpt-6.1-sol",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "gpt-6-sol",
+      "name": "GPT-6 Sol",
+      "labId": "openai",
+      "sourceId": "gpt-6-sol",
+      "claim": "gpt-6-sol",
+      "apiId": "gpt-6-sol",
+      "selection": "version",
+      "lifecycle": "current"
+    },
+    {
+      "key": "gpt-6-luna",
+      "name": "GPT-6 Luna",
+      "labId": "openai",
+      "sourceId": "gpt-6-luna",
+      "claim": "gpt-6-luna",
+      "apiId": "gpt-6-luna",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "gpt-5-6-sol",
+      "name": "GPT-5.6 Sol",
+      "labId": "openai",
+      "sourceId": "gpt-5.6-sol",
+      "claim": "gpt-5.6-sol",
+      "apiId": "gpt-5.6-sol",
+      "selection": "version",
+      "lifecycle": "version"
+    },
+    {
+      "key": "gpt-5-6-terra",
+      "name": "GPT-5.6 Terra",
+      "labId": "openai",
+      "sourceId": "gpt-5.6-terra",
+      "claim": "gpt-5.6-terra",
+      "apiId": "gpt-5.6-terra",
+      "selection": "version",
+      "lifecycle": "version"
+    },
+    {
+      "key": "gpt-5-6-luna",
+      "name": "GPT-5.6 Luna",
+      "labId": "openai",
+      "sourceId": "gpt-5.6-luna",
+      "claim": "gpt-5.6-luna",
+      "apiId": "gpt-5.6-luna",
+      "selection": "version",
+      "lifecycle": "version"
+    },
+    {
+      "key": "gpt-5-5",
+      "name": "GPT-5.5",
+      "labId": "openai",
+      "sourceId": "gpt-5.5",
+      "claim": "gpt-5.5",
+      "apiId": "gpt-5.5",
+      "selection": "version",
+      "lifecycle": "version"
+    },
+    {
+      "key": "claude-haiku-4-5-20251001",
+      "name": "Claude Haiku 4.5",
+      "labId": "anthropic",
+      "sourceId": "claude-haiku-4-5",
+      "claim": "claude-haiku-4-5-20251001",
+      "apiId": "claude-haiku-4-5-20251001",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "claude-sonnet-4-5-20250929",
+      "name": "Claude Sonnet 4.5",
+      "labId": "anthropic",
+      "sourceId": "claude-sonnet-4-5",
+      "claim": "claude-sonnet-4-5-20250929",
+      "apiId": "claude-sonnet-4-5-20250929",
+      "selection": "version",
+      "lifecycle": "retired"
+    },
+    {
+      "key": "claude-opus-4-5-20251101",
+      "name": "Claude Opus 4.5",
+      "labId": "anthropic",
+      "sourceId": "claude-opus-4-5",
+      "claim": "claude-opus-4-5-20251101",
+      "apiId": "claude-opus-4-5-20251101",
+      "selection": "version",
+      "lifecycle": "version"
+    },
+    {
+      "key": "claude-sonnet-4-6",
+      "name": "Claude Sonnet 4.6",
+      "labId": "anthropic",
+      "sourceId": "claude-sonnet-4-6",
+      "claim": "claude-sonnet-4-6",
+      "apiId": "claude-sonnet-4-6",
+      "selection": "version",
+      "lifecycle": "version"
+    },
+    {
+      "key": "claude-opus-4-6",
+      "name": "Claude Opus 4.6",
+      "labId": "anthropic",
+      "sourceId": "claude-opus-4-6",
+      "claim": "claude-opus-4-6",
+      "apiId": "claude-opus-4-6",
+      "selection": "version",
+      "lifecycle": "version"
+    },
+    {
+      "key": "claude-sonnet-5-5",
+      "name": "Claude Sonnet 5.5",
+      "labId": "anthropic",
+      "sourceId": "claude-sonnet-5-5",
+      "claim": "claude-sonnet-5-5",
+      "apiId": "claude-sonnet-5-5",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "claude-opus-5-5",
+      "name": "Claude Opus 5.5",
+      "labId": "anthropic",
+      "sourceId": "claude-opus-5-5",
+      "claim": "claude-opus-5-5",
+      "apiId": "claude-opus-5-5",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "claude-fable-5-1",
+      "name": "Claude Fable 5.1",
+      "labId": "anthropic",
+      "sourceId": "claude-fable-5-1",
+      "claim": "claude-fable-5-1",
+      "apiId": "claude-fable-5-1",
+      "selection": "version",
+      "lifecycle": "current"
+    },
+    {
+      "key": "gemini-3-8-flash",
+      "name": "Gemini 3.8 Flash",
+      "labId": "google",
+      "sourceId": "google-model",
+      "claim": "gemini-3.8-flash",
+      "apiId": "gemini-3.8-flash",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "muse-spark-1-3",
+      "name": "Muse Spark 1.3",
+      "labId": "meta",
+      "sourceId": "meta-models",
+      "claim": "muse-spark-1.3",
+      "apiId": "muse-spark-1.3",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "grok-4-7",
+      "name": "Grok 4.7",
+      "labId": "xai",
+      "sourceId": "xai-models",
+      "claim": "grok-4.7",
+      "apiId": "grok-4.7",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "deepseek-v4-1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "labId": "deepseek",
+      "sourceId": "deepseek-release",
+      "claim": "DeepSeek-V4.1-Flash",
+      "apiId": "DeepSeek-V4.1-Flash",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "kimi-k3",
+      "name": "Kimi K3",
+      "labId": "moonshot",
+      "sourceId": "kimi-models",
+      "claim": "kimi-k3",
+      "apiId": "kimi-k3",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "qwen3-8-max",
+      "name": "Qwen3.8 Max",
+      "labId": "qwen",
+      "sourceId": "qwen-max",
+      "claim": "qwen3.8-max",
+      "apiId": "qwen3.8-max",
+      "selection": "default",
+      "lifecycle": "current"
+    },
+    {
+      "key": "muse-spark-1-1",
+      "name": "Muse Spark 1.1",
+      "labId": "meta",
+      "sourceId": "meta-models",
+      "claim": "muse-spark-1.1",
+      "apiId": "muse-spark-1.1",
+      "selection": "version",
+      "lifecycle": "version"
+    },
+    {
+      "key": "muse-spark-1-2",
+      "name": "Muse Spark 1.2",
+      "labId": "meta",
+      "sourceId": "meta-models",
+      "claim": "muse-spark-1.2",
+      "apiId": "muse-spark-1.2",
+      "selection": "version",
+      "lifecycle": "version"
+    },
+    {
+      "key": "qwen3-8-flash-next",
+      "name": "Qwen3.8-Flash-Next",
+      "labId": "qwen",
+      "sourceId": "qwen-flash",
+      "claim": "Qwen3.8-Flash-Next",
+      "apiId": "Qwen3.8-Flash-Next",
+      "selection": "version",
+      "lifecycle": "current"
+    },
+    {
+      "key": "glm-5-3",
+      "name": "GLM 5.3",
+      "labId": "zai",
+      "sourceId": "glm-models",
+      "claim": "GLM-5.3",
+      "apiId": "glm-5.3",
+      "selection": "version",
+      "lifecycle": "current"
+    },
+    {
+      "key": "minimax-m3",
+      "name": "MiniMax M3",
+      "labId": "minimax",
+      "sourceId": "minimax-m3",
+      "claim": "MiniMax-M3",
+      "apiId": "MiniMax-M3",
+      "selection": "version",
+      "lifecycle": "current"
+    },
+    {
+      "key": "minimax-m3-1-flash-preview",
+      "name": "MiniMax M3.1 Flash Preview",
+      "labId": "minimax",
+      "sourceId": "minimax-m3",
+      "claim": "MiniMax-M3.1-Flash-Preview",
+      "apiId": "MiniMax-M3.1-Flash-Preview",
+      "selection": "version",
+      "lifecycle": "current"
+    },
+    {
+      "key": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "labId": "deepseek",
+      "sourceId": "deepseek-release",
+      "claim": "deepseek-v4-pro",
+      "apiId": "deepseek-v4-pro",
+      "selection": "version",
+      "lifecycle": "retired"
+    },
+    {
+      "key": "meta-muse",
+      "name": "Meta Muse (unspecified version)",
+      "labId": "meta",
+      "sourceId": "meta-models",
+      "claim": "UNSPECIFIED_EXACT_MUSE_ID",
+      "apiId": "UNSPECIFIED_EXACT_MUSE_ID",
+      "selection": "version",
+      "lifecycle": "unverified"
+    }
+  ]
+}

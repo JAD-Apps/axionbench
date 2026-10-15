@@ -8,17 +8,38 @@ Through the owner's Wrangler OAuth session, `wrangler pages project list` showed
 Nothing in this step created the project, deployed, or changed DNS.
 
 ## Secrets (names only)
-`CLOUDFLARE_API_TOKEN` (Pages edit on this account) and `CLOUDFLARE_ACCOUNT_ID`, as GitHub secrets of the `production` environment. Values are never written to files or logs.
+`CLOUDFLARE_API_TOKEN` (Pages edit on this account) and `CLOUDFLARE_ACCOUNT_ID`. The daily update gets them from JadBot's local secret storage; the manual GitHub workflow gets them as secrets of the `production` environment. Only `scripts/release/pages-api.mjs` reads them, by name. Values are never written to files, logs, receipts or command lines.
 
-## Repeatable deploy
+## Daily update (authoritative)
+The JadBot daily workflow runs `npm run publish:daily -- --state-dir <dir> --audit-dir <dir>`. It refreshes the data, builds the static site and publishes it through the Pages API as one production deployment, then reads back every hosted byte from `https://axionbench.jadapps.app`. The full transaction, limits, keys and failure handling are in [AUTOMATION.md](AUTOMATION.md#daily-publication). The state directory holds the retained snapshots and `last-success.json`; keep it on persistent storage outside the repository.
+
+API calls (Cloudflare API v4, checked 2026-10-03):
+
+| Purpose | Call |
+| --- | --- |
+| Project, production deployment, domains | `GET /accounts/{account}/pages/projects/axionbench` |
+| Upload token | `GET /accounts/{account}/pages/projects/axionbench/upload-token` |
+| Missing assets / upload / keep keys | `POST /pages/assets/check-missing`, `/pages/assets/upload`, `/pages/assets/upsert-hashes` (upload-token JWT) |
+| Create deployment | `POST /accounts/{account}/pages/projects/axionbench/deployments` (multipart: `manifest`, `branch`, `commit_hash`, `commit_message`, `commit_dirty`, `_headers`) |
+| Readback / reconciliation | `GET .../deployments/{id}`, `GET .../deployments?env=production` |
+| Rollback | `POST .../deployments/{id}/rollback` |
+
+Before the first daily run (owner-gated, not automated): the `axionbench` Pages project must exist (direct upload, production branch `main`) and `axionbench.jadapps.app` must be attached under Pages → axionbench → Custom domains. The transaction refuses to upload until the project reports that hostname. The first run has no last-good deployment to restore, so a failure there is reported as `failed-no-last-good`.
+
+## Manual deploy (fallback tooling)
 1. Merge reviewed changes to `main`; CI must be green and `npm run verify:release` must pass on the exact candidate (receipt: `test-results/release-verify.json`).
-2. Run the **Deploy** workflow (manual). It runs checks, `npm run build:release` and `wrangler pages deploy dist --project-name axionbench --branch main --commit-dirty=false` with the pinned Wrangler, then `npm run deploy:readback -- --latest --write deployment-record.json`.
-3. Local equivalent: `npm run build:release`, `npx wrangler@4.145.0 pages deploy dist --project-name axionbench --branch main`, then `npm run deploy:readback -- --latest` with the two variables set in the environment.
+2. Use the authenticated native publication transaction after exact candidate approval. The old **Deploy** GitHub workflow is retired: it only explains this path and has no credentials or publication action. Configure the external state/audit/approval bindings, then use `npm run publish:site -- --state-dir <external state>` for the approved initial candidate. The daily schedule remains disabled until the separately assigned publication/trigger proofs pass.
+3. Local equivalent through the same API transaction as the daily update: `npm run publish:site -- --state-dir <dir>`. Use `--dry-run` first to stage and qualify without any network call.
 
-First-time setup (owner-gated, not automated): create the `axionbench` Pages project (direct upload, production branch `main`), then attach `axionbench.jadapps.app` in the Cloudflare dashboard (Pages → axionbench → Custom domains). The dashboard supplies the CNAME target, normally `axionbench.pages.dev`. A CNAME without the custom-domain association can return 522.
+A manual Wrangler deployment is not recorded in the daily state directory; `publish:verify` will report that production is not the recorded deployment until the next daily publication.
 
 ## Readback
-`deploy:readback` asks Cloudflare for the deployment (and checks it belongs to `axionbench`), then runs the deployment gate against the approved HTTPS hostname only: manifest bytes, `data.json`, every listed file's hash and size, and the `_headers` effects. `evidence/deployment.json` for `npm run verify ... deployment` holds `url`, `repo`, `provider`, `projectId`, `deploymentId`, `sourceCommit`, `productSha256`, `dataSha256`, `publishedAt`.
+`deploy:readback` and the daily transaction both use the deployment gate against the approved HTTPS hostname only: manifest bytes, `data.json`, every listed file's hash and size (requested at the URL Pages serves: `/rankings/` for `rankings/index.html`, a missing-path probe for `404.html`), and the `_headers` effects. `npm run publish:verify -- --state-dir <dir>` repeats this read-only for the recorded current deployment and also checks Cloudflare's `canonical_deployment`. `npm run production:check -- --url https://axionbench.jadapps.app` checks every route, the 404 behaviour and the hosted publication record. `evidence/deployment.json` for `npm run verify ... deployment` holds `url`, `repo`, `provider`, `projectId`, `deploymentId`, `sourceCommit`, `productSha256`, `dataSha256`, `publishedAt`.
 
 ## Rollback
-Pages keeps every deployment. In the dashboard (Pages → axionbench → Deployments) choose the last verified deployment and **Rollback to this deployment**, or redeploy its commit with the steps above. Then rerun `deploy:readback --deployment-id <id>` and confirm the hosted product digest equals that release's `release-manifest.json`. To take the site offline, remove only the `axionbench.jadapps.app` custom domain from the `axionbench` project. Rollback never involves the apex project or unrelated DNS.
+The daily transaction rolls back automatically when a new deployment fails its status or readback, and verifies the restored deployment by readback. To roll back by hand: `npm run publish:rollback -- --state-dir <dir> --to previous` (or a recorded deployment ID or key). It only accepts deployments whose snapshots are retained and verified, proves the result by HTTPS readback and then records it as current. The dashboard (Pages → axionbench → Deployments → **Rollback to this deployment**) also works; run `publish:verify` afterwards, which reports a mismatch until the state directory agrees. To take the site offline, remove only the `axionbench.jadapps.app` custom domain from the `axionbench` project. Rollback never involves the apex project or unrelated DNS.
+
+
+Canonical production readback requires the retained publication state (`--state-dir` or `AXIONBENCH_PUBLICATION_STATE`). It verifies that ledger's actual source/data overlay and provider deployment, including a successful native daily update. It does not use a freshly rebuilt private `dist` or choose the newest attempted deployment. The earlier Wrangler/GitHub deployment route is superseded and retired; it cannot bypass independent approval.
+
+Publish the initial reviewed candidate with `npm run publish:site -- --state-dir <external state> --snapshot <reviewed snapshot digest>`. This consumes the immutable candidate directly; rebuilding would change its timestamp and digest. Approval still binds every source/data/product/control/revision/overlay identity.

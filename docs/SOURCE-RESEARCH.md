@@ -1,5 +1,11 @@
 # Verified ingestion leads
 
+The October 2 capture in `data/current-source-evidence.json` is separate from the historical leads below: 72 bounded original responses, 29 confirmed exact model identities from 30 requests, 27 BridgeBench result pages and a licensed tariff recheck. Every source records its URL, response hash, byte count, original retrieval time and later byte-verification time. Private original-byte replay is required by `node scripts/project/test-current-policy.mjs`; portable validation checks the factual projection and mutation fixtures.
+
+BridgeBench’s leaderboard, homepage and publisher guide were captured directly. Node and Chromium initially received HTTP 403 responses; Python’s HTTP client received HTTP 200 and captured the real pages. Failure response hashes remain in private capture receipts. All overall/per-axis ratings were checked against the exact model result pages. The guide says the method is unpublished; no harness, sample size, uncertainty or accuracy conversion was invented. See [current policy](CURRENT-POLICY.md) for measured coverage and result examples.
+
+Fresh DeepSWE, BFCL results and LongBench response hashes match retained original captures. The fresh Epoch export has a different hash, so it does not establish byte-identical verification of the old export. Its earlier measurements retain their original source identity and date. New primary identity evidence does not upgrade a publisher claim into an independent measurement.
+
 These are coordinator source-location checks from 30 September 2026, not admitted benchmark observations or a completed catalogue. The ingestion stage must capture its own immutable source evidence, review reuse status, establish exact identities and units, and pass the unchanged coverage gate.
 
 ## Publisher result tables

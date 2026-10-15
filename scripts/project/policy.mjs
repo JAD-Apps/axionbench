@@ -1,0 +1,11 @@
+import { createHash } from 'node:crypto';
+export const PIN = Object.freeze({ provider: 'codex', model: 'gpt-6.1-sol', effort: 'high' });
+export const RUN = 'run_ec6c62962fc6';
+export const OLD_RUN = 'run_a898861f6684';
+export const PROJECT = 'prj_0e8ffc13d328';
+export const PIN_AT = 1790907065508;
+export const HISTORICAL = Object.freeze(['01a0f8de-6322-7924-a378-426eb82327dd', '01a0fa50-8a1d-79a0-9f21-0229a3ba87bc']);
+export const BASELINES = Object.freeze({ private: 'c3a915b717c999321e43148d522d160f4de805de', public: 'b6fa8b0376aef8efec44e2399f17120b560f2d0c' });
+export const ARCHIVE_SHA = 'd83ba8c9cd0c2982d7728cee27529035f44bf8864f60456f2e67a2824265a71b';
+export const LOCAL = 'evidence/local/preflight';
+export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');

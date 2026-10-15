@@ -1,0 +1,47 @@
+name: Refresh permitted public facts
+# Manual review tool. The daily site update runs in JadBot through
+# `npm run publish:daily`; see docs/AUTOMATION.md.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: public-source-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm install --global npm@11.19.0
+      - run: npm ci --include=dev
+      - name: Stage and admit only permitted projections
+        run: npm run data:refresh -- --audit-dir "$RUNNER_TEMP/axionbench-source-audit"
+      - run: npx playwright-core install --with-deps chromium
+      - run: npm run verify:public
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: refresh-portable-validation
+          path: test-results/
+          if-no-files-found: error
+      - name: Open reviewed branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then exit 0; fi
+          branch="public-facts-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git config user.name "axionbench-refresh"
+          git config user.email "axionbench-refresh@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add data/authority-deepswe.json data/publisher-percentage-facts.json data/authority/epoch-hub.json data/authority/bfcl-v4.json data/authority/longbench-v2.json data/public-price-facts.json data/current-source-evidence.json public/data.json public/data-details.json public/data-manifest.json PUBLIC-SOURCE-MANIFEST.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Refresh permitted source facts"
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" --title "Refresh permitted source facts" --body "Raw bytes and capture receipts stayed outside the repository. The refresh job ran portable validation; review its real uploaded receipt and exact changes. Approve the token-created PR workflows or dispatch Portable public CI on this branch before merge."

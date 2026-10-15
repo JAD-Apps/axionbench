@@ -1,42 +1,34 @@
 # AxionBench
 
-An evidence-led observatory for comparing AI systems. The preserved animated contour hero leads into source-backed frontier rankings, explicit task-cost scenarios, matched US–China comparisons, an open-weight size explorer, the complete supported-source catalogue, and methods.
+AxionBench compares model results, coverage and estimated API task costs. Each result keeps its source link and date. Missing scores, unknown prices and incompatible test versions stay explicit.
 
-The UI uses React, custom visx SVG charts and Motion. Fonts and the original procedural hero are local. No paid evaluation calls, subscription pricing, private quotas or execution economics are included.
-
-## Run and verify
-
-Use Node 24, the pinned npm version in `package.json`, and Python 3 for source extraction.
+Use Node 24, Python 3 and `npm@11.19.0`, as pinned in `package.json`. Keep `package-lock.json` unchanged when installing:
 
 ```sh
-npm ci
-npm run dev -- --port 7944
+npm ci --include=dev
+npm run dev
 npm run verify:release
+node scripts/project/verify-public-boundary.mjs --archive-test
+npm run build:release
+npm run release:check
 ```
 
-`verify:release` runs the source/data, scoring, licensed pricing, domain-weight, interaction, desktop/mobile, accessibility, reduced-motion, export, refresh and release-integrity gates serially. It records actual exit codes and complete logs under ignored `test-results/`. Browser checks use cached Playwright Chromium, or `CHROMIUM_PATH`. No verification command publishes a site or manipulates the owner's browser.
+Browser checks need cached Playwright Chromium or `CHROMIUM_PATH`. To install the browser on a CI runner, use `npx playwright-core install --with-deps chromium`. Verification checks scoring, pricing, weights, provenance, source permissions, browser interactions and every release file. It writes command exits and hashed logs into ignored `test-results/`. It does not deploy the site.
 
-## Evidence and interpretation
+The local release runner preserves all 21 source, mathematical, pricing, browser and release-integrity gates and adds the portable public gate. `verify:public` constructs an allowlisted archive from this source, installs its own locked dependencies through the same pinned `npm ci --include=dev` preparation used by CI, and runs its full portable suite. The archive contains no installed dependencies or private history. For focused boundary regressions, run `npm run test:public-boundary`.
 
-The supported-source capture contains 508 catalogue models and 118 community result claims. Those earlier claims remain excluded from default scoring because units and source confirmation are insufficient. A separate original-source authority projection contains 1,433 observations and reaches 23 admitted capability suite versions across 8 domains. Counts are recomputed by the data gates; catalogue breadth is distinct from measured coverage.
+`npm run public:prepare -- --output publication/product` creates an inspectable product tree in an empty directory without committing or publishing it. Each added public file must be listed in `scripts/public/allowlist.json`. See [public source rules](docs/PUBLIC-SOURCE.md) for the private-to-public validation mapping and receipt helpers.
 
-Raw benchmark results stay primary. Strict comparisons require a shared source, suite version, metric, condition and reasoning setting. Related suites share a family cap. Equal default weights cover 11 capability domains; incomplete comparisons remain unavailable. User weights, reset and shared URLs create an explicitly labelled custom common-panel comparison. Weight sensitivity and suite omissions are scenarios, never statistical confidence intervals.
+A public source archive needs no private captures or Git checkout. Its release manifest records the verified source digest and an explicit uncommitted state. A public Git checkout records its own commit. Neither build borrows a commit from an enclosing repository.
 
-Task estimates use 11 exact Google standard text API endpoint tariffs, adapted under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) from [Google's original pricing](https://ai.google.dev/gemini-api/docs/pricing). They include thinking once at the output tariff, explicit cache storage, documented long-prompt tiers and introductory-rate expiry. Other endpoint prices and unsupported used token classes remain unknown. The 1,328 captured routed price rows are withheld while their reuse terms are unsettled. The scenario token budget does not reproduce benchmark token consumption or establish cost per successful task.
-
-Every plotted result and mentioned benchmark has its original result link. Exports retain active settings, data hashes, provenance and limitations. Open weights and open-source licensing are separate facts; parameter groups use total counts and display activated MoE counts separately when documented.
-
-## Refresh and publication
+To refresh permitted facts, choose a writable audit directory outside the repository:
 
 ```sh
-npm run data:refresh -- --audit-dir /absolute/private/source-audit
-npm run build:release
+npm run public:prepare -- --output publication/product
+cd publication/product
+npm run data:refresh -- --audit-dir "$RUNNER_TEMP/axionbench-source-audit"
 ```
 
-Refresh captures original sources, validates contracts and source permissions, and restores last-good projections on failure. Raw source audit bytes stay private. See [source acceptance](docs/SOURCE-ACCEPTANCE.md), [pricing](docs/PRICING.md), [methods](docs/METHODOLOGY.md), [automation](docs/AUTOMATION.md) and [deployment](docs/DEPLOYMENT.md).
+Set `RUNNER_TEMP` to your external scratch directory when running locally. Raw responses stay there. Refresh validates a candidate and restores last-good public files if capture or promotion fails. It updates the permitted authority and licensed tariff facts; catalogue identities and open-weight metadata need a separately reviewed snapshot. The portable GitHub refresh job opens a review branch. It is not the requested daily JadBot API update; that workflow and remote transaction are still assigned to later implementation stages.
 
-Approved public project: `JAD-Apps/axionbench`, hosted independently at `axionbench.jadapps.app`. Publication requires a separate independent review, a clean product tree, the exact HTTPS product/data digest, and a new actual owner-browser observation. Direct project verification and native workflow completion are separate receipts.
-
-## Design and licences
-
-The original graphite, mineral, cobalt and controlled-lime composition was informed by rendered research from the requested [Awwwards Vercel collection](https://www.awwwards.com/websites/vercel/). Reference artwork is excluded. The canvas is decorative procedural artwork; charts use documented data. DM Sans, Space Grotesk and IBM Plex Mono are locally hosted with their SIL Open Font Licences. See [design](docs/DESIGN.md) and [visual reference review](docs/VISUAL-REFERENCE-REVIEW.md).
+See [public source rules](docs/PUBLIC-SOURCE.md), [methods](docs/METHODOLOGY.md), [pricing](docs/PRICING.md) and [refresh behaviour](docs/AUTOMATION.md). Counts and coverage come from `public/data-manifest.json`. Source hashes bind captured facts; they do not establish an independent evaluation or grant rights to republish raw source pages. Fonts include their local SIL Open Font Licences.

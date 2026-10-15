@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { assertAuthorityFloor, composeAuthority, readInputs } from './authority/compose.mjs';
+import { currentCoverage } from './authority/current-policy.mjs';
 import { deriveOpenWeights } from './open-weights/derive.mjs';
 import { validatePriceFacts } from '../src/pricing/logic.ts';
 
@@ -160,6 +161,7 @@ const suites = registry.suites.map((row) => ({
   url: safeUrl(row.url),
   state: row.state,
   reason: row.reason,
+  currentPolicy: row.currentPolicy,
   observationCount: input.observations.filter((observation) => observation.suiteId === row.id).length,
 }));
 
@@ -196,6 +198,10 @@ const projection = {
     identityConfirmedModels: models.filter((row) => row.identityVerified).length,
   },
   authority,
+  currentModels: authorityInputs.current.json.models,
+  bridgeBench: authorityInputs.current.json.bridgeBench,
+  pricingVerification: authorityInputs.current.json.pricingVerification,
+  currentCoverage: currentCoverage(authority, authorityInputs.current.json),
   pricing,
   // Open-weight explorer facts, re-derived from SHA-256-checked repository snapshots.
   openWeights: await deriveOpenWeights(input),
@@ -228,6 +234,7 @@ const details = {
   schemaVersion: 'axionbench-source-details-v1',
   sourceDigest: projection.sourceDigest,
   sources,
+  currentSources: authorityInputs.current.json.sources,
   conflicts: projection.sourceConflicts,
 };
 

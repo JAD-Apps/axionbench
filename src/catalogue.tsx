@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useRouteQuery } from './charts/state';
 import { PARAMETER_BANDS, formatParameters } from './open-weights/logic';
 import {
-  CAT_DEFAULTS, MODALITIES, OPENNESS, REGIONS, SORT_KEYS, applyFilters, buildCatalogue, decodeCatFilters, encodeCatFilters, exportCsv, exportJson,
+  catalogueParameterKeys, CAT_DEFAULTS, MODALITIES, OPENNESS, REGIONS, SORT_KEYS, applyFilters, buildCatalogue, decodeCatFilters, encodeCatFilters, exportCsv, exportJson,
   modelEvidence, paginateRows, snapshotHistory,
   type Benchmark, type CatFilters, type CatalogueInput, type CatalogueRow, type SortKey,
 } from './catalogue/logic';
@@ -23,6 +24,7 @@ function download(name: string, type: string, text: string) {
 }
 
 export function Catalogue({ input, manifest }: Props) {
+  useRouteQuery(catalogueParameterKeys);
   const catalogue = useMemo(() => buildCatalogue(input), [input]);
   const labs = useMemo(() => [...new Map(catalogue.rows.map((row) => [row.labId, row.lab])).entries()].sort((a, b) => a[1].localeCompare(b[1])), [catalogue]);
   const [filters, setFilters] = useState<CatFilters>(() => decodeCatFilters(new URLSearchParams(location.search), catalogue.rows));
@@ -48,6 +50,7 @@ export function Catalogue({ input, manifest }: Props) {
   const stamp = digest.slice(0, 12);
 
   return <div className="cat" data-testid="catalogue">
+    <p>Current and archive labels require an exact confirmed identity. Entries without that mapping stay lifecycle unknown, including provider catalogue revisions. Select a version to inspect its own results; values are never transferred between releases.</p>
     <div className="cat-controls">
       <label className="search">Search models, labs or source ID
         <input data-testid="cat-query" aria-label="Search models, labs or source ID" value={filters.query} placeholder="Try a model or lab name"
@@ -59,6 +62,7 @@ export function Catalogue({ input, manifest }: Props) {
       {select('band', 'Total parameters', PARAMETER_BANDS.map((band) => [band.id, band.label]))}
       {select('modality', 'Input modality', MODALITIES.map((value) => [value, value]))}
       {select('origin', 'Source family', [['catalogue', 'Provider catalogue and model cards'], ['authority', 'Original benchmark sources']])}
+      {select('lifecycle', 'Current / archive', [['current', 'Confirmed current'], ['archive', 'Confirmed recent version / retired'], ['unknown', 'Lifecycle unknown']])}
       {select('evidence', 'Evidence', [['admitted', 'Has admitted results'], ['none', 'Unscored, no admitted result']])}
       <label>Sort by
         <select data-testid="cat-sort" value={filters.sort} onChange={(event) => update({ sort: event.target.value as SortKey })}>
@@ -82,7 +86,7 @@ export function Catalogue({ input, manifest }: Props) {
           <th scope="col">Evidence</th><th scope="col">Score</th><th scope="col">Freshness</th></tr></thead>
         <tbody>{view.rows.map((row) => <tr key={row.id} data-testid="cat-row" data-id={row.id}>
           <th scope="row"><button type="button" className="cat-open" onClick={() => { update({ model: row.id, page: view.page }); setTimeout(() => document.getElementById('model-detail')?.scrollIntoView(), 0); }}>{row.name}</button>
-            <small className="mono-label">{row.id}</small></th>
+            <small className="mono-label">{row.id}</small><small>{row.lifecycle} · {row.version ?? 'Version unknown'}</small>{row.sourceUrl && <a href={row.sourceUrl} target="_blank" rel="noreferrer">Identity / result source ↗</a>}</th>
           <td>{row.lab}<small>{REGION_LABEL[row.region]}</small></td>
           <td>{OPENNESS_LABEL[row.openness]}</td>
           <td>{formatParameters(row.parameters)}<small>{row.parameters === null ? 'Undisclosed in captured sources' : row.parameterBand}</small></td>
@@ -115,6 +119,7 @@ function ModelDetail({ input, row, benchmarks, onClose }: { input: CatalogueInpu
       <div><dt>Openness</dt><dd>{OPENNESS_LABEL[row.openness]}</dd></div>
       <div><dt>Total parameters</dt><dd>{formatParameters(row.parameters)}<small>{row.parameters === null ? 'Undisclosed in captured sources' : 'Group ' + row.parameterBand}</small></dd></div>
       <div><dt>Activated parameters</dt><dd>{formatParameters(row.activatedParameters)}</dd></div>
+      <div><dt>Version / lifecycle</dt><dd>{row.version ?? 'Unknown'} · {row.lifecycle}</dd></div>
       <div><dt>Release date</dt><dd>{row.releaseDate ?? 'Unknown'}</dd></div>
       <div><dt>Input modalities</dt><dd>{row.inputModalities.length ? row.inputModalities.join(', ') : 'Unknown'}</dd></div>
       <div><dt>Score</dt><dd>Unscored<small>{row.scoreReason}</small></dd></div>
@@ -127,7 +132,7 @@ function ModelDetail({ input, row, benchmarks, onClose }: { input: CatalogueInpu
         <thead><tr><th scope="col">Benchmark</th><th scope="col">Metric</th><th scope="col">Result</th><th scope="col">Status</th><th scope="col">Source</th></tr></thead>
         <tbody>{evidence.map((item) => <tr key={item.id} data-status={item.status}>
           <th scope="row"><a className="benchmark-mention" data-suite={item.suiteId} href={item.resultUrl} target="_blank" rel="noreferrer">{item.suiteName} ↗</a>
-            <small><a href={'#benchmark-' + item.suiteId}>Benchmark entry</a> · {item.domain}</small></th>
+            <small><a href={'/benchmark-archive#benchmark-' + item.suiteId}>Benchmark entry</a> · {item.domain}</small></th>
           <td>{item.metric}</td><td>{item.display}{item.configuration && <small>{item.configuration}</small>}</td>
           <td>{item.status === 'admitted' ? 'Admitted' : item.status === 'excluded' ? 'Excluded' : 'Reported, not admitted'}{item.reason && <small>{item.reason}</small>}</td>
           <td>{item.sourceName}<small>{item.retrievedAt.slice(0, 10)}</small></td>
@@ -160,6 +165,7 @@ export function BenchmarkLibrary({ input }: { input: CatalogueInput }) {
         <div>{link ? <a className="benchmark-mention" href={link} target="_blank" rel="noreferrer">{b.name} ↗</a> : <strong>{b.name}</strong>}
           <small>{b.domain} · {b.version ?? 'version unknown'}</small></div>
         <p>{b.admitted} admitted · {b.reported} reported, not admitted · {b.models} models{b.admitted + b.reported === 0 && ' · no captured model result; the link is the benchmark\'s own page'}</p>
+        {b.note && <p>{b.note}</p>}
         {b.results.length > 0 && <details><summary>Result sources ({b.results.length})</summary>
           <ul>{b.results.map((r) => <li key={r.url}><a href={r.url} target="_blank" rel="noreferrer">{r.label} ↗</a></li>)}</ul></details>}
         {b.url && <a className="library-page" href={b.url} target="_blank" rel="noreferrer">Benchmark page ↗</a>}
