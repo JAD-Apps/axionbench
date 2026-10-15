@@ -15,7 +15,8 @@ import { hostedRequest, MISSING_PROBE } from '../../scripts/release/deployment-g
 import { buildManifest, expectedHeaders, MANIFEST_NAME, parseHeadersFile, validateManifest } from '../../scripts/release/manifest.mjs';
 import { AmbiguousError, ApiError, createPagesClient, loadCredentials } from '../../scripts/release/pages-api.mjs';
 import { checkDist, checkHost, routeFile } from '../../scripts/release/production-check.mjs';
-import { verifyCapture } from '../../scripts/release/verify-capture.mjs';
+import { verifyCapture, verifyVideo } from '../../scripts/release/verify-capture.mjs';
+import { readbackLatest } from '../../scripts/release/readback.mjs';
 import {
   LIMITS, assertFreshKey, assetKey, compareKeys, parseKey, publishSnapshot, readLastSuccess, readTransaction, rollbackPublication, stageSnapshot, verifyPublished,
 } from '../../scripts/release/publication.mjs';
@@ -137,6 +138,23 @@ async function setup() {
 }
 const publish = (ctx, snapshot, key, extra = {}) => publishSnapshot({ stateDir: ctx.stateDir, snapshot, key, client: ctx.cf.client, config, fetcher: ctx.cf.fetcher, now, sleep, limits, ...extra });
 const stage = (ctx, key, dist = ctx.dist, extra = {}) => stageSnapshot({ distDir: dist, stateDir: ctx.stateDir, key, now, limits, ...extra });
+const FIXTURE_VERSION = 'ffprobe version fixture-1.0';
+// Labelled fixture tool output for verifyVideo. `over` replaces individual answers.
+function fixtureTools(over = {}) {
+  const frames = over.frames ?? 24;
+  return async (file, args) => {
+    if (over.missing === file.split('/').pop() || (over.missing === 'all')) return { code: -1, stdout: '', stderr: '', missing: true };
+    if (args[0] === '-version') return { code: 0, stdout: `${over.version ?? FIXTURE_VERSION}\nbuilt with fixture\n`, stderr: '' };
+    if (args.includes('-decoders')) return { code: 0, stdout: over.decoders ?? ' V....D h264                 H.264 / AVC\n', stderr: '' };
+    if (args.includes('-show_entries')) {
+      return { code: 0, stderr: '', stdout: JSON.stringify({ streams: [{ codec_name: over.codec ?? 'h264', width: over.width ?? 1280, height: over.height ?? 720, nb_read_frames: String(frames) }], format: { duration: String(over.duration ?? 8.0) } }) };
+    }
+    const distinct = over.distinct ?? frames;
+    const lines = Array.from({ length: frames }, (_, i) => `0, ${i}, ${i}, 1, 1382400, ${'ab'.repeat(8)}${String(i % distinct).padStart(16, '0')}`);
+    return { code: over.decodeCode ?? 0, stdout: `#format: frame checksums\n${lines.join('\n')}\n`, stderr: over.decodeStderr ?? '' };
+  };
+}
+
 async function treeDigest(dir) {
   const out = [];
   const visit = async (rel) => { for (const e of await readdir(join(dir, rel), { withFileTypes: true })) { const p = rel ? `${rel}/${e.name}` : e.name; if (e.isDirectory()) await visit(p); else out.push(`${p}:${sha(await readFile(join(dir, p)))}`); } };
@@ -484,19 +502,79 @@ test('capture records bind exact screenshot/video bytes to the approved host and
   await writeFile(join(dir, 'home.png'), png); await writeFile(join(dir, 'hero.mp4'), mp4);
   const dist = join(dir, 'dist'); const manifest = await makeDist(dist);
   const record = { schemaVersion: 'axionbench-capture-v1', url: 'https://axionbench.jadapps.app/', capturedAt: NOW.toISOString(), productSha256: manifest.productSha256, dataSha256: manifest.dataSha256,
-    files: [{ path: 'home.png', kind: 'screenshot', sha256: sha(png), bytes: png.length, viewport: { width: 1440, height: 900 } }, { path: 'hero.mp4', kind: 'video', sha256: sha(mp4), bytes: mp4.length }] };
-  const ok = await verifyCapture(record, { root: dir, hostname: config.hostname, releaseManifest: manifest });
+    files: [{ path: 'home.png', kind: 'screenshot', sha256: sha(png), bytes: png.length, viewport: { width: 1440, height: 900 } }, { path: 'hero.mp4', kind: 'video', sha256: sha(mp4), bytes: mp4.length, viewport: { width: 1280, height: 720 }, durationSeconds: 8, encoder: { identity: 'libx264' }, probe: { tool: 'ffprobe', version: FIXTURE_VERSION } }] };
+  const videoTools = { exec: fixtureTools() }; // FIXTURE ffprobe/ffmpeg output: no real encoder is available to this suite
+  const ok = await verifyCapture(record, { root: dir, hostname: config.hostname, releaseManifest: manifest, videoTools });
   assert.deepEqual(ok.kinds, { screenshot: 1, video: 1 });
+  assert.equal(ok.videos[0].codec, 'h264');
+  await assert.rejects(verifyCapture(record, { root: dir, hostname: config.hostname }), /ffprobe is unavailable|ffprobe identity/, 'a bare ftyp box is not a qualified H.264 video without the real tools');
   await assert.rejects(verifyCapture({ ...record, url: 'https://axionbench.pages.dev/' }, { root: dir, hostname: config.hostname }), /not the approved/);
   await assert.rejects(verifyCapture({ ...record, productSha256: 'e'.repeat(64) }, { root: dir, hostname: config.hostname, releaseManifest: manifest }), /different release/);
   await assert.rejects(verifyCapture({ ...record, files: [{ ...record.files[1], kind: 'screenshot' }] }, { root: dir, hostname: config.hostname }), /not a PNG/);
   await assert.rejects(verifyCapture({ ...record, files: [{ ...record.files[0], viewport: { width: 390, height: 844 } }] }, { root: dir, hostname: config.hostname }), /PNG width/);
   await assert.rejects(verifyCapture({ ...record, files: [{ ...record.files[0], path: '../home.png' }] }, { root: dir, hostname: config.hostname }), /traversal/);
   await writeFile(join(dir, 'hero.mp4'), Buffer.concat([mp4, Buffer.from('x')]));
-  await assert.rejects(verifyCapture(record, { root: dir, hostname: config.hostname }), /size differs/);
+  await assert.rejects(verifyCapture(record, { root: dir, hostname: config.hostname, videoTools }), /size differs/);
   assert.equal((await verifyArtifactSpec(`${join(dir, 'home.png')}:${sha(png)}:${png.length}`)).bytes, png.length);
   await assert.rejects(verifyArtifactSpec(`${join(dir, 'home.png')}:${'0'.repeat(64)}:${png.length}`), /hash mismatch/);
   await rm(dir, { recursive: true, force: true });
+});
+
+test('video qualification needs real H.264 evidence: tools, codec, geometry, duration, complete decode and changing frames', async () => {
+  const dir = await scratch();
+  const mp4 = Buffer.concat([Buffer.from([0, 0, 0, 24]), Buffer.from('ftypisom'), Buffer.alloc(12)]);
+  const path = join(dir, 'hero.mp4'); await writeFile(path, mp4);
+  const file = { path: 'hero.mp4', viewport: { width: 1280, height: 720 }, durationSeconds: 8, encoder: { identity: 'libx264' }, probe: { tool: 'ffprobe', version: FIXTURE_VERSION } };
+  assert.equal((await verifyVideo(path, file, { exec: fixtureTools() })).distinctFrames, 24);
+  const cases = [
+    ['absent ffprobe', { missing: 'ffprobe' }, /ffprobe is unavailable/],
+    ['absent ffmpeg', { missing: 'ffmpeg' }, /ffmpeg is unavailable/],
+    ['WebM-only ffmpeg', { decoders: ' V....D vp8                 On2 VP8\n' }, /no H\.264 decoder/],
+    ['probe identity differs', { version: 'ffprobe version other' }, /identity differs/],
+    ['VP9 stream in an MP4 box', { codec: 'vp9' }, /actual codec is vp9/],
+    ['wrong width', { width: 640 }, /width differs/],
+    ['wrong duration', { duration: 3 }, /duration/],
+    ['truncated decode', { decodeCode: 1, decodeStderr: 'moov atom not found' }, /failed to decode/],
+    ['decode warnings', { decodeStderr: 'corrupt macroblock' }, /decoding reported errors/],
+    ['frozen video', { distinct: 1 }, /frames do not change/],
+    ['too few frames', { frames: 2 }, /too few frames/],
+  ];
+  for (const [name, over, pattern] of cases) await assert.rejects(verifyVideo(path, file, { exec: fixtureTools(over) }), pattern, name);
+  await assert.rejects(verifyVideo(path, { ...file, encoder: { identity: 'libvpx' } }, { exec: fixtureTools() }), /encoder identity/);
+  await assert.rejects(verifyVideo(path, { ...file, probe: { tool: 'ffmpeg', version: FIXTURE_VERSION } }, { exec: fixtureTools() }), /probe identity/);
+  await assert.rejects(verifyVideo(path, file, { ffprobe: join(dir, 'no-such-ffprobe'), ffmpeg: join(dir, 'no-such-ffmpeg') }), /ffprobe is unavailable/, 'real lookup of a missing binary fails closed');
+});
+
+test('--latest readback verifies the ledger snapshot, daily overlay and provider canonical deployment', async () => {
+  const ctx = await setup();
+  const overlayFiles = [{ path: 'public/data-manifest.json', sha256: 'a'.repeat(64), bytes: 10 }, { path: 'public/data.json', sha256: 'b'.repeat(64), bytes: 11 }];
+  const overlay = { format: 'axionbench-data-overlay-v1', baseCommit: COMMIT, fileCount: 2, overlaySha256: overlayDigest(overlayFiles), files: overlayFiles };
+  const dist = join(ctx.root, 'dist-overlay');
+  await makeDist(dist, { data: '{"models":[7]}', identity: { sourceCommit: COMMIT, sourceDirty: true, codeDirty: false, dataOverlay: overlay } });
+  const result = await publish(ctx, await stage(ctx, '2026-10-03.r1', dist), '2026-10-03.r1');
+  assert.equal(result.status, 'published', result.message);
+  const before = await treeDigest(ctx.stateDir);
+  const report = await readbackLatest({ stateDir: ctx.stateDir, config, client: ctx.cf.client, fetcher: ctx.cf.fetcher });
+  assert.equal(report.dataOverlaySha256, overlay.overlaySha256);
+  assert.equal(report.canonical, true); assert.equal(report.viaRetainedSnapshot, true);
+  assert.equal(report.deploymentId, result.deploymentId);
+  assert.equal(await treeDigest(ctx.stateDir), before, 'readback writes nothing');
+  assert.ok(!ctx.cf.state.calls.includes('listDeployments'), 'the newest deployment listing is never the target');
+
+  await assert.rejects(readbackLatest({ config, client: ctx.cf.client }), /needs --state-dir/);
+  await assert.rejects(readbackLatest({ stateDir: ctx.stateDir, config }), /Pages client/);
+  const empty = join(ctx.root, 'empty-state');
+  await assert.rejects(readbackLatest({ stateDir: empty, config, client: ctx.cf.client, fetcher: ctx.cf.fetcher }), /ENOENT|no publication/, 'a rebuilt private dist cannot stand in for the ledger');
+  // Provider canonical deployment differs from the ledger.
+  const canonical = ctx.cf.state.production; ctx.cf.state.production = 'someone-elses-newer-deployment';
+  await assert.rejects(readbackLatest({ stateDir: ctx.stateDir, config, client: ctx.cf.client, fetcher: ctx.cf.fetcher }), /not the recorded/);
+  ctx.cf.state.production = canonical;
+  // Descriptor disagrees with the retained manifest about the overlay.
+  const ledger = await readLastSuccess(ctx.stateDir);
+  const descriptorPath = join(ctx.stateDir, 'snapshots', `${ledger.current.snapshotSha256}.json`);
+  const descriptor = JSON.parse(await readFile(descriptorPath, 'utf8'));
+  await writeFile(descriptorPath, JSON.stringify({ ...descriptor, dataOverlaySha256: 'c'.repeat(64) }));
+  await assert.rejects(readbackLatest({ stateDir: ctx.stateDir, config, client: ctx.cf.client, fetcher: ctx.cf.fetcher }), /daily data overlay/);
 });
 
 test('prepare-only public patch series reproduces the candidate without commits', async () => {

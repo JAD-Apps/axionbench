@@ -22,7 +22,7 @@ With `--publish --state-dir <dir> [--key YYYY-MM-DD.rN]` a successful refresh co
 ## Daily publication
 `npm run publish:daily -- --state-dir <dir> --audit-dir <dir> [--key YYYY-MM-DD.rN]`
 
-The site stays static. The daily update builds it and uploads it as one Cloudflare Pages production deployment through the Pages API. The JadBot daily workflow runs this command; the schedule, timezone and model settings are recorded with that workflow, not here.
+The site stays static. The daily update builds it and uploads it as one Cloudflare Pages production deployment through the Pages API. A JadBot workflow is meant to run this command daily, but none is registered or enabled by this repository; see the native workflow contract at the end of this file.
 
 `scripts/release/publish.mjs daily` does, in order:
 
@@ -99,3 +99,12 @@ Evidence-only commits after `sourceCommit` are allowed; the product and data dig
 `npm run test:update-transaction` (also part of `test:unit`) runs the publication transaction against a fake Pages API and a fake HTTPS host with Pages URL behaviour. It covers success, idempotent reruns, same-key conflicts, stale and old keys, upload failure, refused creation, ambiguous timeouts with and without a created deployment, a killed process resuming from its journal, failed deployment stages, tampered hosted bytes with verified rollback, an unverifiable restore, limits, non-canonical paths, changed code, wrong project or unattached hostname, the read-only verifier, explicit rollback, receipt tampering, capture records and the patch series.
 
 `jadbot.quality.json` declares the release artifact, candidate validation (release check, route health, offline candidate staging), health commands and three corruption/recovery cases (missing page, corrupted data, missing route), each recovered by a clean `build:release`.
+
+## Native JadBot daily workflow: registration contract
+The daily update is meant to run as a project-scoped JadBot workflow, not a GitHub schedule. Nothing in this repository registers or enables it, and no document may say the site updates daily until the receipts described in [QUALIFICATION](project/QUALIFICATION.md) exist.
+
+`node scripts/automation/jadbot-daily.mjs template` prints the credential-free registration template: project `axionbench`, **disabled**, daily at 06:30 UTC (`30 6 * * *`, timezone `UTC`), project isolation, `workerLimit` 1, collaboration off, overlapping project runs forbidden, one step running `npm run publish:daily`. Every AI stage (plan, worker, review, retry, debug) uses `codex/gpt-6.1-sol/high`, Fast off, no fallback, set as the workflow choice and as a `modelPin` scoped to that workflow id.
+
+`node scripts/automation/jadbot-daily.mjs verify-registration (--require-disabled | --require-enabled) --trust <trust file> [--receipt <file>] [--now <ISO>]` verifies a JadBot API readback (default `evidence/local/jadbot-registration-readback.json`, ignored by Git). The readback must be an envelope signed by a trusted `jadbot` key; plain JSON proves nothing. It must be dated, name a `/v1/` endpoint and a daemon version, and show: the exact name and project, UTC confirmed by the runtime, `nextRunAt` equal to the computed next 06:30:00 UTC after the observation, a native trigger id, the limits above, and the model choice, pin and effective choice all Sol 6.1/high, Fast off, no fallback. Provider observations (`providerObservations`) must exist exactly for AI stages that executed (`aiStagesExecuted`): one each, Sol 6.1/high, Fast off, and none for a job that has never run. `--require-enabled` also needs `enablement` citing the SHA-256 of the qualification receipt and of the first-deployment receipt. Exactly one state option is required; unknown, duplicate or valueless options are refused. Without a readback the command exits 2 and says nothing was verified. It never registers, enables or contacts JadBot.
+
+Registering, enabling and the first run are separate stages with their own authority.

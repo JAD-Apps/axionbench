@@ -5,6 +5,7 @@ import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { withBuiltBrowser } from '../test-harness.mjs';
+import { bindProductionIdentity, parseTarget, siteBytes } from '../test-target.mjs';
 import { DEFAULT_TASK, estimateTask } from '../../src/pricing/logic.ts';
 import { taskCostViewRows } from '../../src/pricing/views.ts';
 import { comparisonIdentity, pairAvailability, trendSeries, versionRows } from '../../src/versions/logic.ts';
@@ -15,13 +16,16 @@ const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const gridAligned = (a,b) => assert(Math.abs(a-b) <= .51, `${a} differs from ${b} beyond the half-pixel baseline alignment`);
 const close = (a,b) => assert(Math.abs(a-b) < 1e-9, `${a} differs from independently calculated ${b}`);
 await mkdir(out,{recursive:true});
+const target = parseTarget(); const identity = await bindProductionIdentity(target);
+if(!target.production){
 const build = spawnSync('npm',['run','build'],{encoding:'utf8',maxBuffer:8*1024*1024});
 await writeFile(`${out}/build.log`,(build.stdout??'')+(build.stderr??''));
 assert.equal(build.status,0,`build failed; inspect ${out}/build.log`);
-const bytes = await readFile('public/data.json'), data = JSON.parse(bytes);
-const manifest = JSON.parse(await readFile('public/data-manifest.json'));
+}else await writeFile(`${out}/build.log`,'production target: no build\n');
+const bytes = await siteBytes(target,'data.json'), data = JSON.parse(bytes);
+const manifest = JSON.parse(await siteBytes(target,'data-manifest.json'));
 const sourcePaths = ['package.json','package-lock.json','src/pricing/logic.ts','src/pricing/views.ts','src/task-cost.tsx','src/versions/logic.ts','src/versions.tsx','src/charts/comparison-chart.tsx','src/charts/core-chart.tsx','src/charts/registry.ts','src/charts/state.ts','src/home/logic.ts','src/home-comparison.tsx','src/observatory-experience.tsx','src/style.css','docs/PRICING.md','docs/VERSIONS.md','scripts/test-cost-weights.mjs','scripts/chart-smoke.mjs','scripts/project/test-cost-version-views.mjs','scripts/public/allowlist.json','scripts/public/boundary.mjs','scripts/public/verify.mjs','scripts/project/test-routes.mjs','scripts/public-content/README.md'];
-const report = {at:new Date().toISOString(),passed:false,dataSha256:sha(bytes),manifestSha256:sha(await readFile('public/data-manifest.json')),currentSource:await Promise.all(sourcePaths.map(async path=>({path,sha256:sha(await readFile(path))}))),checks:[],screenshots:[],fixtures:[]};
+const report = {at:new Date().toISOString(),passed:false,dataSha256:sha(bytes),manifestSha256:sha(await siteBytes(target,'data-manifest.json')),target:target.production?{url:target.url,...identity}:'local build',currentSource:await Promise.all(sourcePaths.map(async path=>({path,sha256:sha(await readFile(path))}))),checks:[],screenshots:[],fixtures:[]};
 const record=(name,observed)=>{report.checks.push({name,observed});console.log('Verified: '+name);};
 const panel = 'epoch-hub|gpqa-diamond|score|Epoch AI run';
 const vpanel = 'bfcl-v4|bfcl-v4|overall accuracy';
@@ -169,11 +173,13 @@ await withBuiltBrowser(async({page,origin,newPage})=>{
  record('homepage three-card parity',{taskTypes:taskTypes.length,tokenBudgets:[12000,1000000],nativePublisherRatings:true,chartTableExportParity:true,currentCoveredDomainHandValue:.5547,missingTariffsRemainUnknown:true,weightsReload:true,missingDomainDisablesAllThree:true,deeperCalculatorInputs:true});
  await root.getByLabel('Homepage benchmark').selectOption('bridgebench');await root.locator('.home-data').evaluate(e=>e.open=false);
  for(const width of [390,768,1440]){await page.setViewportSize({width,height:1000});await shot(page,root,`${width}-homepage-cards`);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
+ let g; // local adverse fixtures below are labelled in the report and never run against production
+ if(!target.production){
  // Fixture readbacks have manifest hashes matching their actual test payloads.
  const fixturePage=await newPage();const fbytes=Buffer.from(JSON.stringify(fixture));const fm={...manifest,projection:{...manifest.projection,bytes:fbytes.length,sha256:sha(fbytes)}};
  await fixturePage.route('**/data.json',r=>r.fulfill({contentType:'application/json',body:fbytes}));await fixturePage.route('**/data-manifest.json',r=>r.fulfill({contentType:'application/json',body:JSON.stringify(fm)}));
  await fixturePage.goto(origin+'/versions?versionView=paired&versionSetting=none',{waitUntil:'networkidle'});const froot=fixturePage.getByTestId('versions');await froot.waitFor();assert.match(await froot.getByTestId('version-availability').innerText(),/comparison available/);
- let g=await geometry(froot);assert.deepEqual(g.datasets[0].data,[73.24,77.47]);assert.equal(g.scales.y.min,0);
+ g=await geometry(froot);assert.deepEqual(g.datasets[0].data,[73.24,77.47]);assert.equal(g.scales.y.min,0);
  for(const [i,e]of g.datasets[0].elements.entries()){gridAligned(e.base,g.scales.y.zero);close(e.y,g.area.bottom-(g.datasets[0].data[i]-g.scales.y.min)/(g.scales.y.max-g.scales.y.min)*(g.area.bottom-g.area.top));}
  await froot.getByTestId('version-view-trend').click();g=await geometry(froot);assert.equal(g.datasets.length,1);assert.deepEqual(g.datasets[0].data.map(p=>p.y),[73.24,77.47]);assert.equal(g.datasets[0].spanGaps,false);for(const [i,p]of g.datasets[0].data.entries())xy(g,p,g.datasets[0].elements[i]);
  report.fixtures.push({name:'explicit reasoning fixture; not published data',dataSha256:sha(fbytes),pairedAndConnectedTrend:true,nativeValues:[73.24,77.47]});await fixturePage.close();
@@ -186,6 +192,7 @@ await withBuiltBrowser(async({page,origin,newPage})=>{
  assert.match(await eroot.getByTestId('cost-table').locator('tbody tr').filter({hasText:'gemini-3.8-flash'}).innerText(),/Unsupported.*expired/s);
  g=await geometry(eroot);assert.equal(g.datasets[0].data.length,expiredExport.viewRows.filter(r=>r.scenarioUsd!==null).length);assert(!JSON.parse(await eroot.locator('canvas').getAttribute('data-row-ids'))[0].includes(expiredFlash.id));
  report.fixtures.push({name:'fresh tariff timestamps at exact promotion expiry; not published data',dataSha256:sha(eb),clock:expiry,expiredFlashUnavailableInTableChartExport:true});await expiredPage.close();
+ }else report.fixtures.push({name:'local adverse fixtures skipped on production: hosted responses are never intercepted'});
  // No chart remains after route change; reduced motion paints a static canvas.
  await page.goto(origin+'/task-pricing',{waitUntil:'networkidle'});root=page.getByTestId('task-cost');await root.waitFor();g=await geometry(root);assert.equal(g.animation,false);const still=await root.locator('canvas').evaluate(c=>c.toDataURL());await page.waitForTimeout(120);assert.equal(await root.locator('canvas').evaluate(c=>c.toDataURL()),still);
  const stale=await root.locator('canvas').elementHandle();await page.getByRole('navigation').getByRole('link',{name:'Methods',exact:true}).click();await page.getByTestId('methodology').waitFor();assert.equal(await stale.evaluate(el=>el.isConnected),false);assert.equal(Number(await page.locator('html').getAttribute('data-chart-js-instances')),0);

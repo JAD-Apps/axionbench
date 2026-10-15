@@ -120,3 +120,31 @@ test('private tariff restoration requires exact original bytes and never substit
   await mkdir(join(root, 'private')); await writeFile(target, Buffer.alloc(facts.source.bytes));
   await assert.rejects(restorePrivatePrice({ facts, preserved, target }), /original tariff hash/);
 }));
+test('qualification contracts stay private; public docs make no untested live-daily claim; the public harness keeps the production target strict', () => owned(async root => {
+  const candidate = join(root, 'public');
+  const source = await preparePublicSnapshot(candidate);
+  const paths = new Set(source.files.map(row => row.path));
+  for (const privatePath of ['scripts/project/authority.mjs', 'scripts/project/qualification.mjs', 'scripts/project/qualify-public.mjs', 'scripts/project/verify-receipts.mjs',
+    'scripts/automation/jadbot-daily.mjs', 'scripts/release/readback.mjs', 'tests/project/qualification.test.mjs', 'tests/project/native-schedule.test.mjs', 'tests/project/evidence-fixtures.mjs', 'docs/project/QUALIFICATION.md']) {
+    assert(!paths.has(privatePath), 'private qualification file leaked: ' + privatePath);
+  }
+  assert(paths.has('scripts/test-target.mjs') && paths.has('scripts/test-harness.mjs'), 'public browser suites carry their target selector');
+  for (const doc of ['README.md', 'docs/AUTOMATION.md']) {
+    const text = await readFile(join(candidate, doc), 'utf8');
+    assert(!/live site is updated daily|updates? (?:the site )?every day|runs daily/i.test(text), doc + ': untested live-daily claim');
+  }
+  assert(/not claimed here until/.test(await readFile(join(candidate, 'README.md'), 'utf8')));
+  const publicText = (await Promise.all(source.files.filter(row => /\.(?:mjs|json|md|ya?ml)$/.test(row.path)).map(row => readFile(join(candidate, row.path), 'utf8')))).join('\n');
+  assert(!/axionbench-stage-receipt-v1|axionbench-trust-v1|fixture-reviewer|run_ec6c62962fc6/.test(publicText), 'private evidence contracts or run identities in public source');
+  const harness = await import(join(resolve(candidate), 'scripts/test-target.mjs'));
+  assert.deepEqual(harness.parseTarget([]), { production: false, url: null, expect: {} });
+  assert.equal(harness.parseTarget(['--url', 'https://axionbench.jadapps.app']).production, true);
+  for (const bad of [['--url', 'https://axionbench.pages.dev'], ['--url', 'http://axionbench.jadapps.app'], ['--url', 'https://axionbench.jadapps.app/x'], ['--url'], ['--data-sha256', 'a'.repeat(64)], ['--rebuild', 'x']]) {
+    assert.throws(() => harness.parseTarget(bad), /./, bad.join(' '));
+  }
+  // Changed candidate: the sealed public source no longer matches after any byte changes.
+  const sealed = (await validateSource(candidate)).sourceSha256;
+  await writeFile(join(candidate, 'README.md'), (await readFile(join(candidate, 'README.md'), 'utf8')) + '\nchanged\n');
+  await assert.rejects(validateSource(candidate), /public source manifest must describe every actual file byte/);
+  assert.match(sealed, /^[a-f0-9]{64}$/);
+}));

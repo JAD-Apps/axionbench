@@ -4,6 +4,7 @@ import { homedir, tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { chromium } from 'playwright-core';
 import { createSiteServer } from './serve.mjs';
+import { parseTarget } from './test-target.mjs';
 
 async function browserExecutable() {
   if (process.env.CHROMIUM_PATH) return process.env.CHROMIUM_PATH;
@@ -18,9 +19,11 @@ async function browserExecutable() {
   throw new Error('No cached Playwright Chromium found. Set CHROMIUM_PATH to an installed browser executable.');
 }
 
-export async function withBuiltBrowser(run, { reducedMotion = 'reduce', hasTouch = false } = {}) {
-  const server = createSiteServer(new URL('../dist/', import.meta.url).pathname);
-  await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
+// Production mode (target.production) opens the hosted origin directly: there is
+// no local server, no rebuild and no request interception by this harness.
+export async function withBuiltBrowser(run, { reducedMotion = 'reduce', hasTouch = false, target = parseTarget() } = {}) {
+  const server = target.production ? null : createSiteServer(new URL('../dist/', import.meta.url).pathname);
+  if (server) await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
   let browser;
   let runtimeDirectory;
   let runtimeHandle;
@@ -40,7 +43,7 @@ export async function withBuiltBrowser(run, { reducedMotion = 'reduce', hasTouch
     const pageOptions = { viewport: { width: 1440, height: 1000 }, reducedMotion, hasTouch };
     const page = await browser.newPage(pageOptions);
     const newPage = () => browser.newPage(pageOptions);
-    await run({ page, newPage, origin: `http://127.0.0.1:${server.address().port}`, assert });
+    await run({ page, newPage, origin: target.production ? target.url : `http://127.0.0.1:${server.address().port}`, assert, target });
   } finally {
     try {
       await browser?.close();
@@ -51,7 +54,7 @@ export async function withBuiltBrowser(run, { reducedMotion = 'reduce', hasTouch
         try {
           if (runtimeDirectory) await rm(runtimeDirectory, { recursive: true, force: true });
         } finally {
-          await new Promise(resolve => server.close(resolve));
+          if (server) await new Promise(resolve => server.close(resolve));
         }
       }
     }

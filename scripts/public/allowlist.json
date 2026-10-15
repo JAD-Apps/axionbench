@@ -72,6 +72,7 @@
     "scripts/test-acceptance.mjs",
     "scripts/test-cost-weights.mjs",
     "scripts/test-harness.mjs",
+    "scripts/test-target.mjs",
     "scripts/test-pricing.mjs",
     "scripts/test-publisher-tables.py",
     "scripts/test-weights.mjs",

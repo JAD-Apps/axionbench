@@ -72,6 +72,7 @@ a:hover{color:var(--cobalt)}
 .cost-experience th,.cost-experience td,.weight-sensitivity th,.weight-sensitivity td{padding:14px 12px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.55}
 .cost-experience th,.weight-sensitivity th{font-weight:500}
 .cost-experience table{min-width:790px}
+table[data-testid=home-table]{min-width:900px}table[data-testid=home-table] td[data-cell=value]{min-width:120px}
 .cost-experience table th:first-child{min-width:190px}
 .cost-experience table th:nth-child(2){min-width:125px}
 .cost-experience table th:nth-child(3){min-width:170px}

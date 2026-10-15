@@ -8,16 +8,21 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { withBuiltBrowser } from './test-harness.mjs';
+import { bindProductionIdentity, parseTarget, siteBytes } from './test-target.mjs';
 
 const root = new URL('../', import.meta.url);
 const out = new URL('test-results/acceptance/', root);
-const build = spawnSync('npm', ['run', 'build'], { cwd: root.pathname, stdio: 'inherit' });
-if (build.error) throw build.error;
-assert.equal(build.status, 0, 'production build succeeds before acceptance checks');
+const target = parseTarget();
+await bindProductionIdentity(target);
+if (!target.production) {
+  const build = spawnSync('npm', ['run', 'build'], { cwd: root.pathname, stdio: 'inherit' });
+  if (build.error) throw build.error;
+  assert.equal(build.status, 0, 'production build succeeds before acceptance checks');
+}
 await rm(out, { recursive: true, force: true });
 await mkdir(out, { recursive: true });
 
-const data = JSON.parse(await readFile(new URL('public/data.json', root), 'utf8'));
+const data = JSON.parse(await siteBytes(target, 'data.json'));
 const knownResultUrls = new Set([
   ...data.observations.map((row) => row.resultUrl),
   ...(data.authority?.observations ?? []).map((row) => row.resultUrl),
@@ -284,6 +289,8 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
   expect(external.length === 0, `external links without rel=noreferrer: ${external.slice(0, 5).join(', ')}`);
   pass('result links', `${links.length} ranking links match captured result URLs`);
 
+  // Local adverse fixtures: these tamper with their own page's data responses, so they never run against production.
+  if (!target.production) {
   // ---- 6. Invalid, missing and conflicting data fail closed with a message ----
   for (const [label, handler] of [
     ['invalid JSON', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '{"schemaVersion":' })],
@@ -303,6 +310,7 @@ await withBuiltBrowser(async ({ page, newPage, origin }) => {
     await broken.close();
   }
   pass('data failure states', 'invalid JSON, HTTP 404 and digest conflict each fail closed with an alert and keep the hero');
+  } else pass('data failure states', 'skipped on production: hosted responses are never intercepted');
 }, { reducedMotion: 'reduce' });
 
 // ---- 7. Motion: actual canvas geometry changes and reduced motion is static ----

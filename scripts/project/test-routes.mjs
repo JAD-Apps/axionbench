@@ -7,19 +7,24 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { routes } from '../../src/routes.ts';
 import { homeRecommendations, taskTypes } from '../../src/home/logic.ts';
 import { withBuiltBrowser } from '../test-harness.mjs';
+import { bindProductionIdentity, parseTarget, routeHtml, siteBytes } from '../test-target.mjs';
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 await mkdir('test-results/routes', { recursive: true });
-const build = spawnSync('npm', ['run', 'build'], { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
-await writeFile('test-results/routes/build.log', (build.stdout ?? '') + (build.stderr ?? ''));
-assert.equal(build.status, 0, 'production build failed; inspect test-results/routes/build.log');
-const dataBytes = await readFile('public/data.json'); const data = JSON.parse(dataBytes);
-const manifestBytes = await readFile('public/data-manifest.json'); const manifest = JSON.parse(manifestBytes);
-const report = { at: new Date().toISOString(), sourceDigest: data.sourceDigest, dataSha256: sha(dataBytes), manifestSha256: sha(manifestBytes), buildLogSha256: sha(await readFile('test-results/routes/build.log')), widths: [360, 768, 1280, 1440], screenshots: [], checks: [] };
+const target = parseTarget();
+const identity = await bindProductionIdentity(target);
+if (!target.production) {
+  const build = spawnSync('npm', ['run', 'build'], { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
+  await writeFile('test-results/routes/build.log', (build.stdout ?? '') + (build.stderr ?? ''));
+  assert.equal(build.status, 0, 'production build failed; inspect test-results/routes/build.log');
+} else await writeFile('test-results/routes/build.log', 'production target: no build\n');
+const dataBytes = await siteBytes(target, 'data.json'); const data = JSON.parse(dataBytes);
+const manifestBytes = await siteBytes(target, 'data-manifest.json'); const manifest = JSON.parse(manifestBytes);
+const report = { at: new Date().toISOString(), target: target.production ? { url: target.url, ...identity } : 'local build', sourceDigest: data.sourceDigest, dataSha256: sha(dataBytes), manifestSha256: sha(manifestBytes), buildLogSha256: sha(await readFile('test-results/routes/build.log')), widths: [360, 768, 1280, 1440], screenshots: [], checks: [] };
 const record = (name, observed) => report.checks.push({ name, observed });
-const entry = await readFile('dist/index.html', 'utf8');
+const entry = await routeHtml(target, '/');
 let initialGzip = 0;
 const entryPaths = [...new Set([...entry.matchAll(/<(?:script|link)\b[^>]*(?:src|href)="([^" ]+\.js)"/g)].map(m => m[1]))];
-for (const path of entryPaths) initialGzip += gzipSync(await readFile('dist' + path)).length;
+for (const path of entryPaths) initialGzip += gzipSync(await siteBytes(target, path.slice(1))).length;
 assert(initialGzip <= 180 * 1024, 'initial JavaScript exceeds the preserved 180 KiB gzip budget');
 assert(!entryPaths.some(p => p.includes('observatory-experience')), 'detailed comparisons must stay deferred');
 record('initial JavaScript gzip bytes', initialGzip);
@@ -27,14 +32,22 @@ const sourcePaths = ['src/routes.ts','src/observatory.tsx','src/observatory-expe
 report.currentSource = await Promise.all(sourcePaths.map(async path => ({ path, sha256: sha(await readFile(path)) })));
 const now = Date.now();
 const picks = homeRecommendations(data.bridgeBench, data.pricing, data.authority, 'reasoning', 12000, 'bridgebench', now);
-assert.equal(picks.pricedCount, 1); assert.equal(picks.tiers[0].row.modelKey, 'gemini-3-8-flash');
-assert(Math.abs(picks.tiers[0].cost.totalUsd - 0.015) < 1e-10, '10000 input at $0.75/M + 2000 output at $3.75/M = $0.015');
-assert.equal(picks.tiers[2].cost.totalUsd, null, 'frontier missing price must remain null');
+if (!target.production) {
+  // Preserved local numerical gate against the committed snapshot (a hand calculation).
+  assert.equal(picks.pricedCount, 1); assert.equal(picks.tiers[0].row.modelKey, 'gemini-3-8-flash');
+  assert(Math.abs(picks.tiers[0].cost.totalUsd - 0.015) < 1e-10, '10000 input at $0.75/M + 2000 output at $3.75/M = $0.015');
+  assert.equal(picks.tiers[2].cost.totalUsd, null, 'frontier missing price must remain null');
+} else {
+  // Hosted data changes daily: assert invariants, never historical counts.
+  assert.equal(picks.tiers.length, 3, 'Economy, Balanced and Frontier tiers are always present');
+  for (const tier of picks.tiers) assert.ok(tier.row ? tier.cost.totalUsd === null || tier.cost.totalUsd >= 0 : tier.cost?.totalUsd == null, 'a tier without a model never quotes a cost');
+  assert.ok(picks.pricedCount <= picks.ratedCount, 'cannot price more models than are rated');
+}
 const unverified = structuredClone(data.bridgeBench); unverified.records.forEach(r => { r.identityVerified = false; });
 assert(homeRecommendations(unverified, data.pricing, data.authority, 'reasoning', 12000).tiers.every(t => !t.row));
 const absent = structuredClone(data.bridgeBench); absent.records.forEach(r => { r.ratings.reasoning = null; });
 assert.equal(homeRecommendations(absent, data.pricing, data.authority, 'reasoning', 12000).ratedCount, 0, 'missing rating is never zero');
-assert.equal(homeRecommendations(data.bridgeBench, data.pricing, data.authority, 'reasoning', 12000, 'bridgebench', Date.parse('2027-01-02')).pricedCount, 0, 'stale/expired prices are never quoted');
+if (!target.production) assert.equal(homeRecommendations(data.bridgeBench, data.pricing, data.authority, 'reasoning', 12000, 'bridgebench', Date.parse('2027-01-02')).pricedCount, 0, 'stale/expired prices are never quoted');
 assert.equal(homeRecommendations(data.bridgeBench, data.pricing, data.authority, 'unknown', 12000).ratedCount, 0);
 assert(homeRecommendations(data.bridgeBench, data.pricing, data.authority, 'reasoning', 12000, 'current').tiers.every(t => !t.row), 'publisher ratings cannot enter current independent capability');
 record('recommendation adversarial checks', ['hand calculation', 'unverified identity', 'missing rating', 'expired/stale tariff', 'unknown task', 'independent capability separation']);
@@ -71,14 +84,15 @@ await withBuiltBrowser(async ({page, origin, newPage}) => {
   for (const path of ['/missing-page','/assets/missing.js','/data-missing.json','/rankings/missing','/rankings/missing.css']) {
     const response = await page.request.get(origin+path); assert.equal(response.status(),404,path+' must be real HTTP 404'); assert(!response.headers()['content-type']?.includes('text/html'), 'missing resource cannot be the app shell');
   }
+  if (!target.production) { // behaviours of the local static server, not of the hosting provider
   assert.equal((await page.request.get(origin+'/%00')).status(),403);
   assert.equal((await page.request.get(origin+'/%zz')).status(),404);
+  }
   record('production missing resources', 'unknown pages, nested paths and assets remain 404; NUL rejected');
   for(const width of report.widths) {
     await page.setViewportSize({width,height:1000});
     for(const route of routes) {
-      const htmlPath = route.path === '/' ? 'dist/index.html' : 'dist'+route.path+'/index.html';
-      assert((await readFile(htmlPath,'utf8')).includes('<title>'+route.title+' — AxionBench</title>'));
+      assert((await routeHtml(target, route.path)).includes('<title>'+route.title+' — AxionBench</title>'));
       const response=await page.goto(origin+route.path,{waitUntil:'networkidle'}); assert.equal(response.status(),200); await ready(page,route.id);
       assert.equal(await page.title(),route.title+' — AxionBench');
       assert.equal(await page.locator('nav a[aria-current=page]').getAttribute('href'),route.path);
@@ -143,9 +157,11 @@ await withBuiltBrowser(async ({page, origin, newPage}) => {
   const pixels=await page.locator('canvas').evaluate(c=>c.toDataURL());await page.waitForTimeout(250);assert.equal(await page.locator('canvas').evaluate(c=>c.toDataURL()),pixels,'reduced-motion hero remains static');
   record('homepage controls and native source parity', '5 task axes × 3 budgets × 3 tiers; exact ratings/costs/links, independent missing state, reload, keyboard and static reduced motion');
   // Digest tampering fails closed and preserves only the unloaded overview hero.
+  if (!target.production) { // local adverse fixture: tampers its own copy of the data; never run against hosted responses
   const broken=await newPage();await broken.route('**/data.json',async r=>{const response=await r.fetch();await r.fulfill({response,body:(await response.text()).replace('axionbench-public-v1','axionbench-public-v2')});});
   await broken.goto(origin);await broken.getByRole('alert').waitFor();assert.equal(await broken.getByTestId('home-comparison').count(),0);assert.equal(await broken.locator('canvas').count(),1);await broken.close();
   record('digest failure', 'tampered public data rejected; recommendation cards never render');
+  } else record('digest failure', 'skipped on production: hosted data is never intercepted; identity bound by manifest digests instead');
   assert.deepEqual(errors,[],'runtime/console errors');
 });
 await withBuiltBrowser(async({page,origin})=>{

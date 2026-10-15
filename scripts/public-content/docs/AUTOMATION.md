@@ -16,7 +16,7 @@ The public CI workflow uses the exact package manager, frozen lockfile installat
 
 ## Daily site update
 
-The daily update runs as a scheduled JadBot workflow, not a GitHub schedule:
+The intended daily runner is a scheduled workflow in the maintainer's JadBot, not a GitHub schedule. The command below is what that workflow would run. Whether the schedule is currently enabled is not recorded in this repository: it is enabled only after the registered job has passed a disabled qualification and a first successful deployment, so check the Methods page for the date of the last published refresh instead of assuming one. The command works the same when you run it yourself:
 
 ```sh
 npm run publish:daily -- --state-dir <persistent dir outside the repository> --audit-dir <private dir outside the repository>
@@ -31,7 +31,7 @@ The transaction, in order: an immutable read-only snapshot of the build with `pu
 - Limits: 2,000 files, 25 MiB per file, 128 MiB in total, 500 files or 40 MiB per upload request, up to 4 attempts for idempotent calls.
 - If a new deployment fails its status or readback, production is rolled back to the recorded last-good deployment and that is verified by readback. Local data files return to their pre-refresh bytes. `last-success.json` is unchanged.
 
-Other commands: `publish:site` (publish the current tree; `--dry-run` makes no network call), `publish:candidate` (offline staging and qualification), `publish:verify` (read-only; checks Cloudflare's production deployment and every hosted byte), `publish:rollback --to previous|<deployment id>|<key>`, `publish:status`, `production:check -- --dist dist` or `-- --url https://axionbench.jadapps.app`, and `capture:verify` for screenshot/video evidence.
+Test it without Cloudflare with `npm run test:update-transaction`; that suite uses a fake Pages API and a fake host, and it does not prove a live deployment. Other commands: `publish:site` (publish the current tree; `--dry-run` makes no network call), `publish:candidate` (offline staging and qualification), `publish:verify` (read-only; checks Cloudflare's production deployment and every hosted byte), `publish:rollback --to previous|<deployment id>|<key>`, `publish:status`, `production:check -- --dist dist` or `-- --url https://axionbench.jadapps.app`, and `capture:verify` for screenshot/video evidence. A video record is accepted only if `ffprobe` and `ffmpeg` (on `PATH`, or `FFPROBE_PATH`/`FFMPEG_PATH`) show an H.264 stream with the recorded size and duration that decodes completely and whose frames change; without those tools the video is reported as not qualified.
 
 The Methods page shows the published daily refresh, source retrieval, data validation and build dates separately. A build that the daily update did not publish says so.
 

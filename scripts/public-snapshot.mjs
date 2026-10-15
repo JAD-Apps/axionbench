@@ -77,6 +77,7 @@ for (const name of ['test-routes.mjs', 'test-core-views.mjs', 'test-cost-version
   assert(original.includes("from '../test-harness.mjs'"), 'expected browser harness import');
   const portable = original.replaceAll("from '../../src/", "from '../src/")
     .replaceAll("from '../test-harness.mjs'", "from './test-harness.mjs'")
+    .replaceAll("from '../test-target.mjs'", "from './test-target.mjs'")
     .replaceAll('scripts/project/' + name, 'scripts/' + name)
     .replaceAll('scripts/project/test-routes.mjs', 'scripts/test-routes.mjs')
     .replaceAll('scripts/public-content/README.md', 'README.md');
