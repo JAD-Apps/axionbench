@@ -499,6 +499,27 @@ test('capture records bind exact screenshot/video bytes to the approved host and
   await rm(dir, { recursive: true, force: true });
 });
 
+test('production acceptance detects corrupt assets/manifests and never permits a caller-chosen host', async () => {
+  const ctx=await setup();
+  const result=await publish(ctx,await stage(ctx,'2026-10-03.r1'),'2026-10-03.r1');
+  assert.equal(result.status,'published');
+  const current=(await readLastSuccess(ctx.stateDir)).current;
+  const expectedManifest=JSON.parse(await readFile(join(ctx.stateDir,'snapshots',current.snapshotSha256,MANIFEST_NAME),'utf8'));
+  const options={url:'https://axionbench.jadapps.app',hostname:config.hostname,expectedManifest,fetcher:ctx.cf.fetcher};
+  assert.equal((await checkHost(options)).qualifiedManifest,true);
+  ctx.cf.state.hooks.tamper=(d,name,body)=>name==='assets/app.js'?Buffer.from('wrong bytes'):body;
+  await assert.rejects(checkHost(options),/asset (hash|size) mismatch/);
+  ctx.cf.state.hooks.tamper=null;
+  await assert.rejects(checkHost({...options,expectedManifest:{...expectedManifest,builtAt:'2026-10-01T00:00:00Z'}}),/qualified release/);
+  let fetched=false;
+  await assert.rejects(checkHost({...options,url:'https://evil.example',hostname:'evil.example',fetcher:async()=>{fetched=true;}}),/unapproved production target/);
+  assert.equal(fetched,false);
+  const ledger=JSON.parse(await readFile(join(ctx.stateDir,'last-success.json'),'utf8'));
+  ledger.current.productSha256='f'.repeat(64);
+  await writeFile(join(ctx.stateDir,'last-success.json'),JSON.stringify(ledger));
+  await assert.rejects(verifyPublicationReceipts(ctx.stateDir),/ledger productSha256/);
+});
+
 test('prepare-only public patch series reproduces the candidate without commits', async () => {
   const dir = await scratch();
   const base = join(dir, 'base'), candidate = join(dir, 'candidate'), output = join(dir, 'out');

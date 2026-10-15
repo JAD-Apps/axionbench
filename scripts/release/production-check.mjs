@@ -12,7 +12,7 @@ import { access, readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { routes } from '../../src/routes.ts';
-import { MISSING_PROBE } from './deployment-gate.mjs';
+import { hostedRequest, MISSING_PROBE } from './deployment-gate.mjs';
 import { compareWithBuild, MANIFEST_NAME, scanDist, sha256, validateManifest } from './manifest.mjs';
 
 export const routeFile = (path) => path === '/' ? 'index.html' : `${path.slice(1)}/index.html`;
@@ -27,8 +27,8 @@ export async function checkRouteFiles(dir) {
   return routes.length;
 }
 
-export async function checkDist(dir) {
-  const manifest = validateManifest(JSON.parse(await readFile(join(dir, MANIFEST_NAME), 'utf8')));
+export async function checkDist(dir, identity = {}) {
+  const manifest = validateManifest(JSON.parse(await readFile(join(dir, MANIFEST_NAME), 'utf8')), identity);
   compareWithBuild(manifest, await scanDist(dir));
   const count = await checkRouteFiles(dir);
   const dataManifest = JSON.parse(await readFile(join(dir, 'data-manifest.json'), 'utf8'));
@@ -36,8 +36,10 @@ export async function checkDist(dir) {
   return { mode: 'dist', routes: count, files: manifest.fileCount, productSha256: manifest.productSha256, dataSha256: manifest.dataSha256 };
 }
 
-export async function checkHost({ url, hostname, expectProduct = null, fetcher = fetch }) {
+export async function checkHost({ url, hostname, expectProduct = null, expectedManifest = null, fetcher = fetch, now = () => new Date() }) {
+  assert.equal(hostname, 'axionbench.jadapps.app', 'unapproved production target');
   assert.equal(url, `https://${hostname}`, 'production check runs only against the exact approved HTTPS hostname');
+  if (expectedManifest) validateManifest(expectedManifest);
   const get = (path, redirect = 'error') => fetcher(`${url}${path}`, { redirect, signal: AbortSignal.timeout(30000) });
   const results = [];
   for (const route of routes) {
@@ -62,12 +64,28 @@ export async function checkHost({ url, hostname, expectProduct = null, fetcher =
   assert.equal(manifestResponse.status, 200, 'hosted release manifest missing');
   const manifest = validateManifest(await manifestResponse.json());
   if (expectProduct) assert.equal(manifest.productSha256, expectProduct, 'hosted product differs from the expected release');
-  const data = Buffer.from(await (await get('/data.json')).arrayBuffer());
-  assert.equal(sha256(data), manifest.dataSha256, 'hosted data.json differs from the hosted manifest');
-  const publication = await (await get('/publication.json')).json();
+  if (expectedManifest) assert.deepEqual(manifest, expectedManifest, 'hosted manifest differs from the qualified release');
+  const assets = [];
+  const captured = new Map();
+  for (const file of manifest.files) {
+    const request = hostedRequest(file.path);
+    const response = await get(request.urlPath);
+    assert.equal(response.status, request.status, `${file.path}: unexpected HTTP status`);
+    const bytes = Buffer.from(await response.arrayBuffer());
+    assert.equal(bytes.length, file.bytes, `${file.path}: hosted asset size mismatch`);
+    assert.equal(sha256(bytes), file.sha256, `${file.path}: hosted asset hash mismatch`);
+    assets.push({ path: file.path, sha256: file.sha256, bytes: file.bytes, status: response.status });
+    if (['publication.json', 'data-manifest.json'].includes(file.path)) captured.set(file.path, JSON.parse(bytes));
+  }
+  const dataManifest = captured.get('data-manifest.json');
+  assert.equal(dataManifest?.projection?.sha256, manifest.dataSha256, 'hosted data manifest binding');
+  const publication = captured.get('publication.json');
   assert.equal(publication.schemaVersion, 'axionbench-publication-v1');
+  assert.ok(['published', 'unpublished'].includes(publication.status), 'hosted publication status');
   if (manifest.publication) assert.equal(publication.refreshKey, manifest.publication.refreshKey, 'hosted publication record differs from the manifest');
-  return { mode: 'host', url, routes: results, productSha256: manifest.productSha256, dataSha256: manifest.dataSha256,
+  return { mode: 'host', url, checkedAt: now().toISOString(), qualifiedManifest: expectedManifest !== null, assets, routes: results,
+    sourceCommit: manifest.sourceCommit, controlSha256: manifest.controlSha256, productSha256: manifest.productSha256, dataSha256: manifest.dataSha256,
+    publicationStatus: publication.status,
     refreshKey: publication.refreshKey ?? null, sourcesRetrievedAt: publication.sourcesRetrievedAt ?? null, builtAt: manifest.builtAt };
 }
 
@@ -77,7 +95,8 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const config = JSON.parse(await readFile(new URL('../../deploy.config.json', import.meta.url), 'utf8'));
   let report;
   if (option('--dist')) report = await checkDist(option('--dist'));
-  else if (option('--url')) report = await checkHost({ url: option('--url'), hostname: config.hostname, expectProduct: option('--expect-product') });
+  else if (option('--url')) report = await checkHost({ url: option('--url'), hostname: config.hostname, expectProduct: option('--expect-product'),
+    expectedManifest: option('--release-manifest') ? JSON.parse(await readFile(option('--release-manifest'), 'utf8')) : null });
   else throw new Error('usage: production-check.mjs (--dist <dir> | --url https://<approved host> [--expect-product <sha256>])');
   console.log(JSON.stringify(report, null, 2));
 }

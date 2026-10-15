@@ -34,9 +34,10 @@ export function verifyEvidenceBinding(receipt, expected) {
   return receipt;
 }
 
-export async function verifyCommandEvidence(root, receipt, { sourceSha256, commands }) {
+export async function verifyCommandEvidence(root, receipt, { sourceSha256, commands, bindingKey = 'publicSourceSha256' }) {
   assert.match(sourceSha256, HEX, 'expected current source hash required');
-  verifyEvidenceBinding(receipt, { passed: true, publicSourceSha256: sourceSha256 });
+  assert(['publicSourceSha256', 'privateSourceSha256'].includes(bindingKey), 'unknown command source binding');
+  verifyEvidenceBinding(receipt, { passed: true, [bindingKey]: sourceSha256 });
   assert(Array.isArray(commands) && commands.length, 'required commands missing');
   assert.deepEqual(receipt.results?.map(row => row.command), commands, 'required command evidence missing or reordered');
   for (const row of receipt.results) {

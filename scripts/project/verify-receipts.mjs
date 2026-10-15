@@ -38,17 +38,25 @@ export async function verifyPublicationReceipts(stateDir) {
   if (!ledger) return summary;
   const ledgerText = await readFile(join(stateDir, 'last-success.json'), 'utf8');
   assert.deepEqual(findSecrets(ledgerText), [], 'last-success.json contains credential-shaped text');
-  await verifySnapshot(stateDir, ledger.current.snapshotSha256);
-  if (ledger.previous) await verifySnapshot(stateDir, ledger.previous.snapshotSha256);
+  for (const entry of [ledger.current, ...(ledger.previous ? [ledger.previous] : []), ...ledger.history]) {
+    const manifest = await verifySnapshot(stateDir, entry.snapshotSha256);
+    for (const key of ['sourceCommit', 'productSha256', 'dataSha256', 'controlSha256']) assert.equal(entry[key], manifest[key], `ledger ${key} differs from retained snapshot`);
+    assert.equal(entry.revisionSha256, manifest.publication?.revisionSha256, 'ledger revision differs from retained snapshot');
+    assert.equal(entry.key, manifest.publication?.refreshKey, 'ledger key differs from retained snapshot');
+  }
   const tx = await readTransaction(stateDir, ledger.current.key);
   assert.ok(tx, `no transaction journal for the current key ${ledger.current.key}`);
   assert.equal(tx.schemaVersion, TRANSACTION_SCHEMA);
   assert.equal(tx.state, 'published', `current key ${ledger.current.key} journal is ${tx.state}`);
   assert.equal(tx.deploymentId, ledger.current.deploymentId, 'journal deployment differs from last-success');
   assert.equal(tx.revisionSha256, ledger.current.revisionSha256, 'journal revision differs from last-success');
-  assert.ok(receipts.some((r) => r.status === 'published' && r.key === ledger.current.key && r.deploymentId === ledger.current.deploymentId),
+  assert.equal(tx.key, ledger.current.key, 'journal key differs from last-success');
+  assert.equal(tx.snapshotSha256, ledger.current.snapshotSha256, 'journal snapshot differs from last-success');
+  assert.ok(Array.isArray(tx.events) && tx.events.length > 0 && tx.events.length <= 200 && tx.events.at(-1).state === 'published', 'published journal events missing or inconsistent');
+  assert.ok(receipts.some((r) => r.status === 'published' && r.key === ledger.current.key && r.deploymentId === ledger.current.deploymentId &&
+    r.snapshotSha256 === ledger.current.snapshotSha256 && r.revisionSha256 === ledger.current.revisionSha256 && r.productSha256 === ledger.current.productSha256 && r.dataSha256 === ledger.current.dataSha256),
     'no published receipt for the current deployment');
-  return { ...summary, current: { key: ledger.current.key, deploymentId: ledger.current.deploymentId, snapshotSha256: ledger.current.snapshotSha256 }, previous: ledger.previous?.key ?? null };
+  return { ...summary, current: { ...ledger.current }, previous: ledger.previous?.key ?? null };
 }
 
 export async function verifyArtifactSpec(spec) {

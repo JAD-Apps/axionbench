@@ -1,17 +1,17 @@
-<<<<<<< HEAD
 // Contract checks for the native JadBot daily schedule readback. Fixtures only;
 // no network and no JadBot state is touched.
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
+import { spawnSync } from 'node:child_process';
 import test from 'node:test';
-import { checkReadback, checkSchedule, EXPECTED, READBACK_PATH } from '../../scripts/automation/jadbot-daily.mjs';
+import { checkReadback, checkSchedule, EXPECTED, READBACK_PATH, validateReadback, validateSchedule, sourceDigest, PIN, SCHEDULE_ID, PROJECT } from '../../scripts/automation/jadbot-daily.mjs';
 
 const choice = () => ({ provider: 'codex', model: 'gpt-6.1-sol', effort: 'high' });
 const schedule = (over = {}) => ({
   id: EXPECTED.id, projectId: EXPECTED.projectId, name: EXPECTED.name, cron: '30 6 * * *', timeZone: 'UTC', enabled: false, overlap: 'skip', nextRunAt: null,
   template: { plannerChoice: choice(), workerChoice: choice(), reviewerChoice: choice(), modelPin: choice(), workerLimit: 1, collaborate: false,
-    steps: [{ verifyCmd: 'npm run publish:daily', choice: choice(), workerChoice: choice(), workerLimit: 1 }] },
+    steps: [{ verifyCmd: 'npm run publish:daily', choice: choice(), workerChoice: choice(), workerLimit: 1, dependsOn: [] }] },
   ...over,
 });
 const NOW = 1_800_000_000_000;
@@ -52,15 +52,10 @@ test('forged, stale, failed and mismatched readbacks are rejected', () => {
 test('the stored readback location is git-ignored', async () => {
   assert.match(await readFile('.gitignore', 'utf8'), /^evidence\/local\/$/m);
   assert.equal(READBACK_PATH.startsWith('evidence/local/'), true);
-=======
-import assert from 'node:assert/strict';
-import test from 'node:test';
-import { createHash } from 'node:crypto';
-import { spawnSync } from 'node:child_process';
-import { validateReadback, validateSchedule, sourceDigest, PIN, SCHEDULE_ID, PROJECT } from '../../scripts/automation/jadbot-daily.mjs';
+});
 
 const sha = text => createHash('sha256').update(Buffer.from(text)).digest('hex');
-const schedule = () => ({
+const strictSchedule = () => ({
   id: SCHEDULE_ID, projectId: PROJECT, name: 'axionbench-daily-update', cron: '30 6 * * *', timeZone: 'UTC', enabled: false, overlap: 'skip',
   createdAt: 1, updatedAt: 1, checkedAt: 2,
   template: {
@@ -68,11 +63,11 @@ const schedule = () => ({
     steps: [{ choice: { ...PIN }, workerChoice: { ...PIN }, workerLimit: 1, verifyCmd: 'npm run publish:daily', dependsOn: [] }],
   },
 });
-const record = (s = schedule(), extra = {}) => {
+const record = (s = strictSchedule(), extra = {}) => {
   const body = JSON.stringify(s);
   return { schemaVersion: 1, method: 'GET', path: `/v1/workflow-schedules/${SCHEDULE_ID}`, status: 200, at: 3, body, bodySha256: sha(body), sourceSha256: 'src', ...extra };
 };
-const check = r => validateReadback(r, { requireDisabled: true, source: 'src' });
+const check = r => validateReadback(r, { requireDisabled: true, source: 'src', now: 3 });
 
 test('accepts the disabled pinned registration', () => {
   const result = check(record());
@@ -96,22 +91,22 @@ const bad = [
   ['fallback key', s => { s.template.fallback = true; }, /routing key/],
 ];
 for (const [name, mutate, pattern] of bad) test(`rejects ${name}`, () => {
-  const s = schedule(); mutate(s);
+  const s = strictSchedule(); mutate(s);
   assert.throws(() => check(record(s)), pattern);
 });
 
 test('rejects forged, stale, mismatched and non-GET readbacks', () => {
   const forged = record(); forged.body = forged.body.replace('"enabled":false', '"enabled":true');
   assert.throws(() => check(forged), /forged or altered/);
-  assert.throws(() => check(record(schedule(), { at: 1 })), /stale/);
-  assert.throws(() => check(record(schedule(), { sourceSha256: 'other' })), /current client source/);
-  assert.throws(() => check(record(schedule(), { method: 'POST' })), /GET/);
-  assert.throws(() => check(record(schedule(), { path: '/v1/workflow-schedules/wfs_other' })), /path mismatch/);
-  assert.throws(() => check(record(schedule(), { status: 500 })), /status/);
+  assert.throws(() => check(record(strictSchedule(), { at: 1 })), /stale/);
+  assert.throws(() => check(record(strictSchedule(), { sourceSha256: 'other' })), /current client source/);
+  assert.throws(() => check(record(strictSchedule(), { method: 'POST' })), /GET/);
+  assert.throws(() => check(record(strictSchedule(), { path: '/v1/workflow-schedules/wfs_other' })), /path mismatch/);
+  assert.throws(() => check(record(strictSchedule(), { status: 500 })), /status/);
 });
 
 test('enabled state is only tolerated when disabled is not required', () => {
-  const s = schedule(); s.enabled = true;
+  const s = strictSchedule(); s.enabled = true;
   assert.equal(validateSchedule(s).enabled, true);
 });
 
@@ -119,9 +114,18 @@ test('source digest is a sha256 hex string', async () => {
   assert.match(await sourceDigest(), /^[0-9a-f]{64}$/);
 });
 
+test('canonical readbacks reject age, future time, scheduled disabled jobs and step fallback keys', () => {
+  const r=record();
+  assert.throws(() => validateReadback(r,{now:73*3600_000}), /stale/);
+  assert.throws(() => validateReadback({...r,at:120_000},{now:3}), /future/);
+  const s=strictSchedule(); s.nextRunAt=10;
+  assert.throws(() => validateSchedule(s,{requireDisabled:true}), /nextRunAt/);
+  s.nextRunAt=null; s.template.steps[0].fallback=true;
+  assert.throws(() => validateSchedule(s), /routing key/);
+});
+
 test('CLI rejects an unknown command', () => {
   const r = spawnSync('node', ['scripts/automation/jadbot-daily.mjs', 'enable'], { encoding: 'utf8' });
   assert.equal(r.status, 1);
   assert.match(r.stderr, /usage/);
->>>>>>> 28be14e6c8fbc593cb693089956e3a8f14a0cdb4
 });
