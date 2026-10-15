@@ -25,6 +25,8 @@ export async function verifyCapture(record, { root, hostname, releaseManifest = 
   const url = new URL(record.url);
   assert.equal(url.protocol, 'https:', 'capture must be of the HTTPS site');
   assert.equal(url.hostname, hostname, `capture is of ${url.hostname}, not the approved ${hostname}`);
+  assert.equal(url.origin, `https://${hostname}`, 'capture must use the exact HTTPS origin');
+  assert(!url.username && !url.password && !url.search && !url.hash, 'capture URL must not contain credentials, query or fragment');
   assert.ok(Number.isFinite(Date.parse(record.capturedAt)), 'capturedAt');
   assert.match(record.productSha256, /^[a-f0-9]{64}$/, 'productSha256');
   assert.match(record.dataSha256, /^[a-f0-9]{64}$/, 'dataSha256');
@@ -42,7 +44,11 @@ export async function verifyCapture(record, { root, hostname, releaseManifest = 
     seen.add(file.path);
     assert.ok(['screenshot', 'video'].includes(file.kind), `${file.path}: kind must be screenshot or video`);
     assert.ok(Number.isSafeInteger(file.bytes) && file.bytes > 0 && file.bytes <= MAX_BYTES, `${file.path}: bounded byte count`);
-    const path = join(root, file.path);
+    let path = root;
+    for (const part of file.path.split('/')) {
+      path = join(path, part);
+      assert(!(await lstat(path)).isSymbolicLink(), `${file.path}: capture symlink refused`);
+    }
     const info = await lstat(path);
     assert.ok(info.isFile() && !info.isSymbolicLink(), `${file.path} must be a regular file`);
     assert.equal(info.size, file.bytes, `${file.path}: size differs from the record`);
@@ -50,6 +56,7 @@ export async function verifyCapture(record, { root, hostname, releaseManifest = 
     assert.equal(sha256(bytes), file.sha256, `${file.path}: hash differs from the record`);
     if (file.kind === 'screenshot') {
       assert.ok(bytes.subarray(0, 8).equals(PNG), `${file.path} is not a PNG`);
+      assert(bytes.length >= 33, `${file.path}: truncated PNG`);
       if (file.viewport) {
         assert.equal(bytes.readUInt32BE(16), file.viewport.width, `${file.path}: PNG width differs from the viewport`);
         assert.equal(bytes.readUInt32BE(20), file.viewport.height, `${file.path}: PNG height differs from the viewport`);

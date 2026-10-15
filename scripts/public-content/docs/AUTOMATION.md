@@ -36,3 +36,9 @@ Other commands: `publish:site` (publish the current tree; `--dry-run` makes no n
 The Methods page shows the published daily refresh, source retrieval, data validation and build dates separately. A build that the daily update did not publish says so.
 
 Known limits: asset keys use SHA-256 where Wrangler uses BLAKE3, and the asset endpoints are the ones Wrangler uses rather than documented API reference entries; the first live deployment has to confirm both. Readback assumes Pages serves `x/index.html` at `/x/` and the root `404.html` with HTTP 404 for unknown paths.
+
+Snapshot checks bind the supplied directory and manifest to the retained content-addressed tree and saved descriptor. Integrity checks also run on idempotent retries; an extra qualification callback cannot replace them. Credential checks include deployment control files. `production:check` reads every hosted asset and verifies its size and hash against the hosted manifest. Final acceptance additionally compares the qualified manifest and deployed security headers.
+
+Schedule registration, first deployment and enabling the daily update need separate verified receipts. Keep the schedule disabled until the release is approved and its first deployment passes readback.
+
+The schedule contract is 06:30 UTC every day (`30 6 * * *`), with overlapping runs skipped. Every AI stage must use `codex/gpt-6.1-sol/high`, Fast off and no fallback. Registration, runtime observations and enablement are verified separately.

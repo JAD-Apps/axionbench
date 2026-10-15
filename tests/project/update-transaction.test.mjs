@@ -522,3 +522,28 @@ test('prepare-only public patch series reproduces the candidate without commits'
   await assert.rejects(preparePatchSeries({ base, candidate, request, output, now }), /must be empty/);
   await rm(dir, { recursive: true, force: true });
 });
+
+test('snapshot directory, descriptor, manifest and qualification callback cannot bypass retained integrity', async () => {
+  const ctx = await setup(), snapshot = await stage(ctx, '2026-10-03.r1');
+  const redirected = await publish(ctx, { ...snapshot, dir: ctx.dist }, snapshot.key, { qualify: async () => {} });
+  assert.equal(redirected.status,'failed-qualification'); assert.match(redirected.message,/retained content-addressed/); assert.equal(ctx.cf.state.calls.length,0);
+  const fakeManifest = await publish(ctx, { ...snapshot, manifest: { ...snapshot.manifest, sourceCommit:'e'.repeat(40) } }, snapshot.key, { qualify: async () => {} });
+  assert.equal(fakeManifest.status,'failed-qualification'); assert.match(fakeManifest.message,/supplied snapshot manifest/); assert.equal(ctx.cf.state.calls.length,0);
+  const descriptor = JSON.parse(await readFile(`${snapshot.dir}.json`)); descriptor.dataSha256='f'.repeat(64);
+  await writeFile(`${snapshot.dir}.json`,JSON.stringify(descriptor));
+  const badDescriptor = await publish(ctx,snapshot,snapshot.key,{qualify:async()=>{}});
+  assert.equal(badDescriptor.status,'failed-qualification'); assert.match(badDescriptor.message,/retained descriptor dataSha256/); assert.equal(ctx.cf.state.calls.length,0);
+});
+
+test('production-target acceptance detects changed JavaScript and missing security headers', async () => {
+  const ctx=await publishedTwice();
+  const ledger=await readLastSuccess(ctx.stateDir);
+  const snapshotDir=join(ctx.stateDir,'snapshots',ledger.current.snapshotSha256);
+  const manifest=JSON.parse(await readFile(join(snapshotDir,MANIFEST_NAME)));
+  const args={ url:`https://${config.hostname}`,hostname:config.hostname,releaseManifest:manifest,headersText:await readFile(join(snapshotDir,'_headers'),'utf8'),fetcher:ctx.cf.fetcher };
+  const verified=await checkHost(args); assert.equal(verified.artifacts.length,manifest.files.length);
+  ctx.cf.state.hooks.tamper=(_d,name,bytes)=>name==='assets/app.js'?Buffer.from('console.log(2)'):bytes;
+  await assert.rejects(checkHost(args),/hosted asset hash mismatch/);
+  delete ctx.cf.state.hooks.tamper;
+  await assert.rejects(checkHost({...args,fetcher:async(target,init)=>{const response=await ctx.cf.fetcher(target,init);response.headers.delete('x-content-type-options');return response;}}),/deployed header.*mismatch/);
+});

@@ -11,7 +11,7 @@ import { preparePublicSnapshot } from '../public-snapshot.mjs';
 import { verifyPrivatePublic } from '../verify-public.mjs';
 import { PUBLIC_FILES, SOURCE_MANIFEST, validateSource, sha256, jsonBytes } from '../public/boundary.mjs';
 import { validateData } from '../public/data.mjs';
-import { readReceiptArtifact, verifyCommandEvidence } from './receipts.mjs';
+import { readReceiptArtifact, verifyCommandEvidence, verifyCapturedEvidence } from './receipts.mjs';
 import { validateManifest, scanDist, compareWithBuild } from '../release/manifest.mjs';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
@@ -102,6 +102,7 @@ export async function verifyPublicBoundary() {
     const portable = await readReceiptArtifact(candidate, portableDescriptor);
     await verifyCommandEvidence(candidate, portable, { sourceSha256: source.sourceSha256, commands:
       ['lint','data:validate','test:current-policy','test:boundary','typecheck','test:unit','test:scoring','test:pricing','test:weights','build','verify:design','test:routes','test:core-views','test:chart-smoke','test:cost-weights','test:cost-version-views','test:cohort-views','test:acceptance','build:release','release:check'].map(script => `npm run ${script}`) });
+    await verifyCapturedEvidence(candidate, portable);
     await validateSource(candidate); await validateData(candidate);
     release = validateManifest(JSON.parse(await readFile(join(candidate, 'dist/release-manifest.json'))), { sourceArchiveSha256: source.sourceSha256 });
     compareWithBuild(release, await scanDist(join(candidate, 'dist')));

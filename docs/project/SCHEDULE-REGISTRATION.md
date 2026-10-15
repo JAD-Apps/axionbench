@@ -6,8 +6,8 @@ It is **disabled**. Enable it only after the first deployment is verified and th
 
 ## Commands
 
-- `node scripts/automation/jadbot-daily.mjs observe` — one authenticated GET to `/v1/workflow-schedules/wfs_361f98ad3bac` on the local daemon (token from `~/.jadbot/token`, never stored). Saves the exact response body, its SHA-256, the time and the client source hash to `evidence/local/schedule/readback.json` (git-ignored).
-- `node scripts/automation/jadbot-daily.mjs verify-registration --require-disabled` — checks the saved readback offline. Add `--live` to also compare against a fresh GET.
+- `node scripts/automation/jadbot-daily.mjs observe` (alias: `readback`) — one authenticated GET to `/v1/workflow-schedules/wfs_361f98ad3bac` on the local daemon (token from `~/.jadbot/token`, never stored). Saves the exact response body, its SHA-256, the time and the client source hash to `evidence/local/schedule/readback.json` (git-ignored).
+- `node scripts/automation/jadbot-daily.mjs verify-registration --require-disabled` — checks the saved readback offline. Add `--live` to also compare against a fresh GET and require exactly one project schedule. Saved readbacks expire after 72 hours and must match the current client source.
 
 ## What is rejected
 

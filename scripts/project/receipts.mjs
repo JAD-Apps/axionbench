@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { lstat, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { sha256 } from '../public/boundary.mjs';
+import { scanDist } from '../release/manifest.mjs';
 const HEX = /^[a-f0-9]{64}$/;
 
 export async function verifyArtifact(root, descriptor, { maxBytes = 64 * 1024 * 1024 } = {}) {
@@ -45,4 +46,24 @@ export async function verifyCommandEvidence(root, receipt, { sourceSha256, comma
     await verifyArtifact(root, { path: row.log, bytes: row.logBytes, sha256: row.logSha256 });
   }
   return receipt;
+}
+
+export async function verifyCapturedEvidence(root, receipt) {
+  assert(typeof receipt.evidenceRoot === 'string', 'captured evidence root required');
+  // Reuse the artifact path validator, including each directory ancestor.
+  assert(Array.isArray(receipt.capturedEvidence) && receipt.capturedEvidence.length > 0, 'captured browser evidence required');
+  const seen = new Set();
+  for (const row of receipt.capturedEvidence) {
+    assert(!seen.has(row.path), 'duplicate captured evidence'); seen.add(row.path);
+    await verifyArtifact(root, { ...row, path: `${receipt.evidenceRoot}/${row.path}` });
+  }
+  const capturedRoot = join(root, receipt.evidenceRoot);
+  const scanned = await scanDist(capturedRoot);
+  assert.deepEqual(scanned.controlFiles, [], 'captured evidence cannot hide control files');
+  await assert.rejects(lstat(join(capturedRoot, 'release-manifest.json')), error => error.code === 'ENOENT', 'captured evidence cannot hide a release manifest');
+  assert.deepEqual(scanned.files, receipt.capturedEvidence, 'captured evidence list must describe every actual byte');
+  for (const name of ['routes','core-views','cost-version-views','cohort-views','acceptance','cost-weights']) {
+    assert(seen.has(`${name}/report.json`), `captured ${name} report missing`);
+  }
+  return receipt.capturedEvidence;
 }

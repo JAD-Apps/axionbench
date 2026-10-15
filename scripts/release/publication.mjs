@@ -17,7 +17,7 @@
 import assert from 'node:assert/strict';
 import { randomBytes } from 'node:crypto';
 import { chmod, cp, lstat, mkdir, open, readdir, readFile, rename, rm, writeFile } from 'node:fs/promises';
-import { extname, join } from 'node:path';
+import { extname, join, resolve } from 'node:path';
 import { findSecrets } from '../automation/secrets.mjs';
 import { verifyDeployment } from './deployment-gate.mjs';
 import { acquireGateLock } from './gate-lock.mjs';
@@ -214,27 +214,46 @@ export async function stageSnapshot({ distDir, stateDir, key, now = () => new Da
 export async function verifySnapshot(stateDir, snapshotSha256) {
   assert.match(snapshotSha256, HEX64, 'snapshot digest');
   const dir = join(paths(stateDir).snapshots, snapshotSha256);
+  assert((await lstat(dir)).isDirectory() && !(await lstat(dir)).isSymbolicLink(), 'snapshot must be a regular retained directory');
   const manifestBytes = await readFile(join(dir, MANIFEST_NAME));
   const manifest = validateManifest(JSON.parse(manifestBytes));
   compareWithBuild(manifest, await scanDist(dir));
   assert.equal(snapshotDigest(manifest, manifestBytes), snapshotSha256, `snapshot ${snapshotSha256} no longer matches its digest`);
   const publication = JSON.parse(await readFile(join(dir, PUBLICATION_FILE), 'utf8'));
   assert.equal(publication.schemaVersion, PUBLICATION_SCHEMA);
+  assert.equal(publication.status, 'published', 'retained publication must be published');
+  assert.equal(publication.dataSha256, manifest.dataSha256, 'retained publication data mismatch');
+  assert.equal(publication.codeSourceCommit, manifest.sourceCommit, 'retained publication source mismatch');
+  assert.equal(publication.dataOverlaySha256, manifest.dataOverlay?.overlaySha256 ?? null, 'retained publication overlay mismatch');
   assert.equal(publication.refreshKey, manifest.publication?.refreshKey, 'publication.json key differs from the manifest binding');
   assert.equal(manifest.publication.revisionSha256, revisionIdentity(manifest), 'snapshot revision identity mismatch');
+  const descriptorPath = `${dir}.json`;
+  assert((await lstat(descriptorPath)).isFile() && !(await lstat(descriptorPath)).isSymbolicLink(), 'snapshot descriptor must be regular');
+  const descriptor = JSON.parse(await readFile(descriptorPath));
+  assert.equal(descriptor.format, SNAPSHOT_FORMAT, 'snapshot descriptor format mismatch');
+  assert.equal(descriptor.snapshotSha256, snapshotSha256, 'snapshot descriptor digest mismatch');
+  assert.equal(descriptor.key, publication.refreshKey, 'snapshot descriptor key mismatch');
+  assert.equal(descriptor.revisionSha256, revisionIdentity(manifest), 'snapshot descriptor revision mismatch');
+  for (const field of ['productSha256','controlSha256','dataSha256','sourceCommit','builtAt']) assert.equal(descriptor[field], manifest[field], `retained descriptor ${field} mismatch`);
+  assert.equal(descriptor.dataOverlaySha256, manifest.dataOverlay?.overlaySha256 ?? null, 'snapshot descriptor overlay mismatch');
   return manifest;
 }
 
 // Default qualification of a staged snapshot: integrity, publishability,
 // limits, every route file, data manifest binding and credential-free text.
 export async function qualifySnapshot(snapshot, { stateDir, limits = LIMITS, requirePublishable = true }) {
+  assert.equal(resolve(snapshot.dir), resolve(paths(stateDir).snapshots, snapshot.snapshotSha256), 'snapshot directory must be the retained content-addressed candidate');
   const manifest = await verifySnapshot(stateDir, snapshot.snapshotSha256);
+  if (snapshot.manifest) assert.deepEqual(snapshot.manifest, manifest, 'supplied snapshot manifest differs from retained candidate');
+  for (const field of ['productSha256', 'controlSha256', 'dataSha256', 'sourceCommit']) assert.equal(snapshot[field], manifest[field], `snapshot descriptor ${field} mismatch`);
+  assert.equal(snapshot.revisionSha256, revisionIdentity(manifest), 'snapshot descriptor revision mismatch');
+  assert.equal(snapshot.key, manifest.publication.refreshKey, 'snapshot descriptor key mismatch');
   if (requirePublishable) assert.ok(publishableSource(manifest), 'snapshot source is not publishable');
   checkLimits(manifest, limits);
   await checkRouteFiles(snapshot.dir);
   const dataManifest = JSON.parse(await readFile(join(snapshot.dir, 'data-manifest.json'), 'utf8'));
   assert.equal(dataManifest.projection?.sha256, manifest.dataSha256, 'data-manifest.json does not bind the published data.json');
-  for (const file of manifest.files) {
+  for (const file of [...manifest.files, ...manifest.controlFiles]) {
     if (/\.(png|jpe?g|webp|ico|ttf|woff2?)$/.test(file.path)) continue;
     assert.deepEqual(findSecrets(await readFile(join(snapshot.dir, file.path), 'utf8')), [], `credential-shaped text in ${file.path}`);
   }
@@ -375,10 +394,17 @@ export async function publishSnapshot({
         const conflict = tx; tx = null;
         return await finish('rejected-key-conflict', { message: `key ${key} already names revision ${conflict.revisionSha256}; this candidate is ${snapshot.revisionSha256}`, existingState: conflict.state });
       }
-      if (tx.state === 'published') return await finish('already-published', { message: `key ${key} was already published and verified` });
+      if (tx.state === 'published') {
+        // Idempotency is not a shortcut around candidate integrity.
+        try { await qualifySnapshot(snapshot, { stateDir, limits }); }
+        catch (error) { return await finish('failed-qualification', { message: error.message }); }
+        return await finish('already-published', { message: `key ${key} was already published and verified` });
+      }
       if (IN_FLIGHT.has(tx.state)) {
         // Resume the interrupted transaction with its own retained snapshot.
-        snapshot = { ...snapshot, snapshotSha256: tx.snapshotSha256, dir: join(paths(stateDir).snapshots, tx.snapshotSha256), manifest: await verifySnapshot(stateDir, tx.snapshotSha256) };
+        const retained = await verifySnapshot(stateDir, tx.snapshotSha256);
+        snapshot = { ...snapshot, key: tx.key, sourceCommit: retained.sourceCommit, productSha256: retained.productSha256, dataSha256: retained.dataSha256, controlSha256: retained.controlSha256,
+          snapshotSha256: tx.snapshotSha256, dir: join(paths(stateDir).snapshots, tx.snapshotSha256), manifest: retained };
         await saveTransaction(stateDir, tx, tx.state, 'resuming interrupted transaction', now);
       } else {
         if (tx.runs >= limits.maxRunsPerKey) return await finish('rejected-retry-limit', { message: `key ${key} already ran ${tx.runs} times; use the next revision` });
@@ -395,7 +421,11 @@ export async function publishSnapshot({
     if (last) await verifySnapshot(stateDir, last.current.snapshotSha256); // last-good must be restorable before anything changes
 
     // Qualification and project checks happen before any write to Cloudflare.
-    try { await qualify(snapshot, { stateDir, limits }); }
+    try {
+      assert.equal(snapshot.key, key, 'transaction key differs from the retained candidate');
+      await qualifySnapshot(snapshot, { stateDir, limits });
+      if (qualify !== qualifySnapshot) await qualify(snapshot, { stateDir, limits });
+    }
     catch (error) { await saveTransaction(stateDir, tx, 'failed-qualification', error.message, now); return await finish('failed-qualification', { message: error.message }); }
     checkProject(await client.getProject(), config);
 

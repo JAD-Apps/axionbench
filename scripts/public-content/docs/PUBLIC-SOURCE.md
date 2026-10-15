@@ -11,7 +11,7 @@ npm run build:release
 npm run release:check
 ```
 
-The public verification entry point runs 14 checks: portable lint, data recomputation, negative boundary fixtures, TypeScript, unit and scoring tests, pricing and weights tests, a build, chart and task/weight browser tests, viewport/accessibility acceptance, a release build and exact release readback. Browser checks need cached Playwright Chromium or `CHROMIUM_PATH`. Fixtures use a bounded directory under `test-results/scratch` and remove only their own created directories. A failed scratch allocation fails the check; it does not relax filesystem permissions.
+The public verification entry point runs 20 checks: portable lint, data recomputation, negative boundary fixtures, TypeScript, unit and scoring tests, pricing and weights tests, a build, chart and task/weight browser tests, viewport/accessibility acceptance, a release build and exact release readback. Browser checks need cached Playwright Chromium or `CHROMIUM_PATH`. Fixtures use a bounded directory under `test-results/scratch` and remove only their own created directories. A failed scratch allocation fails the check; it does not relax filesystem permissions.
 
 `PUBLIC-SOURCE-MANIFEST.json` lists the size and SHA-256 of every allowed source file. It rejects missing, additional or changed files. `FROZEN-SNAPSHOT.json` separately binds catalogue, source metadata, registry and scoring files. The validator checks model/configuration/result/source joins, total-parameter groups, conflicts, source URLs, units and coverage. It recomputes the served data and its manifest from the permitted inputs. Unknown facts remain unknown.
 

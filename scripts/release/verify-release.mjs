@@ -9,6 +9,8 @@ import { spawn } from 'node:child_process';
 import { createWriteStream } from 'node:fs';
 import { mkdir, readFile, rm, writeFile, cp } from 'node:fs/promises';
 import { acquireGateLock } from './gate-lock.mjs';
+import { fingerprintSource } from '../project/source-fingerprint.mjs';
+import { sha256 } from './manifest.mjs';
 
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 export const GATES = [
@@ -56,6 +58,7 @@ function runGate(script) {
 
 // Gates rebuild and serve the shared dist/; a second run in this worktree waits here.
 const releaseLock = await acquireGateLock();
+const sourceBefore = await fingerprintSource(process.cwd());
 // Retain authentic earlier logs/receipts, including failures, before replacing
 // the working latest receipt. Historical direct receipts stay historical.
 try {
@@ -72,7 +75,9 @@ for (const [script, label] of GATES) {
   console.log(`\n=== ${script} — ${label}`);
   const started = Date.now();
   const { exitCode, error } = await runGate(script);
-  results.push({ script, label, exitCode, error, seconds: Math.round((Date.now() - started) / 100) / 10, log: logPath(script) });
+  const bytes = await readFile(logPath(script));
+  const milliseconds = Date.now() - started;
+  results.push({ script, command: `npm run ${script}`, label, exitCode, error, milliseconds, seconds: Math.round(milliseconds / 100) / 10, log: logPath(script), logBytes: bytes.length, logSha256: sha256(bytes) });
   if (exitCode !== 0) console.error(`!!! ${script} failed (exit ${exitCode ?? error}). Full output: ${logPath(script)}. Rerun with: npm run ${script}`);
 }
 
@@ -82,13 +87,16 @@ try {
   candidate = { productSha256: manifest.productSha256, dataSha256: manifest.dataSha256, sourceCommit: manifest.sourceCommit, sourceDirty: manifest.sourceDirty, fileCount: manifest.fileCount };
 } catch { /* build:release failed; its receipt row already records why */ }
 const failed = results.filter((row) => row.exitCode !== 0);
+const sourceAfter = await fingerprintSource(process.cwd());
+const sourceUnchanged = sourceBefore.sourceSha256 === sourceAfter.sourceSha256;
 await mkdir('test-results', { recursive: true });
-await writeFile('test-results/release-verify.json', JSON.stringify({ finishedAt: new Date().toISOString(), passed: failed.length === 0, candidate, results }, null, 2) + '\n');
+await writeFile('test-results/release-verify.json', JSON.stringify({ schemaVersion: 'axionbench-private-verification-v1', finishedAt: new Date().toISOString(), passed: failed.length === 0 && sourceUnchanged, privateSourceSha256: sourceBefore.sourceSha256, sourceUnchanged, candidate, results }, null, 2) + '\n');
 await releaseLock();
 console.log('\nRelease verification summary');
 for (const row of results) console.log(`${row.exitCode === 0 ? 'pass' : 'FAIL'}  ${row.script.padEnd(18)} ${String(row.seconds).padStart(6)} s  ${row.label}${row.error ? ` — ${row.error}` : ''}${row.exitCode === 0 ? '' : ` — see ${row.log}`}`);
 if (candidate) console.log(`Candidate product ${candidate.productSha256} data ${candidate.dataSha256} commit ${candidate.sourceCommit}${candidate.sourceDirty ? ' (dirty tree)' : ''}`);
-if (failed.length) {
+if (failed.length || !sourceUnchanged) {
+  if (!sourceUnchanged) console.error(`Verification changed source: before ${sourceBefore.sourceSha256}, after ${sourceAfter.sourceSha256}`);
   console.error(`\nverify:release failed: ${failed.map((row) => row.script).join(', ')}. Receipt: test-results/release-verify.json`);
   process.exit(1);
 }
