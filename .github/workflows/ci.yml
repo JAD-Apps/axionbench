@@ -36,7 +36,15 @@ jobs:
       - name: Install Chromium for browser checks
         run: npx playwright-core install --with-deps chromium
       - name: Browser checks
-        run: npm run test:browser
+        run: |
+          npm run test:browser
+          npm run test:acceptance
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: acceptance-screenshots
+          path: test-results/acceptance/
+          if-no-files-found: warn
       - name: Automation checks
         run: npm run verify:automation
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

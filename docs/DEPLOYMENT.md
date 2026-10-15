@@ -11,7 +11,7 @@ Nothing in this step created the project, deployed, or changed DNS.
 `CLOUDFLARE_API_TOKEN` (Pages edit on this account) and `CLOUDFLARE_ACCOUNT_ID`, as GitHub secrets of the `production` environment. Values are never written to files or logs.
 
 ## Repeatable deploy
-1. Merge reviewed changes to `main`; CI must be green.
+1. Merge reviewed changes to `main`; CI must be green and `npm run verify:release` must pass on the exact candidate (receipt: `test-results/release-verify.json`).
 2. Run the **Deploy** workflow (manual). It runs checks, `npm run build:release` and `wrangler pages deploy dist --project-name axionbench --branch main --commit-dirty=false` with the pinned Wrangler, then `npm run deploy:readback -- --latest --write deployment-record.json`.
 3. Local equivalent: `npm run build:release`, `npx wrangler@4.145.0 pages deploy dist --project-name axionbench --branch main`, then `npm run deploy:readback -- --latest` with the two variables set in the environment.
 

@@ -14,15 +14,20 @@ function RankBar({ value, interval, selected, label, index, reduce }: {
   const { parentRef, width } = useParentSize({ debounceTime: 40 });
   const plot = Math.max(80, width);
   const x = scaleLinear({ domain: [0, 1], range: [0, plot - 56] });
+  // The bar length is a plain attribute so a late container resize can never
+  // leave a stale animated width; Motion only animates the entry transform.
+  const labelX = Math.min(Math.max(x(value), interval ? x(interval.high) : 0) + 8, plot - 50);
   return <div className="authority-bar" ref={parentRef}>
     <svg width={plot} height="30" role="img" aria-label={label} data-value={value}>
       <title>{label}</title>
       <line x1="0" x2={plot - 56} y1="23" y2="23" className="bar-track"/>
-      <motion.rect x="0" y="9" height="11" rx="1" fill={selected ? '#c9f36a' : '#315cde'}
-        initial={reduce ? false : { width: 0 }} animate={{ width: x(value) }}
-        transition={{ duration: reduce ? 0 : 0.36, ease: 'easeOut', delay: reduce ? 0 : Math.min(index * 0.02, 0.2) }}/>
+      <motion.g style={{ transformBox: 'fill-box', originX: 0, originY: 0.5 }}
+        initial={reduce ? false : { scaleX: 0 }} animate={{ scaleX: 1 }}
+        transition={{ duration: reduce ? 0 : 0.36, ease: 'easeOut', delay: reduce ? 0 : Math.min(index * 0.02, 0.2) }}>
+        <rect x="0" y="9" height="11" rx="1" width={x(value)} fill={selected ? '#c9f36a' : '#315cde'} data-mark="value"/>
+      </motion.g>
       {interval && <line className="interval-whisker" x1={x(interval.low)} x2={x(interval.high)} y1="14.5" y2="14.5"/>}
-      <text x={Math.min(x(value) + 6, plot - 52)} y="19" className="bar-value">{pct(value)}</text>
+      <text x={labelX} y="19" className="bar-value">{pct(value)}</text>
     </svg>
   </div>;
 }

@@ -44,14 +44,16 @@ The importer also accepts an original MetaBench JSON snapshot. It writes `data.j
 - Profiles require data on all six routed capabilities. Missing heatmap cells stay empty. Security is informational, and 3D is a proxy.
 - Every benchmark reference links to its supplied result source, with model-specific links for published BridgeBench models. Other benchmark links use the corresponding BenchLM results page from the original snapshot.
 
-## Browser checks
+## Release verification
 
 ```sh
-npm install
-npm test
+npm ci
+npm run verify:release   # also available as npm run jadbot:verify
 ```
 
-Set `CHROMIUM_PATH` to a Chromium/Chrome executable. The test also detects Playwright’s local Chromium cache on Linux. For an existing Playwright install, `PLAYWRIGHT_MODULE` may point to its `index.mjs`, without installing dependencies here. Checks cover all chart views, filtering, missing data, task-cost scaling, public data exports, reduced motion, file access, and narrow layouts. Screenshots are written to `test-artifacts/`.
+`verify:release` runs every gate in order: lint, typecheck, unit, scoring, registry, data, authority, design, frontier, chart smoke, head-to-head, open weights, catalogue, visual/interaction acceptance, automation, clean release build and `release:check`. It continues past a failure so one run shows every problem, and writes a receipt to `test-results/release-verify.json`. It never deploys, changes DNS, pushes to Git or opens a GUI browser; the registry gate makes read-only HTTPS requests to captured source URLs.
+
+Browser checks use Playwright's cached Chromium on Linux, or `CHROMIUM_PATH`. `npm run test:acceptance` captures every chapter at 320, 390, 768, 1440 and 1920 px into `test-results/acceptance/`. See `docs/VISUAL-ACCEPTANCE.md` for what it asserts and the reviewed findings.
 
 ## Design references and dependencies
 
