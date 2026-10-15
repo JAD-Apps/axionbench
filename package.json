@@ -15,7 +15,7 @@
     "typecheck": "tsc --noEmit",
     "clean:build": "vite build --emptyOutDir",
     "preclean:build": "node scripts/build-observatory-data.mjs",
-    "test:unit": "vitest run",
+    "test:unit": "vitest run --exclude \"publication/product/**\"",
     "test:registry": "node scripts/test-registry.mjs",
     "data:ingest": "node scripts/ingest-data.mjs",
     "data:validate": "node scripts/data-validate.mjs",
@@ -40,9 +40,11 @@
     "verify:release": "node scripts/release/verify-release.mjs",
     "jadbot:verify": "npm run verify:release",
     "release:check": "node scripts/release/check-dist.mjs",
-    "test:pricing": "node scripts/test-pricing.mjs",
+    "test:pricing": "node scripts/pricing/verify-private-capture.mjs && node scripts/test-pricing.mjs",
     "test:weights": "node scripts/test-weights.mjs",
-    "test:cost-weights": "node scripts/test-cost-weights.mjs"
+    "test:cost-weights": "node scripts/test-cost-weights.mjs",
+    "public:prepare": "node scripts/public-snapshot.mjs",
+    "verify:public": "node scripts/verify-public.mjs"
   },
   "devDependencies": {
     "@types/node": "24.10.0",

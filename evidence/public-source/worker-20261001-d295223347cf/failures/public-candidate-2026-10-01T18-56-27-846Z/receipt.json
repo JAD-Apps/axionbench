@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "axionbench-private-public-integration-v1",
+  "at": "2026-10-01T18:58:06.533Z",
+  "passed": false,
+  "publicSourceSha256": "183786d60b1d34f5ae6037756266f925ac24082d9030552e8233492d615c90da",
+  "privateSourceDigest": "93272cfc790af6fee96a47313ab405611738cc9c2e91db9b501053ec9ba58135",
+  "publicDataSha256": "ff9e7a81ed7ffcbf6a6ae318c112235d5fc837c52c1704206344b3e15165afbe",
+  "productPath": "publication/product",
+  "privateGatesRetained": 21,
+  "results": [
+    {
+      "label": "frozen-install",
+      "command": [
+        "npm",
+        "ci",
+        "--include=dev",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exitCode": 0,
+      "log": "test-results/public-candidate-2026-10-01T18-56-27-846Z/frozen-install.log",
+      "logSha256": "0e973d4776f1ddc848835677bf5b218be540fd5afb32629c2cb28047bd050a5c"
+    },
+    {
+      "label": "portable-gates",
+      "command": [
+        "npm",
+        "run",
+        "verify:public"
+      ],
+      "exitCode": 1,
+      "log": "test-results/public-candidate-2026-10-01T18-56-27-846Z/portable-gates.log",
+      "logSha256": "a60266f48775bfac9a2eef629d468ab76a012aba9324c84bfd283c95fbb8f443"
+    }
+  ],
+  "independentReview": false,
+  "hostedCI": false
+}

@@ -1,6 +1,8 @@
 # Automation: refresh, CI and release product
 
 ## Source storage
+This document describes private raw-source automation. Public source has a separate product-only tree at `publication/product`; its [portable automation](../publication/product/docs/AUTOMATION.md) contains no private ingestion or raw-source dependency. `verify:release` keeps the original 21 private gates and adds the actual `verify:public` gate. Private and portable receipts remain distinct.
+
 Source bytes are stored once, content-addressed, at `data/source-snapshots/blobs/<first two hex>/<sha256>.<ext>` (`saveBlob` in `scripts/data-adapters.mjs`). An existing object is verified against its name and never rewritten. `scripts/ingest-data.mjs` reuses the object already referenced by the last-good dataset when the bytes are identical, so an unchanged cached response adds no file. Per-run metadata (manifest, failed-retrieval receipts, non-promoted candidates) goes in `data/source-snapshots/runs/<date>-<time>/`; it is a handful of small files, not a copy of every response.
 
 Identical bytes keep the retrieval date on which they were first captured. The date of a later re-check is stored separately as `lastVerifiedAt`. Publisher HTML and card prose with no redistribution permission stays in the private audit directory passed to `data:authority`; public files hold attributed factual projections and record both the original-response hash and the projection hash.

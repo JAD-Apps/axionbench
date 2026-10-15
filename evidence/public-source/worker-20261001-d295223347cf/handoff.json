@@ -1,0 +1,16 @@
+{
+  "kind": "worker-local-evidence-handoff",
+  "nativeAcceptance": false,
+  "independentReview": false,
+  "hostedCI": false,
+  "publication": false,
+  "https": false,
+  "ownerWindowsBrowser": false,
+  "publicSourceSha256": "d295223347cfbc60e5154e7b9e994d90fa73a63746d52d76dfc675d66bc0ee91",
+  "publicDataSha256": "ff9e7a81ed7ffcbf6a6ae318c112235d5fc837c52c1704206344b3e15165afbe",
+  "publicProductSha256": "5d1e4bcbc6e50160afb35238c864e130a4ded024233c4074cfb0d5d63ddf5d4d",
+  "portableGates": 14,
+  "screenshots": 45,
+  "liveRefreshPromotedToCanonical": false,
+  "retainedFor": "read-only independent inspection; daemon verifies exact npm run verify:release separately"
+}

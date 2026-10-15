@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "kind": "local-adversarial-fixtures",
+  "publicSourceSha256": "d295223347cfbc60e5154e7b9e994d90fa73a63746d52d76dfc675d66bc0ee91",
+  "checks": [
+    "portable CI runs real gates and refresh stages only the exact fact allowlist",
+    "manifest rejects tampered asset and omitted/extra files",
+    "raw source, private records and symlink audit boundaries fail closed",
+    "frozen byte digest rejects invented identity",
+    "exact configuration joins reject related-model transfer",
+    "source references and original URLs reject dangling evidence",
+    "authority score/hash and undocumented units rejected",
+    "unlicensed or unpermitted nested fact payloads are rejected",
+    "licensed source cells reject tariff changes",
+    "pricing freshness gate rejects stale/future captures",
+    "failing source capture retains every last-good byte and a failure receipt",
+    "refresh refuses raw payloads and changes outside admitted files",
+    "refresh rejects raw data hidden inside a permitted JSON filename",
+    "partial promotion rolls back bytes including its source manifest",
+    "successful fixture promotion only admits facts, preserves frozen catalogue and validates new hashes",
+    "stale last-good pricing can be repaired through validated refresh"
+  ]
+}

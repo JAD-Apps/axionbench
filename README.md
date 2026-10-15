@@ -16,6 +16,8 @@ npm run verify:release
 
 `verify:release` runs the source/data, scoring, licensed pricing, domain-weight, interaction, desktop/mobile, accessibility, reduced-motion, export, refresh and release-integrity gates serially. It records actual exit codes and complete logs under ignored `test-results/`. Browser checks use cached Playwright Chromium, or `CHROMIUM_PATH`. No verification command publishes a site or manipulates the owner's browser.
 
+The complete private raw-source gate retains all 21 original checks and adds `verify:public`. That gate checks the separate [product-only source candidate](publication/product/README.md) against the current frontend/assets, prepares its own frozen dependencies, and executes portable validation without raw captures. Its exact source manifest is `publication/product/PUBLIC-SOURCE-MANIFEST.json`. Run `npm run public:prepare` only when deliberately rebuilding the reviewed snapshot from private facts; normal verification never regenerates it. See [public release boundary](docs/PUBLIC-RELEASE.md).
+
 ## Evidence and interpretation
 
 The supported-source capture contains 508 catalogue models and 118 community result claims. Those earlier claims remain excluded from default scoring because units and source confirmation are insufficient. A separate original-source authority projection contains 1,433 observations and reaches 23 admitted capability suite versions across 8 domains. Counts are recomputed by the data gates; catalogue breadth is distinct from measured coverage.

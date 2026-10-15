@@ -1,0 +1,1741 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "DeepSWE",
+  "version": "1.1",
+  "family": "deep-swe",
+  "domain": "coding",
+  "source": {
+    "url": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json",
+    "resultUrl": "https://deepswe.datacurve.ai/",
+    "sha256": "a7c15d66288fd249c020b9931c017b92d1a3b90e480b3ff34974b752bd030019",
+    "retrievedAt": "2026-09-30T20:45:01.945Z",
+    "generatedAt": "2026-09-22T06:27:15.860279+00:00",
+    "httpStatus": 200
+  },
+  "provenance": "original benchmark-authority measurement",
+  "independentReplication": false,
+  "metrics": {
+    "passAt1": {
+      "unit": "fraction",
+      "direction": "higher",
+      "min": 0,
+      "max": 1
+    },
+    "passAt4": {
+      "unit": "fraction",
+      "direction": "higher",
+      "min": 0,
+      "max": 1
+    }
+  },
+  "taskSetSize": 113,
+  "configurationCount": 70,
+  "modelCount": 28,
+  "rows": [
+    {
+      "model": "gpt-6-astra",
+      "configurationId": "mini_swe_agent_gpt_6_astra_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": "openai",
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.7411504424778761,
+      "passAt4": 0.8053097345132744,
+      "counts": {
+        "passed": 335,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 91,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.7124964807371247,
+        "high": 0.7698044042186275,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": [
+        0.7079646017699115,
+        0.7345132743362832,
+        0.7787610619469026,
+        0.7433628318584071
+      ],
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gemini-3-8-flash",
+      "configurationId": "mini_swe_agent_gemini_3_8_flash_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.738255033557047,
+      "passAt4": 0.8584070796460177,
+      "counts": {
+        "passed": 330,
+        "attempted": 447,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 97,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.7240819014906883,
+        "high": 0.7524281656234058,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-5",
+      "configurationId": "mini_swe_agent_claude_opus_5_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.7364864864864865,
+      "passAt4": 0.8849557522123894,
+      "counts": {
+        "passed": 327,
+        "attempted": 444,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 100,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6977633822227692,
+        "high": 0.7752095907502038,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-6-astra",
+      "configurationId": "mini_swe_agent_gpt_6_astra_high",
+      "harness": "mini-swe-agent",
+      "provider": "openai",
+      "reasoningEffort": "high",
+      "passAt1": 0.7323008849557522,
+      "passAt4": 0.8230088495575221,
+      "counts": {
+        "passed": 331,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 93,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6980659243770221,
+        "high": 0.7665358455344823,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": [
+        0.7610619469026548,
+        0.7168141592920354,
+        0.7610619469026548,
+        0.6902654867256637
+      ],
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-6-astra",
+      "configurationId": "mini_swe_agent_gpt_6_astra_max",
+      "harness": "mini-swe-agent",
+      "provider": "openai",
+      "reasoningEffort": "max",
+      "passAt1": 0.7323008849557522,
+      "passAt4": 0.7964601769911505,
+      "counts": {
+        "passed": 331,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 90,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.7239976873936956,
+        "high": 0.7406040825178087,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": [
+        0.7345132743362832,
+        0.7433628318584071,
+        0.7256637168141593,
+        0.7256637168141593
+      ],
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-5",
+      "configurationId": "mini_swe_agent_claude_opus_5_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.7315436241610739,
+      "passAt4": 0.8584070796460177,
+      "counts": {
+        "passed": 327,
+        "attempted": 447,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 97,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.7009338059446892,
+        "high": 0.7621534423774585,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-5",
+      "configurationId": "mini_swe_agent_claude_opus_5_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.7282850779510023,
+      "passAt4": 0.8761061946902655,
+      "counts": {
+        "passed": 327,
+        "attempted": 449,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 99,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.7088307563794007,
+        "high": 0.7477393995226038,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-6-astra",
+      "configurationId": "mini_swe_agent_gpt_6_astra_medium",
+      "harness": "mini-swe-agent",
+      "provider": "openai",
+      "reasoningEffort": "medium",
+      "passAt1": 0.7278761061946902,
+      "passAt4": 0.8230088495575221,
+      "counts": {
+        "passed": 329,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 93,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.7019796153763715,
+        "high": 0.7537725970130089,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": [
+        0.7345132743362832,
+        0.6991150442477876,
+        0.7168141592920354,
+        0.7610619469026548
+      ],
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-sol",
+      "configurationId": "mini_swe_agent_gpt_5_6_sol_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.7266666666666667,
+      "passAt4": 0.8584070796460177,
+      "counts": {
+        "passed": 327,
+        "attempted": 450,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 97,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6983684441682949,
+        "high": 0.7549648891650385,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gemini-3-8-flash",
+      "configurationId": "mini_swe_agent_gemini_3_8_flash_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.7101769911504425,
+      "passAt4": 0.831858407079646,
+      "counts": {
+        "passed": 321,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 94,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6873689454216633,
+        "high": 0.7329850368792218,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-sol",
+      "configurationId": "mini_swe_agent_gpt_5_6_sol_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.7073170731707317,
+      "passAt4": 0.8584070796460177,
+      "counts": {
+        "passed": 319,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 97,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6991259559533886,
+        "high": 0.7155081903880748,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-fable-5",
+      "configurationId": "mini_swe_agent_claude_fable_5_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.6991150442477876,
+      "passAt4": 0.8849557522123894,
+      "counts": {
+        "passed": 316,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 100,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6666658684930744,
+        "high": 0.7315642200025008,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-fable-5",
+      "configurationId": "mini_swe_agent_claude_fable_5_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.6972477064220184,
+      "passAt4": 0.8407079646017699,
+      "counts": {
+        "passed": 304,
+        "attempted": 436,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 95,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.656912963913939,
+        "high": 0.7375824489300977,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-terra",
+      "configurationId": "mini_swe_agent_gpt_5_6_terra_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.6962305986696231,
+      "passAt4": 0.8849557522123894,
+      "counts": {
+        "passed": 314,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 100,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6706612091651647,
+        "high": 0.7217999881740815,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-sol",
+      "configurationId": "mini_swe_agent_gpt_5_6_sol_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.6940133037694013,
+      "passAt4": 0.8672566371681416,
+      "counts": {
+        "passed": 313,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 98,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.679691851565629,
+        "high": 0.7083347559731736,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "glm-5-3",
+      "configurationId": "mini_swe_agent_glm_5_3_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.6895787139689579,
+      "passAt4": 0.8761061946902655,
+      "counts": {
+        "passed": 311,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 99,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6593922012533708,
+        "high": 0.7197652266845449,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-5",
+      "configurationId": "mini_swe_agent_claude_opus_5_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.6890380313199105,
+      "passAt4": 0.8938053097345132,
+      "counts": {
+        "passed": 308,
+        "attempted": 447,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 101,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6773124446609795,
+        "high": 0.7007636179788415,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-fable-5",
+      "configurationId": "mini_swe_agent_claude_fable_5_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.686046511627907,
+      "passAt4": 0.8672566371681416,
+      "counts": {
+        "passed": 295,
+        "attempted": 430,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 98,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.674838084453603,
+        "high": 0.6972549388022109,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "kimi-k3",
+      "configurationId": "mini_swe_agent_kimi_k3_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.6851441241685144,
+      "passAt4": 0.8938053097345132,
+      "counts": {
+        "passed": 309,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 101,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6397739833756912,
+        "high": 0.7305142649613376,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "grok-4-6",
+      "configurationId": "mini_swe_agent_grok_4_6_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.6747787610619469,
+      "passAt4": 0.8407079646017699,
+      "counts": {
+        "passed": 305,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 95,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6519707153331677,
+        "high": 0.697586806790726,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-luna",
+      "configurationId": "mini_swe_agent_gpt_5_6_luna_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.671875,
+      "passAt4": 0.9026548672566371,
+      "counts": {
+        "passed": 301,
+        "attempted": 448,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 102,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6319549876432895,
+        "high": 0.7117950123567105,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-5",
+      "configurationId": "mini_swe_agent_gpt_5_5_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.6703539823008849,
+      "passAt4": 0.8849557522123894,
+      "counts": {
+        "passed": 303,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 100,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6056975188917963,
+        "high": 0.7350104457099735,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-6-astra",
+      "configurationId": "mini_swe_agent_gpt_6_astra_low",
+      "harness": "mini-swe-agent",
+      "provider": "openai",
+      "reasoningEffort": "low",
+      "passAt1": 0.6703539823008849,
+      "passAt4": 0.7964601769911505,
+      "counts": {
+        "passed": 303,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 90,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6573453717840262,
+        "high": 0.6833625928177437,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": [
+        0.6637168141592921,
+        0.6902654867256637,
+        0.6637168141592921,
+        0.6637168141592921
+      ],
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "grok-4-6",
+      "configurationId": "mini_swe_agent_grok_4_6_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.6674057649667405,
+      "passAt4": 0.8495575221238938,
+      "counts": {
+        "passed": 301,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 96,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.64564892272269,
+        "high": 0.689162607210791,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gemini-3-7-flash",
+      "configurationId": "mini_swe_agent_gemini_3_7_flash_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.6548672566371682,
+      "passAt4": 0.831858407079646,
+      "counts": {
+        "passed": 296,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 94,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.624001933873013,
+        "high": 0.6857325794013234,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-fable-5",
+      "configurationId": "mini_swe_agent_claude_fable_5_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.6536697247706422,
+      "passAt4": 0.831858407079646,
+      "counts": {
+        "passed": 285,
+        "attempted": 436,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 94,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6094504359782605,
+        "high": 0.6978890135630239,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gemini-3-7-flash",
+      "configurationId": "mini_swe_agent_gemini_3_7_flash_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.6526548672566371,
+      "passAt4": 0.8230088495575221,
+      "counts": {
+        "passed": 295,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 93,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6347762421887939,
+        "high": 0.6705334923244803,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "grok-4-6",
+      "configurationId": "mini_swe_agent_grok_4_6_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.6518847006651884,
+      "passAt4": 0.8495575221238938,
+      "counts": {
+        "passed": 294,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 96,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6365486924786155,
+        "high": 0.6672207088517614,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-5",
+      "configurationId": "mini_swe_agent_gpt_5_5_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.6438053097345132,
+      "passAt4": 0.9026548672566371,
+      "counts": {
+        "passed": 291,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 102,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.6126368832394585,
+        "high": 0.6749737362295679,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "glm-5-3-flash",
+      "configurationId": "mini_swe_agent_glm_5_3_flash_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.6339285714285714,
+      "passAt4": 0.8495575221238938,
+      "counts": {
+        "passed": 284,
+        "attempted": 448,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 96,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.590148863911635,
+        "high": 0.6777082789455078,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "deepseek-v4-pro",
+      "configurationId": "mini_swe_agent_deepseek_v4_pro_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.6283185840707964,
+      "passAt4": 0.8849557522123894,
+      "counts": {
+        "passed": 284,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 100,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5649842780985077,
+        "high": 0.6916528900430852,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-sol",
+      "configurationId": "mini_swe_agent_gpt_5_6_sol_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.6106194690265486,
+      "passAt4": 0.8053097345132744,
+      "counts": {
+        "passed": 276,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 91,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5947858925334765,
+        "high": 0.6264530455196208,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-terra",
+      "configurationId": "mini_swe_agent_gpt_5_6_terra_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.6017699115044248,
+      "passAt4": 0.8053097345132744,
+      "counts": {
+        "passed": 272,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 91,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5805269394851535,
+        "high": 0.6230128835236961,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-fable-5",
+      "configurationId": "mini_swe_agent_claude_fable_5_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.5958429561200924,
+      "passAt4": 0.8141592920353983,
+      "counts": {
+        "passed": 258,
+        "attempted": 433,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 92,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5679029016687951,
+        "high": 0.6237830105713897,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-4-8",
+      "configurationId": "mini_swe_agent_claude_opus_4_8_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.5897435897435898,
+      "passAt4": 0.7927927927927928,
+      "counts": {
+        "passed": 253,
+        "attempted": 429,
+        "tasksAttempted": 111,
+        "tasksPassedAny": 88,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5720954362692973,
+        "high": 0.6073917432178823,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-5",
+      "configurationId": "mini_swe_agent_claude_opus_5_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.5812917594654788,
+      "passAt4": 0.8495575221238938,
+      "counts": {
+        "passed": 261,
+        "attempted": 449,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 96,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5579848799986361,
+        "high": 0.6045986389323216,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "qwen3-8-max",
+      "configurationId": "mini_swe_agent_qwen3_8_max_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.5746102449888641,
+      "passAt4": 0.831858407079646,
+      "counts": {
+        "passed": 258,
+        "attempted": 449,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 94,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5479823182637887,
+        "high": 0.6012381717139396,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-luna",
+      "configurationId": "mini_swe_agent_gpt_5_6_luna_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.5685840707964602,
+      "passAt4": 0.7876106194690266,
+      "counts": {
+        "passed": 257,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 89,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5469030532683623,
+        "high": 0.5902650883245582,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "muse-spark-1-2",
+      "configurationId": "mini_swe_agent_muse_spark_1_2_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.5486725663716814,
+      "passAt4": 0.8141592920353983,
+      "counts": {
+        "passed": 248,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 92,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5274295943524101,
+        "high": 0.5699155383909527,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-4-8",
+      "configurationId": "mini_swe_agent_claude_opus_4_8_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.5436241610738255,
+      "passAt4": 0.8053097345132744,
+      "counts": {
+        "passed": 243,
+        "attempted": 447,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 91,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5064898547928808,
+        "high": 0.5807584673547702,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-5",
+      "configurationId": "mini_swe_agent_gpt_5_5_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.5398230088495575,
+      "passAt4": 0.7787610619469026,
+      "counts": {
+        "passed": 244,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 88,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5142921338966476,
+        "high": 0.5653538838024673,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-sonnet-5",
+      "configurationId": "mini_swe_agent_claude_sonnet_5_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.5384615384615384,
+      "passAt4": 0.7876106194690266,
+      "counts": {
+        "passed": 238,
+        "attempted": 442,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 89,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.4960923737597946,
+        "high": 0.5808307031632823,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gemini-3-7-flash",
+      "configurationId": "mini_swe_agent_gemini_3_7_flash_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.5376106194690266,
+      "passAt4": 0.7787610619469026,
+      "counts": {
+        "passed": 243,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 88,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5117141286507079,
+        "high": 0.5635071102873452,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-terra",
+      "configurationId": "mini_swe_agent_gpt_5_6_terra_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.5376106194690266,
+      "passAt4": 0.8053097345132744,
+      "counts": {
+        "passed": 243,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 91,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.49432091479689105,
+        "high": 0.5809003241411621,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "grok-4-5",
+      "configurationId": "mini_swe_agent_grok_4_5_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.5376106194690266,
+      "passAt4": 0.7787610619469026,
+      "counts": {
+        "passed": 243,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 88,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5148025737402474,
+        "high": 0.5604186651978057,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "deepseek-v4-flash",
+      "configurationId": "mini_swe_agent_deepseek_v4_flash_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.5331858407079646,
+      "passAt4": 0.8053097345132744,
+      "counts": {
+        "passed": 241,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 91,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.4975163385576403,
+        "high": 0.5688553428582889,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "muse-spark-1-1",
+      "configurationId": "mini_swe_agent_muse_spark_1_1_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.5331858407079646,
+      "passAt4": 0.7964601769911505,
+      "counts": {
+        "passed": 241,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 90,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.5028324161686275,
+        "high": 0.5635392652473017,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-4-8",
+      "configurationId": "mini_swe_agent_claude_opus_4_8_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.5176991150442478,
+      "passAt4": 0.7787610619469026,
+      "counts": {
+        "passed": 234,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 88,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.4720830235866894,
+        "high": 0.5633152065018062,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-4",
+      "configurationId": "mini_swe_agent_gpt_5_4_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.5176991150442478,
+      "passAt4": 0.7787610619469026,
+      "counts": {
+        "passed": 234,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 88,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.502678065476865,
+        "high": 0.5327201646116306,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-sonnet-5",
+      "configurationId": "mini_swe_agent_claude_sonnet_5_xhigh",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "xhigh",
+      "passAt1": 0.49667405764966743,
+      "passAt4": 0.7522123893805309,
+      "counts": {
+        "passed": 224,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 85,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.4621285677328888,
+        "high": 0.5312195475664461,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-4-8",
+      "configurationId": "mini_swe_agent_claude_opus_4_8_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.48672566371681414,
+      "passAt4": 0.7610619469026548,
+      "counts": {
+        "passed": 220,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 86,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.4643336050994396,
+        "high": 0.5091177223341886,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-sonnet-5",
+      "configurationId": "mini_swe_agent_claude_sonnet_5_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.4823008849557522,
+      "passAt4": 0.7964601769911505,
+      "counts": {
+        "passed": 218,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 90,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.4372377362536038,
+        "high": 0.5273640336579006,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gemini-3-6-flash",
+      "configurationId": "mini_swe_agent_gemini_3_6_flash_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.4668141592920354,
+      "passAt4": 0.7522123893805309,
+      "counts": {
+        "passed": 211,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 85,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.4297656202995626,
+        "high": 0.5038626982845081,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-sol",
+      "configurationId": "mini_swe_agent_gpt_5_6_sol_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.45353982300884954,
+      "passAt4": 0.7168141592920354,
+      "counts": {
+        "passed": 205,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 81,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.42965787629426033,
+        "high": 0.47742176972343875,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-luna",
+      "configurationId": "mini_swe_agent_gpt_5_6_luna_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.4424778761061947,
+      "passAt4": 0.7522123893805309,
+      "counts": {
+        "passed": 200,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 85,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.4132822036270294,
+        "high": 0.47167354858536004,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "glm-5-2",
+      "configurationId": "mini_swe_agent_glm_5_2_max",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "max",
+      "passAt1": 0.43777777777777777,
+      "passAt4": 0.7699115044247787,
+      "counts": {
+        "passed": 197,
+        "attempted": 450,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 87,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.42052148157196967,
+        "high": 0.45503407398358586,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "grok-4-6",
+      "configurationId": "mini_swe_agent_grok_4_6_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.41648106904231624,
+      "passAt4": 0.6902654867256637,
+      "counts": {
+        "passed": 187,
+        "attempted": 449,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 78,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.3932945513980172,
+        "high": 0.43966758668661526,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-opus-4-8",
+      "configurationId": "mini_swe_agent_claude_opus_4_8_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.4079822616407982,
+      "passAt4": 0.6814159292035398,
+      "counts": {
+        "passed": 184,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 77,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.3933464140551067,
+        "high": 0.42261810922648974,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-sonnet-5",
+      "configurationId": "mini_swe_agent_claude_sonnet_5_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.3977777777777778,
+      "passAt4": 0.6460176991150443,
+      "counts": {
+        "passed": 179,
+        "attempted": 450,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 73,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.3665020157144805,
+        "high": 0.4290535398410751,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "glm-5-2",
+      "configurationId": "mini_swe_agent_glm_5_2_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.36283185840707965,
+      "passAt4": 0.6814159292035398,
+      "counts": {
+        "passed": 164,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 77,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.3153311289278631,
+        "high": 0.41033258788629623,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gemini-3-5-flash",
+      "configurationId": "mini_swe_agent_gemini_3_5_flash_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.3606194690265487,
+      "passAt4": 0.6371681415929203,
+      "counts": {
+        "passed": 163,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 72,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.3209564389213443,
+        "high": 0.40028249913175307,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-terra",
+      "configurationId": "mini_swe_agent_gpt_5_6_terra_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.3511111111111111,
+      "passAt4": 0.6017699115044248,
+      "counts": {
+        "passed": 158,
+        "attempted": 450,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 68,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.3172914680770448,
+        "high": 0.3849307541451774,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "kimi-k2-7-code",
+      "configurationId": "mini_swe_agent_kimi_k2_7_code_default",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": null,
+      "passAt1": 0.3053097345132743,
+      "passAt4": 0.6106194690265486,
+      "counts": {
+        "passed": 138,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 69,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.3003027179908134,
+        "high": 0.31031675103573525,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-sonnet-5",
+      "configurationId": "mini_swe_agent_claude_sonnet_5_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.3051224944320713,
+      "passAt4": 0.5752212389380531,
+      "counts": {
+        "passed": 137,
+        "attempted": 449,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 65,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.2938623190176438,
+        "high": 0.31638266984649877,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "configurationId": "mini_swe_agent_claude_sonnet_4_6_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.29933481152993346,
+      "passAt4": 0.5663716814159292,
+      "counts": {
+        "passed": 135,
+        "attempted": 451,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 64,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.2584133988380421,
+        "high": 0.34025622422182483,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-5",
+      "configurationId": "mini_swe_agent_gpt_5_5_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.26991150442477874,
+      "passAt4": 0.4778761061946903,
+      "counts": {
+        "passed": 122,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 54,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.24696647220470694,
+        "high": 0.29285653664485056,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-terra",
+      "configurationId": "mini_swe_agent_gpt_5_6_terra_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.24053452115812918,
+      "passAt4": 0.4424778761061947,
+      "counts": {
+        "passed": 108,
+        "attempted": 449,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 50,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.23276690748868134,
+        "high": 0.24830213482757701,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gemini-3-1-pro-preview",
+      "configurationId": "mini_swe_agent_gemini_3_1_pro_preview_high",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "high",
+      "passAt1": 0.1172566371681416,
+      "passAt4": 0.2831858407079646,
+      "counts": {
+        "passed": 53,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 32,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.10244568255705315,
+        "high": 0.13206759177923005,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-luna",
+      "configurationId": "mini_swe_agent_gpt_5_6_luna_medium",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "medium",
+      "passAt1": 0.11283185840707964,
+      "passAt4": 0.2743362831858407,
+      "counts": {
+        "passed": 51,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 31,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.10452866084502313,
+        "high": 0.12113505596913615,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    },
+    {
+      "model": "gpt-5-6-luna",
+      "configurationId": "mini_swe_agent_gpt_5_6_luna_low",
+      "harness": "mini-swe-agent",
+      "provider": null,
+      "reasoningEffort": "low",
+      "passAt1": 0.015486725663716814,
+      "passAt4": 0.04424778761061947,
+      "counts": {
+        "passed": 7,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 5,
+        "runs": 4
+      },
+      "interval": {
+        "low": 0.0071835281016603,
+        "high": 0.023789923225773328,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "repeatedRunRates": null,
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "sourceArtifactUrl": "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json"
+    }
+  ]
+}

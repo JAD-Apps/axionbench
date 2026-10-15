@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-30",
+  "policy": "Reviewed, source-specific mappings only. A label maps to a model key only when its family and every version number match exactly; related releases, dated snapshots and hosted variants stay distinct. Suites keep their source version and test condition.",
+  "regionDefinition": "Region is the developer organization's country as recorded by Epoch AI (CC BY 4.0) in its model and benchmark metadata. It is never inferred from model language, hosting endpoint or licence. Organizations recorded with several countries are global/multinational; organizations without a record are unknown. Only single-country United States and China records enter the regional selectors.",
+  "suites": [
+    { "id": "deep-swe", "name": "DeepSWE", "version": "v1.1", "domain": "coding", "familyId": "deep-swe", "benchmarkUrl": "https://deepswe.datacurve.ai/" },
+    { "id": "swebench-verified", "name": "SWE-bench Verified", "version": "(Epoch AI run)", "domain": "coding", "familyId": "swe-bench", "benchmarkUrl": "https://epoch.ai/benchmarks/swe-bench-verified" },
+    { "id": "cursorbench-4", "name": "CursorBench", "version": "4.0", "domain": "coding", "familyId": "cursorbench", "benchmarkUrl": "https://cursor.com/cursorbench" },
+    { "id": "frontiercode-1.1", "name": "FrontierCode", "version": "v1.1 (Main)", "domain": "coding", "familyId": "frontiercode", "benchmarkUrl": "https://cognition.com/frontiercode" },
+    { "id": "gpqa-diamond", "name": "GPQA", "version": "Diamond", "domain": "reasoning", "familyId": "gpqa-diamond", "benchmarkUrl": "https://epoch.ai/benchmarks/gpqa-diamond" },
+    { "id": "hle-verified", "name": "HLE-Verified", "version": "Verified set", "domain": "reasoning", "familyId": "hle", "benchmarkUrl": "https://lastexam.ai/" },
+    { "id": "hle-unversioned", "name": "Humanity's Last Exam", "version": "version not stated by publisher", "domain": "reasoning", "familyId": "hle", "benchmarkUrl": "https://lastexam.ai/" },
+    { "id": "frontiermath-tiers-1-3-v2", "name": "FrontierMath Tiers 1–3", "version": "v2 private set", "domain": "mathematics", "familyId": "frontiermath", "benchmarkUrl": "https://epoch.ai/benchmarks/frontiermath-tiers-1-3-v2" },
+    { "id": "frontiermath-tier-4-v2", "name": "FrontierMath Tier 4", "version": "v2 private set", "domain": "mathematics", "familyId": "frontiermath", "benchmarkUrl": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2" },
+    { "id": "otis-mock-aime-2024-2025", "name": "OTIS Mock AIME", "version": "2024–2025", "domain": "mathematics", "familyId": "otis-mock-aime", "benchmarkUrl": "https://epoch.ai/benchmarks/otis-mock-aime-2024-2025" },
+    { "id": "math-level-5", "name": "MATH Level 5", "version": "Level 5 subset", "domain": "mathematics", "familyId": "math", "benchmarkUrl": "https://epoch.ai/benchmarks/math-level-5" },
+    { "id": "simpleqa-verified", "name": "SimpleQA Verified", "version": "Google verified set", "domain": "factuality", "familyId": "simpleqa", "benchmarkUrl": "https://epoch.ai/benchmarks/simple-qa-verified" },
+    { "id": "bfcl-v4", "name": "Berkeley Function Calling Leaderboard", "version": "V4", "domain": "tool-use", "familyId": "bfcl", "benchmarkUrl": "https://gorilla.cs.berkeley.edu/leaderboard.html" },
+    { "id": "longbench-v2", "name": "LongBench v2", "version": "v2 (503 questions)", "domain": "long-context", "familyId": "longbench", "benchmarkUrl": "https://longbench2.github.io/" },
+    { "id": "terminal-bench-2.1", "name": "Terminal-Bench", "version": "2.1", "domain": "agents", "familyId": "terminal-bench", "benchmarkUrl": "https://www.tbench.ai/" },
+    { "id": "terminal-bench-4", "name": "Terminal-Bench", "version": "4.0", "domain": "agents", "familyId": "terminal-bench", "benchmarkUrl": "https://www.tbench.ai/" },
+    { "id": "terminal-bench-science-0.1", "name": "Terminal-Bench-Science", "version": "0.1", "domain": "agents", "familyId": "terminal-bench", "benchmarkUrl": "https://www.tbench.ai/" },
+    { "id": "osworld-2.0", "name": "OSWorld", "version": "2.0", "domain": "agents", "familyId": "osworld", "benchmarkUrl": "https://os-world.github.io/" },
+    { "id": "osworld-2.1", "name": "OSWorld", "version": "2.1", "domain": "agents", "familyId": "osworld", "benchmarkUrl": "https://os-world.github.io/" },
+    { "id": "automationbench", "name": "AutomationBench", "version": "version not stated by publisher", "domain": "agents", "familyId": "automationbench", "benchmarkUrl": null },
+    { "id": "charxiv-reasoning", "name": "CharXiv", "version": "Reasoning split", "domain": "vision-documents", "familyId": "charxiv", "benchmarkUrl": "https://github.com/princeton-nlp/CharXiv" },
+    { "id": "gdp-pdf", "name": "GDP.pdf", "version": "as published by Google", "domain": "vision-documents", "familyId": "gdp-pdf", "benchmarkUrl": "https://surgehq.ai/leaderboards/gdp-pdf" },
+    { "id": "chartography", "name": "Chartography", "version": "version not stated by publisher", "domain": "vision-documents", "familyId": "chartography", "benchmarkUrl": null },
+    { "id": "vals-finance-agent-v2", "name": "Vals Finance Agent", "version": "v2", "domain": "professional", "familyId": "vals-finance-agent", "benchmarkUrl": "https://www.vals.ai/" },
+    { "id": "harvey-legal-agent", "name": "Harvey's Legal Agent Benchmark", "version": "as published by Google", "domain": "professional", "familyId": "harvey-legal-agent", "benchmarkUrl": null }
+  ],
+  "unmappedPublisherBenchmarks": {
+    "LABBench2 Biology real-world research tasks": "Biology research workflows have no registered capability domain; the fact is retained unmapped and cannot fill the domain floor."
+  },
+  "publisherBenchmarks": {
+    "google-gemini38": {
+      "DeepSWE v1.1 Long-horizon software engineering": { "suiteId": "deep-swe", "metric": "pass rate" },
+      "Vals Finance Agent v2 Financial analyst tasks": { "suiteId": "vals-finance-agent-v2", "metric": "accuracy" },
+      "Harvey's Legal Agent Benchmark Complex legal workflows": { "suiteId": "harvey-legal-agent", "metric": "all-pass rate" },
+      "Terminal-bench 2.1 Agentic terminal coding": { "suiteId": "terminal-bench-2.1", "metric": "task success rate" },
+      "Terminal-bench 4.0 General agent capabilities": { "suiteId": "terminal-bench-4", "metric": "task success rate" },
+      "GDP.PDF Expert PDF document comprehension": { "suiteId": "gdp-pdf", "metric": "all-pass rate" },
+      "CharXiv Reasoning Information synthesis from complex charts": { "suiteId": "charxiv-reasoning", "metric": "accuracy" },
+      "HLE-Verified Multidisciplinary expert reasoning": { "suiteId": "hle-verified", "metric": "accuracy" },
+      "OSWorld-2.0 Agentic computer use": { "suiteId": "osworld-2.0", "metric": "partial score" }
+    },
+    "anthropic-sonnet55": {
+      "Visual chart recognitionChartography": { "suiteId": "chartography", "metric": "accuracy" },
+      "Agentic codingTerminal-Bench 4.0": { "suiteId": "terminal-bench-4", "metric": "task success rate" },
+      "Agentic codingCursorBench 4.0": { "suiteId": "cursorbench-4", "metric": "score" },
+      "Multidisciplinary reasoningHumanity’s Last Exam": { "suiteId": "hle-unversioned", "metric": "accuracy" },
+      "Computer useOSWorld 2.1": { "suiteId": "osworld-2.1", "metric": "task success rate" }
+    },
+    "anthropic-opus55": {
+      "Agentic codingTerminal-Bench 4.0¹": { "suiteId": "terminal-bench-4", "metric": "task success rate" },
+      "Agentic codingFrontierCode v1.1 (Main)": { "suiteId": "frontiercode-1.1", "metric": "main score" },
+      "Business workflowsAutomationBench²": { "suiteId": "automationbench", "metric": "score" },
+      "Agentic scientific researchTerminal-Bench-Science 0.1³": { "suiteId": "terminal-bench-science-0.1", "metric": "task success rate" },
+      "Agentic codingCursorBench 4.0": { "suiteId": "cursorbench-4", "metric": "score" },
+      "Multidisciplinary reasoningHumanity's Last Exam": { "suiteId": "hle-unversioned", "metric": "accuracy" },
+      "Computer useOSWorld 2.1": { "suiteId": "osworld-2.1", "metric": "task success rate" },
+      "Visual chart recognitionChartography": { "suiteId": "chartography", "metric": "accuracy" }
+    }
+  },
+  "publisherModels": {
+    "google-gemini38": { "Gemini 3.8 Flash": "gemini-3-8-flash", "Gemini 3.7 Flash": "gemini-3-7-flash", "Claude Opus 5": "claude-opus-5", "Claude Sonnet 5": "claude-sonnet-5", "GPT-5.6 Sol": "gpt-5-6-sol", "GPT-5.6 Terra": "gpt-5-6-terra" },
+    "anthropic-sonnet55": { "Sonnet 5.5": "claude-sonnet-5-5", "Sonnet 5": "claude-sonnet-5", "Opus 5.5": "claude-opus-5-5", "GPT-6 Sol": "gpt-6-sol" },
+    "anthropic-opus55": { "Opus 5.5": "claude-opus-5-5", "Fable 5.1": "claude-fable-5-1", "Opus 5": "claude-opus-5", "GPT-6 Astra": "gpt-6-astra", "GPT-5.6 Sol": "gpt-5-6-sol" }
+  },
+  "publisherHosts": {
+    "google-gemini38": "deepmind.google",
+    "anthropic-sonnet55": "www.anthropic.com",
+    "anthropic-opus55": "www.anthropic.com"
+  },
+  "organizationAliases": {
+    "Qwen": "Alibaba",
+    "MoonshotAI": "Moonshot",
+    "Moonshot AI": "Moonshot",
+    "Zhipu AI": "Z.ai (Zhipu AI)",
+    "Z.ai & Tsinghua": "Z.ai (Zhipu AI),Tsinghua University",
+    "Meta": "Meta AI",
+    "NVIDIA": "Nvidia",
+    "Salesforce": "Salesforce Research",
+    "TII UAE": "Technology Innovation Institute"
+  },
+  "labs": [
+    { "id": "openai", "name": "OpenAI", "organizations": ["OpenAI"] },
+    { "id": "anthropic", "name": "Anthropic", "organizations": ["Anthropic"] },
+    { "id": "google", "name": "Google", "organizations": ["Google", "Google DeepMind", "Google DeepMind,Google", "Google,Google DeepMind", "Google Research", "DeepMind"] },
+    { "id": "meta", "name": "Meta", "organizations": ["Meta AI"] },
+    { "id": "xai", "name": "xAI", "organizations": ["xAI"] },
+    { "id": "microsoft", "name": "Microsoft", "organizations": ["Microsoft", "Microsoft Research"] },
+    { "id": "amazon", "name": "Amazon", "organizations": ["Amazon"] },
+    { "id": "nvidia", "name": "NVIDIA", "organizations": ["Nvidia"] },
+    { "id": "ibm", "name": "IBM", "organizations": ["IBM"] },
+    { "id": "alibaba-qwen", "name": "Alibaba (Qwen)", "organizations": ["Alibaba"] },
+    { "id": "deepseek", "name": "DeepSeek", "organizations": ["DeepSeek", "DeepSeek,Peking University", "DeepSeek,Tsinghua University,Peking University"] },
+    { "id": "zhipu", "name": "Z.ai (Zhipu AI)", "organizations": ["Z.ai (Zhipu AI)", "Z.ai (Zhipu AI),Tsinghua University"] },
+    { "id": "moonshot", "name": "Moonshot AI", "organizations": ["Moonshot"] },
+    { "id": "minimax", "name": "MiniMax", "organizations": ["MiniMax"] },
+    { "id": "stepfun", "name": "StepFun", "organizations": ["StepFun"] },
+    { "id": "bytedance", "name": "ByteDance", "organizations": ["ByteDance"] },
+    { "id": "tencent", "name": "Tencent", "organizations": ["Tencent"] },
+    { "id": "xiaomi", "name": "Xiaomi", "organizations": ["Xiaomi Corp"] },
+    { "id": "mistral", "name": "Mistral AI", "organizations": ["Mistral AI"] },
+    { "id": "cohere", "name": "Cohere", "organizations": ["Cohere", "Cohere,Cohere Labs (formerly Cohere for AI)"] }
+  ]
+}

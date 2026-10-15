@@ -1,0 +1,6 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 test:chart-smoke
+> node scripts/chart-smoke.mjs
+
+Chart smoke passed: preserved contour motion, source-bound missingness, exact table parity, original result links, keyboard/touch selection, compatible filters, share state, reduced motion and mobile bounds.

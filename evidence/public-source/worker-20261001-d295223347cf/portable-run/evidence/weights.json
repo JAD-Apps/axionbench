@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "at": "2026-10-01T19:23:08.808Z",
+  "cohort": [
+    "gpt-6-astra",
+    "gemini-3-8-flash"
+  ],
+  "customWeights": {
+    "coding": 1,
+    "reasoning": 0,
+    "mathematics": 1,
+    "knowledge": 0,
+    "instruction-following": 0,
+    "long-context": 0,
+    "tool-use": 0,
+    "agents": 0,
+    "vision-documents": 0,
+    "factuality": 0,
+    "multilingual": 0
+  },
+  "defaultScoresAvailable": false,
+  "coveredDomains": [
+    "coding",
+    "mathematics"
+  ],
+  "commonPanels": 2,
+  "independentlyRecomputedScores": {
+    "gpt-6-astra": {
+      "model": "GPT-6 Astra",
+      "score": 0.8541504424778761,
+      "domainScores": {
+        "coding": 0.7323008849557522,
+        "mathematics": 0.976
+      },
+      "eligible": true
+    },
+    "gemini-3-8-flash": {
+      "model": "Gemini 3.8 Flash",
+      "score": 0.4788836143394991,
+      "domainScores": {
+        "coding": 0.738255033557047,
+        "mathematics": 0.21951219512195122
+      },
+      "eligible": true
+    }
+  },
+  "weightScenarios": 6,
+  "leaveSuiteScenarios": 2,
+  "checks": [
+    "family caps",
+    "strict shared reasoning setting",
+    "unknown conditions",
+    "duplicate rejection",
+    "no missing zero",
+    "weight URLs",
+    "independent-only missingness"
+  ]
+}

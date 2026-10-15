@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "axionbench-frozen-snapshot-v1",
+  "sourceDigest": "93272cfc790af6fee96a47313ab405611738cc9c2e91db9b501053ec9ba58135",
+  "counts": {
+    "models": 508,
+    "observations": 118,
+    "configurations": 1562,
+    "openWeights": 289,
+    "sources": 1061,
+    "suites": 69
+  },
+  "files": {
+    "data/frozen-catalogue.json": "eee09d88ac1283d87ef39f935a82f1bf2cb362ffa18679acd8f83312b7a81870",
+    "data/frozen-source-details.json": "8e01be18e64727d6e72828ab7fa9a328113d5b9141ea9b21be9cf89c37119dd3",
+    "data/benchmark-registry.json": "9504868d7e66d081ca2130757309a5c5740bf7fe1a69a5f3b8d80c545ee97085",
+    "data/scoring.json": "c40d1fa632eb31d4dbfa06c71cb2ffa94488aedcf610a3767b2ad4a2c04a6d4a"
+  },
+  "limitation": "A frozen, limited factual projection. Source-reported reuse restrictions and unknowns are retained; this manifest grants no additional permissions. Catalogue identities, community claims and open-weight metadata require a separately reviewed snapshot to change."
+}

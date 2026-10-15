@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "at": "2026-10-01T19:23:08.484Z",
+  "sourceSha256": "b1cf5d3eec2479602d6757520c61351becb27b8cc6a509aec1b8b491605cab92",
+  "priceFactsSha256": "9afd9da0b097ada382517eebffcf373eba4b52aef9bab0cf2a621dea3159c29a",
+  "records": 11,
+  "pricedPanelModels": 9,
+  "originalSourceReplay": false,
+  "handChecks": [
+    "thinking counted once",
+    "explicit cache storage",
+    "200000/200001 boundary",
+    "cached prompts enter tier",
+    "missing is not zero",
+    "promo expires",
+    "freshness",
+    "Pareto dominance"
+  ]
+}

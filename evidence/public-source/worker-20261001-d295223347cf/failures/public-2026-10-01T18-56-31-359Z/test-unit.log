@@ -1,0 +1,14 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 test:unit
+> vitest run
+
+
+ RUN  v5.0.3 /home/johnd/.jadbot/worktrees/01a0f8bb-65ef-7fa6-9705-692c7a000aaa/publication/product
+
+
+ Test Files  2 passed (2)
+      Tests  6 passed (6)
+   Start at  19:56:48
+   Duration  489ms (tests 57%, transform 34%, import 7%, worker 2%)
+

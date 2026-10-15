@@ -1,0 +1,26 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 test:scoring
+> node tests/scoring/test-scoring.mjs
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/johnd/.jadbot/worktrees/01a0f8bb-65ef-7fa6-9705-692c7a000aaa/publication/product/data/ingestion.json' imported from /home/johnd/.jadbot/worktrees/01a0f8bb-65ef-7fa6-9705-692c7a000aaa/publication/product/tests/scoring/test-scoring.mjs
+Did you mean to import "../../../../data/ingestion.json"?
+    at finalizeResolution (node:internal/modules/esm/resolve:272:11)
+    at moduleResolve (node:internal/modules/esm/resolve:879:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
+    at #resolve (node:internal/modules/esm/loader:687:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:381:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///home/johnd/.jadbot/worktrees/01a0f8bb-65ef-7fa6-9705-692c7a000aaa/publication/product/data/ingestion.json'
+}
+
+Node.js v24.20.0

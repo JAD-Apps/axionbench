@@ -1,0 +1,6 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 test:weights
+> node scripts/test-weights.mjs
+
+Real common-panel weight arithmetic, default missingness, family caps and sensitivity regressions passed.

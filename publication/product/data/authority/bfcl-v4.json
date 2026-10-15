@@ -1,0 +1,1123 @@
+{
+  "schemaVersion": 1,
+  "benchmark": "Berkeley Function Calling Leaderboard",
+  "suiteId": "bfcl-v4",
+  "version": "V4",
+  "domain": "tool-use",
+  "familyId": "bfcl",
+  "publisher": "Gorilla LLM team, UC Berkeley",
+  "provenance": "original benchmark-authority measurement",
+  "metric": {
+    "name": "overall accuracy (unweighted mean of sub-categories)",
+    "unit": "percent",
+    "direction": "higher",
+    "min": 0,
+    "max": 100,
+    "evidence": "Every Overall Acc cell carries a literal % sign in the official CSV; the page defines Overall Accuracy."
+  },
+  "evaluationCommit": "f7cf735",
+  "source": {
+    "url": "https://gorilla.cs.berkeley.edu/data_overall.csv",
+    "resultUrl": "https://gorilla.cs.berkeley.edu/leaderboard.html",
+    "sha256": "ede5081a24bc5ac7f9b3b09a52af6bcfcd35aa0f1709239fed979db77a8159a6",
+    "pageSha256": "ef72a8621b6ea1b8aa1d1b7691f73cc3079fd38e86f599c9a38cb626c911fc29",
+    "retrievedAt": "2026-09-30T22:29:04.041Z",
+    "generatedAt": "2026-04-12",
+    "generatedAtBasis": "leaderboard page “Last Updated” date",
+    "httpStatus": 200
+  },
+  "rowCount": 109,
+  "rowsSha256": "320d7930c4cc758403e5d1ef13c74db0da15b6d365cef27458aeb5eae3b69f83",
+  "rows": [
+    {
+      "rank": 1,
+      "model": "Claude-Opus-4-5-20251101 (FC)",
+      "modelKey": "claude-opus-4-5-20251101",
+      "mode": "FC",
+      "overallPercent": 77.47,
+      "organization": "Anthropic",
+      "licence": "Proprietary",
+      "modelLink": "https://www.anthropic.com/news/claude-4"
+    },
+    {
+      "rank": 2,
+      "model": "Claude-Sonnet-4-5-20250929 (FC)",
+      "modelKey": "claude-sonnet-4-5-20250929",
+      "mode": "FC",
+      "overallPercent": 73.24,
+      "organization": "Anthropic",
+      "licence": "Proprietary",
+      "modelLink": "https://www.anthropic.com/news/claude-sonnet-4-5"
+    },
+    {
+      "rank": 3,
+      "model": "Gemini-3-Pro-Preview (Prompt)",
+      "modelKey": "gemini-3-pro-preview",
+      "mode": "Prompt",
+      "overallPercent": 72.51,
+      "organization": "Google",
+      "licence": "Proprietary",
+      "modelLink": "https://deepmind.google/technologies/gemini/pro/"
+    },
+    {
+      "rank": 4,
+      "model": "GLM-4.6 (FC thinking)",
+      "modelKey": "glm-4-6",
+      "mode": "FC thinking",
+      "overallPercent": 72.38,
+      "organization": "Zhipu AI",
+      "licence": "MIT",
+      "modelLink": "https://huggingface.co/zai-org/GLM-4.6"
+    },
+    {
+      "rank": 5,
+      "model": "Grok-4-1-fast-reasoning (FC)",
+      "modelKey": "grok-4-1-fast-reasoning",
+      "mode": "FC",
+      "overallPercent": 69.57,
+      "organization": "xAI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.x.ai/docs/models"
+    },
+    {
+      "rank": 6,
+      "model": "Claude-Haiku-4-5-20251001 (FC)",
+      "modelKey": "claude-haiku-4-5-20251001",
+      "mode": "FC",
+      "overallPercent": 68.7,
+      "organization": "Anthropic",
+      "licence": "Proprietary",
+      "modelLink": "https://www.anthropic.com/news/claude-haiku-4-5"
+    },
+    {
+      "rank": 7,
+      "model": "Gemini-3-Pro-Preview (FC)",
+      "modelKey": "gemini-3-pro-preview",
+      "mode": "FC",
+      "overallPercent": 68.14,
+      "organization": "Google",
+      "licence": "Proprietary",
+      "modelLink": "https://deepmind.google/technologies/gemini/pro/"
+    },
+    {
+      "rank": 8,
+      "model": "o3-2025-04-16 (Prompt)",
+      "modelKey": "o3-2025-04-16",
+      "mode": "Prompt",
+      "overallPercent": 63.05,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/introducing-o3-and-o4-mini/"
+    },
+    {
+      "rank": 9,
+      "model": "Grok-4-0709 (Prompt)",
+      "modelKey": "grok-4-0709",
+      "mode": "Prompt",
+      "overallPercent": 62.97,
+      "organization": "xAI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.x.ai/docs/models"
+    },
+    {
+      "rank": 10,
+      "model": "Grok-4-0709 (FC)",
+      "modelKey": "grok-4-0709",
+      "mode": "FC",
+      "overallPercent": 61.38,
+      "organization": "xAI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.x.ai/docs/models"
+    },
+    {
+      "rank": 11,
+      "model": "Moonshotai-Kimi-K2-Instruct (FC)",
+      "modelKey": "moonshotai-kimi-k2-instruct",
+      "mode": "FC",
+      "overallPercent": 59.06,
+      "organization": "MoonshotAI",
+      "licence": "modified-mit",
+      "modelLink": "https://huggingface.co/moonshotai/Kimi-K2-Instruct"
+    },
+    {
+      "rank": 12,
+      "model": "Grok-4-1-fast-non-reasoning (FC)",
+      "modelKey": "grok-4-1-fast-non-reasoning",
+      "mode": "FC",
+      "overallPercent": 58.29,
+      "organization": "xAI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.x.ai/docs/models"
+    },
+    {
+      "rank": 13,
+      "model": "Command A Reasoning (FC)",
+      "modelKey": "command-a-reasoning",
+      "mode": "FC",
+      "overallPercent": 57.06,
+      "organization": "Cohere",
+      "licence": "CC-BY-NC 4.0 License (w/ Acceptable Use Addendum)",
+      "modelLink": "https://cohere.com/blog/command-a-reasoning"
+    },
+    {
+      "rank": 14,
+      "model": "DeepSeek-V3.2-Exp (Prompt + Thinking)",
+      "modelKey": "deepseek-v3-2-exp",
+      "mode": "Prompt + Thinking",
+      "overallPercent": 56.73,
+      "organization": "DeepSeek",
+      "licence": "MIT",
+      "modelLink": "https://api-docs.deepseek.com/news/news250528"
+    },
+    {
+      "rank": 15,
+      "model": "Gemini-2.5-Flash (FC)",
+      "modelKey": "gemini-2-5-flash",
+      "mode": "FC",
+      "overallPercent": 56.24,
+      "organization": "Google",
+      "licence": "Proprietary",
+      "modelLink": "https://deepmind.google/technologies/gemini/flash/"
+    },
+    {
+      "rank": 16,
+      "model": "GPT-5.2-2025-12-11 (FC)",
+      "modelKey": "gpt-5-2-2025-12-11",
+      "mode": "FC",
+      "overallPercent": 55.87,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/zh-Hans-CN/index/introducing-gpt-5-2/"
+    },
+    {
+      "rank": 17,
+      "model": "GPT-5-mini-2025-08-07 (FC)",
+      "modelKey": "gpt-5-mini-2025-08-07",
+      "mode": "FC",
+      "overallPercent": 55.46,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/introducing-gpt-5/"
+    },
+    {
+      "rank": 18,
+      "model": "xLAM-2-32b-fc-r (FC)",
+      "modelKey": "xlam-2-32b-fc-r",
+      "mode": "FC",
+      "overallPercent": 54.66,
+      "organization": "Salesforce",
+      "licence": "cc-by-nc-4.0",
+      "modelLink": "https://huggingface.co/Salesforce/xLAM-2-32b-fc-r"
+    },
+    {
+      "rank": 19,
+      "model": "DeepSeek-V3.2-Exp (FC)",
+      "modelKey": "deepseek-v3-2-exp",
+      "mode": "FC",
+      "overallPercent": 54.12,
+      "organization": "DeepSeek",
+      "licence": "MIT",
+      "modelLink": "https://api-docs.deepseek.com/news/news250528"
+    },
+    {
+      "rank": 20,
+      "model": "GPT-4.1-2025-04-14 (FC)",
+      "modelKey": "gpt-4-1-2025-04-14",
+      "mode": "FC",
+      "overallPercent": 53.96,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/gpt-4-1/"
+    },
+    {
+      "rank": 21,
+      "model": "o4-mini-2025-04-16 (FC)",
+      "modelKey": "o4-mini-2025-04-16",
+      "mode": "FC",
+      "overallPercent": 53.24,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/introducing-o3-and-o4-mini/"
+    },
+    {
+      "rank": 22,
+      "model": "xLAM-2-70b-fc-r (FC)",
+      "modelKey": "xlam-2-70b-fc-r",
+      "mode": "FC",
+      "overallPercent": 53.07,
+      "organization": "Salesforce",
+      "licence": "cc-by-nc-4.0",
+      "modelLink": "https://huggingface.co/Salesforce/Llama-xLAM-2-70b-fc-r"
+    },
+    {
+      "rank": 23,
+      "model": "Qwen3-235B-A22B-Instruct-2507 (Prompt)",
+      "modelKey": "qwen3-235b-a22b-instruct-2507",
+      "mode": "Prompt",
+      "overallPercent": 52.15,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"
+    },
+    {
+      "rank": 24,
+      "model": "GPT-5-nano-2025-08-07 (FC)",
+      "modelKey": "gpt-5-nano-2025-08-07",
+      "mode": "FC",
+      "overallPercent": 51.45,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/introducing-gpt-5/"
+    },
+    {
+      "rank": 25,
+      "model": "Nanbeige4-3B-Thinking-2511 (FC)",
+      "modelKey": "nanbeige4-3b-thinking-2511",
+      "mode": "FC",
+      "overallPercent": 51.4,
+      "organization": "Nanbeige",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Nanbeige/Nanbeige4-3B-Thinking-2511"
+    },
+    {
+      "rank": 26,
+      "model": "Gemini-2.5-Flash (Prompt)",
+      "modelKey": "gemini-2-5-flash",
+      "mode": "Prompt",
+      "overallPercent": 50.9,
+      "organization": "Google",
+      "licence": "Proprietary",
+      "modelLink": "https://deepmind.google/technologies/gemini/flash/"
+    },
+    {
+      "rank": 27,
+      "model": "GPT-4.1-mini-2025-04-14 (FC)",
+      "modelKey": "gpt-4-1-mini-2025-04-14",
+      "mode": "FC",
+      "overallPercent": 50.45,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/gpt-4-1/"
+    },
+    {
+      "rank": 28,
+      "model": "o4-mini-2025-04-16 (Prompt)",
+      "modelKey": "o4-mini-2025-04-16",
+      "mode": "Prompt",
+      "overallPercent": 50.26,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/introducing-o3-and-o4-mini/"
+    },
+    {
+      "rank": 29,
+      "model": "Qwen3-32B (FC)",
+      "modelKey": "qwen3-32b",
+      "mode": "FC",
+      "overallPercent": 48.71,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-32B"
+    },
+    {
+      "rank": 30,
+      "model": "o3-2025-04-16 (FC)",
+      "modelKey": "o3-2025-04-16",
+      "mode": "FC",
+      "overallPercent": 48.56,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/introducing-o3-and-o4-mini/"
+    },
+    {
+      "rank": 31,
+      "model": "Qwen3-235B-A22B-Instruct-2507 (FC)",
+      "modelKey": "qwen3-235b-a22b-instruct-2507",
+      "mode": "FC",
+      "overallPercent": 47.99,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507"
+    },
+    {
+      "rank": 32,
+      "model": "Nanbeige3.5-Pro-Thinking (FC)",
+      "modelKey": "nanbeige3-5-pro-thinking",
+      "mode": "FC",
+      "overallPercent": 47.68,
+      "organization": "Nanbeige",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Nanbeige"
+    },
+    {
+      "rank": 33,
+      "model": "Qwen3-32B (Prompt)",
+      "modelKey": "qwen3-32b",
+      "mode": "Prompt",
+      "overallPercent": 46.78,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-32B"
+    },
+    {
+      "rank": 34,
+      "model": "xLAM-2-8b-fc-r (FC)",
+      "modelKey": "xlam-2-8b-fc-r",
+      "mode": "FC",
+      "overallPercent": 46.68,
+      "organization": "Salesforce",
+      "licence": "cc-by-nc-4.0",
+      "modelLink": "https://huggingface.co/Salesforce/Llama-xLAM-2-8b-fc-r"
+    },
+    {
+      "rank": 35,
+      "model": "Command A (FC)",
+      "modelKey": "command-a",
+      "mode": "FC",
+      "overallPercent": 46.49,
+      "organization": "Cohere",
+      "licence": "CC-BY-NC 4.0 License (w/ Acceptable Use Addendum)",
+      "modelLink": "https://cohere.com/blog/command-a"
+    },
+    {
+      "rank": 36,
+      "model": "BitAgent-Bounty-8B",
+      "modelKey": "bitagent-bounty-8b",
+      "mode": null,
+      "overallPercent": 46.23,
+      "organization": "Bittensor",
+      "licence": "Apache-2.0",
+      "modelLink": "https://huggingface.co/BitAgent/BitAgent-Bounty-8B"
+    },
+    {
+      "rank": 37,
+      "model": "Arch-Agent-32B",
+      "modelKey": "arch-agent-32b",
+      "mode": null,
+      "overallPercent": 45.37,
+      "organization": "katanemo",
+      "licence": "katanemo-research",
+      "modelLink": "https://huggingface.co/katanemo/Arch-Agent-32B"
+    },
+    {
+      "rank": 38,
+      "model": "GPT-5.2-2025-12-11 (Prompt)",
+      "modelKey": "gpt-5-2-2025-12-11",
+      "mode": "Prompt",
+      "overallPercent": 45.27,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/zh-Hans-CN/index/introducing-gpt-5-2/"
+    },
+    {
+      "rank": 39,
+      "model": "Qwen3-8B (FC)",
+      "modelKey": "qwen3-8b",
+      "mode": "FC",
+      "overallPercent": 42.57,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-8B"
+    },
+    {
+      "rank": 40,
+      "model": "ToolACE-2-8B (FC)",
+      "modelKey": "toolace-2-8b",
+      "mode": "FC",
+      "overallPercent": 42.44,
+      "organization": "Huawei Noah & USTC",
+      "licence": "Apache-2.0",
+      "modelLink": "https://huggingface.co/Team-ACE/ToolACE-2-8B"
+    },
+    {
+      "rank": 41,
+      "model": "Qwen3-30B-A3B-Instruct-2507 (FC)",
+      "modelKey": "qwen3-30b-a3b-instruct-2507",
+      "mode": "FC",
+      "overallPercent": 41.39,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507"
+    },
+    {
+      "rank": 42,
+      "model": "xLAM-2-3b-fc-r (FC)",
+      "modelKey": "xlam-2-3b-fc-r",
+      "mode": "FC",
+      "overallPercent": 41.22,
+      "organization": "Salesforce",
+      "licence": "cc-by-nc-4.0",
+      "modelLink": "https://huggingface.co/Salesforce/xLAM-2-3b-fc-r"
+    },
+    {
+      "rank": 43,
+      "model": "Qwen3-14B (FC)",
+      "modelKey": "qwen3-14b",
+      "mode": "FC",
+      "overallPercent": 41.03,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-14B"
+    },
+    {
+      "rank": 44,
+      "model": "Qwen3-8B (Prompt)",
+      "modelKey": "qwen3-8b",
+      "mode": "Prompt",
+      "overallPercent": 40.43,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-8B"
+    },
+    {
+      "rank": 45,
+      "model": "GPT-4.1-2025-04-14 (Prompt)",
+      "modelKey": "gpt-4-1-2025-04-14",
+      "mode": "Prompt",
+      "overallPercent": 39.38,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/gpt-4-1/"
+    },
+    {
+      "rank": 46,
+      "model": "mistral-large-2411 (FC)",
+      "modelKey": "mistral-large-2411",
+      "mode": "FC",
+      "overallPercent": 38.37,
+      "organization": "Mistral AI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.mistral.ai/guides/model-selection/"
+    },
+    {
+      "rank": 47,
+      "model": "Qwen3-14B (Prompt)",
+      "modelKey": "qwen3-14b",
+      "mode": "Prompt",
+      "overallPercent": 37.77,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-14B"
+    },
+    {
+      "rank": 48,
+      "model": "Mistral-Medium-2505",
+      "modelKey": "mistral-medium-2505",
+      "mode": null,
+      "overallPercent": 37.69,
+      "organization": "Mistral AI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.mistral.ai/guides/model-selection/"
+    },
+    {
+      "rank": 49,
+      "model": "Mistral-Medium-2505 (FC)",
+      "modelKey": "mistral-medium-2505",
+      "mode": "FC",
+      "overallPercent": 37.56,
+      "organization": "Mistral AI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.mistral.ai/guides/model-selection/"
+    },
+    {
+      "rank": 50,
+      "model": "Llama-4-Maverick-17B-128E-Instruct-FP8 (FC)",
+      "modelKey": "llama-4-maverick-17b-128e-instruct-fp8",
+      "mode": "FC",
+      "overallPercent": 37.29,
+      "organization": "Meta",
+      "licence": "Meta Llama 4 Community",
+      "modelLink": "https://huggingface.co/meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8"
+    },
+    {
+      "rank": 51,
+      "model": "Mistral-small-2506 (FC)",
+      "modelKey": "mistral-small-2506",
+      "mode": "FC",
+      "overallPercent": 37.15,
+      "organization": "Mistral AI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.mistral.ai/guides/model-selection/"
+    },
+    {
+      "rank": 52,
+      "model": "Gemini-2.5-Flash-Lite (FC)",
+      "modelKey": "gemini-2-5-flash-lite",
+      "mode": "FC",
+      "overallPercent": 36.87,
+      "organization": "Google",
+      "licence": "Proprietary",
+      "modelLink": "https://deepmind.google/technologies/gemini/flash-lite/"
+    },
+    {
+      "rank": 53,
+      "model": "Qwen3-30B-A3B-Instruct-2507 (Prompt)",
+      "modelKey": "qwen3-30b-a3b-instruct-2507",
+      "mode": "Prompt",
+      "overallPercent": 36.7,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507"
+    },
+    {
+      "rank": 54,
+      "model": "Qwen3-4B-Instruct-2507 (FC)",
+      "modelKey": "qwen3-4b-instruct-2507",
+      "mode": "FC",
+      "overallPercent": 35.68,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507"
+    },
+    {
+      "rank": 55,
+      "model": "Qwen3-4B-Instruct-2507 (Prompt)",
+      "modelKey": "qwen3-4b-instruct-2507",
+      "mode": "Prompt",
+      "overallPercent": 35.52,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507"
+    },
+    {
+      "rank": 56,
+      "model": "Arch-Agent-3B",
+      "modelKey": "arch-agent-3b",
+      "mode": null,
+      "overallPercent": 35.36,
+      "organization": "katanemo",
+      "licence": "katanemo-research",
+      "modelLink": "https://huggingface.co/katanemo/Arch-Agent-3B"
+    },
+    {
+      "rank": 57,
+      "model": "Claude-Opus-4-5-20251101 (Prompt)",
+      "modelKey": "claude-opus-4-5-20251101",
+      "mode": "Prompt",
+      "overallPercent": 33.47,
+      "organization": "Anthropic",
+      "licence": "Proprietary",
+      "modelLink": "https://www.anthropic.com/news/claude-4"
+    },
+    {
+      "rank": 58,
+      "model": "GPT-4.1-nano-2025-04-14 (FC)",
+      "modelKey": "gpt-4-1-nano-2025-04-14",
+      "mode": "FC",
+      "overallPercent": 33.05,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/gpt-4-1/"
+    },
+    {
+      "rank": 59,
+      "model": "Mistral-Small-2506 (Prompt)",
+      "modelKey": "mistral-small-2506",
+      "mode": "Prompt",
+      "overallPercent": 32.38,
+      "organization": "Mistral AI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.mistral.ai/guides/model-selection/"
+    },
+    {
+      "rank": 60,
+      "model": "Arch-Agent-1.5B",
+      "modelKey": "arch-agent-1-5b",
+      "mode": null,
+      "overallPercent": 32.14,
+      "organization": "katanemo",
+      "licence": "katanemo-research",
+      "modelLink": "https://huggingface.co/katanemo/Arch-Agent-1.5B"
+    },
+    {
+      "rank": 61,
+      "model": "Command R7B (FC)",
+      "modelKey": "command-r7b",
+      "mode": "FC",
+      "overallPercent": 32.07,
+      "organization": "Cohere",
+      "licence": "cc-by-nc-4.0",
+      "modelLink": "https://cohere.com/blog/command-r7b"
+    },
+    {
+      "rank": 62,
+      "model": "Llama-3.3-70B-Instruct (FC)",
+      "modelKey": "llama-3-3-70b-instruct",
+      "mode": "FC",
+      "overallPercent": 31.9,
+      "organization": "Meta",
+      "licence": "Meta Llama 3 Community",
+      "modelLink": "https://llama.meta.com/llama3"
+    },
+    {
+      "rank": 63,
+      "model": "mistral-large-2411 (Prompt)",
+      "modelKey": "mistral-large-2411",
+      "mode": "Prompt",
+      "overallPercent": 31.84,
+      "organization": "Mistral AI",
+      "licence": "Proprietary",
+      "modelLink": "https://docs.mistral.ai/guides/model-selection/"
+    },
+    {
+      "rank": 64,
+      "model": "Hammer2.1-7b (FC)",
+      "modelKey": "hammer2-1-7b",
+      "mode": "FC",
+      "overallPercent": 31.67,
+      "organization": "MadeAgents",
+      "licence": "cc-by-nc-4.0",
+      "modelLink": "https://huggingface.co/MadeAgents/Hammer2.1-7b"
+    },
+    {
+      "rank": 65,
+      "model": "xLAM-2-1b-fc-r (FC)",
+      "modelKey": "xlam-2-1b-fc-r",
+      "mode": "FC",
+      "overallPercent": 30.44,
+      "organization": "Salesforce",
+      "licence": "cc-by-nc-4.0",
+      "modelLink": "https://huggingface.co/Salesforce/xLAM-2-1b-fc-r"
+    },
+    {
+      "rank": 66,
+      "model": "Gemma-3-12b-it (Prompt)",
+      "modelKey": "gemma-3-12b-it",
+      "mode": "Prompt",
+      "overallPercent": 30.43,
+      "organization": "Google",
+      "licence": "gemma-terms-of-use",
+      "modelLink": "https://blog.google/technology/developers/gemma-3/"
+    },
+    {
+      "rank": 67,
+      "model": "GPT-4.1-mini-2025-04-14 (Prompt)",
+      "modelKey": "gpt-4-1-mini-2025-04-14",
+      "mode": "Prompt",
+      "overallPercent": 29.73,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/gpt-4-1/"
+    },
+    {
+      "rank": 68,
+      "model": "Hammer2.1-3b (FC)",
+      "modelKey": "hammer2-1-3b",
+      "mode": "FC",
+      "overallPercent": 29.71,
+      "organization": "MadeAgents",
+      "licence": "qwen-research",
+      "modelLink": "https://huggingface.co/MadeAgents/Hammer2.1-3b"
+    },
+    {
+      "rank": 69,
+      "model": "Gemma-3-27b-it (Prompt)",
+      "modelKey": "gemma-3-27b-it",
+      "mode": "Prompt",
+      "overallPercent": 29.47,
+      "organization": "Google",
+      "licence": "gemma-terms-of-use",
+      "modelLink": "https://blog.google/technology/developers/gemma-3/"
+    },
+    {
+      "rank": 70,
+      "model": "Phi-4 (Prompt)",
+      "modelKey": "phi-4",
+      "mode": "Prompt",
+      "overallPercent": 28.79,
+      "organization": "Microsoft",
+      "licence": "MIT",
+      "modelLink": "https://huggingface.co/microsoft/phi-4"
+    },
+    {
+      "rank": 71,
+      "model": "Qwen3-1.7B (FC)",
+      "modelKey": "qwen3-1-7b",
+      "mode": "FC",
+      "overallPercent": 28.41,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-1.7B"
+    },
+    {
+      "rank": 72,
+      "model": "Llama-4-Scout-17B-16E-Instruct (FC)",
+      "modelKey": "llama-4-scout-17b-16e-instruct",
+      "mode": "FC",
+      "overallPercent": 28.13,
+      "organization": "Meta",
+      "licence": "Meta Llama 4 Community",
+      "modelLink": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct"
+    },
+    {
+      "rank": 73,
+      "model": "Gemini-2.5-Flash-Lite (Prompt)",
+      "modelKey": "gemini-2-5-flash-lite",
+      "mode": "Prompt",
+      "overallPercent": 28.03,
+      "organization": "Google",
+      "licence": "Proprietary",
+      "modelLink": "https://deepmind.google/technologies/gemini/flash-lite/"
+    },
+    {
+      "rank": 74,
+      "model": "CoALM-70B",
+      "modelKey": "coalm-70b",
+      "mode": null,
+      "overallPercent": 27.99,
+      "organization": "UIUC + Oumi",
+      "licence": "Meta Llama 3 Community",
+      "modelLink": "https://huggingface.co/uiuc-convai/CoALM-70B"
+    },
+    {
+      "rank": 75,
+      "model": "Hammer2.1-1.5b (FC)",
+      "modelKey": "hammer2-1-1-5b",
+      "mode": "FC",
+      "overallPercent": 27.88,
+      "organization": "MadeAgents",
+      "licence": "cc-by-nc-4.0",
+      "modelLink": "https://huggingface.co/MadeAgents/Hammer2.1-1.5b"
+    },
+    {
+      "rank": 76,
+      "model": "palmyra-x-004 (FC)",
+      "modelKey": "palmyra-x-004",
+      "mode": "FC",
+      "overallPercent": 27.87,
+      "organization": "Writer",
+      "licence": "Proprietary",
+      "modelLink": "https://writer.com/engineering/actions-with-palmyra-x-004/"
+    },
+    {
+      "rank": 77,
+      "model": "GPT-5-mini-2025-08-07 (Prompt)",
+      "modelKey": "gpt-5-mini-2025-08-07",
+      "mode": "Prompt",
+      "overallPercent": 27.83,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/introducing-gpt-5/"
+    },
+    {
+      "rank": 78,
+      "model": "Open-Mistral-Nemo-2407 (FC)",
+      "modelKey": "open-mistral-nemo-2407",
+      "mode": "FC",
+      "overallPercent": 27.63,
+      "organization": "Mistral AI",
+      "licence": "Proprietary",
+      "modelLink": "https://mistral.ai/news/mistral-nemo/"
+    },
+    {
+      "rank": 79,
+      "model": "GPT-5-nano-2025-08-07 (Prompt)",
+      "modelKey": "gpt-5-nano-2025-08-07",
+      "mode": "Prompt",
+      "overallPercent": 27.55,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/introducing-gpt-5/"
+    },
+    {
+      "rank": 80,
+      "model": "Amazon-Nova-2-Lite-v1:0 (FC)",
+      "modelKey": "amazon-nova-2-lite-v1-0",
+      "mode": "FC",
+      "overallPercent": 27.1,
+      "organization": "Amazon",
+      "licence": "Proprietary",
+      "modelLink": "https://aws.amazon.com/cn/ai/generative-ai/nova/"
+    },
+    {
+      "rank": 81,
+      "model": "Granite-3.1-8B-Instruct (FC)",
+      "modelKey": "granite-3-1-8b-instruct",
+      "mode": "FC",
+      "overallPercent": 27.1,
+      "organization": "IBM",
+      "licence": "Apache-2.0",
+      "modelLink": "https://huggingface.co/ibm-granite/granite-3.1-8b-instruct"
+    },
+    {
+      "rank": 82,
+      "model": "Falcon3-10B-Instruct (FC)",
+      "modelKey": "falcon3-10b-instruct",
+      "mode": "FC",
+      "overallPercent": 27.01,
+      "organization": "TII UAE",
+      "licence": "falcon-llm-license",
+      "modelLink": "https://huggingface.co/tiiuae/Falcon3-10B-Instruct"
+    },
+    {
+      "rank": 83,
+      "model": "Granite-3.2-8B-Instruct (FC)",
+      "modelKey": "granite-3-2-8b-instruct",
+      "mode": "FC",
+      "overallPercent": 26.87,
+      "organization": "IBM",
+      "licence": "Apache-2.0",
+      "modelLink": "https://huggingface.co/ibm-granite/granite-3.2-8b-instruct"
+    },
+    {
+      "rank": 84,
+      "model": "CoALM-8B",
+      "modelKey": "coalm-8b",
+      "mode": null,
+      "overallPercent": 26.81,
+      "organization": "UIUC + Oumi",
+      "licence": "Meta Llama 3 Community",
+      "modelLink": "https://huggingface.co/uiuc-convai/CoALM-8B"
+    },
+    {
+      "rank": 85,
+      "model": "Llama-3.1-8B-Instruct (Prompt)",
+      "modelKey": "llama-3-1-8b-instruct",
+      "mode": "Prompt",
+      "overallPercent": 25.83,
+      "organization": "Meta",
+      "licence": "Meta Llama 3 Community",
+      "modelLink": "https://llama.meta.com/llama3"
+    },
+    {
+      "rank": 86,
+      "model": "MiniCPM3-4B-FC (FC)",
+      "modelKey": "minicpm3-4b-fc",
+      "mode": "FC",
+      "overallPercent": 25.55,
+      "organization": "openbmb",
+      "licence": "Apache-2.0",
+      "modelLink": "https://huggingface.co/openbmb/MiniCPM3-4B"
+    },
+    {
+      "rank": 87,
+      "model": "Claude-Haiku-4-5-20251001 (Prompt)",
+      "modelKey": "claude-haiku-4-5-20251001",
+      "mode": "Prompt",
+      "overallPercent": 25.26,
+      "organization": "Anthropic",
+      "licence": "Proprietary",
+      "modelLink": "https://www.anthropic.com/news/claude-haiku-4-5"
+    },
+    {
+      "rank": 88,
+      "model": "Amazon-Nova-Pro-v1:0 (FC)",
+      "modelKey": "amazon-nova-pro-v1-0",
+      "mode": "FC",
+      "overallPercent": 24.97,
+      "organization": "Amazon",
+      "licence": "Proprietary",
+      "modelLink": "https://aws.amazon.com/cn/ai/generative-ai/nova/"
+    },
+    {
+      "rank": 89,
+      "model": "Claude-Sonnet-4-5-20250929 (Prompt)",
+      "modelKey": "claude-sonnet-4-5-20250929",
+      "mode": "Prompt",
+      "overallPercent": 24.9,
+      "organization": "Anthropic",
+      "licence": "Proprietary",
+      "modelLink": "https://www.anthropic.com/news/claude-sonnet-4-5"
+    },
+    {
+      "rank": 90,
+      "model": "GPT-4.1-nano-2025-04-14 (Prompt)",
+      "modelKey": "gpt-4-1-nano-2025-04-14",
+      "mode": "Prompt",
+      "overallPercent": 24.88,
+      "organization": "OpenAI",
+      "licence": "Proprietary",
+      "modelLink": "https://openai.com/index/gpt-4-1/"
+    },
+    {
+      "rank": 91,
+      "model": "Falcon3-7B-Instruct (FC)",
+      "modelKey": "falcon3-7b-instruct",
+      "mode": "FC",
+      "overallPercent": 24.03,
+      "organization": "TII UAE",
+      "licence": "falcon-llm-license",
+      "modelLink": "https://huggingface.co/tiiuae/Falcon3-7B-Instruct"
+    },
+    {
+      "rank": 92,
+      "model": "Qwen3-0.6B (FC)",
+      "modelKey": "qwen3-0-6b",
+      "mode": "FC",
+      "overallPercent": 23.93,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-0.6B"
+    },
+    {
+      "rank": 93,
+      "model": "Granite-20b-FunctionCalling (FC)",
+      "modelKey": "granite-20b-functioncalling",
+      "mode": "FC",
+      "overallPercent": 23.23,
+      "organization": "IBM",
+      "licence": "Apache-2.0",
+      "modelLink": "https://huggingface.co/ibm-granite/granite-20b-functioncalling"
+    },
+    {
+      "rank": 94,
+      "model": "Qwen3-0.6B (Prompt)",
+      "modelKey": "qwen3-0-6b",
+      "mode": "Prompt",
+      "overallPercent": 22.38,
+      "organization": "Qwen",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/Qwen/Qwen3-0.6B"
+    },
+    {
+      "rank": 95,
+      "model": "Amazon-Nova-Micro-v1:0 (FC)",
+      "modelKey": "amazon-nova-micro-v1-0",
+      "mode": "FC",
+      "overallPercent": 22.29,
+      "organization": "Amazon",
+      "licence": "Proprietary",
+      "modelLink": "https://aws.amazon.com/cn/ai/generative-ai/nova/"
+    },
+    {
+      "rank": 96,
+      "model": "RZN-T (Prompt)",
+      "modelKey": "rzn-t",
+      "mode": "Prompt",
+      "overallPercent": 22.25,
+      "organization": "Phronetic AI",
+      "licence": "apache-2.0",
+      "modelLink": "https://huggingface.co/phronetic-ai/RZN-T"
+    },
+    {
+      "rank": 97,
+      "model": "MiniCPM3-4B (Prompt)",
+      "modelKey": "minicpm3-4b",
+      "mode": "Prompt",
+      "overallPercent": 22.08,
+      "organization": "openbmb",
+      "licence": "Apache-2.0",
+      "modelLink": "https://huggingface.co/openbmb/MiniCPM3-4B"
+    },
+    {
+      "rank": 98,
+      "model": "Llama-3.2-3B-Instruct (FC)",
+      "modelKey": "llama-3-2-3b-instruct",
+      "mode": "FC",
+      "overallPercent": 21.95,
+      "organization": "Meta",
+      "licence": "Meta Llama 3 Community",
+      "modelLink": "https://llama.meta.com/llama3"
+    },
+    {
+      "rank": 99,
+      "model": "Bielik-11B-v2.3-Instruct (Prompt)",
+      "modelKey": "bielik-11b-v2-3-instruct",
+      "mode": "Prompt",
+      "overallPercent": 21.9,
+      "organization": "SpeakLeash & ACK Cyfronet AGH",
+      "licence": "Apache 2.0",
+      "modelLink": "https://huggingface.co/speakleash/Bielik-11B-v2.3-Instruct"
+    },
+    {
+      "rank": 100,
+      "model": "Hammer2.1-0.5b (FC)",
+      "modelKey": "hammer2-1-0-5b",
+      "mode": "FC",
+      "overallPercent": 21.22,
+      "organization": "MadeAgents",
+      "licence": "cc-by-nc-4.0",
+      "modelLink": "https://huggingface.co/MadeAgents/Hammer2.1-0.5b"
+    },
+    {
+      "rank": 101,
+      "model": "Gemma-3-4b-it (Prompt)",
+      "modelKey": "gemma-3-4b-it",
+      "mode": "Prompt",
+      "overallPercent": 19.62,
+      "organization": "Google",
+      "licence": "gemma-terms-of-use",
+      "modelLink": "https://blog.google/technology/developers/gemma-3/"
+    },
+    {
+      "rank": 102,
+      "model": "Open-Mistral-Nemo-2407 (Prompt)",
+      "modelKey": "open-mistral-nemo-2407",
+      "mode": "Prompt",
+      "overallPercent": 19.31,
+      "organization": "Mistral AI",
+      "licence": "Proprietary",
+      "modelLink": "https://mistral.ai/news/mistral-nemo/"
+    },
+    {
+      "rank": 103,
+      "model": "Granite-4.0-350m (FC)",
+      "modelKey": "granite-4-0-350m",
+      "mode": "FC",
+      "overallPercent": 18.98,
+      "organization": "IBM",
+      "licence": "Apache-2.0",
+      "modelLink": "https://huggingface.co/ibm-granite/granite-4.0-350m"
+    },
+    {
+      "rank": 104,
+      "model": "Falcon3-3B-Instruct (FC)",
+      "modelKey": "falcon3-3b-instruct",
+      "mode": "FC",
+      "overallPercent": 16.25,
+      "organization": "TII UAE",
+      "licence": "falcon-llm-license",
+      "modelLink": "https://huggingface.co/tiiuae/Falcon3-3B-Instruct"
+    },
+    {
+      "rank": 105,
+      "model": "Ministral-8B-Instruct-2410 (FC)",
+      "modelKey": "ministral-8b-instruct-2410",
+      "mode": "FC",
+      "overallPercent": 11.1,
+      "organization": "Mistral AI",
+      "licence": "Mistral AI Research License",
+      "modelLink": "https://huggingface.co/mistralai/Ministral-8B-Instruct-2410"
+    },
+    {
+      "rank": 106,
+      "model": "Falcon3-1B-Instruct (FC)",
+      "modelKey": "falcon3-1b-instruct",
+      "mode": "FC",
+      "overallPercent": 11.08,
+      "organization": "TII UAE",
+      "licence": "falcon-llm-license",
+      "modelLink": "https://huggingface.co/tiiuae/Falcon3-1B-Instruct"
+    },
+    {
+      "rank": 107,
+      "model": "Llama-3.2-1B-Instruct (FC)",
+      "modelKey": "llama-3-2-1b-instruct",
+      "mode": "FC",
+      "overallPercent": 10.82,
+      "organization": "Meta",
+      "licence": "Meta Llama 3 Community",
+      "modelLink": "https://llama.meta.com/llama3"
+    },
+    {
+      "rank": 108,
+      "model": "Llama-3.1-Nemotron-Ultra-253B-v1 (FC)",
+      "modelKey": "llama-3-1-nemotron-ultra-253b-v1",
+      "mode": "FC",
+      "overallPercent": 10,
+      "organization": "NVIDIA",
+      "licence": "nvidia-open-model-license",
+      "modelLink": "https://huggingface.co/nvidia/Llama-3_1-Nemotron-Ultra-253B-v1"
+    },
+    {
+      "rank": 109,
+      "model": "Gemma-3-1b-it (Prompt)",
+      "modelKey": "gemma-3-1b-it",
+      "mode": "Prompt",
+      "overallPercent": 7.17,
+      "organization": "Google",
+      "licence": "gemma-terms-of-use",
+      "modelLink": "https://blog.google/technology/developers/gemma-3/"
+    }
+  ]
+}

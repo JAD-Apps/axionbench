@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "receipt": {
+    "schemaVersion": "axionbench-public-refresh-v1",
+    "status": "promoted",
+    "at": "2026-10-01T19:12:11.258Z",
+    "beforeSourceSha256": "8da7dfe3d22fdd264dc24f74e8d9f5095d110e18e5ed027af8bb5d21c1ef7a02",
+    "afterSourceSha256": "939ad954e04e6d2337bda6cf1728bd2ba26261c0e0762a94fcac9b0098f0a75d",
+    "changed": [
+      "data/authority/epoch-hub.json",
+      "data/public-price-facts.json",
+      "public/data-details.json",
+      "public/data-manifest.json",
+      "public/data.json"
+    ],
+    "productDataSha256": "0a56a60f56fb35970a70c62bd2c89acabceabafa4b17e0cc64e0a4f4a8be1648",
+    "rawPayloadsPromoted": 0,
+    "gitOperations": 0,
+    "frozenCatalogueRefreshed": false
+  }
+}

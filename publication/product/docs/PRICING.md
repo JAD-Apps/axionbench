@@ -1,0 +1,15 @@
+# Licensed public task pricing
+
+`data/public-price-facts.json` is a narrow factual projection of the standard paid **text-token** tables on [Google Gemini Developer API pricing](https://ai.google.dev/gemini-api/docs/pricing). The page explicitly grants CC BY 4.0 reuse. Attribution, licence link, retrieval time, original-byte SHA-256, exact endpoint identity and table coordinates are retained. Presentation is adapted; no source artwork, account details, raw HTML or routed provider payloads are published.
+
+The current capture contains 11 exact endpoints. Prices join only identical authority model keys; related or newer versions receive no transferred quote. The existing 1,328 routed price rows remain excluded while their reuse terms are unsettled. This licensed source subset does not claim complete provider price coverage.
+
+The scenario has disjoint uncached input, cached-read input and cache-write token counts. Output excludes thinking; Google bills thinking once at the output rate. A positive cache-write count is unsupported because this projection has no documented write-token tariff. Explicit cache reads require a stored context size and positive lifetime; the estimate adds stored tokens × hours × quoted USD per million token-hour / 1,000,000. Tools, taxes and non-text modalities are excluded.
+
+Documented >200,000-prompt tiers start at 200,001 tokens and apply to the total prompt (uncached + cache read + cache write), including the output rate. Introductory tariffs expire at 2027-01-01 UTC; expired or more-than-seven-day-old captures are unsupported until refreshed. Effective dates remain unknown when not stated.
+
+The cost/capability scatter keeps one source/suite/metric/condition panel. A value-independent rule selects the highest listed reasoning effort per model; differing effort budgets are labelled. Estimated scenario cost is distinct from historical benchmark spend and does not reproduce its token consumption. A point is nondominated only within the priced set when no point is cheaper and higher-scoring, with at least one strict improvement. Missing prices create no scatter mark and never become zero. The exact table and JSON export preserve unsupported states and both tariff and result URLs.
+
+`python3 scripts/pricing/capture-google.py --audit-dir /private/audit` performs the real bounded capture and atomically replaces the projection only after validating permission, identities, table alignment, USD/1M units, cache/thinking semantics and every required tariff. Source HTML is stored privately by SHA-256. Refresh includes the adapter and restores last-good data on a later failure.
+
+`npm run test:pricing` checks source-cell/rate agreement, permission/identity/tier tampering, missing versus zero, expiry, freshness, cache storage and independent hand arithmetic. Set `AXIONBENCH_PRICE_AUDIT_DIR` to the private capture directory to replay all 33 original tariff cells. `test:cost-weights` exercises the mounted controls, real displayed math, keyboard point selection, URL roundtrips, exports, reduced motion and 320–1920 px rendering. Actual receipts are ignored local files; none is a native workflow pass.

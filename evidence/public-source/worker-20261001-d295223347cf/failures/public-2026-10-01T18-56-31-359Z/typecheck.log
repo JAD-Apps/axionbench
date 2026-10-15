@@ -1,0 +1,5 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 typecheck
+> tsc --noEmit
+

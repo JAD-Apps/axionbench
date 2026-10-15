@@ -1,0 +1,6 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 release:check
+> node scripts/release/check-dist.mjs
+
+release:check passed: 23 files; product 5d1e4bcbc6e50160afb35238c864e130a4ded024233c4074cfb0d5d63ddf5d4d; data ff9e7a81ed7ffcbf6a6ae318c112235d5fc837c52c1704206344b3e15165afbe; commit c3a915b717c999321e43148d522d160f4de805de (dirty tree).

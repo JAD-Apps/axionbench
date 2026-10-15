@@ -1,0 +1,31 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 test:chart-smoke
+> node scripts/chart-smoke.mjs
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: normal-motion page has no runtime or console errors
++ actual - expected
+
++ [
++   'Failed to load resource: the server responded with a status of 404 (Not Found)'
++ ]
+- []
+
+    at withBuiltBrowser.reducedMotion (file:///home/johnd/.jadbot/worktrees/01a0f8bb-65ef-7fa6-9705-692c7a000aaa/publication/product/scripts/chart-smoke.mjs:42:9)
+    at async withBuiltBrowser (file:///home/johnd/.jadbot/worktrees/01a0f8bb-65ef-7fa6-9705-692c7a000aaa/publication/product/scripts/test-harness.mjs:43:5)
+    at async file:///home/johnd/.jadbot/worktrees/01a0f8bb-65ef-7fa6-9705-692c7a000aaa/publication/product/scripts/chart-smoke.mjs:29:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'Failed to load resource: the server responded with a status of 404 (Not Found)'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.20.0

@@ -1,0 +1,20 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 release:check
+> node scripts/release/check-dist.mjs
+
+node:internal/fs/promises:1345
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open 'dist/release-manifest.json'
+    at async open (node:internal/fs/promises:1345:25)
+    at async readFile (node:internal/fs/promises:1996:14)
+    at async file:///home/johnd/.jadbot/worktrees/01a0f8bb-65ef-7fa6-9705-692c7a000aaa/publication/product/scripts/release/check-dist.mjs:10:46 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'dist/release-manifest.json'
+}
+
+Node.js v24.20.0

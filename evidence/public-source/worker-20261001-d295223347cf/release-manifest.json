@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "axionbench-release-manifest-v1",
+  "digestFormat": {
+    "product": "axionbench-product-v1",
+    "control": "axionbench-control-v1"
+  },
+  "sourceCommit": "c3a915b717c999321e43148d522d160f4de805de",
+  "sourceDirty": true,
+  "builtAt": "2026-10-01T19:24:11.247Z",
+  "productSha256": "5d1e4bcbc6e50160afb35238c864e130a4ded024233c4074cfb0d5d63ddf5d4d",
+  "controlSha256": "63fe4f29a912f05ab120a41386d880a037002038edbcbd3e701023255e935e77",
+  "dataSha256": "ff9e7a81ed7ffcbf6a6ae318c112235d5fc837c52c1704206344b3e15165afbe",
+  "fileCount": 23,
+  "files": [
+    {
+      "path": "assets/DM-SANS-LICENSE.txt",
+      "sha256": "9af36190332437f5ecd09974de43c1f7c77a310a996cdd8ceb25628b458840e1",
+      "bytes": 4482
+    },
+    {
+      "path": "assets/IBM-PLEX-MONO-LICENSE.txt",
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da",
+      "bytes": 4456
+    },
+    {
+      "path": "assets/SPACE-GROTESK-LICENSE.txt",
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72",
+      "bytes": 4495
+    },
+    {
+      "path": "assets/dm-sans-normal-400.ttf",
+      "sha256": "b0ae3e89a7d3ef2b1838bb4b1ceb0b17cc3435af061eee809d76aa623ff116e9",
+      "bytes": 48280
+    },
+    {
+      "path": "assets/dm-sans-normal-500.ttf",
+      "sha256": "376427b5322148d8de1e03f263bcca4935a2d60ba71d9f94f4947ab664c711ae",
+      "bytes": 48308
+    },
+    {
+      "path": "assets/dm-sans-normal-700-BQ0abr9c.ttf",
+      "sha256": "2a8e7f713ee79fbccdef3cef5c787aff47580299f7da60144961e7db2ec08211",
+      "bytes": 48200
+    },
+    {
+      "path": "assets/favicon.svg",
+      "sha256": "5eb37a13ea130eda5c3d71db158c1929215f035753b8f96aedda75c56a8bb546",
+      "bytes": 197
+    },
+    {
+      "path": "assets/ibm-plex-mono-400.ttf",
+      "sha256": "a7fdc993f9f0387caedba4e42521136fa97e4c0837ae6239bf0413ccf8af00c2",
+      "bytes": 128812
+    },
+    {
+      "path": "assets/index-B4HvWOkh.css",
+      "sha256": "ad1c423c851f5088f5e653aba7df66f2ea154394db8bc6e72c80d572835bbd7c",
+      "bytes": 48484
+    },
+    {
+      "path": "assets/index-zc4Y3V_7.js",
+      "sha256": "0f809a131e5a94bcba6872d7bc303bbd22f75bd422ec44bf0352ccb289eff82c",
+      "bytes": 433952
+    },
+    {
+      "path": "assets/index-zc4Y3V_7.js.map",
+      "sha256": "c45b85c50efd4f47d6437902f7cd843615305065c3e8190ed66723459aac08c4",
+      "bytes": 1884090
+    },
+    {
+      "path": "assets/observatory-experience-DSMeRk73.js",
+      "sha256": "970662ce4203541816590464954916abbbd2a566d6bf31969d99794c348dcf29",
+      "bytes": 379195
+    },
+    {
+      "path": "assets/observatory-experience-DSMeRk73.js.map",
+      "sha256": "3be7aed3dfe30eab37c64d2ad29a0224dfbc8489d74791387635f2a95cab06ff",
+      "bytes": 1332973
+    },
+    {
+      "path": "assets/space-grotesk-600.ttf",
+      "sha256": "6c0346b8d297ebdc225832833e03e884a26ad99d265ecd3924d46e1ba285ea87",
+      "bytes": 69356
+    },
+    {
+      "path": "assets/surface.js",
+      "sha256": "7bce0d9491324e878ef30e61d6ceb4b308886f20314f0c1db48f0ca6ed66fd80",
+      "bytes": 4238
+    },
+    {
+      "path": "data-details.json",
+      "sha256": "29b01178f91c642989c101d428fea5925c983cd5a1946dbb659a8c65caddb7a1",
+      "bytes": 825326
+    },
+    {
+      "path": "data-manifest.json",
+      "sha256": "d1f4eeaf4d183f2a255718b6a42f7401dbe1a1c5f3c0827766c652933c9ec323",
+      "bytes": 2071
+    },
+    {
+      "path": "data.json",
+      "sha256": "ff9e7a81ed7ffcbf6a6ae318c112235d5fc837c52c1704206344b3e15165afbe",
+      "bytes": 4316456
+    },
+    {
+      "path": "index.html",
+      "sha256": "7832d3bdbd243b6852770e3fcbe66cd3b8ec1522c87b6bf08de8f836cba9840e",
+      "bytes": 1343
+    },
+    {
+      "path": "og.png",
+      "sha256": "0d05e5ed8ba376c95a25e78689cc6af5df4648040f68df58af51054324bd932d",
+      "bytes": 250839
+    },
+    {
+      "path": "privacy.html",
+      "sha256": "01128ff002c08e19d4bf3d140aed6b68e5584dbf505802133cc8a05662d1d48a",
+      "bytes": 1261
+    },
+    {
+      "path": "robots.txt",
+      "sha256": "4f87842b757066ae9e5a58b599389f3203bb93b8c71ec08fa501ac66f5f696a5",
+      "bytes": 76
+    },
+    {
+      "path": "sitemap.xml",
+      "sha256": "80da6366e177693cb8682bd168db021618d7ef6785b1d2f3b35e3cca90dfe3a7",
+      "bytes": 234
+    }
+  ],
+  "controlFiles": [
+    {
+      "path": "_headers",
+      "sha256": "18a3b9d0eb1c82ea4ec3d0fe627b41fa5e10596af2a57cbed13e3eda073fa0c8",
+      "bytes": 362
+    }
+  ]
+}

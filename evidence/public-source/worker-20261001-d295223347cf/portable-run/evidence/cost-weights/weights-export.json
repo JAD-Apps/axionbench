@@ -1,0 +1,735 @@
+{
+  "schemaVersion": "axionbench-weight-sensitivity-v1",
+  "productDataDigest": "ff9e7a81ed7ffcbf6a6ae318c112235d5fc837c52c1704206344b3e15165afbe",
+  "cohort": [
+    "gpt-6-astra",
+    "gemini-3-8-flash"
+  ],
+  "weights": {
+    "coding": 2,
+    "reasoning": 0,
+    "mathematics": 1,
+    "knowledge": 0,
+    "instruction-following": 0,
+    "long-context": 0,
+    "tool-use": 0,
+    "agents": 0,
+    "vision-documents": 0,
+    "factuality": 0,
+    "multilingual": 0
+  },
+  "defaultWeights": {
+    "coding": 1,
+    "reasoning": 1,
+    "mathematics": 1,
+    "knowledge": 1,
+    "instruction-following": 1,
+    "long-context": 1,
+    "tool-use": 1,
+    "agents": 1,
+    "vision-documents": 1,
+    "factuality": 1,
+    "multilingual": 1
+  },
+  "custom": true,
+  "commonPanel": [
+    {
+      "id": "deepswe-v1.1:mini_swe_agent_gemini_3_8_flash_high:pass@1",
+      "sourceId": "deepswe-v1.1",
+      "provenance": "benchmark-authority",
+      "suiteId": "deep-swe",
+      "metric": "pass@1",
+      "primary": true,
+      "modelKey": "gemini-3-8-flash",
+      "modelLabel": "gemini-3-8-flash",
+      "configuration": {
+        "id": "mini_swe_agent_gemini_3_8_flash_high",
+        "harness": "mini-swe-agent",
+        "setting": "high",
+        "condition": "mini-swe-agent",
+        "conditionsKnown": true
+      },
+      "value": 0.738255033557047,
+      "rawValue": 0.738255033557047,
+      "rawText": "0.7383",
+      "rawUnit": "fraction",
+      "unitEvidence": "artifact unit statement: pass@1 attempt pass rate; pass@4 tasks with any pass / tasks attempted",
+      "interval": {
+        "low": 0.7240819014906883,
+        "high": 0.7524281656234058,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "stderr": null,
+      "counts": {
+        "passed": 330,
+        "attempted": 447,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 97,
+        "runs": 4
+      },
+      "evaluatedAt": "2026-09-22",
+      "evaluatedAtBasis": "source artifact generation date",
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "domain": "coding",
+      "admitted": true,
+      "exclusion": null,
+      "matchable": true
+    },
+    {
+      "id": "deepswe-v1.1:mini_swe_agent_gpt_6_astra_high:pass@1",
+      "sourceId": "deepswe-v1.1",
+      "provenance": "benchmark-authority",
+      "suiteId": "deep-swe",
+      "metric": "pass@1",
+      "primary": true,
+      "modelKey": "gpt-6-astra",
+      "modelLabel": "gpt-6-astra",
+      "configuration": {
+        "id": "mini_swe_agent_gpt_6_astra_high",
+        "harness": "mini-swe-agent",
+        "setting": "high",
+        "condition": "mini-swe-agent",
+        "conditionsKnown": true
+      },
+      "value": 0.7323008849557522,
+      "rawValue": 0.7323008849557522,
+      "rawText": "0.7323",
+      "rawUnit": "fraction",
+      "unitEvidence": "artifact unit statement: pass@1 attempt pass rate; pass@4 tasks with any pass / tasks attempted",
+      "interval": {
+        "low": 0.6980659243770221,
+        "high": 0.7665358455344823,
+        "method": "95% run-to-run: SE across repeated whole-benchmark passes (1.96 * std(runs)/sqrt(R))"
+      },
+      "stderr": null,
+      "counts": {
+        "passed": 331,
+        "attempted": 452,
+        "tasksAttempted": 113,
+        "tasksPassedAny": 93,
+        "runs": 4
+      },
+      "evaluatedAt": "2026-09-22",
+      "evaluatedAtBasis": "source artifact generation date",
+      "resultUrl": "https://deepswe.datacurve.ai/",
+      "domain": "coding",
+      "admitted": true,
+      "exclusion": null,
+      "matchable": true
+    },
+    {
+      "id": "epoch-hub:frontiermath-tier-4-v2:Lgy52ZT4YpFrUqqKVu2qUs",
+      "sourceId": "epoch-hub",
+      "provenance": "independent-evaluator",
+      "suiteId": "frontiermath-tier-4-v2",
+      "metric": "score",
+      "primary": true,
+      "modelKey": "gemini-3-8-flash",
+      "modelLabel": "gemini-3.8-flash_high",
+      "configuration": {
+        "id": "Lgy52ZT4YpFrUqqKVu2qUs",
+        "harness": "Epoch AI evaluation run",
+        "setting": "high",
+        "condition": "Epoch AI run",
+        "conditionsKnown": true
+      },
+      "value": 0.21951219512195122,
+      "rawValue": 0.21951219512195122,
+      "rawText": "0.21951219512195122",
+      "rawUnit": "fraction",
+      "unitEvidence": "Epoch benchmark_metadata.csv: score_column \"Best score (across scorers)\", scale 1.0",
+      "interval": null,
+      "stderr": 0.06544589202438408,
+      "counts": null,
+      "evaluatedAt": "2026-09-02",
+      "evaluatedAtBasis": "Epoch run start time",
+      "resultUrl": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
+      "domain": "mathematics",
+      "admitted": true,
+      "exclusion": null,
+      "matchable": true
+    },
+    {
+      "id": "epoch-hub:frontiermath-tier-4-v2:f46NQY9jSxyKqo9qzrmk6F",
+      "sourceId": "epoch-hub",
+      "provenance": "independent-evaluator",
+      "suiteId": "frontiermath-tier-4-v2",
+      "metric": "score",
+      "primary": true,
+      "modelKey": "gpt-6-astra",
+      "modelLabel": "gpt-6-astra_high",
+      "configuration": {
+        "id": "f46NQY9jSxyKqo9qzrmk6F",
+        "harness": "Epoch AI evaluation run",
+        "setting": "high",
+        "condition": "Epoch AI run",
+        "conditionsKnown": true
+      },
+      "value": 0.976,
+      "rawValue": 0.976,
+      "rawText": "0.976",
+      "rawUnit": "fraction",
+      "unitEvidence": "Epoch benchmark_metadata.csv: score_column \"Best score (across scorers)\", scale 1.0",
+      "interval": null,
+      "stderr": 0.024,
+      "counts": null,
+      "evaluatedAt": "2026-08-30",
+      "evaluatedAtBasis": "Epoch run start time",
+      "resultUrl": "https://epoch.ai/benchmarks/frontiermath-tier-4-v2",
+      "domain": "mathematics",
+      "admitted": true,
+      "exclusion": null,
+      "matchable": true
+    }
+  ],
+  "result": {
+    "version": "axion-domain-v1",
+    "eligible": true,
+    "panelSize": 2,
+    "panel": [
+      "deep-swe|v1.1|deep-swe|deepswe-v1.1|pass@1|higher|[\"deepswe-v1.1\",\"mini-swe-agent\",\"high\"]",
+      "frontiermath-tier-4-v2|v2 private set|frontiermath-tier-4-v2|epoch-hub|score|higher|[\"epoch-hub\",\"Epoch AI run\",\"high\"]"
+    ],
+    "exclusions": 0,
+    "excludedReasons": [],
+    "models": {
+      "gpt-6-astra": {
+        "model": "GPT-6 Astra",
+        "score": 0.8135339233038348,
+        "domainScores": {
+          "coding": 0.7323008849557522,
+          "mathematics": 0.976
+        },
+        "eligible": true
+      },
+      "gemini-3-8-flash": {
+        "model": "Gemini 3.8 Flash",
+        "score": 0.5653407540786818,
+        "domainScores": {
+          "coding": 0.738255033557047,
+          "mathematics": 0.21951219512195122
+        },
+        "eligible": true
+      }
+    },
+    "weights": {
+      "coding": 2,
+      "reasoning": 0,
+      "mathematics": 1,
+      "knowledge": 0,
+      "instruction-following": 0,
+      "long-context": 0,
+      "tool-use": 0,
+      "agents": 0,
+      "vision-documents": 0,
+      "factuality": 0,
+      "multilingual": 0
+    },
+    "score": null
+  },
+  "sensitivity": {
+    "weightRuns": [
+      {
+        "label": "Selected weights",
+        "weights": {
+          "coding": 2,
+          "reasoning": 0,
+          "mathematics": 1,
+          "knowledge": 0,
+          "instruction-following": 0,
+          "long-context": 0,
+          "tool-use": 0,
+          "agents": 0,
+          "vision-documents": 0,
+          "factuality": 0,
+          "multilingual": 0
+        },
+        "result": {
+          "version": "axion-domain-v1",
+          "eligible": true,
+          "panelSize": 2,
+          "panel": [
+            "deep-swe|v1.1|deep-swe|deepswe-v1.1|pass@1|higher|[\"deepswe-v1.1\",\"mini-swe-agent\",\"high\"]",
+            "frontiermath-tier-4-v2|v2 private set|frontiermath-tier-4-v2|epoch-hub|score|higher|[\"epoch-hub\",\"Epoch AI run\",\"high\"]"
+          ],
+          "exclusions": 0,
+          "excludedReasons": [],
+          "models": {
+            "gpt-6-astra": {
+              "model": "GPT-6 Astra",
+              "score": 0.8135339233038348,
+              "domainScores": {
+                "coding": 0.7323008849557522,
+                "mathematics": 0.976
+              },
+              "eligible": true
+            },
+            "gemini-3-8-flash": {
+              "model": "Gemini 3.8 Flash",
+              "score": 0.5653407540786818,
+              "domainScores": {
+                "coding": 0.738255033557047,
+                "mathematics": 0.21951219512195122
+              },
+              "eligible": true
+            }
+          },
+          "weights": {
+            "coding": 2,
+            "reasoning": 0,
+            "mathematics": 1,
+            "knowledge": 0,
+            "instruction-following": 0,
+            "long-context": 0,
+            "tool-use": 0,
+            "agents": 0,
+            "vision-documents": 0,
+            "factuality": 0,
+            "multilingual": 0
+          },
+          "score": null
+        }
+      },
+      {
+        "label": "Equal default (11 domains)",
+        "weights": {
+          "coding": 1,
+          "reasoning": 1,
+          "mathematics": 1,
+          "knowledge": 1,
+          "instruction-following": 1,
+          "long-context": 1,
+          "tool-use": 1,
+          "agents": 1,
+          "vision-documents": 1,
+          "factuality": 1,
+          "multilingual": 1
+        },
+        "result": {
+          "version": "axion-domain-v1",
+          "eligible": true,
+          "panelSize": 2,
+          "panel": [
+            "deep-swe|v1.1|deep-swe|deepswe-v1.1|pass@1|higher|[\"deepswe-v1.1\",\"mini-swe-agent\",\"high\"]",
+            "frontiermath-tier-4-v2|v2 private set|frontiermath-tier-4-v2|epoch-hub|score|higher|[\"epoch-hub\",\"Epoch AI run\",\"high\"]"
+          ],
+          "exclusions": 0,
+          "excludedReasons": [],
+          "models": {
+            "gpt-6-astra": {
+              "model": "GPT-6 Astra",
+              "score": null,
+              "domainScores": {
+                "coding": 0.7323008849557522,
+                "mathematics": 0.976
+              },
+              "eligible": false
+            },
+            "gemini-3-8-flash": {
+              "model": "Gemini 3.8 Flash",
+              "score": null,
+              "domainScores": {
+                "coding": 0.738255033557047,
+                "mathematics": 0.21951219512195122
+              },
+              "eligible": false
+            }
+          },
+          "weights": {
+            "coding": 1,
+            "reasoning": 1,
+            "mathematics": 1,
+            "knowledge": 1,
+            "instruction-following": 1,
+            "long-context": 1,
+            "tool-use": 1,
+            "agents": 1,
+            "vision-documents": 1,
+            "factuality": 1,
+            "multilingual": 1
+          },
+          "score": null
+        }
+      },
+      {
+        "label": "coding −20%",
+        "weights": {
+          "coding": 1.6,
+          "reasoning": 0,
+          "mathematics": 1,
+          "knowledge": 0,
+          "instruction-following": 0,
+          "long-context": 0,
+          "tool-use": 0,
+          "agents": 0,
+          "vision-documents": 0,
+          "factuality": 0,
+          "multilingual": 0
+        },
+        "result": {
+          "version": "axion-domain-v1",
+          "eligible": true,
+          "panelSize": 2,
+          "panel": [
+            "deep-swe|v1.1|deep-swe|deepswe-v1.1|pass@1|higher|[\"deepswe-v1.1\",\"mini-swe-agent\",\"high\"]",
+            "frontiermath-tier-4-v2|v2 private set|frontiermath-tier-4-v2|epoch-hub|score|higher|[\"epoch-hub\",\"Epoch AI run\",\"high\"]"
+          ],
+          "exclusions": 0,
+          "excludedReasons": [],
+          "models": {
+            "gpt-6-astra": {
+              "model": "GPT-6 Astra",
+              "score": 0.8260313138189244,
+              "domainScores": {
+                "coding": 0.7323008849557522,
+                "mathematics": 0.976
+              },
+              "eligible": true
+            },
+            "gemini-3-8-flash": {
+              "model": "Gemini 3.8 Flash",
+              "score": 0.5387385572358563,
+              "domainScores": {
+                "coding": 0.738255033557047,
+                "mathematics": 0.21951219512195122
+              },
+              "eligible": true
+            }
+          },
+          "weights": {
+            "coding": 1.6,
+            "reasoning": 0,
+            "mathematics": 1,
+            "knowledge": 0,
+            "instruction-following": 0,
+            "long-context": 0,
+            "tool-use": 0,
+            "agents": 0,
+            "vision-documents": 0,
+            "factuality": 0,
+            "multilingual": 0
+          },
+          "score": null
+        }
+      },
+      {
+        "label": "coding +20%",
+        "weights": {
+          "coding": 2.4,
+          "reasoning": 0,
+          "mathematics": 1,
+          "knowledge": 0,
+          "instruction-following": 0,
+          "long-context": 0,
+          "tool-use": 0,
+          "agents": 0,
+          "vision-documents": 0,
+          "factuality": 0,
+          "multilingual": 0
+        },
+        "result": {
+          "version": "axion-domain-v1",
+          "eligible": true,
+          "panelSize": 2,
+          "panel": [
+            "deep-swe|v1.1|deep-swe|deepswe-v1.1|pass@1|higher|[\"deepswe-v1.1\",\"mini-swe-agent\",\"high\"]",
+            "frontiermath-tier-4-v2|v2 private set|frontiermath-tier-4-v2|epoch-hub|score|higher|[\"epoch-hub\",\"Epoch AI run\",\"high\"]"
+          ],
+          "exclusions": 0,
+          "excludedReasons": [],
+          "models": {
+            "gpt-6-astra": {
+              "model": "GPT-6 Astra",
+              "score": 0.8039770952628839,
+              "domainScores": {
+                "coding": 0.7323008849557522,
+                "mathematics": 0.976
+              },
+              "eligible": true
+            },
+            "gemini-3-8-flash": {
+              "model": "Gemini 3.8 Flash",
+              "score": 0.5856836104879012,
+              "domainScores": {
+                "coding": 0.738255033557047,
+                "mathematics": 0.21951219512195122
+              },
+              "eligible": true
+            }
+          },
+          "weights": {
+            "coding": 2.4,
+            "reasoning": 0,
+            "mathematics": 1,
+            "knowledge": 0,
+            "instruction-following": 0,
+            "long-context": 0,
+            "tool-use": 0,
+            "agents": 0,
+            "vision-documents": 0,
+            "factuality": 0,
+            "multilingual": 0
+          },
+          "score": null
+        }
+      },
+      {
+        "label": "mathematics −20%",
+        "weights": {
+          "coding": 2,
+          "reasoning": 0,
+          "mathematics": 0.8,
+          "knowledge": 0,
+          "instruction-following": 0,
+          "long-context": 0,
+          "tool-use": 0,
+          "agents": 0,
+          "vision-documents": 0,
+          "factuality": 0,
+          "multilingual": 0
+        },
+        "result": {
+          "version": "axion-domain-v1",
+          "eligible": true,
+          "panelSize": 2,
+          "panel": [
+            "deep-swe|v1.1|deep-swe|deepswe-v1.1|pass@1|higher|[\"deepswe-v1.1\",\"mini-swe-agent\",\"high\"]",
+            "frontiermath-tier-4-v2|v2 private set|frontiermath-tier-4-v2|epoch-hub|score|higher|[\"epoch-hub\",\"Epoch AI run\",\"high\"]"
+          ],
+          "exclusions": 0,
+          "excludedReasons": [],
+          "models": {
+            "gpt-6-astra": {
+              "model": "GPT-6 Astra",
+              "score": 0.8019292035398231,
+              "domainScores": {
+                "coding": 0.7323008849557522,
+                "mathematics": 0.976
+              },
+              "eligible": true
+            },
+            "gemini-3-8-flash": {
+              "model": "Gemini 3.8 Flash",
+              "score": 0.5900427940041625,
+              "domainScores": {
+                "coding": 0.738255033557047,
+                "mathematics": 0.21951219512195122
+              },
+              "eligible": true
+            }
+          },
+          "weights": {
+            "coding": 2,
+            "reasoning": 0,
+            "mathematics": 0.8,
+            "knowledge": 0,
+            "instruction-following": 0,
+            "long-context": 0,
+            "tool-use": 0,
+            "agents": 0,
+            "vision-documents": 0,
+            "factuality": 0,
+            "multilingual": 0
+          },
+          "score": null
+        }
+      },
+      {
+        "label": "mathematics +20%",
+        "weights": {
+          "coding": 2,
+          "reasoning": 0,
+          "mathematics": 1.2,
+          "knowledge": 0,
+          "instruction-following": 0,
+          "long-context": 0,
+          "tool-use": 0,
+          "agents": 0,
+          "vision-documents": 0,
+          "factuality": 0,
+          "multilingual": 0
+        },
+        "result": {
+          "version": "axion-domain-v1",
+          "eligible": true,
+          "panelSize": 2,
+          "panel": [
+            "deep-swe|v1.1|deep-swe|deepswe-v1.1|pass@1|higher|[\"deepswe-v1.1\",\"mini-swe-agent\",\"high\"]",
+            "frontiermath-tier-4-v2|v2 private set|frontiermath-tier-4-v2|epoch-hub|score|higher|[\"epoch-hub\",\"Epoch AI run\",\"high\"]"
+          ],
+          "exclusions": 0,
+          "excludedReasons": [],
+          "models": {
+            "gpt-6-astra": {
+              "model": "GPT-6 Astra",
+              "score": 0.823688053097345,
+              "domainScores": {
+                "coding": 0.7323008849557522,
+                "mathematics": 0.976
+              },
+              "eligible": true
+            },
+            "gemini-3-8-flash": {
+              "model": "Gemini 3.8 Flash",
+              "score": 0.5437264691438861,
+              "domainScores": {
+                "coding": 0.738255033557047,
+                "mathematics": 0.21951219512195122
+              },
+              "eligible": true
+            }
+          },
+          "weights": {
+            "coding": 2,
+            "reasoning": 0,
+            "mathematics": 1.2,
+            "knowledge": 0,
+            "instruction-following": 0,
+            "long-context": 0,
+            "tool-use": 0,
+            "agents": 0,
+            "vision-documents": 0,
+            "factuality": 0,
+            "multilingual": 0
+          },
+          "score": null
+        }
+      }
+    ],
+    "leaveOneSuiteOut": [
+      {
+        "suiteId": "deep-swe",
+        "result": {
+          "version": "axion-domain-v1",
+          "eligible": true,
+          "panelSize": 1,
+          "panel": [
+            "frontiermath-tier-4-v2|v2 private set|frontiermath-tier-4-v2|epoch-hub|score|higher|[\"epoch-hub\",\"Epoch AI run\",\"high\"]"
+          ],
+          "exclusions": 0,
+          "excludedReasons": [],
+          "models": {
+            "gpt-6-astra": {
+              "model": "GPT-6 Astra",
+              "score": null,
+              "domainScores": {
+                "mathematics": 0.976
+              },
+              "eligible": false
+            },
+            "gemini-3-8-flash": {
+              "model": "Gemini 3.8 Flash",
+              "score": null,
+              "domainScores": {
+                "mathematics": 0.21951219512195122
+              },
+              "eligible": false
+            }
+          },
+          "weights": {
+            "coding": 2,
+            "reasoning": 0,
+            "mathematics": 1,
+            "knowledge": 0,
+            "instruction-following": 0,
+            "long-context": 0,
+            "tool-use": 0,
+            "agents": 0,
+            "vision-documents": 0,
+            "factuality": 0,
+            "multilingual": 0
+          },
+          "score": null
+        }
+      },
+      {
+        "suiteId": "frontiermath-tier-4-v2",
+        "result": {
+          "version": "axion-domain-v1",
+          "eligible": true,
+          "panelSize": 1,
+          "panel": [
+            "deep-swe|v1.1|deep-swe|deepswe-v1.1|pass@1|higher|[\"deepswe-v1.1\",\"mini-swe-agent\",\"high\"]"
+          ],
+          "exclusions": 0,
+          "excludedReasons": [],
+          "models": {
+            "gpt-6-astra": {
+              "model": "GPT-6 Astra",
+              "score": null,
+              "domainScores": {
+                "coding": 0.7323008849557522
+              },
+              "eligible": false
+            },
+            "gemini-3-8-flash": {
+              "model": "Gemini 3.8 Flash",
+              "score": null,
+              "domainScores": {
+                "coding": 0.738255033557047
+              },
+              "eligible": false
+            }
+          },
+          "weights": {
+            "coding": 2,
+            "reasoning": 0,
+            "mathematics": 1,
+            "knowledge": 0,
+            "instruction-following": 0,
+            "long-context": 0,
+            "tool-use": 0,
+            "agents": 0,
+            "vision-documents": 0,
+            "factuality": 0,
+            "multilingual": 0
+          },
+          "score": null
+        }
+      }
+    ],
+    "independentOnly": {
+      "version": "axion-domain-v1",
+      "eligible": true,
+      "panelSize": 1,
+      "panel": [
+        "frontiermath-tier-4-v2|v2 private set|frontiermath-tier-4-v2|epoch-hub|score|higher|[\"epoch-hub\",\"Epoch AI run\",\"high\"]"
+      ],
+      "exclusions": 0,
+      "excludedReasons": [],
+      "models": {
+        "gpt-6-astra": {
+          "model": "GPT-6 Astra",
+          "score": null,
+          "domainScores": {
+            "mathematics": 0.976
+          },
+          "eligible": false
+        },
+        "gemini-3-8-flash": {
+          "model": "Gemini 3.8 Flash",
+          "score": null,
+          "domainScores": {
+            "mathematics": 0.21951219512195122
+          },
+          "eligible": false
+        }
+      },
+      "weights": {
+        "coding": 2,
+        "reasoning": 0,
+        "mathematics": 1,
+        "knowledge": 0,
+        "instruction-following": 0,
+        "long-context": 0,
+        "tool-use": 0,
+        "agents": 0,
+        "vision-documents": 0,
+        "factuality": 0,
+        "multilingual": 0
+      },
+      "score": null
+    }
+  },
+  "caveat": "Fixed cohort/common panel, source family caps, no missing-value imputation. Weight and omission scenarios are not statistical confidence intervals."
+}

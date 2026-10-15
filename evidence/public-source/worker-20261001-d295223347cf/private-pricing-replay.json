@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "at": "2026-10-01T19:18:44.092Z",
+  "sourceSha256": "b1cf5d3eec2479602d6757520c61351becb27b8cc6a509aec1b8b491605cab92",
+  "sourceBytes": 255878,
+  "priceFactsSha256": "9afd9da0b097ada382517eebffcf373eba4b52aef9bab0cf2a621dea3159c29a",
+  "capturedAt": "2026-10-01T17:29:48.160753+00:00",
+  "replayedRecords": 11,
+  "replayedCells": 33,
+  "sourcePath": "data/source-snapshots/blobs/b1/b1cf5d3eec2479602d6757520c61351becb27b8cc6a509aec1b8b491605cab92.html",
+  "kind": "original-byte-replay",
+  "nativeAcceptance": false
+}

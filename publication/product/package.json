@@ -1,0 +1,53 @@
+{
+  "name": "axionbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.19.0",
+  "description": "An evidence-led observatory for comparing AI systems.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "preview": "vite preview --host 127.0.0.1",
+    "build": "vite build",
+    "prebuild": "node scripts/public/validate.mjs",
+    "clean:build": "vite build --emptyOutDir",
+    "preclean:build": "node scripts/public/validate.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "node scripts/public/lint.mjs",
+    "test:unit": "vitest run",
+    "test:scoring": "node tests/scoring/test-scoring.mjs",
+    "test:pricing": "node scripts/test-pricing.mjs",
+    "test:weights": "node scripts/test-weights.mjs",
+    "test:boundary": "node scripts/public/test-boundary.mjs",
+    "data:validate": "node scripts/public/validate.mjs",
+    "data:refresh": "node scripts/public/refresh.mjs",
+    "data:authority": "node scripts/public/refresh.mjs",
+    "test:chart-smoke": "node scripts/chart-smoke.mjs",
+    "test:cost-weights": "node scripts/test-cost-weights.mjs",
+    "test:acceptance": "node scripts/test-acceptance.mjs",
+    "build:release": "node scripts/release/build.mjs",
+    "release:check": "node scripts/release/check-dist.mjs",
+    "verify:public": "node scripts/public/verify.mjs",
+    "verify:release": "npm run verify:public",
+    "verify": "npm run verify:public",
+    "jadbot:verify": "npm run verify:release"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "playwright-core": "1.62.1",
+    "typescript": "5.9.3",
+    "vite": "8.3.1",
+    "vitest": "5.0.3"
+  },
+  "dependencies": {
+    "@visx/axis": "4.0.0",
+    "@visx/responsive": "4.0.0",
+    "@visx/scale": "4.0.0",
+    "@visx/shape": "4.0.0",
+    "motion": "13.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}

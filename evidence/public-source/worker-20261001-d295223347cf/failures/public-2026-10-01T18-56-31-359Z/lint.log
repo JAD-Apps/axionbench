@@ -1,0 +1,6 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 lint
+> node scripts/public/lint.mjs
+
+Portable lint passed: 96 files.

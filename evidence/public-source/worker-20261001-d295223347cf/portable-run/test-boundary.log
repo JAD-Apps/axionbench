@@ -1,0 +1,21 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 test:boundary
+> node scripts/public/test-boundary.mjs
+
+ok portable CI runs real gates and refresh stages only the exact fact allowlist
+ok manifest rejects tampered asset and omitted/extra files
+ok raw source, private records and symlink audit boundaries fail closed
+ok frozen byte digest rejects invented identity
+ok exact configuration joins reject related-model transfer
+ok source references and original URLs reject dangling evidence
+ok authority score/hash and undocumented units rejected
+ok unlicensed or unpermitted nested fact payloads are rejected
+ok licensed source cells reject tariff changes
+ok pricing freshness gate rejects stale/future captures
+ok failing source capture retains every last-good byte and a failure receipt
+ok refresh refuses raw payloads and changes outside admitted files
+ok refresh rejects raw data hidden inside a permitted JSON filename
+ok partial promotion rolls back bytes including its source manifest
+ok successful fixture promotion only admits facts, preserves frozen catalogue and validates new hashes
+ok stale last-good pricing can be repaired through validated refresh

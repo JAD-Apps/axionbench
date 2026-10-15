@@ -1,0 +1,7 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 test:pricing
+> node scripts/test-pricing.mjs
+
+Pricing extractor adversarial fixtures passed. Original-source replay requires -- audit directory argument.
+Licensed pricing, independent hand calculations, permission/identity/tier regressions and real-panel Pareto passed.

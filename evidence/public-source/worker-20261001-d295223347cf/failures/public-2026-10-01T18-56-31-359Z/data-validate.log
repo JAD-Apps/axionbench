@@ -1,0 +1,6 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 data:validate
+> node scripts/public/validate.mjs
+
+Portable public validation passed: 96 exact files; source 183786d60b1d34f5ae6037756266f925ac24082d9030552e8233492d615c90da; 508 catalogue models; 1433 authority observations; 23 suites / 8 capability domains; 11 licensed tariffs. No raw-source replay or hosted CI receipt is claimed.

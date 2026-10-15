@@ -1,0 +1,375 @@
+{
+  "passed": true,
+  "at": "2026-10-01T19:23:31.044Z",
+  "dataSha256": "ff9e7a81ed7ffcbf6a6ae318c112235d5fc837c52c1704206344b3e15165afbe",
+  "priceSourceSha256": "b1cf5d3eec2479602d6757520c61351becb27b8cc6a509aec1b8b491605cab92",
+  "checks": [
+    {
+      "name": "Source-priced scatter populated",
+      "observed": 9
+    },
+    {
+      "name": "Keyboard inspection selects a real point",
+      "observed": "1: gemini-3.1-flash-lite_high, $0.0055, 81.8%, nondominated within priced set"
+    },
+    {
+      "name": "Thinking changes cost once at source output rate",
+      "observed": "6 / Gemini 3.8 Flash\ngemini-3.8-flash\n\t95.4%\nhigh\n\t$0.01875\n$0.01875 tokens + $0.0000 storage\n\tNondominated\tResult ↗\nTariff ↗"
+    },
+    {
+      "name": "Explicit cache storage included",
+      "observed": "3 / Gemini 3.8 Flash\ngemini-3.8-flash\n\t95.4%\nhigh\n\t$0.0475\n$0.0225 tokens + $0.0250 storage\n\tNondominated\tResult ↗\nTariff ↗"
+    },
+    {
+      "name": "Unknown used tariff suppresses scatter",
+      "observed": 0
+    },
+    {
+      "name": "Covered-domain custom comparison becomes available",
+      "observed": "85.4%\nGPT-6 Astra\n47.9%\nGemini 3.8 Flash"
+    },
+    {
+      "name": "Sensitivity and real suite omissions visible",
+      "observed": "How sensitive is the order?\n\nEach selected domain is changed by ±20%, one at a time. Every run recomputes the same cohort and admission rules. The leading model is stable across the supported weight and omission scenarios. These scenarios are not confidence intervals.\n\nWEIGHT SCENARIO\tORDER / RESULT\nSelected weights\t1. GPT-6 Astra (81.4%) / 2. Gemini 3.8 Flash (56.5%)\nEqual default (11 domains)\tInsufficient common coverage\ncoding −20%\t1. GPT-6 Astra (82.6%) / 2. Gemini 3.8 Flash (53.9%)\ncoding +20%\t1. GPT-6 Astra (80.4%) / 2. Gemini 3.8 Flash (58.6%)\nmathematics −20%\t1. GPT-6 Astra (80.2%) / 2. Gemini 3.8 Flash (59.0%)\nmathematics +20%\t1. GPT-6 Astra (82.4%) / 2. Gemini 3.8 Flash (54.4%)\nLeave one suite out (2 real suites)\nWithout DeepSWE ↗: Insufficient common coverage\nWithout FrontierMath Tier 4 ↗: Insufficient common coverage\n\nIndependent-evaluator sources only: Insufficient common coverage. Benchmark-authority and publisher claims are excluded from this check; source independence does not mean an item-level replication."
+    },
+    {
+      "name": "Exact scenario/model/weight URL roundtrip",
+      "observed": "http://127.0.0.1:44657/?authority=deepswe-v1.1%7Cdeep-swe%7Cpass%401&authorityCohort=representatives&task=%7B%22inputTokens%22%3A10000%2C%22cachedReadTokens%22%3A0%2C%22cachedWriteTokens%22%3A0%2C%22outputTokens%22%3A2000%2C%22reasoningTokens%22%3A0%2C%22cacheStoredTokens%22%3A0%2C%22cacheHours%22%3A0%7D&cost-panel=epoch-hub%7Cgpqa-diamond%7Cscore%7CEpoch+AI+run&w=%7B%22coding%22%3A2%2C%22reasoning%22%3A0%2C%22mathematics%22%3A1%2C%22knowledge%22%3A0%2C%22instruction-following%22%3A0%2C%22long-context%22%3A0%2C%22tool-use%22%3A0%2C%22agents%22%3A0%2C%22vision-documents%22%3A0%2C%22factuality%22%3A0%2C%22multilingual%22%3A0%7D&weight-models=gpt-6-astra%2Cgemini-3-8-flash&us=gemini-3-5-flash&cn=deepseek-v4-pro&h2hDomain=all&h2hSetting=highest&h2hSource=any&h2hMethod=matched-intersection-v1&cohort=flagships&domain=all&suite=gpqa-diamond&lab=all&view=ranking"
+    },
+    {
+      "name": "Both exports agree with mounted data and preserved source links",
+      "observed": {
+        "costRows": 217,
+        "weightRows": 4
+      }
+    },
+    {
+      "name": "Reset restores honest equal default",
+      "observed": "Insufficient common coverage"
+    },
+    {
+      "name": "Desktop/mobile/responsive render and reduced motion",
+      "observed": {
+        "widths": [
+          320,
+          390,
+          768,
+          1440,
+          1920
+        ],
+        "reducedMotion": true
+      }
+    },
+    {
+      "name": "No runtime console/page errors",
+      "observed": []
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "test-results/cost-weights/320-cost.png",
+      "sha256": "efe87d93022210bda88ecb2a8f2b5ed9d9f558175e0c8d581534f481dc8889aa",
+      "viewport": 320,
+      "feature": "cost"
+    },
+    {
+      "path": "test-results/cost-weights/320-plot.png",
+      "sha256": "76951519e606665c939192cebd2115e12c26eaf6f2e21281fd99fe891194eea6",
+      "viewport": 320,
+      "feature": "plot",
+      "geometry": {
+        "container": 284,
+        "viewBox": 284,
+        "height": 350,
+        "marks": [
+          {
+            "label": "1: gemini-3.1-flash-lite_high, $0.0055, 81.8%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 75.2143, 73.8182)"
+          },
+          {
+            "label": "2: gemini-3.5-flash-lite_high, $0.0080, 83.3%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 85.7662, 69.6667)"
+          },
+          {
+            "label": "3: gemini-3-flash-preview_high, $0.0110, 89.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 98.4286, 53.0606)"
+          },
+          {
+            "label": "4: gemini-3.6-flash_high, $0.0150, 94.1%",
+            "transform": "matrix(1, 0, 0, 1, 115.312, 40.0871)"
+          },
+          {
+            "label": "5: gemini-3.7-flash_high, $0.0150, 94.8%",
+            "transform": "matrix(1, 0, 0, 1, 115.312, 38.1843)"
+          },
+          {
+            "label": "6: gemini-3.8-flash_high, $0.0150, 95.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 115.312, 36.6275)"
+          },
+          {
+            "label": "7: gemini-2.5-pro, $0.0325, 85.3%",
+            "transform": "matrix(1, 0, 0, 1, 189.175, 64.3043)"
+          },
+          {
+            "label": "8: gemini-3.5-flash_high, $0.0330, 92.8%",
+            "transform": "matrix(1, 0, 0, 1, 191.286, 43.7197)"
+          },
+          {
+            "label": "9: gemini-3.1-pro-preview_high, $0.0440, 94.4%",
+            "transform": "matrix(1, 0, 0, 1, 237.714, 39.2222)"
+          }
+        ]
+      }
+    },
+    {
+      "path": "test-results/cost-weights/320-weights.png",
+      "sha256": "7abeb7c949bc76252f10010b1f66f4b959472b0849612d638898242c3bc43cb5",
+      "viewport": 320,
+      "feature": "weights"
+    },
+    {
+      "path": "test-results/cost-weights/390-cost.png",
+      "sha256": "ffb9c8c85cc8728d493da0344ac506cc788c18828f361b9d32295d1b10bfd78d",
+      "viewport": 390,
+      "feature": "cost"
+    },
+    {
+      "path": "test-results/cost-weights/390-plot.png",
+      "sha256": "a225a7eabe1273843542929fab3ddb627b593e4f1518b181fe71b50c2125b897",
+      "viewport": 390,
+      "feature": "plot",
+      "geometry": {
+        "container": 346,
+        "viewBox": 346,
+        "height": 350,
+        "marks": [
+          {
+            "label": "1: gemini-3.1-flash-lite_high, $0.0055, 81.8%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 82.1339, 73.8182)"
+          },
+          {
+            "label": "2: gemini-3.5-flash-lite_high, $0.0080, 83.3%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 95.8312, 69.6667)"
+          },
+          {
+            "label": "3: gemini-3-flash-preview_high, $0.0110, 89.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 112.268, 53.0606)"
+          },
+          {
+            "label": "4: gemini-3.6-flash_high, $0.0150, 94.1%",
+            "transform": "matrix(1, 0, 0, 1, 134.183, 40.0871)"
+          },
+          {
+            "label": "5: gemini-3.7-flash_high, $0.0150, 94.8%",
+            "transform": "matrix(1, 0, 0, 1, 134.183, 38.1843)"
+          },
+          {
+            "label": "6: gemini-3.8-flash_high, $0.0150, 95.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 134.183, 36.6275)"
+          },
+          {
+            "label": "7: gemini-2.5-pro, $0.0325, 85.3%",
+            "transform": "matrix(1, 0, 0, 1, 230.064, 64.3043)"
+          },
+          {
+            "label": "8: gemini-3.5-flash_high, $0.0330, 92.8%",
+            "transform": "matrix(1, 0, 0, 1, 232.804, 43.7197)"
+          },
+          {
+            "label": "9: gemini-3.1-pro-preview_high, $0.0440, 94.4%",
+            "transform": "matrix(1, 0, 0, 1, 293.071, 39.2222)"
+          }
+        ]
+      }
+    },
+    {
+      "path": "test-results/cost-weights/390-weights.png",
+      "sha256": "9963c167b3ffbfcad8140e408e59469715360ba0db4f4efb7c8173f0efea3ee0",
+      "viewport": 390,
+      "feature": "weights"
+    },
+    {
+      "path": "test-results/cost-weights/768-cost.png",
+      "sha256": "cee68b6117f0fa26b96864a6deadf6d27b5c81e0c9db6b9c5a9946a578424bff",
+      "viewport": 768,
+      "feature": "cost"
+    },
+    {
+      "path": "test-results/cost-weights/768-plot.png",
+      "sha256": "dfe45f2b1313bc92a6999e65f40fe1bcf8d29337ebf1e4179ad8d54db27ab57f",
+      "viewport": 768,
+      "feature": "plot",
+      "geometry": {
+        "container": 669.71875,
+        "viewBox": 669.71875,
+        "height": 350,
+        "marks": [
+          {
+            "label": "1: gemini-3.1-flash-lite_high, $0.0055, 81.8%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 118.263, 73.8182)"
+          },
+          {
+            "label": "2: gemini-3.5-flash-lite_high, $0.0080, 83.3%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 148.383, 69.6667)"
+          },
+          {
+            "label": "3: gemini-3-flash-preview_high, $0.0110, 89.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 184.527, 53.0606)"
+          },
+          {
+            "label": "4: gemini-3.6-flash_high, $0.0150, 94.1%",
+            "transform": "matrix(1, 0, 0, 1, 232.718, 40.0871)"
+          },
+          {
+            "label": "5: gemini-3.7-flash_high, $0.0150, 94.8%",
+            "transform": "matrix(1, 0, 0, 1, 232.718, 38.1843)"
+          },
+          {
+            "label": "6: gemini-3.8-flash_high, $0.0150, 95.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 232.718, 36.6275)"
+          },
+          {
+            "label": "7: gemini-2.5-pro, $0.0325, 85.3%",
+            "transform": "matrix(1, 0, 0, 1, 443.556, 64.3043)"
+          },
+          {
+            "label": "8: gemini-3.5-flash_high, $0.0330, 92.8%",
+            "transform": "matrix(1, 0, 0, 1, 449.58, 43.7197)"
+          },
+          {
+            "label": "9: gemini-3.1-pro-preview_high, $0.0440, 94.4%",
+            "transform": "matrix(1, 0, 0, 1, 582.106, 39.2222)"
+          }
+        ]
+      }
+    },
+    {
+      "path": "test-results/cost-weights/768-weights.png",
+      "sha256": "0de46317296afabb6820c11d572ea922618aca0fcd8f8f858b6969f6f2525787",
+      "viewport": 768,
+      "feature": "weights"
+    },
+    {
+      "path": "test-results/cost-weights/1440-cost.png",
+      "sha256": "b3426116e0c49dea2d88646c1fa4b3d1fbc934d0e6b59034c2d441f368444869",
+      "viewport": 1440,
+      "feature": "cost"
+    },
+    {
+      "path": "test-results/cost-weights/1440-plot.png",
+      "sha256": "40aad7ce34262c7b8b15f53a3ca2fc9f19d26dbcd78211efd19a758a3d0e0f24",
+      "viewport": 1440,
+      "feature": "plot",
+      "geometry": {
+        "container": 1255.6875,
+        "viewBox": 1255.6875,
+        "height": 350,
+        "marks": [
+          {
+            "label": "1: gemini-3.1-flash-lite_high, $0.0055, 81.8%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 183.662, 73.8182)"
+          },
+          {
+            "label": "2: gemini-3.5-flash-lite_high, $0.0080, 83.3%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 243.508, 69.6667)"
+          },
+          {
+            "label": "3: gemini-3-flash-preview_high, $0.0110, 89.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 315.323, 53.0606)"
+          },
+          {
+            "label": "4: gemini-3.6-flash_high, $0.0150, 94.1%",
+            "transform": "matrix(1, 0, 0, 1, 411.077, 40.0871)"
+          },
+          {
+            "label": "5: gemini-3.7-flash_high, $0.0150, 94.8%",
+            "transform": "matrix(1, 0, 0, 1, 411.077, 38.1843)"
+          },
+          {
+            "label": "6: gemini-3.8-flash_high, $0.0150, 95.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 411.077, 36.6275)"
+          },
+          {
+            "label": "7: gemini-2.5-pro, $0.0325, 85.3%",
+            "transform": "matrix(1, 0, 0, 1, 830, 64.3043)"
+          },
+          {
+            "label": "8: gemini-3.5-flash_high, $0.0330, 92.8%",
+            "transform": "matrix(1, 0, 0, 1, 841.969, 43.7197)"
+          },
+          {
+            "label": "9: gemini-3.1-pro-preview_high, $0.0440, 94.4%",
+            "transform": "matrix(1, 0, 0, 1, 1105.29, 39.2222)"
+          }
+        ]
+      }
+    },
+    {
+      "path": "test-results/cost-weights/1440-weights.png",
+      "sha256": "3d0d39fc54c6110a1c9016494d2a9fd3554de8b7813537f6a2481f8841d0f5da",
+      "viewport": 1440,
+      "feature": "weights"
+    },
+    {
+      "path": "test-results/cost-weights/1920-cost.png",
+      "sha256": "c4d12042451f3e8dfb9c29281ae207f33d7c1d98d56dd2956b0245082956b480",
+      "viewport": 1920,
+      "feature": "cost"
+    },
+    {
+      "path": "test-results/cost-weights/1920-plot.png",
+      "sha256": "fb15a0bc684ea87570b489343734affe5bf67a7a509d140621b3509c73ea6bad",
+      "viewport": 1920,
+      "feature": "plot",
+      "geometry": {
+        "container": 1440,
+        "viewBox": 1440,
+        "height": 350,
+        "marks": [
+          {
+            "label": "1: gemini-3.1-flash-lite_high, $0.0055, 81.8%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 204.232, 73.8182)"
+          },
+          {
+            "label": "2: gemini-3.5-flash-lite_high, $0.0080, 83.3%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 273.429, 69.6667)"
+          },
+          {
+            "label": "3: gemini-3-flash-preview_high, $0.0110, 89.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 356.464, 53.0606)"
+          },
+          {
+            "label": "4: gemini-3.6-flash_high, $0.0150, 94.1%",
+            "transform": "matrix(1, 0, 0, 1, 467.179, 40.0871)"
+          },
+          {
+            "label": "5: gemini-3.7-flash_high, $0.0150, 94.8%",
+            "transform": "matrix(1, 0, 0, 1, 467.179, 38.1843)"
+          },
+          {
+            "label": "6: gemini-3.8-flash_high, $0.0150, 95.4%, nondominated within priced set",
+            "transform": "matrix(1, 0, 0, 1, 467.179, 36.6275)"
+          },
+          {
+            "label": "7: gemini-2.5-pro, $0.0325, 85.3%",
+            "transform": "matrix(1, 0, 0, 1, 951.554, 64.3043)"
+          },
+          {
+            "label": "8: gemini-3.5-flash_high, $0.0330, 92.8%",
+            "transform": "matrix(1, 0, 0, 1, 965.393, 43.7197)"
+          },
+          {
+            "label": "9: gemini-3.1-pro-preview_high, $0.0440, 94.4%",
+            "transform": "matrix(1, 0, 0, 1, 1269.86, 39.2222)"
+          }
+        ]
+      }
+    },
+    {
+      "path": "test-results/cost-weights/1920-weights.png",
+      "sha256": "a844f4bff90ed588db1c18d4d6040e9c61119a534e239db119bdca0d7f070ba4",
+      "viewport": 1920,
+      "feature": "weights"
+    }
+  ]
+}

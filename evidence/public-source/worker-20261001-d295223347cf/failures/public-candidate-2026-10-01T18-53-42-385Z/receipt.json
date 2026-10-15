@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "axionbench-private-public-integration-v1",
+  "at": "2026-10-01T18:53:43.529Z",
+  "passed": false,
+  "publicSourceSha256": "88b6ffd16e2d8e637a4fa5d82a954fd6dc2936206be2bda91268ebed50424105",
+  "privateSourceDigest": "93272cfc790af6fee96a47313ab405611738cc9c2e91db9b501053ec9ba58135",
+  "publicDataSha256": "ff9e7a81ed7ffcbf6a6ae318c112235d5fc837c52c1704206344b3e15165afbe",
+  "productPath": "publication/product",
+  "privateGatesRetained": 21,
+  "results": [
+    {
+      "label": "frozen-install",
+      "command": [
+        "npm",
+        "ci",
+        "--include=dev",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exitCode": 1,
+      "log": "test-results/public-candidate-2026-10-01T18-53-42-385Z/frozen-install.log",
+      "logSha256": "42c6d2add4ffe2b87ffe1fa8b4da361ac347f0f56ece151dc8da4a1b08db4141"
+    }
+  ],
+  "independentReview": false,
+  "hostedCI": false
+}

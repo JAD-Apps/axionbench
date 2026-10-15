@@ -1,0 +1,4 @@
+npm warn config production Use `--omit=dev` instead.
+npm error code EALLOWSCRIPTS
+npm error --allow-scripts is not allowed in project-scoped installs. Add the entries to the "allowScripts" field in package.json, or to .npmrc, instead.
+npm error A complete log of this run can be found in: /home/johnd/.jadbot/sessions/***/tmp/npm-cache/_logs/2026-10-01T18_53_42_499Z-debug-0.log

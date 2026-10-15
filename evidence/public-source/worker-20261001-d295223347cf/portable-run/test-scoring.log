@@ -1,0 +1,6 @@
+npm warn config production Use `--omit=dev` instead.
+
+> axionbench@0.1.0 test:scoring
+> node tests/scoring/test-scoring.mjs
+
+Scoring fixtures passed; current capture admitted 0/118 observations.
